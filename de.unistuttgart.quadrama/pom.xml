@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>de.unistuttgart.quadrama</groupId>
-  <artifactId>root-pom</artifactId>
+  <artifactId>de.unistuttgart.quadrama</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
