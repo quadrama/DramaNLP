@@ -56,5 +56,6 @@
   </dependencyManagement>
   <modules>
     <module>api</module>
+    <module>io.gutenbergde</module>
   </modules>
 </project>
