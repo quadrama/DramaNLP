@@ -14,7 +14,7 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** 
- * Updated by JCasGen Sun Feb 14 18:44:13 CET 2016
+ * Updated by JCasGen Sun Feb 14 18:54:52 CET 2016
  * @generated */
 public class HTMLAnnotation_Type extends Annotation_Type {
   /** @generated 
@@ -69,6 +69,54 @@ public class HTMLAnnotation_Type extends Annotation_Type {
     ll_cas.ll_setStringValue(addr, casFeatCode_Tag, v);}
     
   
+ 
+  /** @generated */
+  final Feature casFeat_Id;
+  /** @generated */
+  final int     casFeatCode_Id;
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @return the feature value 
+   */ 
+  public String getId(int addr) {
+        if (featOkTst && casFeat_Id == null)
+      jcas.throwFeatMissing("Id", "de.unistuttgart.quadrama.io.gutenbergde.type.HTMLAnnotation");
+    return ll_cas.ll_getStringValue(addr, casFeatCode_Id);
+  }
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @param v value to set 
+   */    
+  public void setId(int addr, String v) {
+        if (featOkTst && casFeat_Id == null)
+      jcas.throwFeatMissing("Id", "de.unistuttgart.quadrama.io.gutenbergde.type.HTMLAnnotation");
+    ll_cas.ll_setStringValue(addr, casFeatCode_Id, v);}
+    
+  
+ 
+  /** @generated */
+  final Feature casFeat_Cls;
+  /** @generated */
+  final int     casFeatCode_Cls;
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @return the feature value 
+   */ 
+  public String getCls(int addr) {
+        if (featOkTst && casFeat_Cls == null)
+      jcas.throwFeatMissing("Cls", "de.unistuttgart.quadrama.io.gutenbergde.type.HTMLAnnotation");
+    return ll_cas.ll_getStringValue(addr, casFeatCode_Cls);
+  }
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @param v value to set 
+   */    
+  public void setCls(int addr, String v) {
+        if (featOkTst && casFeat_Cls == null)
+      jcas.throwFeatMissing("Cls", "de.unistuttgart.quadrama.io.gutenbergde.type.HTMLAnnotation");
+    ll_cas.ll_setStringValue(addr, casFeatCode_Cls, v);}
+    
+  
 
 
 
@@ -84,6 +132,14 @@ public class HTMLAnnotation_Type extends Annotation_Type {
  
     casFeat_Tag = jcas.getRequiredFeatureDE(casType, "Tag", "uima.cas.String", featOkTst);
     casFeatCode_Tag  = (null == casFeat_Tag) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_Tag).getCode();
+
+ 
+    casFeat_Id = jcas.getRequiredFeatureDE(casType, "Id", "uima.cas.String", featOkTst);
+    casFeatCode_Id  = (null == casFeat_Id) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_Id).getCode();
+
+ 
+    casFeat_Cls = jcas.getRequiredFeatureDE(casType, "Cls", "uima.cas.String", featOkTst);
+    casFeatCode_Cls  = (null == casFeat_Cls) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_Cls).getCode();
 
   }
 }

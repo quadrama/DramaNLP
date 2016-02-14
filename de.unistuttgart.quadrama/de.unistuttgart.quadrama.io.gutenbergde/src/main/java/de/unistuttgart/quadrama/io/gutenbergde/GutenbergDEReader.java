@@ -89,9 +89,12 @@ public class GutenbergDEReader extends JCasCollectionReader_ImplBase {
 
 		public void tail(Node node, int depth) {
 			if (node.getClass().equals(Element.class)) {
+				Element elm = (Element) node;
 				HTMLAnnotation anno =
 						builder.add(beginMap.get(node), HTMLAnnotation.class);
-				anno.setTag(((Element) node).tagName());
+				anno.setTag(elm.tagName());
+				anno.setId(elm.id());
+				anno.setCls(elm.className());
 			}
 		}
 
