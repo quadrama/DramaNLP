@@ -1,0 +1,1492 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html lang="de">
+<!-- Template 413170.html generated Sun Feb 14 06:40:22 2016 -->
+<head>
+	<title>Romeo und Juliette. von William Shakespeare - Text im Projekt Gutenberg</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="author" content="SPIEGEL ONLINE, Hamburg, Germany" />
+<meta name="copyright" content="SPIEGEL ONLINE, Hamburg, Germany" />
+<meta name="email" content="spiegel_online@spiegel.de" />
+<meta name="MSSmartTagsPreventParsing" content="true" />
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="date" content="2006-04-26T16:34:00+0200" />
+<meta name="last-modified" content="2015-08-31T11:06:18+0200" />
+
+<meta name="spnet.relatedboxuse" content="false" />
+<meta name="description" content="Literaturdatenbank auf SPIEGEL ONLINE - mit 1800 Romanen, Erzählungen, Novellen und 6300 Märchen, Fabeln, Sagen." /><meta name="news_keywords" content="Kultur, Gutenberg" />
+<link rel="alternate" type="application/rss+xml" title="SPIEGEL ONLINE RSS Schlagzeilen" href="http://www.spiegel.de/schlagzeilen/index.rss" />
+<link rel="alternate" type="application/rss+xml" title="SPIEGEL ONLINE RSS Kultur" href="http://www.spiegel.de/kultur/index.rss" />
+<script type="text/javascript">
+	<!--
+		var spMetadataAssetId ='413170';
+		var spMetadataAssetTypeId =1;
+	// -->
+	</script>
+
+	<link rel="shortcut icon" href="http://www.spiegel.de/favicon.ico" type="image/ico" />
+<link rel="apple-touch-icon" sizes="57x57"   href="http://www.spiegel.de/static/sys/v10/icons/touch-icon-iphone.png" />
+<link rel="apple-touch-icon" sizes="72x72"   href="http://www.spiegel.de/static/sys/v10/icons/touch-icon72.png" />
+<link rel="apple-touch-icon" sizes="76x76"   href="http://www.spiegel.de/static/sys/v10/icons/touch-icon76.png" />
+<link rel="apple-touch-icon" sizes="114x114" href="http://www.spiegel.de/static/sys/v10/icons/touch-icon114.png" />
+<link rel="apple-touch-icon" sizes="120x120" href="http://www.spiegel.de/static/sys/v10/icons/touch-icon120.png" />
+<link rel="apple-touch-icon" sizes="144x144" href="http://www.spiegel.de/static/sys/v10/icons/touch-icon144.png" />
+<link rel="apple-touch-icon" sizes="152x152" href="http://www.spiegel.de/static/sys/v10/icons/touch-icon152.png" />
+<!-- ##SPONTAG: CSS## -->
+		<link rel="stylesheet" type="text/css" href="http://www.spiegel.de/layout/css/style-V6-25.css" />
+	<!--[if IE 7]>
+	<link rel="stylesheet" type="text/css" href="http://www.spiegel.de/layout/css/ie7-V6-25.css" />
+	<![endif]-->
+	<!--[if IE 8]>
+	<link rel="stylesheet" type="text/css" href="http://www.spiegel.de/layout/css/ie8-V6-25.css" />
+	<![endif]-->
+	<script src="http://www.spiegel.de/layout/jscfg/http/global-V6-25.js" type="text/javascript"></script>
+		<script src="http://www.spiegel.de/layout/js/http/javascript-V6-25.js" type="text/javascript"></script>
+		<script type="text/javascript" id="spIpadScript">
+		if (spUA.isIPad()) {
+			if ("https:" == window.location.protocol){
+				document.write('<scr' + 'ipt src="http://www.spiegel.de/layout/js/https/ipad-V6-25.js" type="text/javascript"><\/scr' + 'ipt>');
+			} else
+				document.write('<scr' + 'ipt src="http://www.spiegel.de/layout/js/http/ipad-V6-25.js" type="text/javascript"><\/scr' + 'ipt>');
+		}
+		</script>
+		<script src="http://www.spiegel.de/layout/js/http/interface-V6-25.js" type="text/javascript"></script>
+	<script src="http://www.spiegel.de/layout/js/http/netmind-V6-25.js" type="text/javascript"></script>
+		<script type="text/javascript" src="https://script.ioam.de/iam.js"></script>
+	<!--[if lte IE 8]>
+		<script src="http://www.spiegel.de/layout/js/http/respond_min-V6-25.js" type="text/javascript"></script>
+	<![endif]-->
+	<script type="text/javascript">
+		<!-- 
+			spUseVideoIframe = false;
+		// --> 
+		</script>
+	<script type="text/javascript">
+<!--
+	var ADI = new XADI('');
+	ADI.pvars  	  = {
+    "unterrubrik_ids": "_1351_",
+    "unterrubrik_namen": "_gutenberg_",
+    "vpaid": "false"
+};
+	ADI.campaigns = {
+    "aaa_skyscraper_left": "2845367",
+    "billboard_1": "2845352",
+    "content_ad_1": "2845410",
+    "content_ad_2": "3019397",
+    "footer_ad": "2845422",
+    "interne_statistik": "2845355",
+    "layer_ad": "2845358",
+    "promotion_ad_1": "2845387",
+    "promotion_ad_2": "2845391",
+    "promotion_ad_3": "2845394",
+    "promotion_ad_4": "2845399",
+    "promotion_ad_5": "2845403",
+    "promotion_ad_vertrieb": "2845429",
+    "skyscraper": "2845361",
+    "spezial_teaser": "2845418",
+    "sponsor_logo": "2845376",
+    "subchannel_reiter_1": "2845370",
+    "subchannel_reiter_2": "2845379",
+    "subchannel_teaser": "2845425",
+    "superbanner": "2845364",
+    "zaehler": "2845383"
+};
+	ADI.yieldlab  = {
+    "billboard_1": "87085",
+    "content_ad_1": "87086",
+    "promotion_ad_5": "87089",
+    "skyscraper": "87088",
+    "superbanner": "87089"
+};
+// -->
+</script>
+<script type="text/javascript">
+<!--
+	if (!ADI.disabled()) {
+		(function() {
+			var src = (document.location.protocol === 'https:' ? 'https:/' : 'http:/') + '/imagesrv.adition.com/js/srp.js';
+			document.write('<scr' + 'ipt type="text/javascript" src="' + src + '" charset="utf-8"></scr' + 'ipt>');
+		})();
+	};
+	
+//-->
+</script>
+
+<script type="text/javascript">
+<!--
+	ADI.setup((typeof adition != 'undefined' ? adition : null));
+
+	
+
+	if (!ADI.blocked) adition.srq.push(function(api) {
+
+		api.registerAdfarm('ad8.adfarm1.adition.com');
+		
+		var pv = ADI.pvars;
+		for (var v in pv) {
+			api.setProfile(v, pv[v]);
+			
+		}
+
+		api.events.onPreRender(onPreRenderCallback);						
+		if (ADI.previewprofile) {
+			api.setProfile('preview', ADI.previewprofile);
+		}
+		var cs = ADI.campaignsToRender();
+		if (cs.length > 0) {
+			for (var pos in cs) {
+				
+				api.configureRenderSlot(cs[pos].name).setContentunitId(parseInt(cs[pos].value)).setRenderer('iframe');
+				
+			}
+			
+			var yl = api.modules.setLoadingTimeout(2000).configureModule("yieldlab"); 
+			for (var pos in cs) {
+				if (ADI.yieldlab[cs[pos].name]) {
+					
+					yl.mapContentunit(cs[pos].value,ADI.yieldlab[cs[pos].name],172);
+				}
+			}		
+			yl.enable();
+			
+			api.modules.configureModule('criteo').setNid(3335).setContentVariableName('criteoContent').setCookieName('cookieName').enable();
+			api.loadNow().completeRendering();
+		}
+	});
+
+
+	
+
+// -->
+</script> 
+
+<base href="http://gutenberg.spiegel.de/gutenb/shakespr/romeo/" /><link rel="stylesheet" type="text/css" href="http://gutenberg.spiegel.de/gutenb/css/drama.css" />
+<link rel="canonical" href="http://gutenberg.spiegel.de/buch/romeo-und-juliette-2179/31"></head>
+
+<body id="kultur" class="spBereich1351 spArticleContent dt-www">
+
+<iframe src="http://www.spiegel.de/static/sys/pixel.gif" name="spon_vdz_countframe" width="0" height="0" frameborder="0" style="display:none;"></iframe><div id="spSZM">
+<!-- SZM VERSION="2.0" -->
+<script type="text/javascript">
+var iam_data = {
+"st":"spiegel", // site/domain
+"cp":"spon-www-22-1351", // code
+"sv":"ke"
+}
+iom.c(iam_data);
+</script>
+<!-- /SZM -->
+</div>
+
+<div style="position:absolute;top: -100px;left: 0px;">
+<script type="text/javascript"> 
+<!--
+
+var abd = spGetAbdStatus();
+spNm({
+	'sp.site': '1',
+	'sp.template': '1',
+	'sp.atyp': '1',
+	'sp.aid': '413170',
+	'sp.part': '1',
+	'sp.rubric': '1351',
+	'sp.channel': '22',
+	'sp.partmax': '1',
+	"sp.abd": abd
+});
+	
+// -->
+</script>
+<noscript>
+	<img src="https://count.spiegel.de/nm_trck.gif?sp.site=9999" width="1" height="1" border="0" align="right" alt="" />
+</noscript>
+</div>
+<div id="spOasTop">
+	<div class="adition" id="superbanner" data-position="superbanner">
+	<script type="text/javascript">
+		if (typeof ADI != 'undefined') ADI.ad('superbanner');
+	</script>
+</div>
+<br class="clearfix" />
+	
+	<div style="position:absolute;top:-100px;left:0px;">
+		<div class="adition" id="zaehler" data-position="zaehler">
+	<script type="text/javascript">
+		if (typeof ADI != 'undefined') ADI.ad('zaehler');
+	</script>
+</div>
+</div><br class="clearfix" />
+</div>
+<div id="wrapper">
+			<div id="wrapper-shadow">
+			<div id="wrapper-content">
+			
+				<div id="header">
+				
+					<div class="header-top">
+
+			<div class="nav-main">
+			
+				<ul>
+					<li>
+								<a href="http://www.spiegel.de/">Home</a></li>
+							<li>
+								<a href="http://www.spiegel.de/video/">Video</a></li>
+							<li>
+								<a href="http://www.spiegel.de/thema/index-a.html">Themen</a></li>
+							<li>
+								<a href="http://www.spiegel.de/forum/">Forum</a></li>
+							<li>
+								<a href="http://www.spiegel.de/international/">English</a></li>
+							<li>
+								<a href="http://www.spiegel.de/spiegel/">DER SPIEGEL</a></li>
+							<li>
+								<a href="http://www.spiegel.de/sptv/">SPIEGEL TV</a></li>
+							<li>
+								<a href="http://abo.spiegel.de/?b=SPOHNAVABO&amp;utm_source=spon&amp;utm_medium=text&amp;utm_content=SPOHNAVABO&amp;utm_campaign=navigationsleiste">Abo</a></li>
+							<li>
+								<a href="http://www.spiegel.de/shop/">Shop</a></li>
+							</ul>
+
+			</div> <div class="nav-service">
+				<ul>
+					<li><a href="http://www.spiegel.de/schlagzeilen/">Schlagzeilen</a></li>
+							<li><a href="http://www.spiegel.de/wetter/"><img src="http://www.spiegel.de/static/sys/v10/icons/ic_sonne.png" width="18" height="18" alt="Wetter" />Wetter</a></li>
+							<li><a href="http://tvprogramm.spiegel.de/">TV-Programm</a></li>
+							<li><a class="link-more" href="javascript:return false;">mehr &#9660;</a>
+								<ul class="nav-service-sub">
+									<li><a href="http://www.spiegel.de/dienste/a-637773.html">Hilfe</a></li>
+									<li><a href="http://www.spiegel.de/dienste/a-634260.html">RSS</a></li>
+									<li><a href="http://www.spiegel.de/dienste/a-902432.html">Newsletter</a></li>
+									<li><a href="http://www.spiegel.de/dienste/a-634549.html">Mobil</a></li>
+								</ul>
+							</li>							
+						</ul>
+			</div> </div> <div class="header-main">	
+
+			<a href="http://www.spiegel.de/" class="header-logo"><img src="http://www.spiegel.de/static/sys/v10/logo/spiegel_online_logo_460_64.png" alt="SPIEGEL ONLINE" title="SPIEGEL ONLINE" width="230" height="32" /></a>
+					<a href="http://www.spiegel.de/kultur" class="channel-name">Kultur</a>
+					<div class="header-search">
+
+	                        	<form action="http://www.spiegel.de/suche/index.html" method="get" name="suchform" class="search-form-single">
+
+										<input name="suchbegriff" type="text" />
+										<input class="search-form-submit" type="submit" value="Suche starten" />
+
+									</form>
+
+	    	                    </div> <ul class="login-links">
+					<noscript><li><a href="http://www.spiegel.de/meinspiegel/">Mein SPIEGEL</a></li></noscript>
+				</ul>
+				<script type="text/javascript">
+					<!--
+						spUpdateMSLoginLinks();
+					// -->
+				</script>
+			</div> <div class="nav-channel" lang="de">
+		
+			<ul class="clearfix">
+
+						<li class="channel-politik-border-bottom">
+										<a href="http://www.spiegel.de/politik/" class="nav-channel-name ">Politik</a><div class=" nav-channel-sub">
+
+												<ul style="z-index:1000001;"><li>
+				<a href="http://www.spiegel.de/politik/deutschland/"><span class="nav-channel-sub-entry">Deutschland</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/politik/ausland/"><span class="nav-channel-sub-entry">Ausland</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/thema/eu/" target="_self" title="" class=""><span class="nav-channel-sub-entry">Europa</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/thema/meinung/" target="_self" title="" class="spNaviLevel2Last"><span class="nav-channel-sub-entry">Meinung</span></a></li>
+				
+		</ul>
+												<div class="nav-channel-sub-assets">
+														<span class="asset">politik</span>
+													</div>
+												</div>
+											
+										</li>
+									
+								<li class="channel-wirtschaft-border-bottom">
+										<a href="http://www.spiegel.de/wirtschaft/" class="nav-channel-name ">Wirtschaft</a><div class=" nav-channel-sub">
+
+												<ul style="z-index:1000001;"><li>
+				<a href="http://boersen.manager-magazin.de/spon/" target="_blank" title="" class=""><span class="nav-channel-sub-entry">Börse</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/wirtschaft/service/"><span class="nav-channel-sub-entry">Verbraucher & Service</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/wirtschaft/service/versicherung-check-fuer-haftpflicht-hausrat-berufsunfaehigkeit-a-960380.html" title="" class=""><span class="nav-channel-sub-entry">Versicherungen</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/wirtschaft/unternehmen/"><span class="nav-channel-sub-entry">Unternehmen & Märkte</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/wirtschaft/soziales/"><span class="nav-channel-sub-entry">Staat & Soziales</span></a></li>
+				
+		<li class="spDivideNaviAd">
+<div>
+<div></div>
+</div>
+</li>
+<li>
+<a href="http://www.spiegel.de/wirtschaft/service/brutto-netto-rechner-was-von-lohn-und-gehalt-uebrig-bleibt-a-223811.html" title="">Brutto-Netto-Rechner</a>
+</li>
+<li>
+<a href="http://ad8.adfarm1.adition.com/redi?sid=3076401&kid=1213066&bid=3962693" rel="nofollow" title="Anzeige">Jobsuche</a>
+</li>
+<li>
+<a href="http://ad8.adfarm1.adition.com/redi?sid=3076393&kid=1213025&bid=3962018" rel="nofollow" title="Anzeige">Immowelt</a>
+</li>
+<li>
+<a href="http://ad8.adfarm1.adition.com/redi?sid=3076396&kid=1503394&bid=5108785" rel="nofollow" title="Anzeige">Tarifvergleiche</a>
+</li>
+<li>
+<a href="http://ad8.adfarm1.adition.com/redi?sid=3078845&kid=1207958&bid=3943597" rel="nofollow" title="Anzeige">Kreditvergleich</a>
+</li></ul>
+												<div class="nav-channel-sub-assets">
+														<span class="asset">wirtschaft</span>
+													</div>
+												</div>
+											
+										</li>
+									
+								<li class="channel-panorama-border-bottom">
+										<a href="http://www.spiegel.de/panorama/" class="nav-channel-name ">Panorama</a><div class=" nav-channel-sub">
+
+												<ul style="z-index:1000001;"><li>
+				<a href="http://www.spiegel.de/panorama/justiz/"><span class="nav-channel-sub-entry">Justiz</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/panorama/leute/"><span class="nav-channel-sub-entry">Leute</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/panorama/gesellschaft/"><span class="nav-channel-sub-entry">Gesellschaft</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/story/" target="_self" title="" class="spNaviLevel2Last"><span class="nav-channel-sub-entry">Multimedia-Reportagen</span></a></li>
+				
+		<li class="spDivideNaviAd">
+<div>
+<div></div>
+</div>
+</li>
+<li>
+<a href="http://ad8.adfarm1.adition.com/redi?sid=3098101&kid=1219781&bid=3986826" title="Anzeige">LOTTO 6aus49</a>
+</li>
+<li>
+<a href="http://ad8.adfarm1.adition.com/redi?sid=3076398&kid=1212921&bid=3961471" title="Anzeige">Eurojackpot</a>
+</li></ul>
+												<div class="nav-channel-sub-assets">
+														<span class="asset">panorama</span>
+													</div>
+												</div>
+											
+										</li>
+									
+								<li class="channel-sport-border-bottom">
+										<a href="http://www.spiegel.de/sport/" class="nav-channel-name ">Sport</a><div class=" nav-channel-sub">
+
+												<ul style="z-index:1000001;"><li>
+				<a href="http://www.spiegel.de/sport/fussball/fussball-live-liveticker-tabellen-und-statistiken-a-839944.html" title="" class=""><span class="nav-channel-sub-entry">Fußball-Liveticker</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/sport/fussball/"><span class="nav-channel-sub-entry">Fußball-News</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/sport/fussball/champions-league-live-ticker-spielplan-ergebnisse-tabelle-a-851014.html" title="" class=""><span class="nav-channel-sub-entry">Champions League</span></a></li>
+				
+		<li>
+				<a href="http://tippspiel.spiegel.de" target="_self" title="" class=""><span class="nav-channel-sub-entry">Fußball-Tippspiel</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/sport/formel1/"><span class="nav-channel-sub-entry">Formel 1</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/sport/formel1/formel-1-live-ticker-ergebnisse-termine-fahrer-teams-a-958409.html" title="" class=""><span class="nav-channel-sub-entry">Formel-1-Liveticker</span></a></li>
+				
+		<li>
+				<a href="http://sportal.spiegel.de/spiegel/ergebnisse/" target="_self" title="" class=""><span class="nav-channel-sub-entry">Ergebnisse</span></a></li>
+				
+		<li>
+				<a href="http://sportal.spiegel.de/spiegel/liveticker/" target="_self" title="" class=""><span class="nav-channel-sub-entry">Live-Kalender</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/sport/wintersport/"><span class="nav-channel-sub-entry">Wintersport</span></a></li>
+				
+		<li>
+				<a href="http://kopfsache.spiegel.de/" target="_self" title="" class="spNaviLevel2Last"><span class="nav-channel-sub-entry">Weihnachtsgewinnspiel</span></a></li>
+				
+		<li class="spDivideNaviAd">
+<div>
+<div></div>
+</div>
+</li>
+<li>
+<a href="http://ad8.adfarm1.adition.com/redi?sid=3213806&kid=1493890&bid=5071386" title="Anzeige">
+<span style="color:#990000; font-weight: bold; font-size:1.2rem;">Bundesliga</span> präsentiert von<br/>Continental</a>
+</li></ul>
+												<div class="nav-channel-sub-assets">
+														<span class="asset">sport</span>
+													</div>
+												</div>
+											
+										</li>
+									
+								<li class="channel-kultur-border-bottom">
+										<a href="http://www.spiegel.de/kultur/" class="nav-channel-name active">Kultur</a><div class=" nav-channel-sub">
+
+												<ul style="z-index:1000001;"><li>
+				<a href="http://www.spiegel.de/kultur/kino/"><span class="nav-channel-sub-entry">Kino</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/kultur/musik/"><span class="nav-channel-sub-entry">Musik</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/kultur/tv/"><span class="nav-channel-sub-entry">TV</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/kultur/literatur/"><span class="nav-channel-sub-entry">Literatur</span></a></li>
+				
+		<li>
+				<a href="http://gutenberg.spiegel.de" target="_self" title="" class=""><span class="nav-channel-sub-entry">Gutenberg</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/kultur/bestseller-buecher-belletristik-sachbuch-auf-spiegel-liste-a-458623.html" title="" class="spNaviLevel2Last"><span class="nav-channel-sub-entry">Bestseller</span></a></li>
+				
+		<li class="spDivideNaviAd">
+<div>
+<div></div>
+</div>
+</li>
+<li>
+<a href="http://ad8.adfarm1.adition.com/redi?sid=3354428&kid=1441836&bid=4862223" title="Anzeige">Deezer Music</a>
+</li></ul>
+												<div class="nav-channel-sub-assets">
+														<span class="asset">kultur</span>
+													</div>
+												</div>
+											
+										</li>
+									
+								<li class="channel-netzwelt-border-bottom">
+										<a href="http://www.spiegel.de/netzwelt/" class="nav-channel-name ">Netzwelt</a><div class=" nav-channel-sub">
+
+												<ul style="z-index:1000001;"><li>
+				<a href="http://www.spiegel.de/netzwelt/netzpolitik/"><span class="nav-channel-sub-entry">Netzpolitik</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/netzwelt/web/"><span class="nav-channel-sub-entry">Web</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/netzwelt/gadgets/"><span class="nav-channel-sub-entry">Gadgets</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/netzwelt/games/"><span class="nav-channel-sub-entry">Games</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/netzwelt/apps/"><span class="nav-channel-sub-entry">Apps</span></a></li>
+				
+		</ul>
+												<div class="nav-channel-sub-assets">
+														<span class="asset">netzwelt</span>
+													</div>
+												</div>
+											
+										</li>
+									
+								<li class="channel-wissenschaft-border-bottom">
+										<a href="http://www.spiegel.de/wissenschaft/" class="nav-channel-name ">Wissenschaft</a><div class=" nav-channel-sub">
+
+												<ul style="z-index:1000001;"><li>
+				<a href="http://www.spiegel.de/wissenschaft/mensch/"><span class="nav-channel-sub-entry">Mensch</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/wissenschaft/natur/"><span class="nav-channel-sub-entry">Natur</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/wissenschaft/technik/"><span class="nav-channel-sub-entry">Technik</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/wissenschaft/weltall/"><span class="nav-channel-sub-entry">Weltall</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/wissenschaft/medizin/"><span class="nav-channel-sub-entry">Medizin</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/thema/daten/" target="_self" title="" class="spNaviLevel2Last"><span class="nav-channel-sub-entry">Datenlese</span></a></li>
+				
+		<li class="spDivideNaviAd">
+<div>
+<div></div>
+</div>
+</li>
+<li>
+<a href="http://www.spiegel.de/wissenschaft/mensch/zahlenraetsel-sudoku-der-logik-klassiker-fuer-jeden-tag-a-994416.html" title="">Sudoku</a>
+</li>
+<li>
+<a href="http://www.spiegel.de/wissenschaft/mensch/kenken-das-zahlenraetsel-aus-japan-a-994418.html" title="">Kenken</a>
+</li>
+<li>
+<a href="http://www.spiegel.de/wissenschaft/mensch/zahlenraetsel-street-die-logik-liegt-auf-der-strasse-a-994419.html" title="">Street</a>
+</li></ul>
+												<div class="nav-channel-sub-assets">
+														<span class="asset">wissenschaft</span>
+													</div>
+												</div>
+											
+										</li>
+									
+								<li class="channel-gesundheit-border-bottom">
+										<a href="http://www.spiegel.de/gesundheit/" class="nav-channel-name ">Gesundheit</a><div class=" nav-channel-sub">
+
+												<ul style="z-index:1000001;"><li>
+				<a href="http://www.spiegel.de/gesundheit/diagnose/"><span class="nav-channel-sub-entry">Diagnose & Therapie</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/gesundheit/ernaehrung/"><span class="nav-channel-sub-entry">Ernährung & Fitness</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/gesundheit/psychologie/"><span class="nav-channel-sub-entry">Psychologie</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/gesundheit/sex/"><span class="nav-channel-sub-entry">Sex & Partnerschaft</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/gesundheit/schwangerschaft/"><span class="nav-channel-sub-entry">Schwangerschaft & Kind</span></a></li>
+				
+		<li><a title="" href="http://www.spiegel.de/gesundheit/ernaehrung/bmi-rechner-so-ermitteln-sie-ihren-body-mass-index-a-824673.html">BMI-Rechner</a></li>
+<li><a title="" href="http://www.spiegel.de/gesundheit/ernaehrung/kalorienrechner-so-ermitteln-sie-ihren-optimalen-kalorienverbrauch-a-832713.html">Kalorienrechner</a></li>
+<li><a title="Anzeige" href="http://ad8.adfarm1.adition.com/redi?sid=3080249&amp;kid=1209326&amp;bid=3947657">Hörgeräte</a></li>
+<li><a title="Anzeige" href="http://ad8.adfarm1.adition.com/redi?sid=3088031&kid=1214230&bid=3966013">Arztsuche</a></li></ul>
+												<div class="nav-channel-sub-assets">
+														<span class="asset">gesundheit</span>
+													</div>
+												</div>
+											
+										</li>
+									
+								<li class="channel-einestages-border-bottom">
+										<a href="http://www.spiegel.de/einestages/" class="nav-channel-name ">einestages</a><div class=" nav-channel-sub">
+
+												<ul style="z-index:1000001;"><li>
+				<a href="http://www.spiegel.de/einestages/thema/zeitzeugen/" target="_self" title="" class=""><span class="nav-channel-sub-entry">Zeitzeugen</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/einestages/thema/erster_weltkrieg/" target="_self" title="" class=""><span class="nav-channel-sub-entry">Erster Weltkrieg</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/einestages/thema/zweiter_weltkrieg/" target="_self" title="" class=""><span class="nav-channel-sub-entry">Zweiter Weltkrieg</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/einestages/thema/ddr/" target="_self" title="" class=""><span class="nav-channel-sub-entry">DDR</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/einestages/thema/fotografie/" target="_self" title="" class=""><span class="nav-channel-sub-entry">Fotografie</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/einestages/thema/film/" target="_self" title="" class=""><span class="nav-channel-sub-entry">Film</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/einestages/thema/musik/" target="_self" title="" class=""><span class="nav-channel-sub-entry">Musik</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/einestages/archiv.html" target="_self" title="" class="spNaviLevel2Last"><span class="nav-channel-sub-entry">Archiv</span></a></li>
+				
+		</ul>
+												<div class="nav-channel-sub-assets">
+														<span class="asset">einestages</span>
+													</div>
+												</div>
+											
+										</li>
+									
+								<li class="channel-karriere-border-bottom">
+										<a href="http://www.spiegel.de/karriere/" class="nav-channel-name ">Karriere</a><div class=" nav-channel-sub">
+
+												<ul style="z-index:1000001;"><li>
+				<a href="http://www.spiegel.de/karriere/berufsstart/"><span class="nav-channel-sub-entry">Berufsstart</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/karriere/berufsleben/"><span class="nav-channel-sub-entry">Berufsleben</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/karriere/ausland/"><span class="nav-channel-sub-entry">Ausland</span></a></li>
+				
+		<li>
+				<a href="http://stellensuche.karriere.spiegel.de/" target="_self" title="" class="spNaviLevel2Last"><span class="nav-channel-sub-entry">Stellensuche</span></a></li>
+				
+		<li class="spDivideNaviAd">
+<div>
+<div></div>
+</div>
+</li>
+<li>
+<a href="http://www.spiegel.de/karriere/berufsleben/gehaltsrechner-2015-was-vom-brutto-lohn-netto-uebrig-bleibt-a-750850.html" title="">Gehaltsrechner</a>
+</li></ul>
+												<div class="nav-channel-sub-assets">
+														<span class="asset">karriere</span>
+													</div>
+												</div>
+											
+										</li>
+									
+								<li class="channel-unispiegel-border-bottom">
+										<a href="http://www.spiegel.de/unispiegel/" class="nav-channel-name ">Uni</a><div class=" nav-channel-sub">
+
+												<ul style="z-index:1000001;"><li>
+				<a href="http://www.spiegel.de/schulspiegel/" target="_self" title="" class=""><span class="nav-channel-sub-entry">SchulSPIEGEL</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/unispiegel/studium/"><span class="nav-channel-sub-entry">Studium</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/unispiegel/jobundberuf/"><span class="nav-channel-sub-entry">Job & Beruf</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/unispiegel/wunderbar/"><span class="nav-channel-sub-entry">WunderBAR</span></a></li>
+				
+		</ul>
+												<div class="nav-channel-sub-assets">
+														<span class="asset">unispiegel</span>
+													</div>
+												</div>
+											
+										</li>
+									
+								<li class="channel-reise-border-bottom">
+										<a href="http://www.spiegel.de/reise/" class="nav-channel-name ">Reise</a><div class=" nav-channel-sub">
+
+												<ul style="z-index:1000001;"><li>
+				<a href="http://www.spiegel.de/reise/karte/"><span class="nav-channel-sub-entry">Weltkarte</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/reise/staedte/"><span class="nav-channel-sub-entry">Städtereisen</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/reise/deutschland/"><span class="nav-channel-sub-entry">Deutschland</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/reise/europa/"><span class="nav-channel-sub-entry">Europa</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/reise/fernweh/"><span class="nav-channel-sub-entry">Fernweh</span></a></li>
+				
+		<li>
+				<a href="http://schneeundmehr.spiegel.de/" target="_self" title="" class="spNaviLevel2Last"><span class="nav-channel-sub-entry">Skiatlas</span></a></li>
+				
+		<li class="spDivideNaviAd">
+<div>
+<div></div>
+</div>
+</li>
+<li>
+<a href="http://ad8.adfarm1.adition.com/redi?sid=3341607&kid=1427921&bid=4780964" title="Anzeige">Secret Escapes</a>
+</li></ul>
+												<div class="nav-channel-sub-assets">
+														<span class="asset">reise</span>
+													</div>
+												</div>
+											
+										</li>
+									
+								<li class="channel-auto-border-bottom">
+										<a href="http://www.spiegel.de/auto/" class="nav-channel-name ">Auto</a><div class=" nav-channel-sub">
+
+												<ul style="z-index:1000001;"><li>
+				<a href="http://www.spiegel.de/auto/fahrberichte/"><span class="nav-channel-sub-entry">Tests</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/auto/fahrkultur/"><span class="nav-channel-sub-entry">Fahrkultur</span></a></li>
+				
+		<li class="spDivideNaviAd">
+<div>
+<div></div>
+</div>
+</li>
+
+<li>
+<a href="http://ad8.adfarm1.adition.com/redi?sid=3094400&kid=1504806&bid=5115185" rel="nofollow" title="Anzeige">Neu-/Gebraucht-Fahrzeuge</a>
+</li>
+
+<li>
+<a href="http://ad8.adfarm1.adition.com/redi?sid=3076396&kid=1503404&bid=5108800" rel="nofollow" title="Anzeige">Kfz-Versicherung</a>
+</li></ul>
+												<div class="nav-channel-sub-assets">
+														<span class="asset">auto</span>
+													</div>
+												</div>
+											
+										</li>
+									
+								<li class="channel-stil-border-bottom">
+										<a href="http://www.spiegel.de/stil/" class="nav-channel-name ">Stil</a><div class=" nav-channel-sub">
+
+												<ul style="z-index:1000001;"><li>
+				<a href="http://www.spiegel.de/thema/stil_design/" target="_self" title="" class=""><span class="nav-channel-sub-entry">Design</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/thema/stil_mode/" target="_self" title="" class=""><span class="nav-channel-sub-entry">Mode</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/thema/stil_kochen/" target="_self" title="" class=""><span class="nav-channel-sub-entry">Kochen</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/thema/stil_reisen/" target="_self" title="" class=""><span class="nav-channel-sub-entry">Reisen</span></a></li>
+				
+		<li>
+				<a href="http://www.spiegel.de/thema/stil_hotels/" target="_self" title="" class="spNaviLevel2Last"><span class="nav-channel-sub-entry">Hotels</span></a></li>
+				
+		</ul>
+												<div class="nav-channel-sub-assets">
+														<span class="asset">stil</span>
+													</div>
+												</div>
+											
+										</li>
+									
+								<div class="adition" id="subchannel_reiter_2" data-position="subchannel_reiter_2">
+	<script type="text/javascript">
+		if (typeof ADI != 'undefined') ADI.ad('subchannel_reiter_2');
+	</script>
+</div>
+</ul>
+
+
+			</div> <div id="js-popup-layer" class="clearfix"></div>
+
+<script type="text/javascript">
+							$('.nav-channel-sub').addClass('auto-width');
+							$('.nav-channel-sub-assets').remove();
+						</script>
+					<div id="breadcrumb">
+
+	<ul class="breadcrumb-history list-float">
+				<li class="list-float-left">
+		<a href="http://www.spiegel.de/">Nachrichten</a></li>
+<li class="list-float-left">
+		<span>&gt;</span><a href="http://www.spiegel.de/kultur/">Kultur</a></li>
+<li class="list-float-left">
+		<span>&gt;</span><a href="http://gutenberg.spiegel.de" target="_self" title="Projekt Gutenberg-DE">Gutenberg</a></li>
+<li class="list-float-left"><span>&gt;</span><h1 class="so-hdln">Projekt Gutenberg-DE</h1></li>
+				</ul>
+	
+		<div class="nav-extra">
+
+		<div class="adition" id="subchannel_reiter_1" data-position="subchannel_reiter_1">
+	<script type="text/javascript">
+		if (typeof ADI != 'undefined') ADI.ad('subchannel_reiter_1');
+	</script>
+</div>
+</div> </div> <br class="clearfix" /></div> <div id="content-main" class="grid-article spFullScreen clearfix">
+	
+					<div class="adition" id="billboard_1" data-position="billboard_1">
+	<script type="text/javascript">
+		if (typeof ADI != 'undefined') ADI.ad('billboard_1');
+	</script>
+</div>
+<br class="clearfix" />
+					
+					<div id="spSponsoredBy">
+							<div class="adition" id="sponsor_logo" data-position="sponsor_logo">
+	<script type="text/javascript">
+		if (typeof ADI != 'undefined') ADI.ad('sponsor_logo');
+	</script>
+</div>
+</div>
+					<div class="column-both">
+							</div><div id="js-article-column" class="column-both article-column-both" itemscope="itemscope" itemtype="http://schema.org/Article">
+						<div class="article-section clearfix">
+	
+<p>
+<img alt="Projekt Gutenberg" src="http://www.spiegel.de/images/image-721290-custom-jmsp.png" style="margin:-30px 0 10px 0;"/>
+<br clear="all"/>
+<div style="width: 855px; height: 61px; background: url(/img/gb_head.jpg);">
+	<div style="float: right; color: #ffffff; margin-right: 10px; margin-top: 10px;">Textsuche bei Gutenberg-DE:<br/>
+		<form method="get" action="/suche" style="width: 220px;"><input type="text" name="q" value="" style="float: left; width: 140px;" /><input type="submit" value="Suchen" style="" /></form>
+	</div>
+</div>
+<div style="background-color: #0f72b3; width: 855px; height: 20px; color: #ffffff; font-weight: bold; text-align: center; padding-top: 5px; font-size: 12px;">
+<a style="color: white; margin-right: 12px; " href="/">Startseite</a>&nbsp;&nbsp;&nbsp;
+<a style="color: white; margin-right: 12px; " href="/genre">Genres</a>&nbsp;&nbsp;&nbsp; 
+<a style="color: white; margin-right: 12px; " href="/neuetexte">Neue Texte</a>&nbsp;&nbsp;&nbsp; 
+<a style="color: white; margin-right: 12px; " href="/autor">Alle Autoren</a>&nbsp;&nbsp;&nbsp; 
+<a style="color: white; margin-right: 12px; " href="/buch">Alle Werke</a>&nbsp;&nbsp;&nbsp; 
+<a style="color: white; margin-right: 12px; " href="/tips">Lesetips</a>&nbsp;&nbsp;&nbsp; 
+<a style="color: white; margin-right: 12px;" href="http://gutenbergshop.abc.de/" target="_blank">Shop</a>&nbsp;&nbsp;&nbsp;
+<a style="color: white; margin-right: 12px; " href="/information">Information</a>&nbsp;&nbsp;&nbsp; 
+<a style="color: white; " href="/impressum">Impressum</a>
+</div>
+<div style="background-color: #0f72b3; width: 855px; height: 20px; color: #ffffff; text-align: center; padding-top: 5px; padding-bottom: 5px; font-size: 12px;">
+Autoren A-Z:
+<a style="color: white; font-weight: bold;" href="/autor/a">A</a> | <a style="color: white; font-weight: bold;" href="/autor/b">B</a> | <a style="color: white; font-weight: bold;" href="/autor/c">C</a> | <a style="color: white; font-weight: bold;" href="/autor/d">D</a> | <a style="color: white; font-weight: bold;" href="/autor/e">E</a> | <a style="color: white; font-weight: bold;" href="/autor/f">F</a> | <a style="color: white; font-weight: bold;" href="/autor/g">G</a> | <a style="color: white; font-weight: bold;" href="/autor/h">H</a> | <a style="color: white; font-weight: bold;" href="/autor/i">I</a> | <a style="color: white; font-weight: bold;" href="/autor/j">J</a> | <a style="color: white; font-weight: bold;" href="/autor/k">K</a> | <a style="color: white; font-weight: bold;" href="/autor/l">L</a> | <a style="color: white; font-weight: bold;" href="/autor/m">M</a> | <a style="color: white; font-weight: bold;" href="/autor/n">N</a> | <a style="color: white; font-weight: bold;" href="/autor/o">O</a> | <a style="color: white; font-weight: bold;" href="/autor/p">P</a> | <a style="color: white; font-weight: bold;" href="/autor/q">Q</a> | <a style="color: white; font-weight: bold;" href="/autor/r">R</a> | <a style="color: white; font-weight: bold;" href="/autor/s">S</a> | <a style="color: white; font-weight: bold;" href="/autor/t">T</a> | <a style="color: white; font-weight: bold;" href="/autor/u">U</a> | <a style="color: white; font-weight: bold;" href="/autor/v">V</a> | <a style="color: white; font-weight: bold;" href="/autor/w">W</a> | <a style="color: white; font-weight: bold;" href="/autor/x">X</a> | <a style="color: white; font-weight: bold;" href="/autor/y">Y</a> | <a style="color: white; font-weight: bold;" href="/autor/z">Z</a> | <a style="color: white; font-weight: bold;" href="/autor">Alle</a></div>
+<style>
+    .gbbreadcrumb {
+        color: #999;
+        font-size: 10px;
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+    .gbbreadcrumb a, .gbbreadcrumb a:hover, .gbbreadcrumb h1 {
+        color: #999;
+        font-size: 10px;
+        font-weight: normal;
+        display: inline;
+    }
+    #breadcrumb {
+        display: none;
+    }
+</style>
+<div class="gbbreadcrumb">
+            <a href="/">Gutenberg</a> &gt; <a href="/autor/william-shakespeare-548">William Shakespeare</a> &gt; <h1>Romeo und Juliette.</h1>    </div>
+<b>William Shakespeare: Romeo und Juliette. - Kapitel 31</b>
+<div id="metalabel" style="float: right; cursor: pointer; text-decoration: underline;" onclick="document.getElementById('metadata').style.visibility=document.getElementById('metadata').style.visibility=='hidden'?'visible':'hidden';">Quellenangabe</div>
+<div id="metadata" style="
+visibility: hidden; 
+position: absolute; 
+border: 1px solid #000000; 
+width: 250px; 
+left: 620px;
+background-color: #ffffff;
+padding: 5px;
+z-index: 100;">
+<table>
+<tr valign="top"><td><b>type</b></td><td>tragedy</td></tr><tr valign="top"><td><b>booktitle</b></td><td>Romeo und Juliette.</td></tr><tr valign="top"><td><b>author</b></td><td>William Shakespeare</td></tr><tr valign="top"><td><b>translator</b></td><td>Christoph Martin Wieland</td></tr><tr valign="top"><td><b>year</b></td><td>1995</td></tr><tr valign="top"><td><b>publisher</b></td><td>Haffmans Verlag</td></tr><tr valign="top"><td><b>address</b></td><td>Zürich</td></tr><tr valign="top"><td><b>isbn</b></td><td>3-251-20154-9</td></tr><tr valign="top"><td><b>title</b></td><td>Romeo und Juliette.</td></tr><tr valign="top"><td><b>pages</b></td><td>3-148</td></tr><tr valign="top"><td><b>sender</b></td><td>gerd.bouillon@t-online.de</td></tr><tr valign="top"><td><b>firstpub</b></td><td>1766</td></tr></table>
+<div style="float:right; text-decoration: underline; cursor: pointer;" onclick="document.getElementById('metadata').style.visibility='hidden';">Schlie&szlig;en</div>
+</div>
+<br/>
+<style>
+    ul.gbnav {
+        text-align: left;
+        display: inline;
+        margin: 0;
+        list-style: none;
+        -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+        -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    }
+    ul.gbnav li {
+        display: inline-block;
+        padding: 5px;
+        position: relative;
+        background: #eee;
+        cursor: pointer;
+        -webkit-transition: all 0.2s;
+        -moz-transition: all 0.2s;
+        -ms-transition: all 0.2s;
+        -o-transition: all 0.2s;
+        transition: all 0.2s;
+    }
+    ul.gbnav li:hover {
+        background: #ddd;
+    }
+    ul.gbnav li ul {
+        padding: 0;
+        position: absolute;
+        top: 15px;
+        left: -20px;
+        width: 350px;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+        -webkit-transiton: opacity 0.2s;
+        -moz-transition: opacity 0.2s;
+        -ms-transition: opacity 0.2s;
+        -o-transition: opacity 0.2s;
+        -transition: opacity 0.2s;
+    }
+    ul.gbnav li ul li {
+        background: #eee;
+        display: block;
+        color: #fff;
+        margin-bottom: 0px;
+    }
+    ul.gbnav li ul li:hover { background: #ddd; }
+    ul.gbnav li ul li.active { background: #ddd; }
+    ul.gbnav li:hover ul {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+    }
+</style>
+
+Navigation:
+<ul class="gbnav">
+    <li>Kapitel 31        <ul>
+    <li><a href="/buch/romeo-und-juliette-2179/1">Kapitel 1</a></li><li><a href="/buch/romeo-und-juliette-2179/2">Kapitel 2</a></li><li><a href="/buch/romeo-und-juliette-2179/3">Kapitel 3</a></li><li><a href="/buch/romeo-und-juliette-2179/4">Kapitel 4</a></li><li><a href="/buch/romeo-und-juliette-2179/5">Kapitel 5</a></li><li><a href="/buch/romeo-und-juliette-2179/6">Kapitel 6</a></li><li><a href="/buch/romeo-und-juliette-2179/7">Kapitel 7</a></li><li><a href="/buch/romeo-und-juliette-2179/8">Kapitel 8</a></li><li><a href="/buch/romeo-und-juliette-2179/9">Kapitel 9</a></li><li><a href="/buch/romeo-und-juliette-2179/10">Kapitel 10</a></li><li><a href="/buch/romeo-und-juliette-2179/11">Kapitel 11</a></li><li><a href="/buch/romeo-und-juliette-2179/12">Kapitel 12</a></li><li><a href="/buch/romeo-und-juliette-2179/13">Kapitel 13</a></li><li><a href="/buch/romeo-und-juliette-2179/14">Kapitel 14</a></li><li><a href="/buch/romeo-und-juliette-2179/15">Kapitel 15</a></li><li><a href="/buch/romeo-und-juliette-2179/16">Kapitel 16</a></li><li><a href="/buch/romeo-und-juliette-2179/17">Kapitel 17</a></li><li><a href="/buch/romeo-und-juliette-2179/18">Kapitel 18</a></li><li><a href="/buch/romeo-und-juliette-2179/19">Kapitel 19</a></li><li><a href="/buch/romeo-und-juliette-2179/20">Kapitel 20</a></li><li><a href="/buch/romeo-und-juliette-2179/21">Kapitel 21</a></li><li><a href="/buch/romeo-und-juliette-2179/22">Kapitel 22</a></li><li><a href="/buch/romeo-und-juliette-2179/23">Kapitel 23</a></li><li><a href="/buch/romeo-und-juliette-2179/24">Kapitel 24</a></li><li><a href="/buch/romeo-und-juliette-2179/25">Kapitel 25</a></li><li><a href="/buch/romeo-und-juliette-2179/26">Kapitel 26</a></li><li><a href="/buch/romeo-und-juliette-2179/27">Kapitel 27</a></li><li><a href="/buch/romeo-und-juliette-2179/28">Kapitel 28</a></li><li><a href="/buch/romeo-und-juliette-2179/29">Kapitel 29</a></li><li><a href="/buch/romeo-und-juliette-2179/30">Kapitel 30</a></li><li class="active"><a href="/buch/romeo-und-juliette-2179/31">Kapitel 31</a></li>       </ul>
+    </li>
+</ul>
+
+
+<div id="gutenb">
+
+    <h2>F&uuml;nfte Scene.</h2>
+    <p class="center"><span class="regie">Der F&uuml;rst und sein Gefolge, treten vorn auf der Schaub&uuml;hne auf.</span></p>
+    <p><span class="speaker">F&uuml;rst</span>. Was f&uuml;r ein Unheil ist so fr&uuml;h auf, da&szlig; es uns aus unserm Morgen-Schlaf wekt?</p>
+    <p class="center"><span class="regie">Capulet und Lady Capulet, treten auf der andern Seite auf.</span></p>
+    <p><span class="speaker">Capulet</span>. Was mag das seyn, da&szlig; ein so gr&auml;&szlig;liches Geschrey auf den Strassen ist?</p>
+    <p><span class="speaker">Lady Capulet</span>. Die Strassen sind voll Volks das Romeo schreyt; einige schreyen, Juliette; einige Paris; und alle rennen mit Entsezen und Geschrey unserm Begr&auml;bni&szlig; zu.</p>
+    <p><span class="speaker">F&uuml;rst</span>. Was f&uuml;r T&ouml;ne des Schrekens st&uuml;rzen sich in unser Ohr?</p>
+    <p><span class="speaker">1. W&auml;chter</span>. Gn&auml;digster Herr, hier ligt der Graf Paris ermordet, und Romeo todt, und Juliette, die zuvor todt war, warm, und vor wenigen Minuten umgebracht.</p>
+    <p><span class="speaker">F&uuml;rst</span>. Sucht, forscht nach, und sp&auml;ht aus, woher diese scheu&szlig;liche Mordthaten kommen?</p>
+    <p><span class="speaker">1. W&auml;chter</span>. Hier ist ein M&ouml;nch, und des erschlagnen Romeo's Diener, die mit Werkzeugen, diese Todten-Gr&auml;ber aufzubrechen, ertappt worden sind.</p>
+    <p><span class="speaker">Capulet</span>. O Himmel! &ndash; &ndash; O Weib! Sieh, wie unsre Tochter blutet! Dieser Dolch hat sich verfehlt; sieh, die Scheide ligt auf dem R&uuml;ken des Montaguen, und die entbl&ouml;&szlig;te Klinge in meiner Tochter Busen&nbsp;&ndash;&nbsp;&ndash;</p>
+    <p><span class="speaker">Lady Capulet</span>. O Gott, dieser Anblik ist wie eine Todten-Gloke, die meinem grauen Alter zu Grabe l&auml;utet.</p>
+    <p class="center"><span class="regie">Montague zu den Vorigen.</span></p>
+    <p><span class="speaker">F&uuml;rst</span>. Komm, Montague &ndash; &ndash; und sieh hier deinen einzigen Sohn und Erben&nbsp;&ndash;&nbsp;&ndash;</p>
+    <p><span class="speaker">Montague</span>. Weh mir! &ndash; &ndash; Mein Weib, Gn&auml;digster Herr, ist in dieser Nacht verschieden &ndash;&nbsp;&ndash; Der Gram &uuml;ber ihres Sohnes Verbannung hat ihr das Herz gebrochen &ndash;&nbsp;&ndash; Was f&uuml;r ein neues Weh verschw&ouml;rt sich gegen mein graues Alter?</p>
+    <p><span class="speaker">F&uuml;rst</span>. Schau hieher, so wirst du's sehen.</p>
+    <p><span class="speaker">Montague</span>. O du Uebelgezogner, was f&uuml;r Lebens-Art war das, dich vor deinem Vater so in's Grab zu dr&auml;ngen?</p>
+    <p><span class="speaker">F&uuml;rst</span>. Haltet noch mit euern Klagen ein, bis wir diese verworrene Geschichte ins Klare gesezt, und ihren Ursprung und wahren Hergang herausgebracht haben; alsdann will ich selbst der Anf&uuml;hrer euers Klag-Geschreys seyn &ndash;&nbsp;&ndash; Bis dahin, haltet inn! &ndash;&nbsp;&ndash; bringet die verd&auml;chtigen Personen herbey!</p>
+    <p><span class="speaker">Bruder Lorenz</span>. Ich, der unverm&ouml;gendste, bin derjenige, den der st&auml;rkste Verdacht dr&uuml;kt; Zeit und Ort scheinen mich dieses gr&auml;&szlig;lichen Mords anzuklagen; und hier steh ich, zugleich mein eigner Ankl&auml;ger und Advocat zu seyn.</p>
+    <p><span class="speaker">F&uuml;rst</span>. So sage dann, ohne Umschweiffe, was dir davon bekannt ist.</p>
+    <p><span class="speaker">Bruder Lorenz</span>. Ich will kurz seyn, mein Athem ist ohnehin nicht lang genug f&uuml;r eine langweilige Historie. Romeo, der hier todt ligt, war Juliettens Gemahl, und Sie, die hier todt ligt, Romeo's getreues Weib: Ich segnete ihre Ehe ein; und der Tag ihrer heimlichen Verm&auml;hlung war Tybalts Sterb-Tag, dessen unzeitiger Tod den neuen Br&auml;utigam aus dieser Stadt verbannte, und dieses, nicht Tybalts Tod, war die Ursache von Juliettens Gram. Ihr, <span class="regie">(zu Capulet)</span> um ihr diesen Kummer aus dem Sinn zu bringen, versprachet sie dem Grafen Paris, und waret im Begriff, sie zu dieser Heurath mit Gewalt zu zwingen. In diesen Umst&auml;nden kommt sie zu mir, und, mit wilden Bliken, bittet sie mich da&szlig; ich ihr ein Mittel an die Hand gebe, diese zweyte Heurath zu vermeiden, oder sie wolle sich in meiner Celle selbst ums Leben bringen. In diesem schw&uuml;rigen Augenblik kam mir meine Wissenschaft zu H&uuml;lfe; ich gab ihr einen Schlaf-Trunk, dessen W&uuml;rkung meiner Absicht vollkommen antwortete &ndash;&nbsp;&ndash; denn er sezte sie in einen Zustand, der dem Tode so gleich sah, da&szlig; sie f&uuml;r eine Leiche angesehen, und so behandelt wurde. Inmittelst schrieb ich an Romeo, und bestellte ihn, da&szlig; er in eben dieser schreklichen Nacht, als der Zeit, worinn die W&uuml;rkung des Tranks zu Ende gehen w&uuml;rde, hieher kommen, und mir helfen m&ouml;chte, sie aus ihrem geborgten Grabe heraus zu holen. Allein, Bruder Johann, der ihm meinen Brief &uuml;berbringen sollte, wurde durch einen Zufall aufgehalten, und gestern kam mein Brief mir wieder zu; ich war also gen&ouml;thigt, um die bestimmte Zeit ihres Erwachens ganz allein hieher zu kommen, und sie aus der Gruft ihrer Familie zu befreyen: Des Vorhabens, sie so lange in meiner Celle verborgen zu halten, bis ich Gelegenheit f&auml;nde, den Romeo hieher zu beruffen. Aber wie ich kam, (wenige Minuten vor ihrem Erwachen) da lag der edle Paris hier erschlagen, und der allzugetreue Romeo todt. Sie erwacht, und ich bitte sie inst&auml;ndigst mit mir zu gehen, und diese Schikung des Himmels mit Geduld zu tragen: Allein ein Get&ouml;se, das ich gleich darauf h&ouml;rte, scheuchte mich von der Gruft weg, und sie, verzweifelnd und entschlossen zu sterben, wollte nicht mit mir gehen, sondern legte, wie es scheint, gewaltsame Hand an sich selbst. Alles dieses wei&szlig; ich, und von der heimlichen Heurath kan auch ihre Amme Zeugni&szlig; geben: Ist aber in allem diesem etwas durch meine Schuld gefehlt und zu diesem ungl&uuml;klichen Ausgange gebracht worden, so la&szlig;t immer mein altes Leben, etliche Stunden vor meiner bestimmten Zeit, der Strenge des Gesezes aufgeopfert werden.</p>
+    <p><span class="speaker">F&uuml;rst</span>. Wir haben dich jederzeit als einen heiligen Mann gekannt. Wo ist Romeo's Diener? Was kan Er von der Sache berichten?</p>
+    <p><span class="speaker">Balthasar</span>. Ich brachte meinem Herren die Zeitung von Julia's Tod, und sogleich kam er mit Post-Pferden von Mantua hieher, unmittelbar hieher, zu dieser nehmlichen Gruft; &uuml;bergab mir diesen Brief an seinen Vater, und dr&auml;ute mir, indem er auf die Gruft zugieng, den Tod, wenn ich nicht weggehen und ihn allein lassen wollte.</p>
+    <p><span class="speaker">F&uuml;rst</span>. Gieb mir den Brief, ich will ihn &uuml;bersehen &ndash; &ndash; Wo ist des Grafen Knabe, der die Wache herbeyholte? Bursche, was machte dein Herr an diesem Orte?</p>
+    <p><span class="speaker">Knabe</span>. Er kam, das Grab seiner Geliebten mit Blumen zu bestreuen, und befahl mir von Ferne stehn zu bleiben, wie ich auch that; bald darauf kommt einer mit einem Licht, die Gruft zu &ouml;ffnen, und augenbliklich zieht mein Herr den Degen gegen ihn; und da lief ich und holte die Wache.</p>
+    <p><span class="speaker">F&uuml;rst</span>. Dieser Brief bekr&auml;ftiget die Erz&auml;hlung des Ordens-Manns &ndash;&nbsp;&ndash; und hier schreibt er, da&szlig; er Gift von einem armen Apotheker gekauft, und damit in diese Gruft gekommen sey, um zu sterben und in Juliettens Grab zu ligen &ndash;&nbsp;&ndash; Wo sind diese Feinde? Capulet! Montague! Seht hier die Ruthe, womit euere Unvers&ouml;hnlichkeit gez&uuml;chtiget wird; seht wie der Himmel Mittel findet, durch die Liebe selbst die Freuden euers Lebens zu t&ouml;dten. Auch ich, weil ich zuviel Nachsicht gegen euere Uneinigkeiten hatte, habe zween Verwandte verlohren: Wir sind alle gestraft!</p>
+    <p><span class="speaker">Capulet</span>. O Bruder Montague, gieb mir deine Hand; das ist meiner Tochter Witthumb &ndash;&nbsp;&ndash; mehr kan ich nicht verlangen.</p>
+    <p><span class="speaker">Montague</span>. Aber ich kann dir mehr geben; denn ich will ihre Bild-S&auml;ule von gediegnem Gold aufstellen, da&szlig;, so lange Verona diesen Namen tr&auml;gt, kein Denkmal dem Denkmal der z&auml;rtlichen und getreuen Juliette gleich gesch&auml;zt werde!</p>
+    <p><span class="speaker">Capulet</span>. Eben so gl&auml;nzend soll Romeo bey seiner Gattin ligen; theure, ungl&uuml;kliche Opfer unsrer unseligen Feindschaft!</p>
+    <p><span class="speaker">F&uuml;rst</span>. Dieser Morgen bringt uns einen d&uuml;stern Frieden, und die Sonne selbst scheint trauernd ihr Haupt verh&uuml;llt zu haben &ndash;&nbsp;&ndash; Geht, und erwartet unsre Entscheidung, was in diesem ungl&uuml;klichen Handel Strafe und was Verzeihung verdient &ndash;&nbsp;&ndash; [Ihr aber, getreue Liebende, die ein allzustrenges Schiksal im Leben getrennt, und nun ein freiwilliger Tod auf ewig vereiniget hat, lebet, Juliette und Romeo, lebet in unserm Andenken, und die sp&auml;teste Nachwelt m&ouml;ge das Ged&auml;chtni&szlig; eurer ungl&uuml;klichen Liebe mit mitleidigen Thr&auml;nen ehren!]</p>
+  
+</div>
+&nbsp;<a href="/buch/romeo-und-juliette-2179/30">&lt;&lt; Kapitel 30</a>&nbsp;<script type="text/javascript">
+document.getElementsByClassName = function(cl) {
+	var retnode = [];
+	var myclass = new RegExp('\\b'+cl+'\\b');
+	var elem = this.getElementsByTagName('*');
+	for (var i = 0; i < elem.length; i++) {
+	var classes = elem[i].className;
+	if (myclass.test(classes)) retnode.push(elem[i]);
+	}
+	return retnode;
+};
+
+function strip_tags(input, allowed) {
+    allowed = (((allowed || "") + "").toLowerCase().match(/<[a-z][a-z0-9]*>/g) || []).join('');
+    var tags = /<\/?([a-z][a-z0-9]*)\b[^>]*>/gi,
+        commentsAndPhpTags = /<!--[\s\S]*?-->|<\?(?:php)?[\s\S]*?\?>/gi;
+    return input.replace(commentsAndPhpTags, '').replace(tags, function ($0, $1) {
+        return allowed.indexOf('<' + $1.toLowerCase() + '>') > -1 ? $0 : '';
+    });
+}
+
+function fussnoten_ersetzen() {
+	var footnotes = document.getElementsByClassName('footnote');
+	
+	for (var i=0; i<footnotes.length; i++) {
+		footnotes[i].innerHTML=' <a title="'+strip_tags(footnotes[i].innerHTML)+'">[Fu&szlig;note]</a>';
+	}
+}
+fussnoten_ersetzen();
+
+function doHighlight(bodyText, searchTerm, highlightStartTag, highlightEndTag) 
+{
+  var newText = "";
+  var i = -1;
+  var lcSearchTerm = searchTerm.toLowerCase();
+  var lcBodyText = bodyText.toLowerCase();
+    
+  while (bodyText.length > 0) {
+    i = lcBodyText.indexOf(lcSearchTerm, i+1);
+    if (i < 0) {
+      newText += bodyText;
+      bodyText = "";
+    } else {
+      if (bodyText.lastIndexOf(">", i) >= bodyText.lastIndexOf("<", i)) {
+        if (lcBodyText.lastIndexOf("/script>", i) >= lcBodyText.lastIndexOf("<script", i)) {
+          newText += bodyText.substring(0, i) + highlightStartTag + bodyText.substr(i, searchTerm.length) + highlightEndTag;
+          bodyText = bodyText.substr(i + searchTerm.length);
+          lcBodyText = bodyText.toLowerCase();
+          i = -1;
+        }
+      }
+    }
+  }
+  return newText;
+} 
+
+var searchArray=new Array(); 
+var ref = document.referrer;
+if (ref.indexOf('?') != -1) {
+	var qs = ref.substr(ref.indexOf('?')+1);
+	var qsa = qs.split('&');
+	for (var i=0;i<qsa.length;i++) {
+    	var qsip = qsa[i].split('=');
+  		if (qsip.length == 1) continue;
+  		if (qsip[0] == 'q' || qsip[0] == 'p') {
+	    	var wordstring = unescape(qsip[1].replace(/\+/g,' '));
+	    	searchArray = wordstring.split(/\s+/);	    	
+  		}
+	}
+}
+
+if (searchArray.length>0) {
+	var bodyText = document.getElementById('gutenb').innerHTML;
+	for (var i = 0; i < searchArray.length; i++) {
+  		if (searchArray[i]!="") {
+    		bodyText=doHighlight(bodyText, searchArray[i], "<span style='background-color:#ffff00;'>", "</span>");
+  		}
+	}
+	document.getElementById('gutenb').innerHTML = bodyText;
+} 
+</script>
+<br/><br/><br/><br/><br/>
+<script src="/include/jquery-1.10.1.min.js?1455465704" type="text/javascript"></script>
+
+<br clear="all"/>
+</p>
+
+</div>
+
+<br class="clearfix" /> 
+					</div>
+					
+					<div class="top-anchor link-gradient-button-box">
+						<a href="#" class="link-gradient-button"><span>TOP</span></a>
+					</div>
+				</div>
+	
+				<div id="footer">
+	<div id="footer-content">
+
+		<div class="footer-partner-bar" id="spPartnerBar">
+<h4>Mehr Serviceangebote von SPIEGEL-ONLINE-Partnern</h4>
+
+<!-- AUTO -->
+<ul class="spFirst">
+<li>
+<h5>AUTO</h5>
+</li>
+
+<li>
+<span>
+<a href="http://www.spiegel.de/auto/aktuell/benzinpreisvergleich-die-guenstigste-tankstelle-in-ihrer-naehe-a-185826.html" rel="nofollow" style="background-position:0 -33px;">
+Benzinpreis
+</a>
+</span>
+</li>
+
+<li>
+<span>
+<a href="http://www.spiegel.de/auto/aktuell/bussgeldrechner-was-zu-schnelles-fahren-kostet-a-244772.html" rel="follow" style="background-position:0 -953px;">
+Bußgeld-<br/>rechner
+</a>
+</span>
+</li>
+
+<li>
+<span>
+<a href="http://ad8.adfarm1.adition.com/redi?sid=3094399&kid=1504830&bid=5115244" rel="follow" style="background-position:0 -90px;" title="Anzeige">
+Neu-/Gebraucht-<br/>Fahrzeuge
+</a>
+</span>
+</li>
+
+<li>
+<span>
+<a href="http://werkstattvergleich.spiegel.de" rel="follow" style="background-position:0 -1110px;" title="Anzeige">
+Werkstatt-<br/>vergleich
+</a>
+</span>
+</li>
+
+<li>
+<span>
+<a href="http://ad8.adfarm1.adition.com/redi?sid=3076397&kid=1503417&bid=5108840" rel="follow" style="background-position:0 -690px;" title="Anzeige">
+Kfz-<br/>Versicherung
+</a>
+</span>
+</li>
+
+
+
+</ul>
+
+<!-- FREIZEIT 1 -->
+<ul class="spFirst">
+<li>
+<h5>FREIZEIT</h5>
+</li>
+
+<li>
+<span>
+<a href="http://ad8.adfarm1.adition.com/redi?sid=3076399&kid=1212962&bid=3961622" rel="follow" style="background-position:0 -900px;" title="Anzeige">
+Eurojackpot
+</a>
+</span>
+</li>
+
+<li>
+<span>
+<a href="http://ad8.adfarm1.adition.com/redi?sid=3098102&kid=1219791&bid=3986933" rel="follow" style="background-position:0 -870px;" title="Anzeige">
+Lottozahlen
+</a>
+</span>
+</li>
+
+<li>
+<span>
+<a href="http://www.amazon.de/b/ref=amb_link_51544565_1?ie=UTF8&node=4206085031&pf_rd_m=A3JWKAKR8XB7XF&pf_rd_s=center-1&pf_rd_r=0Y7KSJRQ0GD1TQVBZFBX&pf_rd_t=1401&pf_rd_p=515157807&pf_rd_i=1000127753&tag=wwwspiegelde-21" rel="follow" style="background-position:0 -180px;">
+Bücher<br/>bestellen
+</a>
+</span>
+</li>
+
+<li>
+<span>
+<a href="http://www.spiegel.de/wissenschaft/mensch/zahlenraetsel-sudoku-der-logik-klassiker-fuer-jeden-tag-a-994416.html" rel="follow" style="background-position:0 -1018px;">
+Sudoku
+</a>
+</span>
+</li>
+
+<li>
+<span>
+<a href="http://www.spiegel.de/wissenschaft/mensch/kenken-das-zahlenraetsel-aus-japan-a-994418.html" rel="follow" style="background-position:0 -1049px;">
+Kenken
+</a>
+</span>
+</li>
+
+</ul>  
+
+
+<!-- FREIZEIT 2 -->
+
+<ul>
+<li>
+<h5 style="color: #f6f6f6;">AUTO UND FREIZEIT</h5>
+</li>
+
+<li>
+<span>
+<a href="http://ad8.adfarm1.adition.com/redi?sid=3088032&kid=1214236&bid=3966039" rel="nofollow" style="background-position:0 -240px;" title="Anzeige">
+Arztsuche
+</a>
+</span>
+</li>
+
+<li>
+<span>
+<a href="http://ad8.adfarm1.adition.com/redi?sid=3076405&kid=1212883&bid=3961306" rel="follow" style="background-position:0 -331px;" title="Anzeige">
+DSL-Vergleich
+</a>
+</span>
+</li>
+
+<li>
+<span>
+<a href="http://ad8.adfarm1.adition.com/redi?sid=3080261&kid=1209367&bid=3947432" rel="follow" style="background-position:0 -984px;" title="Anzeige">
+Hörgeräte-<br/>Beratung
+</a>
+</span>
+</li>
+
+<li>
+<span>
+<a href="http://www.spiegel.de/schulspiegel/ferientermine-a-193925.html" rel="follow" style="background-position:0 -154px;">
+Ferientermine
+</a>
+</span>
+</li>
+
+<li>
+<span>
+<a href="http://ad8.adfarm1.adition.com/redi?sid=3341608&kid=1427942&bid=4781056" rel="follow" style="background-position:0 -1153px;" title="Anzeige">
+Traumreise
+</a>
+</span>
+</li>
+
+
+</ul>
+
+
+<!-- ENERGIE -->
+
+<ul>
+<li>
+<h5>ENERGIE</h5>
+</li>
+
+<li>
+<span>
+<a href="http://ad8.adfarm1.adition.com/redi?sid=3076403&kid=1212850&bid=3961217" rel="follow" style="background-position:0 -390px;" title="Anzeige">
+Gasanbieter-<br/>vergleich
+</a>
+</span>
+</li>
+
+<li>
+<span>
+<a href="http://ad8.adfarm1.adition.com/redi?sid=3076404&kid=1212872&bid=3961268" rel="nofollow" style="background-position:0 -419px;" title="Anzeige">
+Stromanbieter-<br/>vergleich
+</a>
+</span>
+</li>
+
+<li>
+<span>
+<a href="https://ratgeber.co2online.de/index.php?berater=ratgeberauswahl&amp;portal_id=spiegel_online" rel="nofollow" style="background-position:0 -450px;" title="Anzeige">
+Energiespar-<br/>ratgeber
+</a>
+</span>
+</li>
+
+<li>
+<span>
+<a href="http://ad8.adfarm1.adition.com/redi?sid=3076397&kid=1212362&bid=3958971" rel="nofollow" style="background-position:0 -479px;" title="Anzeige">
+Energie-<br/>vergleiche
+</a>
+</span>
+</li>
+
+</ul>
+
+<!-- JOB -->
+
+<ul>
+<li>
+<h5>JOB</h5>
+</li>
+
+<li>
+<span>
+<a href="http://www.personalmarkt.de/source-links/spiegel/serviceangebotebox.html" rel="nofollow" style="background-position:0 -512px;" title="Anzeige">
+Gehaltscheck
+</a>
+</span>
+</li>
+
+<li>
+<span>
+<a href="http://www.spiegel.de/wirtschaft/service/brutto-netto-rechner-was-von-ihrem-lohn-noch-uebrig-bleibt-a-223811.html" rel="follow" style="background-position:0 -90px;">
+Brutto-Netto-<br/>Rechner
+</a>
+</span>
+</li>
+
+<li>
+<span>
+<a href="http://www.spiegel.de/unispiegel/studium/tools-hier-werden-sie-geholfen-a-640620.html" rel="follow" style="background-position:0 -540px;">
+Uni-Tools
+</a>
+</span>
+</li>
+
+<li>
+<span>
+<a href="http://ad8.adfarm1.adition.com/redi?sid=3076402&kid=1213135&bid=3962765" rel="follow" style="background-position:0 -840px;" title="Anzeige">
+Jobsuche
+</a>
+</span>
+</li>
+
+</ul>
+
+<!-- FINANZEN 1 -->
+
+<ul>
+<li>
+<h5>FINANZEN</h5>
+</li>
+
+
+<li>
+<span>
+<a href="http://boersen.manager-magazin.de/spo_mmo/kurse_crossrates.htm?p=0" rel="follow" style="background-position:0 -90px;">
+Währungs-<br/>rechner
+</a>
+</span>
+</li>
+
+<li>
+<span>
+<a href="http://ad8.adfarm1.adition.com/redi?sid=3076400&kid=1212996&bid=3961839" rel="nofollow" style="background-position:0 -749px;" title="Anzeige">
+Immobilien-<br/>Börse
+</a>
+</span>
+</li>
+
+<li>
+<span>
+<a href="http://ad8.adfarm1.adition.com/redi?sid=3078844&kid=1208143&bid=3944225" rel="nofollow" style="background-position:0 -627px;" title="Anzeige">
+Kredit-<br/>vergleich
+</a>
+</span>
+</li>
+
+<li>
+<span>
+<a href="http://www.spiegel.de/wirtschaft/service/versicherung-check-fuer-haftpflicht-hausrat-berufsunfaehigkeit-a-960380.html " rel="follow" style="background-position:0 -690px;">
+Versicherungen
+</a>
+</span>
+</li>
+
+
+</ul>
+
+<!-- TESTZWECKE -->
+<script type="text/javascript">
+//
+if ('safari' in window && 'pushNotification' in window.safari) {
+(function(){
+var pushNotification = window.safari.pushNotification,
+     webserviceUrl = "https://www.spiegel.de/push/apns/macos",
+     websitePushID = "web.de.spiegel.spon";
+function checkRemotePermission(permissionData) {
+    if (permissionData.permission === 'default') {
+        pushNotification.requestPermission(webserviceUrl, websitePushID, {}, checkRemotePermission);
+    }
+}
+checkRemotePermission(pushNotification.permission(websitePushID));
+}());
+}
+//
+</script> 
+
+</div><div class="footer-main-nav">
+					<ul class="clearfix">
+						<li><a href="http://www.spiegel.de/">Home</a></li>
+						<li><a href="http://www.spiegel.de/politik/">Politik</a></li>
+						<li><a href="http://www.spiegel.de/wirtschaft/">Wirtschaft</a></li>
+						<li><a href="http://www.spiegel.de/panorama/">Panorama</a></li>
+						<li><a href="http://www.spiegel.de/sport/">Sport</a></li>
+						<li><a href="http://www.spiegel.de/kultur/">Kultur</a></li>
+						<li><a href="http://www.spiegel.de/netzwelt/">Netzwelt</a></li>
+						<li><a href="http://www.spiegel.de/wissenschaft/">Wissenschaft</a></li>
+						<li><a href="http://www.spiegel.de/gesundheit/">Gesundheit</a></li>
+						<li><a href="http://www.spiegel.de/einestages/">einestages</a></li>
+						<li><a href="http://www.spiegel.de/unispiegel/">Uni</a></li>
+						<li><a href="http://www.spiegel.de/reise/">Reise</a></li> 
+						<li><a href="http://www.spiegel.de/auto/">Auto</a></li> 
+						<li><a href="http://www.spiegel.de/stil/">Stil</a></li> 
+						<li><a href="http://www.spiegel.de/wetter/">Wetter</a></li> 
+					</ul>
+				</div>
+
+				<div class="footer-sub-nav">
+					<ul>
+						<li><strong>DIENSTE</strong></li>
+						<li><a href="http://www.spiegel.de/schlagzeilen/">Schlagzeilen</a></li> 
+						<li><a href="http://www.spiegel.de/nachrichtenarchiv/">Nachrichtenarchiv</a></li> 
+						<li><a href="http://www.spiegel.de/dienste/a-271804.html">RSS</a></li>
+						<li><a href="http://www.spiegel.de/dienste/a-902432.html">Newsletter</a></li>
+						<li><a href="http://www.spiegel.de/dienste/a-419947.html">Mobil</a></li>
+						</ul>
+					<ul>
+						<li><strong>VIDEO</strong></li>
+						<li><a href="http://www.spiegel.de/video/">Nachrichten Videos</a></li>
+						<li><a href="http://www.spiegel.de/sptv/magazin/">SPIEGEL TV Magazin</a></li>
+						<li><a href="http://www.spiegel.de/sptv/programm/">SPIEGEL TV Programm</a></li>
+						<li><a href="http://www.spiegel-geschichte.tv/" target="_blank">SPIEGEL Geschichte</a></li>
+						<li><a href="http://www.spiegelwissen.tv" target="_blank">SPIEGEL TV Wissen</a></li>
+					</ul>
+					<ul>
+						<li><strong>MEDIA</strong></li>
+						<li><a href="http://www.spiegel-qc.de/" target="_blank">SPIEGEL QC</a></li>
+						<li><a href="http://www.spiegel.de/mediadaten/" target="_blank">Mediadaten</a></li>
+						<li><a href="http://www.spiegel-qc.de/selbstbuchungstool" target="_blank">Selbstbuchungstool</a></li>
+						<li><a href="http://www.quality-abo.de/" target="_blank">weitere Zeitschriften</a></li>
+					</ul>
+					<ul>				  
+						<li><strong>MAGAZINE</strong>
+						<li><a href="http://www.spiegel.de/spiegel/">DER SPIEGEL</a></li> 
+						<li><a href="http://www.spiegel.de/deinspiegel/">Dein SPIEGEL</a></li>
+						<li><a href="http://www.spiegel.de/spiegelgeschichte/">SPIEGEL GESCHICHTE</a></li>
+						<li><a href="http://www.spiegel.de/spiegelwissen/">SPIEGEL WISSEN</a></li>
+						<li><a href="http://www.spiegel.de/spiegel/unispiegel/">UNI SPIEGEL</a></li>
+					</ul>
+					<ul>  
+						<li><strong>SPIEGEL GRUPPE</strong></li> 
+						<li><a href="http://abo.spiegel.de/?b=SPOHFOOTER&amp;utm_source=spon&amp;utm_medium=text&amp;utm_content=SPOHFOOTER&amp;utm_campaign=abbinder">Abo</a></li>
+						<li><a href="http://www.spiegel.de/shop" target="_blank">Shop</a></li> 
+						<li><a href="http://www.spiegel.de/sptv/">SPIEGEL&nbsp;TV</a></li> 
+						<li><a href="http://www.manager-magazin.de/" target="_blank">manager&nbsp;magazin</a></li>
+						<li><a href="http://www.harvardbusinessmanager.de/" target="_blank">Harvard Business Man.</a></li>
+						<li><a href="http://www.buchreport.de/" target="_blank">buchreport</a></li>
+						<li><a href="http://www.buchaktuell.de/" target="_blank">buch aktuell</a></li>
+						<li><a href="http://www.der-audio-verlag.de/" target="_blank">Der Audio Verlag</a></li>
+						<li><a href="http://www.spiegelgruppe.de/" target="_blank">SPIEGEL-Gruppe</a></li> 
+					</ul>
+					<ul>  
+						<li><strong>WEITERE</strong>
+						<li><a href="http://www.spiegel.de/hilfe/">Hilfe</a></li> 
+						<li><a href="http://www.spiegel.de/kontakt/">Kontakt</a></li> 
+						<li><a href="http://www.spiegel.de/extra/a-853891.html">Nutzungsrechte</a></li>
+						<li><a href="http://www.spiegel.de/dienste/a-639126.html">Datenschutz</a></li>
+						<li><a href="http://www.spiegel.de/impressum/">Impressum</a></li> 
+					</ul>		
+				</div>	
+				<div class="top-anchor link-gradient-button-box">
+					<a href="#" class="link-gradient-button"><span>TOP</span></a>
+				</div>
+
+				<div class="adition" id="interne_statistik" data-position="interne_statistik">
+	<script type="text/javascript">
+		if (typeof ADI != 'undefined') ADI.ad('interne_statistik');
+	</script>
+</div>
+</div> </div> <script type="text/javascript">var spBemiCh=22;</script>
+	<script type="text/javascript">
+	var spBemiOn=true;
+	if( typeof(sp_webcfg_global) !== "undefined" && typeof(sp_webcfg_global.spBemi) !== "undefined" && typeof(sp_webcfg_global.spBemi.on) !== "undefined") { 
+		spBemiOn = sp_webcfg_global.spBemi.on;
+		if(spBemiOn === true) { 
+			var spBemiChBlk=[]; 
+			if( typeof(sp_webcfg_global.spBemi.blk) !== "undefined" ) { 
+				spBemiChBlk = sp_webcfg_global.spBemi.blk;
+				if($.inArray(spBemiCh,spBemiChBlk) != -1) spBemiOn = false;
+			}}}!function(t,n,a){function e(t,n){var a=y(t);if(!a)return a;if(""!=n)for(var e=0;e<n.length;e++)"^"==n.charAt(e)&&(a=a.parentNode),"<"==n.charAt(e)&&(a=a.previousElementSibling),">"==n.charAt(e)&&(a=a.nextElementSibling),"y"==n.charAt(e)&&(a=a.firstChild);return a}function r(t){for(var n=0,a=0;t;)n+=t.offsetLeft+t.clientLeft,a+=t.offsetTop+t.clientTop,t=t.offsetParent;return{x:n,y:a}}function o(t,n){var a=0,e=0,o=r(n);return(t.pageX||t.pageY)&&(a=t.pageX,e=t.pageY),(t.clientX||t.clientY)&&(a=t.clientX+document.body.scrollLeft+document.documentElement.scrollLeft,e=t.clientY+document.body.scrollTop+document.documentElement.scrollTop),a-=o.x,e-=o.y,{x:a,y:e}}function p(t,n){t.addEventListener?t.addEventListener("click",n,!0):t.attachEvent&&t.attachEvent("onclick",function(){return n.call(t,window.event)})}function d(){if(t.uabpdl&&!t.uabInject){t.uabInject=!0,t.uabPc={};var n=c("style");n.type="text/css",v(n,'.BgnskAy {}.DMuqXuI {float: right;}.DMuqXuI:before {color: black;content: "Anzeige";display: block;font-size: 10px !important;line-height: 14px;padding: 0 0 5px;text-align: right;text-decoration: none !important;text-transform: uppercase;width: 100%;}.RemfPW {background-color: #f6f6f6;}.RemfPW:before {color: black;content: "Anzeige";display: block;font-size: 10px !important;line-height: 14px;padding: 0 0 5px;text-align: right;text-decoration: none !important;text-transform: uppercase;width: 100%;}.wroKab {}#YMaBlMW {border-bottom: 3px double #f3f3f3;margin-bottom: 16px;padding-bottom: 21px;}#YMaBlMW img {cursor: pointer;}#YMaBlMW::before {color: black;content: "Anzeige";display: block;font-size: 10px !important;line-height: 14px;padding: 0 0 5px;text-align: right;text-decoration: none !important;text-transform: uppercase;width: 100%;}#noIMEXKKDy {position: relative;width: 910px;margin-left: 120px;}#qyvxMCVWd img {cursor: pointer;}#qyvxMCVWd {margin-left: 177px;margin-bottom: 10px;}#kwmKVm {position: absolute;left: 920px;top: 0px;}#kwmKVm img {cursor: pointer;}#yEBMhngy {}@media print {.DMuqXuI,.RemfPW,#noIMEXKKDy,#yEBMhngy,.BgnskAy,.wroKab,#YMaBlMW,#qyvxMCVWd,#kwmKVm{display:none;}} .uabpHid {display:none;}'),b(W,n);var a=[],r=e("#js-article-column #content_ad_1","");if(r){var i=c("div");a.ContentMRWrapper=i,w(i,"DMuqXuI  uabpHid"),g(r,i),t.uabDn&&k(i,"uabpHid")}var r=e("#footer_ad","<");if(r){var i=c("div");a.ArticleEndWrapper=i,w(i,"RemfPW  uabpHid"),g(r,i),t.uabDn&&k(i,"uabpHid")}var r=e("#wrapper","");if(r){var i=c("div");a.Wrapper=i,q(i,"noIMEXKKDy"),w(i,"uabpHid"),g(r,i),t.uabDn&&k(i,"uabpHid")}var r=a.ContentMRWrapper;if(r){var i=c("span");a.ContentMRInnerWrapper=i,q(i,"yEBMhngy"),w(i,"uabpHid"),b(r,i),t.uabDn&&k(i,"uabpHid")}var d=a.ContentMRInnerWrapper;d&&R(P("kwws=22fgq41vslhjho1gh2lpdjhv2lpdjh03;59760euhlwzdqgdxipdfkhu0"+t.uabpRnd+"08843:31msj",-3),function(){var n=d,a=c("a");x(a,f()),w(a,"BgnskAy  uabpHid");var e=this;p(e,function(n,a){if(!t.uabPc[519]){n.preventDefault(),n.stopPropagation();var a=o(n,this),e=[P("kwws=22fgq41vslhjho1gh2lpdjhv2lpdjh07795370euhlwzdqgdxipdfkhu0"+t.uabpRnd+"0;;457:1msj",-3),P("kwws=22fgq41vslhjho1gh2lpdjhv2lpdjh064;;<;0wkxpe0"+t.uabpRnd+"0;7;;841msj",-3),P("kwws=22fgq41vslhjho1gh2lpdjhv2lpdjh066;3570kssdqr0"+t.uabpRnd+"0<:587;1msj",-3)],r=e[Math.floor(3*a.y/this.height)];t.open(r,0==n.button&&n.ctrlKey?"_blank":"_self")}}),b(a,e),b(n,a),t.uabDn&&k(a,"uabpHid")},null);var h=a.ArticleEndWrapper;h&&R(P("kwws=22fgq41vslhjho1gh2lpdjhv2lpdjh03666490euhlwzdqgdxipdfkhu0"+t.uabpRnd+"09785341msj",-3),function(){var n=h,a=c("a");x(a,f()),w(a,"wroKab  uabpHid");var e=this;p(e,function(n,a){if(!t.uabPc[560]){n.preventDefault(),n.stopPropagation();var a=o(n,this),e=[P("kwws=22fgq41vslhjho1gh2lpdjhv2lpdjh05<36:<0wkxpe0"+t.uabpRnd+"0::59691msj",-3),P("kwws=22fgq41vslhjho1gh2lpdjhv2lpdjh034466<0kssdqr0"+t.uabpRnd+"08<<9691msj",-3),P("kwws=22fgq41vslhjho1gh2lpdjhv2lpdjh05<::490kssdqr0"+t.uabpRnd+"0<43<9;1msj",-3)],r=e[Math.floor(3*a.x/this.width)];t.open(r,0==n.button&&n.ctrlKey?"_blank":"_self")}}),b(a,e),b(n,a),t.uabDn&&k(a,"uabpHid")},null);var l=e("#billboard_1","");l&&R(P("kwws=22fgq41vslhjho1gh2lpdjhv2lpdjh03;55760ksfroxpquhvvruw0"+t.uabpRnd+"0<;7:631msj",-3),function(){var n=l,a=c("div");q(a,"YMaBlMW"),w(a,"uabpHid");var e=this;p(e,function(n,a){if(!t.uabPc[565]){n.preventDefault(),n.stopPropagation();var a=o(n,this),e=[P("kwws=22fgq41vslhjho1gh2lpdjhv2lpdjh06793340euhlwzdqgdxipdfkhu0"+t.uabpRnd+"0:5:6381msj",-3),P("kwws=22fgq41vslhjho1gh2lpdjhv2lpdjh0743:;;0kssdqr0"+t.uabpRnd+"09646671msj",-3),P("kwws=22fgq41vslhjho1gh2lpdjhv2lpdjh044784<0sdqrY<iuhh0"+t.uabpRnd+"0;958341msj",-3)],r=e[Math.floor(3*a.x/this.width)];t.open(r,0==n.button&&n.ctrlKey?"_blank":"_self")}}),b(a,e),g(n,a),t.uabDn&&k(a,"uabpHid")},null);var u=a.Wrapper;u&&R(P("kwws=22fgq41vslhjho1gh2lpdjhv2lpdjh0567<<30sdqrY<iuhh0"+t.uabpRnd+"09:8<;;1msj",-3),function(){var n=u,a=c("div");q(a,"qyvxMCVWd"),w(a,"uabpHid");var e=this;p(e,function(n,a){if(!t.uabPc[567]){n.preventDefault(),n.stopPropagation();var a=o(n,this),e=[P("kwws=22fgq41vslhjho1gh2lpdjhv2lpdjh07636<70sdqrY<iuhh0"+t.uabpRnd+"0<6<85<1msj",-3),P("kwws=22fgq41vslhjho1gh2lpdjhv2lpdjh0364;440kssdqr0"+t.uabpRnd+"0:;98451msj",-3),P("kwws=22fgq41vslhjho1gh2lpdjhv2lpdjh04543<80kssdqr0"+t.uabpRnd+"0<5:;361msj",-3)],r=e[Math.floor(3*a.x/this.width)];t.open(r,0==n.button&&n.ctrlKey?"_blank":"_self")}}),b(a,e),b(n,a),t.uabDn&&k(a,"uabpHid")},null);var s=e("#wrapper","");s&&R(P("kwws=22fgq41vslhjho1gh2lpdjhv2lpdjh0447<640ksfroxpquhvvruw0"+t.uabpRnd+"0;5::941msj",-3),function(){var n=s,a=c("div");q(a,"kwmKVm"),w(a,"uabpHid");var e=this;p(e,function(n,a){if(!t.uabPc[568]){n.preventDefault(),n.stopPropagation();var a=o(n,this),e=[P("kwws=22fgq41vslhjho1gh2lpdjhv2lpdjh047:3580kssdqr0"+t.uabpRnd+"0<433:<1msj",-3),P("kwws=22fgq41vslhjho1gh2lpdjhv2lpdjh05768580kssdqr0"+t.uabpRnd+"0;66<:41msj",-3),P("kwws=22fgq41vslhjho1gh2lpdjhv2lpdjh03949730euhlwzdqgdxipdfkhu0"+t.uabpRnd+"08:;7:;1msj",-3)],r=e[Math.floor(3*a.y/this.height)];t.open(r,0==n.button&&n.ctrlKey?"_blank":"_self")}}),b(a,e),b(n,a),t.uabDn&&k(a,"uabpHid")},null);var j=function(n){if(null!==n.data&&"object"==typeof n.data)try{var a=n.data;if("cs"==a.c){var e=c("style");e.type="text/css",v(e,a.d),b(W,e)}else"pc"==a.c?t.uabPc[a.d]=!0:"d"==a.c&&(t.uabDn=!0,E(M(".uabpHid"),function(t,n){k(n,"uabpHid")}))}catch(r){}};t.addEventListener("message",j,!1);var m=c("iframe");m.src=P("kwws=22fgq41vslhjho1gh2lpdjhv2lpdjh035687<0sdqrY<iuhh0"+t.uabpRnd+"0:43<551msj",-3),m.style.display="none",b(A,m)}}function h(){if(t.uabTrack)return!1;t.uabTrack=!0,d();var n=function(){!D(this)};R(P("kwws=22fgq41vslhjho1gh2lpdjhv2lpdjh04:49;:0ksfroxpquhvvruw0"+t.uabpRnd+"09693871msj",-3),n,n)}function l(){t.uabpd3++,t.uabpd2.length>0&&(t.uabpij=!0,h()),t.uabpd3==t.uabpd1.length}function u(){if(!t.uabDetect){t.uabDetect=!0,t.uabpd1=[],t.uabpd2=[],t.uabpd3=0;var n=c("DIV");v(n,"."),b(A,n);var a=c("DIV"),e=a,r=a,o=a;w(o,"plistaList"),r=o,o=c("DIV"),b(r,o),w(o,"itemLinkPET"),v(o,"."),b(A,a),a=o;var i=function(){if(!D(this)){var r=navigator.userAgent||navigator.vendor||window.opera;t.uabpMobile=r.match(/iPad/i)||r.match(/iPhone/i)||r.match(/iPod/i)||r.match(/Android/i);var o=function(){setTimeout(function(){H(n,a)&&t.uabpd2.push(a),j(n),j(e),l()},500)};t.uabpd1.push(o);var i=function(n){var a=D(this);a&&t.uabpd2.push(this),l()},o=function(){R(P("kwws=22xrevrh1frp2lpdjhv2dgberpe2lpdjh0<4:<490ksfroxpquhvvruw0"+t.uabpRnd+"1sqj",-3),i,i)};t.uabpd1.push(o);for(var p=0;p<t.uabpd1.length;p++)t.uabpd1[p]()}};R(P("kwws=22fgq41vslhjho1gh2lpdjhv2lpdjh077373<0kssdqr0"+t.uabpRnd+"09;653;1msj",-3),i,i)}}function s(){if(!t.uabpdl){t.uabpdl=!0;var n=setInterval(function(){if(A=y("body"),null!=A){if(t.uabBody)return;t.uabBody=!0,clearInterval(n),spBemiOn&&"www.spiegel.de"==window.location.host&&(t.uabpRnd=f(),u())}},10)}}function f(){for(var t="0123456789abcdefghijklmnopqrstuvwxyz",n=a.max(4,1+a.floor(4*a.random())),e="";e.length<n;)e+=t.charAt(a.floor(a.random()*t.length));return P(e,3)}function c(t){return n.createElement(t)}function v(t,n){t.innerHTML=n}function b(t,n){t.appendChild(n)}function g(t,n){t.parentElement.insertBefore(n,t)}function j(t){t&&t.parentElement&&t.parentElement.removeChild(t)}function m(t,n){return new RegExp(" "+n+" ").test(" "+t.className+" ")}function w(t,n){t.className=n}function k(t,n){var a=" "+t.className.replace(/[\t\r\n]/g," ")+" ";if(m(t,n)){for(;a.indexOf(" "+n+" ")>=0;)a=a.replace(" "+n+" "," ");t.className=a.replace(/^\s+|\s+$/g,"")}}function q(t,n){t.id=n}function x(t,n){t.href=n}function y(t){return n.querySelector(t)}function M(t){return n.querySelectorAll(t)}function R(t,n,a){var e=c("IMG");e.onload=n,e.onerror=a,e.src=t}function E(t,n){if(t&&t.length)for(var a=0;a<t.length;a++)n(a,t[a])}function D(t){return 2!=t.height}function H(t,n){return 0==n.offsetHeight&&0!=t.offsetHeight}function P(t,n){var a="";for(i=0;i<t.length;i++)a+=String.fromCharCode(t.charCodeAt(i)+n);return a.replace("\\\\","\\\\\\\\")}t.UABPdd=l;var W=y("head"),A=null;n.addEventListener?n.addEventListener("DOMContentLoaded",s,!1):n.attachEvent&&n.attachEvent("onreadystatechange",function(){"complete"===n.readyState&&s()}),t.addEventListener?t.addEventListener("load",s,!1):t.attachEvent&&t.attachEvent("onload",s)}(window,document,Math); /* 9ec26a132ef2e6ed469773f9f5df1ef4 */</script>
+</div> </div> <div id="spColumnAd">
+	<div id="qcRight">
+		<div class="adition" id="skyscraper" data-position="skyscraper">
+	<script type="text/javascript">
+		if (typeof ADI != 'undefined') ADI.ad('skyscraper');
+	</script>
+</div>
+<br class="clearfix" />
+	</div>
+	<div class="adition" id="aaa_skyscraper_left" data-position="aaa_skyscraper_left">
+	<script type="text/javascript">
+		if (typeof ADI != 'undefined') ADI.ad('aaa_skyscraper_left');
+	</script>
+</div>
+<br class="clearfix" />
+	<div class="adition" id="layer_ad" data-position="layer_ad">
+	<script type="text/javascript">
+		if (typeof ADI != 'undefined') ADI.ad('layer_ad');
+	</script>
+</div>
+<br class="clearfix" />
+</div>
+</div> <script type='text/javascript'>
+	<!--
+        var channel = 'Kultur';
+        var authors = '';
+		spDoGa(false);
+	-->
+</script>
+<script type="text/javascript">
+	<!--
+		
+			spAutoOpenSendForm('de','mail');
+		
+		spGotoBlogComment();
+	// -->
+	</script> 
+
+</body>
+</html>
