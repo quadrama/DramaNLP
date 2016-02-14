@@ -34,5 +34,27 @@
       <description/>
       <supertypeName>uima.tcas.Annotation</supertypeName>
     </typeDescription>
+  <typeDescription>
+      <name>de.unistuttgart.quadrama.api.Utterance</name>
+      <description/>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>Speaker</name>
+          <description/>
+          <rangeTypeName>de.unistuttgart.quadrama.api.Speaker</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>Stage</name>
+          <description/>
+          <rangeTypeName>de.unistuttgart.quadrama.api.StageDirection</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>de.unistuttgart.quadrama.api.StageDirection</name>
+      <description/>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+    </typeDescription>
   </types>
 </typeSystemDescription>

@@ -1,5 +1,5 @@
 
-/* First created by JCasGen Sun Feb 14 17:15:54 CET 2016 */
+/* First created by JCasGen Sun Feb 14 19:09:00 CET 2016 */
 package de.unistuttgart.quadrama.api;
 
 import org.apache.uima.jcas.JCas;
@@ -14,7 +14,7 @@ import org.apache.uima.jcas.tcas.Annotation_Type;
 /** 
  * Updated by JCasGen Sun Feb 14 19:09:00 CET 2016
  * @generated */
-public class Scene_Type extends Annotation_Type {
+public class StageDirection_Type extends Annotation_Type {
   /** @generated 
    * @return the generator for this type
    */
@@ -24,25 +24,25 @@ public class Scene_Type extends Annotation_Type {
   private final FSGenerator fsGenerator = 
     new FSGenerator() {
       public FeatureStructure createFS(int addr, CASImpl cas) {
-  			 if (Scene_Type.this.useExistingInstance) {
+  			 if (StageDirection_Type.this.useExistingInstance) {
   			   // Return eq fs instance if already created
-  		     FeatureStructure fs = Scene_Type.this.jcas.getJfsFromCaddr(addr);
+  		     FeatureStructure fs = StageDirection_Type.this.jcas.getJfsFromCaddr(addr);
   		     if (null == fs) {
-  		       fs = new Scene(addr, Scene_Type.this);
-  			   Scene_Type.this.jcas.putJfsFromCaddr(addr, fs);
+  		       fs = new StageDirection(addr, StageDirection_Type.this);
+  			   StageDirection_Type.this.jcas.putJfsFromCaddr(addr, fs);
   			   return fs;
   		     }
   		     return fs;
-        } else return new Scene(addr, Scene_Type.this);
+        } else return new StageDirection(addr, StageDirection_Type.this);
   	  }
     };
   /** @generated */
   @SuppressWarnings ("hiding")
-  public final static int typeIndexID = Scene.typeIndexID;
+  public final static int typeIndexID = StageDirection.typeIndexID;
   /** @generated 
      @modifiable */
   @SuppressWarnings ("hiding")
-  public final static boolean featOkTst = JCasRegistry.getFeatOkTst("de.unistuttgart.quadrama.api.Scene");
+  public final static boolean featOkTst = JCasRegistry.getFeatOkTst("de.unistuttgart.quadrama.api.StageDirection");
 
 
 
@@ -51,7 +51,7 @@ public class Scene_Type extends Annotation_Type {
 	 * @param jcas JCas
 	 * @param casType Type 
 	 */
-  public Scene_Type(JCas jcas, Type casType) {
+  public StageDirection_Type(JCas jcas, Type casType) {
     super(jcas, casType);
     casImpl.getFSClassRegistry().addGeneratorForType((TypeImpl)this.casType, getFSGenerator());
 

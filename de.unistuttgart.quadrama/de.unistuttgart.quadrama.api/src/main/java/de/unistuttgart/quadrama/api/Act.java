@@ -11,8 +11,8 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** 
- * Updated by JCasGen Sun Feb 14 17:15:54 CET 2016
- * XML source: /Users/reiterns/Documents/DH/anglogerman/de.unistuttgart.quadrama.root-pom/de.unistuttgart.quadrama.api/src/main/java/de/unistuttgart/quadrama/api/Types.xml
+ * Updated by JCasGen Sun Feb 14 19:09:00 CET 2016
+ * XML source: /Users/reiterns/Documents/DH/anglogerman/de.unistuttgart.quadrama/de.unistuttgart.quadrama.api/src/main/java/de/unistuttgart/quadrama/api/Types.xml
  * @generated */
 public class Act extends Annotation {
   /** @generated
