@@ -29,11 +29,29 @@
     	<artifactId>uimafit-core</artifactId>
     </dependency>
     <dependency>
+    	<groupId>xom</groupId>
+    	<artifactId>xom</artifactId>
+    	<version>1.2.5</version>
+    </dependency>
+    <dependency>
     	<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
     	<artifactId>
-    		de.tudarmstadt.ukp.dkpro.core.io.html-asl
+    		de.tudarmstadt.ukp.dkpro.core.io.xmi-asl
     	</artifactId>
     	<version>1.7.0</version>
+    	<scope>test</scope>
+    </dependency>
+    <dependency>
+    	<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+    	<artifactId>
+    		de.tudarmstadt.ukp.dkpro.core.api.metadata-asl
+    	</artifactId>
+    	<version>1.7.0</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.jsoup</groupId>
+    	<artifactId>jsoup</artifactId>
+    	<version>1.8.3</version>
     </dependency>
   </dependencies>
 </project>
