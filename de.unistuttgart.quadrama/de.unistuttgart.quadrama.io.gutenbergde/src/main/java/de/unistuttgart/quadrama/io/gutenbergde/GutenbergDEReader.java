@@ -7,11 +7,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.uima.UimaContext;
 import org.apache.uima.collection.CollectionException;
 import org.apache.uima.fit.component.JCasCollectionReader_ImplBase;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
+import org.apache.uima.fit.factory.AnnotationFactory;
 import org.apache.uima.fit.factory.JCasBuilder;
+import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.util.Progress;
@@ -22,6 +25,10 @@ import org.jsoup.nodes.TextNode;
 import org.jsoup.select.NodeVisitor;
 
 import de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData;
+import de.unistuttgart.quadrama.api.Act;
+import de.unistuttgart.quadrama.api.Scene;
+import de.unistuttgart.quadrama.api.Speaker;
+import de.unistuttgart.quadrama.api.StageDirection;
 import de.unistuttgart.quadrama.io.gutenbergde.type.HTMLAnnotation;
 
 public class GutenbergDEReader extends JCasCollectionReader_ImplBase {
@@ -68,12 +75,41 @@ public class GutenbergDEReader extends JCasCollectionReader_ImplBase {
 			doc.traverse(vis);
 			jcas = vis.getJCas();
 		} finally {}
+
+		int currentSceneBegin = -1;
+		int currentActBegin = -1;
+		for (HTMLAnnotation anno : JCasUtil.select(jcas, HTMLAnnotation.class)) {
+			if (anno.getCls().equals("speaker") && anno.getTag().equals("span")) {
+				AnnotationFactory.createAnnotation(jcas, anno.getBegin(),
+						anno.getEnd(), Speaker.class);
+			} else if (anno.getCls().equals("regie")
+					&& anno.getTag().equals("span")) {
+				AnnotationFactory.createAnnotation(jcas, anno.getBegin(),
+						anno.getEnd(), StageDirection.class);
+			}
+			if (anno.getTag().equals("h2")) {
+				if (currentSceneBegin >= 0) {
+					AnnotationFactory.createAnnotation(jcas, currentSceneBegin,
+							anno.getBegin() - 1, Scene.class);
+				}
+				currentSceneBegin = anno.getBegin();
+			}
+			if (anno.getTag().equals("h1")) {
+				if (currentActBegin >= 0) {
+					AnnotationFactory.createAnnotation(jcas, currentActBegin,
+							anno.getBegin() - 1, Act.class);
+				}
+				currentActBegin = anno.getBegin();
+			}
+			// TODO: Detecting an utterance
+		}
 	}
 
 	public class Visitor implements NodeVisitor {
 
 		JCasBuilder builder;
 		Map<Node, Integer> beginMap = new HashMap<Node, Integer>();
+		String[] blockElements = new String[] { "p", "br", "h1", "h2" };
 
 		public Visitor(JCas jcas) {
 			builder = new JCasBuilder(jcas);
@@ -95,6 +131,8 @@ public class GutenbergDEReader extends JCasCollectionReader_ImplBase {
 				anno.setTag(elm.tagName());
 				anno.setId(elm.id());
 				anno.setCls(elm.className());
+				if (ArrayUtils.contains(blockElements, elm.tagName()))
+					builder.add("\n");
 			}
 		}
 
