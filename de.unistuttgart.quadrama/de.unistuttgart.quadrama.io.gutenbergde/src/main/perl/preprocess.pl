@@ -9,7 +9,7 @@ binmode STDOUT, ':utf8';
 my $in = 0;
 my $d = 0;
 
-print "<div>\n";
+#print "<div>\n";
 
 while(<>) {
 	if (/id="gutenb">/) {
@@ -23,7 +23,7 @@ while(<>) {
 		if (/\<\/div/) {
 			$d--;
 		}
-		
+		s/id="gutenb"/class="gutenb"/;
 		print decode_entities($_);
 	}
 	
@@ -34,4 +34,4 @@ while(<>) {
 	
 
 }
-print "</div>\n";
+#print "</div>\n";
