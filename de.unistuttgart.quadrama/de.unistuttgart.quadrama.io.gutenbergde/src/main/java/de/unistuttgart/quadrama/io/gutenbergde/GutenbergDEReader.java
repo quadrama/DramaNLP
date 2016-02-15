@@ -31,6 +31,8 @@ import de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData;
 import de.unistuttgart.quadrama.api.Act;
 import de.unistuttgart.quadrama.api.DramatisPersonae;
 import de.unistuttgart.quadrama.api.Footnote;
+import de.unistuttgart.quadrama.api.FrontMatter;
+import de.unistuttgart.quadrama.api.MainMatter;
 import de.unistuttgart.quadrama.api.Scene;
 import de.unistuttgart.quadrama.api.Speaker;
 import de.unistuttgart.quadrama.api.StageDirection;
@@ -80,14 +82,29 @@ public class GutenbergDEReader extends JCasCollectionReader_ImplBase {
 		doc.traverse(vis);
 		jcas = vis.getJCas();
 		Map<String, HTMLAnnotation> annoMap = vis.getAnnotationMap();
-		select2Annotation(jcas, doc, annoMap, "span.speaker", Speaker.class);
-		select2Annotation(jcas, doc, annoMap, "span.regie",
-				StageDirection.class);
-		select2Annotation(jcas, doc, annoMap, "span.footnote", Footnote.class);
-		select2Annotation(jcas, doc, annoMap, "h3 + p", DramatisPersonae.class);
 
+		// identify front and main matter
+		select2Annotation(jcas, doc, annoMap, "div.gutenb:eq(0)",
+				FrontMatter.class, null);
+		selectRange2Annotation(jcas, doc, annoMap, "div.gutenb:eq(1)",
+				"div.gutenb:last-child", MainMatter.class);
+		FrontMatter frontMatter =
+				JCasUtil.selectSingle(jcas, FrontMatter.class);
+		MainMatter mainMatter = JCasUtil.selectSingle(jcas, MainMatter.class);
+
+		// identify simple annotations
+		select2Annotation(jcas, doc, annoMap, "span.speaker", Speaker.class,
+				null);
+		select2Annotation(jcas, doc, annoMap, "span.regie",
+				StageDirection.class, mainMatter);
+		select2Annotation(jcas, doc, annoMap, "span.footnote", Footnote.class,
+				mainMatter);
+		select2Annotation(jcas, doc, annoMap, "h3 + p", DramatisPersonae.class,
+				frontMatter);
+
+		// identify utterances
 		for (Utterance utter : select2Annotation(jcas, doc, annoMap,
-				"p:has(span.speaker)", Utterance.class)) {
+				"p:has(span.speaker)", Utterance.class, mainMatter)) {
 			utter.setSpeaker(JCasUtil.selectCovered(Speaker.class, utter)
 					.get(0));
 			try {
@@ -123,17 +140,40 @@ public class GutenbergDEReader extends JCasCollectionReader_ImplBase {
 
 	public <T extends Annotation> Collection<T> select2Annotation(JCas jcas,
 			Element rootElement, Map<String, HTMLAnnotation> annoMap,
-			String cssSelector, Class<T> annoClass) {
+			String cssSelector, Class<T> annoClass,
+			Annotation coveringAnnotation) {
 		HashSet<T> set = new HashSet<T>();
 		Elements elms = rootElement.select(cssSelector);
 		for (Element elm : elms) {
 			HTMLAnnotation hAnno = annoMap.get(elm.cssSelector());
-			if (JCasUtil.selectCovering(DramatisPersonae.class, hAnno)
-					.isEmpty())
+			if (coveringAnnotation == null
+					|| (coveringAnnotation.getBegin() <= hAnno.getBegin() && coveringAnnotation
+					.getEnd() >= hAnno.getEnd()))
+			// if (!JCasUtil.selectCovering(MainMatter.class, hAnno).isEmpty())
 				set.add(AnnotationFactory.createAnnotation(jcas,
 						hAnno.getBegin(), hAnno.getEnd(), annoClass));
 		}
 		return set;
+	}
+
+	public <T extends Annotation> T selectRange2Annotation(JCas jcas,
+			Element rootElement, Map<String, HTMLAnnotation> annoMap,
+			String beginCssSelector, String endCssSelector, Class<T> annoClass) {
+		Elements elms = rootElement.select(beginCssSelector);
+		int begin = jcas.size();
+		for (Element elm : elms) {
+			HTMLAnnotation hAnno = annoMap.get(elm.cssSelector());
+			if (hAnno.getBegin() < begin) begin = hAnno.getBegin();
+		}
+
+		elms = rootElement.select(endCssSelector);
+		int end = 0;
+		for (Element elm : elms) {
+			HTMLAnnotation hAnno = annoMap.get(elm.cssSelector());
+			if (hAnno.getEnd() > end) end = hAnno.getEnd();
+		}
+
+		return AnnotationFactory.createAnnotation(jcas, begin, end, annoClass);
 	}
 
 	public void assignSpeakerIds(JCas jcas) {
