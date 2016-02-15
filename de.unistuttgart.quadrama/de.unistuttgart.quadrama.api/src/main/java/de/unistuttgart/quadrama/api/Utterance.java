@@ -11,7 +11,7 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** 
- * Updated by JCasGen Sun Feb 14 19:09:00 CET 2016
+ * Updated by JCasGen Mon Feb 15 08:35:31 CET 2016
  * XML source: /Users/reiterns/Documents/DH/anglogerman/de.unistuttgart.quadrama/de.unistuttgart.quadrama.api/src/main/java/de/unistuttgart/quadrama/api/Types.xml
  * @generated */
 public class Utterance extends Annotation {
@@ -118,6 +118,28 @@ public class Utterance extends Annotation {
     if (Utterance_Type.featOkTst && ((Utterance_Type)jcasType).casFeat_Stage == null)
       jcasType.jcas.throwFeatMissing("Stage", "de.unistuttgart.quadrama.api.Utterance");
     jcasType.ll_cas.ll_setRefValue(addr, ((Utterance_Type)jcasType).casFeatCode_Stage, jcasType.ll_cas.ll_getFSRef(v));}    
+   
+    
+  //*--------------*
+  //* Feature: Speech
+
+  /** getter for Speech - gets 
+   * @generated
+   * @return value of the feature 
+   */
+  public Speech getSpeech() {
+    if (Utterance_Type.featOkTst && ((Utterance_Type)jcasType).casFeat_Speech == null)
+      jcasType.jcas.throwFeatMissing("Speech", "de.unistuttgart.quadrama.api.Utterance");
+    return (Speech)(jcasType.ll_cas.ll_getFSForRef(jcasType.ll_cas.ll_getRefValue(addr, ((Utterance_Type)jcasType).casFeatCode_Speech)));}
+    
+  /** setter for Speech - sets  
+   * @generated
+   * @param v value to set into the feature 
+   */
+  public void setSpeech(Speech v) {
+    if (Utterance_Type.featOkTst && ((Utterance_Type)jcasType).casFeat_Speech == null)
+      jcasType.jcas.throwFeatMissing("Speech", "de.unistuttgart.quadrama.api.Utterance");
+    jcasType.ll_cas.ll_setRefValue(addr, ((Utterance_Type)jcasType).casFeatCode_Speech, jcasType.ll_cas.ll_getFSRef(v));}    
   }
 
     

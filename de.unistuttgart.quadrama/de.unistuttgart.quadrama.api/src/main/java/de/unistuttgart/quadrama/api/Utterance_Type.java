@@ -14,7 +14,7 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** 
- * Updated by JCasGen Sun Feb 14 19:09:00 CET 2016
+ * Updated by JCasGen Mon Feb 15 08:35:31 CET 2016
  * @generated */
 public class Utterance_Type extends Annotation_Type {
   /** @generated 
@@ -93,6 +93,30 @@ public class Utterance_Type extends Annotation_Type {
     ll_cas.ll_setRefValue(addr, casFeatCode_Stage, v);}
     
   
+ 
+  /** @generated */
+  final Feature casFeat_Speech;
+  /** @generated */
+  final int     casFeatCode_Speech;
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @return the feature value 
+   */ 
+  public int getSpeech(int addr) {
+        if (featOkTst && casFeat_Speech == null)
+      jcas.throwFeatMissing("Speech", "de.unistuttgart.quadrama.api.Utterance");
+    return ll_cas.ll_getRefValue(addr, casFeatCode_Speech);
+  }
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @param v value to set 
+   */    
+  public void setSpeech(int addr, int v) {
+        if (featOkTst && casFeat_Speech == null)
+      jcas.throwFeatMissing("Speech", "de.unistuttgart.quadrama.api.Utterance");
+    ll_cas.ll_setRefValue(addr, casFeatCode_Speech, v);}
+    
+  
 
 
 
@@ -112,6 +136,10 @@ public class Utterance_Type extends Annotation_Type {
  
     casFeat_Stage = jcas.getRequiredFeatureDE(casType, "Stage", "de.unistuttgart.quadrama.api.StageDirection", featOkTst);
     casFeatCode_Stage  = (null == casFeat_Stage) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_Stage).getCode();
+
+ 
+    casFeat_Speech = jcas.getRequiredFeatureDE(casType, "Speech", "de.unistuttgart.quadrama.api.Speech", featOkTst);
+    casFeatCode_Speech  = (null == casFeat_Speech) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_Speech).getCode();
 
   }
 }

@@ -49,10 +49,20 @@
           <description/>
           <rangeTypeName>de.unistuttgart.quadrama.api.StageDirection</rangeTypeName>
         </featureDescription>
+      <featureDescription>
+          <name>Speech</name>
+          <description/>
+          <rangeTypeName>de.unistuttgart.quadrama.api.Speech</rangeTypeName>
+        </featureDescription>
       </features>
     </typeDescription>
     <typeDescription>
       <name>de.unistuttgart.quadrama.api.StageDirection</name>
+      <description/>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+    </typeDescription>
+  <typeDescription>
+      <name>de.unistuttgart.quadrama.api.Speech</name>
       <description/>
       <supertypeName>uima.tcas.Annotation</supertypeName>
     </typeDescription>
