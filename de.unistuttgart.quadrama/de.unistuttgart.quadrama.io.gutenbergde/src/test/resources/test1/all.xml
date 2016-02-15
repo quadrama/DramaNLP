@@ -1,5 +1,4 @@
-<div>
-<div id="gutenb">
+<div class="gutenb">
 
     <h2 class="author">William Shakespeare</h2>
     <h1 class="title"><i><span class="titlecolor">Romeo und Juliette.</span></i></h1>
@@ -46,9 +45,7 @@
     <hr class="short">
   
 </div>
-</div>
-<div>
-<div id="gutenb">
+<div class="gutenb">
 
     <h1><i>Erster Aufzug.</i></h1>
     <h2>Erste Scene.</h2>
@@ -100,9 +97,7 @@
     <p class="center"><span class="regie">Der Fürst von Verona mit seinem Gefolge tritt auf, erzürnt sich gewaltig über diesen Unfug, wirft den beyden Alten vor, daß sie ihrer Familien-Feindschaft wegen Verona schon dreymal in Aufruhr gesezt, verbietet ihnen bey Todes-Straffe die Strassen nicht mehr zu beunruhigen, und tritt, nachdem er sie geschieden, wieder ab.</span></p>
   
 </div>
-</div>
-<div>
-<div id="gutenb">
+<div class="gutenb">
 
     <h2>Zweyte Scene.</h2>
     <p class="center"><span class="regie">Der alte Montague, Lady Montague, und Benvolio bleiben zurük.</span></p>
@@ -152,9 +147,7 @@
     <p class="right"><span class="regie">(Sie gehen ab.)</span></p>
   
 </div>
-</div>
-<div>
-<div id="gutenb">
+<div class="gutenb">
 
     <h2>Dritte Scene.</h2>
     <p class="center"><span class="regie">Capulet, Paris, und ein Bedienter treten auf.</span></p>
@@ -197,9 +190,7 @@
     <p class="right"><span class="regie">(Sie gehen ab.)</span></p>
   
 </div>
-</div>
-<div>
-<div id="gutenb">
+<div class="gutenb">
 
     <h2>Vierte Scene.</h2>
     <p class="center"><span class="regie">Verwandelt sich in Capulets Haus.</span></p>
@@ -236,9 +227,7 @@
     <p class="right"><span class="regie">Sie gehen ab.</span></p>
   
 </div>
-</div>
-<div>
-<div id="gutenb">
+<div class="gutenb">
 
     <h2>Fünfte Scene.</h2>
     <p class="center"><span class="regie">Eine Strasse vor Capulets Haus.</span></p>
@@ -269,9 +258,7 @@
     <p class="right"><span class="regie">(Sie ziehen über den Schauplatz, und treten ab.)</span></p>
   
 </div>
-</div>
-<div>
-<div id="gutenb">
+<div class="gutenb">
 
     <h2>Sechste Scene.</h2>
     <p class="center"><span class="regie">Verwandelt sich in eine Halle in Capulets Hause.</span></p>
@@ -345,9 +332,7 @@
     <p class="abstract">[Zum Beschluß dieses Aufzugs tritt ein Chor auf, und sagt den Zuschauern in vierzehn Reimen, was sie vermuthlich von selbst errathen hätten – – daß Romeo, seit der Nacht, da er die schöne Juliette gesehen, seine erste Liebste nicht mehr schön befunden – – daß er nun Julietten liebe, und von ihr wieder geliebt werde – – daß die tödtliche Feindschaft ihrer Häuser zwar die Sympathie ihrer Herzen nicht habe verhindern können, aber ihnen hingegen alle Gelegenheit abschneide, sich zu sehen und zu sprechen, ohne daß jedoch dieser harte Zwang eine andre Würkung gethan habe, als die Heftigkeit ihrer Liebe und Sehnsucht zu verdoppeln.]</p>
   
 </div>
-</div>
-<div>
-<div id="gutenb">
+<div class="gutenb">
 
     <h1>Zweyter Aufzug.</h1>
     <h2>Erste Scene.</h2>
@@ -367,9 +352,7 @@
     <p><span class="speaker">Benvolio</span>. Es wird klüger seyn, als hier jemand zu suchen, der sich nicht finden lassen will.</p>
   
 </div>
-</div>
-<div>
-<div id="gutenb">
+<div class="gutenb">
 
     <h2>Zweyte Scene.</h2>
     <p class="center"><span class="regie">Verwandelt sich in Capulets Garten.</span></p>
@@ -441,9 +424,7 @@
     <p class="right"><span class="regie">(ab.)</span></p>
   
 </div>
-</div>
-<div>
-<div id="gutenb">
+<div class="gutenb">
 
     <h2>Dritte Scene.</h2>
     <p class="center"><span class="regie">Verwandelt sich in ein Kloster.</span></p>
@@ -471,9 +452,7 @@
     <p class="right"><span class="regie">(Sie gehen ab.)</span></p>
   
 </div>
-</div>
-<div>
-<div id="gutenb">
+<div class="gutenb">
 
     <h2>Vierte Scene.</h2>
     <p class="center"><span class="regie">Verwandelt sich in die Strasse.</span></p>
@@ -536,9 +515,7 @@
     <p class="right"><span class="regie">(Sie gehen ab.)</span></p>
   
 </div>
-</div>
-<div>
-<div id="gutenb">
+<div class="gutenb">
 
     <h2>Fünfte Scene.</h2>
     <p class="center"><span class="regie">Verwandelt sich in Capulets Haus.</span></p>
@@ -568,9 +545,7 @@
     <p class="right"><span class="regie">(Sie gehen ab.)</span></p>
   
 </div>
-</div>
-<div>
-<div id="gutenb">
+<div class="gutenb">
 
     <h2>Sechste Scene.</h2>
     <p class="center"><span class="regie">Verwandelt sich in das Kloster.</span></p>
@@ -589,9 +564,7 @@
     <p class="right"><span class="regie">(Sie gehen ab.)</span></p>
   
 </div>
-</div>
-<div>
-<div id="gutenb">
+<div class="gutenb">
 
     <h1><i>Dritter Aufzug.</i></h1>
     <h2>Erste Scene.</h2>
@@ -643,9 +616,7 @@
     <p class="right"><span class="regie">(Mercutio und Benvolio gehen ab.)</span></p>
   
 </div>
-</div>
-<div>
-<div id="gutenb">
+<div class="gutenb">
 
     <h2>Zweyte Scene.</h2>
     <p><span class="speaker">Romeo</span>. Dieser Edelmann, ein naher Verwandter des Prinzen, mein bester Freund, muß um meinetwillen sein Leben lassen – – meine Ehre ist durch Tybalts Lästerungen beflekt, Tybalts, der kaum seit einer Stunde mein Vetter ist: O süsse Juliette, deine Schönheit hat mich weibisch gemacht – – Würd' ein Mann soviel leiden und gelassen bleiben?</p>
@@ -663,9 +634,7 @@
     <p class="right"><span class="regie">(Romeo entweicht.)</span></p>
   
 </div>
-</div>
-<div>
-<div id="gutenb">
+<div class="gutenb">
 
     <h2>Dritte Scene.</h2>
     <p class="center"><span class="regie">Einige Bürger treten auf.</span></p>
@@ -685,9 +654,7 @@
     <p class="right"><span class="regie">(Sie gehen ab.)</span></p>
   
 </div>
-</div>
-<div>
-<div id="gutenb">
+<div class="gutenb">
 
     <h2>Vierte Scene.</h2>
     <p class="center"><span class="regie">Verwandelt sich in ein Zimmer in Capulets Haus.</span></p>
@@ -721,9 +688,7 @@
     <p class="right"><span class="regie">(Sie gehen ab.)</span></p>
   
 </div>
-</div>
-<div>
-<div id="gutenb">
+<div class="gutenb">
 
     <h2>Fünfte Scene.</h2>
     <p class="center"><span class="regie">Verwandelt sich in das Kloster.</span></p>
@@ -773,9 +738,7 @@
     <p class="right"><span class="regie">(Sie gehen ab.)</span></p>
   
 </div>
-</div>
-<div>
-<div id="gutenb">
+<div class="gutenb">
 
     <h2>Sechste Scene.</h2>
     <p class="center"><span class="regie">Verwandelt sich in Capulets Haus.</span></p>
@@ -791,9 +754,7 @@
     <p class="right"><span class="regie">(Sie gehen ab.)</span></p>
   
 </div>
-</div>
-<div>
-<div id="gutenb">
+<div class="gutenb">
 
     <h2>Siebende Scene.</h2>
     <p class="center"><span class="regie">Juliettens Zimmer, von der Garten-Seite.</span></p>
@@ -821,9 +782,7 @@
     <p class="right"><span class="regie">(Romeo geht ab.)</span></p>
   
 </div>
-</div>
-<div>
-<div id="gutenb">
+<div class="gutenb">
 
     <h2>Achte Scene.</h2>
     <p><span class="speaker">Juliette</span>. O Glük, Glük, alle Leute nennen dich unbeständig; wenn du unbeständig bist, was thust du mit dem, dessen Treue du kennen solltest? Doch, sey immerhin unbeständig, denn so hab ich Hoffnung, daß du ihn nicht lange behalten, sondern mir bald zurückschiken wirst.</p>
@@ -884,9 +843,7 @@
     <p class="right"><span class="regie">(Sie geht ab.)</span></p>
   
 </div>
-</div>
-<div>
-<div id="gutenb">
+<div class="gutenb">
 
     <h1><i>Vierter Aufzug.</i></h1>
     <h2>Erste Scene.</h2>
@@ -932,9 +889,7 @@
     <p class="right"><span class="regie">(Sie gehen ab.)</span></p>
   
 </div>
-</div>
-<div>
-<div id="gutenb">
+<div class="gutenb">
 
     <h2>Zweyte Scene.</h2>
     <p class="center"><span class="regie">Verwandelt sich in Capulets Haus.</span></p>
@@ -962,9 +917,7 @@
     <p class="right"><span class="regie">(Sie gehen ab.)</span></p>
   
 </div>
-</div>
-<div>
-<div id="gutenb">
+<div class="gutenb">
 
     <h2>Dritte Scene.</h2>
     <p class="center"><span class="regie">Juliettens Zimmer.</span></p>
@@ -979,9 +932,7 @@
     <p class="right"><span class="regie">(Sie trinkt die Phiole aus, und wirft sich auf ihr Bette.)</span></p>
   
 </div>
-</div>
-<div>
-<div id="gutenb">
+<div class="gutenb">
 
     <h2>Vierte Scene.</h2>
     <p class="center"><span class="regie">Ein Vorsaal in Capulets Hause.</span></p>
@@ -1005,9 +956,7 @@
     <p class="right"><span class="regie">(Sie gehen ab.)</span></p>
   
 </div>
-</div>
-<div>
-<div id="gutenb">
+<div class="gutenb">
 
     <h2>Fünfte Scene.</h2>
     <p class="center"><span class="regie">Verwandelt sich in Juliettens Schlaf-Zimmer; Juliette ligt auf dem Bette.</span></p>
@@ -1040,9 +989,7 @@
     <p class="abstract">Die Amme und die Musicanten bleiben, wie natürlich, zurük. Die leztern sind so fein, es von sich selbst zu merken, daß sie hier zu nichts mehr nuzen, und die weise Amme sagt es ihnen noch zum Ueberfluß; sie steken also ihre Pfeiffen ein, und wollen gehen. Aber zu grossem Vergnügen der Zuschauer in den obersten Gegenden kommt Peter, und verlangt, daß sie ihm ein lustiges Stükchen aufspielen sollen; dieses giebt dann den Anlaß zu einem kleinen <tt>Divertissement</tt> von Wortspielen und Spässen im Geschmak des Wiener-Harlequins; einer Abwechslung, die freylich, (wie der sinnreiche Herr von Voltaire weislich bemerkt,) dem Geschmak unsers Autors und seiner Zeitgenossen wenig Ehre macht, aber doch den Vortheil mit sich führt, daß die Zuschauer, (welche ans Ende doch in die Comödie gegangen sind, um sich einen Spaß zu machen,) durch die kläglichen Scenen nicht gar zu sehr gerührt werden.</p>
   
 </div>
-</div>
-<div>
-<div id="gutenb">
+<div class="gutenb">
 
     <h1><i>Fünfter Aufzug.</i></h1>
     <h2>Erste Scene.</h2>
@@ -1071,9 +1018,7 @@
     <p class="right"><span class="regie">(Sie gehen ab.)</span></p>
   
 </div>
-</div>
-<div>
-<div id="gutenb">
+<div class="gutenb">
 
     <h2>Zweyte Scene.</h2>
     <p class="center"><span class="regie">Verwandelt sich in das Kloster zu Verona.</span></p>
@@ -1089,9 +1034,7 @@
     <p class="right"><span class="regie">(Er geht ab.)</span></p>
   
 </div>
-</div>
-<div>
-<div id="gutenb">
+<div class="gutenb">
 
     <h2>Dritte Scene.</h2>
     <p class="center"><span class="regie">Verwandelt sich in einen Kirchhof – – auf demselben die Familien-Gruft der Capulets.</span></p>
@@ -1104,9 +1047,7 @@
     <p class="right"><span class="regie">(Er geht bey Seite.)</span></p>
   
 </div>
-</div>
-<div>
-<div id="gutenb">
+<div class="gutenb">
 
     <h2>Vierte Scene.</h2>
     <p class="center"><span class="regie">Romeo und Balthasar mit einem Lichte.</span></p>
@@ -1164,9 +1105,7 @@
     <p><span class="speaker">1. Wächter</span>. Das ist sehr verdächtig; haltet ihn auch auf.</p>
   
 </div>
-</div>
-<div>
-<div id="gutenb">
+<div class="gutenb">
 
     <h2>Fünfte Scene.</h2>
     <p class="center"><span class="regie">Der Fürst und sein Gefolge, treten vorn auf der Schaubühne auf.</span></p>
@@ -1199,5 +1138,4 @@
     <p><span class="speaker">Capulet</span>. Eben so glänzend soll Romeo bey seiner Gattin ligen; theure, unglükliche Opfer unsrer unseligen Feindschaft!</p>
     <p><span class="speaker">Fürst</span>. Dieser Morgen bringt uns einen düstern Frieden, und die Sonne selbst scheint trauernd ihr Haupt verhüllt zu haben – – Geht, und erwartet unsre Entscheidung, was in diesem unglüklichen Handel Strafe und was Verzeihung verdient – – [Ihr aber, getreue Liebende, die ein allzustrenges Schiksal im Leben getrennt, und nun ein freiwilliger Tod auf ewig vereiniget hat, lebet, Juliette und Romeo, lebet in unserm Andenken, und die späteste Nachwelt möge das Gedächtniß eurer unglüklichen Liebe mit mitleidigen Thränen ehren!]</p>
   
-</div>
 </div>

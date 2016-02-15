@@ -9,7 +9,6 @@ import java.util.HashSet;
 import java.util.Map;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang.ArrayUtils;
 import org.apache.uima.UimaContext;
 import org.apache.uima.collection.CollectionException;
 import org.apache.uima.fit.component.JCasCollectionReader_ImplBase;
@@ -86,6 +85,7 @@ public class GutenbergDEReader extends JCasCollectionReader_ImplBase {
 				StageDirection.class);
 		select2Annotation(jcas, doc, annoMap, "span.footnote", Footnote.class);
 		select2Annotation(jcas, doc, annoMap, "h3 + p", DramatisPersonae.class);
+
 		for (Utterance utter : select2Annotation(jcas, doc, annoMap,
 				"p:has(span.speaker)", Utterance.class)) {
 			utter.setSpeaker(JCasUtil.selectCovered(Speaker.class, utter)
@@ -97,8 +97,10 @@ public class GutenbergDEReader extends JCasCollectionReader_ImplBase {
 				// many utterances don't have stage directions
 			}
 			// TODO: identify speech content
-
 		};
+
+		this.assignSpeakerIds(jcas);
+
 		int currentSceneBegin = -1;
 		int currentActBegin = -1;
 		for (HTMLAnnotation anno : JCasUtil.select(jcas, HTMLAnnotation.class)) {
@@ -116,7 +118,6 @@ public class GutenbergDEReader extends JCasCollectionReader_ImplBase {
 				}
 				currentActBegin = anno.getBegin();
 			}
-			// TODO: Detecting an utterance
 		}
 	}
 
@@ -135,11 +136,33 @@ public class GutenbergDEReader extends JCasCollectionReader_ImplBase {
 		return set;
 	}
 
+	public void assignSpeakerIds(JCas jcas) {
+		DramatisPersonae dp =
+				JCasUtil.selectSingle(jcas, DramatisPersonae.class);
+
+		int speakerId = 1;
+		Map<String, Speaker> speakerMap = new HashMap<String, Speaker>();
+		for (Speaker speaker : JCasUtil.selectCovered(Speaker.class, dp)) {
+			speaker.setId(speakerId++);
+			speakerMap.put(speaker.getCoveredText(), speaker);
+		};
+
+		for (Speaker speaker : JCasUtil.select(jcas, Speaker.class)) {
+			if (speaker.getId() == 0) {
+				try {
+					speaker.setId(speakerMap.get(speaker.getCoveredText())
+							.getId());
+				} catch (NullPointerException e) {
+					// no entry in speaker map
+				}
+			}
+		}
+	}
+
 	public class Visitor implements NodeVisitor {
 
 		JCasBuilder builder;
 		Map<Node, Integer> beginMap = new HashMap<Node, Integer>();
-		String[] blockElements = new String[] { "p", "br", "h1", "h2" };
 
 		Map<String, HTMLAnnotation> annotationMap =
 				new HashMap<String, HTMLAnnotation>();
@@ -165,8 +188,7 @@ public class GutenbergDEReader extends JCasCollectionReader_ImplBase {
 				anno.setId(elm.id());
 				anno.setCls(elm.className());
 				annotationMap.put(elm.cssSelector(), anno);
-				if (ArrayUtils.contains(blockElements, elm.tagName()))
-					builder.add("\n");
+				if (elm.isBlock()) builder.add("\n");
 			}
 		}
 
