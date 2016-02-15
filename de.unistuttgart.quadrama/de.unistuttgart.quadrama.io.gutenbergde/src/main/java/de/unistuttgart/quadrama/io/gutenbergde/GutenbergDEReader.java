@@ -3,7 +3,9 @@ package de.unistuttgart.quadrama.io.gutenbergde;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 import org.apache.commons.io.IOUtils;
@@ -16,19 +18,24 @@ import org.apache.uima.fit.factory.AnnotationFactory;
 import org.apache.uima.fit.factory.JCasBuilder;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.tcas.Annotation;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.util.Progress;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Node;
 import org.jsoup.nodes.TextNode;
+import org.jsoup.select.Elements;
 import org.jsoup.select.NodeVisitor;
 
 import de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData;
 import de.unistuttgart.quadrama.api.Act;
+import de.unistuttgart.quadrama.api.DramatisPersonae;
+import de.unistuttgart.quadrama.api.Footnote;
 import de.unistuttgart.quadrama.api.Scene;
 import de.unistuttgart.quadrama.api.Speaker;
 import de.unistuttgart.quadrama.api.StageDirection;
+import de.unistuttgart.quadrama.api.Utterance;
 import de.unistuttgart.quadrama.io.gutenbergde.type.HTMLAnnotation;
 
 public class GutenbergDEReader extends JCasCollectionReader_ImplBase {
@@ -68,25 +75,33 @@ public class GutenbergDEReader extends JCasCollectionReader_ImplBase {
 
 		File file = files[current++];
 
-		try {
-			String str = IOUtils.toString(new FileInputStream(file));
-			org.jsoup.nodes.Document doc = Jsoup.parseBodyFragment(str);
-			Visitor vis = new Visitor(jcas);
-			doc.traverse(vis);
-			jcas = vis.getJCas();
-		} finally {}
+		String str = IOUtils.toString(new FileInputStream(file));
+		org.jsoup.nodes.Document doc = Jsoup.parseBodyFragment(str);
+		Visitor vis = new Visitor(jcas);
+		doc.traverse(vis);
+		jcas = vis.getJCas();
+		Map<String, HTMLAnnotation> annoMap = vis.getAnnotationMap();
+		select2Annotation(jcas, doc, annoMap, "span.speaker", Speaker.class);
+		select2Annotation(jcas, doc, annoMap, "span.regie",
+				StageDirection.class);
+		select2Annotation(jcas, doc, annoMap, "span.footnote", Footnote.class);
+		select2Annotation(jcas, doc, annoMap, "h3 + p", DramatisPersonae.class);
+		for (Utterance utter : select2Annotation(jcas, doc, annoMap,
+				"p:has(span.speaker)", Utterance.class)) {
+			utter.setSpeaker(JCasUtil.selectCovered(Speaker.class, utter)
+					.get(0));
+			try {
+				utter.setStage(JCasUtil.selectCovered(StageDirection.class,
+						utter).get(0));
+			} catch (IndexOutOfBoundsException e) {
+				// many utterances don't have stage directions
+			}
+			// TODO: identify speech content
 
+		};
 		int currentSceneBegin = -1;
 		int currentActBegin = -1;
 		for (HTMLAnnotation anno : JCasUtil.select(jcas, HTMLAnnotation.class)) {
-			if (anno.getCls().equals("speaker") && anno.getTag().equals("span")) {
-				AnnotationFactory.createAnnotation(jcas, anno.getBegin(),
-						anno.getEnd(), Speaker.class);
-			} else if (anno.getCls().equals("regie")
-					&& anno.getTag().equals("span")) {
-				AnnotationFactory.createAnnotation(jcas, anno.getBegin(),
-						anno.getEnd(), StageDirection.class);
-			}
 			if (anno.getTag().equals("h2")) {
 				if (currentSceneBegin >= 0) {
 					AnnotationFactory.createAnnotation(jcas, currentSceneBegin,
@@ -105,11 +120,29 @@ public class GutenbergDEReader extends JCasCollectionReader_ImplBase {
 		}
 	}
 
+	public <T extends Annotation> Collection<T> select2Annotation(JCas jcas,
+			Element rootElement, Map<String, HTMLAnnotation> annoMap,
+			String cssSelector, Class<T> annoClass) {
+		HashSet<T> set = new HashSet<T>();
+		Elements elms = rootElement.select(cssSelector);
+		for (Element elm : elms) {
+			HTMLAnnotation hAnno = annoMap.get(elm.cssSelector());
+			if (JCasUtil.selectCovering(DramatisPersonae.class, hAnno)
+					.isEmpty())
+				set.add(AnnotationFactory.createAnnotation(jcas,
+						hAnno.getBegin(), hAnno.getEnd(), annoClass));
+		}
+		return set;
+	}
+
 	public class Visitor implements NodeVisitor {
 
 		JCasBuilder builder;
 		Map<Node, Integer> beginMap = new HashMap<Node, Integer>();
 		String[] blockElements = new String[] { "p", "br", "h1", "h2" };
+
+		Map<String, HTMLAnnotation> annotationMap =
+				new HashMap<String, HTMLAnnotation>();
 
 		public Visitor(JCas jcas) {
 			builder = new JCasBuilder(jcas);
@@ -131,6 +164,7 @@ public class GutenbergDEReader extends JCasCollectionReader_ImplBase {
 				anno.setTag(elm.tagName());
 				anno.setId(elm.id());
 				anno.setCls(elm.className());
+				annotationMap.put(elm.cssSelector(), anno);
 				if (ArrayUtils.contains(blockElements, elm.tagName()))
 					builder.add("\n");
 			}
@@ -139,6 +173,10 @@ public class GutenbergDEReader extends JCasCollectionReader_ImplBase {
 		public JCas getJCas() {
 			builder.close();
 			return builder.getJCas();
+		}
+
+		public Map<String, HTMLAnnotation> getAnnotationMap() {
+			return annotationMap;
 		}
 	}
 
