@@ -14,7 +14,7 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** 
- * Updated by JCasGen Sun Feb 14 19:09:00 CET 2016
+ * Updated by JCasGen Mon Feb 15 08:59:26 CET 2016
  * @generated */
 public class Speaker_Type extends Annotation_Type {
   /** @generated 
@@ -54,19 +54,19 @@ public class Speaker_Type extends Annotation_Type {
    * @param addr low level Feature Structure reference
    * @return the feature value 
    */ 
-  public String getId(int addr) {
+  public int getId(int addr) {
         if (featOkTst && casFeat_Id == null)
       jcas.throwFeatMissing("Id", "de.unistuttgart.quadrama.api.Speaker");
-    return ll_cas.ll_getStringValue(addr, casFeatCode_Id);
+    return ll_cas.ll_getIntValue(addr, casFeatCode_Id);
   }
   /** @generated
    * @param addr low level Feature Structure reference
    * @param v value to set 
    */    
-  public void setId(int addr, String v) {
+  public void setId(int addr, int v) {
         if (featOkTst && casFeat_Id == null)
       jcas.throwFeatMissing("Id", "de.unistuttgart.quadrama.api.Speaker");
-    ll_cas.ll_setStringValue(addr, casFeatCode_Id, v);}
+    ll_cas.ll_setIntValue(addr, casFeatCode_Id, v);}
     
   
 
@@ -82,7 +82,7 @@ public class Speaker_Type extends Annotation_Type {
     casImpl.getFSClassRegistry().addGeneratorForType((TypeImpl)this.casType, getFSGenerator());
 
  
-    casFeat_Id = jcas.getRequiredFeatureDE(casType, "Id", "uima.cas.String", featOkTst);
+    casFeat_Id = jcas.getRequiredFeatureDE(casType, "Id", "uima.cas.Integer", featOkTst);
     casFeatCode_Id  = (null == casFeat_Id) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_Id).getCode();
 
   }

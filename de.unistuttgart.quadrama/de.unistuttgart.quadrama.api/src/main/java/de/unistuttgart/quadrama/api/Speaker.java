@@ -11,7 +11,7 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** 
- * Updated by JCasGen Sun Feb 14 19:09:00 CET 2016
+ * Updated by JCasGen Mon Feb 15 08:59:26 CET 2016
  * XML source: /Users/reiterns/Documents/DH/anglogerman/de.unistuttgart.quadrama/de.unistuttgart.quadrama.api/src/main/java/de/unistuttgart/quadrama/api/Types.xml
  * @generated */
 public class Speaker extends Annotation {
@@ -83,19 +83,19 @@ public class Speaker extends Annotation {
    * @generated
    * @return value of the feature 
    */
-  public String getId() {
+  public int getId() {
     if (Speaker_Type.featOkTst && ((Speaker_Type)jcasType).casFeat_Id == null)
       jcasType.jcas.throwFeatMissing("Id", "de.unistuttgart.quadrama.api.Speaker");
-    return jcasType.ll_cas.ll_getStringValue(addr, ((Speaker_Type)jcasType).casFeatCode_Id);}
+    return jcasType.ll_cas.ll_getIntValue(addr, ((Speaker_Type)jcasType).casFeatCode_Id);}
     
   /** setter for Id - sets  
    * @generated
    * @param v value to set into the feature 
    */
-  public void setId(String v) {
+  public void setId(int v) {
     if (Speaker_Type.featOkTst && ((Speaker_Type)jcasType).casFeat_Id == null)
       jcasType.jcas.throwFeatMissing("Id", "de.unistuttgart.quadrama.api.Speaker");
-    jcasType.ll_cas.ll_setStringValue(addr, ((Speaker_Type)jcasType).casFeatCode_Id, v);}    
+    jcasType.ll_cas.ll_setIntValue(addr, ((Speaker_Type)jcasType).casFeatCode_Id, v);}    
   }
 
     
