@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.uima.UimaContext;
 import org.apache.uima.collection.CollectionException;
 import org.apache.uima.fit.component.JCasCollectionReader_ImplBase;
@@ -31,9 +32,9 @@ public abstract class AbstractDramaReader extends JCasCollectionReader_ImplBase 
 	@ConfigurationParameter(name = PARAM_INPUT_DIRECTORY, mandatory = true)
 	String inputDirectory;
 
-	File[] files;
+	protected File[] files;
 
-	int current = 0;
+	protected int current = 0;
 
 	@Override
 	public void initialize(UimaContext context)
@@ -54,38 +55,41 @@ public abstract class AbstractDramaReader extends JCasCollectionReader_ImplBase 
 	}
 
 	public <T extends Annotation> Collection<T> select2Annotation(JCas jcas,
-			Element rootElement, Map<String, HTMLAnnotation> annoMap, String cssSelector, Class<T> annoClass, Annotation coveringAnnotation) {
-				HashSet<T> set = new HashSet<T>();
-				Elements elms = rootElement.select(cssSelector);
-				for (Element elm : elms) {
-					HTMLAnnotation hAnno = annoMap.get(elm.cssSelector());
-					if (coveringAnnotation == null
-							|| (coveringAnnotation.getBegin() <= hAnno.getBegin() && coveringAnnotation
-									.getEnd() >= hAnno.getEnd()))
-						set.add(AnnotationFactory.createAnnotation(jcas,
-								hAnno.getBegin(), hAnno.getEnd(), annoClass));
-				}
-				return set;
-			}
+			Element rootElement, Map<String, HTMLAnnotation> annoMap,
+			String cssSelector, Class<T> annoClass,
+			Annotation coveringAnnotation) {
+		HashSet<T> set = new HashSet<T>();
+		Elements elms = rootElement.select(cssSelector);
+		for (Element elm : elms) {
+			HTMLAnnotation hAnno = annoMap.get(elm.cssSelector());
+			if (coveringAnnotation == null
+					|| (coveringAnnotation.getBegin() <= hAnno.getBegin() && coveringAnnotation
+					.getEnd() >= hAnno.getEnd()))
+				set.add(AnnotationFactory.createAnnotation(jcas,
+						hAnno.getBegin(), hAnno.getEnd(), annoClass));
+		}
+		return set;
+	}
 
 	public <T extends Annotation> T selectRange2Annotation(JCas jcas,
-			Element rootElement, Map<String, HTMLAnnotation> annoMap, String beginCssSelector, String endCssSelector, Class<T> annoClass) {
-				Elements elms = rootElement.select(beginCssSelector);
-				int begin = jcas.size();
-				for (Element elm : elms) {
-					HTMLAnnotation hAnno = annoMap.get(elm.cssSelector());
-					if (hAnno.getBegin() < begin) begin = hAnno.getBegin();
-				}
-			
-				elms = rootElement.select(endCssSelector);
-				int end = 0;
-				for (Element elm : elms) {
-					HTMLAnnotation hAnno = annoMap.get(elm.cssSelector());
-					if (hAnno.getEnd() > end) end = hAnno.getEnd();
-				}
-			
-				return AnnotationFactory.createAnnotation(jcas, begin, end, annoClass);
-			}
+			Element rootElement, Map<String, HTMLAnnotation> annoMap,
+			String beginCssSelector, String endCssSelector, Class<T> annoClass) {
+		Elements elms = rootElement.select(beginCssSelector);
+		int begin = jcas.size();
+		for (Element elm : elms) {
+			HTMLAnnotation hAnno = annoMap.get(elm.cssSelector());
+			if (hAnno.getBegin() < begin) begin = hAnno.getBegin();
+		}
+
+		elms = rootElement.select(endCssSelector);
+		int end = 0;
+		for (Element elm : elms) {
+			HTMLAnnotation hAnno = annoMap.get(elm.cssSelector());
+			if (hAnno.getEnd() > end) end = hAnno.getEnd();
+		}
+
+		return AnnotationFactory.createAnnotation(jcas, begin, end, annoClass);
+	}
 
 	public class Visitor implements NodeVisitor {
 
@@ -94,6 +98,8 @@ public abstract class AbstractDramaReader extends JCasCollectionReader_ImplBase 
 
 		Map<String, HTMLAnnotation> annotationMap =
 				new HashMap<String, HTMLAnnotation>();
+
+		String[] blockElements = new String[] { "l", "p" };
 
 		public Visitor(JCas jcas) {
 			builder = new JCasBuilder(jcas);
@@ -119,7 +125,9 @@ public abstract class AbstractDramaReader extends JCasCollectionReader_ImplBase 
 				else
 					anno.setCls(elm.className());
 				annotationMap.put(elm.cssSelector(), anno);
-				if (elm.isBlock()) builder.add("\n");
+				if (elm.isBlock()
+						|| ArrayUtils.contains(blockElements, elm.tagName()))
+					builder.add("\n");
 			}
 		}
 
