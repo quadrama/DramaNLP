@@ -1,0 +1,1 @@
+classpath*:de/unistuttgart/quadrama/core/api/Types.xml
