@@ -22,15 +22,16 @@ public class DramaSpeechPostProcessing extends JCasAnnotator_ImplBase {
 
 		try {
 			// map tokens
-			JCas utteranceCas = jcas.getView("Utterances");
+			JCas utteranceCas =
+					jcas.getView(DramaSpeechSegmenter.SOFA_UTTERANCES);
 			for (Origin origin : JCasUtil.select(utteranceCas, Origin.class)) {
 				for (Token token : JCasUtil.selectCovered(Token.class, origin)) {
 					int begin =
 							token.getBegin() + origin.getOffset()
-									- origin.getBegin();
+							- origin.getBegin();
 					int end =
 							token.getEnd() + origin.getOffset()
-									- origin.getBegin();
+							- origin.getBegin();
 					AnnotationFactory.createAnnotation(jcas, begin, end,
 							Token.class);
 				}
@@ -49,11 +50,11 @@ public class DramaSpeechPostProcessing extends JCasAnnotator_ImplBase {
 				Origin firstOrigin = covers.get(firstToken).iterator().next();
 				int begin =
 						sentence.getBegin() + firstOrigin.getOffset()
-						- firstOrigin.getBegin();
+								- firstOrigin.getBegin();
 				Origin lastOrigin = covers.get(lastToken).iterator().next();
 				int end =
 						sentence.getEnd() + lastOrigin.getOffset()
-						- lastOrigin.getBegin();
+								- lastOrigin.getBegin();
 				AnnotationFactory.createAnnotation(jcas, begin, end,
 						Sentence.class);
 			}

@@ -12,12 +12,12 @@ import de.unistuttgart.quadrama.api.Utterance;
 import de.unistuttgart.quadrama.core.api.Origin;
 
 public class DramaSpeechPreparation extends JCasAnnotator_ImplBase {
-
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
 		JCas utteranceCas;
 		try {
-			utteranceCas = jcas.createView("Utterances");
+			utteranceCas =
+					jcas.createView(DramaSpeechSegmenter.SOFA_UTTERANCES);
 			utteranceCas.setDocumentLanguage(jcas.getDocumentLanguage());
 			JCasBuilder b = new JCasBuilder(utteranceCas);
 			for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
