@@ -4,7 +4,7 @@
 
   <groupId>de.unistuttgart.quadrama</groupId>
   <artifactId>de.unistuttgart.quadrama</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>QuaDramA</name>

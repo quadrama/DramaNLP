@@ -5,7 +5,7 @@
   <parent>
     <groupId>de.unistuttgart.quadrama</groupId>
     <artifactId>de.unistuttgart.quadrama</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.1-SNAPSHOT</version>
   </parent>
   <artifactId>de.unistuttgart.quadrama.core</artifactId>
   <name>de.unistuttgart.quadrama.core</name>
