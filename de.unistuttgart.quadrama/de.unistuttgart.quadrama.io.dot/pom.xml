@@ -1,0 +1,34 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>de.unistuttgart.quadrama</groupId>
+    <artifactId>de.unistuttgart.quadrama</artifactId>
+    <version>0.2-SNAPSHOT</version>
+  </parent>
+  <artifactId>de.unistuttgart.quadrama.io.dot</artifactId>
+  <name>de.unistuttgart.quadrama.io.dot</name>
+  <dependencies>
+  	<dependency>
+  		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+  		<artifactId>
+  			de.tudarmstadt.ukp.dkpro.core.api.io-asl
+  		</artifactId>
+  		<version>1.7.0</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>de.unistuttgart.quadrama</groupId>
+  		<artifactId>de.unistuttgart.quadrama.api</artifactId>
+  		<version>0.2-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.jgrapht</groupId>
+  		<artifactId>jgrapht-core</artifactId>
+  		<version>0.9.1</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.jgrapht</groupId>
+  		<artifactId>jgrapht-ext</artifactId>
+  		<version>0.9.1</version>
+  	</dependency>
+  </dependencies>
+</project>
