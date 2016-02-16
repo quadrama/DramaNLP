@@ -14,6 +14,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.parser.Parser;
 
 import de.unistuttgart.quadrama.api.Act;
+import de.unistuttgart.quadrama.api.CastMember;
 import de.unistuttgart.quadrama.api.Drama;
 import de.unistuttgart.quadrama.api.DramatisPersonae;
 import de.unistuttgart.quadrama.api.FrontMatter;
@@ -72,6 +73,8 @@ public class TextgridTEIReader extends AbstractDramaReader {
 		select2Annotation(jcas, root, vis.getAnnotationMap(),
 				"front div:has(p)", DramatisPersonae.class, frontMatter);
 
+		select2Annotation(jcas, root, vis.getAnnotationMap(), "front p",
+				CastMember.class, frontMatter);
 		cleanUp(jcas);
 	}
 }

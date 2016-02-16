@@ -60,7 +60,9 @@ public class GutenbergDEReader extends AbstractDramaReader {
 
 		// identify simple annotations
 		select2Annotation(jcas, doc, annoMap, "span.speaker", Speaker.class,
-				null);
+				mainMatter);
+		select2Annotation(jcas, doc, annoMap, "span.speaker", Speaker.class,
+				frontMatter);
 		select2Annotation(jcas, doc, annoMap, "span.regie",
 				StageDirection.class, mainMatter);
 		select2Annotation(jcas, doc, annoMap, "span.footnote", Footnote.class,
