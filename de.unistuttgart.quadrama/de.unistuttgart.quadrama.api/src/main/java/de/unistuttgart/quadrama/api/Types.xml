@@ -104,5 +104,10 @@
       <description/>
       <supertypeName>de.unistuttgart.quadrama.api.Speech</supertypeName>
     </typeDescription>
+  <typeDescription>
+      <name>de.unistuttgart.quadrama.api.CastMember</name>
+      <description/>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+    </typeDescription>
   </types>
 </typeSystemDescription>
