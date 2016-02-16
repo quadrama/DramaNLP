@@ -24,11 +24,6 @@
     	<artifactId>uimafit-core</artifactId>
     </dependency>
     <dependency>
-    	<groupId>de.unistuttgart.quadrama</groupId>
-    	<artifactId>api</artifactId>
-    	<version>0.0.1-SNAPSHOT</version>
-    </dependency>
-    <dependency>
     	<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
     	<artifactId>
     		de.tudarmstadt.ukp.dkpro.core.languagetool-asl
@@ -59,6 +54,11 @@
     	</artifactId>
     	<version>1.7.0</version>
     	<scope>test</scope>
+    </dependency>
+    <dependency>
+    	<groupId>de.unistuttgart.quadrama</groupId>
+    	<artifactId>de.unistuttgart.quadrama.api</artifactId>
+    	<version>0.2-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>
