@@ -28,8 +28,8 @@ import org.jsoup.nodes.TextNode;
 import org.jsoup.select.Elements;
 import org.jsoup.select.NodeVisitor;
 
-import de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData;
 import de.unistuttgart.quadrama.api.Act;
+import de.unistuttgart.quadrama.api.Drama;
 import de.unistuttgart.quadrama.api.DramatisPersonae;
 import de.unistuttgart.quadrama.api.Footnote;
 import de.unistuttgart.quadrama.api.FrontMatter;
@@ -73,8 +73,9 @@ public class GutenbergDEReader extends JCasCollectionReader_ImplBase {
 	@Override
 	public void getNext(JCas jcas) throws IOException, CollectionException {
 
-		DocumentMetaData dmd = DocumentMetaData.create(jcas);
-		dmd.setDocumentId("test");
+		Drama drama = new Drama(jcas);
+		drama.setDocumentId("test");
+		drama.addToIndexes();
 
 		File file = files[current++];
 
@@ -162,7 +163,7 @@ public class GutenbergDEReader extends JCasCollectionReader_ImplBase {
 			HTMLAnnotation hAnno = annoMap.get(elm.cssSelector());
 			if (coveringAnnotation == null
 					|| (coveringAnnotation.getBegin() <= hAnno.getBegin() && coveringAnnotation
-							.getEnd() >= hAnno.getEnd()))
+					.getEnd() >= hAnno.getEnd()))
 				set.add(AnnotationFactory.createAnnotation(jcas,
 						hAnno.getBegin(), hAnno.getEnd(), annoClass));
 		}
