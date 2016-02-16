@@ -67,5 +67,7 @@ public class TextgridTEIReader extends AbstractDramaReader {
 				Act.class, null);
 		select2Annotation(jcas, doc, vis.getAnnotationMap(),
 				"front div:has(p)", DramatisPersonae.class, frontMatter);
+
+		cleanUp(jcas);
 	}
 }
