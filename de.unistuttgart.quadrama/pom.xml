@@ -7,8 +7,8 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
-  <name>root-pom</name>
-  <url>http://maven.apache.org</url>
+  <name>QuaDramA</name>
+  <url>https://clarin06.ims.uni-stuttgart.de/quadrama/anglogerman</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
