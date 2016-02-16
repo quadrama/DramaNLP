@@ -55,8 +55,8 @@
   	</dependencies>
   </dependencyManagement>
   <modules>
-    <module>api</module>
-    <module>io.gutenbergde</module>
+    <module>de.unistuttgart.quadrama.api</module>
+    <module>de.unistuttgart.quadrama.io.gutenbergde</module>
     <module>de.unistuttgart.quadrama.core</module>
   </modules>
 </project>
