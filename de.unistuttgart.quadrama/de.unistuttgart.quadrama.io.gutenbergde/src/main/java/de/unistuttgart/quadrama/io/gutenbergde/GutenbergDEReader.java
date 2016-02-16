@@ -3,6 +3,7 @@ package de.unistuttgart.quadrama.io.gutenbergde;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -35,6 +36,7 @@ import de.unistuttgart.quadrama.api.FrontMatter;
 import de.unistuttgart.quadrama.api.MainMatter;
 import de.unistuttgart.quadrama.api.Scene;
 import de.unistuttgart.quadrama.api.Speaker;
+import de.unistuttgart.quadrama.api.Speech;
 import de.unistuttgart.quadrama.api.StageDirection;
 import de.unistuttgart.quadrama.api.Utterance;
 import de.unistuttgart.quadrama.io.gutenbergde.type.HTMLAnnotation;
@@ -102,22 +104,34 @@ public class GutenbergDEReader extends JCasCollectionReader_ImplBase {
 		select2Annotation(jcas, doc, annoMap, "h3 + p", DramatisPersonae.class,
 				frontMatter);
 
-		// identify utterances
-		for (Utterance utter : select2Annotation(jcas, doc, annoMap,
-				"p:has(span.speaker)", Utterance.class, mainMatter)) {
-			utter.setSpeaker(JCasUtil.selectCovered(Speaker.class, utter)
-					.get(0));
-			try {
-				utter.setStage(JCasUtil.selectCovered(StageDirection.class,
-						utter).get(0));
-			} catch (IndexOutOfBoundsException e) {
-				// many utterances don't have stage directions
-			}
-			// TODO: identify speech content
-		};
+		select2Annotation(jcas, doc, annoMap, "p:has(span.speaker)",
+				Utterance.class, mainMatter);
 
 		this.assignSpeakerIds(jcas);
 
+		for (Utterance utterance : JCasUtil.selectCovered(Utterance.class,
+				mainMatter)) {
+			ArrayList<Annotation> except = new ArrayList<Annotation>();
+			except.addAll(JCasUtil.selectCovered(StageDirection.class,
+					utterance));
+			except.addAll(JCasUtil.selectCovered(Speaker.class, utterance));
+			except.addAll(JCasUtil.selectCovered(Footnote.class, utterance));
+			int b = utterance.getBegin();
+			for (Annotation exc : except) {
+				if (exc.getBegin() > b) {
+					AnnotationFactory.createAnnotation(jcas, b, exc.getBegin(),
+							Speech.class);
+				}
+				b = exc.getEnd();
+			}
+			if (b < utterance.getEnd()) {
+				AnnotationFactory.createAnnotation(jcas, b, utterance.getEnd(),
+						Speech.class);
+			}
+		}
+
+		// aggregating annotations
+		// TODO: convert to range function
 		int currentSceneBegin = -1;
 		int currentActBegin = -1;
 		for (HTMLAnnotation anno : JCasUtil.select(jcas, HTMLAnnotation.class)) {
@@ -148,8 +162,7 @@ public class GutenbergDEReader extends JCasCollectionReader_ImplBase {
 			HTMLAnnotation hAnno = annoMap.get(elm.cssSelector());
 			if (coveringAnnotation == null
 					|| (coveringAnnotation.getBegin() <= hAnno.getBegin() && coveringAnnotation
-					.getEnd() >= hAnno.getEnd()))
-			// if (!JCasUtil.selectCovering(MainMatter.class, hAnno).isEmpty())
+							.getEnd() >= hAnno.getEnd()))
 				set.add(AnnotationFactory.createAnnotation(jcas,
 						hAnno.getBegin(), hAnno.getEnd(), annoClass));
 		}
