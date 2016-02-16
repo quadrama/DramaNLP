@@ -138,7 +138,6 @@ public class GutenbergDEReader extends JCasCollectionReader_ImplBase {
 	}
 
 	protected void annotateSpeech(JCas jcas, Annotation mainMatter) {
-		String text = jcas.getDocumentText();
 		for (Utterance utterance : JCasUtil.selectCovered(Utterance.class,
 				mainMatter)) {
 			TreeSet<Annotation> except =
