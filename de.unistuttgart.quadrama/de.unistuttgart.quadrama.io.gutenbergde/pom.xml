@@ -5,7 +5,7 @@
   <parent>
     <groupId>de.unistuttgart.quadrama</groupId>
     <artifactId>de.unistuttgart.quadrama</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.2-SNAPSHOT</version>
   </parent>
   <artifactId>de.unistuttgart.quadrama.io.gutenbergde</artifactId>
   <name>de.unistuttgart.quadrama.io.gutenbergde</name>
@@ -51,7 +51,7 @@
     <dependency>
     	<groupId>de.unistuttgart.quadrama</groupId>
     	<artifactId>de.unistuttgart.quadrama.io.core</artifactId>
-    	<version>0.1-SNAPSHOT</version>
+    	<version>0.2-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>
