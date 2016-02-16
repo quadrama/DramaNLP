@@ -30,7 +30,7 @@ public class TextgridTEIReader extends AbstractDramaReader {
 	@Override
 	public void getNext(JCas jcas) throws IOException, CollectionException {
 		Drama drama = new Drama(jcas);
-		drama.setDocumentId("test");
+		drama.setDocumentId("testtei");
 		drama.addToIndexes();
 		jcas.setDocumentLanguage("de");
 

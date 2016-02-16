@@ -18,6 +18,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
+import de.unistuttgart.ims.uimautil.SetDocumentId;
 import de.unistuttgart.quadrama.api.Act;
 import de.unistuttgart.quadrama.api.Drama;
 import de.unistuttgart.quadrama.api.DramatisPersonae;
@@ -45,6 +46,10 @@ public class TestTextgridTEIReader {
 				SimplePipeline
 						.iteratePipeline(
 								description,
+								AnalysisEngineFactory.createEngineDescription(
+								SetDocumentId.class,
+								SetDocumentId.PARAM_DOCUMENT_ID,
+										"Schlegel"),
 								AnalysisEngineFactory.createEngineDescription(
 										XmiWriter.class,
 										XmiWriter.PARAM_TARGET_LOCATION,
