@@ -4,7 +4,9 @@ import static org.apache.commons.io.IOUtils.closeQuietly;
 
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.util.JCasUtil;
@@ -23,12 +25,15 @@ public class DotExporter extends JCasFileWriter_ImplBase {
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
 
-		SimpleWeightedGraph<String, DefaultWeightedEdge> graph =
-				new SimpleWeightedGraph<String, DefaultWeightedEdge>(
+		SimpleWeightedGraph<Integer, DefaultWeightedEdge> graph =
+				new SimpleWeightedGraph<Integer, DefaultWeightedEdge>(
 						DefaultWeightedEdge.class);
-
+		final Map<Integer, String> nameMap = new HashMap<Integer, String>();
 		for (Speaker speaker : JCasUtil.select(jcas, Speaker.class)) {
-			graph.addVertex(speaker.getCoveredText());
+			if (!graph.containsVertex(speaker.getId())) {
+				graph.addVertex(speaker.getId());
+				nameMap.put(speaker.getId(), speaker.getCoveredText());
+			}
 		}
 
 		for (Scene scene : JCasUtil.select(jcas, Scene.class)) {
@@ -36,17 +41,14 @@ public class DotExporter extends JCasFileWriter_ImplBase {
 					JCasUtil.selectCovered(Speaker.class, scene);
 			for (Speaker s1 : speakers) {
 				for (Speaker s2 : speakers) {
-					if (graph.containsEdge(s1.getCoveredText(),
-							s2.getCoveredText())) {
+					if (graph.containsEdge(s1.getId(), s2.getId())) {
 						DefaultWeightedEdge edge =
-								graph.getEdge(s1.getCoveredText(),
-										s2.getCoveredText());
+								graph.getEdge(s1.getId(), s2.getId());
 						double w = graph.getEdgeWeight(edge);
 						graph.setEdgeWeight(edge, w + 1.0);
 					} else {
-						if (!s1.getCoveredText().equals(s2.getCoveredText()))
-							graph.addEdge(s1.getCoveredText(),
-									s2.getCoveredText());
+						if (s1.getId() != s2.getId())
+							graph.addEdge(s1.getId(), s2.getId());
 					}
 				}
 			};
@@ -57,17 +59,17 @@ public class DotExporter extends JCasFileWriter_ImplBase {
 		try {
 			docOS = getOutputStream(jcas, ".dot");
 			writer = new OutputStreamWriter(docOS);
-			DOTExporter<String, DefaultWeightedEdge> exporter =
-					new DOTExporter<String, DefaultWeightedEdge>(
-							new VertexNameProvider<String>() {
+			DOTExporter<Integer, DefaultWeightedEdge> exporter =
+					new DOTExporter<Integer, DefaultWeightedEdge>(
+							new VertexNameProvider<Integer>() {
 
-								public String getVertexName(String vertex) {
+								public String getVertexName(Integer vertex) {
 									return String.valueOf(vertex.hashCode());
 								}
-							}, new VertexNameProvider<String>() {
+							}, new VertexNameProvider<Integer>() {
 
-								public String getVertexName(String vertex) {
-									return vertex;
+								public String getVertexName(Integer vertex) {
+									return nameMap.get(vertex);
 								}
 							}, null);
 			exporter.export(writer, graph);
