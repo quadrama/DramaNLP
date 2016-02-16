@@ -44,5 +44,13 @@
     	<version>1.7.0</version>
     	<scope>test</scope>
     </dependency>
+    <dependency>
+    	<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+    	<artifactId>
+    		de.tudarmstadt.ukp.dkpro.core.stanfordnlp-gpl
+    	</artifactId>
+    	<version>1.7.0</version>
+    	<scope>test</scope>
+    </dependency>
   </dependencies>
 </project>
