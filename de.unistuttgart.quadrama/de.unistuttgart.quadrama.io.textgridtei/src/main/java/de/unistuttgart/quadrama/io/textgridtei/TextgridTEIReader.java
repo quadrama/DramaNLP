@@ -10,6 +10,7 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.parser.Parser;
 
 import de.unistuttgart.quadrama.api.Act;
@@ -39,33 +40,35 @@ public class TextgridTEIReader extends AbstractDramaReader {
 		Document doc = Jsoup.parse(str, "", Parser.xmlParser());
 
 		Visitor vis = new Visitor(jcas);
-		doc.traverse(vis);
+
+		Element root = doc.select("TEI > text").first();
+		root.traverse(vis);
 		jcas = vis.getJCas();
 
-		selectRange2Annotation(jcas, doc, vis.getAnnotationMap(), "title",
-				"front", FrontMatter.class);
-		select2Annotation(jcas, doc, vis.getAnnotationMap(), "body",
+		select2Annotation(jcas, root, vis.getAnnotationMap(), "front",
+				FrontMatter.class, null);
+		select2Annotation(jcas, root, vis.getAnnotationMap(), "body",
 				MainMatter.class, null);
 
 		FrontMatter frontMatter =
 				JCasUtil.selectSingle(jcas, FrontMatter.class);
 		MainMatter mainMatter = JCasUtil.selectSingle(jcas, MainMatter.class);
 
-		select2Annotation(jcas, doc, vis.getAnnotationMap(), "speaker",
+		select2Annotation(jcas, root, vis.getAnnotationMap(), "speaker",
 				Speaker.class, null);
-		select2Annotation(jcas, doc, vis.getAnnotationMap(), "stage",
+		select2Annotation(jcas, root, vis.getAnnotationMap(), "stage",
 				StageDirection.class, mainMatter);
-		select2Annotation(jcas, doc, vis.getAnnotationMap(), "sp",
+		select2Annotation(jcas, root, vis.getAnnotationMap(), "sp",
 				Utterance.class, null);
-		select2Annotation(jcas, doc, vis.getAnnotationMap(), "l", Speech.class,
-				mainMatter);
-		select2Annotation(jcas, doc, vis.getAnnotationMap(), "p", Speech.class,
-				mainMatter);
-		select2Annotation(jcas, doc, vis.getAnnotationMap(), "div[type=scene]",
-				Scene.class, null);
-		select2Annotation(jcas, doc, vis.getAnnotationMap(), "body > div",
+		select2Annotation(jcas, root, vis.getAnnotationMap(), "l",
+				Speech.class, mainMatter);
+		select2Annotation(jcas, root, vis.getAnnotationMap(), "p",
+				Speech.class, mainMatter);
+		select2Annotation(jcas, root, vis.getAnnotationMap(),
+				"div[type=scene]", Scene.class, null);
+		select2Annotation(jcas, root, vis.getAnnotationMap(), "body > div",
 				Act.class, null);
-		select2Annotation(jcas, doc, vis.getAnnotationMap(),
+		select2Annotation(jcas, root, vis.getAnnotationMap(),
 				"front div:has(p)", DramatisPersonae.class, frontMatter);
 
 		cleanUp(jcas);
