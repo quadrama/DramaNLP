@@ -7,4 +7,37 @@
   </parent>
   <artifactId>de.unistuttgart.quadrama.experiments</artifactId>
   <name>de.unistuttgart.quadrama.experiments</name>
+  <dependencies>
+  	<dependency>
+  		<groupId>de.unistuttgart.quadrama</groupId>
+  		<artifactId>de.unistuttgart.quadrama.api</artifactId>
+  		<version>0.2-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>de.unistuttgart.quadrama</groupId>
+  		<artifactId>de.unistuttgart.quadrama.core</artifactId>
+  		<version>0.2-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+  		<artifactId>
+  			de.tudarmstadt.ukp.dkpro.core.io.xmi-asl
+  		</artifactId>
+  		<version>1.7.0</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+  		<artifactId>
+  			de.tudarmstadt.ukp.dkpro.core.languagetool-asl
+  		</artifactId>
+  		<version>1.7.0</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+  		<artifactId>
+  			de.tudarmstadt.ukp.dkpro.core.stanfordnlp-gpl
+  		</artifactId>
+  		<version>1.7.0</version>
+  	</dependency>
+  </dependencies>
 </project>
