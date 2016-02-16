@@ -11,7 +11,7 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** 
- * Updated by JCasGen Mon Feb 15 08:59:26 CET 2016
+ * Updated by JCasGen Tue Feb 16 21:59:45 CET 2016
  * XML source: /Users/reiterns/Documents/DH/anglogerman/de.unistuttgart.quadrama/de.unistuttgart.quadrama.api/src/main/java/de/unistuttgart/quadrama/api/Types.xml
  * @generated */
 public class Speaker extends Annotation {
@@ -96,6 +96,28 @@ public class Speaker extends Annotation {
     if (Speaker_Type.featOkTst && ((Speaker_Type)jcasType).casFeat_Id == null)
       jcasType.jcas.throwFeatMissing("Id", "de.unistuttgart.quadrama.api.Speaker");
     jcasType.ll_cas.ll_setIntValue(addr, ((Speaker_Type)jcasType).casFeatCode_Id, v);}    
+   
+    
+  //*--------------*
+  //* Feature: CastMember
+
+  /** getter for CastMember - gets 
+   * @generated
+   * @return value of the feature 
+   */
+  public CastMember getCastMember() {
+    if (Speaker_Type.featOkTst && ((Speaker_Type)jcasType).casFeat_CastMember == null)
+      jcasType.jcas.throwFeatMissing("CastMember", "de.unistuttgart.quadrama.api.Speaker");
+    return (CastMember)(jcasType.ll_cas.ll_getFSForRef(jcasType.ll_cas.ll_getRefValue(addr, ((Speaker_Type)jcasType).casFeatCode_CastMember)));}
+    
+  /** setter for CastMember - sets  
+   * @generated
+   * @param v value to set into the feature 
+   */
+  public void setCastMember(CastMember v) {
+    if (Speaker_Type.featOkTst && ((Speaker_Type)jcasType).casFeat_CastMember == null)
+      jcasType.jcas.throwFeatMissing("CastMember", "de.unistuttgart.quadrama.api.Speaker");
+    jcasType.ll_cas.ll_setRefValue(addr, ((Speaker_Type)jcasType).casFeatCode_CastMember, jcasType.ll_cas.ll_getFSRef(v));}    
   }
 
     
