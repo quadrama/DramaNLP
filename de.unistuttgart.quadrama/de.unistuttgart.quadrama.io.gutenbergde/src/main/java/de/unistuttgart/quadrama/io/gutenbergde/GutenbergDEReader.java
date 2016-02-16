@@ -77,6 +77,7 @@ public class GutenbergDEReader extends JCasCollectionReader_ImplBase {
 		Drama drama = new Drama(jcas);
 		drama.setDocumentId("test");
 		drama.addToIndexes();
+		jcas.setDocumentLanguage("de");
 
 		File file = files[current++];
 
@@ -133,6 +134,7 @@ public class GutenbergDEReader extends JCasCollectionReader_ImplBase {
 				currentActBegin = anno.getBegin();
 			}
 		}
+
 	}
 
 	protected void annotateSpeech(JCas jcas, Annotation mainMatter) {
@@ -176,7 +178,7 @@ public class GutenbergDEReader extends JCasCollectionReader_ImplBase {
 			HTMLAnnotation hAnno = annoMap.get(elm.cssSelector());
 			if (coveringAnnotation == null
 					|| (coveringAnnotation.getBegin() <= hAnno.getBegin() && coveringAnnotation
-					.getEnd() >= hAnno.getEnd()))
+							.getEnd() >= hAnno.getEnd()))
 				set.add(AnnotationFactory.createAnnotation(jcas,
 						hAnno.getBegin(), hAnno.getEnd(), annoClass));
 		}
