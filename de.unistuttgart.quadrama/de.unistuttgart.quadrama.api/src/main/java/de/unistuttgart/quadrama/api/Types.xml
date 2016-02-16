@@ -94,5 +94,15 @@
       <description/>
       <supertypeName>de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData</supertypeName>
     </typeDescription>
+  <typeDescription>
+      <name>de.unistuttgart.quadrama.api.SpeechVerse</name>
+      <description/>
+      <supertypeName>de.unistuttgart.quadrama.api.Speech</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>de.unistuttgart.quadrama.api.SpeechProse</name>
+      <description/>
+      <supertypeName>de.unistuttgart.quadrama.api.Speech</supertypeName>
+    </typeDescription>
   </types>
 </typeSystemDescription>
