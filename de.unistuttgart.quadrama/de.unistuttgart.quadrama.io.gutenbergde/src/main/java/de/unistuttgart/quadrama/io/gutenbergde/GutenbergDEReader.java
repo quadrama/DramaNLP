@@ -96,6 +96,8 @@ public class GutenbergDEReader extends AbstractDramaReader {
 			}
 		}
 
+		this.cleanUp(jcas);
+
 	}
 
 	protected void annotateSpeech(JCas jcas, Annotation mainMatter) {
