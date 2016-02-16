@@ -4,6 +4,9 @@
   <description/>
   <version>1</version>
   <vendor>Nils Reiter</vendor>
+  <imports>
+    <import name="desc.type.metadata_customized"/>
+  </imports>
   <types>
   	<typeDescription>
       <name>de.unistuttgart.quadrama.api.Speaker</name>
@@ -85,6 +88,11 @@
       <name>de.unistuttgart.quadrama.api.MainMatter</name>
       <description/>
       <supertypeName>uima.tcas.Annotation</supertypeName>
+    </typeDescription>
+  <typeDescription>
+      <name>de.unistuttgart.quadrama.api.Drama</name>
+      <description/>
+      <supertypeName>de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData</supertypeName>
     </typeDescription>
   </types>
 </typeSystemDescription>
