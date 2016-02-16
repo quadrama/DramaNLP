@@ -11,8 +11,10 @@ import org.apache.uima.fit.pipeline.SimplePipeline;
 import org.apache.uima.resource.ResourceInitializationException;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiReader;
+import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.tudarmstadt.ukp.dkpro.core.languagetool.LanguageToolSegmenter;
 import de.unistuttgart.quadrama.core.DramaSpeechSegmenter;
+import de.unistuttgart.quadrama.core.SpeakerIdentifier;
 import de.unistuttgart.quadrama.io.dot.DotExporter;
 
 public class Visualise {
@@ -30,8 +32,11 @@ public class Visualise {
 				createEngineDescription(FixGutenbergSpeech.class),
 				DramaSpeechSegmenter
 				.getWrappedSegmenterDescription(LanguageToolSegmenter.class),
+				createEngineDescription(SpeakerIdentifier.class),
 				createEngineDescription(DotExporter.class,
 								DotExporter.PARAM_TARGET_LOCATION,
-								"target/dot/"));
+								"target/dot/"),
+						createEngineDescription(XmiWriter.class,
+								XmiWriter.PARAM_TARGET_LOCATION, "target/xmi/"));
 	}
 }
