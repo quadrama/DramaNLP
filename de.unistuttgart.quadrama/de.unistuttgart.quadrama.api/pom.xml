@@ -7,7 +7,7 @@
     <artifactId>de.unistuttgart.quadrama</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>api</artifactId>
+  <artifactId>de.unistuttgart.quadrama.api</artifactId>
   <name>api</name>
   <url>http://maven.apache.org</url>
   <properties>

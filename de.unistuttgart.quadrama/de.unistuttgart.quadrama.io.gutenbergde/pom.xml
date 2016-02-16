@@ -7,7 +7,7 @@
     <artifactId>de.unistuttgart.quadrama</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>io.gutenbergde</artifactId>
+  <artifactId>de.unistuttgart.quadrama.io.gutenbergde</artifactId>
   <name>io.gutenbergde</name>
   <url>http://maven.apache.org</url>
   <properties>
