@@ -64,7 +64,7 @@ public abstract class AbstractDramaReader extends JCasCollectionReader_ImplBase 
 			HTMLAnnotation hAnno = annoMap.get(elm.cssSelector());
 			if (coveringAnnotation == null
 					|| (coveringAnnotation.getBegin() <= hAnno.getBegin() && coveringAnnotation
-					.getEnd() >= hAnno.getEnd()))
+							.getEnd() >= hAnno.getEnd()))
 				set.add(AnnotationFactory.createAnnotation(jcas,
 						hAnno.getBegin(), hAnno.getEnd(), annoClass));
 		}
@@ -99,7 +99,7 @@ public abstract class AbstractDramaReader extends JCasCollectionReader_ImplBase 
 		Map<String, HTMLAnnotation> annotationMap =
 				new HashMap<String, HTMLAnnotation>();
 
-		String[] blockElements = new String[] { "l", "p" };
+		String[] blockElements = new String[] { "l", "p", "sp" };
 
 		public Visitor(JCas jcas) {
 			builder = new JCasBuilder(jcas);
