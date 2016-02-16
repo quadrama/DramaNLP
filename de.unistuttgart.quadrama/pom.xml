@@ -60,5 +60,6 @@
     <module>de.unistuttgart.quadrama.core</module>
     
     <module>de.unistuttgart.quadrama.io.textgridtei</module>
+    <module>de.unistuttgart.quadrama.io.core</module>
   </modules>
 </project>
