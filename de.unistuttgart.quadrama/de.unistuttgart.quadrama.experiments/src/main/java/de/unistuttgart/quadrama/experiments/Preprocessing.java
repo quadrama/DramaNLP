@@ -13,7 +13,7 @@ import org.apache.uima.resource.ResourceInitializationException;
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiReader;
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.tudarmstadt.ukp.dkpro.core.languagetool.LanguageToolSegmenter;
-import de.tudarmstadt.ukp.dkpro.core.matetools.MateParser;
+import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordParser;
 import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordPosTagger;
 import de.unistuttgart.quadrama.core.DramaSpeechSegmenter;
 
@@ -26,14 +26,14 @@ public class Preprocessing {
 						"src/main/resources/romeo-and-juliet/de/*.xmi");
 
 		SimplePipeline
-				.runPipeline(
-						crd,
-						createEngineDescription(FixGutenbergSpeech.class),
-						DramaSpeechSegmenter
-								.getWrappedSegmenterDescription(LanguageToolSegmenter.class),
-						createEngineDescription(StanfordPosTagger.class),
-						createEngineDescription(MateParser.class),
-						createEngineDescription(XmiWriter.class,
-								XmiWriter.PARAM_TARGET_LOCATION, "target/"));
+		.runPipeline(
+				crd,
+				createEngineDescription(FixGutenbergSpeech.class),
+				DramaSpeechSegmenter
+				.getWrappedSegmenterDescription(LanguageToolSegmenter.class),
+				createEngineDescription(StanfordPosTagger.class),
+				createEngineDescription(StanfordParser.class),
+				createEngineDescription(XmiWriter.class,
+						XmiWriter.PARAM_TARGET_LOCATION, "target/"));
 	}
 }
