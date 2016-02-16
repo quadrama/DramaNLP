@@ -8,9 +8,7 @@ import java.io.IOException;
 import org.apache.uima.UIMAException;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
-import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.impl.XmiCasDeserializer;
-import org.apache.uima.fit.factory.AggregateBuilder;
 import org.apache.uima.fit.factory.AnalysisEngineFactory;
 import org.apache.uima.fit.factory.JCasFactory;
 import org.apache.uima.fit.factory.TypeSystemDescriptionFactory;
@@ -43,23 +41,14 @@ public class TestDramaSpeechPosTagging {
 		XmiCasDeserializer.deserialize(
 				getClass().getResourceAsStream("/test.xmi"), jcas.getCas(),
 				true);
-		AggregateBuilder builder = new AggregateBuilder();
-		AnalysisEngineDescription aed =
-				AnalysisEngineFactory
-						.createEngineDescription(DramaSpeechPreparation.class);
-		builder.add(aed);
-		builder.add(AnalysisEngineFactory
-				.createEngineDescription(LanguageToolSegmenter.class),
-				CAS.NAME_DEFAULT_SOFA, "Utterances");
-		builder.add(AnalysisEngineFactory
-				.createEngineDescription(DramaSpeechPostProcessing.class));
-
-		desc = builder.createAggregateDescription();
+		desc =
+				DramaSpeechSegmenter
+				.getWrappedSegmenterDescription(LanguageToolSegmenter.class);
 	}
 
 	@Test
 	public void testSegmentation() throws ResourceInitializationException,
-			AnalysisEngineProcessException {
+	AnalysisEngineProcessException {
 
 		SimplePipeline.runPipeline(jcas, desc, AnalysisEngineFactory
 				.createEngineDescription(StanfordPosTagger.class),
