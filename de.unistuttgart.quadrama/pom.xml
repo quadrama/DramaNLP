@@ -57,5 +57,6 @@
   <modules>
     <module>api</module>
     <module>io.gutenbergde</module>
+    <module>de.unistuttgart.quadrama.core</module>
   </modules>
 </project>
