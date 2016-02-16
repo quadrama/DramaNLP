@@ -27,7 +27,8 @@ import de.unistuttgart.quadrama.api.Speaker;
 import de.unistuttgart.quadrama.api.Speech;
 import de.unistuttgart.quadrama.api.StageDirection;
 import de.unistuttgart.quadrama.api.Utterance;
-import de.unistuttgart.quadrama.io.gutenbergde.type.HTMLAnnotation;
+import de.unistuttgart.quadrama.io.core.AbstractDramaReader;
+import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
 
 public class GutenbergDEReader extends AbstractDramaReader {
 

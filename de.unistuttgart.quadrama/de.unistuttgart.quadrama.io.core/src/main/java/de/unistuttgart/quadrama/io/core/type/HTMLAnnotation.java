@@ -1,7 +1,7 @@
 
 
-/* First created by JCasGen Sun Feb 14 18:44:13 CET 2016 */
-package de.unistuttgart.quadrama.io.gutenbergde.type;
+/* First created by JCasGen Tue Feb 16 16:02:10 CET 2016 */
+package de.unistuttgart.quadrama.io.core.type;
 
 import org.apache.uima.jcas.JCas; 
 import org.apache.uima.jcas.JCasRegistry;
@@ -11,8 +11,8 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** 
- * Updated by JCasGen Sun Feb 14 18:54:52 CET 2016
- * XML source: /Users/reiterns/Documents/DH/anglogerman/de.unistuttgart.quadrama/de.unistuttgart.quadrama.io.gutenbergde/src/main/java/de/unistuttgart/quadrama/io/gutenbergde/Types.xml
+ * Updated by JCasGen Tue Feb 16 16:02:10 CET 2016
+ * XML source: /Users/reiterns/Documents/DH/anglogerman/de.unistuttgart.quadrama/de.unistuttgart.quadrama.io.core/src/main/java/de/unistuttgart/quadrama/io/core/Types.xml
  * @generated */
 public class HTMLAnnotation extends Annotation {
   /** @generated
@@ -85,7 +85,7 @@ public class HTMLAnnotation extends Annotation {
    */
   public String getTag() {
     if (HTMLAnnotation_Type.featOkTst && ((HTMLAnnotation_Type)jcasType).casFeat_Tag == null)
-      jcasType.jcas.throwFeatMissing("Tag", "de.unistuttgart.quadrama.io.gutenbergde.type.HTMLAnnotation");
+      jcasType.jcas.throwFeatMissing("Tag", "de.unistuttgart.quadrama.io.core.type.HTMLAnnotation");
     return jcasType.ll_cas.ll_getStringValue(addr, ((HTMLAnnotation_Type)jcasType).casFeatCode_Tag);}
     
   /** setter for Tag - sets  
@@ -94,7 +94,7 @@ public class HTMLAnnotation extends Annotation {
    */
   public void setTag(String v) {
     if (HTMLAnnotation_Type.featOkTst && ((HTMLAnnotation_Type)jcasType).casFeat_Tag == null)
-      jcasType.jcas.throwFeatMissing("Tag", "de.unistuttgart.quadrama.io.gutenbergde.type.HTMLAnnotation");
+      jcasType.jcas.throwFeatMissing("Tag", "de.unistuttgart.quadrama.io.core.type.HTMLAnnotation");
     jcasType.ll_cas.ll_setStringValue(addr, ((HTMLAnnotation_Type)jcasType).casFeatCode_Tag, v);}    
    
     
@@ -107,7 +107,7 @@ public class HTMLAnnotation extends Annotation {
    */
   public String getId() {
     if (HTMLAnnotation_Type.featOkTst && ((HTMLAnnotation_Type)jcasType).casFeat_Id == null)
-      jcasType.jcas.throwFeatMissing("Id", "de.unistuttgart.quadrama.io.gutenbergde.type.HTMLAnnotation");
+      jcasType.jcas.throwFeatMissing("Id", "de.unistuttgart.quadrama.io.core.type.HTMLAnnotation");
     return jcasType.ll_cas.ll_getStringValue(addr, ((HTMLAnnotation_Type)jcasType).casFeatCode_Id);}
     
   /** setter for Id - sets  
@@ -116,7 +116,7 @@ public class HTMLAnnotation extends Annotation {
    */
   public void setId(String v) {
     if (HTMLAnnotation_Type.featOkTst && ((HTMLAnnotation_Type)jcasType).casFeat_Id == null)
-      jcasType.jcas.throwFeatMissing("Id", "de.unistuttgart.quadrama.io.gutenbergde.type.HTMLAnnotation");
+      jcasType.jcas.throwFeatMissing("Id", "de.unistuttgart.quadrama.io.core.type.HTMLAnnotation");
     jcasType.ll_cas.ll_setStringValue(addr, ((HTMLAnnotation_Type)jcasType).casFeatCode_Id, v);}    
    
     
@@ -129,7 +129,7 @@ public class HTMLAnnotation extends Annotation {
    */
   public String getCls() {
     if (HTMLAnnotation_Type.featOkTst && ((HTMLAnnotation_Type)jcasType).casFeat_Cls == null)
-      jcasType.jcas.throwFeatMissing("Cls", "de.unistuttgart.quadrama.io.gutenbergde.type.HTMLAnnotation");
+      jcasType.jcas.throwFeatMissing("Cls", "de.unistuttgart.quadrama.io.core.type.HTMLAnnotation");
     return jcasType.ll_cas.ll_getStringValue(addr, ((HTMLAnnotation_Type)jcasType).casFeatCode_Cls);}
     
   /** setter for Cls - sets  
@@ -138,7 +138,7 @@ public class HTMLAnnotation extends Annotation {
    */
   public void setCls(String v) {
     if (HTMLAnnotation_Type.featOkTst && ((HTMLAnnotation_Type)jcasType).casFeat_Cls == null)
-      jcasType.jcas.throwFeatMissing("Cls", "de.unistuttgart.quadrama.io.gutenbergde.type.HTMLAnnotation");
+      jcasType.jcas.throwFeatMissing("Cls", "de.unistuttgart.quadrama.io.core.type.HTMLAnnotation");
     jcasType.ll_cas.ll_setStringValue(addr, ((HTMLAnnotation_Type)jcasType).casFeatCode_Cls, v);}    
   }
 

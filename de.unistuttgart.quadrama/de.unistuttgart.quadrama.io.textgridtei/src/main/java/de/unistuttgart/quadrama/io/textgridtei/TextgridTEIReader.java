@@ -22,7 +22,7 @@ import de.unistuttgart.quadrama.api.Speaker;
 import de.unistuttgart.quadrama.api.Speech;
 import de.unistuttgart.quadrama.api.StageDirection;
 import de.unistuttgart.quadrama.api.Utterance;
-import de.unistuttgart.quadrama.io.gutenbergde.AbstractDramaReader;
+import de.unistuttgart.quadrama.io.core.AbstractDramaReader;
 
 public class TextgridTEIReader extends AbstractDramaReader {
 

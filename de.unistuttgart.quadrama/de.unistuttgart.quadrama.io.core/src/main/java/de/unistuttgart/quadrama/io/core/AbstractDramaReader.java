@@ -1,4 +1,4 @@
-package de.unistuttgart.quadrama.io.gutenbergde;
+package de.unistuttgart.quadrama.io.core;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,7 +24,7 @@ import org.jsoup.nodes.TextNode;
 import org.jsoup.select.Elements;
 import org.jsoup.select.NodeVisitor;
 
-import de.unistuttgart.quadrama.io.gutenbergde.type.HTMLAnnotation;
+import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
 
 public abstract class AbstractDramaReader extends JCasCollectionReader_ImplBase {
 	public static final String PARAM_INPUT_DIRECTORY = "Input Directory";
@@ -64,7 +64,7 @@ public abstract class AbstractDramaReader extends JCasCollectionReader_ImplBase 
 			HTMLAnnotation hAnno = annoMap.get(elm.cssSelector());
 			if (coveringAnnotation == null
 					|| (coveringAnnotation.getBegin() <= hAnno.getBegin() && coveringAnnotation
-							.getEnd() >= hAnno.getEnd()))
+					.getEnd() >= hAnno.getEnd()))
 				set.add(AnnotationFactory.createAnnotation(jcas,
 						hAnno.getBegin(), hAnno.getEnd(), annoClass));
 		}

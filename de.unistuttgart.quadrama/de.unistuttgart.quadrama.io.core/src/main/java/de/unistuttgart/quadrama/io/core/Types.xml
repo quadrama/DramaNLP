@@ -6,7 +6,7 @@
   <vendor>Nils Reiter</vendor>
   <types>
   	<typeDescription>
-      <name>de.unistuttgart.quadrama.io.gutenbergde.type.HTMLAnnotation</name>
+      <name>de.unistuttgart.quadrama.io.core.type.HTMLAnnotation</name>
       <description/>
       <supertypeName>uima.tcas.Annotation</supertypeName>
       <features>

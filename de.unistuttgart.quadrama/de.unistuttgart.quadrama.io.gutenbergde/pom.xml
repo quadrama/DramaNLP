@@ -29,11 +29,6 @@
     	<artifactId>uimafit-core</artifactId>
     </dependency>
     <dependency>
-    	<groupId>xom</groupId>
-    	<artifactId>xom</artifactId>
-    	<version>1.2.5</version>
-    </dependency>
-    <dependency>
     	<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
     	<artifactId>
     		de.tudarmstadt.ukp.dkpro.core.io.xmi-asl
@@ -52,6 +47,11 @@
     	<groupId>org.jsoup</groupId>
     	<artifactId>jsoup</artifactId>
     	<version>1.8.3</version>
+    </dependency>
+    <dependency>
+    	<groupId>de.unistuttgart.quadrama</groupId>
+    	<artifactId>de.unistuttgart.quadrama.io.core</artifactId>
+    	<version>0.1-SNAPSHOT</version>
     </dependency>
   </dependencies>
 </project>
