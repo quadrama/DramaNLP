@@ -8,6 +8,7 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
 import de.unistuttgart.quadrama.api.Speech;
+import de.unistuttgart.quadrama.api.SpeechVerse;
 import de.unistuttgart.quadrama.api.Utterance;
 import de.unistuttgart.quadrama.core.api.Origin;
 
@@ -25,8 +26,10 @@ public class DramaSpeechPreparation extends JCasAnnotator_ImplBase {
 						utterance)) {
 					b.add(speech.getCoveredText(), Origin.class).setOffset(
 							speech.getBegin());
+					if (speech.getClass().equals(SpeechVerse.class))
+						b.add("\n");
 				}
-				b.add("\n\n\n");
+				b.add("\n\n");
 			}
 			b.close();
 		} catch (CASException e1) {
