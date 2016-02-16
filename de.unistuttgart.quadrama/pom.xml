@@ -58,5 +58,7 @@
     <module>de.unistuttgart.quadrama.api</module>
     <module>de.unistuttgart.quadrama.io.gutenbergde</module>
     <module>de.unistuttgart.quadrama.core</module>
+    
+    <module>de.unistuttgart.quadrama.io.textgridtei</module>
   </modules>
 </project>
