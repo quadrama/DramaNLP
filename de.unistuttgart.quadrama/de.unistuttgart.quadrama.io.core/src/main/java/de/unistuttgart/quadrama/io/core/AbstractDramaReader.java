@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.uima.UimaContext;
@@ -14,6 +15,7 @@ import org.apache.uima.fit.component.JCasCollectionReader_ImplBase;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.factory.AnnotationFactory;
 import org.apache.uima.fit.factory.JCasBuilder;
+import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.apache.uima.resource.ResourceInitializationException;
@@ -69,6 +71,15 @@ public abstract class AbstractDramaReader extends JCasCollectionReader_ImplBase 
 						hAnno.getBegin(), hAnno.getEnd(), annoClass));
 		}
 		return set;
+	}
+
+	public void cleanUp(JCas jcas) {
+		Set<HTMLAnnotation> annos =
+				new HashSet<HTMLAnnotation>(JCasUtil.select(jcas,
+						HTMLAnnotation.class));
+		for (HTMLAnnotation anno : annos) {
+			anno.removeFromIndexes();
+		}
 	}
 
 	public <T extends Annotation> T selectRange2Annotation(JCas jcas,
