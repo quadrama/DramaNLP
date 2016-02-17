@@ -3,6 +3,7 @@ package de.unistuttgart.quadrama.io.textgridtei;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.HashSet;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.uima.collection.CollectionException;
@@ -16,6 +17,7 @@ import org.jsoup.parser.Parser;
 import de.unistuttgart.quadrama.api.Act;
 import de.unistuttgart.quadrama.api.Drama;
 import de.unistuttgart.quadrama.api.DramatisPersonae;
+import de.unistuttgart.quadrama.api.Figure;
 import de.unistuttgart.quadrama.api.FrontMatter;
 import de.unistuttgart.quadrama.api.MainMatter;
 import de.unistuttgart.quadrama.api.Scene;
@@ -70,8 +72,29 @@ public class TextgridTEIReader extends AbstractDramaReader {
 		select2Annotation(jcas, root, vis.getAnnotationMap(), "body > div",
 				Act.class, null);
 		select2Annotation(jcas, root, vis.getAnnotationMap(),
-				"front div:has(p)", DramatisPersonae.class, frontMatter);
+				"div[type=front] > div:has(p)", DramatisPersonae.class,
+				frontMatter);
+		select2Annotation(jcas, root, vis.getAnnotationMap(), "p",
+				Figure.class,
+				JCasUtil.selectSingle(jcas, DramatisPersonae.class));
+
+		fixFigureAnnotations(jcas);
 
 		cleanUp(jcas);
+	}
+
+	private void fixFigureAnnotations(JCas jcas) {
+		for (Figure figure : new HashSet<Figure>(JCasUtil.select(jcas,
+				Figure.class))) {
+			String s = figure.getCoveredText();
+			if (s.contains(",")) {
+				int i = s.indexOf(',');
+				figure.setEnd(figure.getBegin() + i);
+			}
+			while (s.startsWith(" ")) {
+				figure.setBegin(figure.getBegin() + 1);
+			}
+		}
+
 	}
 }
