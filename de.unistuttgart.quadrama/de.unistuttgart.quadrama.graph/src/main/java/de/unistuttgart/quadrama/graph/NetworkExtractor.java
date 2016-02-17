@@ -1,9 +1,7 @@
 package de.unistuttgart.quadrama.graph;
 
 import java.io.StringWriter;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.xml.transform.TransformerConfigurationException;
 
@@ -22,6 +20,7 @@ import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.SimpleWeightedGraph;
 import org.xml.sax.SAXException;
 
+import de.unistuttgart.quadrama.api.Figure;
 import de.unistuttgart.quadrama.api.MainMatter;
 import de.unistuttgart.quadrama.api.Scene;
 import de.unistuttgart.quadrama.api.Speaker;
@@ -35,7 +34,7 @@ public class NetworkExtractor extends JCasAnnotator_ImplBase {
 
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
-		WeightedGraph<GraphFigure, DefaultWeightedEdge> graph = null;
+		WeightedGraph<Figure, DefaultWeightedEdge> graph = null;
 		if (networkByAct) {} else {
 			graph =
 					this.extractNetwork(jcas,
@@ -43,17 +42,17 @@ public class NetworkExtractor extends JCasAnnotator_ImplBase {
 		}
 
 		StringWriter sw = new StringWriter();
-		GraphMLExporter<GraphFigure, DefaultWeightedEdge> gmlExporter =
-				new GraphMLExporter<GraphFigure, DefaultWeightedEdge>(
-						new VertexNameProvider<GraphFigure>() {
+		GraphMLExporter<Figure, DefaultWeightedEdge> gmlExporter =
+				new GraphMLExporter<Figure, DefaultWeightedEdge>(
+						new VertexNameProvider<Figure>() {
 
-							public String getVertexName(GraphFigure vertex) {
+							public String getVertexName(Figure vertex) {
 								return String.valueOf(vertex.getId());
 							}
-						}, new VertexNameProvider<GraphFigure>() {
+						}, new VertexNameProvider<Figure>() {
 
-							public String getVertexName(GraphFigure vertex) {
-								return vertex.getName();
+							public String getVertexName(Figure vertex) {
+								return vertex.getCoveredText();
 							}
 						}, new EdgeNameProvider<DefaultWeightedEdge>() {
 
@@ -74,13 +73,12 @@ public class NetworkExtractor extends JCasAnnotator_ImplBase {
 		}
 	}
 
-	protected WeightedGraph<GraphFigure, DefaultWeightedEdge> extractNetwork(
+	protected WeightedGraph<Figure, DefaultWeightedEdge> extractNetwork(
 			JCas jcas, Annotation range) {
-		SimpleWeightedGraph<GraphFigure, DefaultWeightedEdge> graph =
-				new SimpleWeightedGraph<GraphFigure, DefaultWeightedEdge>(
+		SimpleWeightedGraph<Figure, DefaultWeightedEdge> graph =
+				new SimpleWeightedGraph<Figure, DefaultWeightedEdge>(
 						DefaultWeightedEdge.class);
-		for (Speaker speaker : JCasUtil.selectCovered(Speaker.class, range)) {
-			GraphFigure figure = GraphFigure.getGraphFigure(speaker);
+		for (Figure figure : JCasUtil.select(jcas, Figure.class)) {
 
 			if (!graph.containsVertex(figure)) {
 				graph.addVertex(figure);
@@ -91,9 +89,9 @@ public class NetworkExtractor extends JCasAnnotator_ImplBase {
 			List<Speaker> speakers =
 					JCasUtil.selectCovered(Speaker.class, scene);
 			for (Speaker s1 : speakers) {
-				GraphFigure gf1 = GraphFigure.getGraphFigure(s1);
+				Figure gf1 = s1.getFigure();
 				for (Speaker s2 : speakers) {
-					GraphFigure gf2 = GraphFigure.getGraphFigure(s2);
+					Figure gf2 = s2.getFigure();
 
 					if (graph.containsEdge(gf1, gf2)) {
 						DefaultWeightedEdge edge = graph.getEdge(gf1, gf2);
@@ -106,49 +104,6 @@ public class NetworkExtractor extends JCasAnnotator_ImplBase {
 			};
 		}
 		return graph;
-	}
-
-	public static class GraphFigure {
-		static Map<Integer, GraphFigure> map =
-				new HashMap<Integer, GraphFigure>();
-
-		int id;
-		String name;
-
-		private GraphFigure(int id, String name) {
-			super();
-			this.id = id;
-			this.name = name;
-		}
-
-		public int getId() {
-			return id;
-		}
-
-		public void setId(int id) {
-			this.id = id;
-		}
-
-		public String getName() {
-			return name;
-		}
-
-		public void setName(String name) {
-			this.name = name;
-		}
-
-		public static GraphFigure getGraphFigure(Speaker speaker) {
-			if (!map.containsKey(speaker.getId()))
-				map.put(speaker.getId(), new GraphFigure(speaker.getId(),
-						speaker.getCoveredText()));
-			return map.get(speaker.getId());
-		}
-
-		@Override
-		public boolean equals(Object o) {
-			return this.getId() == ((GraphFigure) o).getId();
-		}
-
 	}
 
 }
