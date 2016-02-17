@@ -17,5 +17,33 @@
   		<groupId>org.apache.uima</groupId>
   		<artifactId>uimafit-core</artifactId>
   	</dependency>
+  	<dependency>
+  		<groupId>org.jgrapht</groupId>
+  		<artifactId>jgrapht-core</artifactId>
+  		<version>0.9.1</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.jgrapht</groupId>
+  		<artifactId>jgrapht-ext</artifactId>
+  		<version>0.9.1</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>junit</groupId>
+  		<artifactId>junit</artifactId>
+  	</dependency>
+  	<dependency>
+  		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+  		<artifactId>
+  			de.tudarmstadt.ukp.dkpro.core.io.xmi-asl
+  		</artifactId>
+  		<version>1.7.0</version>
+  		<scope>test</scope>
+  	</dependency>
+  	<dependency>
+  		<groupId>de.unistuttgart.quadrama</groupId>
+  		<artifactId>de.unistuttgart.quadrama.core</artifactId>
+  		<version>0.2-SNAPSHOT</version>
+  		<scope>test</scope>
+  	</dependency>
   </dependencies>
 </project>
