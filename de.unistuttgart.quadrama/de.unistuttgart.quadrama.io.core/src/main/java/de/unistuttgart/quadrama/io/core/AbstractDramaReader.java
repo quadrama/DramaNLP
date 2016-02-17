@@ -48,7 +48,7 @@ public abstract class AbstractDramaReader extends JCasCollectionReader_ImplBase 
 	}
 
 	public boolean hasNext() throws IOException, CollectionException {
-		return current < files.length - 1;
+		return current <= files.length - 1;
 	}
 
 	public Progress[] getProgress() {
@@ -66,7 +66,7 @@ public abstract class AbstractDramaReader extends JCasCollectionReader_ImplBase 
 			HTMLAnnotation hAnno = annoMap.get(elm.cssSelector());
 			if (coveringAnnotation == null
 					|| (coveringAnnotation.getBegin() <= hAnno.getBegin() && coveringAnnotation
-					.getEnd() >= hAnno.getEnd()))
+							.getEnd() >= hAnno.getEnd()))
 				set.add(AnnotationFactory.createAnnotation(jcas,
 						hAnno.getBegin(), hAnno.getEnd(), annoClass));
 		}
