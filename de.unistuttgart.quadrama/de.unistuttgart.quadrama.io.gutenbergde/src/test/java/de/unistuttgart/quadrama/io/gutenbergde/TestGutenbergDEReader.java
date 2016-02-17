@@ -18,7 +18,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
-import de.unistuttgart.ims.uimautil.SetDocumentId;
 import de.unistuttgart.quadrama.api.Act;
 import de.unistuttgart.quadrama.api.Drama;
 import de.unistuttgart.quadrama.api.DramatisPersonae;
@@ -44,16 +43,13 @@ public class TestGutenbergDEReader {
 	public void testReader() throws UIMAException, IOException {
 		JCas jcas =
 				SimplePipeline
-				.iteratePipeline(
-						description,
-						AnalysisEngineFactory.createEngineDescription(
-										SetDocumentId.class,
-										SetDocumentId.PARAM_DOCUMENT_ID,
-										"Wieland"),
-						AnalysisEngineFactory.createEngineDescription(
-								XmiWriter.class,
-								XmiWriter.PARAM_TARGET_LOCATION,
-								"target/doc")).iterator().next();
+						.iteratePipeline(
+								description,
+
+								AnalysisEngineFactory.createEngineDescription(
+										XmiWriter.class,
+										XmiWriter.PARAM_TARGET_LOCATION,
+										"target/doc")).iterator().next();
 
 		assertNotNull(JCasUtil.selectSingle(jcas, Drama.class));
 		assertTrue(JCasUtil.exists(jcas, Act.class));
