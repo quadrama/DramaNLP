@@ -63,5 +63,6 @@
     <module>de.unistuttgart.quadrama.io.core</module>
     <module>de.unistuttgart.quadrama.experiments</module>
     <module>de.unistuttgart.quadrama.io.dot</module>
+    <module>de.unistuttgart.quadrama.graph</module>
   </modules>
 </project>
