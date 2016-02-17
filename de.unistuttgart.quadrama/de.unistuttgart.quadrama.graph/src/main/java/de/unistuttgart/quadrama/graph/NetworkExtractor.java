@@ -1,9 +1,8 @@
 package de.unistuttgart.quadrama.graph;
 
+import java.io.IOException;
 import java.io.StringWriter;
 import java.util.List;
-
-import javax.xml.transform.TransformerConfigurationException;
 
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CASException;
@@ -13,17 +12,14 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.jgrapht.WeightedGraph;
-import org.jgrapht.ext.EdgeNameProvider;
-import org.jgrapht.ext.GraphMLExporter;
-import org.jgrapht.ext.VertexNameProvider;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.SimpleWeightedGraph;
-import org.xml.sax.SAXException;
 
 import de.unistuttgart.quadrama.api.Figure;
 import de.unistuttgart.quadrama.api.MainMatter;
 import de.unistuttgart.quadrama.api.Scene;
 import de.unistuttgart.quadrama.api.Speaker;
+import de.unistuttgart.quadrama.graph.ext.GraphExporter;
 
 public class NetworkExtractor extends JCasAnnotator_ImplBase {
 
@@ -37,38 +33,23 @@ public class NetworkExtractor extends JCasAnnotator_ImplBase {
 		WeightedGraph<Figure, DefaultWeightedEdge> graph = null;
 		if (networkByAct) {} else {
 			graph =
-					this.extractNetwork(jcas,
+					extractNetwork(jcas,
 							JCasUtil.selectSingle(jcas, MainMatter.class));
 		}
 
 		StringWriter sw = new StringWriter();
-		GraphMLExporter<Figure, DefaultWeightedEdge> gmlExporter =
-				new GraphMLExporter<Figure, DefaultWeightedEdge>(
-						new VertexNameProvider<Figure>() {
-
-							public String getVertexName(Figure vertex) {
-								return String.valueOf(vertex.getId());
-							}
-						}, new VertexNameProvider<Figure>() {
-
-							public String getVertexName(Figure vertex) {
-								return vertex.getCoveredText();
-							}
-						}, new EdgeNameProvider<DefaultWeightedEdge>() {
-
-							public String getEdgeName(DefaultWeightedEdge edge) {
-								return String.valueOf(edge.hashCode());
-							}
-						}, null);
+		GraphExporter gmlExporter = new GraphExporter();
 		try {
+			System.err.println("Now exporting");
 			gmlExporter.export(sw, graph);
+			sw.flush();
+			sw.close();
 			JCas graphView = jcas.createView("Graph");
 			graphView.setDocumentText(sw.toString());
-		} catch (TransformerConfigurationException e) {
-			e.printStackTrace();
-		} catch (SAXException e) {
-			e.printStackTrace();
+			graphView.setDocumentLanguage("");
 		} catch (CASException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -90,15 +71,14 @@ public class NetworkExtractor extends JCasAnnotator_ImplBase {
 					JCasUtil.selectCovered(Speaker.class, scene);
 			for (Speaker s1 : speakers) {
 				Figure gf1 = s1.getFigure();
-				for (Speaker s2 : speakers) {
+				if (gf1 != null) for (Speaker s2 : speakers) {
 					Figure gf2 = s2.getFigure();
-
-					if (graph.containsEdge(gf1, gf2)) {
+					if (gf2 != null) if (graph.containsEdge(gf1, gf2)) {
 						DefaultWeightedEdge edge = graph.getEdge(gf1, gf2);
 						double w = graph.getEdgeWeight(edge);
 						graph.setEdgeWeight(edge, w + 1.0);
 					} else {
-						if (s1.getId() != s2.getId()) graph.addEdge(gf1, gf2);
+						if (gf1 != gf2) graph.addEdge(gf1, gf2);
 					}
 				}
 			};

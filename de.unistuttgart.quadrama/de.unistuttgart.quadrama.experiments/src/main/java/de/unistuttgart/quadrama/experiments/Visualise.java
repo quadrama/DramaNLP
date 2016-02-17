@@ -16,7 +16,6 @@ import de.tudarmstadt.ukp.dkpro.core.languagetool.LanguageToolSegmenter;
 import de.unistuttgart.quadrama.core.DramaSpeechSegmenter;
 import de.unistuttgart.quadrama.core.SpeakerIdentifier;
 import de.unistuttgart.quadrama.graph.NetworkExtractor;
-import de.unistuttgart.quadrama.io.dot.DotExporter;
 
 public class Visualise {
 
@@ -35,10 +34,7 @@ public class Visualise {
 				.getWrappedSegmenterDescription(LanguageToolSegmenter.class),
 				createEngineDescription(SpeakerIdentifier.class),
 				createEngineDescription(NetworkExtractor.class),
-				createEngineDescription(DotExporter.class,
-								DotExporter.PARAM_TARGET_LOCATION,
-								"target/dot/"),
-						createEngineDescription(XmiWriter.class,
+				createEngineDescription(XmiWriter.class,
 								XmiWriter.PARAM_TARGET_LOCATION, "target/xmi/"));
 	}
 }
