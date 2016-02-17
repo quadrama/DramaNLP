@@ -19,6 +19,7 @@ import org.jsoup.Jsoup;
 import de.unistuttgart.quadrama.api.Act;
 import de.unistuttgart.quadrama.api.Drama;
 import de.unistuttgart.quadrama.api.DramatisPersonae;
+import de.unistuttgart.quadrama.api.Figure;
 import de.unistuttgart.quadrama.api.Footnote;
 import de.unistuttgart.quadrama.api.FrontMatter;
 import de.unistuttgart.quadrama.api.MainMatter;
@@ -61,7 +62,7 @@ public class GutenbergDEReader extends AbstractDramaReader {
 		// identify simple annotations
 		select2Annotation(jcas, doc, annoMap, "span.speaker", Speaker.class,
 				mainMatter);
-		select2Annotation(jcas, doc, annoMap, "span.speaker", Speaker.class,
+		select2Annotation(jcas, doc, annoMap, "span.speaker", Figure.class,
 				frontMatter);
 		select2Annotation(jcas, doc, annoMap, "span.regie",
 				StageDirection.class, mainMatter);
