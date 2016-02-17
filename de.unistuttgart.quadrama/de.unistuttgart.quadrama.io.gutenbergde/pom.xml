@@ -20,11 +20,6 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-    	<groupId>de.unistuttgart.quadrama</groupId>
-    	<artifactId>api</artifactId>
-    	<version>0.0.1-SNAPSHOT</version>
-    </dependency>
-    <dependency>
     	<groupId>org.apache.uima</groupId>
     	<artifactId>uimafit-core</artifactId>
     </dependency>
@@ -51,6 +46,11 @@
     <dependency>
     	<groupId>de.unistuttgart.quadrama</groupId>
     	<artifactId>de.unistuttgart.quadrama.io.core</artifactId>
+    	<version>0.2-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+    	<groupId>de.unistuttgart.quadrama</groupId>
+    	<artifactId>de.unistuttgart.quadrama.api</artifactId>
     	<version>0.2-SNAPSHOT</version>
     </dependency>
   </dependencies>
