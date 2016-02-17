@@ -18,11 +18,6 @@
           <description/>
           <rangeTypeName>uima.cas.Integer</rangeTypeName>
         </featureDescription>
-      <featureDescription>
-          <name>CastMember</name>
-          <description/>
-          <rangeTypeName>de.unistuttgart.quadrama.api.CastMember</rangeTypeName>
-        </featureDescription>
       </features>
     </typeDescription>
     <typeDescription>
@@ -108,11 +103,6 @@
       <name>de.unistuttgart.quadrama.api.SpeechProse</name>
       <description/>
       <supertypeName>de.unistuttgart.quadrama.api.Speech</supertypeName>
-    </typeDescription>
-  <typeDescription>
-      <name>de.unistuttgart.quadrama.api.CastMember</name>
-      <description/>
-      <supertypeName>uima.tcas.Annotation</supertypeName>
     </typeDescription>
   </types>
 </typeSystemDescription>
