@@ -91,7 +91,7 @@ public class TextgridTEIReader extends AbstractDramaReader {
 				int i = s.indexOf(',');
 				figure.setEnd(figure.getBegin() + i);
 			}
-			while (s.startsWith(" ")) {
+			while (figure.getCoveredText().startsWith(" ")) {
 				figure.setBegin(figure.getBegin() + 1);
 			}
 		}
