@@ -8,21 +8,26 @@ import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
+import de.unistuttgart.quadrama.api.Figure;
 import de.unistuttgart.quadrama.api.Speaker;
 
 public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
-		int speakerId = 1;
-		Map<String, Integer> map = new HashMap<String, Integer>();
+		Map<String, Figure> map = new HashMap<String, Figure>();
+		for (Figure figure : JCasUtil.select(jcas, Figure.class)) {
+			map.put(figure.getCoveredText().trim().toLowerCase(), figure);
+		}
+
 		for (Speaker cm : JCasUtil.select(jcas, Speaker.class)) {
-			String sName = cm.getCoveredText().trim().replaceAll("[.,;]", "");
+			String sName =
+					cm.getCoveredText().trim().replaceAll("[.,;]", "")
+					.toLowerCase();
 			if (map.containsKey(sName))
-				cm.setId(map.get(sName));
+				cm.setFigure(map.get(sName));
 			else {
-				map.put(sName, speakerId);
-				cm.setId(speakerId++);
+				System.err.println("Could not assign " + sName);
 			}
 		}
 
