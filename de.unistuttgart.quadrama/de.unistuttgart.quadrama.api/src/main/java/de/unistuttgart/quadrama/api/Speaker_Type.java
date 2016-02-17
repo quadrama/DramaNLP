@@ -14,7 +14,7 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** 
- * Updated by JCasGen Wed Feb 17 09:19:18 CET 2016
+ * Updated by JCasGen Wed Feb 17 17:49:40 CET 2016
  * @generated */
 public class Speaker_Type extends Annotation_Type {
   /** @generated 
@@ -69,6 +69,30 @@ public class Speaker_Type extends Annotation_Type {
     ll_cas.ll_setIntValue(addr, casFeatCode_Id, v);}
     
   
+ 
+  /** @generated */
+  final Feature casFeat_Figure;
+  /** @generated */
+  final int     casFeatCode_Figure;
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @return the feature value 
+   */ 
+  public int getFigure(int addr) {
+        if (featOkTst && casFeat_Figure == null)
+      jcas.throwFeatMissing("Figure", "de.unistuttgart.quadrama.api.Speaker");
+    return ll_cas.ll_getRefValue(addr, casFeatCode_Figure);
+  }
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @param v value to set 
+   */    
+  public void setFigure(int addr, int v) {
+        if (featOkTst && casFeat_Figure == null)
+      jcas.throwFeatMissing("Figure", "de.unistuttgart.quadrama.api.Speaker");
+    ll_cas.ll_setRefValue(addr, casFeatCode_Figure, v);}
+    
+  
 
 
 
@@ -84,6 +108,10 @@ public class Speaker_Type extends Annotation_Type {
  
     casFeat_Id = jcas.getRequiredFeatureDE(casType, "Id", "uima.cas.Integer", featOkTst);
     casFeatCode_Id  = (null == casFeat_Id) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_Id).getCode();
+
+ 
+    casFeat_Figure = jcas.getRequiredFeatureDE(casType, "Figure", "de.unistuttgart.quadrama.api.Figure", featOkTst);
+    casFeatCode_Figure  = (null == casFeat_Figure) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_Figure).getCode();
 
   }
 }

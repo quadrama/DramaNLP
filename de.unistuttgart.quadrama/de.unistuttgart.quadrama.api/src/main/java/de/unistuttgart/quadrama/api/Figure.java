@@ -11,7 +11,7 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** Represents on figure in the play. Each figure should only have one Figure annotation (and multiple Speaker annotations)
- * Updated by JCasGen Wed Feb 17 17:32:06 CET 2016
+ * Updated by JCasGen Wed Feb 17 17:49:40 CET 2016
  * XML source: /Users/reiterns/Documents/DH/anglogerman/de.unistuttgart.quadrama/de.unistuttgart.quadrama.api/src/main/java/de/unistuttgart/quadrama/api/Types.xml
  * @generated */
 public class Figure extends Annotation {
@@ -74,6 +74,26 @@ public class Figure extends Annotation {
    */
   private void readObject() {/*default - does nothing empty block */}
      
-}
+  //*--------------*
+  //* Feature: Id
+
+  /** getter for Id - gets 
+   * @generated
+   * @return value of the feature 
+   */
+  public int getId() {
+    if (Figure_Type.featOkTst && ((Figure_Type)jcasType).casFeat_Id == null)
+      jcasType.jcas.throwFeatMissing("Id", "de.unistuttgart.quadrama.api.Figure");
+    return jcasType.ll_cas.ll_getIntValue(addr, ((Figure_Type)jcasType).casFeatCode_Id);}
+    
+  /** setter for Id - sets  
+   * @generated
+   * @param v value to set into the feature 
+   */
+  public void setId(int v) {
+    if (Figure_Type.featOkTst && ((Figure_Type)jcasType).casFeat_Id == null)
+      jcasType.jcas.throwFeatMissing("Id", "de.unistuttgart.quadrama.api.Figure");
+    jcasType.ll_cas.ll_setIntValue(addr, ((Figure_Type)jcasType).casFeatCode_Id, v);}    
+  }
 
     

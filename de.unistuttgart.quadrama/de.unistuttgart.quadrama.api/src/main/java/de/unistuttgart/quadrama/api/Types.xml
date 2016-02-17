@@ -18,6 +18,11 @@
           <description/>
           <rangeTypeName>uima.cas.Integer</rangeTypeName>
         </featureDescription>
+      <featureDescription>
+          <name>Figure</name>
+          <description/>
+          <rangeTypeName>de.unistuttgart.quadrama.api.Figure</rangeTypeName>
+        </featureDescription>
       </features>
     </typeDescription>
     <typeDescription>
@@ -108,6 +113,13 @@
       <name>de.unistuttgart.quadrama.api.Figure</name>
       <description>Represents on figure in the play. Each figure should only have one Figure annotation (and multiple Speaker annotations)</description>
       <supertypeName>uima.tcas.Annotation</supertypeName>
+    <features>
+        <featureDescription>
+          <name>Id</name>
+          <description/>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+      </features>
     </typeDescription>
   </types>
 </typeSystemDescription>
