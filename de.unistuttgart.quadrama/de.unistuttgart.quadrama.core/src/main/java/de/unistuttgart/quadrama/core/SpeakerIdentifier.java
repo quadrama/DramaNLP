@@ -16,14 +16,16 @@ public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
 		Map<String, Figure> map = new HashMap<String, Figure>();
+		int figureId = 0;
 		for (Figure figure : JCasUtil.select(jcas, Figure.class)) {
+			figure.setId(figureId++);
 			map.put(figure.getCoveredText().trim().toLowerCase(), figure);
 		}
 
 		for (Speaker cm : JCasUtil.select(jcas, Speaker.class)) {
 			String sName =
 					cm.getCoveredText().trim().replaceAll("[.,;]", "")
-					.toLowerCase();
+							.toLowerCase();
 			if (map.containsKey(sName))
 				cm.setFigure(map.get(sName));
 			else {
