@@ -77,5 +77,10 @@
   		<artifactId>uimautil</artifactId>
   		<version>0.4-SNAPSHOT</version>
   	</dependency>
+  	<dependency>
+  		<groupId>de.unistuttgart.quadrama</groupId>
+  		<artifactId>de.unistuttgart.quadrama.graph</artifactId>
+  		<version>0.2-SNAPSHOT</version>
+  	</dependency>
   </dependencies>
 </project>
