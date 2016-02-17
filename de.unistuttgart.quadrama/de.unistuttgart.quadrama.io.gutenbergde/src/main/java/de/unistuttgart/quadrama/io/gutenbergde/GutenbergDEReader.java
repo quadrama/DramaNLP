@@ -42,6 +42,7 @@ public class GutenbergDEReader extends AbstractDramaReader {
 		jcas.setDocumentLanguage("de");
 
 		File file = files[current++];
+		getLogger().debug("Processing file " + file.getAbsolutePath());
 
 		String str = IOUtils.toString(new FileInputStream(file));
 		org.jsoup.nodes.Document doc = Jsoup.parseBodyFragment(str);
