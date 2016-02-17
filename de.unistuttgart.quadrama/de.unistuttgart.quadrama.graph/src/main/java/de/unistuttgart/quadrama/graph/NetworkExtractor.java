@@ -15,7 +15,9 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.jgrapht.WeightedGraph;
+import org.jgrapht.ext.EdgeNameProvider;
 import org.jgrapht.ext.GraphMLExporter;
+import org.jgrapht.ext.VertexNameProvider;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.SimpleWeightedGraph;
 import org.xml.sax.SAXException;
@@ -42,7 +44,23 @@ public class NetworkExtractor extends JCasAnnotator_ImplBase {
 
 		StringWriter sw = new StringWriter();
 		GraphMLExporter<GraphFigure, DefaultWeightedEdge> gmlExporter =
-				new GraphMLExporter<GraphFigure, DefaultWeightedEdge>();
+				new GraphMLExporter<GraphFigure, DefaultWeightedEdge>(
+						new VertexNameProvider<GraphFigure>() {
+
+							public String getVertexName(GraphFigure vertex) {
+								return String.valueOf(vertex.getId());
+							}
+						}, new VertexNameProvider<GraphFigure>() {
+
+							public String getVertexName(GraphFigure vertex) {
+								return vertex.getName();
+							}
+						}, new EdgeNameProvider<DefaultWeightedEdge>() {
+
+							public String getEdgeName(DefaultWeightedEdge edge) {
+								return String.valueOf(edge.hashCode());
+							}
+						}, null);
 		try {
 			gmlExporter.export(sw, graph);
 			JCas graphView = jcas.createView("Graph");
