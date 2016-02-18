@@ -16,11 +16,15 @@ import de.tudarmstadt.ukp.dkpro.core.languagetool.LanguageToolSegmenter;
 import de.unistuttgart.quadrama.core.DramaSpeechSegmenter;
 import de.unistuttgart.quadrama.core.SpeakerIdentifier;
 import de.unistuttgart.quadrama.graph.NetworkExtractor;
+import de.unistuttgart.quadrama.io.dot.DotExporter;
 
 public class Visualise {
 
 	public static void main(String[] args)
 			throws ResourceInitializationException, UIMAException, IOException {
+		System.setProperty("java.util.logging.config.file",
+				"src/main/resources/logging.properties");
+
 		CollectionReaderDescription crd =
 				CollectionReaderFactory.createReaderDescription(
 						XmiReader.class, XmiReader.PARAM_SOURCE_LOCATION,
@@ -35,6 +39,9 @@ public class Visualise {
 				createEngineDescription(SpeakerIdentifier.class),
 				createEngineDescription(NetworkExtractor.class),
 				createEngineDescription(XmiWriter.class,
-								XmiWriter.PARAM_TARGET_LOCATION, "target/xmi/"));
+								XmiWriter.PARAM_TARGET_LOCATION, "target/xmi/"),
+						createEngineDescription(DotExporter.class,
+								DotExporter.PARAM_TARGET_LOCATION,
+								"target/dot/"));
 	}
 }
