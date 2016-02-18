@@ -23,6 +23,7 @@ import de.unistuttgart.quadrama.graph.ext.GraphExporter;
 
 public class NetworkExtractor extends JCasAnnotator_ImplBase {
 
+	public static final String NETWORK_VIEW = "Network";
 	public static final String PARAM_BYACT = "By Act";
 
 	@ConfigurationParameter(name = PARAM_BYACT, mandatory = false)
@@ -44,7 +45,7 @@ public class NetworkExtractor extends JCasAnnotator_ImplBase {
 			gmlExporter.export(sw, graph);
 			sw.flush();
 			sw.close();
-			JCas graphView = jcas.createView("Graph");
+			JCas graphView = jcas.createView(NETWORK_VIEW);
 			graphView.setDocumentText(sw.toString());
 			graphView.setDocumentLanguage("");
 		} catch (CASException e) {
