@@ -14,9 +14,11 @@ import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiReader;
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.tudarmstadt.ukp.dkpro.core.languagetool.LanguageToolSegmenter;
 import de.unistuttgart.quadrama.core.DramaSpeechSegmenter;
+import de.unistuttgart.quadrama.core.FigureMentionDetection;
 import de.unistuttgart.quadrama.core.SpeakerIdentifier;
 import de.unistuttgart.quadrama.graph.NetworkExtractor;
 import de.unistuttgart.quadrama.io.dot.DotExporter;
+import de.unistuttgart.quadrama.io.dot.MentionNetworkExtractor;
 
 public class Visualise {
 
@@ -31,17 +33,21 @@ public class Visualise {
 						"src/main/resources/romeo-and-juliet/de/*.xmi");
 
 		SimplePipeline
-		.runPipeline(
-				crd,
-				createEngineDescription(FixGutenbergSpeech.class),
-				DramaSpeechSegmenter
-				.getWrappedSegmenterDescription(LanguageToolSegmenter.class),
-				createEngineDescription(SpeakerIdentifier.class),
-				createEngineDescription(NetworkExtractor.class),
-				createEngineDescription(XmiWriter.class,
-								XmiWriter.PARAM_TARGET_LOCATION, "target/xmi/"),
+				.runPipeline(
+						crd,
+						createEngineDescription(FixGutenbergSpeech.class),
+						DramaSpeechSegmenter
+								.getWrappedSegmenterDescription(LanguageToolSegmenter.class),
+						createEngineDescription(SpeakerIdentifier.class),
+						createEngineDescription(FigureMentionDetection.class),
+						createEngineDescription(NetworkExtractor.class),
+						createEngineDescription(XmiWriter.class,
+						XmiWriter.PARAM_TARGET_LOCATION, "target/xmi/"),
 						createEngineDescription(DotExporter.class,
 								DotExporter.PARAM_TARGET_LOCATION,
-								"target/dot/"));
+								"target/dot/"),
+								createEngineDescription(MentionNetworkExtractor.class,
+										DotExporter.PARAM_TARGET_LOCATION,
+										"target/dot2/"));
 	}
 }
