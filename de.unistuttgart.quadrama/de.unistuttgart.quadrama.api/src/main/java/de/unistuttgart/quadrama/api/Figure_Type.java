@@ -14,7 +14,7 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** Represents on figure in the play. Each figure should only have one Figure annotation (and multiple Speaker annotations)
- * Updated by JCasGen Wed Feb 17 17:49:40 CET 2016
+ * Updated by JCasGen Thu Feb 18 16:18:59 CET 2016
  * @generated */
 public class Figure_Type extends Annotation_Type {
   /** @generated 
@@ -71,6 +71,30 @@ public class Figure_Type extends Annotation_Type {
     ll_cas.ll_setIntValue(addr, casFeatCode_Id, v);}
     
   
+ 
+  /** @generated */
+  final Feature casFeat_Description;
+  /** @generated */
+  final int     casFeatCode_Description;
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @return the feature value 
+   */ 
+  public String getDescription(int addr) {
+        if (featOkTst && casFeat_Description == null)
+      jcas.throwFeatMissing("Description", "de.unistuttgart.quadrama.api.Figure");
+    return ll_cas.ll_getStringValue(addr, casFeatCode_Description);
+  }
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @param v value to set 
+   */    
+  public void setDescription(int addr, String v) {
+        if (featOkTst && casFeat_Description == null)
+      jcas.throwFeatMissing("Description", "de.unistuttgart.quadrama.api.Figure");
+    ll_cas.ll_setStringValue(addr, casFeatCode_Description, v);}
+    
+  
 
 
 
@@ -86,6 +110,10 @@ public class Figure_Type extends Annotation_Type {
  
     casFeat_Id = jcas.getRequiredFeatureDE(casType, "Id", "uima.cas.Integer", featOkTst);
     casFeatCode_Id  = (null == casFeat_Id) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_Id).getCode();
+
+ 
+    casFeat_Description = jcas.getRequiredFeatureDE(casType, "Description", "uima.cas.String", featOkTst);
+    casFeatCode_Description  = (null == casFeat_Description) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_Description).getCode();
 
   }
 }

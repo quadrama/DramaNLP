@@ -11,7 +11,7 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** Represents on figure in the play. Each figure should only have one Figure annotation (and multiple Speaker annotations)
- * Updated by JCasGen Wed Feb 17 17:49:40 CET 2016
+ * Updated by JCasGen Thu Feb 18 16:18:59 CET 2016
  * XML source: /Users/reiterns/Documents/DH/anglogerman/de.unistuttgart.quadrama/de.unistuttgart.quadrama.api/src/main/java/de/unistuttgart/quadrama/api/Types.xml
  * @generated */
 public class Figure extends Annotation {
@@ -94,6 +94,28 @@ public class Figure extends Annotation {
     if (Figure_Type.featOkTst && ((Figure_Type)jcasType).casFeat_Id == null)
       jcasType.jcas.throwFeatMissing("Id", "de.unistuttgart.quadrama.api.Figure");
     jcasType.ll_cas.ll_setIntValue(addr, ((Figure_Type)jcasType).casFeatCode_Id, v);}    
+   
+    
+  //*--------------*
+  //* Feature: Description
+
+  /** getter for Description - gets 
+   * @generated
+   * @return value of the feature 
+   */
+  public String getDescription() {
+    if (Figure_Type.featOkTst && ((Figure_Type)jcasType).casFeat_Description == null)
+      jcasType.jcas.throwFeatMissing("Description", "de.unistuttgart.quadrama.api.Figure");
+    return jcasType.ll_cas.ll_getStringValue(addr, ((Figure_Type)jcasType).casFeatCode_Description);}
+    
+  /** setter for Description - sets  
+   * @generated
+   * @param v value to set into the feature 
+   */
+  public void setDescription(String v) {
+    if (Figure_Type.featOkTst && ((Figure_Type)jcasType).casFeat_Description == null)
+      jcasType.jcas.throwFeatMissing("Description", "de.unistuttgart.quadrama.api.Figure");
+    jcasType.ll_cas.ll_setStringValue(addr, ((Figure_Type)jcasType).casFeatCode_Description, v);}    
   }
 
     
