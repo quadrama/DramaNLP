@@ -75,8 +75,6 @@ public class GutenbergDEReader extends AbstractDramaReader {
 		select2Annotation(jcas, doc, annoMap, "p:has(span.speaker)",
 				Utterance.class, mainMatter);
 
-		this.assignSpeakerIds(jcas);
-
 		annotateSpeech(jcas, mainMatter);
 
 		// aggregating annotations

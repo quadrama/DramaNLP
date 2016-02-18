@@ -79,6 +79,7 @@ public class TextgridTEIReader extends AbstractDramaReader {
 				JCasUtil.selectSingle(jcas, DramatisPersonae.class));
 
 		fixFigureAnnotations(jcas);
+		fixSpeakerAnnotations(jcas);
 
 		cleanUp(jcas);
 	}
@@ -95,6 +96,17 @@ public class TextgridTEIReader extends AbstractDramaReader {
 			}
 			while (figure.getCoveredText().startsWith(" ")) {
 				figure.setBegin(figure.getBegin() + 1);
+			}
+		}
+
+	}
+
+	private void fixSpeakerAnnotations(JCas jcas) {
+		for (Speaker speaker : new HashSet<Speaker>(JCasUtil.select(jcas,
+				Speaker.class))) {
+			String s = speaker.getCoveredText();
+			if (s.endsWith(".")) {
+				speaker.setEnd(speaker.getEnd() - 1);
 			}
 		}
 
