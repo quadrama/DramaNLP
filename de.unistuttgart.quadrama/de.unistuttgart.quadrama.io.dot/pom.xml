@@ -30,5 +30,10 @@
   		<artifactId>jgrapht-ext</artifactId>
   		<version>0.9.1</version>
   	</dependency>
+  	<dependency>
+  		<groupId>de.unistuttgart.quadrama</groupId>
+  		<artifactId>de.unistuttgart.quadrama.graph</artifactId>
+  		<version>0.2-SNAPSHOT</version>
+  	</dependency>
   </dependencies>
 </project>
