@@ -126,5 +126,17 @@
         </featureDescription>
       </features>
     </typeDescription>
+  <typeDescription>
+      <name>de.unistuttgart.quadrama.api.FigureMention</name>
+      <description/>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>Figure</name>
+          <description/>
+          <rangeTypeName>de.unistuttgart.quadrama.api.Figure</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
   </types>
 </typeSystemDescription>
