@@ -21,6 +21,7 @@ import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.unistuttgart.quadrama.api.Act;
 import de.unistuttgart.quadrama.api.Drama;
 import de.unistuttgart.quadrama.api.DramatisPersonae;
+import de.unistuttgart.quadrama.api.Figure;
 import de.unistuttgart.quadrama.api.FrontMatter;
 import de.unistuttgart.quadrama.api.MainMatter;
 import de.unistuttgart.quadrama.api.Scene;
@@ -55,9 +56,18 @@ public class TestTextgridTEIReader {
 		assertTrue(JCasUtil.exists(jcas, Act.class));
 		assertTrue(JCasUtil.exists(jcas, Scene.class));
 		assertTrue(JCasUtil.exists(jcas, Speaker.class));
+		assertTrue(JCasUtil.exists(jcas, Figure.class));
 		assertTrue(JCasUtil.exists(jcas, DramatisPersonae.class));
 		assertNotNull(JCasUtil.selectSingle(jcas, FrontMatter.class));
 		assertNotNull(JCasUtil.selectSingle(jcas, MainMatter.class));
 		assertEquals(5, JCasUtil.select(jcas, Act.class).size());
+
+		// figures
+		// should be 24, but we can't identify the last lines
+		assertEquals(26, JCasUtil.select(jcas, Figure.class).size());
+		Figure figure;
+		figure = JCasUtil.selectByIndex(jcas, Figure.class, 0);
+		assertEquals("Escalus", figure.getCoveredText());
+		assertEquals("Prinz von Verona", figure.getDescription());
 	}
 }
