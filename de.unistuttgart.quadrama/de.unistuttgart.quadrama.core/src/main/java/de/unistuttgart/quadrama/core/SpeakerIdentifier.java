@@ -1,9 +1,12 @@
 package de.unistuttgart.quadrama.core;
 
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.util.JCasUtil;
@@ -33,6 +36,8 @@ public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 			map.put(figure.getCoveredText().trim().toLowerCase(), figure);
 		}
 
+		Set<Speaker> unassigned = new HashSet<Speaker>();
+
 		for (Speaker cm : JCasUtil.select(jcas, Speaker.class)) {
 			String sName =
 					cm.getCoveredText().trim().replaceAll("[.,;]", "")
@@ -40,40 +45,53 @@ public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 			if (map.containsKey(sName))
 				cm.setFigure(map.get(sName));
 			else {
-				for (Figure figure : map.values()) {
-					if (figure.getCoveredText().trim().toLowerCase()
-							.contains(sName)) {
-						cm.setFigure(figure);
-						break;
-					}
-				}
-				if (cm.getFigure() == null)
-					for (Figure figure : map.values()) {
-						if (figure.getDescription() != null
-								&& figure.getDescription().toLowerCase().trim()
-								.contains(sName)) {
-							cm.setFigure(figure);
-							break;
-						}
-					}
-				if (cm.getFigure() == null) {
-					for (Figure figure : map.values()) {
-						int lev =
-								StringUtils.getLevenshteinDistance(figure
-										.getCoveredText().trim().toLowerCase(),
-										sName);
-						if (lev <= threshold) {
-							cm.setFigure(figure);
-							break;
-						}
-
-					}
-				}
-				if (cm.getFigure() == null) {
-					getLogger().log(Level.INFO, "Could not assign " + sName);
-				}
+				unassigned.add(cm);
 			}
 		}
 
+		unassigned = assignLevel2(map.values(), unassigned);
+		unassigned = assignLevel3(map.values(), unassigned);
+
+		getLogger().log(Level.WARNING,
+				"Unassigned speakers: " + JCasUtil.toText(unassigned));
+
+	}
+
+	protected Set<Speaker> assignLevel2(Collection<Figure> figures,
+			Collection<Speaker> speakers) {
+		Set<Speaker> unassigned = new HashSet<Speaker>();
+		for (Speaker speaker : speakers) {
+			for (Figure figure : figures) {
+				String[] nameParts =
+						figure.getCoveredText().toLowerCase().split(" +");
+				if (ArrayUtils.contains(nameParts, speaker.getCoveredText()
+						.toLowerCase().trim())) {
+					speaker.setFigure(figure);
+				} else {
+					unassigned.add(speaker);
+				}
+			}
+		}
+		return unassigned;
+	}
+
+	protected Set<Speaker> assignLevel3(Collection<Figure> figures,
+			Collection<Speaker> speakers) {
+		Set<Speaker> unassigned = new HashSet<Speaker>();
+		for (Speaker speaker : speakers) {
+			for (Figure figure : figures) {
+				if (figure.getDescription() != null) {
+					String[] nameParts =
+							figure.getDescription().toLowerCase().split(" +");
+					if (ArrayUtils
+							.contains(nameParts, speaker.getCoveredText())) {
+						speaker.setFigure(figure);
+					} else {
+						unassigned.add(speaker);
+					}
+				}
+			}
+		}
+		return unassigned;
 	}
 }
