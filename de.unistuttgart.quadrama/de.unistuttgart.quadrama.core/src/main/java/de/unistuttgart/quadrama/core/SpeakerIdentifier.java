@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.util.JCasUtil;
@@ -27,7 +28,7 @@ public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 				Level.FINE,
 				"Now processing "
 						+ JCasUtil.selectSingle(jcas, Drama.class)
-								.getDocumentId());
+						.getDocumentId());
 
 		Map<String, Figure> map = new HashMap<String, Figure>();
 		int figureId = 0;
@@ -41,7 +42,7 @@ public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 		for (Speaker cm : JCasUtil.select(jcas, Speaker.class)) {
 			String sName =
 					cm.getCoveredText().trim().replaceAll("[.,;]", "")
-							.toLowerCase();
+					.toLowerCase();
 			if (map.containsKey(sName))
 				cm.setFigure(map.get(sName));
 			else {
@@ -50,10 +51,12 @@ public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 		}
 
 		unassigned = assignLevel2(map.values(), unassigned);
-		unassigned = assignLevel3(map.values(), unassigned);
+		// unassigned = assignLevel3(map.values(), unassigned);
+		unassigned = assignLevDistance(map.values(), unassigned, threshold);
 
-		getLogger().log(Level.WARNING,
-				"Unassigned speakers: " + JCasUtil.toText(unassigned));
+		if (!unassigned.isEmpty())
+			getLogger().log(Level.WARNING,
+					"Unassigned speakers: " + JCasUtil.toText(unassigned));
 
 	}
 
@@ -67,10 +70,9 @@ public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 				if (ArrayUtils.contains(nameParts, speaker.getCoveredText()
 						.toLowerCase().trim())) {
 					speaker.setFigure(figure);
-				} else {
-					unassigned.add(speaker);
-				}
+				} else {}
 			}
+			if (speaker.getFigure() == null) unassigned.add(speaker);
 		}
 		return unassigned;
 	}
@@ -86,11 +88,29 @@ public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 					if (ArrayUtils
 							.contains(nameParts, speaker.getCoveredText())) {
 						speaker.setFigure(figure);
-					} else {
-						unassigned.add(speaker);
 					}
 				}
 			}
+			if (speaker.getFigure() == null) unassigned.add(speaker);
+
+		}
+		return unassigned;
+	}
+
+	protected Set<Speaker> assignLevDistance(Collection<Figure> figures,
+			Collection<Speaker> speakers, int maxDistance) {
+		Set<Speaker> unassigned = new HashSet<Speaker>();
+		for (Speaker speaker : speakers) {
+			String sName = speaker.getCoveredText().trim().toLowerCase();
+			for (Figure figure : figures) {
+				String fName = figure.getCoveredText().trim().toLowerCase();
+				int lev = StringUtils.getLevenshteinDistance(sName, fName);
+				if (lev <= maxDistance) {
+					speaker.setFigure(figure);
+				}
+			}
+			if (speaker.getFigure() == null) unassigned.add(speaker);
+
 		}
 		return unassigned;
 	}
