@@ -35,7 +35,7 @@ public class TextgridTEIReader extends AbstractDramaReader {
 		Drama drama = new Drama(jcas);
 		drama.setDocumentId("testtei");
 		drama.addToIndexes();
-		jcas.setDocumentLanguage("de");
+		jcas.setDocumentLanguage(language);
 
 		File file = files[current++];
 

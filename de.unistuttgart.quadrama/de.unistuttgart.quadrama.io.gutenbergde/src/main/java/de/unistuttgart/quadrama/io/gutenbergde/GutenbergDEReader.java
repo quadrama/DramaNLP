@@ -39,7 +39,7 @@ public class GutenbergDEReader extends AbstractDramaReader {
 		Drama drama = new Drama(jcas);
 		drama.setDocumentId("test");
 		drama.addToIndexes();
-		jcas.setDocumentLanguage("de");
+		jcas.setDocumentLanguage(language);
 
 		File file = files[current++];
 		getLogger().debug("Processing file " + file.getAbsolutePath());

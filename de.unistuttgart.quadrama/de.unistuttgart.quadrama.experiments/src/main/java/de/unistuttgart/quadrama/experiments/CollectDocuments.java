@@ -38,6 +38,18 @@ public class CollectDocuments {
 				createEngineDescription(XmiWriter.class,
 						XmiWriter.PARAM_TARGET_LOCATION,
 										"src/main/resources/romeo-and-juliet/de/"));
+
+		System.err.println("Collecting Shakespeare ...");
+		SimplePipeline.runPipeline(
+				createReaderDescription(TextgridTEIReader.class,
+						TextgridTEIReader.PARAM_INPUT_DIRECTORY,
+						"src/main/resources/raw/Shakespeare/",
+						TextgridTEIReader.PARAM_LANGUAGE, "en"),
+				createEngineDescription(SetDocumentId.class,
+						SetDocumentId.PARAM_DOCUMENT_ID, "Shakespeare"),
+				createEngineDescription(XmiWriter.class,
+						XmiWriter.PARAM_TARGET_LOCATION,
+										"src/main/resources/romeo-and-juliet/en/"));
 	}
 
 }

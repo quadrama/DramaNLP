@@ -30,9 +30,14 @@ import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
 
 public abstract class AbstractDramaReader extends JCasCollectionReader_ImplBase {
 	public static final String PARAM_INPUT_DIRECTORY = "Input Directory";
+	public static final String PARAM_LANGUAGE = "Language";
 
 	@ConfigurationParameter(name = PARAM_INPUT_DIRECTORY, mandatory = true)
 	String inputDirectory;
+
+	@ConfigurationParameter(name = PARAM_LANGUAGE, mandatory = false,
+			defaultValue = "de")
+	protected String language = "de";
 
 	protected File[] files;
 
@@ -66,7 +71,7 @@ public abstract class AbstractDramaReader extends JCasCollectionReader_ImplBase 
 			HTMLAnnotation hAnno = annoMap.get(elm.cssSelector());
 			if (coveringAnnotation == null
 					|| (coveringAnnotation.getBegin() <= hAnno.getBegin() && coveringAnnotation
-							.getEnd() >= hAnno.getEnd()))
+					.getEnd() >= hAnno.getEnd()))
 				set.add(AnnotationFactory.createAnnotation(jcas,
 						hAnno.getBegin(), hAnno.getEnd(), annoClass));
 		}
