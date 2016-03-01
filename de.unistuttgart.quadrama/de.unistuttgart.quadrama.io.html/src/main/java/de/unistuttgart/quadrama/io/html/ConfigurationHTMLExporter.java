@@ -4,8 +4,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import org.apache.commons.compress.utils.IOUtils;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -36,7 +39,9 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 		int c = 0;
 		for (Scene segment : JCasUtil.select(jcas, Scene.class)) {
 			JSONObject labelObj = new JSONObject();
-			labelObj.put("text", segment.getCoveredText().substring(0, 10));
+			labelObj.put("text", segment.getCoveredText().substring(0, 15)
+					.trim());
+			labelObj.put("rotation", 270);
 			JSONObject obj = new JSONObject();
 			obj.put("from", segment.getBegin());
 			obj.put("to", segment.getEnd());
@@ -45,16 +50,23 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 			pbArr.put(obj);
 		}
 
-		JSONArray speakersArray = new JSONArray();
-		for (Figure figure : JCasUtil.select(jcas, Figure.class)) {
-			speakersArray.put(figure.getCoveredText());
-		}
+		SortedSet<Figure> figures =
+				new TreeSet<Figure>(new Comparator<Figure>() {
+
+					public int compare(Figure o1, Figure o2) {
+
+						return Integer.compare(o2.getNumberOfWords(),
+								o1.getNumberOfWords());
+					}
+				});
+
+		figures.addAll(JCasUtil.select(jcas, Figure.class));
 
 		Map<Figure, JSONObject> series = new HashMap<Figure, JSONObject>();
 		int next_speaker_index = 1;
 		HashMap<Figure, Integer> speaker_index = new HashMap<Figure, Integer>();
 
-		for (Figure figure : JCasUtil.select(jcas, Figure.class)) {
+		for (Figure figure : figures) {
 			// we make one series for each cast member
 			JSONObject j = new JSONObject();
 			j.put("name", figure.getCoveredText());
@@ -75,7 +87,7 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 			Figure figure =
 					JCasUtil.selectCovered(Speaker.class, utterance).get(0)
 							.getFigure();
-			if (figure != null) {
+			if (figure != null && speaker_index.containsKey(figure)) {
 				Speech speech =
 						JCasUtil.selectCovered(Speech.class, utterance).get(0);
 
