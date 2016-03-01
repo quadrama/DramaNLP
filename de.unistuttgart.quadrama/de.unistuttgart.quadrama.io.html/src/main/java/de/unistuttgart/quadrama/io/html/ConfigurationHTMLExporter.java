@@ -18,8 +18,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import de.tudarmstadt.ukp.dkpro.core.api.io.JCasFileWriter_ImplBase;
-import de.unistuttgart.quadrama.api.Act;
 import de.unistuttgart.quadrama.api.Figure;
+import de.unistuttgart.quadrama.api.Scene;
 import de.unistuttgart.quadrama.api.Speaker;
 import de.unistuttgart.quadrama.api.Speech;
 import de.unistuttgart.quadrama.api.Utterance;
@@ -35,9 +35,9 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 		JSONArray pbArr = new JSONArray();
 
 		int c = 0;
-		for (Act segment : JCasUtil.select(jcas, Act.class)) {
+		for (Scene segment : JCasUtil.select(jcas, Scene.class)) {
 			JSONObject labelObj = new JSONObject();
-			labelObj.put("text", segment.getCoveredText().substring(0, 20));
+			labelObj.put("text", segment.getCoveredText().substring(0, 10));
 			JSONObject obj = new JSONObject();
 			obj.put("from", segment.getBegin());
 			obj.put("to", segment.getEnd());
@@ -75,7 +75,7 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 
 			Figure figure =
 					JCasUtil.selectCovered(Speaker.class, utterance).get(0)
-							.getFigure();
+					.getFigure();
 			if (figure != null) {
 				Speech speech =
 						JCasUtil.selectCovered(Speech.class, utterance).get(0);
@@ -83,13 +83,15 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 				// create two arrays for start and end of speech, each
 				// containing an x and y value
 				double yvalue = (-0.1 - (0.05 * speaker_index.get(figure)));
-				JSONArray arrval = new JSONArray();
-				arrval.put(speech.getBegin());
-				arrval.put(yvalue);
+				JSONObject arrval = new JSONObject();
+				arrval.put("x", speech.getBegin());
+				arrval.put("y", yvalue);
+				arrval.put("name", speech.getCoveredText().trim());
 				series.get(figure).append("data", arrval);
-				arrval = new JSONArray();
-				arrval.put(speech.getEnd());
-				arrval.put(yvalue);
+				arrval = new JSONObject();
+				arrval.put("x", speech.getEnd());
+				arrval.put("y", yvalue);
+				arrval.put("name", speech.getCoveredText().trim());
 				series.get(figure).append("data", arrval);
 
 				// immediately after both data points a null has to be

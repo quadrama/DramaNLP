@@ -27,7 +27,12 @@ $(function () {
                 // connectNulls: false // by default
             }
         },
-
+        tooltip: {
+            crosshairs: true,
+            headerFormat:"",
+            useHTML:true,
+            pointFormat: "<div style=\"width:200px;max-width:300px; white-space:normal\"><span style=\"color:{point.color}\">{series.name}</span>: {point.name}</div>"
+        },
         series:data
     });
 });
