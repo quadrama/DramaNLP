@@ -4,12 +4,13 @@ import static org.apache.commons.io.IOUtils.closeQuietly;
 
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.lang.reflect.InvocationTargetException;
 
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.jcas.JCas;
-import org.jgrapht.WeightedGraph;
+import org.jgrapht.Graph;
 import org.jgrapht.ext.DOTExporter;
 import org.jgrapht.ext.VertexNameProvider;
 import org.jgrapht.graph.DefaultWeightedEdge;
@@ -27,12 +28,10 @@ public class DotExporter extends JCasFileWriter_ImplBase {
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
 
-		JCas view;
 		try {
-			view = jcas.getView(viewName);
 
-			WeightedGraph<Figure, DefaultWeightedEdge> graph =
-					GraphImporter.getGraph(view.getDocumentText(), jcas);
+			Graph<Figure, DefaultWeightedEdge> graph =
+					GraphImporter.getGraph(jcas, viewName);
 
 			OutputStream docOS = null;
 			OutputStreamWriter writer = null;
@@ -63,6 +62,27 @@ public class DotExporter extends JCasFileWriter_ImplBase {
 			}
 		} catch (CASException e1) {
 			throw new AnalysisEngineProcessException(e1);
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (InstantiationException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IllegalAccessException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IllegalArgumentException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (InvocationTargetException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (NoSuchMethodException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (SecurityException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 
 	}
