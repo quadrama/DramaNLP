@@ -24,11 +24,7 @@ import de.unistuttgart.quadrama.graph.ext.GraphExporter;
 public class NetworkExtractor extends JCasAnnotator_ImplBase {
 
 	public static final String NETWORK_VIEW = "Network";
-	public static final String PARAM_BYACT = "By Act";
 	public static final String PARAM_VIEW_NAME = "View Name";
-
-	@ConfigurationParameter(name = PARAM_BYACT, mandatory = false)
-	boolean networkByAct = false;
 
 	@ConfigurationParameter(name = PARAM_VIEW_NAME, mandatory = true)
 	String viewName = null;
@@ -36,11 +32,9 @@ public class NetworkExtractor extends JCasAnnotator_ImplBase {
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
 		WeightedGraph<Figure, DefaultWeightedEdge> graph = null;
-		if (networkByAct) {} else {
-			graph =
-					extractNetwork(jcas,
-							JCasUtil.selectSingle(jcas, MainMatter.class));
-		}
+		graph =
+				extractNetwork(jcas,
+						JCasUtil.selectSingle(jcas, MainMatter.class));
 
 		StringWriter sw = new StringWriter();
 		GraphExporter gmlExporter = new GraphExporter();
