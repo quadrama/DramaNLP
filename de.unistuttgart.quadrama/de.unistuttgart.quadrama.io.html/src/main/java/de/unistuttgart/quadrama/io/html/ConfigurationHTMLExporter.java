@@ -74,7 +74,15 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 			j.put("lineWidth", 5);
 			j.put("data", new JSONArray());
 			series.put(figure, j);
-
+			JSONObject statsObject = new JSONObject();
+			statsObject.put("words", figure.getNumberOfWords());
+			statsObject.put("utterances", figure.getNumberOfUtterances());
+			if (Double.isNaN((figure.getUtteranceLengthArithmeticMean())))
+				statsObject.put("meanUtteranceLength", 0);
+			else
+				statsObject.put("meanUtteranceLength",
+						figure.getUtteranceLengthArithmeticMean());
+			j.put("stats", statsObject);
 			// also, each cast member gets an integer (to be used as y-position
 			// in the chart)
 			speaker_index.put(figure, next_speaker_index++);
@@ -87,7 +95,7 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 
 			Figure figure =
 					JCasUtil.selectCovered(Speaker.class, utterance).get(0)
-					.getFigure();
+							.getFigure();
 			if (figure != null && speaker_index.containsKey(figure)) {
 				Speech speech =
 						JCasUtil.selectCovered(Speech.class, utterance).get(0);
@@ -126,6 +134,7 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 		obj.put("data", jsonSeries);
 		obj.put("id", JCasUtil.selectSingle(jcas, DocumentMetaData.class)
 				.getDocumentId());
+
 		objectMap.put(JCasUtil.selectSingle(jcas, DocumentMetaData.class)
 				.getDocumentId(), obj);
 
@@ -174,6 +183,28 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 		try {
 			is = getClass().getResourceAsStream("/html/jquery-1.11.3.min.js");
 			os = getOutputStream("jquery-1.11.3.min", ".js");
+			IOUtils.copy(is, os);
+		} catch (IOException e) {
+			throw new AnalysisEngineProcessException(e);
+		} finally {
+			IOUtils.closeQuietly(os);
+			IOUtils.closeQuietly(is);
+		}
+
+		try {
+			is = getClass().getResourceAsStream("/html/jquery.dynatable.css");
+			os = getOutputStream("jquery.dynatable", ".css");
+			IOUtils.copy(is, os);
+		} catch (IOException e) {
+			throw new AnalysisEngineProcessException(e);
+		} finally {
+			IOUtils.closeQuietly(os);
+			IOUtils.closeQuietly(is);
+		}
+
+		try {
+			is = getClass().getResourceAsStream("/html/jquery.dynatable.js");
+			os = getOutputStream("jquery.dynatable", ".js");
 			IOUtils.copy(is, os);
 		} catch (IOException e) {
 			throw new AnalysisEngineProcessException(e);

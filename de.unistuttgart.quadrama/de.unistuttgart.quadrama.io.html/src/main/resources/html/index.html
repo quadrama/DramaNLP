@@ -1,6 +1,8 @@
 <html>
 <head>
+<link rel="stylesheet" href="jquery.dynatable.css">
 <script src="jquery-1.11.3.min.js"></script>
+<script src="jquery.dynatable.js"></script>
 <script src="highcharts.js"></script>
 <script src="exporting.js"></script>
 <script src="data.js"></script>
@@ -36,6 +38,14 @@ function load(id) {
         },
         series:data[id]["data"]
     });
+	for (index = 0; index < data[id]["data"].length; ++index) {
+		$("#stats tbody").append("<tr><td>"+data[id]["data"][index]['name']+
+				"</td><td>"+data[id]["data"][index]['stats']['words']+
+				"</td><td>"+data[id]["data"][index]['stats']['utterances']+
+				"</td><td>"+data[id]["data"][index]['stats']['meanUtteranceLength']+"</td></tr>");
+	}
+	$('#stats').dynatable();
+
 }
 
 $(function () {
@@ -49,6 +59,10 @@ $(function () {
 <body>
 <div id="dramaselect" style="float:left;width:10%"><ul></ul></div>
 <div id="container" style="height:100%;float:left;width:80%"></div>
+<table id="stats">
+<thead><tr><th>Figure</th><th>Number of Uttered Words</th><th>Number of Utterances</th><th>Avg. Length of Utterances</th></tr>
+</thead><tbody></tbody>
+</table>
 <div style="clear:left"></div>
 </body>
 </html>
