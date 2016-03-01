@@ -3,10 +3,11 @@
 <script src="jquery-1.11.3.min.js"></script>
 <script src="highcharts.js"></script>
 <script src="exporting.js"></script>
+<script src="data.js"></script>
 
-<script src="data/Schlegel.json"></script>
 <script>
-$(function () {
+
+function load(id) {
 	$('#container').highcharts({
 		title:{
 			text:'Lessing: Emilia Galotti (1772)'
@@ -16,7 +17,7 @@ $(function () {
 			zoomType: 'x'
 		},
     	xAxis: {
-             plotBands: plotBands
+             plotBands: data[id]["plotBands"]
         },
         yAxis: {
         	//categories: speakers
@@ -33,13 +34,21 @@ $(function () {
             useHTML:true,
             pointFormat: "<div style=\"width:200px;max-width:300px; white-space:normal\"><span style=\"color:{point.color}\">{series.name}</span>: {point.name}</div>"
         },
-        series:data
+        series:data[id]["data"]
     });
+}
+
+$(function () {
+	for (index = 0; index < data.length; ++index) {
+		$("#dramaselect ul").append("<li><a href=\"javascript:load("+index+")\">"+data[index]['id']+"</a></li>");		
+	}
 });
         
 </script>
 </head>
 <body>
-<div id="container" style="height:100%"></div>
+<div id="dramaselect" style="float:left;width:10%"><ul></ul></div>
+<div id="container" style="height:100%;float:left;width:80%"></div>
+<div style="clear:left"></div>
 </body>
 </html>

@@ -5,9 +5,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 import org.apache.commons.compress.utils.IOUtils;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -18,6 +16,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import de.tudarmstadt.ukp.dkpro.core.api.io.JCasFileWriter_ImplBase;
+import de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData;
 import de.unistuttgart.quadrama.api.Figure;
 import de.unistuttgart.quadrama.api.Scene;
 import de.unistuttgart.quadrama.api.Speaker;
@@ -27,7 +26,7 @@ import de.unistuttgart.quadrama.api.Utterance;
 public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 	static String[] colors = new String[] { "#EEF", "#FEE", "#EFE" };
 
-	Set<String> names = new HashSet<String>();
+	Map<String, JSONObject> objectMap = new HashMap<String, JSONObject>();
 
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
@@ -75,7 +74,7 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 
 			Figure figure =
 					JCasUtil.selectCovered(Speaker.class, utterance).get(0)
-					.getFigure();
+							.getFigure();
 			if (figure != null) {
 				Speech speech =
 						JCasUtil.selectCovered(Speech.class, utterance).get(0);
@@ -109,27 +108,14 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 				jsonSeries.put(series.get(s));
 		}
 
-		NamedOutputStream os = null;
-		OutputStreamWriter osw = null;
-		try {
-			os = getOutputStream(jcas, ".json");
-			osw = new OutputStreamWriter(os);
-			osw.write("var plotBands = " + pbArr.toString() + ";\n");
-			osw.write("var data = " + jsonSeries.toString() + ";\n");
-			osw.write("var speakers = " + speakersArray.toString() + ";\n");
-			osw.flush();
-			osw.close();
-		} catch (IOException e) {
-			throw new AnalysisEngineProcessException(e);
-		} finally {
-			IOUtils.closeQuietly(osw);
-			IOUtils.closeQuietly(os);
-		}
-	}
+		JSONObject obj = new JSONObject();
+		obj.put("plotBands", pbArr);
+		obj.put("data", jsonSeries);
+		obj.put("id", JCasUtil.selectSingle(jcas, DocumentMetaData.class)
+				.getDocumentId());
+		objectMap.put(JCasUtil.selectSingle(jcas, DocumentMetaData.class)
+				.getDocumentId(), obj);
 
-	@Override
-	protected String getRelativePath(JCas aJCas) {
-		return "data/" + super.getRelativePath(aJCas);
 	}
 
 	@Override
@@ -183,6 +169,20 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 			IOUtils.closeQuietly(is);
 		}
 
+		JSONArray arr = new JSONArray();
+		for (String n : objectMap.keySet()) {
+			arr.put(objectMap.get(n));
+		}
+		try {
+			os = getOutputStream("data", ".js");
+			OutputStreamWriter osw = new OutputStreamWriter(os);
+			osw.write("var data = " + arr.toString());
+			osw.flush();
+			osw.close();
+		} catch (IOException e) {
+			throw new AnalysisEngineProcessException(e);
+		} finally {
+			IOUtils.closeQuietly(os);
+		}
 	}
-
 }
