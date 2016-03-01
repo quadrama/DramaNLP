@@ -138,5 +138,10 @@
         </featureDescription>
       </features>
     </typeDescription>
+  <typeDescription>
+      <name>de.unistuttgart.quadrama.api.SpeakerFigure</name>
+      <description>This type can be used to add figures on the fly, that are not declared in the dramatis personae.</description>
+      <supertypeName>de.unistuttgart.quadrama.api.Figure</supertypeName>
+    </typeDescription>
   </types>
 </typeSystemDescription>

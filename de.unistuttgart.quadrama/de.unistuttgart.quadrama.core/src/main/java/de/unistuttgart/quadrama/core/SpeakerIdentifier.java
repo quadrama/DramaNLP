@@ -5,11 +5,13 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
+import org.apache.uima.fit.factory.AnnotationFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.util.Level;
@@ -17,6 +19,7 @@ import org.apache.uima.util.Level;
 import de.unistuttgart.quadrama.api.Drama;
 import de.unistuttgart.quadrama.api.Figure;
 import de.unistuttgart.quadrama.api.Speaker;
+import de.unistuttgart.quadrama.api.SpeakerFigure;
 
 public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 
@@ -57,6 +60,28 @@ public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 		if (!unassigned.isEmpty())
 			getLogger().log(Level.WARNING,
 					"Unassigned speakers: " + JCasUtil.toText(unassigned));
+
+		if (true) {
+			Map<String, TreeSet<Speaker>> unassignedMap =
+					new HashMap<String, TreeSet<Speaker>>();
+			for (Speaker speaker : unassigned) {
+				if (!unassignedMap.containsKey(speaker.getCoveredText()))
+					unassignedMap.put(speaker.getCoveredText(),
+							new TreeSet<Speaker>(new AnnotationComparator()));
+				unassignedMap.get(speaker.getCoveredText()).add(speaker);
+			}
+
+			for (String s : unassignedMap.keySet()) {
+				Speaker speaker = unassignedMap.get(s).first();
+				Figure fig =
+						AnnotationFactory.createAnnotation(jcas,
+								speaker.getBegin(), speaker.getEnd(),
+								SpeakerFigure.class);
+				for (Speaker sp : unassignedMap.get(s)) {
+					sp.setFigure(fig);
+				}
+			}
+		}
 
 	}
 
