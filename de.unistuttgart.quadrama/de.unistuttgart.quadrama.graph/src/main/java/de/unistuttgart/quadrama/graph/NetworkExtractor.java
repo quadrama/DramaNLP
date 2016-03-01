@@ -1,7 +1,6 @@
 package de.unistuttgart.quadrama.graph;
 
 import java.io.IOException;
-import java.io.StringWriter;
 import java.util.List;
 
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -11,14 +10,20 @@ import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
+import org.jgrapht.DirectedGraph;
+import org.jgrapht.Graph;
 import org.jgrapht.WeightedGraph;
+import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.DefaultWeightedEdge;
+import org.jgrapht.graph.DirectedPseudograph;
 import org.jgrapht.graph.SimpleWeightedGraph;
 
 import de.unistuttgart.quadrama.api.Figure;
+import de.unistuttgart.quadrama.api.FigureMention;
 import de.unistuttgart.quadrama.api.MainMatter;
 import de.unistuttgart.quadrama.api.Scene;
 import de.unistuttgart.quadrama.api.Speaker;
+import de.unistuttgart.quadrama.api.Utterance;
 import de.unistuttgart.quadrama.graph.ext.GraphExporter;
 
 public class NetworkExtractor extends JCasAnnotator_ImplBase {
@@ -35,29 +40,50 @@ public class NetworkExtractor extends JCasAnnotator_ImplBase {
 
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
-		WeightedGraph<Figure, DefaultWeightedEdge> graph = null;
+		Graph<Figure, ? extends Object> graph = null;
 		switch (networkType) {
+		case MentionNetwork:
+			graph = extractMentionNetwork(jcas);
+			break;
 		case Copresence:
 		default:
 			graph =
 			extractNetwork(jcas,
 					JCasUtil.selectSingle(jcas, MainMatter.class));
 		}
-		StringWriter sw = new StringWriter();
 		GraphExporter gmlExporter = new GraphExporter();
 		try {
-			System.err.println("Now exporting");
-			gmlExporter.export(sw, graph);
-			sw.flush();
-			sw.close();
 			JCas graphView = jcas.createView(viewName);
-			graphView.setDocumentText(sw.toString());
-			graphView.setDocumentLanguage("");
+			System.err.println("Now exporting");
+			gmlExporter.export(graphView, graph);
+
 		} catch (CASException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	protected DirectedGraph<Figure, DefaultEdge>
+	extractMentionNetwork(JCas jcas) {
+		DirectedGraph<Figure, DefaultEdge> graph =
+				new DirectedPseudograph<Figure, DefaultEdge>(DefaultEdge.class);
+
+		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
+			Speaker speaker =
+					JCasUtil.selectCovered(Speaker.class, utterance).get(0);
+			for (FigureMention mention : JCasUtil.selectCovered(jcas,
+					FigureMention.class, utterance)) {
+				if (speaker.getFigure() != null && mention.getFigure() != null) {
+					if (!graph.containsVertex(speaker.getFigure()))
+						graph.addVertex(speaker.getFigure());
+					if (!graph.containsVertex(mention.getFigure()))
+						graph.addVertex(mention.getFigure());
+					graph.addEdge(speaker.getFigure(), mention.getFigure());
+				}
+			}
+		}
+		return graph;
 	}
 
 	protected WeightedGraph<Figure, DefaultWeightedEdge> extractNetwork(
