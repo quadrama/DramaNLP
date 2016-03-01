@@ -20,5 +20,23 @@
   		<artifactId>json</artifactId>
   		<version>20151123</version>
   	</dependency>
+  	<dependency>
+  		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+  		<artifactId>
+  			de.tudarmstadt.ukp.dkpro.core.io.xmi-asl
+  		</artifactId>
+  		<version>1.7.0</version>
+  		<scope>test</scope>
+  	</dependency>
+  	<dependency>
+  		<groupId>junit</groupId>
+  		<artifactId>junit</artifactId>
+  		<scope>test</scope>
+  	</dependency>
+  	<dependency>
+  		<groupId>de.unistuttgart.quadrama</groupId>
+  		<artifactId>de.unistuttgart.quadrama.api</artifactId>
+  		<version>0.2-SNAPSHOT</version>
+  	</dependency>
   </dependencies>
 </project>

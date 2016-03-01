@@ -1,0 +1,41 @@
+<html>
+<head>
+<script src="jquery-1.11.3.min.js"></script>
+<script src="highcharts.js"></script>
+<script src="exporting.js"></script>
+
+<script src="../resources/1772_Lessing,_Gotthold_Ephraim_-_Emilia_Galotti.json"></script>
+<script>
+$(function () {
+	$('#container').highcharts({
+		title:{
+			text:'Lessing: Emilia Galotti (1772)'
+		},
+		chart: {
+			
+			type:'spline',
+			zoomType: 'xy'
+		},
+    	xAxis: {
+             plotBands: plotBands
+        },
+        yAxis: {
+        	//categories: speakers
+        },
+        plotOptions: {
+            series: {
+            	lineWidth:1
+                // connectNulls: false // by default
+            }
+        },
+
+        series:data
+    });
+});
+        
+</script>
+</head>
+<body>
+<div id="container" style="height:100%"></div>
+</body>
+</html>
