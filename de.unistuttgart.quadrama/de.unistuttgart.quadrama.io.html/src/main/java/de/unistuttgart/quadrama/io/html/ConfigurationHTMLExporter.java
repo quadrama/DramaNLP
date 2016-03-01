@@ -70,6 +70,7 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 			// we make one series for each cast member
 			JSONObject j = new JSONObject();
 			j.put("name", figure.getCoveredText());
+			j.put("visible", figure.getNumberOfWords() > 100);
 			j.put("lineWidth", 5);
 			j.put("data", new JSONArray());
 			series.put(figure, j);
@@ -86,7 +87,7 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 
 			Figure figure =
 					JCasUtil.selectCovered(Speaker.class, utterance).get(0)
-							.getFigure();
+					.getFigure();
 			if (figure != null && speaker_index.containsKey(figure)) {
 				Speech speech =
 						JCasUtil.selectCovered(Speech.class, utterance).get(0);
