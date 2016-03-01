@@ -4,7 +4,7 @@
 <script src="highcharts.js"></script>
 <script src="exporting.js"></script>
 
-<script src="../resources/1772_Lessing,_Gotthold_Ephraim_-_Emilia_Galotti.json"></script>
+<script src="data/Schlegel.json"></script>
 <script>
 $(function () {
 	$('#container').highcharts({
@@ -12,9 +12,8 @@ $(function () {
 			text:'Lessing: Emilia Galotti (1772)'
 		},
 		chart: {
-			
 			type:'spline',
-			zoomType: 'xy'
+			zoomType: 'x'
 		},
     	xAxis: {
              plotBands: plotBands
