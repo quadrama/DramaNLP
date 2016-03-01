@@ -23,7 +23,6 @@ import de.unistuttgart.quadrama.graph.ext.GraphExporter;
 
 public class NetworkExtractor extends JCasAnnotator_ImplBase {
 
-	public static final String NETWORK_VIEW = "Network";
 	public static final String PARAM_VIEW_NAME = "View Name";
 
 	@ConfigurationParameter(name = PARAM_VIEW_NAME, mandatory = true)
