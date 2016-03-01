@@ -31,7 +31,7 @@ public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 				Level.FINE,
 				"Now processing "
 						+ JCasUtil.selectSingle(jcas, Drama.class)
-						.getDocumentId());
+								.getDocumentId());
 
 		Map<String, Figure> map = new HashMap<String, Figure>();
 		int figureId = 0;
@@ -45,7 +45,7 @@ public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 		for (Speaker cm : JCasUtil.select(jcas, Speaker.class)) {
 			String sName =
 					cm.getCoveredText().trim().replaceAll("[.,;]", "")
-					.toLowerCase();
+							.toLowerCase();
 			if (map.containsKey(sName))
 				cm.setFigure(map.get(sName));
 			else {
@@ -65,14 +65,18 @@ public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 			Map<String, TreeSet<Speaker>> unassignedMap =
 					new HashMap<String, TreeSet<Speaker>>();
 			for (Speaker speaker : unassigned) {
-				if (!unassignedMap.containsKey(speaker.getCoveredText()))
-					unassignedMap.put(speaker.getCoveredText(),
+				if (!unassignedMap.containsKey(speaker.getCoveredText().trim()))
+					unassignedMap.put(speaker.getCoveredText().trim(),
 							new TreeSet<Speaker>(new AnnotationComparator()));
-				unassignedMap.get(speaker.getCoveredText()).add(speaker);
+				unassignedMap.get(speaker.getCoveredText().trim()).add(speaker);
 			}
 
 			for (String s : unassignedMap.keySet()) {
 				Speaker speaker = unassignedMap.get(s).first();
+				getLogger().log(
+						Level.WARNING,
+						"Creating SpeakerFigure for "
+								+ speaker.getCoveredText());
 				Figure fig =
 						AnnotationFactory.createAnnotation(jcas,
 								speaker.getBegin(), speaker.getEnd(),
