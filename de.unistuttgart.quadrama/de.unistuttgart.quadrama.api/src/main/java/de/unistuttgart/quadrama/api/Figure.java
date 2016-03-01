@@ -11,7 +11,7 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** Represents on figure in the play. Each figure should only have one Figure annotation (and multiple Speaker annotations)
- * Updated by JCasGen Tue Mar 01 20:08:36 CET 2016
+ * Updated by JCasGen Tue Mar 01 20:10:54 CET 2016
  * XML source: /Users/reiterns/Documents/DH/anglogerman/de.unistuttgart.quadrama/de.unistuttgart.quadrama.api/src/main/java/de/unistuttgart/quadrama/api/Types.xml
  * @generated */
 public class Figure extends Annotation {
@@ -125,19 +125,19 @@ public class Figure extends Annotation {
    * @generated
    * @return value of the feature 
    */
-  public int getNumberOfUtterances() {
+  public long getNumberOfUtterances() {
     if (Figure_Type.featOkTst && ((Figure_Type)jcasType).casFeat_NumberOfUtterances == null)
       jcasType.jcas.throwFeatMissing("NumberOfUtterances", "de.unistuttgart.quadrama.api.Figure");
-    return jcasType.ll_cas.ll_getIntValue(addr, ((Figure_Type)jcasType).casFeatCode_NumberOfUtterances);}
+    return jcasType.ll_cas.ll_getLongValue(addr, ((Figure_Type)jcasType).casFeatCode_NumberOfUtterances);}
     
   /** setter for NumberOfUtterances - sets  
    * @generated
    * @param v value to set into the feature 
    */
-  public void setNumberOfUtterances(int v) {
+  public void setNumberOfUtterances(long v) {
     if (Figure_Type.featOkTst && ((Figure_Type)jcasType).casFeat_NumberOfUtterances == null)
       jcasType.jcas.throwFeatMissing("NumberOfUtterances", "de.unistuttgart.quadrama.api.Figure");
-    jcasType.ll_cas.ll_setIntValue(addr, ((Figure_Type)jcasType).casFeatCode_NumberOfUtterances, v);}    
+    jcasType.ll_cas.ll_setLongValue(addr, ((Figure_Type)jcasType).casFeatCode_NumberOfUtterances, v);}    
    
     
   //*--------------*

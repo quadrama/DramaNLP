@@ -127,7 +127,7 @@
       <featureDescription>
           <name>NumberOfUtterances</name>
           <description/>
-          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+          <rangeTypeName>uima.cas.Long</rangeTypeName>
         </featureDescription>
         <featureDescription>
           <name>NumberOfWords</name>

@@ -14,7 +14,7 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** Represents on figure in the play. Each figure should only have one Figure annotation (and multiple Speaker annotations)
- * Updated by JCasGen Tue Mar 01 20:08:36 CET 2016
+ * Updated by JCasGen Tue Mar 01 20:10:54 CET 2016
  * @generated */
 public class Figure_Type extends Annotation_Type {
   /** @generated 
@@ -104,19 +104,19 @@ public class Figure_Type extends Annotation_Type {
    * @param addr low level Feature Structure reference
    * @return the feature value 
    */ 
-  public int getNumberOfUtterances(int addr) {
+  public long getNumberOfUtterances(int addr) {
         if (featOkTst && casFeat_NumberOfUtterances == null)
       jcas.throwFeatMissing("NumberOfUtterances", "de.unistuttgart.quadrama.api.Figure");
-    return ll_cas.ll_getIntValue(addr, casFeatCode_NumberOfUtterances);
+    return ll_cas.ll_getLongValue(addr, casFeatCode_NumberOfUtterances);
   }
   /** @generated
    * @param addr low level Feature Structure reference
    * @param v value to set 
    */    
-  public void setNumberOfUtterances(int addr, int v) {
+  public void setNumberOfUtterances(int addr, long v) {
         if (featOkTst && casFeat_NumberOfUtterances == null)
       jcas.throwFeatMissing("NumberOfUtterances", "de.unistuttgart.quadrama.api.Figure");
-    ll_cas.ll_setIntValue(addr, casFeatCode_NumberOfUtterances, v);}
+    ll_cas.ll_setLongValue(addr, casFeatCode_NumberOfUtterances, v);}
     
   
  
@@ -260,7 +260,7 @@ public class Figure_Type extends Annotation_Type {
     casFeatCode_Description  = (null == casFeat_Description) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_Description).getCode();
 
  
-    casFeat_NumberOfUtterances = jcas.getRequiredFeatureDE(casType, "NumberOfUtterances", "uima.cas.Integer", featOkTst);
+    casFeat_NumberOfUtterances = jcas.getRequiredFeatureDE(casType, "NumberOfUtterances", "uima.cas.Long", featOkTst);
     casFeatCode_NumberOfUtterances  = (null == casFeat_NumberOfUtterances) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_NumberOfUtterances).getCode();
 
  

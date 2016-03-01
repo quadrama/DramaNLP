@@ -7,6 +7,7 @@ import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
+import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.factory.JCasBuilder;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
@@ -18,7 +19,12 @@ import de.unistuttgart.quadrama.api.Utterance;
 
 public class FigureSpeechStatistics extends JCasAnnotator_ImplBase {
 
+	public static final String PARAM_WRITE_CSV = "Write CSV";
+
 	public static final String VIEW_NAME = "Statistics";
+
+	@ConfigurationParameter(name = PARAM_WRITE_CSV, mandatory = false)
+	boolean writeCSV = false;
 
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
@@ -32,7 +38,7 @@ public class FigureSpeechStatistics extends JCasAnnotator_ImplBase {
 		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
 			Figure figure =
 					JCasUtil.selectCovered(Speaker.class, utterance).get(0)
-					.getFigure();
+							.getFigure();
 			spokenWords.get(figure).addValue(
 					JCasUtil.selectCovered(Token.class, utterance).size());
 		}
@@ -46,11 +52,21 @@ public class FigureSpeechStatistics extends JCasAnnotator_ImplBase {
 				b.add("\n");
 				b.add(ss.toString());
 				b.add("====\n");
+
+				figure.setNumberOfUtterances(ss.getN());
+				figure.setUtteranceLengthArithmeticMean(ss.getMean());
+				figure.setUtteranceLengthMin((int) ss.getMin());
+				figure.setUtteranceLengthMax((int) ss.getMax());
+				figure.setUtteranceLengthStandardDeviation(ss
+						.getStandardDeviation());
+				figure.setNumberOfWords((int) (ss.getSum()));
+
 			}
 			b.close();
+
 		} catch (CASException e) {
 			throw new AnalysisEngineProcessException(e);
 		}
-	}
 
+	}
 }
