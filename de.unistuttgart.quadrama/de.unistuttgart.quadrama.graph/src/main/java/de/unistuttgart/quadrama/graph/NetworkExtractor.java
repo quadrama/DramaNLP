@@ -25,9 +25,13 @@ public class NetworkExtractor extends JCasAnnotator_ImplBase {
 
 	public static final String NETWORK_VIEW = "Network";
 	public static final String PARAM_BYACT = "By Act";
+	public static final String PARAM_VIEW_NAME = "View Name";
 
 	@ConfigurationParameter(name = PARAM_BYACT, mandatory = false)
 	boolean networkByAct = false;
+
+	@ConfigurationParameter(name = PARAM_VIEW_NAME, mandatory = true)
+	String viewName = null;
 
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
@@ -45,7 +49,7 @@ public class NetworkExtractor extends JCasAnnotator_ImplBase {
 			gmlExporter.export(sw, graph);
 			sw.flush();
 			sw.close();
-			JCas graphView = jcas.createView(NETWORK_VIEW);
+			JCas graphView = jcas.createView(viewName);
 			graphView.setDocumentText(sw.toString());
 			graphView.setDocumentLanguage("");
 		} catch (CASException e) {

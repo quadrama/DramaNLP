@@ -13,6 +13,7 @@ import org.apache.uima.resource.ResourceInitializationException;
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiReader;
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.tudarmstadt.ukp.dkpro.core.languagetool.LanguageToolSegmenter;
+import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordPosTagger;
 import de.unistuttgart.quadrama.core.DramaSpeechSegmenter;
 import de.unistuttgart.quadrama.core.FigureMentionDetection;
 import de.unistuttgart.quadrama.core.SpeakerIdentifier;
@@ -33,21 +34,25 @@ public class Visualise {
 						"src/main/resources/romeo-and-juliet/de/*.xmi");
 
 		SimplePipeline
-				.runPipeline(
-						crd,
-						createEngineDescription(FixGutenbergSpeech.class),
-						DramaSpeechSegmenter
-								.getWrappedSegmenterDescription(LanguageToolSegmenter.class),
-						createEngineDescription(SpeakerIdentifier.class),
-						createEngineDescription(FigureMentionDetection.class),
-						createEngineDescription(NetworkExtractor.class),
+		.runPipeline(
+				crd,
+				createEngineDescription(FixGutenbergSpeech.class),
+				DramaSpeechSegmenter
+				.getWrappedSegmenterDescription(LanguageToolSegmenter.class),
+				createEngineDescription(SpeakerIdentifier.class),
+				createEngineDescription(StanfordPosTagger.class),
+				// createEngineDescription(StanfordNamedEntityRecognizer.class),
+				createEngineDescription(FigureMentionDetection.class),
+				createEngineDescription(NetworkExtractor.class,
+						NetworkExtractor.PARAM_VIEW_NAME, "Network"),
 						createEngineDescription(XmiWriter.class,
-						XmiWriter.PARAM_TARGET_LOCATION, "target/xmi/"),
-						createEngineDescription(DotExporter.class,
-								DotExporter.PARAM_TARGET_LOCATION,
-								"target/dot/"),
-								createEngineDescription(MentionNetworkExtractor.class,
+								XmiWriter.PARAM_TARGET_LOCATION, "target/xmi/"),
+								createEngineDescription(DotExporter.class,
 										DotExporter.PARAM_TARGET_LOCATION,
-										"target/dot2/"));
+										"target/dot/", DotExporter.PARAM_VIEW_NAME,
+								"Network"),
+						createEngineDescription(MentionNetworkExtractor.class,
+								DotExporter.PARAM_TARGET_LOCATION,
+								"target/dot2/"));
 	}
 }
