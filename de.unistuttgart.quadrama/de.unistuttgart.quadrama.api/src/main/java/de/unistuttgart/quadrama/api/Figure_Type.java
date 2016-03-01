@@ -14,7 +14,7 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** Represents on figure in the play. Each figure should only have one Figure annotation (and multiple Speaker annotations)
- * Updated by JCasGen Thu Feb 18 16:18:59 CET 2016
+ * Updated by JCasGen Tue Mar 01 20:08:36 CET 2016
  * @generated */
 public class Figure_Type extends Annotation_Type {
   /** @generated 
@@ -95,6 +95,150 @@ public class Figure_Type extends Annotation_Type {
     ll_cas.ll_setStringValue(addr, casFeatCode_Description, v);}
     
   
+ 
+  /** @generated */
+  final Feature casFeat_NumberOfUtterances;
+  /** @generated */
+  final int     casFeatCode_NumberOfUtterances;
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @return the feature value 
+   */ 
+  public int getNumberOfUtterances(int addr) {
+        if (featOkTst && casFeat_NumberOfUtterances == null)
+      jcas.throwFeatMissing("NumberOfUtterances", "de.unistuttgart.quadrama.api.Figure");
+    return ll_cas.ll_getIntValue(addr, casFeatCode_NumberOfUtterances);
+  }
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @param v value to set 
+   */    
+  public void setNumberOfUtterances(int addr, int v) {
+        if (featOkTst && casFeat_NumberOfUtterances == null)
+      jcas.throwFeatMissing("NumberOfUtterances", "de.unistuttgart.quadrama.api.Figure");
+    ll_cas.ll_setIntValue(addr, casFeatCode_NumberOfUtterances, v);}
+    
+  
+ 
+  /** @generated */
+  final Feature casFeat_NumberOfWords;
+  /** @generated */
+  final int     casFeatCode_NumberOfWords;
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @return the feature value 
+   */ 
+  public int getNumberOfWords(int addr) {
+        if (featOkTst && casFeat_NumberOfWords == null)
+      jcas.throwFeatMissing("NumberOfWords", "de.unistuttgart.quadrama.api.Figure");
+    return ll_cas.ll_getIntValue(addr, casFeatCode_NumberOfWords);
+  }
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @param v value to set 
+   */    
+  public void setNumberOfWords(int addr, int v) {
+        if (featOkTst && casFeat_NumberOfWords == null)
+      jcas.throwFeatMissing("NumberOfWords", "de.unistuttgart.quadrama.api.Figure");
+    ll_cas.ll_setIntValue(addr, casFeatCode_NumberOfWords, v);}
+    
+  
+ 
+  /** @generated */
+  final Feature casFeat_UtteranceLengthArithmeticMean;
+  /** @generated */
+  final int     casFeatCode_UtteranceLengthArithmeticMean;
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @return the feature value 
+   */ 
+  public double getUtteranceLengthArithmeticMean(int addr) {
+        if (featOkTst && casFeat_UtteranceLengthArithmeticMean == null)
+      jcas.throwFeatMissing("UtteranceLengthArithmeticMean", "de.unistuttgart.quadrama.api.Figure");
+    return ll_cas.ll_getDoubleValue(addr, casFeatCode_UtteranceLengthArithmeticMean);
+  }
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @param v value to set 
+   */    
+  public void setUtteranceLengthArithmeticMean(int addr, double v) {
+        if (featOkTst && casFeat_UtteranceLengthArithmeticMean == null)
+      jcas.throwFeatMissing("UtteranceLengthArithmeticMean", "de.unistuttgart.quadrama.api.Figure");
+    ll_cas.ll_setDoubleValue(addr, casFeatCode_UtteranceLengthArithmeticMean, v);}
+    
+  
+ 
+  /** @generated */
+  final Feature casFeat_UtteranceLengthStandardDeviation;
+  /** @generated */
+  final int     casFeatCode_UtteranceLengthStandardDeviation;
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @return the feature value 
+   */ 
+  public double getUtteranceLengthStandardDeviation(int addr) {
+        if (featOkTst && casFeat_UtteranceLengthStandardDeviation == null)
+      jcas.throwFeatMissing("UtteranceLengthStandardDeviation", "de.unistuttgart.quadrama.api.Figure");
+    return ll_cas.ll_getDoubleValue(addr, casFeatCode_UtteranceLengthStandardDeviation);
+  }
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @param v value to set 
+   */    
+  public void setUtteranceLengthStandardDeviation(int addr, double v) {
+        if (featOkTst && casFeat_UtteranceLengthStandardDeviation == null)
+      jcas.throwFeatMissing("UtteranceLengthStandardDeviation", "de.unistuttgart.quadrama.api.Figure");
+    ll_cas.ll_setDoubleValue(addr, casFeatCode_UtteranceLengthStandardDeviation, v);}
+    
+  
+ 
+  /** @generated */
+  final Feature casFeat_UtteranceLengthMax;
+  /** @generated */
+  final int     casFeatCode_UtteranceLengthMax;
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @return the feature value 
+   */ 
+  public int getUtteranceLengthMax(int addr) {
+        if (featOkTst && casFeat_UtteranceLengthMax == null)
+      jcas.throwFeatMissing("UtteranceLengthMax", "de.unistuttgart.quadrama.api.Figure");
+    return ll_cas.ll_getIntValue(addr, casFeatCode_UtteranceLengthMax);
+  }
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @param v value to set 
+   */    
+  public void setUtteranceLengthMax(int addr, int v) {
+        if (featOkTst && casFeat_UtteranceLengthMax == null)
+      jcas.throwFeatMissing("UtteranceLengthMax", "de.unistuttgart.quadrama.api.Figure");
+    ll_cas.ll_setIntValue(addr, casFeatCode_UtteranceLengthMax, v);}
+    
+  
+ 
+  /** @generated */
+  final Feature casFeat_UtteranceLengthMin;
+  /** @generated */
+  final int     casFeatCode_UtteranceLengthMin;
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @return the feature value 
+   */ 
+  public int getUtteranceLengthMin(int addr) {
+        if (featOkTst && casFeat_UtteranceLengthMin == null)
+      jcas.throwFeatMissing("UtteranceLengthMin", "de.unistuttgart.quadrama.api.Figure");
+    return ll_cas.ll_getIntValue(addr, casFeatCode_UtteranceLengthMin);
+  }
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @param v value to set 
+   */    
+  public void setUtteranceLengthMin(int addr, int v) {
+        if (featOkTst && casFeat_UtteranceLengthMin == null)
+      jcas.throwFeatMissing("UtteranceLengthMin", "de.unistuttgart.quadrama.api.Figure");
+    ll_cas.ll_setIntValue(addr, casFeatCode_UtteranceLengthMin, v);}
+    
+  
 
 
 
@@ -114,6 +258,30 @@ public class Figure_Type extends Annotation_Type {
  
     casFeat_Description = jcas.getRequiredFeatureDE(casType, "Description", "uima.cas.String", featOkTst);
     casFeatCode_Description  = (null == casFeat_Description) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_Description).getCode();
+
+ 
+    casFeat_NumberOfUtterances = jcas.getRequiredFeatureDE(casType, "NumberOfUtterances", "uima.cas.Integer", featOkTst);
+    casFeatCode_NumberOfUtterances  = (null == casFeat_NumberOfUtterances) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_NumberOfUtterances).getCode();
+
+ 
+    casFeat_NumberOfWords = jcas.getRequiredFeatureDE(casType, "NumberOfWords", "uima.cas.Integer", featOkTst);
+    casFeatCode_NumberOfWords  = (null == casFeat_NumberOfWords) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_NumberOfWords).getCode();
+
+ 
+    casFeat_UtteranceLengthArithmeticMean = jcas.getRequiredFeatureDE(casType, "UtteranceLengthArithmeticMean", "uima.cas.Double", featOkTst);
+    casFeatCode_UtteranceLengthArithmeticMean  = (null == casFeat_UtteranceLengthArithmeticMean) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_UtteranceLengthArithmeticMean).getCode();
+
+ 
+    casFeat_UtteranceLengthStandardDeviation = jcas.getRequiredFeatureDE(casType, "UtteranceLengthStandardDeviation", "uima.cas.Double", featOkTst);
+    casFeatCode_UtteranceLengthStandardDeviation  = (null == casFeat_UtteranceLengthStandardDeviation) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_UtteranceLengthStandardDeviation).getCode();
+
+ 
+    casFeat_UtteranceLengthMax = jcas.getRequiredFeatureDE(casType, "UtteranceLengthMax", "uima.cas.Integer", featOkTst);
+    casFeatCode_UtteranceLengthMax  = (null == casFeat_UtteranceLengthMax) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_UtteranceLengthMax).getCode();
+
+ 
+    casFeat_UtteranceLengthMin = jcas.getRequiredFeatureDE(casType, "UtteranceLengthMin", "uima.cas.Integer", featOkTst);
+    casFeatCode_UtteranceLengthMin  = (null == casFeat_UtteranceLengthMin) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_UtteranceLengthMin).getCode();
 
   }
 }
