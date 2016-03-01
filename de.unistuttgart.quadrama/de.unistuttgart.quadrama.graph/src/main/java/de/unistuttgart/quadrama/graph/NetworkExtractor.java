@@ -24,17 +24,25 @@ import de.unistuttgart.quadrama.graph.ext.GraphExporter;
 public class NetworkExtractor extends JCasAnnotator_ImplBase {
 
 	public static final String PARAM_VIEW_NAME = "View Name";
+	public static final String PARAM_NETWORK_TYPE = "Network Type";
 
 	@ConfigurationParameter(name = PARAM_VIEW_NAME, mandatory = true)
 	String viewName = null;
 
+	@ConfigurationParameter(name = PARAM_NETWORK_TYPE,
+			defaultValue = "Copresence", mandatory = false)
+	NetworkType networkType = null;
+
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
 		WeightedGraph<Figure, DefaultWeightedEdge> graph = null;
-		graph =
-				extractNetwork(jcas,
-						JCasUtil.selectSingle(jcas, MainMatter.class));
-
+		switch (networkType) {
+		case Copresence:
+		default:
+			graph =
+			extractNetwork(jcas,
+					JCasUtil.selectSingle(jcas, MainMatter.class));
+		}
 		StringWriter sw = new StringWriter();
 		GraphExporter gmlExporter = new GraphExporter();
 		try {
