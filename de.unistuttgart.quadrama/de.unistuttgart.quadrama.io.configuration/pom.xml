@@ -7,4 +7,27 @@
   </parent>
   <artifactId>de.unistuttgart.quadrama.io.configuration</artifactId>
   <name>de.unistuttgart.quadrama.io.configuration</name>
+  <dependencies>
+  	<dependency>
+  		<groupId>de.unistuttgart.quadrama</groupId>
+  		<artifactId>de.unistuttgart.quadrama.api</artifactId>
+  		<version>0.2-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.apache.uima</groupId>
+  		<artifactId>uimafit-core</artifactId>
+  	</dependency>
+  	<dependency>
+  		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+  		<artifactId>
+  			de.tudarmstadt.ukp.dkpro.core.api.io-asl
+  		</artifactId>
+  		<version>1.7.0</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.apache.commons</groupId>
+  		<artifactId>commons-csv</artifactId>
+  		<version>1.2</version>
+  	</dependency>
+  </dependencies>
 </project>
