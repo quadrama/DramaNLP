@@ -1,30 +1,48 @@
 package de.unistuttgart.quadrama.graph.ext;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.uima.cas.CASException;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
+import org.jgrapht.Graph;
 import org.jgrapht.WeightedGraph;
 import org.jgrapht.graph.DefaultWeightedEdge;
-import org.jgrapht.graph.SimpleWeightedGraph;
 
 import de.unistuttgart.quadrama.api.Figure;
+import de.unistuttgart.quadrama.graph.ext.api.GraphMetaData;
 
 public class GraphImporter {
-	public static WeightedGraph<Figure, DefaultWeightedEdge> getGraph(String s,
-			JCas jcas) {
+	public static Graph<Figure, DefaultWeightedEdge> getGraph(JCas jcas,
+			String viewName) throws ClassNotFoundException,
+			InstantiationException, IllegalAccessException,
+			IllegalArgumentException, InvocationTargetException,
+			NoSuchMethodException, SecurityException, CASException {
+
+		JCas graphView = jcas.getView(viewName);
+
 		Map<Integer, Figure> figureMap = new HashMap<Integer, Figure>();
 		for (Figure figure : JCasUtil.select(jcas, Figure.class)) {
 			figureMap.put(figure.getId(), figure);
 		}
-		SimpleWeightedGraph<Figure, DefaultWeightedEdge> graph =
-				new SimpleWeightedGraph<Figure, DefaultWeightedEdge>(
-						DefaultWeightedEdge.class);
+		GraphMetaData gmd =
+				JCasUtil.selectSingle(graphView, GraphMetaData.class);
+
+		Class<?> cl = Class.forName(gmd.getGraphClassName());
+		@SuppressWarnings("unchecked")
+		Graph<Figure, DefaultWeightedEdge> graph =
+		(Graph<Figure, DefaultWeightedEdge>) cl.getConstructor(
+				Class.class).newInstance(DefaultWeightedEdge.class);
+
+		// SimpleWeightedGraph<Figure, DefaultWeightedEdge> graph =
+		// new SimpleWeightedGraph<Figure, DefaultWeightedEdge>(
+		// DefaultWeightedEdge.class);
 		Pattern pattern = Pattern.compile("(\\d+) (\\d+) (\\d+.\\d+)");
-		for (String line : s.split("\n")) {
+		for (String line : graphView.getDocumentText().split("\n")) {
 			Matcher m = pattern.matcher(line);
 			if (m.find()) {
 				int sId = Integer.valueOf(m.group(1));
@@ -34,8 +52,10 @@ public class GraphImporter {
 				Figure tFigure = figureMap.get(tId);
 				if (!graph.containsVertex(sFigure)) graph.addVertex(sFigure);
 				if (!graph.containsVertex(tFigure)) graph.addVertex(tFigure);
-				DefaultWeightedEdge edge = graph.addEdge(sFigure, tFigure);
-				if (edge != null) graph.setEdgeWeight(edge, w);
+				Object edge = graph.addEdge(sFigure, tFigure);
+				if (edge != null)
+					((WeightedGraph<Figure, DefaultWeightedEdge>) graph)
+							.setEdgeWeight((DefaultWeightedEdge) edge, w);
 			}
 		}
 
