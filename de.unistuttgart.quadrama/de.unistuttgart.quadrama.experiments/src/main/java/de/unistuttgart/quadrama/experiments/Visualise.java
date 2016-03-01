@@ -16,9 +16,11 @@ import de.tudarmstadt.ukp.dkpro.core.languagetool.LanguageToolSegmenter;
 import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordPosTagger;
 import de.unistuttgart.quadrama.core.DramaSpeechSegmenter;
 import de.unistuttgart.quadrama.core.FigureMentionDetection;
+import de.unistuttgart.quadrama.core.FigureSpeechStatistics;
 import de.unistuttgart.quadrama.core.SpeakerIdentifier;
 import de.unistuttgart.quadrama.graph.NetworkExtractor;
 import de.unistuttgart.quadrama.io.dot.DotExporter;
+import de.unistuttgart.quadrama.io.html.ConfigurationHTMLExporter;
 
 public class Visualise {
 
@@ -41,19 +43,24 @@ public class Visualise {
 				createEngineDescription(SpeakerIdentifier.class),
 				createEngineDescription(StanfordPosTagger.class),
 				// createEngineDescription(StanfordNamedEntityRecognizer.class),
+				createEngineDescription(FigureSpeechStatistics.class),
 				createEngineDescription(FigureMentionDetection.class),
-				createEngineDescription(NetworkExtractor.class,
-						NetworkExtractor.PARAM_VIEW_NAME,
+				createEngineDescription(
+						ConfigurationHTMLExporter.class,
+						ConfigurationHTMLExporter.PARAM_TARGET_LOCATION,
+						"target/html/"),
+						createEngineDescription(NetworkExtractor.class,
+								NetworkExtractor.PARAM_VIEW_NAME,
 								"CopresenceNetwork"),
 						createEngineDescription(NetworkExtractor.class,
 								NetworkExtractor.PARAM_VIEW_NAME,
 								"MentionNetwork",
 								NetworkExtractor.PARAM_NETWORK_TYPE,
 								"MentionNetwork"),
-								createEngineDescription(XmiWriter.class,
-										XmiWriter.PARAM_TARGET_LOCATION, "target/xmi/"),
+										createEngineDescription(XmiWriter.class,
+												XmiWriter.PARAM_TARGET_LOCATION, "target/xmi/"),
 						createEngineDescription(DotExporter.class,
-												DotExporter.PARAM_VIEW_NAME, "MentionNetwork",
+														DotExporter.PARAM_VIEW_NAME, "MentionNetwork",
 								DotExporter.PARAM_TARGET_LOCATION,
 								"target/dot/"));
 	}
