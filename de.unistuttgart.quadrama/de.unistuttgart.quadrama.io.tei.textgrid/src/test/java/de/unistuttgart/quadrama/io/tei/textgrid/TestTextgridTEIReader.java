@@ -10,6 +10,7 @@ import org.apache.uima.UIMAException;
 import org.apache.uima.collection.CollectionReaderDescription;
 import org.apache.uima.fit.factory.AnalysisEngineFactory;
 import org.apache.uima.fit.factory.CollectionReaderFactory;
+import org.apache.uima.fit.pipeline.JCasIterator;
 import org.apache.uima.fit.pipeline.SimplePipeline;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
@@ -26,7 +27,6 @@ import de.unistuttgart.quadrama.api.FrontMatter;
 import de.unistuttgart.quadrama.api.MainMatter;
 import de.unistuttgart.quadrama.api.Scene;
 import de.unistuttgart.quadrama.api.Speaker;
-import de.unistuttgart.quadrama.io.tei.textgrid.TextgridTEIReader;
 
 public class TestTextgridTEIReader {
 
@@ -43,16 +43,19 @@ public class TestTextgridTEIReader {
 
 	@Test
 	public void testReader() throws UIMAException, IOException {
-		JCas jcas =
-				SimplePipeline
-				.iteratePipeline(
+		JCasIterator iter =
+				SimplePipeline.iteratePipeline(
 						description,
-
-								AnalysisEngineFactory.createEngineDescription(
+						AnalysisEngineFactory.createEngineDescription(
 								XmiWriter.class,
-								XmiWriter.PARAM_TARGET_LOCATION,
-								"target/doc")).iterator().next();
+								XmiWriter.PARAM_TARGET_LOCATION, "target/doc"))
+								.iterator();
 
+		JCas jcas;
+
+		jcas = iter.next();
+
+		// general sanity checking
 		assertNotNull(JCasUtil.selectSingle(jcas, Drama.class));
 		assertTrue(JCasUtil.exists(jcas, Act.class));
 		assertTrue(JCasUtil.exists(jcas, Scene.class));
@@ -69,6 +72,27 @@ public class TestTextgridTEIReader {
 		Figure figure;
 		figure = JCasUtil.selectByIndex(jcas, Figure.class, 0);
 		assertEquals("Escalus", figure.getCoveredText());
-		assertEquals("Prinz von Verona", figure.getDescription());
+		assertEquals("Prinz von Verona", figure.getDescription()
+				.getCoveredText().trim());
+
+		jcas = iter.next();
+
+		// general sanity checking
+		assertNotNull(JCasUtil.selectSingle(jcas, Drama.class));
+		assertTrue(JCasUtil.exists(jcas, Act.class));
+		// assertTrue(JCasUtil.exists(jcas, Scene.class));
+		assertTrue(JCasUtil.exists(jcas, Speaker.class));
+		assertTrue(JCasUtil.exists(jcas, Figure.class));
+		// assertTrue(JCasUtil.exists(jcas, DramatisPersonae.class));
+		assertNotNull(JCasUtil.selectSingle(jcas, FrontMatter.class));
+		assertNotNull(JCasUtil.selectSingle(jcas, MainMatter.class));
+		assertEquals(5, JCasUtil.select(jcas, Act.class).size());
+
+		// figures
+		assertEquals(38, JCasUtil.select(jcas, Figure.class).size());
+		figure = JCasUtil.selectByIndex(jcas, Figure.class, 0);
+		assertEquals("Escalus", figure.getCoveredText());
+		assertEquals("prince of Verona", figure.getDescription()
+				.getCoveredText().trim());
 	}
 }
