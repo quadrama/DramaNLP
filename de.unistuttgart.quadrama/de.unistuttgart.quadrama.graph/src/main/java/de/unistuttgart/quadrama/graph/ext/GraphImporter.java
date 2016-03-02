@@ -27,7 +27,7 @@ public class GraphImporter {
 
 		Map<Integer, Figure> figureMap = new HashMap<Integer, Figure>();
 		for (Figure figure : JCasUtil.select(jcas, Figure.class)) {
-			figureMap.put(figure.getId(), figure);
+			figureMap.put(figure.hashCode(), figure);
 		}
 		GraphMetaData gmd =
 				JCasUtil.selectSingle(graphView, GraphMetaData.class);
@@ -35,8 +35,8 @@ public class GraphImporter {
 		Class<?> cl = Class.forName(gmd.getGraphClassName());
 		@SuppressWarnings("unchecked")
 		Graph<Figure, DefaultWeightedEdge> graph =
-		(Graph<Figure, DefaultWeightedEdge>) cl.getConstructor(
-				Class.class).newInstance(DefaultWeightedEdge.class);
+				(Graph<Figure, DefaultWeightedEdge>) cl.getConstructor(
+						Class.class).newInstance(DefaultWeightedEdge.class);
 
 		// SimpleWeightedGraph<Figure, DefaultWeightedEdge> graph =
 		// new SimpleWeightedGraph<Figure, DefaultWeightedEdge>(
@@ -55,7 +55,7 @@ public class GraphImporter {
 				Object edge = graph.addEdge(sFigure, tFigure);
 				if (edge != null)
 					((WeightedGraph<Figure, DefaultWeightedEdge>) graph)
-							.setEdgeWeight((DefaultWeightedEdge) edge, w);
+					.setEdgeWeight((DefaultWeightedEdge) edge, w);
 			}
 		}
 
