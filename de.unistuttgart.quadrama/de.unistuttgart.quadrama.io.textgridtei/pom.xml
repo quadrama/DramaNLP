@@ -5,7 +5,7 @@
     <artifactId>de.unistuttgart.quadrama</artifactId>
     <version>0.2-SNAPSHOT</version>
   </parent>
-  <artifactId>de.unistuttgart.quadrama.io.textgridtei</artifactId>
+  <artifactId>de.unistuttgart.quadrama.io.tei.textgrid</artifactId>
   <name>de.unistuttgart.quadrama.io.textgridtei</name>
   <dependencies>
   	<dependency>

@@ -68,7 +68,7 @@
   	<dependency>
   		<groupId>de.unistuttgart.quadrama</groupId>
   		<artifactId>
-  			de.unistuttgart.quadrama.io.textgridtei
+  			de.unistuttgart.quadrama.io.tei.textgrid
   		</artifactId>
   		<version>0.2-SNAPSHOT</version>
   	</dependency>
