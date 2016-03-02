@@ -43,7 +43,7 @@ public class DotExporter extends JCasFileWriter_ImplBase {
 								new VertexNameProvider<Figure>() {
 
 									public String getVertexName(Figure vertex) {
-										return String.valueOf(vertex.getId());
+										return String.valueOf(vertex.hashCode());
 									}
 								}, new VertexNameProvider<Figure>() {
 
