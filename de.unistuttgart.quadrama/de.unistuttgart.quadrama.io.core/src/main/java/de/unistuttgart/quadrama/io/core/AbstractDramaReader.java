@@ -109,13 +109,13 @@ public abstract class AbstractDramaReader extends JCasCollectionReader_ImplBase 
 
 	public class Visitor implements NodeVisitor {
 
-		JCasBuilder builder;
-		Map<Node, Integer> beginMap = new HashMap<Node, Integer>();
+		protected JCasBuilder builder;
+		protected Map<Node, Integer> beginMap = new HashMap<Node, Integer>();
 
-		Map<String, HTMLAnnotation> annotationMap =
+		protected Map<String, HTMLAnnotation> annotationMap =
 				new HashMap<String, HTMLAnnotation>();
 
-		String[] blockElements = new String[] { "l", "p", "sp" };
+		protected String[] blockElements = new String[] { "l", "p", "sp" };
 
 		public Visitor(JCas jcas) {
 			builder = new JCasBuilder(jcas);
