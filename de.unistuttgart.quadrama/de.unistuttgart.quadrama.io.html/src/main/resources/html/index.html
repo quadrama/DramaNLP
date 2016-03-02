@@ -1,16 +1,18 @@
 <html>
 <head>
-<link rel="stylesheet" href="jquery.dynatable.css">
-<script src="jquery-1.11.3.min.js"></script>
-<script src="jquery.dynatable.js"></script>
+<link rel="stylesheet" href="jquery-ui.css">
+<link rel="stylesheet" href="format.css">
+<link rel="stylesheet" type="text/css" href="datatables.min.css"/>
+
+<script type="text/javascript" src="datatables.min.js"></script>
 <script src="highcharts.js"></script>
 <script src="exporting.js"></script>
 <script src="data.js"></script>
-
+<script src="jquery-ui.js"></script>
 <script>
 
 function load(id) {
-	$('#container').highcharts({
+	$("#hc"+id).highcharts({
 		title:{
 			text:data[id]['id']
 		},
@@ -38,31 +40,45 @@ function load(id) {
         },
         series:data[id]["data"]
     });
-	for (index = 0; index < data[id]["data"].length; ++index) {
-		$("#stats tbody").append("<tr><td>"+data[id]["data"][index]['name']+
-				"</td><td>"+data[id]["data"][index]['stats']['words']+
-				"</td><td>"+data[id]["data"][index]['stats']['utterances']+
-				"</td><td>"+data[id]["data"][index]['stats']['meanUtteranceLength']+"</td></tr>");
-	}
-	$('#stats').dynatable();
+	var dramaData = data[id];
+
+	$("#tab"+id).append("<div><table></table></div>");
+
+	$("#tab"+id+" table").DataTable( {
+	        data: dramaData["data"].map(function(cur, ind, arr) {
+				return [
+					cur['name'],
+					cur['stats']['words'],
+					cur['stats']['utterances'],
+					Number(cur['stats']['meanUtteranceLength']).toFixed(2)
+				]
+			}),
+	        columns: [
+	            { title: "Figure" },
+	            { title: "Words" },
+	            { title: "Utterances" },
+	            { title: "Mean Utt. Length" }
+	        ]
+	    } );
+
 
 }
 
 $(function () {
-	for (index = 0; index < data.length; ++index) {
-		$("#dramaselect ul").append("<li><a href=\"javascript:load("+index+")\">"+data[index]['id']+"</a></li>");		
+	for (index = 0; index < data.length; index++) {
+		$("#tabs ul").append("<li><a href=\"#tab"+index+"\">"+data[index]['id']+"</a></li>");
+		$("#tabs").append("<div id=\"tab"+index+"\"><div class=\"hc\" id=\"hc"+index+"\"></div></div>");
+		load(index);
 	}
+	$("#tabs").tabs();
 });
         
 </script>
 </head>
 <body>
-<div id="dramaselect" style="float:left;width:10%"><ul></ul></div>
-<div id="container" style="height:100%;float:left;width:80%"></div>
-<table id="stats">
-<thead><tr><th>Figure</th><th>Number of Uttered Words</th><th>Number of Utterances</th><th>Avg. Length of Utterances</th></tr>
-</thead><tbody></tbody>
-</table>
-<div style="clear:left"></div>
+<div id="tabs"><ul></ul></div>
+
+
+
 </body>
 </html>

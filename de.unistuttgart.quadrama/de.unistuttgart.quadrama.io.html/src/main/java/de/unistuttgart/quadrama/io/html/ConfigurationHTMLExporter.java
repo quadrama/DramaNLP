@@ -193,8 +193,8 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 		}
 
 		try {
-			is = getClass().getResourceAsStream("/html/jquery.dynatable.css");
-			os = getOutputStream("jquery.dynatable", ".css");
+			is = getClass().getResourceAsStream("/html/format.css");
+			os = getOutputStream("format", ".css");
 			IOUtils.copy(is, os);
 		} catch (IOException e) {
 			throw new AnalysisEngineProcessException(e);
@@ -204,14 +204,36 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 		}
 
 		try {
-			is = getClass().getResourceAsStream("/html/jquery.dynatable.js");
-			os = getOutputStream("jquery.dynatable", ".js");
+			is = getClass().getResourceAsStream("/html/datatables.min.css");
+			os = getOutputStream("datatables.min", ".css");
 			IOUtils.copy(is, os);
 		} catch (IOException e) {
 			throw new AnalysisEngineProcessException(e);
 		} finally {
 			IOUtils.closeQuietly(os);
 			IOUtils.closeQuietly(is);
+		}
+
+		try {
+			is = getClass().getResourceAsStream("/html/datatables.min.js");
+			os = getOutputStream("datatables.min", ".js");
+			IOUtils.copy(is, os);
+		} catch (IOException e) {
+			throw new AnalysisEngineProcessException(e);
+		} finally {
+			IOUtils.closeQuietly(os);
+			IOUtils.closeQuietly(is);
+		}
+
+		try {
+			copyFile("/html/jquery-ui.css", "jquery-ui", ".css");
+		} catch (IOException e) {
+			throw new AnalysisEngineProcessException(e);
+		}
+		try {
+			copyFile("/html/jquery-ui.js", "jquery-ui", ".js");
+		} catch (IOException e) {
+			throw new AnalysisEngineProcessException(e);
 		}
 
 		JSONArray arr = new JSONArray();
@@ -228,6 +250,21 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 			throw new AnalysisEngineProcessException(e);
 		} finally {
 			IOUtils.closeQuietly(os);
+		}
+	}
+
+	protected void copyFile(String sourcePath, String targetName,
+			String targetExt) throws IOException {
+		InputStream is = null;
+		OutputStream os = null;
+
+		try {
+			is = getClass().getResourceAsStream(sourcePath);
+			os = getOutputStream(targetName, targetExt);
+			IOUtils.copy(is, os);
+		} finally {
+			IOUtils.closeQuietly(os);
+			IOUtils.closeQuietly(is);
 		}
 	}
 }
