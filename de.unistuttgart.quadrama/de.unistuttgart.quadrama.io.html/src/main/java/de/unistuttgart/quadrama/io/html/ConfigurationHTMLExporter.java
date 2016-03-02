@@ -22,7 +22,6 @@ import de.tudarmstadt.ukp.dkpro.core.api.io.JCasFileWriter_ImplBase;
 import de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData;
 import de.unistuttgart.quadrama.api.Figure;
 import de.unistuttgart.quadrama.api.Scene;
-import de.unistuttgart.quadrama.api.Speaker;
 import de.unistuttgart.quadrama.api.Speech;
 import de.unistuttgart.quadrama.api.Utterance;
 
@@ -92,10 +91,9 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 		JSONObject serie = new JSONObject();
 		serie.put("name", "characters");
 		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
-
-			Figure figure =
-					JCasUtil.selectCovered(Speaker.class, utterance).get(0)
-							.getFigure();
+			Figure figure = null;
+			if (utterance.getSpeaker() != null)
+				figure = utterance.getSpeaker().getFigure();
 			if (figure != null && speaker_index.containsKey(figure)) {
 				Speech speech =
 						JCasUtil.selectCovered(Speech.class, utterance).get(0);

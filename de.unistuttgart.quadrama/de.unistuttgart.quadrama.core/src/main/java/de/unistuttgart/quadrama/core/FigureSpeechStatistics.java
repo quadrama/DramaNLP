@@ -14,7 +14,6 @@ import org.apache.uima.jcas.JCas;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.unistuttgart.quadrama.api.Figure;
-import de.unistuttgart.quadrama.api.Speaker;
 import de.unistuttgart.quadrama.api.Utterance;
 
 public class FigureSpeechStatistics extends JCasAnnotator_ImplBase {
@@ -36,11 +35,11 @@ public class FigureSpeechStatistics extends JCasAnnotator_ImplBase {
 		}
 
 		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
-			Figure figure =
-					JCasUtil.selectCovered(Speaker.class, utterance).get(0)
-							.getFigure();
-			spokenWords.get(figure).addValue(
-					JCasUtil.selectCovered(Token.class, utterance).size());
+			if (utterance.getSpeaker() != null) {
+				Figure figure = utterance.getSpeaker().getFigure();
+				spokenWords.get(figure).addValue(
+						JCasUtil.selectCovered(Token.class, utterance).size());
+			}
 		}
 
 		try {

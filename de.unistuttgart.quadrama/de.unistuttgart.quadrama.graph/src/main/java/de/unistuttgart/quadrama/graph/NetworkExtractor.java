@@ -70,18 +70,19 @@ public class NetworkExtractor extends JCasAnnotator_ImplBase {
 				new DirectedPseudograph<Figure, DefaultEdge>(DefaultEdge.class);
 
 		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
-			Speaker speaker =
-					JCasUtil.selectCovered(Speaker.class, utterance).get(0);
-			for (FigureMention mention : JCasUtil.selectCovered(jcas,
-					FigureMention.class, utterance)) {
-				if (speaker.getFigure() != null && mention.getFigure() != null) {
-					if (!graph.containsVertex(speaker.getFigure()))
-						graph.addVertex(speaker.getFigure());
-					if (!graph.containsVertex(mention.getFigure()))
-						graph.addVertex(mention.getFigure());
-					graph.addEdge(speaker.getFigure(), mention.getFigure());
+			Speaker speaker = utterance.getSpeaker();
+			if (speaker != null)
+				for (FigureMention mention : JCasUtil.selectCovered(jcas,
+						FigureMention.class, utterance)) {
+					if (speaker.getFigure() != null
+							&& mention.getFigure() != null) {
+						if (!graph.containsVertex(speaker.getFigure()))
+							graph.addVertex(speaker.getFigure());
+						if (!graph.containsVertex(mention.getFigure()))
+							graph.addVertex(mention.getFigure());
+						graph.addEdge(speaker.getFigure(), mention.getFigure());
+					}
 				}
-			}
 		}
 		return graph;
 	}
