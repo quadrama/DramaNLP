@@ -7,16 +7,24 @@ import org.apache.uima.fit.factory.AggregateBuilder;
 import org.apache.uima.fit.factory.AnalysisEngineFactory;
 import org.apache.uima.resource.ResourceInitializationException;
 
+/**
+ * This class provides a convenient way to get an aggregate analysis engine that
+ * re-maps the views so that tokenization can be done on the utterances view
+ * {@link DramaSpeechSegmenter#SOFA_UTTERANCES}.
+ * 
+ * @author Nils Reiter
+ *
+ */
 public class DramaSpeechSegmenter {
 	public static final String SOFA_UTTERANCES = "Utterances";
 
 	public static AnalysisEngineDescription getWrappedSegmenterDescription(
 			Class<? extends AnalysisComponent> compClass)
-					throws ResourceInitializationException {
+			throws ResourceInitializationException {
 		AggregateBuilder builder = new AggregateBuilder();
 		AnalysisEngineDescription aed =
 				AnalysisEngineFactory
-				.createEngineDescription(DramaSpeechPreparation.class);
+						.createEngineDescription(DramaSpeechPreparation.class);
 		builder.add(aed);
 		builder.add(AnalysisEngineFactory.createEngineDescription(compClass),
 				CAS.NAME_DEFAULT_SOFA, SOFA_UTTERANCES);

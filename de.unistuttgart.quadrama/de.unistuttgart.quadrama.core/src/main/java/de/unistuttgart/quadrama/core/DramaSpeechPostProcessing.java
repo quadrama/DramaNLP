@@ -15,6 +15,13 @@ import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.unistuttgart.quadrama.core.api.Origin;
 
+/**
+ * This component re-adds the annotations done on another view back into the
+ * main view.
+ * 
+ * @author Nils Reiter
+ *
+ */
 public class DramaSpeechPostProcessing extends JCasAnnotator_ImplBase {
 
 	@Override
@@ -45,6 +52,8 @@ public class DramaSpeechPostProcessing extends JCasAnnotator_ImplBase {
 					Sentence.class)) {
 				List<Token> tokens =
 						JCasUtil.selectCovered(Token.class, sentence);
+
+				// we search for the first and last token
 				Token firstToken = tokens.get(0);
 				Token lastToken = tokens.get(tokens.size() - 1);
 				Origin firstOrigin = covers.get(firstToken).iterator().next();
@@ -55,6 +64,8 @@ public class DramaSpeechPostProcessing extends JCasAnnotator_ImplBase {
 				int end =
 						sentence.getEnd() + lastOrigin.getOffset()
 								- lastOrigin.getBegin();
+
+				// annotations in the target view may span non-token content
 				AnnotationFactory.createAnnotation(jcas, begin, end,
 						Sentence.class);
 			}
