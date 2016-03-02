@@ -41,7 +41,7 @@ public class GraphImporter {
 		// SimpleWeightedGraph<Figure, DefaultWeightedEdge> graph =
 		// new SimpleWeightedGraph<Figure, DefaultWeightedEdge>(
 		// DefaultWeightedEdge.class);
-		Pattern pattern = Pattern.compile("(\\d+) (\\d+) (\\d+.\\d+)");
+		Pattern pattern = Pattern.compile("(-?\\d+) (-?\\d+) (\\d+.\\d+)");
 		for (String line : graphView.getDocumentText().split("\n")) {
 			Matcher m = pattern.matcher(line);
 			if (m.find()) {
