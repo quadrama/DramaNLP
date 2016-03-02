@@ -11,7 +11,7 @@ import de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData;
 import org.apache.uima.jcas.tcas.DocumentAnnotation;
 
 /** 
- * Updated by JCasGen Tue Feb 16 08:58:26 CET 2016
+ * Updated by JCasGen Wed Mar 02 06:00:57 CET 2016
  * XML source: /Users/reiterns/Documents/DH/anglogerman/de.unistuttgart.quadrama/de.unistuttgart.quadrama.api/src/main/java/de/unistuttgart/quadrama/api/Types.xml
  * @generated */
 public class Drama extends DocumentMetaData {
@@ -91,4 +91,46 @@ public class Drama extends DocumentMetaData {
    */
 	private void readObject() {/* default - does nothing empty block */}
 
-}
+  //*--------------*
+  //* Feature: Authorname
+
+  /** getter for Authorname - gets 
+   * @generated
+   * @return value of the feature 
+   */
+  public String getAuthorname() {
+    if (Drama_Type.featOkTst && ((Drama_Type)jcasType).casFeat_Authorname == null)
+      jcasType.jcas.throwFeatMissing("Authorname", "de.unistuttgart.quadrama.api.Drama");
+    return jcasType.ll_cas.ll_getStringValue(addr, ((Drama_Type)jcasType).casFeatCode_Authorname);}
+    
+  /** setter for Authorname - sets  
+   * @generated
+   * @param v value to set into the feature 
+   */
+  public void setAuthorname(String v) {
+    if (Drama_Type.featOkTst && ((Drama_Type)jcasType).casFeat_Authorname == null)
+      jcasType.jcas.throwFeatMissing("Authorname", "de.unistuttgart.quadrama.api.Drama");
+    jcasType.ll_cas.ll_setStringValue(addr, ((Drama_Type)jcasType).casFeatCode_Authorname, v);}    
+   
+    
+  //*--------------*
+  //* Feature: DramaId
+
+  /** getter for DramaId - gets 
+   * @generated
+   * @return value of the feature 
+   */
+  public String getDramaId() {
+    if (Drama_Type.featOkTst && ((Drama_Type)jcasType).casFeat_DramaId == null)
+      jcasType.jcas.throwFeatMissing("DramaId", "de.unistuttgart.quadrama.api.Drama");
+    return jcasType.ll_cas.ll_getStringValue(addr, ((Drama_Type)jcasType).casFeatCode_DramaId);}
+    
+  /** setter for DramaId - sets  
+   * @generated
+   * @param v value to set into the feature 
+   */
+  public void setDramaId(String v) {
+    if (Drama_Type.featOkTst && ((Drama_Type)jcasType).casFeat_DramaId == null)
+      jcasType.jcas.throwFeatMissing("DramaId", "de.unistuttgart.quadrama.api.Drama");
+    jcasType.ll_cas.ll_setStringValue(addr, ((Drama_Type)jcasType).casFeatCode_DramaId, v);}    
+  }
