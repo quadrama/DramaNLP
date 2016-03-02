@@ -87,6 +87,7 @@ public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 						AnnotationFactory.createAnnotation(jcas,
 								speaker.getBegin(), speaker.getEnd(),
 								SpeakerFigure.class);
+				fig.setId(figureId++);
 				for (Speaker sp : unassignedMap.get(s)) {
 					sp.setFigure(fig);
 				}
