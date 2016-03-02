@@ -79,9 +79,12 @@ public class TextgridTEIReader extends AbstractDramaReader {
 		}
 		select2Annotation(jcas, root, vis.getAnnotationMap(), "body > div",
 				Act.class, null);
-		select2Annotation(jcas, root, vis.getAnnotationMap(),
-				"div[type=front] > div:has(p)", DramatisPersonae.class,
-				frontMatter);
+		select2Annotation(jcas, root, vis.getAnnotationMap(), "castList",
+				DramatisPersonae.class, null);
+		if (!JCasUtil.exists(jcas, DramatisPersonae.class))
+			select2Annotation(jcas, root, vis.getAnnotationMap(),
+					"div[type=front] > div:has(p)", DramatisPersonae.class,
+					frontMatter);
 
 		// Detecting figure declarations
 		if (!root.select("castList").isEmpty()) {

@@ -80,10 +80,10 @@ public class TestTextgridTEIReader {
 		// general sanity checking
 		assertNotNull(JCasUtil.selectSingle(jcas, Drama.class));
 		assertTrue(JCasUtil.exists(jcas, Act.class));
-		// assertTrue(JCasUtil.exists(jcas, Scene.class));
+		assertTrue(JCasUtil.exists(jcas, Scene.class));
 		assertTrue(JCasUtil.exists(jcas, Speaker.class));
 		assertTrue(JCasUtil.exists(jcas, Figure.class));
-		// assertTrue(JCasUtil.exists(jcas, DramatisPersonae.class));
+		assertTrue(JCasUtil.exists(jcas, DramatisPersonae.class));
 		assertNotNull(JCasUtil.selectSingle(jcas, FrontMatter.class));
 		assertNotNull(JCasUtil.selectSingle(jcas, MainMatter.class));
 		assertEquals(5, JCasUtil.select(jcas, Act.class).size());
