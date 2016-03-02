@@ -31,12 +31,12 @@ public class NetworkExtractor extends JCasAnnotator_ImplBase {
 	public static final String PARAM_VIEW_NAME = "View Name";
 	public static final String PARAM_NETWORK_TYPE = "Network Type";
 
-	@ConfigurationParameter(name = PARAM_VIEW_NAME, mandatory = true)
-	String viewName = null;
-
 	@ConfigurationParameter(name = PARAM_NETWORK_TYPE,
 			defaultValue = "Copresence", mandatory = false)
-	NetworkType networkType = null;
+	NetworkType networkType = NetworkType.Copresence;
+
+	@ConfigurationParameter(name = PARAM_VIEW_NAME, mandatory = false)
+	String viewName = NetworkType.Copresence.name();
 
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
@@ -48,8 +48,8 @@ public class NetworkExtractor extends JCasAnnotator_ImplBase {
 		case Copresence:
 		default:
 			graph =
-			extractNetwork(jcas,
-					JCasUtil.selectSingle(jcas, MainMatter.class));
+					extractNetwork(jcas,
+							JCasUtil.selectSingle(jcas, MainMatter.class));
 		}
 		GraphExporter gmlExporter = new GraphExporter();
 		try {
@@ -65,7 +65,7 @@ public class NetworkExtractor extends JCasAnnotator_ImplBase {
 	}
 
 	protected DirectedGraph<Figure, DefaultEdge>
-	extractMentionNetwork(JCas jcas) {
+			extractMentionNetwork(JCas jcas) {
 		DirectedGraph<Figure, DefaultEdge> graph =
 				new DirectedPseudograph<Figure, DefaultEdge>(DefaultEdge.class);
 
