@@ -58,8 +58,6 @@
     <module>de.unistuttgart.quadrama.api</module>
     <module>de.unistuttgart.quadrama.io.gutenbergde</module>
     <module>de.unistuttgart.quadrama.core</module>
-    
-    <module>de.unistuttgart.quadrama.io.textgridtei</module>
     <module>de.unistuttgart.quadrama.io.core</module>
     <module>de.unistuttgart.quadrama.experiments</module>
     <module>de.unistuttgart.quadrama.io.dot</module>
@@ -68,5 +66,7 @@
     <module>de.unistuttgart.quadrama.io.html</module>
     <module>de.unistuttgart.quadrama.inter</module>
     <module>de.unistuttgart.quadrama.io.tei.folger</module>
+    <module>de.unistuttgart.quadrama.io.tei.textgrid</module>
+    <module>de.unistuttgart.quadrama.db</module>
   </modules>
 </project>
