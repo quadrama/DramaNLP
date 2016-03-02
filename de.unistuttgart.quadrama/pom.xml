@@ -67,5 +67,6 @@
     <module>de.unistuttgart.quadrama.io.configuration</module>
     <module>de.unistuttgart.quadrama.io.html</module>
     <module>de.unistuttgart.quadrama.inter</module>
+    <module>de.unistuttgart.quadrama.io.tei.folger</module>
   </modules>
 </project>
