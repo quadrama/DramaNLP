@@ -9,7 +9,6 @@ import org.apache.uima.UIMAException;
 import org.apache.uima.fit.pipeline.SimplePipeline;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
-import de.unistuttgart.ims.uimautil.SetDocumentId;
 import de.unistuttgart.quadrama.core.SetDramaMetaData;
 import de.unistuttgart.quadrama.io.gutenbergde.GutenbergDEReader;
 import de.unistuttgart.quadrama.io.tei.textgrid.TextgridTEIReader;
@@ -27,7 +26,7 @@ public class CollectDocuments {
 								SetDramaMetaData.PARAM_DRAMAID, "RuJ-Wieland"),
 								createEngineDescription(XmiWriter.class,
 										XmiWriter.PARAM_TARGET_LOCATION,
-										"src/main/resources/romeo-and-juliet/de/"));
+										"src/main/resources/romeo-and-juliet/"));
 
 		System.err.println("Collecting Schlegel ...");
 		SimplePipeline.runPipeline(
@@ -38,19 +37,19 @@ public class CollectDocuments {
 								SetDramaMetaData.PARAM_DRAMAID, "RuJ-Schlegel"),
 								createEngineDescription(XmiWriter.class,
 										XmiWriter.PARAM_TARGET_LOCATION,
-						"src/main/resources/romeo-and-juliet/de/"));
-		System.exit(0);
+						"src/main/resources/romeo-and-juliet/"));
+
 		System.err.println("Collecting Shakespeare ...");
 		SimplePipeline.runPipeline(
 				createReaderDescription(TextgridTEIReader.class,
 						TextgridTEIReader.PARAM_INPUT_DIRECTORY,
 						"src/main/resources/raw/Shakespeare/",
 						TextgridTEIReader.PARAM_LANGUAGE, "en"),
-						createEngineDescription(SetDocumentId.class,
-								SetDocumentId.PARAM_DOCUMENT_ID, "Shakespeare"),
+						createEngineDescription(SetDramaMetaData.class,
+								SetDramaMetaData.PARAM_DRAMAID, "RuJ-Shakespeare"),
 								createEngineDescription(XmiWriter.class,
 										XmiWriter.PARAM_TARGET_LOCATION,
-						"src/main/resources/romeo-and-juliet/en/"));
+						"src/main/resources/romeo-and-juliet/"));
 	}
 
 }
