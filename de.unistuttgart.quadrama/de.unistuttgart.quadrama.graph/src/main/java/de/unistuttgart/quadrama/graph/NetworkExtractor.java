@@ -10,6 +10,7 @@ import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
+import org.apache.uima.util.Level;
 import org.jgrapht.DirectedGraph;
 import org.jgrapht.Graph;
 import org.jgrapht.WeightedGraph;
@@ -48,13 +49,13 @@ public class NetworkExtractor extends JCasAnnotator_ImplBase {
 		case Copresence:
 		default:
 			graph =
-					extractNetwork(jcas,
-							JCasUtil.selectSingle(jcas, MainMatter.class));
+			extractNetwork(jcas,
+					JCasUtil.selectSingle(jcas, MainMatter.class));
 		}
 		GraphExporter gmlExporter = new GraphExporter();
 		try {
 			JCas graphView = jcas.createView(viewName);
-			System.err.println("Now exporting");
+			getLogger().log(Level.INFO, "Exporting graph into " + viewName);
 			gmlExporter.export(graphView, graph);
 
 		} catch (CASException e) {
@@ -65,7 +66,7 @@ public class NetworkExtractor extends JCasAnnotator_ImplBase {
 	}
 
 	protected DirectedGraph<Figure, DefaultEdge>
-			extractMentionNetwork(JCas jcas) {
+	extractMentionNetwork(JCas jcas) {
 		DirectedGraph<Figure, DefaultEdge> graph =
 				new DirectedPseudograph<Figure, DefaultEdge>(DefaultEdge.class);
 
