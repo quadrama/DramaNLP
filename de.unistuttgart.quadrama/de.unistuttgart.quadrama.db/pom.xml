@@ -7,4 +7,11 @@
   </parent>
   <artifactId>de.unistuttgart.quadrama.db</artifactId>
   <name>de.unistuttgart.quadrama.db</name>
+  <dependencies>
+  	<dependency>
+  		<groupId>com.j256</groupId>
+  		<artifactId>ormlite-core</artifactId>
+  		<version>3.1</version>
+  	</dependency>
+  </dependencies>
 </project>
