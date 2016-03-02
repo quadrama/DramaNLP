@@ -32,4 +32,5 @@
   		<scope>test</scope>
   	</dependency>
   </dependencies>
+  <description>Discontinued.</description>
 </project>
