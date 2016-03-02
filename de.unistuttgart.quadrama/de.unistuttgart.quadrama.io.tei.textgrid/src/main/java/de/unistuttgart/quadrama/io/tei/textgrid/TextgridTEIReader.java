@@ -25,8 +25,7 @@ import de.unistuttgart.quadrama.api.FrontMatter;
 import de.unistuttgart.quadrama.api.MainMatter;
 import de.unistuttgart.quadrama.api.Scene;
 import de.unistuttgart.quadrama.api.Speaker;
-import de.unistuttgart.quadrama.api.SpeechProse;
-import de.unistuttgart.quadrama.api.SpeechVerse;
+import de.unistuttgart.quadrama.api.Speech;
 import de.unistuttgart.quadrama.api.StageDirection;
 import de.unistuttgart.quadrama.api.Utterance;
 import de.unistuttgart.quadrama.io.core.AbstractDramaReader;
@@ -67,9 +66,11 @@ public class TextgridTEIReader extends AbstractDramaReader {
 		select2Annotation(jcas, root, vis.getAnnotationMap(), "sp",
 				Utterance.class, null);
 		select2Annotation(jcas, root, vis.getAnnotationMap(), "l",
-				SpeechVerse.class, mainMatter);
+				Speech.class, mainMatter);
+		select2Annotation(jcas, root, vis.getAnnotationMap(), "ab",
+				Speech.class, mainMatter);
 		select2Annotation(jcas, root, vis.getAnnotationMap(), "p",
-				SpeechProse.class, mainMatter);
+				Speech.class, mainMatter);
 		select2Annotation(jcas, root, vis.getAnnotationMap(),
 				"div[type=scene]", Scene.class, null);
 		if (!JCasUtil.exists(jcas, Scene.class)) {
@@ -110,6 +111,7 @@ public class TextgridTEIReader extends AbstractDramaReader {
 		fixSpeakerAnnotations(jcas);
 
 		cleanUp(jcas);
+
 	}
 
 	private void fixFigureAnnotations(JCas jcas) {
