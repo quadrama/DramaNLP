@@ -12,9 +12,9 @@ import org.apache.uima.cas.Type;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** 
- * Updated by JCasGen Sun Feb 14 19:09:00 CET 2016
+ * Updated by JCasGen Wed Mar 02 11:54:15 CET 2016
  * @generated */
-public class Scene_Type extends Annotation_Type {
+public class Scene_Type extends DramaSegment_Type {
   /** @generated 
    * @return the generator for this type
    */

@@ -1,6 +1,6 @@
 
 
-/* First created by JCasGen Sun Feb 14 17:15:54 CET 2016 */
+/* First created by JCasGen Wed Mar 02 11:53:02 CET 2016 */
 package de.unistuttgart.quadrama.api;
 
 import org.apache.uima.jcas.JCas; 
@@ -14,12 +14,12 @@ import org.apache.uima.jcas.tcas.Annotation;
  * Updated by JCasGen Wed Mar 02 11:54:15 CET 2016
  * XML source: /Users/reiterns/Documents/DH/anglogerman/de.unistuttgart.quadrama/de.unistuttgart.quadrama.api/src/main/java/de/unistuttgart/quadrama/api/Types.xml
  * @generated */
-public class Act extends DramaSegment {
+public class FigureDescription extends Annotation {
   /** @generated
    * @ordered 
    */
   @SuppressWarnings ("hiding")
-  public final static int typeIndexID = JCasRegistry.register(Act.class);
+  public final static int typeIndexID = JCasRegistry.register(FigureDescription.class);
   /** @generated
    * @ordered 
    */
@@ -33,14 +33,14 @@ public class Act extends DramaSegment {
  
   /** Never called.  Disable default constructor
    * @generated */
-  protected Act() {/* intentionally empty block */}
+  protected FigureDescription() {/* intentionally empty block */}
     
   /** Internal - constructor used by generator 
    * @generated
    * @param addr low level Feature Structure reference
    * @param type the type of this Feature Structure 
    */
-  public Act(int addr, TOP_Type type) {
+  public FigureDescription(int addr, TOP_Type type) {
     super(addr, type);
     readObject();
   }
@@ -48,7 +48,7 @@ public class Act extends DramaSegment {
   /** @generated
    * @param jcas JCas to which this Feature Structure belongs 
    */
-  public Act(JCas jcas) {
+  public FigureDescription(JCas jcas) {
     super(jcas);
     readObject();   
   } 
@@ -58,7 +58,7 @@ public class Act extends DramaSegment {
    * @param begin offset to the begin spot in the SofA
    * @param end offset to the end spot in the SofA 
   */  
-  public Act(JCas jcas, int begin, int end) {
+  public FigureDescription(JCas jcas, int begin, int end) {
     super(jcas);
     setBegin(begin);
     setEnd(end);
@@ -74,8 +74,6 @@ public class Act extends DramaSegment {
    */
   private void readObject() {/*default - does nothing empty block */}
      
- 
-    
 }
 
     
