@@ -18,6 +18,7 @@ import de.unistuttgart.quadrama.core.DramaSpeechSegmenter;
 import de.unistuttgart.quadrama.core.FigureMentionDetection;
 import de.unistuttgart.quadrama.core.FigureSpeechStatistics;
 import de.unistuttgart.quadrama.core.SpeakerIdentifier;
+import de.unistuttgart.quadrama.core.UtteranceLinker;
 import de.unistuttgart.quadrama.graph.NetworkExtractor;
 import de.unistuttgart.quadrama.io.dot.DotExporter;
 import de.unistuttgart.quadrama.io.html.ConfigurationHTMLExporter;
@@ -32,26 +33,27 @@ public class Visualise {
 		CollectionReaderDescription crd =
 				CollectionReaderFactory.createReaderDescription(
 						XmiReader.class, XmiReader.PARAM_SOURCE_LOCATION,
-						"src/main/resources/romeo-and-juliet/de/*.xmi");
+						"src/main/resources/romeo-and-juliet/*.xmi");
 
 		SimplePipeline
-		.runPipeline(
-				crd,
-				createEngineDescription(FixGutenbergSpeech.class),
-				DramaSpeechSegmenter
-				.getWrappedSegmenterDescription(LanguageToolSegmenter.class),
-				createEngineDescription(SpeakerIdentifier.class),
+				.runPipeline(
+						crd,
+						createEngineDescription(FixGutenbergSpeech.class),
+						DramaSpeechSegmenter
+								.getWrappedSegmenterDescription(LanguageToolSegmenter.class),
+						createEngineDescription(SpeakerIdentifier.class),
+						createEngineDescription(UtteranceLinker.class),
 				createEngineDescription(StanfordPosTagger.class),
-				// createEngineDescription(StanfordNamedEntityRecognizer.class),
-				createEngineDescription(FigureSpeechStatistics.class),
-				createEngineDescription(FigureMentionDetection.class),
-				/*
-				 * Export html view of configuration
-				 */
-				createEngineDescription(
-						ConfigurationHTMLExporter.class,
-						ConfigurationHTMLExporter.PARAM_TARGET_LOCATION,
-						"target/html/"),
+						// createEngineDescription(StanfordNamedEntityRecognizer.class),
+						createEngineDescription(FigureSpeechStatistics.class),
+						createEngineDescription(FigureMentionDetection.class),
+						/*
+						 * Export html view of configuration
+						 */
+						createEngineDescription(
+								ConfigurationHTMLExporter.class,
+								ConfigurationHTMLExporter.PARAM_TARGET_LOCATION,
+								"target/html/"),
 						/*
 						 * Extract copresence network
 						 */
@@ -64,18 +66,18 @@ public class Visualise {
 								"MentionNetwork",
 								NetworkExtractor.PARAM_NETWORK_TYPE,
 								"MentionNetwork"),
-								/*
-								 * print xmi
-								 */
-								createEngineDescription(XmiWriter.class,
-										XmiWriter.PARAM_TARGET_LOCATION, "target/xmi/"),
-										createEngineDescription(DotExporter.class,
-												DotExporter.PARAM_VIEW_NAME, "MentionNetwork",
-												DotExporter.PARAM_TARGET_LOCATION,
-												"target/net/mentions/"),
+						/*
+						 * print xmi
+						 */
+						createEngineDescription(XmiWriter.class,
+								XmiWriter.PARAM_TARGET_LOCATION, "target/xmi/"),
 						createEngineDescription(DotExporter.class,
-								DotExporter.PARAM_VIEW_NAME, "Copresence",
+								DotExporter.PARAM_VIEW_NAME, "MentionNetwork",
 								DotExporter.PARAM_TARGET_LOCATION,
-								"target/net/copresence/"));
+								"target/net/mentions/"),
+												createEngineDescription(DotExporter.class,
+														DotExporter.PARAM_VIEW_NAME, "Copresence",
+														DotExporter.PARAM_TARGET_LOCATION,
+														"target/net/copresence/"));
 	}
 }
