@@ -37,25 +37,36 @@ public class GraphImporter {
 		Graph<Figure, DefaultWeightedEdge> graph =
 				(Graph<Figure, DefaultWeightedEdge>) cl.getConstructor(
 						Class.class).newInstance(DefaultWeightedEdge.class);
+		boolean weighted = false;
+		if (graph instanceof WeightedGraph) {
+			weighted = true;
+		}
 
 		// SimpleWeightedGraph<Figure, DefaultWeightedEdge> graph =
 		// new SimpleWeightedGraph<Figure, DefaultWeightedEdge>(
 		// DefaultWeightedEdge.class);
-		Pattern pattern = Pattern.compile("(-?\\d+) (-?\\d+) (\\d+.\\d+)");
+		Pattern pattern;
+		if (weighted)
+			pattern = Pattern.compile("(-?\\d+) (-?\\d+) (\\d+.\\d+)");
+		else
+			pattern = Pattern.compile("(-?\\d+) (-?\\d+)");
 		for (String line : graphView.getDocumentText().split("\n")) {
 			Matcher m = pattern.matcher(line);
 			if (m.find()) {
 				int sId = Integer.valueOf(m.group(1));
 				int tId = Integer.valueOf(m.group(2));
-				double w = Double.valueOf(m.group(3));
+
 				Figure sFigure = figureMap.get(sId);
 				Figure tFigure = figureMap.get(tId);
 				if (!graph.containsVertex(sFigure)) graph.addVertex(sFigure);
 				if (!graph.containsVertex(tFigure)) graph.addVertex(tFigure);
 				Object edge = graph.addEdge(sFigure, tFigure);
-				if (edge != null)
-					((WeightedGraph<Figure, DefaultWeightedEdge>) graph)
-					.setEdgeWeight((DefaultWeightedEdge) edge, w);
+				if (weighted) {
+					double w = Double.valueOf(m.group(3));
+					if (edge != null)
+						((WeightedGraph<Figure, DefaultWeightedEdge>) graph)
+								.setEdgeWeight((DefaultWeightedEdge) edge, w);
+				}
 			}
 		}
 
