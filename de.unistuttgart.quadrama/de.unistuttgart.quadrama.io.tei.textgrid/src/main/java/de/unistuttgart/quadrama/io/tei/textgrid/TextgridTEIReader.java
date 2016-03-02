@@ -72,6 +72,11 @@ public class TextgridTEIReader extends AbstractDramaReader {
 				SpeechProse.class, mainMatter);
 		select2Annotation(jcas, root, vis.getAnnotationMap(),
 				"div[type=scene]", Scene.class, null);
+		if (!JCasUtil.exists(jcas, Scene.class)) {
+			select2Annotation(jcas, root, vis.getAnnotationMap(), "div > div",
+					Scene.class, null);
+
+		}
 		select2Annotation(jcas, root, vis.getAnnotationMap(), "body > div",
 				Act.class, null);
 		select2Annotation(jcas, root, vis.getAnnotationMap(),
