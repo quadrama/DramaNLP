@@ -18,4 +18,5 @@
   		<artifactId>uimafit-core</artifactId>
   	</dependency>
   </dependencies>
+  <description>Base module to provide generic io capabilities</description>
 </project>

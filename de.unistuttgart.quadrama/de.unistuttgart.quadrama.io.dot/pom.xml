@@ -36,4 +36,5 @@
   		<version>0.2-SNAPSHOT</version>
   	</dependency>
   </dependencies>
+  <description>Module to write out graph content found on a view.</description>
 </project>
