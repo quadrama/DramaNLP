@@ -931,18 +931,6 @@
             <supertypeName>de.tudarmstadt.ukp.dkpro.core.api.syntax.type.dependency.Dependency</supertypeName>
         </typeDescription>
         <typeDescription>
-            <name>de.unistuttgart.quadrama.api.Act</name>
-            <description/>
-            <supertypeName>uima.tcas.Annotation</supertypeName>
-            <features>
-                <featureDescription>
-                    <name>Number</name>
-                    <description/>
-                    <rangeTypeName>uima.cas.Integer</rangeTypeName>
-                </featureDescription>
-            </features>
-        </typeDescription>
-        <typeDescription>
             <name>de.unistuttgart.quadrama.api.Drama</name>
             <description/>
             <supertypeName>de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData</supertypeName>
@@ -956,6 +944,18 @@
                     <name>DramaId</name>
                     <description/>
                     <rangeTypeName>uima.cas.String</rangeTypeName>
+                </featureDescription>
+            </features>
+        </typeDescription>
+        <typeDescription>
+            <name>de.unistuttgart.quadrama.api.DramaSegment</name>
+            <description/>
+            <supertypeName>uima.tcas.Annotation</supertypeName>
+            <features>
+                <featureDescription>
+                    <name>Number</name>
+                    <description/>
+                    <rangeTypeName>uima.cas.Integer</rangeTypeName>
                 </featureDescription>
             </features>
         </typeDescription>
@@ -977,7 +977,7 @@
                 <featureDescription>
                     <name>Description</name>
                     <description/>
-                    <rangeTypeName>uima.cas.String</rangeTypeName>
+                    <rangeTypeName>de.unistuttgart.quadrama.api.FigureDescription</rangeTypeName>
                 </featureDescription>
                 <featureDescription>
                     <name>NumberOfUtterances</name>
@@ -1012,6 +1012,11 @@
             </features>
         </typeDescription>
         <typeDescription>
+            <name>de.unistuttgart.quadrama.api.FigureDescription</name>
+            <description/>
+            <supertypeName>uima.tcas.Annotation</supertypeName>
+        </typeDescription>
+        <typeDescription>
             <name>de.unistuttgart.quadrama.api.FigureMention</name>
             <description/>
             <supertypeName>uima.tcas.Annotation</supertypeName>
@@ -1041,7 +1046,7 @@
         <typeDescription>
             <name>de.unistuttgart.quadrama.api.Scene</name>
             <description/>
-            <supertypeName>uima.tcas.Annotation</supertypeName>
+            <supertypeName>de.unistuttgart.quadrama.api.DramaSegment</supertypeName>
         </typeDescription>
         <typeDescription>
             <name>de.unistuttgart.quadrama.api.Speaker</name>
@@ -1467,6 +1472,11 @@
             <name>de.tudarmstadt.ukp.dkpro.core.api.syntax.type.dependency.DOBJ</name>
             <description/>
             <supertypeName>de.tudarmstadt.ukp.dkpro.core.api.syntax.type.dependency.Dependency</supertypeName>
+        </typeDescription>
+        <typeDescription>
+            <name>de.unistuttgart.quadrama.api.Act</name>
+            <description/>
+            <supertypeName>de.unistuttgart.quadrama.api.DramaSegment</supertypeName>
         </typeDescription>
     </types>
 </typeSystemDescription>
