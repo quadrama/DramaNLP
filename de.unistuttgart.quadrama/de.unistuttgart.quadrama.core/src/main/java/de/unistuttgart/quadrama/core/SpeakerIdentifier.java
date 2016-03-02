@@ -11,6 +11,7 @@ import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
+import org.apache.uima.fit.descriptor.TypeCapability;
 import org.apache.uima.fit.factory.AnnotationFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
@@ -21,6 +22,11 @@ import de.unistuttgart.quadrama.api.Figure;
 import de.unistuttgart.quadrama.api.Speaker;
 import de.unistuttgart.quadrama.api.SpeakerFigure;
 
+@TypeCapability(inputs = { "de.unistuttgart.quadrama.api.Figure",
+"de.unistuttgart.quadrama.api.Speaker" }, outputs = {
+		"de.unistuttgart.quadrama.api.Speaker:Figure",
+		"de.unistuttgart.quadrama.api.SpeakerFigure",
+"de.unistuttgart.quadrama.api.Figure:Id" })
 public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 
 	int threshold = 2;
