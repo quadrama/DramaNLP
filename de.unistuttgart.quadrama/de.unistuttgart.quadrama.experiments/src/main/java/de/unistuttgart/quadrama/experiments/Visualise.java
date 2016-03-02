@@ -45,23 +45,37 @@ public class Visualise {
 				// createEngineDescription(StanfordNamedEntityRecognizer.class),
 				createEngineDescription(FigureSpeechStatistics.class),
 				createEngineDescription(FigureMentionDetection.class),
+				/*
+				 * Export html view of configuration
+				 */
 				createEngineDescription(
 						ConfigurationHTMLExporter.class,
 						ConfigurationHTMLExporter.PARAM_TARGET_LOCATION,
 						"target/html/"),
-						createEngineDescription(NetworkExtractor.class,
-								NetworkExtractor.PARAM_VIEW_NAME,
-								"CopresenceNetwork"),
+						/*
+						 * Extract copresence network
+						 */
+						createEngineDescription(NetworkExtractor.class),
+						/*
+						 * extract mention network
+						 */
 						createEngineDescription(NetworkExtractor.class,
 								NetworkExtractor.PARAM_VIEW_NAME,
 								"MentionNetwork",
 								NetworkExtractor.PARAM_NETWORK_TYPE,
 								"MentionNetwork"),
-										createEngineDescription(XmiWriter.class,
-												XmiWriter.PARAM_TARGET_LOCATION, "target/xmi/"),
+								/*
+								 * print xmi
+								 */
+								createEngineDescription(XmiWriter.class,
+										XmiWriter.PARAM_TARGET_LOCATION, "target/xmi/"),
+										createEngineDescription(DotExporter.class,
+												DotExporter.PARAM_VIEW_NAME, "MentionNetwork",
+												DotExporter.PARAM_TARGET_LOCATION,
+												"target/net/mentions/"),
 						createEngineDescription(DotExporter.class,
-														DotExporter.PARAM_VIEW_NAME, "MentionNetwork",
+								DotExporter.PARAM_VIEW_NAME, "Copresence",
 								DotExporter.PARAM_TARGET_LOCATION,
-								"target/dot/"));
+								"target/net/copresence/"));
 	}
 }
