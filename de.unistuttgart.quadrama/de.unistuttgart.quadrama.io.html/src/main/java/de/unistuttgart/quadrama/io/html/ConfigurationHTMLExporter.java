@@ -41,6 +41,9 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 			labelObj.put("text", segment.getCoveredText().substring(0, 15)
 					.trim());
 			labelObj.put("rotation", 270);
+			labelObj.put("align", "center");
+			labelObj.put("verticalAlign", "top");
+			labelObj.put("y", -30);
 			JSONObject obj = new JSONObject();
 			obj.put("from", segment.getBegin());
 			obj.put("to", segment.getEnd());
