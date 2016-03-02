@@ -23,29 +23,28 @@ import de.unistuttgart.quadrama.core.api.Origin;
 public class DramaSpeechPreparation extends JCasAnnotator_ImplBase {
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
-		JCas utteranceCas;
+		JCas utteranceCas = null;
 		try {
 			// create the new view
 			utteranceCas =
 					jcas.createView(DramaSpeechSegmenter.SOFA_UTTERANCES);
 			utteranceCas.setDocumentLanguage(jcas.getDocumentLanguage());
-
-			// fill the jcas utterance-wise
-			JCasBuilder b = new JCasBuilder(utteranceCas);
-			for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
-				for (Speech speech : JCasUtil.selectCovered(Speech.class,
-						utterance)) {
-					b.add(speech.getCoveredText(), Origin.class).setOffset(
-							speech.getBegin());
-					if (speech.getClass().equals(SpeechVerse.class))
-						b.add("\n");
-				}
-				b.add("\n\n");
-			}
-			b.close();
 		} catch (CASException e1) {
 			throw new AnalysisEngineProcessException(e1);
 		}
+
+		// fill the jcas utterance-wise
+		JCasBuilder b = new JCasBuilder(utteranceCas);
+		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
+			for (Speech speech : JCasUtil
+					.selectCovered(Speech.class, utterance)) {
+				b.add(speech.getCoveredText(), Origin.class).setOffset(
+						speech.getBegin());
+				if (speech.getClass().equals(SpeechVerse.class)) b.add("\n");
+			}
+			b.add("\n\n");
+		}
+		b.close();
 
 	}
 }
