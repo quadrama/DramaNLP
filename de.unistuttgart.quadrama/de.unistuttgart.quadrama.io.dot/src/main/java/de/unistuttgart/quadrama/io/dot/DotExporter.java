@@ -63,26 +63,19 @@ public class DotExporter extends JCasFileWriter_ImplBase {
 		} catch (CASException e1) {
 			throw new AnalysisEngineProcessException(e1);
 		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			throw new AnalysisEngineProcessException(e1);
 		} catch (InstantiationException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			throw new AnalysisEngineProcessException(e1);
 		} catch (IllegalAccessException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			throw new AnalysisEngineProcessException(e1);
 		} catch (IllegalArgumentException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			throw new AnalysisEngineProcessException(e1);
 		} catch (InvocationTargetException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			throw new AnalysisEngineProcessException(e1);
 		} catch (NoSuchMethodException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			throw new AnalysisEngineProcessException(e1);
 		} catch (SecurityException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			throw new AnalysisEngineProcessException(e1);
 		}
 
 	}
