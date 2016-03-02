@@ -1,4 +1,4 @@
-package de.unistuttgart.quadrama.io.textgridtei;
+package de.unistuttgart.quadrama.io.tei.textgrid;
 
 import java.io.File;
 import java.io.FileInputStream;

@@ -12,7 +12,7 @@ import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.unistuttgart.ims.uimautil.SetDocumentId;
 import de.unistuttgart.quadrama.core.SetDramaMetaData;
 import de.unistuttgart.quadrama.io.gutenbergde.GutenbergDEReader;
-import de.unistuttgart.quadrama.io.textgridtei.TextgridTEIReader;
+import de.unistuttgart.quadrama.io.tei.textgrid.TextgridTEIReader;
 
 public class CollectDocuments {
 

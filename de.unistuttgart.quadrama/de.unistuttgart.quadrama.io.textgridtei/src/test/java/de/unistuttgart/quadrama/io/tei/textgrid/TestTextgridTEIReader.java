@@ -1,4 +1,4 @@
-package de.unistuttgart.quadrama.io.textgridtei;
+package de.unistuttgart.quadrama.io.tei.textgrid;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -26,6 +26,7 @@ import de.unistuttgart.quadrama.api.FrontMatter;
 import de.unistuttgart.quadrama.api.MainMatter;
 import de.unistuttgart.quadrama.api.Scene;
 import de.unistuttgart.quadrama.api.Speaker;
+import de.unistuttgart.quadrama.io.tei.textgrid.TextgridTEIReader;
 
 public class TestTextgridTEIReader {
 
