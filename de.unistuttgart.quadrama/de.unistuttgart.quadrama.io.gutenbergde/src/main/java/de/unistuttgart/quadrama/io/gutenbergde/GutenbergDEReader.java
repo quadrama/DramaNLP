@@ -16,6 +16,7 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.jsoup.Jsoup;
 
+import de.unistuttgart.ims.uimautil.IMSUtil;
 import de.unistuttgart.quadrama.api.Act;
 import de.unistuttgart.quadrama.api.Drama;
 import de.unistuttgart.quadrama.api.DramatisPersonae;
@@ -120,14 +121,14 @@ public class GutenbergDEReader extends AbstractDramaReader {
 			int b = utterance.getBegin();
 			for (Annotation exc : except) {
 				if (exc.getBegin() > b) {
-					AnnotationFactory.createAnnotation(jcas, b, exc.getBegin(),
-							Speech.class);
+					IMSUtil.trim(AnnotationFactory.createAnnotation(jcas, b,
+							exc.getBegin(), Speech.class));
 				}
 				b = exc.getEnd();
 			}
 			if (b < utterance.getEnd()) {
-				AnnotationFactory.createAnnotation(jcas, b, utterance.getEnd(),
-						Speech.class);
+				IMSUtil.trim(AnnotationFactory.createAnnotation(jcas, b,
+						utterance.getEnd(), Speech.class));
 			}
 		}
 	}
