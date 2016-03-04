@@ -16,6 +16,8 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import de.unistuttgart.ims.uimautil.IMSUtil;
 import de.unistuttgart.quadrama.api.Act;
@@ -39,7 +41,7 @@ public class GutenbergDEReader extends AbstractDramaReader {
 
 	@Override
 	public void getNext(JCas jcas, File file, Drama drama) throws IOException,
-	CollectionException {
+			CollectionException {
 
 		String str = IOUtils.toString(new FileInputStream(file));
 		org.jsoup.nodes.Document doc = Jsoup.parseBodyFragment(str);
@@ -69,8 +71,19 @@ public class GutenbergDEReader extends AbstractDramaReader {
 		select2Annotation(jcas, doc, annoMap, "h3 + p", DramatisPersonae.class,
 				frontMatter);
 
+		// find utterances
 		select2Annotation(jcas, doc, annoMap, "p:has(span.speaker)",
 				Utterance.class, mainMatter);
+
+		// some utterances continue in the next paragraph
+		// they are (in RuJ) marked with class leftmarg
+		Elements elms = doc.select("p.leftmarg");
+		for (Element elm : elms) {
+			HTMLAnnotation hAnno = annoMap.get(elm.cssSelector());
+			Utterance utterance =
+					JCasUtil.selectPreceding(Utterance.class, hAnno, 1).get(0);
+			utterance.setEnd(hAnno.getEnd());
+		}
 
 		annotateSpeech(jcas, mainMatter);
 
@@ -109,7 +122,7 @@ public class GutenbergDEReader extends AbstractDramaReader {
 		IMSUtil.trim(new ArrayList<Scene>(JCasUtil.select(jcas, Scene.class)));
 		IMSUtil.trim(new ArrayList<Act>(JCasUtil.select(jcas, Act.class)));
 
-		this.cleanUp(jcas);
+		cleanUp(jcas);
 
 	}
 
