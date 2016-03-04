@@ -39,7 +39,7 @@ public class GutenbergDEReader extends AbstractDramaReader {
 
 	@Override
 	public void getNext(JCas jcas, File file, Drama drama) throws IOException,
-			CollectionException {
+	CollectionException {
 
 		String str = IOUtils.toString(new FileInputStream(file));
 		org.jsoup.nodes.Document doc = Jsoup.parseBodyFragment(str);
@@ -140,6 +140,18 @@ public class GutenbergDEReader extends AbstractDramaReader {
 				IMSUtil.trim(AnnotationFactory.createAnnotation(jcas, b,
 						utterance.getEnd(), Speech.class));
 			}
+		}
+
+		for (Speech speech : new ArrayList<Speech>(JCasUtil.select(jcas,
+				Speech.class))) {
+			if (speech.getCoveredText().matches("^\\s*$")) {
+				speech.removeFromIndexes();
+			} else
+				try {
+					IMSUtil.trimFront(speech, '.', ' ');
+				} catch (ArrayIndexOutOfBoundsException e) {
+					// ignore
+				}
 		}
 	}
 
