@@ -3,6 +3,7 @@ package de.unistuttgart.quadrama.io.gutenbergde;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,6 +19,7 @@ import org.jsoup.Jsoup;
 
 import de.unistuttgart.ims.uimautil.IMSUtil;
 import de.unistuttgart.quadrama.api.Act;
+import de.unistuttgart.quadrama.api.ActHeading;
 import de.unistuttgart.quadrama.api.Drama;
 import de.unistuttgart.quadrama.api.DramatisPersonae;
 import de.unistuttgart.quadrama.api.Figure;
@@ -25,6 +27,7 @@ import de.unistuttgart.quadrama.api.Footnote;
 import de.unistuttgart.quadrama.api.FrontMatter;
 import de.unistuttgart.quadrama.api.MainMatter;
 import de.unistuttgart.quadrama.api.Scene;
+import de.unistuttgart.quadrama.api.SceneHeading;
 import de.unistuttgart.quadrama.api.Speaker;
 import de.unistuttgart.quadrama.api.Speech;
 import de.unistuttgart.quadrama.api.StageDirection;
@@ -83,14 +86,18 @@ public class GutenbergDEReader extends AbstractDramaReader {
 		int currentSceneBegin = -1;
 		int currentActBegin = -1;
 		for (HTMLAnnotation anno : JCasUtil.select(jcas, HTMLAnnotation.class)) {
-			if (anno.getTag().equals("h2")) {
+			if (anno.getTag().equals("h2") && !anno.getCls().contains("author")) {
+				AnnotationFactory.createAnnotation(jcas, anno.getBegin(),
+						anno.getEnd(), SceneHeading.class);
 				if (currentSceneBegin >= 0) {
 					AnnotationFactory.createAnnotation(jcas, currentSceneBegin,
 							anno.getBegin() - 1, Scene.class);
 				}
 				currentSceneBegin = anno.getBegin();
 			}
-			if (anno.getTag().equals("h1")) {
+			if (anno.getTag().equals("h1") && !anno.getCls().contains("title")) {
+				AnnotationFactory.createAnnotation(jcas, anno.getBegin(),
+						anno.getEnd(), ActHeading.class);
 				if (currentActBegin >= 0) {
 					AnnotationFactory.createAnnotation(jcas, currentActBegin,
 							anno.getBegin() - 1, Act.class);
@@ -98,6 +105,16 @@ public class GutenbergDEReader extends AbstractDramaReader {
 				currentActBegin = anno.getBegin();
 			}
 		}
+		if (currentActBegin >= 0) {
+			AnnotationFactory.createAnnotation(jcas, currentActBegin,
+					mainMatter.getEnd(), Act.class);
+		}
+		if (currentSceneBegin >= 0) {
+			AnnotationFactory.createAnnotation(jcas, currentSceneBegin,
+					mainMatter.getEnd(), Scene.class);
+		}
+		IMSUtil.trim(new ArrayList<Scene>(JCasUtil.select(jcas, Scene.class)));
+		IMSUtil.trim(new ArrayList<Act>(JCasUtil.select(jcas, Act.class)));
 
 		this.cleanUp(jcas);
 
