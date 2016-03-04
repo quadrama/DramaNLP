@@ -17,7 +17,7 @@ function load(id) {
 			text:data[id]['id']
 		},
 		chart: {
-			type:'spline',
+			type:'line',
 			zoomType: 'x'
 		},
     	xAxis: {
@@ -42,7 +42,7 @@ function load(id) {
     });
 	var dramaData = data[id];
 
-	$("#tab"+id).append("<div><table></table></div>");
+	$("#tab"+id).append("<h2>Figure speech overview</h2><div><table width=\"100%\"></table></div>");
 
 	$("#tab"+id+" table").DataTable( {
 	        data: dramaData["data"].map(function(cur, ind, arr) {
@@ -67,8 +67,12 @@ function load(id) {
 $(function () {
 	for (index = 0; index < data.length; index++) {
 		$("#tabs ul").append("<li><a href=\"#tab"+index+"\">"+data[index]['id']+"</a></li>");
-		$("#tabs").append("<div id=\"tab"+index+"\"><div class=\"hc\" id=\"hc"+index+"\"></div></div>");
+		$("#tabs").append("<div id=\"tab"+index+"\"><h2>Figure presence chart</h2><div class=\"hc\" id=\"hc"+index+"\"></div></div>");
 		load(index);
+		$("#tab"+index).accordion({
+			header: "h2",
+			active:0
+		});
 	}
 	$("#tabs").tabs();
 });
