@@ -1,7 +1,6 @@
 package de.unistuttgart.quadrama.io.gutenbergde;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
@@ -51,13 +50,16 @@ public class TestGutenbergDEReader {
 										XmiWriter.PARAM_TARGET_LOCATION,
 										"target/doc")).iterator().next();
 
-		assertNotNull(JCasUtil.selectSingle(jcas, Drama.class));
+		// sanity check
+		// 1.xml
+		assertTrue(JCasUtil.exists(jcas, Drama.class));
 		assertTrue(JCasUtil.exists(jcas, Act.class));
 		assertTrue(JCasUtil.exists(jcas, Scene.class));
 		assertTrue(JCasUtil.exists(jcas, Speaker.class));
 		assertTrue(JCasUtil.exists(jcas, DramatisPersonae.class));
-		assertNotNull(JCasUtil.selectSingle(jcas, FrontMatter.class));
-		assertNotNull(JCasUtil.selectSingle(jcas, MainMatter.class));
+		assertTrue(JCasUtil.exists(jcas, FrontMatter.class));
+		assertTrue(JCasUtil.exists(jcas, MainMatter.class));
 		assertEquals(5, JCasUtil.select(jcas, Act.class).size());
+		assertEquals(31, JCasUtil.select(jcas, Scene.class).size());
 	}
 }
