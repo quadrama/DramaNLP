@@ -1039,6 +1039,11 @@
             <supertypeName>uima.tcas.Annotation</supertypeName>
         </typeDescription>
         <typeDescription>
+            <name>de.unistuttgart.quadrama.api.Heading</name>
+            <description/>
+            <supertypeName>uima.tcas.Annotation</supertypeName>
+        </typeDescription>
+        <typeDescription>
             <name>de.unistuttgart.quadrama.api.MainMatter</name>
             <description/>
             <supertypeName>uima.tcas.Annotation</supertypeName>
@@ -1047,6 +1052,11 @@
             <name>de.unistuttgart.quadrama.api.Scene</name>
             <description/>
             <supertypeName>de.unistuttgart.quadrama.api.DramaSegment</supertypeName>
+        </typeDescription>
+        <typeDescription>
+            <name>de.unistuttgart.quadrama.api.SceneHeading</name>
+            <description/>
+            <supertypeName>de.unistuttgart.quadrama.api.Heading</supertypeName>
         </typeDescription>
         <typeDescription>
             <name>de.unistuttgart.quadrama.api.Speaker</name>
@@ -1477,6 +1487,11 @@
             <name>de.unistuttgart.quadrama.api.Act</name>
             <description/>
             <supertypeName>de.unistuttgart.quadrama.api.DramaSegment</supertypeName>
+        </typeDescription>
+        <typeDescription>
+            <name>de.unistuttgart.quadrama.api.ActHeading</name>
+            <description/>
+            <supertypeName>de.unistuttgart.quadrama.api.Heading</supertypeName>
         </typeDescription>
     </types>
 </typeSystemDescription>
