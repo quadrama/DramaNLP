@@ -102,9 +102,13 @@ public class TextgridTEIReader extends AbstractDramaReader {
 		}
 		if (!JCasUtil.exists(jcas, Act.class)) {
 			select2Annotation(jcas, root, map, "body > div", Act.class, null);
+			select2Annotation(jcas, root, map, "body > div > head",
+					ActHeading.class, null);
 		}
 		if (!JCasUtil.exists(jcas, Scene.class)) {
 			select2Annotation(jcas, root, map, "div > div", Scene.class, null);
+			select2Annotation(jcas, root, map, "body > div > div > head",
+					SceneHeading.class, null);
 		}
 	}
 
