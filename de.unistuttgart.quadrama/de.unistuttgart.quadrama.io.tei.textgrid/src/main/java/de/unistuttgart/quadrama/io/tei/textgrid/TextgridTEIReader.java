@@ -38,13 +38,8 @@ import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
 public class TextgridTEIReader extends AbstractDramaReader {
 
 	@Override
-	public void getNext(JCas jcas) throws IOException, CollectionException {
-		File file = files[current++];
-		Drama drama = new Drama(jcas);
-		drama.addToIndexes();
-		drama.setDocumentId(file.getName());
-
-		jcas.setDocumentLanguage(language);
+	public void getNext(JCas jcas, File file, Drama drama) throws IOException,
+			CollectionException {
 
 		String str = IOUtils.toString(new FileInputStream(file));
 		Document doc = Jsoup.parse(str, "", Parser.xmlParser());

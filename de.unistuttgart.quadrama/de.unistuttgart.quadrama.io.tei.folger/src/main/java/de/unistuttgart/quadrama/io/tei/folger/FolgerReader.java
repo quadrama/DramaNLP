@@ -23,13 +23,8 @@ import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
 public class FolgerReader extends AbstractDramaReader {
 
 	@Override
-	public void getNext(JCas jcas) throws IOException, CollectionException {
-		Drama drama = new Drama(jcas);
-		drama.setDocumentId("testtei");
-		drama.addToIndexes();
-		jcas.setDocumentLanguage(language);
-
-		File file = files[current++];
+	public void getNext(JCas jcas, File file, Drama drama) throws IOException,
+			CollectionException {
 
 		String str = IOUtils.toString(new FileInputStream(file));
 		getLogger().log(Level.INFO, "Now parsing XML document");

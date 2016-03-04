@@ -17,6 +17,11 @@
   		<groupId>org.apache.uima</groupId>
   		<artifactId>uimafit-core</artifactId>
   	</dependency>
+  	<dependency>
+  		<groupId>de.unistuttgart.quadrama</groupId>
+  		<artifactId>de.unistuttgart.quadrama.api</artifactId>
+  		<version>0.2-SNAPSHOT</version>
+  	</dependency>
   </dependencies>
   <description>Base module to provide generic io capabilities</description>
 </project>

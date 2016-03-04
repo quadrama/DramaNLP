@@ -38,15 +38,8 @@ import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
 public class GutenbergDEReader extends AbstractDramaReader {
 
 	@Override
-	public void getNext(JCas jcas) throws IOException, CollectionException {
-		File file = files[current++];
-
-		Drama drama = new Drama(jcas);
-		drama.setDocumentId(file.getName());
-		drama.addToIndexes();
-		jcas.setDocumentLanguage(language);
-
-		getLogger().debug("Processing file " + file.getAbsolutePath());
+	public void getNext(JCas jcas, File file, Drama drama) throws IOException,
+			CollectionException {
 
 		String str = IOUtils.toString(new FileInputStream(file));
 		org.jsoup.nodes.Document doc = Jsoup.parseBodyFragment(str);

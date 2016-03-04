@@ -26,6 +26,7 @@ import org.jsoup.nodes.TextNode;
 import org.jsoup.select.Elements;
 import org.jsoup.select.NodeVisitor;
 
+import de.unistuttgart.quadrama.api.Drama;
 import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
 
 public abstract class AbstractDramaReader extends JCasCollectionReader_ImplBase {
@@ -61,6 +62,22 @@ public abstract class AbstractDramaReader extends JCasCollectionReader_ImplBase 
 		return null;
 	}
 
+	@Override
+	public void getNext(JCas jcas) throws IOException, CollectionException {
+		File file = files[current++];
+		getLogger().debug("Processing file " + file.getAbsolutePath());
+
+		Drama drama = new Drama(jcas);
+		drama.setDocumentId(file.getName());
+		drama.addToIndexes();
+		jcas.setDocumentLanguage(language);
+
+		getNext(jcas, file, drama);
+	}
+
+	public abstract void getNext(JCas jcas, File file, Drama drama)
+			throws IOException, CollectionException;
+
 	public <T extends Annotation> Collection<T> select2Annotation(JCas jcas,
 			Element rootElement, Map<String, HTMLAnnotation> annoMap,
 			String cssSelector, Class<T> annoClass,
@@ -71,7 +88,7 @@ public abstract class AbstractDramaReader extends JCasCollectionReader_ImplBase 
 			HTMLAnnotation hAnno = annoMap.get(elm.cssSelector());
 			if (coveringAnnotation == null
 					|| (coveringAnnotation.getBegin() <= hAnno.getBegin() && coveringAnnotation
-					.getEnd() >= hAnno.getEnd()))
+							.getEnd() >= hAnno.getEnd()))
 				set.add(AnnotationFactory.createAnnotation(jcas,
 						hAnno.getBegin(), hAnno.getEnd(), annoClass));
 		}
