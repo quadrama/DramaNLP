@@ -8,6 +8,7 @@ import org.apache.uima.jcas.JCas;
 import de.unistuttgart.quadrama.api.Speech;
 import de.unistuttgart.quadrama.api.Utterance;
 
+@Deprecated
 public class FixGutenbergSpeech extends JCasAnnotator_ImplBase {
 
 	@Override
@@ -15,7 +16,7 @@ public class FixGutenbergSpeech extends JCasAnnotator_ImplBase {
 		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
 			Speech speech =
 					JCasUtil.selectCovered(Speech.class, utterance).iterator()
-					.next();
+							.next();
 			if (speech.getCoveredText().startsWith(". ")) {
 				speech.setBegin(speech.getBegin() + 2);
 			}
