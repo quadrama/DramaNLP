@@ -19,6 +19,7 @@ import org.jsoup.parser.Parser;
 
 import de.unistuttgart.ims.uimautil.IMSUtil;
 import de.unistuttgart.quadrama.api.Act;
+import de.unistuttgart.quadrama.api.ActHeading;
 import de.unistuttgart.quadrama.api.Drama;
 import de.unistuttgart.quadrama.api.DramatisPersonae;
 import de.unistuttgart.quadrama.api.Figure;
@@ -26,6 +27,7 @@ import de.unistuttgart.quadrama.api.FigureDescription;
 import de.unistuttgart.quadrama.api.FrontMatter;
 import de.unistuttgart.quadrama.api.MainMatter;
 import de.unistuttgart.quadrama.api.Scene;
+import de.unistuttgart.quadrama.api.SceneHeading;
 import de.unistuttgart.quadrama.api.Speaker;
 import de.unistuttgart.quadrama.api.Speech;
 import de.unistuttgart.quadrama.api.StageDirection;
@@ -88,9 +90,15 @@ public class TextgridTEIReader extends AbstractDramaReader {
 		if (!root.select("div[type=scene]").isEmpty()) {
 			select2Annotation(jcas, root, map, "div[type=scene]", Scene.class,
 					null);
+			select2Annotation(jcas, root, map,
+					"div[type=scene] > div > desc > title", SceneHeading.class,
+					null);
 		}
 		if (!root.select("div[type=act]").isEmpty()) {
 			select2Annotation(jcas, root, map, "div[type=act]", Act.class, null);
+			select2Annotation(jcas, root, map,
+					"div[type=act] > div > desc > title", ActHeading.class,
+					null);
 		}
 		if (!JCasUtil.exists(jcas, Act.class)) {
 			select2Annotation(jcas, root, map, "body > div", Act.class, null);
