@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Map;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.uima.collection.CollectionException;
@@ -16,6 +17,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.parser.Parser;
 
+import de.unistuttgart.ims.uimautil.IMSUtil;
 import de.unistuttgart.quadrama.api.Act;
 import de.unistuttgart.quadrama.api.Drama;
 import de.unistuttgart.quadrama.api.DramatisPersonae;
@@ -29,17 +31,18 @@ import de.unistuttgart.quadrama.api.Speech;
 import de.unistuttgart.quadrama.api.StageDirection;
 import de.unistuttgart.quadrama.api.Utterance;
 import de.unistuttgart.quadrama.io.core.AbstractDramaReader;
+import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
 
 public class TextgridTEIReader extends AbstractDramaReader {
 
 	@Override
 	public void getNext(JCas jcas) throws IOException, CollectionException {
-		Drama drama = new Drama(jcas);
-		drama.setDocumentId("testtei" + current);
-		drama.addToIndexes();
-		jcas.setDocumentLanguage(language);
-
 		File file = files[current++];
+		Drama drama = new Drama(jcas);
+		drama.addToIndexes();
+		drama.setDocumentId(file.getName());
+
+		jcas.setDocumentLanguage(language);
 
 		String str = IOUtils.toString(new FileInputStream(file));
 		Document doc = Jsoup.parse(str, "", Parser.xmlParser());
@@ -55,8 +58,6 @@ public class TextgridTEIReader extends AbstractDramaReader {
 		select2Annotation(jcas, root, vis.getAnnotationMap(), "body",
 				MainMatter.class, null);
 
-		FrontMatter frontMatter =
-				JCasUtil.selectSingle(jcas, FrontMatter.class);
 		MainMatter mainMatter = JCasUtil.selectSingle(jcas, MainMatter.class);
 
 		select2Annotation(jcas, root, vis.getAnnotationMap(), "speaker",
@@ -71,47 +72,70 @@ public class TextgridTEIReader extends AbstractDramaReader {
 				Speech.class, mainMatter);
 		select2Annotation(jcas, root, vis.getAnnotationMap(), "p",
 				Speech.class, mainMatter);
-		select2Annotation(jcas, root, vis.getAnnotationMap(),
-				"div[type=scene]", Scene.class, null);
-		if (!JCasUtil.exists(jcas, Scene.class)) {
-			select2Annotation(jcas, root, vis.getAnnotationMap(), "div > div",
-					Scene.class, null);
 
-		}
-		select2Annotation(jcas, root, vis.getAnnotationMap(), "body > div",
-				Act.class, null);
-		select2Annotation(jcas, root, vis.getAnnotationMap(), "castList",
-				DramatisPersonae.class, null);
-		if (!JCasUtil.exists(jcas, DramatisPersonae.class))
-			select2Annotation(jcas, root, vis.getAnnotationMap(),
-					"div[type=front] > div:has(p)", DramatisPersonae.class,
-					frontMatter);
+		readActsAndScenes(jcas, root, vis.getAnnotationMap());
+		readDramatisPersonae(jcas, root, vis.getAnnotationMap());
 
-		// Detecting figure declarations
-		if (!root.select("castList").isEmpty()) {
-
-			select2Annotation(jcas, root, vis.getAnnotationMap(),
-					"castList castItem role", Figure.class, null);
-			Collection<FigureDescription> figDescs =
-					select2Annotation(jcas, root, vis.getAnnotationMap(),
-							"castList castItem roleDesc",
-							FigureDescription.class, null);
-			for (FigureDescription figureDescription : figDescs) {
-				Figure fig =
-						JCasUtil.selectPreceding(Figure.class,
-								figureDescription, 1).get(0);
-				fig.setDescription(figureDescription);
-			}
-		} else if (JCasUtil.exists(jcas, DramatisPersonae.class)) {
-			select2Annotation(jcas, root, vis.getAnnotationMap(), "p",
-					Figure.class,
-					JCasUtil.selectSingle(jcas, DramatisPersonae.class));
-			fixFigureAnnotations(jcas);
-		}
 		fixSpeakerAnnotations(jcas);
 
 		cleanUp(jcas);
 
+	}
+
+	private void readActsAndScenes(JCas jcas, Element root,
+			Map<String, HTMLAnnotation> map) {
+
+		if (!root.select("div[type=scene]").isEmpty()) {
+			select2Annotation(jcas, root, map, "div[type=scene]", Scene.class,
+					null);
+		}
+		if (!root.select("div[type=act]").isEmpty()) {
+			select2Annotation(jcas, root, map, "div[type=act]", Act.class, null);
+		}
+		if (!JCasUtil.exists(jcas, Act.class)) {
+			select2Annotation(jcas, root, map, "body > div", Act.class, null);
+		}
+		if (!JCasUtil.exists(jcas, Scene.class)) {
+			select2Annotation(jcas, root, map, "div > div", Scene.class, null);
+		}
+	}
+
+	private void readDramatisPersonae(JCas jcas, Element root,
+			Map<String, HTMLAnnotation> map) {
+		DramatisPersonae dp;
+		if (!root.select("castList").isEmpty()) {
+			dp =
+					select2Annotation(jcas, root, map, "castList",
+							DramatisPersonae.class, null).iterator().next();
+
+			Element castList = root.select("castList").first();
+			if (!castList.select("castItem role").isEmpty()) {
+				select2Annotation(jcas, castList, map, "castItem role",
+						Figure.class, dp);
+				Collection<FigureDescription> figDescs =
+						select2Annotation(jcas, castList, map,
+								"castItem roleDesc", FigureDescription.class,
+								dp);
+				for (FigureDescription figureDescription : figDescs) {
+					Figure fig =
+							JCasUtil.selectPreceding(Figure.class,
+									figureDescription, 1).get(0);
+					fig.setDescription(figureDescription);
+				}
+			} else {
+				select2Annotation(jcas, castList, map, "castItem",
+						Figure.class, null);
+			}
+		} else {
+			dp =
+					select2Annotation(jcas, root, map,
+							"div[type=front] > div:has(p)",
+							DramatisPersonae.class, null).iterator().next();
+
+			IMSUtil.trim(select2Annotation(jcas, root, map, "p", Figure.class,
+					dp));
+			fixFigureAnnotations(jcas);
+		}
 	}
 
 	private void fixFigureAnnotations(JCas jcas) {
@@ -124,15 +148,13 @@ public class TextgridTEIReader extends AbstractDramaReader {
 				figure.setEnd(figure.getBegin() + i);
 
 				FigureDescription fd =
-						AnnotationFactory.createAnnotation(jcas,
+						IMSUtil.trim(AnnotationFactory.createAnnotation(jcas,
 								figure.getEnd() + 1, oldEnd,
-								FigureDescription.class);
+								FigureDescription.class));
 				figure.setDescription(fd);
 
 			}
-			while (figure.getCoveredText().startsWith(" ")) {
-				figure.setBegin(figure.getBegin() + 1);
-			}
+
 		}
 
 	}
@@ -140,10 +162,7 @@ public class TextgridTEIReader extends AbstractDramaReader {
 	private void fixSpeakerAnnotations(JCas jcas) {
 		for (Speaker speaker : new HashSet<Speaker>(JCasUtil.select(jcas,
 				Speaker.class))) {
-			String s = speaker.getCoveredText();
-			if (s.endsWith(".")) {
-				speaker.setEnd(speaker.getEnd() - 1);
-			}
+			IMSUtil.trim(speaker, '.', ' ', '\t', '\n', '\r', '\f');
 		}
 
 	}

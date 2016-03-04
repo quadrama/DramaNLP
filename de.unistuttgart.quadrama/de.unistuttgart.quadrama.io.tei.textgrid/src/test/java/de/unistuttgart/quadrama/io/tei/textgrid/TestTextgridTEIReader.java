@@ -2,6 +2,7 @@ package de.unistuttgart.quadrama.io.tei.textgrid;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
@@ -49,14 +50,18 @@ public class TestTextgridTEIReader {
 						AnalysisEngineFactory.createEngineDescription(
 								XmiWriter.class,
 								XmiWriter.PARAM_TARGET_LOCATION, "target/doc"))
-						.iterator();
+								.iterator();
 
 		JCas jcas;
+		Speaker speaker;
+		Figure figure;
 
 		jcas = iter.next();
-
+		// 1.xml
 		// general sanity checking
-		assertNotNull(JCasUtil.selectSingle(jcas, Drama.class));
+		assertTrue(JCasUtil.exists(jcas, Drama.class));
+		assertEquals("1.xml", JCasUtil.selectSingle(jcas, Drama.class)
+				.getDocumentId());
 		assertTrue(JCasUtil.exists(jcas, Act.class));
 		assertTrue(JCasUtil.exists(jcas, Scene.class));
 		assertTrue(JCasUtil.exists(jcas, Speaker.class));
@@ -65,20 +70,32 @@ public class TestTextgridTEIReader {
 		assertNotNull(JCasUtil.selectSingle(jcas, FrontMatter.class));
 		assertNotNull(JCasUtil.selectSingle(jcas, MainMatter.class));
 		assertEquals(5, JCasUtil.select(jcas, Act.class).size());
+		assertEquals(24, JCasUtil.select(jcas, Scene.class).size());
 
 		// figures
 		// should be 24, but we can't identify the last lines
 		assertEquals(26, JCasUtil.select(jcas, Figure.class).size());
-		Figure figure;
 		figure = JCasUtil.selectByIndex(jcas, Figure.class, 0);
 		assertEquals("Escalus", figure.getCoveredText());
 		assertEquals("Prinz von Verona", figure.getDescription()
 				.getCoveredText().trim());
 
-		jcas = iter.next();
+		figure = JCasUtil.selectByIndex(jcas, Figure.class, 10);
+		assertEquals("Bruder Marcus", figure.getCoveredText());
+		assertEquals("von demselben Orden", figure.getDescription()
+				.getCoveredText().trim());
 
+		// speakers
+		speaker = JCasUtil.selectByIndex(jcas, Speaker.class, 0);
+		assertEquals("SIMSON", speaker.getCoveredText());
+
+		jcas = iter.next();
+		// 2.xml
 		// general sanity checking
-		assertNotNull(JCasUtil.selectSingle(jcas, Drama.class));
+		assertTrue(JCasUtil.exists(jcas, Drama.class));
+		assertEquals("2.xml", JCasUtil.selectSingle(jcas, Drama.class)
+				.getDocumentId());
+
 		assertTrue(JCasUtil.exists(jcas, Act.class));
 		assertTrue(JCasUtil.exists(jcas, Scene.class));
 		assertTrue(JCasUtil.exists(jcas, Speaker.class));
@@ -87,6 +104,7 @@ public class TestTextgridTEIReader {
 		assertNotNull(JCasUtil.selectSingle(jcas, FrontMatter.class));
 		assertNotNull(JCasUtil.selectSingle(jcas, MainMatter.class));
 		assertEquals(5, JCasUtil.select(jcas, Act.class).size());
+		assertEquals(26, JCasUtil.select(jcas, Scene.class).size());
 
 		// figures
 		assertEquals(38, JCasUtil.select(jcas, Figure.class).size());
@@ -95,10 +113,17 @@ public class TestTextgridTEIReader {
 		assertEquals("prince of Verona", figure.getDescription()
 				.getCoveredText().trim());
 
-		jcas = iter.next();
+		figure = JCasUtil.selectByIndex(jcas, Figure.class, 10);
+		assertEquals("Friar John", figure.getCoveredText());
+		assertNull(figure.getDescription());
 
+		jcas = iter.next();
+		// 3.xml
 		// general sanity checking
-		assertNotNull(JCasUtil.selectSingle(jcas, Drama.class));
+		assertTrue(JCasUtil.exists(jcas, Drama.class));
+		assertEquals("3.xml", JCasUtil.selectSingle(jcas, Drama.class)
+				.getDocumentId());
+
 		assertTrue(JCasUtil.exists(jcas, Act.class));
 		assertTrue(JCasUtil.exists(jcas, Scene.class));
 		assertTrue(JCasUtil.exists(jcas, Speaker.class));
@@ -107,11 +132,15 @@ public class TestTextgridTEIReader {
 		assertNotNull(JCasUtil.selectSingle(jcas, FrontMatter.class));
 		assertNotNull(JCasUtil.selectSingle(jcas, MainMatter.class));
 		assertEquals(5, JCasUtil.select(jcas, Act.class).size());
+		assertEquals(17, JCasUtil.select(jcas, Scene.class).size());
 
 		jcas = iter.next();
-
+		// 4.xml
 		// general sanity checking
-		assertNotNull(JCasUtil.selectSingle(jcas, Drama.class));
+		assertTrue(JCasUtil.exists(jcas, Drama.class));
+		assertEquals("4.xml", JCasUtil.selectSingle(jcas, Drama.class)
+				.getDocumentId());
+
 		assertTrue(JCasUtil.exists(jcas, Act.class));
 		assertTrue(JCasUtil.exists(jcas, Scene.class));
 		assertTrue(JCasUtil.exists(jcas, Speaker.class));
@@ -120,5 +149,23 @@ public class TestTextgridTEIReader {
 		assertNotNull(JCasUtil.selectSingle(jcas, FrontMatter.class));
 		assertNotNull(JCasUtil.selectSingle(jcas, MainMatter.class));
 		assertEquals(5, JCasUtil.select(jcas, Act.class).size());
+		assertEquals(26, JCasUtil.select(jcas, Scene.class).size());
+
+		jcas = iter.next();
+		// 5.xml
+		// general sanity checking
+		assertTrue(JCasUtil.exists(jcas, Drama.class));
+		assertEquals("5.xml", JCasUtil.selectSingle(jcas, Drama.class)
+				.getDocumentId());
+
+		assertTrue(JCasUtil.exists(jcas, Act.class));
+		assertTrue(JCasUtil.exists(jcas, Scene.class));
+		assertTrue(JCasUtil.exists(jcas, Speaker.class));
+		assertTrue(JCasUtil.exists(jcas, Figure.class));
+		assertTrue(JCasUtil.exists(jcas, DramatisPersonae.class));
+		assertTrue(JCasUtil.exists(jcas, FrontMatter.class));
+		assertTrue(JCasUtil.exists(jcas, MainMatter.class));
+		assertEquals(5, JCasUtil.select(jcas, Act.class).size());
+		assertEquals(18, JCasUtil.select(jcas, Scene.class).size());
 	}
 }
