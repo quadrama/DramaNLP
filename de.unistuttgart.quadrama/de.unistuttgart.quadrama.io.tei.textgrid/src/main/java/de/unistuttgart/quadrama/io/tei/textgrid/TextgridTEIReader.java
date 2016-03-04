@@ -3,6 +3,7 @@ package de.unistuttgart.quadrama.io.tei.textgrid;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Map;
@@ -39,7 +40,7 @@ public class TextgridTEIReader extends AbstractDramaReader {
 
 	@Override
 	public void getNext(JCas jcas, File file, Drama drama) throws IOException,
-			CollectionException {
+	CollectionException {
 
 		String str = IOUtils.toString(new FileInputStream(file));
 		Document doc = Jsoup.parse(str, "", Parser.xmlParser());
@@ -74,6 +75,10 @@ public class TextgridTEIReader extends AbstractDramaReader {
 		readDramatisPersonae(jcas, root, vis.getAnnotationMap());
 
 		fixSpeakerAnnotations(jcas);
+
+		IMSUtil.trim(new ArrayList<Speech>(JCasUtil.select(jcas, Speech.class)));
+		IMSUtil.trim(new ArrayList<Utterance>(JCasUtil.select(jcas,
+				Utterance.class)));
 
 		cleanUp(jcas);
 
