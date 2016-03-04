@@ -5,6 +5,9 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 import org.apache.uima.UIMAException;
 import org.apache.uima.collection.CollectionReaderDescription;
@@ -26,6 +29,7 @@ import de.unistuttgart.quadrama.api.FrontMatter;
 import de.unistuttgart.quadrama.api.MainMatter;
 import de.unistuttgart.quadrama.api.Scene;
 import de.unistuttgart.quadrama.api.Speaker;
+import de.unistuttgart.quadrama.api.Utterance;
 
 public class TestGutenbergDEReader {
 
@@ -48,7 +52,7 @@ public class TestGutenbergDEReader {
 						AnalysisEngineFactory.createEngineDescription(
 								XmiWriter.class,
 								XmiWriter.PARAM_TARGET_LOCATION, "target/doc"))
-								.iterator();
+						.iterator();
 		JCas jcas;
 
 		jcas = iter.next();
@@ -65,6 +69,18 @@ public class TestGutenbergDEReader {
 		assertTrue(JCasUtil.exists(jcas, MainMatter.class));
 		assertEquals(5, JCasUtil.select(jcas, Act.class).size());
 		assertEquals(31, JCasUtil.select(jcas, Scene.class).size());
+
+		// Balkony scene
+		Scene scene = JCasUtil.selectByIndex(jcas, Scene.class, 7);
+		Iterator<Utterance> utteranceIter =
+				JCasUtil.selectCovered(Utterance.class, scene).iterator();
+		Utterance utter;
+		utter = utteranceIter.next();
+		assertTrue(utter.getCoveredText().endsWith("berühren möchte!"));
+		Set<String> s =
+				new HashSet<String>(JCasUtil.toText(JCasUtil.selectCovered(
+						Speaker.class, scene)));
+		assertEquals(2, s.size());
 
 		jcas = iter.next();
 		// sanity check
