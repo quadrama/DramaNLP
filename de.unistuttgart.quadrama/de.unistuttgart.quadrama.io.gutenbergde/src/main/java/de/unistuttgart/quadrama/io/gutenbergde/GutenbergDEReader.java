@@ -39,13 +39,13 @@ public class GutenbergDEReader extends AbstractDramaReader {
 
 	@Override
 	public void getNext(JCas jcas) throws IOException, CollectionException {
+		File file = files[current++];
 
 		Drama drama = new Drama(jcas);
-		drama.setDocumentId("test");
+		drama.setDocumentId(file.getName());
 		drama.addToIndexes();
 		jcas.setDocumentLanguage(language);
 
-		File file = files[current++];
 		getLogger().debug("Processing file " + file.getAbsolutePath());
 
 		String str = IOUtils.toString(new FileInputStream(file));
