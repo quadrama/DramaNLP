@@ -27,15 +27,14 @@ public class Preprocessing {
 						"src/main/resources/romeo-and-juliet/de/*.xmi");
 
 		SimplePipeline
-				.runPipeline(
-						crd,
-						createEngineDescription(FixGutenbergSpeech.class),
-						DramaSpeechSegmenter
-								.getWrappedSegmenterDescription(LanguageToolSegmenter.class),
-						createEngineDescription(StanfordPosTagger.class),
-						createEngineDescription(StanfordNamedEntityRecognizer.class),
-						createEngineDescription(StanfordParser.class,
-								StanfordParser.PARAM_MAX_TOKENS, 50),
+		.runPipeline(
+				crd,
+				DramaSpeechSegmenter
+				.getWrappedSegmenterDescription(LanguageToolSegmenter.class),
+				createEngineDescription(StanfordPosTagger.class),
+				createEngineDescription(StanfordNamedEntityRecognizer.class),
+				createEngineDescription(StanfordParser.class,
+						StanfordParser.PARAM_MAX_TOKENS, 50),
 						createEngineDescription(XmiWriter.class,
 								XmiWriter.PARAM_TARGET_LOCATION, "target/"));
 	}

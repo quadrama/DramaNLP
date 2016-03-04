@@ -36,24 +36,23 @@ public class Visualise {
 						"src/main/resources/romeo-and-juliet/*.xmi");
 
 		SimplePipeline
-				.runPipeline(
-						crd,
-						createEngineDescription(FixGutenbergSpeech.class),
-						DramaSpeechSegmenter
-								.getWrappedSegmenterDescription(LanguageToolSegmenter.class),
-						createEngineDescription(SpeakerIdentifier.class),
-						createEngineDescription(UtteranceLinker.class),
-				createEngineDescription(StanfordPosTagger.class),
-						// createEngineDescription(StanfordNamedEntityRecognizer.class),
-						createEngineDescription(FigureSpeechStatistics.class),
-						createEngineDescription(FigureMentionDetection.class),
-						/*
-						 * Export html view of configuration
-						 */
-						createEngineDescription(
-								ConfigurationHTMLExporter.class,
-								ConfigurationHTMLExporter.PARAM_TARGET_LOCATION,
-								"target/html/"),
+		.runPipeline(
+				crd,
+				DramaSpeechSegmenter
+				.getWrappedSegmenterDescription(LanguageToolSegmenter.class),
+				createEngineDescription(SpeakerIdentifier.class),
+				createEngineDescription(UtteranceLinker.class),
+						createEngineDescription(StanfordPosTagger.class),
+				// createEngineDescription(StanfordNamedEntityRecognizer.class),
+				createEngineDescription(FigureSpeechStatistics.class),
+				createEngineDescription(FigureMentionDetection.class),
+				/*
+				 * Export html view of configuration
+				 */
+				createEngineDescription(
+						ConfigurationHTMLExporter.class,
+						ConfigurationHTMLExporter.PARAM_TARGET_LOCATION,
+						"target/html/"),
 						/*
 						 * Extract copresence network
 						 */
@@ -66,18 +65,18 @@ public class Visualise {
 								"MentionNetwork",
 								NetworkExtractor.PARAM_NETWORK_TYPE,
 								"MentionNetwork"),
-						/*
-						 * print xmi
-						 */
-						createEngineDescription(XmiWriter.class,
-								XmiWriter.PARAM_TARGET_LOCATION, "target/xmi/"),
+								/*
+								 * print xmi
+								 */
+								createEngineDescription(XmiWriter.class,
+										XmiWriter.PARAM_TARGET_LOCATION, "target/xmi/"),
+										createEngineDescription(DotExporter.class,
+												DotExporter.PARAM_VIEW_NAME, "MentionNetwork",
+												DotExporter.PARAM_TARGET_LOCATION,
+												"target/net/mentions/"),
 						createEngineDescription(DotExporter.class,
-								DotExporter.PARAM_VIEW_NAME, "MentionNetwork",
+								DotExporter.PARAM_VIEW_NAME, "Copresence",
 								DotExporter.PARAM_TARGET_LOCATION,
-								"target/net/mentions/"),
-												createEngineDescription(DotExporter.class,
-														DotExporter.PARAM_VIEW_NAME, "Copresence",
-														DotExporter.PARAM_TARGET_LOCATION,
-														"target/net/copresence/"));
+								"target/net/copresence/"));
 	}
 }

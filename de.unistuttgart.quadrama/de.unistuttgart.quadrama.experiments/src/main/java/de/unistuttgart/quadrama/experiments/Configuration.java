@@ -29,14 +29,13 @@ public class Configuration {
 						"src/main/resources/romeo-and-juliet/de/*.xmi");
 
 		SimplePipeline
-		.runPipeline(
-				crd,
-				createEngineDescription(FixGutenbergSpeech.class),
-				DramaSpeechSegmenter
-				.getWrappedSegmenterDescription(LanguageToolSegmenter.class),
-				createEngineDescription(SpeakerIdentifier.class),
-				createEngineDescription(ConfigurationExporter.class,
-						ConfigurationExporter.PARAM_TARGET_LOCATION,
-						"target/conf/"));
+				.runPipeline(
+						crd,
+						DramaSpeechSegmenter
+								.getWrappedSegmenterDescription(LanguageToolSegmenter.class),
+						createEngineDescription(SpeakerIdentifier.class),
+						createEngineDescription(ConfigurationExporter.class,
+								ConfigurationExporter.PARAM_TARGET_LOCATION,
+								"target/conf/"));
 	}
 }
