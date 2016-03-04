@@ -6,6 +6,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -21,6 +22,7 @@ import org.json.JSONObject;
 import de.tudarmstadt.ukp.dkpro.core.api.io.JCasFileWriter_ImplBase;
 import de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData;
 import de.unistuttgart.quadrama.api.Figure;
+import de.unistuttgart.quadrama.api.Heading;
 import de.unistuttgart.quadrama.api.Scene;
 import de.unistuttgart.quadrama.api.Speech;
 import de.unistuttgart.quadrama.api.Utterance;
@@ -38,8 +40,14 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 		int c = 0;
 		for (Scene segment : JCasUtil.select(jcas, Scene.class)) {
 			JSONObject labelObj = new JSONObject();
-			labelObj.put("text", segment.getCoveredText().substring(0, 15)
-					.trim());
+			List<Heading> headings =
+					JCasUtil.selectCovered(Heading.class, segment);
+			if (headings.isEmpty()) {
+				labelObj.put("text", segment.getCoveredText().substring(0, 15)
+						.trim());
+			} else {
+				labelObj.put("text", headings.get(0).getCoveredText());
+			}
 			labelObj.put("rotation", 270);
 			labelObj.put("align", "center");
 			labelObj.put("verticalAlign", "top");
