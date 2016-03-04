@@ -12,6 +12,7 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 import org.apache.commons.compress.utils.IOUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
@@ -106,26 +107,27 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 			if (utterance.getSpeaker() != null)
 				figure = utterance.getSpeaker().getFigure();
 			if (figure != null && speaker_index.containsKey(figure)) {
-				Speech speech =
-						JCasUtil.selectCovered(Speech.class, utterance).get(0);
+				String s =
+						StringUtils.join(JCasUtil.toText(JCasUtil
+								.selectCovered(jcas, Speech.class, utterance)),
+								'\n');
 
-				// create two arrays for start and end of speech, each
-				// containing an x and y value
 				double yvalue = (-0.1 - (0.05 * speaker_index.get(figure)));
 				JSONObject arrval = new JSONObject();
-				arrval.put("x", speech.getBegin());
+				arrval.put("x", utterance.getBegin());
 				arrval.put("y", yvalue);
-				arrval.put("name", speech.getCoveredText().trim());
+				arrval.put("name", s);
 				series.get(figure).append("data", arrval);
 				arrval = new JSONObject();
-				arrval.put("x", speech.getEnd());
+				arrval.put("x", utterance.getEnd());
 				arrval.put("y", yvalue);
-				arrval.put("name", speech.getCoveredText().trim());
+				arrval.put("name", s);
 				series.get(figure).append("data", arrval);
 
 				// immediately after both data points a null has to be
 				// inserted to end the spoken intervall
 				series.get(figure).append("data", null);
+
 			} else {
 				getLogger().log(Level.WARNING,
 						"Not assigned: " + utterance.getCoveredText());
