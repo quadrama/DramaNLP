@@ -49,7 +49,7 @@ public class TestTextgridTEIReader {
 						AnalysisEngineFactory.createEngineDescription(
 								XmiWriter.class,
 								XmiWriter.PARAM_TARGET_LOCATION, "target/doc"))
-								.iterator();
+						.iterator();
 
 		JCas jcas;
 
@@ -94,5 +94,31 @@ public class TestTextgridTEIReader {
 		assertEquals("Escalus", figure.getCoveredText());
 		assertEquals("prince of Verona", figure.getDescription()
 				.getCoveredText().trim());
+
+		jcas = iter.next();
+
+		// general sanity checking
+		assertNotNull(JCasUtil.selectSingle(jcas, Drama.class));
+		assertTrue(JCasUtil.exists(jcas, Act.class));
+		assertTrue(JCasUtil.exists(jcas, Scene.class));
+		assertTrue(JCasUtil.exists(jcas, Speaker.class));
+		assertTrue(JCasUtil.exists(jcas, Figure.class));
+		assertTrue(JCasUtil.exists(jcas, DramatisPersonae.class));
+		assertNotNull(JCasUtil.selectSingle(jcas, FrontMatter.class));
+		assertNotNull(JCasUtil.selectSingle(jcas, MainMatter.class));
+		assertEquals(5, JCasUtil.select(jcas, Act.class).size());
+
+		jcas = iter.next();
+
+		// general sanity checking
+		assertNotNull(JCasUtil.selectSingle(jcas, Drama.class));
+		assertTrue(JCasUtil.exists(jcas, Act.class));
+		assertTrue(JCasUtil.exists(jcas, Scene.class));
+		assertTrue(JCasUtil.exists(jcas, Speaker.class));
+		assertTrue(JCasUtil.exists(jcas, Figure.class));
+		assertTrue(JCasUtil.exists(jcas, DramatisPersonae.class));
+		assertNotNull(JCasUtil.selectSingle(jcas, FrontMatter.class));
+		assertNotNull(JCasUtil.selectSingle(jcas, MainMatter.class));
+		assertEquals(5, JCasUtil.select(jcas, Act.class).size());
 	}
 }
