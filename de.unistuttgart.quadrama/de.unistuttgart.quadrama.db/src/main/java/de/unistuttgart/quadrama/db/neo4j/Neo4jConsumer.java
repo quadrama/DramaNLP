@@ -101,19 +101,20 @@ public class Neo4jConsumer extends JCasAnnotator_ImplBase {
 				relate(figureURI, actURI, "on_stage");
 			}
 
-			for (Utterance utterance : JCasUtil.selectCovered(Utterance.class,
-					act)) {
-				object = new JSONObject();
-				object.put("text", utterance.getCoveredText());
-				URI utteranceURI = storeInDatabase(object);
-				setLabel(utteranceURI, "Utterance");
-				try {
-					Figure fig = utterance.getSpeaker().getFigure();
-					relate(uriMap.get(fig), utteranceURI, "utters");
-				} catch (NullPointerException e) {
-					// matching error
+			if (false)
+				for (Utterance utterance : JCasUtil.selectCovered(
+						Utterance.class, act)) {
+					object = new JSONObject();
+					object.put("text", utterance.getCoveredText());
+					URI utteranceURI = storeInDatabase(object);
+					setLabel(utteranceURI, "Utterance");
+					try {
+						Figure fig = utterance.getSpeaker().getFigure();
+						relate(uriMap.get(fig), utteranceURI, "utters");
+					} catch (NullPointerException e) {
+						// matching error
+					}
 				}
-			}
 
 		}
 
