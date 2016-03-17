@@ -19,7 +19,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import de.unistuttgart.ims.uimautil.IMSUtil;
+import de.unistuttgart.ims.uimautil.AnnotationUtil;
 import de.unistuttgart.quadrama.api.Act;
 import de.unistuttgart.quadrama.api.ActHeading;
 import de.unistuttgart.quadrama.api.Drama;
@@ -119,8 +119,8 @@ public class GutenbergDEReader extends AbstractDramaReader {
 			AnnotationFactory.createAnnotation(jcas, currentSceneBegin,
 					mainMatter.getEnd(), Scene.class);
 		}
-		IMSUtil.trim(new ArrayList<Scene>(JCasUtil.select(jcas, Scene.class)));
-		IMSUtil.trim(new ArrayList<Act>(JCasUtil.select(jcas, Act.class)));
+		AnnotationUtil.trim(new ArrayList<Scene>(JCasUtil.select(jcas, Scene.class)));
+		AnnotationUtil.trim(new ArrayList<Act>(JCasUtil.select(jcas, Act.class)));
 
 		cleanUp(jcas);
 
@@ -144,13 +144,13 @@ public class GutenbergDEReader extends AbstractDramaReader {
 			int b = utterance.getBegin();
 			for (Annotation exc : except) {
 				if (exc.getBegin() > b) {
-					IMSUtil.trim(AnnotationFactory.createAnnotation(jcas, b,
+					AnnotationUtil.trim(AnnotationFactory.createAnnotation(jcas, b,
 							exc.getBegin(), Speech.class));
 				}
 				b = exc.getEnd();
 			}
 			if (b < utterance.getEnd()) {
-				IMSUtil.trim(AnnotationFactory.createAnnotation(jcas, b,
+				AnnotationUtil.trim(AnnotationFactory.createAnnotation(jcas, b,
 						utterance.getEnd(), Speech.class));
 			}
 		}
@@ -161,7 +161,7 @@ public class GutenbergDEReader extends AbstractDramaReader {
 				speech.removeFromIndexes();
 			} else
 				try {
-					IMSUtil.trimFront(speech, '.', ' ');
+					AnnotationUtil.trimFront(speech, '.', ' ');
 				} catch (ArrayIndexOutOfBoundsException e) {
 					// ignore
 				}

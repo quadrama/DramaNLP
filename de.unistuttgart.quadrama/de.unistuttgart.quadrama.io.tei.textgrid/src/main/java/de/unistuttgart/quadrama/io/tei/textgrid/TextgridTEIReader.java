@@ -18,7 +18,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.parser.Parser;
 
-import de.unistuttgart.ims.uimautil.IMSUtil;
+import de.unistuttgart.ims.uimautil.AnnotationUtil;
 import de.unistuttgart.quadrama.api.Act;
 import de.unistuttgart.quadrama.api.ActHeading;
 import de.unistuttgart.quadrama.api.Drama;
@@ -76,8 +76,8 @@ public class TextgridTEIReader extends AbstractDramaReader {
 
 		fixSpeakerAnnotations(jcas);
 
-		IMSUtil.trim(new ArrayList<Speech>(JCasUtil.select(jcas, Speech.class)));
-		IMSUtil.trim(new ArrayList<Utterance>(JCasUtil.select(jcas,
+		AnnotationUtil.trim(new ArrayList<Speech>(JCasUtil.select(jcas, Speech.class)));
+		AnnotationUtil.trim(new ArrayList<Utterance>(JCasUtil.select(jcas,
 				Utterance.class)));
 
 		cleanUp(jcas);
@@ -144,7 +144,7 @@ public class TextgridTEIReader extends AbstractDramaReader {
 							"div[type=front] > div:has(p)",
 							DramatisPersonae.class, null).iterator().next();
 
-			IMSUtil.trim(select2Annotation(jcas, root, map, "p", Figure.class,
+			AnnotationUtil.trim(select2Annotation(jcas, root, map, "p", Figure.class,
 					dp));
 			fixFigureAnnotations(jcas);
 		}
@@ -160,7 +160,7 @@ public class TextgridTEIReader extends AbstractDramaReader {
 				figure.setEnd(figure.getBegin() + i);
 
 				FigureDescription fd =
-						IMSUtil.trim(AnnotationFactory.createAnnotation(jcas,
+						AnnotationUtil.trim(AnnotationFactory.createAnnotation(jcas,
 								figure.getEnd() + 1, oldEnd,
 								FigureDescription.class));
 				figure.setDescription(fd);
@@ -174,7 +174,7 @@ public class TextgridTEIReader extends AbstractDramaReader {
 	private void fixSpeakerAnnotations(JCas jcas) {
 		for (Speaker speaker : new HashSet<Speaker>(JCasUtil.select(jcas,
 				Speaker.class))) {
-			IMSUtil.trim(speaker, '.', ' ', '\t', '\n', '\r', '\f');
+			AnnotationUtil.trim(speaker, '.', ' ', '\t', '\n', '\r', '\f');
 		}
 
 	}
