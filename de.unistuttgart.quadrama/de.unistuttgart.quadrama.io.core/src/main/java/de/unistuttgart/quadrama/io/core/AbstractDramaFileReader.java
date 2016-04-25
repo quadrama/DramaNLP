@@ -1,7 +1,9 @@
 package de.unistuttgart.quadrama.io.core;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -27,7 +29,8 @@ import org.jsoup.select.NodeVisitor;
 import de.unistuttgart.quadrama.api.Drama;
 import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
 
-public abstract class AbstractDramaFileReader extends JCasCollectionReader_ImplBase {
+public abstract class AbstractDramaFileReader extends
+JCasCollectionReader_ImplBase {
 	public static final String PARAM_INPUT_DIRECTORY = "Input Directory";
 	public static final String PARAM_LANGUAGE = "Language";
 
@@ -70,10 +73,10 @@ public abstract class AbstractDramaFileReader extends JCasCollectionReader_ImplB
 		drama.addToIndexes();
 		jcas.setDocumentLanguage(language);
 
-		getNext(jcas, file, drama);
+		getNext(jcas, new FileInputStream(file), drama);
 	}
 
-	public abstract void getNext(JCas jcas, File file, Drama drama)
+	public abstract void getNext(JCas jcas, InputStream file, Drama drama)
 			throws IOException, CollectionException;
 
 	public <T extends Annotation> Collection<T> select2Annotation(JCas jcas,

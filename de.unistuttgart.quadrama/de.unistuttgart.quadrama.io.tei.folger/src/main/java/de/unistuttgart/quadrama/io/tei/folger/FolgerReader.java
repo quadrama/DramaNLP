@@ -1,10 +1,8 @@
 package de.unistuttgart.quadrama.io.tei.folger;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.uima.collection.CollectionException;
 import org.apache.uima.jcas.JCas;
@@ -23,12 +21,11 @@ import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
 public class FolgerReader extends AbstractDramaFileReader {
 
 	@Override
-	public void getNext(JCas jcas, File file, Drama drama) throws IOException,
-			CollectionException {
+	public void getNext(JCas jcas, InputStream file, Drama drama)
+			throws IOException, CollectionException {
 
-		String str = IOUtils.toString(new FileInputStream(file));
 		getLogger().log(Level.INFO, "Now parsing XML document");
-		Document doc = Jsoup.parse(str, "", Parser.xmlParser());
+		Document doc = Jsoup.parse(file, "UTF-8", "", Parser.xmlParser());
 
 		Visitor vis = new FolgerVisitor(jcas);
 		Element root = doc.select("TEI > text > body").first();

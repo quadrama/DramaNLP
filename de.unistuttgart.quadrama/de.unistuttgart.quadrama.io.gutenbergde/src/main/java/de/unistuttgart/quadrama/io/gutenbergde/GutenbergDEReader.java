@@ -1,8 +1,7 @@
 package de.unistuttgart.quadrama.io.gutenbergde;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -40,10 +39,10 @@ import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
 public class GutenbergDEReader extends AbstractDramaFileReader {
 
 	@Override
-	public void getNext(JCas jcas, File file, Drama drama) throws IOException,
-			CollectionException {
+	public void getNext(JCas jcas, InputStream file, Drama drama)
+			throws IOException, CollectionException {
 
-		String str = IOUtils.toString(new FileInputStream(file));
+		String str = IOUtils.toString(file);
 		org.jsoup.nodes.Document doc = Jsoup.parseBodyFragment(str);
 		Visitor vis = new Visitor(jcas);
 		doc.traverse(vis);
@@ -119,8 +118,10 @@ public class GutenbergDEReader extends AbstractDramaFileReader {
 			AnnotationFactory.createAnnotation(jcas, currentSceneBegin,
 					mainMatter.getEnd(), Scene.class);
 		}
-		AnnotationUtil.trim(new ArrayList<Scene>(JCasUtil.select(jcas, Scene.class)));
-		AnnotationUtil.trim(new ArrayList<Act>(JCasUtil.select(jcas, Act.class)));
+		AnnotationUtil.trim(new ArrayList<Scene>(JCasUtil.select(jcas,
+				Scene.class)));
+		AnnotationUtil
+		.trim(new ArrayList<Act>(JCasUtil.select(jcas, Act.class)));
 
 		cleanUp(jcas);
 
@@ -144,8 +145,8 @@ public class GutenbergDEReader extends AbstractDramaFileReader {
 			int b = utterance.getBegin();
 			for (Annotation exc : except) {
 				if (exc.getBegin() > b) {
-					AnnotationUtil.trim(AnnotationFactory.createAnnotation(jcas, b,
-							exc.getBegin(), Speech.class));
+					AnnotationUtil.trim(AnnotationFactory.createAnnotation(
+							jcas, b, exc.getBegin(), Speech.class));
 				}
 				b = exc.getEnd();
 			}

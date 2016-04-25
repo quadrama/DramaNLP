@@ -1,8 +1,7 @@
 package de.unistuttgart.quadrama.io.tei.textgrid;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -39,10 +38,10 @@ import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
 public class TextgridTEIReader extends AbstractDramaFileReader {
 
 	@Override
-	public void getNext(JCas jcas, File file, Drama drama) throws IOException,
-	CollectionException {
+	public void getNext(JCas jcas, InputStream file, Drama drama)
+			throws IOException, CollectionException {
 
-		String str = IOUtils.toString(new FileInputStream(file));
+		String str = IOUtils.toString((file));
 		Document doc = Jsoup.parse(str, "", Parser.xmlParser());
 
 		Visitor vis = new Visitor(jcas);
@@ -76,7 +75,8 @@ public class TextgridTEIReader extends AbstractDramaFileReader {
 
 		fixSpeakerAnnotations(jcas);
 
-		AnnotationUtil.trim(new ArrayList<Speech>(JCasUtil.select(jcas, Speech.class)));
+		AnnotationUtil.trim(new ArrayList<Speech>(JCasUtil.select(jcas,
+				Speech.class)));
 		AnnotationUtil.trim(new ArrayList<Utterance>(JCasUtil.select(jcas,
 				Utterance.class)));
 
@@ -144,8 +144,8 @@ public class TextgridTEIReader extends AbstractDramaFileReader {
 							"div[type=front] > div:has(p)",
 							DramatisPersonae.class, null).iterator().next();
 
-			AnnotationUtil.trim(select2Annotation(jcas, root, map, "p", Figure.class,
-					dp));
+			AnnotationUtil.trim(select2Annotation(jcas, root, map, "p",
+					Figure.class, dp));
 			fixFigureAnnotations(jcas);
 		}
 	}
@@ -160,8 +160,8 @@ public class TextgridTEIReader extends AbstractDramaFileReader {
 				figure.setEnd(figure.getBegin() + i);
 
 				FigureDescription fd =
-						AnnotationUtil.trim(AnnotationFactory.createAnnotation(jcas,
-								figure.getEnd() + 1, oldEnd,
+						AnnotationUtil.trim(AnnotationFactory.createAnnotation(
+								jcas, figure.getEnd() + 1, oldEnd,
 								FigureDescription.class));
 				figure.setDescription(fd);
 
