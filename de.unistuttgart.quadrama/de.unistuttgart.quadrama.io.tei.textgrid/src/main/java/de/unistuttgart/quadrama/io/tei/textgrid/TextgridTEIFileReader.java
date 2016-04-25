@@ -35,7 +35,7 @@ import de.unistuttgart.quadrama.api.Utterance;
 import de.unistuttgart.quadrama.io.core.AbstractDramaFileReader;
 import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
 
-public class TextgridTEIReader extends AbstractDramaFileReader {
+public class TextgridTEIFileReader extends AbstractDramaFileReader {
 
 	@Override
 	public void getNext(JCas jcas, InputStream file, Drama drama)

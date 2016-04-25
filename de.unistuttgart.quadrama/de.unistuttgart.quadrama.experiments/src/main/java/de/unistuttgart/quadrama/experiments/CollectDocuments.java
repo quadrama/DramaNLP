@@ -11,7 +11,7 @@ import org.apache.uima.fit.pipeline.SimplePipeline;
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.unistuttgart.quadrama.core.SetDramaMetaData;
 import de.unistuttgart.quadrama.io.gutenbergde.GutenbergDEReader;
-import de.unistuttgart.quadrama.io.tei.textgrid.TextgridTEIReader;
+import de.unistuttgart.quadrama.io.tei.textgrid.TextgridTEIFileReader;
 
 public class CollectDocuments {
 
@@ -31,8 +31,8 @@ public class CollectDocuments {
 
 		System.err.println("Collecting Schlegel ...");
 		SimplePipeline.runPipeline(
-				createReaderDescription(TextgridTEIReader.class,
-						TextgridTEIReader.PARAM_INPUT_DIRECTORY,
+				createReaderDescription(TextgridTEIFileReader.class,
+						TextgridTEIFileReader.PARAM_INPUT_DIRECTORY,
 						"src/main/resources/raw/Schlegel/"),
 				createEngineDescription(SetDramaMetaData.class,
 						SetDramaMetaData.PARAM_DRAMAID, "RuJ-Schlegel"),
@@ -42,10 +42,10 @@ public class CollectDocuments {
 
 		System.err.println("Collecting Shakespeare ...");
 		SimplePipeline.runPipeline(
-				createReaderDescription(TextgridTEIReader.class,
-						TextgridTEIReader.PARAM_INPUT_DIRECTORY,
+				createReaderDescription(TextgridTEIFileReader.class,
+						TextgridTEIFileReader.PARAM_INPUT_DIRECTORY,
 						"src/main/resources/raw/Shakespeare/",
-						TextgridTEIReader.PARAM_LANGUAGE, "en"),
+						TextgridTEIFileReader.PARAM_LANGUAGE, "en"),
 				createEngineDescription(SetDramaMetaData.class,
 						SetDramaMetaData.PARAM_DRAMAID, "RuJ-Shakespeare"),
 				createEngineDescription(XmiWriter.class,

@@ -37,8 +37,8 @@ public class TestTextgridTEIReader {
 	public void setUp() throws ResourceInitializationException {
 		description =
 				CollectionReaderFactory.createReaderDescription(
-						TextgridTEIReader.class,
-						TextgridTEIReader.PARAM_INPUT_DIRECTORY,
+						TextgridTEIFileReader.class,
+						TextgridTEIFileReader.PARAM_INPUT_DIRECTORY,
 						"src/test/resources/");
 	}
 

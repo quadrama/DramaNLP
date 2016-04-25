@@ -10,7 +10,7 @@ import org.apache.uima.fit.pipeline.SimplePipeline;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.unistuttgart.quadrama.core.SetDramaMetaData;
-import de.unistuttgart.quadrama.io.tei.textgrid.TextgridTEIReader;
+import de.unistuttgart.quadrama.io.tei.textgrid.TextgridTEIFileReader;
 
 public class Freischuetz {
 
@@ -19,10 +19,10 @@ public class Freischuetz {
 				"src/main/resources/logging.properties");
 
 		SimplePipeline.runPipeline(
-				createReaderDescription(TextgridTEIReader.class,
-						TextgridTEIReader.PARAM_INPUT_DIRECTORY,
+				createReaderDescription(TextgridTEIFileReader.class,
+						TextgridTEIFileReader.PARAM_INPUT_DIRECTORY,
 						"src/main/resources/raw/freischuetz/",
-						TextgridTEIReader.PARAM_LANGUAGE, "de"),
+						TextgridTEIFileReader.PARAM_LANGUAGE, "de"),
 				createEngineDescription(SetDramaMetaData.class,
 						SetDramaMetaData.PARAM_DRAMAID, "Freischuetz"),
 				createEngineDescription(XmiWriter.class,
