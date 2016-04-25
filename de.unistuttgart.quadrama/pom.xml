@@ -73,5 +73,6 @@
     <module>de.unistuttgart.quadrama.io.tei.folger</module>
     <module>de.unistuttgart.quadrama.io.tei.textgrid</module>
     <module>de.unistuttgart.quadrama.db</module>
+    <module>de.unistuttgart.quadrama.db.orm</module>
   </modules>
 </project>
