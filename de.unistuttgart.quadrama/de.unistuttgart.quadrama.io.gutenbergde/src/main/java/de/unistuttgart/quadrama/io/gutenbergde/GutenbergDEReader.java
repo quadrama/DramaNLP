@@ -1,5 +1,8 @@
 package de.unistuttgart.quadrama.io.gutenbergde;
 
+import static de.unistuttgart.quadrama.io.core.DramaIOUtil.select2Annotation;
+import static de.unistuttgart.quadrama.io.core.DramaIOUtil.selectRange2Annotation;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -34,6 +37,8 @@ import de.unistuttgart.quadrama.api.Speech;
 import de.unistuttgart.quadrama.api.StageDirection;
 import de.unistuttgart.quadrama.api.Utterance;
 import de.unistuttgart.quadrama.io.core.AbstractDramaFileReader;
+import de.unistuttgart.quadrama.io.core.DramaIOUtil;
+import de.unistuttgart.quadrama.io.core.Visitor;
 import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
 
 public class GutenbergDEReader extends AbstractDramaFileReader {
@@ -123,7 +128,7 @@ public class GutenbergDEReader extends AbstractDramaFileReader {
 		AnnotationUtil
 		.trim(new ArrayList<Act>(JCasUtil.select(jcas, Act.class)));
 
-		cleanUp(jcas);
+		DramaIOUtil.cleanUp(jcas);
 
 	}
 
