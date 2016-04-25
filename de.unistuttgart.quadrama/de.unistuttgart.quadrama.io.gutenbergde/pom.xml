@@ -28,7 +28,7 @@
     	<artifactId>
     		de.tudarmstadt.ukp.dkpro.core.io.xmi-asl
     	</artifactId>
-    	<version>1.7.0</version>
+    	<version>${dkpro.version}</version>
     	<scope>test</scope>
     </dependency>
     <dependency>
@@ -36,7 +36,7 @@
     	<artifactId>
     		de.tudarmstadt.ukp.dkpro.core.api.metadata-asl
     	</artifactId>
-    	<version>1.7.0</version>
+    	<version>${dkpro.version}</version>
     </dependency>
     <dependency>
     	<groupId>org.jsoup</groupId>

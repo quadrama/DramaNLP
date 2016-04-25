@@ -22,7 +22,7 @@
   		<artifactId>
   			de.tudarmstadt.ukp.dkpro.core.api.io-asl
   		</artifactId>
-  		<version>1.7.0</version>
+  		<version>${dkpro.version}</version>
   	</dependency>
   	<dependency>
   		<groupId>org.apache.commons</groupId>
