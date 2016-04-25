@@ -17,10 +17,10 @@ import org.jsoup.nodes.TextNode;
 import org.jsoup.parser.Parser;
 
 import de.unistuttgart.quadrama.api.Drama;
-import de.unistuttgart.quadrama.io.core.AbstractDramaReader;
+import de.unistuttgart.quadrama.io.core.AbstractDramaFileReader;
 import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
 
-public class FolgerReader extends AbstractDramaReader {
+public class FolgerReader extends AbstractDramaFileReader {
 
 	@Override
 	public void getNext(JCas jcas, File file, Drama drama) throws IOException,

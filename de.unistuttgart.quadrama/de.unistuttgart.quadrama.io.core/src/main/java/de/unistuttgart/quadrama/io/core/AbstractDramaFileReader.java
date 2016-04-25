@@ -27,7 +27,7 @@ import org.jsoup.select.NodeVisitor;
 import de.unistuttgart.quadrama.api.Drama;
 import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
 
-public abstract class AbstractDramaReader extends JCasCollectionReader_ImplBase {
+public abstract class AbstractDramaFileReader extends JCasCollectionReader_ImplBase {
 	public static final String PARAM_INPUT_DIRECTORY = "Input Directory";
 	public static final String PARAM_LANGUAGE = "Language";
 

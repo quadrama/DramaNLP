@@ -33,10 +33,10 @@ import de.unistuttgart.quadrama.api.Speaker;
 import de.unistuttgart.quadrama.api.Speech;
 import de.unistuttgart.quadrama.api.StageDirection;
 import de.unistuttgart.quadrama.api.Utterance;
-import de.unistuttgart.quadrama.io.core.AbstractDramaReader;
+import de.unistuttgart.quadrama.io.core.AbstractDramaFileReader;
 import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
 
-public class TextgridTEIReader extends AbstractDramaReader {
+public class TextgridTEIReader extends AbstractDramaFileReader {
 
 	@Override
 	public void getNext(JCas jcas, File file, Drama drama) throws IOException,
