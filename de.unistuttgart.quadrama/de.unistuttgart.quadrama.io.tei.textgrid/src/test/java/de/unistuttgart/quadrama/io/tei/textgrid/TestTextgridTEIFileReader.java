@@ -29,7 +29,7 @@ import de.unistuttgart.quadrama.api.MainMatter;
 import de.unistuttgart.quadrama.api.Scene;
 import de.unistuttgart.quadrama.api.Speaker;
 
-public class TestTextgridTEIReader {
+public class TestTextgridTEIFileReader {
 
 	CollectionReaderDescription description;
 
