@@ -2,6 +2,7 @@ package de.unistuttgart.quadrama.io.core;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -37,7 +38,13 @@ public abstract class AbstractDramaFileReader extends
 		super.initialize(context);
 
 		File inputDir = new File(inputDirectory);
-		files = inputDir.listFiles();
+		files = inputDir.listFiles(new FilenameFilter() {
+
+			public boolean accept(File dir, String name) {
+				return name.endsWith(".xml");
+			}
+
+		});
 	}
 
 	public boolean hasNext() throws IOException, CollectionException {
