@@ -7,9 +7,9 @@ import org.apache.uima.collection.CollectionException;
 import org.apache.uima.jcas.JCas;
 
 import de.unistuttgart.quadrama.api.Drama;
-import de.unistuttgart.quadrama.io.core.AbstractDramaURLReader;
+import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
 
-public class TextgridTEIUrlReader extends AbstractDramaURLReader {
+public class TextgridTEIUrlReader extends AbstractDramaUrlReader {
 
 	@Override
 	public void getNext(JCas jcas, InputStream file, Drama drama)

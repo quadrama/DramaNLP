@@ -31,7 +31,7 @@ public class TestTextgridTEIUriReader {
 				CollectionReaderFactory.createReaderDescription(
 						TextgridTEIUrlReader.class,
 						TextgridTEIUrlReader.PARAM_URL_LIST,
-						"src/test/resources/urls.txt",
+						"src/test/resources/url1.txt",
 						TextgridTEIUrlReader.PARAM_LANGUAGE, "de");
 	}
 
@@ -58,19 +58,6 @@ public class TestTextgridTEIUriReader {
 
 		// speakers
 		speaker = JCasUtil.selectByIndex(jcas, Speaker.class, 0);
-
-		jcas = iter.next();
-		// 2.xml
-		// general sanity checking
-		assertTrue(JCasUtil.exists(jcas, Drama.class));
-
-		// figures
-
-		figure = JCasUtil.selectByIndex(jcas, Figure.class, 0);
-
-		figure = JCasUtil.selectByIndex(jcas, Figure.class, 10);
-
-		jcas = iter.next();
 
 	}
 }
