@@ -3,6 +3,7 @@ package org.de.unistuttgart.quadrama.db.orm;
 import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
+import java.util.List;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.uima.UimaContext;
@@ -87,19 +88,40 @@ public class DatabaseConsumer extends JCasConsumer_ImplBase {
 			ByteArrayOutputStream os = new ByteArrayOutputStream();
 			XmiCasSerializer.serialize(jcas.getCas(), os);
 			String xmi = os.toString("UTF-8");
+			Dao<DBAuthor, Integer> authorDao =
+					DaoManager.createDao(connectionSource, DBAuthor.class);
 			Dao<DBDrama, Integer> dramaDao =
 					DaoManager.createDao(connectionSource, DBDrama.class);
 			Dao<DBFigure, Integer> figureDao =
 					DaoManager.createDao(connectionSource, DBFigure.class);
-			DBDrama drama = new DBDrama();
-			drama.setXmi(xmi);
-			drama.setTitle(JCasUtil.selectSingle(jcas, Drama.class)
-					.getDocumentTitle());
-			dramaDao.create(drama);
+
+			Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
+
+			DBDrama dbDrama = new DBDrama();
+			dbDrama.setXmi(xmi);
+			dbDrama.setTitle(drama.getDocumentTitle());
+			dbDrama.setTextgridUrl(drama.getDocumentUri());
+
+			List<DBAuthor> auths;
+			if (drama.getAuthorPnd() != null)
+				auths = authorDao.queryForEq("pnd", drama.getAuthorPnd());
+			else
+				auths = authorDao.queryForEq("name", drama.getAuthorname());
+			DBAuthor dbAuthor;
+			if (auths.isEmpty()) {
+				dbAuthor = new DBAuthor();
+				dbAuthor.setPnd(drama.getAuthorPnd());
+				dbAuthor.setName(drama.getAuthorname());
+				authorDao.create(dbAuthor);
+			} else {
+				dbAuthor = auths.get(0);
+			}
+			dbDrama.setAuthor(dbAuthor);
+			dramaDao.create(dbDrama);
 
 			for (Figure figure : JCasUtil.select(jcas, Figure.class)) {
 				DBFigure dbf = new DBFigure();
-				dbf.setDrama(drama);
+				dbf.setDrama(dbDrama);
 				dbf.setName(figure.getCoveredText());
 				figureDao.create(dbf);
 				figure.setId(dbf.getId());

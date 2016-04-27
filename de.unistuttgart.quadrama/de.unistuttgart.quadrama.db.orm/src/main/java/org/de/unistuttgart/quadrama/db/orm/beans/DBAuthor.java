@@ -12,16 +12,16 @@ public class DBAuthor {
 	int id;
 
 	@DatabaseField
-	String firstname;
-
-	@DatabaseField
-	String lastname;
+	String name;
 
 	@DatabaseField
 	Date birth;
 
 	@DatabaseField
 	Date death;
+
+	@DatabaseField(unique = true)
+	String pnd;
 
 	public int getId() {
 		return id;
@@ -31,20 +31,12 @@ public class DBAuthor {
 		this.id = id;
 	}
 
-	public String getFirstname() {
-		return firstname;
+	public String getName() {
+		return name;
 	}
 
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
-
-	public String getLastname() {
-		return lastname;
-	}
-
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Date getBirth() {
@@ -61,5 +53,13 @@ public class DBAuthor {
 
 	public void setDeath(Date death) {
 		this.death = death;
+	}
+
+	public String getPnd() {
+		return pnd;
+	}
+
+	public void setPnd(String pnd) {
+		this.pnd = pnd;
 	}
 }

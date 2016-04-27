@@ -9,7 +9,7 @@ public class DBDrama {
 	@DatabaseField(generatedId = true)
 	int id;
 
-	@DatabaseField
+	@DatabaseField(columnDefinition = "TEXT")
 	String title;
 
 	@DatabaseField(foreign = true)
@@ -20,6 +20,9 @@ public class DBDrama {
 
 	@DatabaseField(columnDefinition = "LONGTEXT")
 	String xmi;
+
+	@DatabaseField
+	String textgridUrl;
 
 	public int getId() {
 		return id;
@@ -59,5 +62,13 @@ public class DBDrama {
 
 	public void setXmi(String xmi) {
 		this.xmi = xmi;
+	}
+
+	public String getTextgridUrl() {
+		return textgridUrl;
+	}
+
+	public void setTextgridUrl(String textgridUrl) {
+		this.textgridUrl = textgridUrl;
 	}
 }
