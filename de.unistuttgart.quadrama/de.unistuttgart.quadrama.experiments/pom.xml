@@ -93,5 +93,10 @@
   		<artifactId>de.unistuttgart.quadrama.io.html</artifactId>
   		<version>0.2-SNAPSHOT</version>
   	</dependency>
+  	<dependency>
+  		<groupId>de.unistuttgart.quadrama</groupId>
+  		<artifactId>de.unistuttgart.quadrama.db.orm</artifactId>
+  		<version>0.2-SNAPSHOT</version>
+  	</dependency>
   </dependencies>
 </project>
