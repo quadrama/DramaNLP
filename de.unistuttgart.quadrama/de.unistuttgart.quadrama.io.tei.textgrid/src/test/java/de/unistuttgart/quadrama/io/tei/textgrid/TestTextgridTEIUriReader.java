@@ -17,8 +17,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
+import de.unistuttgart.quadrama.api.Act;
 import de.unistuttgart.quadrama.api.Drama;
+import de.unistuttgart.quadrama.api.DramatisPersonae;
 import de.unistuttgart.quadrama.api.Figure;
+import de.unistuttgart.quadrama.api.Scene;
 import de.unistuttgart.quadrama.api.Speaker;
 
 public class TestTextgridTEIUriReader {
@@ -42,7 +45,8 @@ public class TestTextgridTEIUriReader {
 						description,
 						AnalysisEngineFactory.createEngineDescription(
 								XmiWriter.class,
-								XmiWriter.PARAM_TARGET_LOCATION, "target/doc"))
+								XmiWriter.PARAM_TARGET_LOCATION, "target/doc/",
+								XmiWriter.PARAM_USE_DOCUMENT_ID, true))
 								.iterator();
 
 		JCas jcas;
@@ -53,6 +57,11 @@ public class TestTextgridTEIUriReader {
 		// 1.xml
 		// general sanity checking
 		assertTrue(JCasUtil.exists(jcas, Drama.class));
+		assertTrue(JCasUtil.exists(jcas, Figure.class));
+		assertTrue(JCasUtil.exists(jcas, Act.class));
+		assertTrue(JCasUtil.exists(jcas, Scene.class));
+		assertTrue(JCasUtil.exists(jcas, Speaker.class));
+		assertTrue(JCasUtil.exists(jcas, DramatisPersonae.class));
 
 		figure = JCasUtil.selectByIndex(jcas, Figure.class, 10);
 
