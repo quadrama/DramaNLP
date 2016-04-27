@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 import org.apache.uima.collection.CollectionException;
 import org.apache.uima.fit.factory.AnnotationFactory;
@@ -43,6 +44,13 @@ public class TextGridUtil {
 			throws IOException, CollectionException {
 
 		Document doc = Jsoup.parse(file, "UTF-8", "", Parser.xmlParser());
+
+		// meta data
+		drama.setDocumentTitle(doc.select("titleStmt > title").first().text());
+		drama.setAuthorname(doc.select("author").first().text());
+		if (!doc.select("author[key]").isEmpty())
+			drama.setAuthorPnd(doc.select("author[key]").attr("key")
+					.substring(4));
 
 		Visitor vis = new Visitor(jcas);
 
@@ -139,14 +147,18 @@ public class TextGridUtil {
 						Figure.class, null);
 			}
 		} else {
-			dp =
-					select2Annotation(jcas, root, map,
-							"div[type=front] > div:has(p)",
-							DramatisPersonae.class, null).iterator().next();
+			try {
+				dp =
+						select2Annotation(jcas, root, map,
+								"div[type=front] > div:has(p)",
+								DramatisPersonae.class, null).iterator().next();
 
-			AnnotationUtil.trim(select2Annotation(jcas, root, map, "p",
-					Figure.class, dp));
-			fixFigureAnnotations(jcas);
+				AnnotationUtil.trim(select2Annotation(jcas, root, map, "p",
+						Figure.class, dp));
+				fixFigureAnnotations(jcas);
+			} catch (NoSuchElementException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
