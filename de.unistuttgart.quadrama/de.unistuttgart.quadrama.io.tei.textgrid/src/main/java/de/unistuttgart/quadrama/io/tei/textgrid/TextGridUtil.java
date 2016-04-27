@@ -9,7 +9,6 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Map;
 
-import org.apache.commons.io.IOUtils;
 import org.apache.uima.collection.CollectionException;
 import org.apache.uima.fit.factory.AnnotationFactory;
 import org.apache.uima.fit.util.JCasUtil;
@@ -43,8 +42,7 @@ public class TextGridUtil {
 	public static void getNext(JCas jcas, InputStream file, Drama drama)
 			throws IOException, CollectionException {
 
-		String str = IOUtils.toString((file));
-		Document doc = Jsoup.parse(str, "", Parser.xmlParser());
+		Document doc = Jsoup.parse(file, "UTF-8", "", Parser.xmlParser());
 
 		Visitor vis = new Visitor(jcas);
 
