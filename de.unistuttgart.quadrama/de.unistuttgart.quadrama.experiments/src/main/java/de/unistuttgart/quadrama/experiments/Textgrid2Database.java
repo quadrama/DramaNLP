@@ -8,6 +8,8 @@ import org.de.unistuttgart.quadrama.db.orm.DatabaseConsumer;
 
 import com.j256.ormlite.db.MysqlDatabaseType;
 
+import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
+import de.unistuttgart.quadrama.core.SpeakerIdentifier;
 import de.unistuttgart.quadrama.io.tei.textgrid.TextgridTEIUrlReader;
 
 public class Textgrid2Database {
@@ -29,7 +31,10 @@ public class Textgrid2Database {
 						DatabaseConsumer.PARAM_DB_PASSWORD, "",
 						DatabaseConsumer.PARAM_DB_USERNAME, "root",
 						DatabaseConsumer.PARAM_DATABASETYPE,
-						MysqlDatabaseType.class));
+						MysqlDatabaseType.class), AnalysisEngineFactory
+				.createEngineDescription(SpeakerIdentifier.class),
+				AnalysisEngineFactory.createEngineDescription(XmiWriter.class,
+								XmiWriter.PARAM_TARGET_LOCATION, "target/db/"));
 
 	}
 }
