@@ -42,6 +42,7 @@ public class Visitor implements NodeVisitor {
 					builder.add(beginMap.get(node), HTMLAnnotation.class);
 			anno.setTag(elm.tagName());
 			anno.setId(elm.id());
+			anno.setSelector(elm.cssSelector());
 			if (elm.className().isEmpty())
 				anno.setCls(elm.attr("type"));
 			else
