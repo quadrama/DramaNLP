@@ -1,1 +1,1 @@
-classpath*:de/unistuttgart/quadrama/io/core/Types.xml
+classpath*:Types.xml
