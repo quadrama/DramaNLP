@@ -1,12 +1,16 @@
 package de.unistuttgart.quadrama.io.core;
 
 import java.io.File;
-import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
 import org.apache.commons.io.IOUtils;
 import org.apache.uima.UimaContext;
 import org.apache.uima.collection.CollectionException;
@@ -20,7 +24,7 @@ import org.apache.uima.util.Progress;
 import de.unistuttgart.quadrama.api.Drama;
 
 public abstract class AbstractDramaUrlReader extends
-		JCasCollectionReader_ImplBase {
+JCasCollectionReader_ImplBase {
 	public static final String PARAM_URL_LIST = "URL List";
 	public static final String PARAM_LANGUAGE = "Language";
 
@@ -31,21 +35,27 @@ public abstract class AbstractDramaUrlReader extends
 			defaultValue = "de")
 	String language = "de";
 
-	List<String> urls = null;
+	List<String> urls = new LinkedList<String>();
 	int currentUrlIndex = 0;
 
 	@Override
 	public void initialize(UimaContext context)
 			throws ResourceInitializationException {
 		super.initialize(context);
-
+		CSVParser r = null;
 		try {
-			urls =
-					IOUtils.readLines(new FileInputStream(new File(
-							urlListFilename)));
+			r =
+					new CSVParser(new FileReader(new File(urlListFilename)),
+							CSVFormat.TDF);
+			List<CSVRecord> records = r.getRecords();
+			for (CSVRecord rec : records) {
+				urls.add(rec.get(0));
+			}
 			getLogger().log(Level.FINE, "Found " + urls.size() + " URLs.");
 		} catch (Exception e) {
 			throw new ResourceInitializationException(e);
+		} finally {
+			IOUtils.closeQuietly(r);
 		}
 
 	}
