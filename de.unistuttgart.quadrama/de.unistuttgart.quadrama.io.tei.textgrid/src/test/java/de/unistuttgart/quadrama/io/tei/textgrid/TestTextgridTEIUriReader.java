@@ -30,6 +30,7 @@ import de.unistuttgart.quadrama.api.Figure;
 import de.unistuttgart.quadrama.api.Scene;
 import de.unistuttgart.quadrama.api.Speaker;
 
+@Deprecated
 public class TestTextgridTEIUriReader {
 
 	CollectionReaderDescription description;
@@ -55,7 +56,7 @@ public class TestTextgridTEIUriReader {
 								XmiWriter.class,
 								XmiWriter.PARAM_TARGET_LOCATION, "target/doc/",
 								XmiWriter.PARAM_USE_DOCUMENT_ID, true))
-						.iterator();
+								.iterator();
 
 		JCas jcas;
 		CSVRecord gold;
