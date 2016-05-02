@@ -24,10 +24,10 @@ import de.unistuttgart.quadrama.api.Speaker;
 import de.unistuttgart.quadrama.api.SpeakerFigure;
 
 @TypeCapability(inputs = { "de.unistuttgart.quadrama.api.Figure",
-"de.unistuttgart.quadrama.api.Speaker" }, outputs = {
+		"de.unistuttgart.quadrama.api.Speaker" }, outputs = {
 		"de.unistuttgart.quadrama.api.Speaker:Figure",
 		"de.unistuttgart.quadrama.api.SpeakerFigure",
-"de.unistuttgart.quadrama.api.Figure:Id" })
+		"de.unistuttgart.quadrama.api.Figure:Id" })
 public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 
 	public static final String PARAM_CREATE_SPEAKER_FIGURE =
@@ -45,7 +45,7 @@ public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 				Level.FINE,
 				"Now processing "
 						+ JCasUtil.selectSingle(jcas, Drama.class)
-								.getDocumentId());
+						.getDocumentId());
 
 		Map<String, Figure> map = new HashMap<String, Figure>();
 		int figureId = 0;
@@ -59,7 +59,7 @@ public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 		for (Speaker cm : JCasUtil.select(jcas, Speaker.class)) {
 			String sName =
 					cm.getCoveredText().trim().replaceAll("[.,;]", "")
-							.toLowerCase();
+					.toLowerCase();
 			if (map.containsKey(sName))
 				cm.setFigure(map.get(sName));
 			else {
@@ -72,8 +72,10 @@ public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 		unassigned = assignLevDistance(map.values(), unassigned, threshold);
 
 		if (!unassigned.isEmpty())
-			getLogger().log(Level.WARNING,
-					"Unassigned speakers: " + JCasUtil.toText(unassigned));
+			getLogger().log(
+					Level.WARNING,
+					unassigned.size() + " unassigned speakers: "
+							+ JCasUtil.toText(unassigned));
 
 		if (createSpeakerFigure) {
 			Map<String, TreeSet<Speaker>> unassignedMap =
@@ -129,7 +131,7 @@ public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 				if (figure.getDescription() != null) {
 					String[] nameParts =
 							figure.getDescription().getCoveredText()
-							.toLowerCase().split(" +");
+									.toLowerCase().split(" +");
 					if (ArrayUtils
 							.contains(nameParts, speaker.getCoveredText())) {
 						speaker.setFigure(figure);
