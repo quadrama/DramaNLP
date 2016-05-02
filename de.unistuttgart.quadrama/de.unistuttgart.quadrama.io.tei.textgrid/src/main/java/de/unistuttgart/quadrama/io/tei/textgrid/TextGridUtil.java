@@ -50,6 +50,9 @@ public class TextGridUtil {
 		if (!doc.select("author[key]").isEmpty())
 			drama.setAuthorPnd(doc.select("author[key]").attr("key")
 					.substring(4));
+		if (!doc.select("idno[type=\"TextGridUri\"]").isEmpty())
+			drama.setDocumentId(doc.select("idno[type=\"TextGridUri\"]")
+					.first().text());
 
 		Visitor vis = new Visitor(jcas);
 
@@ -89,7 +92,7 @@ public class TextGridUtil {
 		AnnotationUtil.trim(new ArrayList<Scene>(JCasUtil.select(jcas,
 				Scene.class)));
 		AnnotationUtil
-		.trim(new ArrayList<Act>(JCasUtil.select(jcas, Act.class)));
+				.trim(new ArrayList<Act>(JCasUtil.select(jcas, Act.class)));
 
 		// DramaIOUtil.cleanUp(jcas);
 
