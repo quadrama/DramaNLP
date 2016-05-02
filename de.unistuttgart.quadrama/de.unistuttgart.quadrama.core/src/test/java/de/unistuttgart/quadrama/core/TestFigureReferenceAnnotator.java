@@ -25,10 +25,11 @@ public class TestFigureReferenceAnnotator {
 		CollectionReaderDescription reader =
 				CollectionReaderFactory.createReaderDescription(
 						XmiReader.class, XmiReader.PARAM_SOURCE_LOCATION,
-						"src/test/resources/FigureReferenceAnnotator/*.xmi");
+						"src/test/resources/FigureReferenceAnnotator/*.xmi",
+						XmiReader.PARAM_LENIENT, true);
 		AnalysisEngineDescription engine =
 				AnalysisEngineFactory
-						.createEngineDescription(FigureReferenceAnnotator.class);
+				.createEngineDescription(FigureReferenceAnnotator.class);
 		JCasIterator iterator =
 				SimplePipeline.iteratePipeline(reader, engine).iterator();
 		while (iterator.hasNext()) {
