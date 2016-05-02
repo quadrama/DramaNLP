@@ -24,7 +24,7 @@
   Act: `TEI/text/body/div:gt(0)`
   first div contains dramatis personae
   - Heading: `div/desc/title`
-  - Scene: `div:gt(0)`
+  - Scene: No scene layer
 - t4rs.0
   Act: `TEI/text/body/div:gt(0)`
   first div contains dramatis personae
