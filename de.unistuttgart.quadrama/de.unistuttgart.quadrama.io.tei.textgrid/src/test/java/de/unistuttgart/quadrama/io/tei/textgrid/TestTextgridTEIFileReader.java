@@ -72,6 +72,18 @@ public class TestTextgridTEIFileReader {
 		assertEquals(5, JCasUtil.select(jcas, Act.class).size());
 		assertEquals(24, JCasUtil.select(jcas, Scene.class).size());
 
+		Act act;
+		act = JCasUtil.selectByIndex(jcas, Act.class, 0);
+		assertEquals(5, JCasUtil.selectCovered(Scene.class, act).size());
+		act = JCasUtil.selectByIndex(jcas, Act.class, 1);
+		assertEquals(6, JCasUtil.selectCovered(Scene.class, act).size());
+		act = JCasUtil.selectByIndex(jcas, Act.class, 2);
+		assertEquals(5, JCasUtil.selectCovered(Scene.class, act).size());
+		act = JCasUtil.selectByIndex(jcas, Act.class, 3);
+		assertEquals(5, JCasUtil.selectCovered(Scene.class, act).size());
+		act = JCasUtil.selectByIndex(jcas, Act.class, 4);
+		assertEquals(3, JCasUtil.selectCovered(Scene.class, act).size());
+
 		// figures
 		// should be 24, but we can't identify the last lines
 		assertEquals(26, JCasUtil.select(jcas, Figure.class).size());
