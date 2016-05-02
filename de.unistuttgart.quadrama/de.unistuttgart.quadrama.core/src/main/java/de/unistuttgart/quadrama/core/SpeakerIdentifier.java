@@ -42,8 +42,10 @@ public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
 		getLogger().log(
-				Level.FINE,
-				"Now processing "
+				Level.INFO,
+				"Running "
+						+ getClass().getName()
+						+ " on "
 						+ JCasUtil.selectSingle(jcas, Drama.class)
 						.getDocumentId());
 
