@@ -2,6 +2,7 @@ package de.unistuttgart.quadrama.io.core;
 
 import java.io.File;
 import java.io.FileReader;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -24,38 +25,75 @@ import org.apache.uima.util.Progress;
 import de.unistuttgart.quadrama.api.Drama;
 
 public abstract class AbstractDramaUrlReader extends
-JCasCollectionReader_ImplBase {
+		JCasCollectionReader_ImplBase {
 	public static final String PARAM_URL_LIST = "URL List";
+	public static final String PARAM_INPUT_DIRECTORY = "Input Directory";
 	public static final String PARAM_LANGUAGE = "Language";
+	public static final String PARAM_CLEANUP = "Cleanup";
 
-	@ConfigurationParameter(name = PARAM_URL_LIST, mandatory = true)
-	String urlListFilename;
+	@ConfigurationParameter(name = PARAM_INPUT_DIRECTORY, mandatory = false)
+	String inputDirectory = null;
+
+	@ConfigurationParameter(name = PARAM_URL_LIST, mandatory = false)
+	String urlListFilename = null;
 
 	@ConfigurationParameter(name = PARAM_LANGUAGE, mandatory = false,
 			defaultValue = "de")
 	String language = "de";
 
-	List<String> urls = new LinkedList<String>();
+	@ConfigurationParameter(name = PARAM_CLEANUP, mandatory = false)
+	boolean cleanUp = false;
+
+	List<URL> urls = new LinkedList<URL>();
 	int currentUrlIndex = 0;
 
 	@Override
 	public void initialize(UimaContext context)
 			throws ResourceInitializationException {
 		super.initialize(context);
-		CSVParser r = null;
-		try {
-			r =
-					new CSVParser(new FileReader(new File(urlListFilename)),
-							CSVFormat.TDF);
-			List<CSVRecord> records = r.getRecords();
-			for (CSVRecord rec : records) {
-				urls.add(rec.get(0));
+		if (urlListFilename != null) {
+			CSVParser r = null;
+			try {
+				r =
+						new CSVParser(
+								new FileReader(new File(urlListFilename)),
+								CSVFormat.TDF);
+				List<CSVRecord> records = r.getRecords();
+				for (CSVRecord rec : records) {
+					String s = rec.get(0);
+					if (s.startsWith("/")) {
+						urls.add(new File(s).toURI().toURL());
+					} else {
+						urls.add(new URL(s));
+					}
+				}
+				getLogger().log(Level.FINE, "Found " + urls.size() + " URLs.");
+			} catch (Exception e) {
+				throw new ResourceInitializationException(e);
+			} finally {
+				IOUtils.closeQuietly(r);
 			}
-			getLogger().log(Level.FINE, "Found " + urls.size() + " URLs.");
-		} catch (Exception e) {
-			throw new ResourceInitializationException(e);
-		} finally {
-			IOUtils.closeQuietly(r);
+		} else if (inputDirectory != null) {
+			File inputDir = new File(inputDirectory);
+			File[] files = inputDir.listFiles(new FilenameFilter() {
+
+				public boolean accept(File dir, String name) {
+					return name.endsWith(".xml");
+				}
+
+			});
+			try {
+				for (File file : files) {
+					urls.add(file.toURI().toURL());
+				}
+			} catch (Exception e) {
+				throw new ResourceInitializationException(e);
+
+			}
+		} else {
+			throw new ResourceInitializationException(
+					"You need to specify either PARAM_INPUT_DIRECTORY or PARAM_URL_LIST",
+					null);
 		}
 
 	}
@@ -70,19 +108,22 @@ JCasCollectionReader_ImplBase {
 
 	@Override
 	public void getNext(JCas jcas) throws IOException, CollectionException {
-		String currentUrl = urls.get(currentUrlIndex++);
-		URL url = new URL(currentUrl);
+		URL url = urls.get(currentUrlIndex++);
 
-		getLogger().debug("Processing url " + currentUrl);
+		getLogger().debug("Processing url " + url);
 
 		Drama drama = new Drama(jcas);
 		drama.setDocumentId(String.valueOf(currentUrlIndex));
-		drama.setDocumentBaseUri("https://textgridlab.org/1.0/tgcrud-public/rest/");
-		drama.setDocumentUri(currentUrl);
+		// drama.setDocumentBaseUri("https://textgridlab.org/1.0/tgcrud-public/rest/");
+		drama.setDocumentUri(url.toString());
 		drama.addToIndexes();
 		jcas.setDocumentLanguage(language);
 
 		getNext(jcas, url.openStream(), drama);
+
+		if (cleanUp) {
+			DramaIOUtil.cleanUp(jcas);
+		}
 	}
 
 	public abstract void getNext(JCas jcas, InputStream is, Drama drama)
