@@ -101,6 +101,7 @@ public class DatabaseConsumer extends JCasConsumer_ImplBase {
 			dbDrama.setXmi(xmi);
 			dbDrama.setTitle(drama.getDocumentTitle());
 			dbDrama.setTextgridUrl(drama.getDocumentUri());
+			dbDrama.setDocumentId(drama.getDocumentId());
 
 			List<DBAuthor> auths;
 			if (drama.getAuthorPnd() != null)
