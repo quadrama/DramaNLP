@@ -75,5 +75,6 @@
     <module>de.unistuttgart.quadrama.io.tei.textgrid</module>
     <module>de.unistuttgart.quadrama.db</module>
     <module>de.unistuttgart.quadrama.db.orm</module>
+    <module>de.unistuttgart.quadrama.ag</module>
   </modules>
 </project>
