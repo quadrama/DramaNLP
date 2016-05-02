@@ -32,9 +32,10 @@ public class Textgrid2Database {
 						DatabaseConsumer.PARAM_DB_USERNAME, "root",
 						DatabaseConsumer.PARAM_DATABASETYPE,
 						MysqlDatabaseType.class), AnalysisEngineFactory
-				.createEngineDescription(SpeakerIdentifier.class),
-				AnalysisEngineFactory.createEngineDescription(XmiWriter.class,
-								XmiWriter.PARAM_TARGET_LOCATION, "target/db/"));
+						.createEngineDescription(SpeakerIdentifier.class),
+						AnalysisEngineFactory.createEngineDescription(XmiWriter.class,
+						XmiWriter.PARAM_TARGET_LOCATION, "target/db/",
+						XmiWriter.PARAM_USE_DOCUMENT_ID, true));
 
 	}
 }
