@@ -16,10 +16,12 @@ import org.apache.uima.util.Progress;
 
 import de.unistuttgart.quadrama.api.Drama;
 
+@Deprecated
 public abstract class AbstractDramaFileReader extends
-		JCasCollectionReader_ImplBase {
+JCasCollectionReader_ImplBase {
 	public static final String PARAM_INPUT_DIRECTORY = "Input Directory";
 	public static final String PARAM_LANGUAGE = "Language";
+	public static final String PARAM_CLEANUP = "Cleanup";
 
 	@ConfigurationParameter(name = PARAM_INPUT_DIRECTORY, mandatory = true)
 	String inputDirectory;
@@ -27,6 +29,9 @@ public abstract class AbstractDramaFileReader extends
 	@ConfigurationParameter(name = PARAM_LANGUAGE, mandatory = false,
 			defaultValue = "de")
 	protected String language = "de";
+
+	@ConfigurationParameter(name = PARAM_CLEANUP, mandatory = false)
+	boolean cleanUp = false;
 
 	protected File[] files;
 
@@ -67,6 +72,10 @@ public abstract class AbstractDramaFileReader extends
 		jcas.setDocumentLanguage(language);
 
 		getNext(jcas, new FileInputStream(file), drama);
+
+		if (cleanUp) {
+			DramaIOUtil.cleanUp(jcas);
+		}
 	}
 
 	public abstract void getNext(JCas jcas, InputStream file, Drama drama)

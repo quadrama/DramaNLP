@@ -9,6 +9,7 @@ import org.apache.uima.jcas.JCas;
 import de.unistuttgart.quadrama.api.Drama;
 import de.unistuttgart.quadrama.io.core.AbstractDramaFileReader;
 
+@Deprecated
 public class TextgridTEIFileReader extends AbstractDramaFileReader {
 
 	@Override
