@@ -24,6 +24,9 @@ public class DBDrama {
 	@DatabaseField
 	String textgridUrl;
 
+	@DatabaseField
+	String documentId;
+
 	public int getId() {
 		return id;
 	}
@@ -70,5 +73,13 @@ public class DBDrama {
 
 	public void setTextgridUrl(String textgridUrl) {
 		this.textgridUrl = textgridUrl;
+	}
+
+	public String getDocumentId() {
+		return documentId;
+	}
+
+	public void setDocumentId(String documentId) {
+		this.documentId = documentId;
 	}
 }
