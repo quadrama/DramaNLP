@@ -34,7 +34,6 @@ import de.unistuttgart.quadrama.api.Speaker;
 import de.unistuttgart.quadrama.api.Speech;
 import de.unistuttgart.quadrama.api.StageDirection;
 import de.unistuttgart.quadrama.api.Utterance;
-import de.unistuttgart.quadrama.io.core.DramaIOUtil;
 import de.unistuttgart.quadrama.io.core.Visitor;
 import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
 
@@ -87,37 +86,73 @@ public class TextGridUtil {
 				Speech.class)));
 		AnnotationUtil.trim(new ArrayList<Utterance>(JCasUtil.select(jcas,
 				Utterance.class)));
+		AnnotationUtil.trim(new ArrayList<Scene>(JCasUtil.select(jcas,
+				Scene.class)));
+		AnnotationUtil
+		.trim(new ArrayList<Act>(JCasUtil.select(jcas, Act.class)));
 
-		DramaIOUtil.cleanUp(jcas);
+		// DramaIOUtil.cleanUp(jcas);
 
 	}
 
-	public static void readActsAndScenes(JCas jcas, Element root,
+	public static void readActs(JCas jcas, Element root,
 			Map<String, HTMLAnnotation> map) {
+		if (!root.select("div[type=act]").isEmpty()) {
+			select2Annotation(jcas, root, map, "div[type=act]", Act.class, null);
+			select2Annotation(jcas, root, map,
+					"div[type=act] > div > desc > title", ActHeading.class,
+					null);
+			select2Annotation(jcas, root, map, "div[type=act] > div > head",
+					ActHeading.class, null);
+		}
+		if (!JCasUtil.exists(jcas, Act.class)) {
+			select2Annotation(jcas, root, map, "body > div", Act.class, null);
+			select2Annotation(jcas, root, map, "body > div > head",
+					ActHeading.class, null);
+			select2Annotation(jcas, root, map, "body > div > desc > title",
+					ActHeading.class, null);
+		}
+	}
 
+	public static void readScenes(JCas jcas, Element root,
+			Map<String, HTMLAnnotation> map) {
 		if (!root.select("div[type=scene]").isEmpty()) {
 			select2Annotation(jcas, root, map, "div[type=scene]", Scene.class,
 					null);
 			select2Annotation(jcas, root, map,
 					"div[type=scene] > div > desc > title", SceneHeading.class,
 					null);
+		} else {
+			if (JCasUtil.exists(jcas, Act.class))
+				for (Act act : JCasUtil.select(jcas, Act.class)) {
+
+					Collection<Scene> scenes =
+							select2Annotation(jcas, root, map,
+									"body > div > div:has(head)", Scene.class,
+									act);
+					for (Scene sc : scenes) {
+						select2Annotation(jcas, root, map,
+								"div > desc > title", SceneHeading.class, sc);
+					}
+				}
+			else {
+				select2Annotation(jcas, root, map,
+						"body > div > div:not(:has(desc > title))",
+						Scene.class, null);
+				select2Annotation(jcas, root, map, "body > div > div > head",
+						SceneHeading.class, null);
+				select2Annotation(jcas, root, map,
+						"body > div > div > desc > title", SceneHeading.class,
+						null);
+			}
 		}
-		if (!root.select("div[type=act]").isEmpty()) {
-			select2Annotation(jcas, root, map, "div[type=act]", Act.class, null);
-			select2Annotation(jcas, root, map,
-					"div[type=act] > div > desc > title", ActHeading.class,
-					null);
-		}
-		if (!JCasUtil.exists(jcas, Act.class)) {
-			select2Annotation(jcas, root, map, "body > div", Act.class, null);
-			select2Annotation(jcas, root, map, "body > div > head",
-					ActHeading.class, null);
-		}
-		if (!JCasUtil.exists(jcas, Scene.class)) {
-			select2Annotation(jcas, root, map, "div > div", Scene.class, null);
-			select2Annotation(jcas, root, map, "body > div > div > head",
-					SceneHeading.class, null);
-		}
+	}
+
+	public static void readActsAndScenes(JCas jcas, Element root,
+			Map<String, HTMLAnnotation> map) {
+		readActs(jcas, root, map);
+		readScenes(jcas, root, map);
+
 	}
 
 	public static void readDramatisPersonae(JCas jcas, Element root,
