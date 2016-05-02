@@ -52,7 +52,7 @@ public class TextGridUtil {
 					.substring(4));
 		if (!doc.select("idno[type=\"TextGridUri\"]").isEmpty())
 			drama.setDocumentId(doc.select("idno[type=\"TextGridUri\"]")
-					.first().text());
+					.first().text().substring(9));
 
 		Visitor vis = new Visitor(jcas);
 
@@ -117,6 +117,19 @@ public class TextGridUtil {
 		}
 	}
 
+	/**
+	 * Detect scenes. The following things are checked:
+	 * <ol>
+	 * <li>if they are explicitly marked with <code>type=scnee</code>, we take
+	 * them and return.</li>
+	 * <li>if Act annotations do exist in the JCas, we search for divs that have
+	 * head annotations.</li>
+	 * </ol>
+	 * 
+	 * @param jcas
+	 * @param root
+	 * @param map
+	 */
 	public static void readScenes(JCas jcas, Element root,
 			Map<String, HTMLAnnotation> map) {
 		if (!root.select("div[type=scene]").isEmpty()) {
