@@ -23,6 +23,15 @@ import de.unistuttgart.quadrama.api.Figure;
 import de.unistuttgart.quadrama.api.Speaker;
 import de.unistuttgart.quadrama.api.SpeakerFigure;
 
+/**
+ * Before reference string
+ * mean 446.82978723404256 18.148936170212774
+ * min 3.0 1.0
+ * max 1771.0 79.0
+ * 
+ * @author reiterns
+ *
+ */
 @TypeCapability(inputs = { "de.unistuttgart.quadrama.api.Figure",
 		"de.unistuttgart.quadrama.api.Speaker" }, outputs = {
 		"de.unistuttgart.quadrama.api.Speaker:Figure",
@@ -47,13 +56,17 @@ public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 						+ getClass().getName()
 						+ " on "
 						+ JCasUtil.selectSingle(jcas, Drama.class)
-						.getDocumentId());
+								.getDocumentId());
 
 		Map<String, Figure> map = new HashMap<String, Figure>();
+		Map<String, Figure> referenceMap = new HashMap<String, Figure>();
 		int figureId = 0;
 		for (Figure figure : JCasUtil.select(jcas, Figure.class)) {
 			figure.setId(figureId++);
 			map.put(figure.getCoveredText().trim().toLowerCase(), figure);
+			if (figure.getReference() != null)
+				referenceMap.put(figure.getReference().trim().toLowerCase(),
+						figure);
 		}
 
 		Set<Speaker> unassigned = new HashSet<Speaker>();
@@ -61,12 +74,13 @@ public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 		for (Speaker cm : JCasUtil.select(jcas, Speaker.class)) {
 			String sName =
 					cm.getCoveredText().trim().replaceAll("[.,;]", "")
-					.toLowerCase();
+							.toLowerCase();
 			if (map.containsKey(sName))
 				cm.setFigure(map.get(sName));
-			else {
+			else if (referenceMap.containsKey(sName))
+				cm.setFigure(referenceMap.get(sName));
+			else
 				unassigned.add(cm);
-			}
 		}
 
 		unassigned = assignLevel2(map.values(), unassigned);
