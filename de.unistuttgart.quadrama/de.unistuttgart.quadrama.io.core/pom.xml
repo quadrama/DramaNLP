@@ -6,7 +6,7 @@
     <version>0.2-SNAPSHOT</version>
   </parent>
   <artifactId>de.unistuttgart.ims.drama.io.core</artifactId>
-  <name>de.unistuttgart.quadrama.io.core</name>
+  <name>de.unistuttgart.ims.drama.io.core</name>
   <dependencies>
   	<dependency>
   		<groupId>org.jsoup</groupId>

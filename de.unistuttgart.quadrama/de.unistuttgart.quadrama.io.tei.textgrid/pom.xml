@@ -6,7 +6,7 @@
     <version>0.2-SNAPSHOT</version>
   </parent>
   <artifactId>de.unistuttgart.ims.drama.io.tei.textgrid</artifactId>
-  <name>de.unistuttgart.quadrama.io.textgridtei</name>
+  <name>de.unistuttgart.ims.drama.io.textgridtei</name>
   <dependencies>
   	<dependency>
   		<groupId>junit</groupId>

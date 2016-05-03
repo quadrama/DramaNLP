@@ -6,7 +6,7 @@
     <version>0.2-SNAPSHOT</version>
   </parent>
   <artifactId>de.unistuttgart.ims.drama.io.configuration</artifactId>
-  <name>de.unistuttgart.quadrama.io.configuration</name>
+  <name>de.unistuttgart.ims.drama.io.configuration</name>
   <dependencies>
   	<dependency>
   		<groupId>de.unistuttgart.ims</groupId>

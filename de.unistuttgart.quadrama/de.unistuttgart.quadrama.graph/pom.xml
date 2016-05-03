@@ -6,7 +6,7 @@
     <version>0.2-SNAPSHOT</version>
   </parent>
   <artifactId>de.unistuttgart.ims.drama.graph</artifactId>
-  <name>de.unistuttgart.quadrama.graph</name>
+  <name>de.unistuttgart.ims.drama.graph</name>
   <dependencies>
   	<dependency>
   		<groupId>de.unistuttgart.ims</groupId>

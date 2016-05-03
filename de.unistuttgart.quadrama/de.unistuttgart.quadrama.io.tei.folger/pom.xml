@@ -6,7 +6,7 @@
     <version>0.2-SNAPSHOT</version>
   </parent>
   <artifactId>de.unistuttgart.ims.drama.io.tei.folger</artifactId>
-  <name>de.unistuttgart.quadrama.io.tei.folger</name>
+  <name>de.unistuttgart.ims.drama.io.tei.folger</name>
   <dependencies>
   	<dependency>
   		<groupId>de.unistuttgart.ims</groupId>

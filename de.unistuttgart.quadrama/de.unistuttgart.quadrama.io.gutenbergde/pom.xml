@@ -8,7 +8,7 @@
     <version>0.2-SNAPSHOT</version>
   </parent>
   <artifactId>de.unistuttgart.ims.drama.io.gutenbergde</artifactId>
-  <name>de.unistuttgart.quadrama.io.gutenbergde</name>
+  <name>de.unistuttgart.ims.drama.io.gutenbergde</name>
   <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

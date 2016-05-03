@@ -6,7 +6,7 @@
     <version>0.2-SNAPSHOT</version>
   </parent>
   <artifactId>de.unistuttgart.ims.drama.experiments</artifactId>
-  <name>de.unistuttgart.quadrama.experiments</name>
+  <name>de.unistuttgart.ims.drama.experiments</name>
   <dependencies>
   	<dependency>
   		<groupId>de.unistuttgart.ims</groupId>

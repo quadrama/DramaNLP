@@ -11,7 +11,7 @@
 		<version>0.2-SNAPSHOT</version>
 	</parent>
 	<artifactId>de.unistuttgart.ims.drama.api</artifactId>
-	<name>de.unistuttgart.quadrama.api</name>
+	<name>de.unistuttgart.ims.drama.api</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

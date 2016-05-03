@@ -6,5 +6,5 @@
     <version>0.2-SNAPSHOT</version>
   </parent>
   <artifactId>de.unistuttgart.ims.drama.inter</artifactId>
-  <name>de.unistuttgart.quadrama.inter</name>
+  <name>de.unistuttgart.ims.drama.inter</name>
 </project>

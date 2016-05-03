@@ -10,7 +10,7 @@
 		<version>0.2-SNAPSHOT</version>
 	</parent>
 	<artifactId>de.unistuttgart.ims.drama.db</artifactId>
-	<name>de.unistuttgart.quadrama.db</name>
+	<name>de.unistuttgart.ims.drama.db</name>
 	<dependencies>
 		<dependency>
 		<groupId>de.unistuttgart.ims</groupId>
