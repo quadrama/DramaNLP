@@ -6,7 +6,7 @@ import java.io.InputStream;
 import org.apache.uima.collection.CollectionException;
 import org.apache.uima.jcas.JCas;
 
-import de.unistuttgart.quadrama.api.Drama;
+import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
 
 public class TextgridTEIUrlReader extends AbstractDramaUrlReader {

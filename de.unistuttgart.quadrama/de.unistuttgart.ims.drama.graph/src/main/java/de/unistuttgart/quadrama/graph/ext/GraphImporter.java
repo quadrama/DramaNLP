@@ -13,7 +13,7 @@ import org.jgrapht.Graph;
 import org.jgrapht.WeightedGraph;
 import org.jgrapht.graph.DefaultWeightedEdge;
 
-import de.unistuttgart.quadrama.api.Figure;
+import de.unistuttgart.ims.drama.api.Figure;
 import de.unistuttgart.quadrama.graph.ext.api.GraphMetaData;
 
 public class GraphImporter {

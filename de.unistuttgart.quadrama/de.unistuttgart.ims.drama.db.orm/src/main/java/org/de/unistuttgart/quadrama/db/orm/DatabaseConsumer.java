@@ -30,8 +30,8 @@ import com.j256.ormlite.jdbc.DataSourceConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
-import de.unistuttgart.quadrama.api.Drama;
-import de.unistuttgart.quadrama.api.Figure;
+import de.unistuttgart.ims.drama.api.Drama;
+import de.unistuttgart.ims.drama.api.Figure;
 
 public class DatabaseConsumer extends JCasConsumer_ImplBase {
 	public static final String PARAM_DB_URL = "Database URL";

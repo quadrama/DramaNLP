@@ -19,9 +19,9 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 
-import de.unistuttgart.quadrama.api.Drama;
-import de.unistuttgart.quadrama.api.Figure;
-import de.unistuttgart.quadrama.api.ag.FigureProperties;
+import de.unistuttgart.ims.drama.api.Drama;
+import de.unistuttgart.ims.drama.api.Figure;
+import de.unistuttgart.ims.drama.api.ag.FigureProperties;
 
 public class DramaPropertiesAnnotator extends JCasAnnotator_ImplBase {
 	public static final String PARAM_PROPERTIES_FILE = "Prop File";

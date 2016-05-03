@@ -18,10 +18,10 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.util.Level;
 
-import de.unistuttgart.quadrama.api.Drama;
-import de.unistuttgart.quadrama.api.Figure;
-import de.unistuttgart.quadrama.api.Speaker;
-import de.unistuttgart.quadrama.api.SpeakerFigure;
+import de.unistuttgart.ims.drama.api.Drama;
+import de.unistuttgart.ims.drama.api.Figure;
+import de.unistuttgart.ims.drama.api.Speaker;
+import de.unistuttgart.ims.drama.api.SpeakerFigure;
 
 /**
  * Before reference string

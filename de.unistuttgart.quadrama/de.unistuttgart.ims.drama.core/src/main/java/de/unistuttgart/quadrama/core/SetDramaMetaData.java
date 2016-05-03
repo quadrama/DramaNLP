@@ -6,7 +6,7 @@ import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
-import de.unistuttgart.quadrama.api.Drama;
+import de.unistuttgart.ims.drama.api.Drama;
 
 public class SetDramaMetaData extends JCasAnnotator_ImplBase {
 

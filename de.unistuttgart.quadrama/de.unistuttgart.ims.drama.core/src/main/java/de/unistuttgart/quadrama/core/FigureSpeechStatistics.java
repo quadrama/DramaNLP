@@ -13,8 +13,8 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
-import de.unistuttgart.quadrama.api.Figure;
-import de.unistuttgart.quadrama.api.Utterance;
+import de.unistuttgart.ims.drama.api.Figure;
+import de.unistuttgart.ims.drama.api.Utterance;
 
 public class FigureSpeechStatistics extends JCasAnnotator_ImplBase {
 

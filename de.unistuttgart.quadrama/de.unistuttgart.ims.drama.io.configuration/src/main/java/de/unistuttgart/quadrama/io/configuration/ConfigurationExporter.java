@@ -18,9 +18,9 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
 import de.tudarmstadt.ukp.dkpro.core.api.io.JCasFileWriter_ImplBase;
-import de.unistuttgart.quadrama.api.Figure;
-import de.unistuttgart.quadrama.api.Scene;
-import de.unistuttgart.quadrama.api.Speaker;
+import de.unistuttgart.ims.drama.api.Figure;
+import de.unistuttgart.ims.drama.api.Scene;
+import de.unistuttgart.ims.drama.api.Speaker;
 
 public class ConfigurationExporter extends JCasFileWriter_ImplBase {
 

@@ -10,7 +10,7 @@ import org.apache.uima.jcas.JCas;
 import org.junit.Test;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiReader;
-import de.unistuttgart.quadrama.api.Speaker;
+import de.unistuttgart.ims.drama.api.Speaker;
 
 public class TestSpeakerAssignmentRules {
 	@Test

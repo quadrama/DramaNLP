@@ -15,10 +15,10 @@ import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.DirectedPseudograph;
 
 import de.tudarmstadt.ukp.dkpro.core.api.io.JCasFileWriter_ImplBase;
-import de.unistuttgart.quadrama.api.Figure;
-import de.unistuttgart.quadrama.api.FigureMention;
-import de.unistuttgart.quadrama.api.Speaker;
-import de.unistuttgart.quadrama.api.Utterance;
+import de.unistuttgart.ims.drama.api.Figure;
+import de.unistuttgart.ims.drama.api.FigureMention;
+import de.unistuttgart.ims.drama.api.Speaker;
+import de.unistuttgart.ims.drama.api.Utterance;
 
 public class MentionNetworkExtractor extends JCasFileWriter_ImplBase {
 

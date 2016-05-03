@@ -14,7 +14,7 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.util.Progress;
 
-import de.unistuttgart.quadrama.api.Drama;
+import de.unistuttgart.ims.drama.api.Drama;
 
 @Deprecated
 public abstract class AbstractDramaFileReader extends

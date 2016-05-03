@@ -22,13 +22,13 @@ import org.apache.uima.jcas.JCas;
 import org.junit.Test;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
-import de.unistuttgart.quadrama.api.Act;
-import de.unistuttgart.quadrama.api.ActHeading;
-import de.unistuttgart.quadrama.api.Drama;
-import de.unistuttgart.quadrama.api.DramatisPersonae;
-import de.unistuttgart.quadrama.api.Figure;
-import de.unistuttgart.quadrama.api.Scene;
-import de.unistuttgart.quadrama.api.Speaker;
+import de.unistuttgart.ims.drama.api.Act;
+import de.unistuttgart.ims.drama.api.ActHeading;
+import de.unistuttgart.ims.drama.api.Drama;
+import de.unistuttgart.ims.drama.api.DramatisPersonae;
+import de.unistuttgart.ims.drama.api.Figure;
+import de.unistuttgart.ims.drama.api.Scene;
+import de.unistuttgart.ims.drama.api.Speaker;
 
 @Deprecated
 public class TestTextgridTEIUriReader {

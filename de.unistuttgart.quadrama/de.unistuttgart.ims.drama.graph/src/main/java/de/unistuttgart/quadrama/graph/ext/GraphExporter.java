@@ -8,7 +8,7 @@ import org.apache.uima.jcas.JCas;
 import org.jgrapht.Graph;
 import org.jgrapht.WeightedGraph;
 
-import de.unistuttgart.quadrama.api.Figure;
+import de.unistuttgart.ims.drama.api.Figure;
 import de.unistuttgart.quadrama.graph.ext.api.GraphMetaData;
 
 public class GraphExporter {

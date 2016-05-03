@@ -25,10 +25,10 @@ import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.client.authentication.HttpAuthenticationFeature;
 import org.json.JSONObject;
 
-import de.unistuttgart.quadrama.api.Figure;
-import de.unistuttgart.quadrama.api.Scene;
-import de.unistuttgart.quadrama.api.Speaker;
-import de.unistuttgart.quadrama.api.Utterance;
+import de.unistuttgart.ims.drama.api.Figure;
+import de.unistuttgart.ims.drama.api.Scene;
+import de.unistuttgart.ims.drama.api.Speaker;
+import de.unistuttgart.ims.drama.api.Utterance;
 
 public class Neo4jConsumer extends JCasAnnotator_ImplBase {
 

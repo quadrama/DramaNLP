@@ -22,11 +22,11 @@ import org.json.JSONObject;
 
 import de.tudarmstadt.ukp.dkpro.core.api.io.JCasFileWriter_ImplBase;
 import de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData;
-import de.unistuttgart.quadrama.api.Figure;
-import de.unistuttgart.quadrama.api.Heading;
-import de.unistuttgart.quadrama.api.Scene;
-import de.unistuttgart.quadrama.api.Speech;
-import de.unistuttgart.quadrama.api.Utterance;
+import de.unistuttgart.ims.drama.api.Figure;
+import de.unistuttgart.ims.drama.api.Heading;
+import de.unistuttgart.ims.drama.api.Scene;
+import de.unistuttgart.ims.drama.api.Speech;
+import de.unistuttgart.ims.drama.api.Utterance;
 
 public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 	static String[] colors = new String[] { "#EEF", "#FEE", "#EFE" };

@@ -19,7 +19,7 @@ import org.jgrapht.graph.SimpleWeightedGraph;
 import org.junit.Before;
 import org.junit.Test;
 
-import de.unistuttgart.quadrama.api.Figure;
+import de.unistuttgart.ims.drama.api.Figure;
 
 public class TestGraphIO {
 	JCas jcas;

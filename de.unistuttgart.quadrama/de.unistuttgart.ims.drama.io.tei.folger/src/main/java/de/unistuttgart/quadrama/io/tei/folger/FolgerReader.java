@@ -14,7 +14,7 @@ import org.jsoup.nodes.Node;
 import org.jsoup.nodes.TextNode;
 import org.jsoup.parser.Parser;
 
-import de.unistuttgart.quadrama.api.Drama;
+import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.quadrama.io.core.AbstractDramaFileReader;
 import de.unistuttgart.quadrama.io.core.Visitor;
 import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;

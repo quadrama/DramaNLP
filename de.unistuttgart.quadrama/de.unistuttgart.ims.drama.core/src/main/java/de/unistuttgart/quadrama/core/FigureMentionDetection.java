@@ -7,9 +7,9 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
-import de.unistuttgart.quadrama.api.Figure;
-import de.unistuttgart.quadrama.api.FigureMention;
-import de.unistuttgart.quadrama.api.Speech;
+import de.unistuttgart.ims.drama.api.Figure;
+import de.unistuttgart.ims.drama.api.FigureMention;
+import de.unistuttgart.ims.drama.api.Speech;
 
 public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 

@@ -6,9 +6,9 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.util.Level;
 
-import de.unistuttgart.quadrama.api.Speaker;
-import de.unistuttgart.quadrama.api.Speech;
-import de.unistuttgart.quadrama.api.Utterance;
+import de.unistuttgart.ims.drama.api.Speaker;
+import de.unistuttgart.ims.drama.api.Speech;
+import de.unistuttgart.ims.drama.api.Utterance;
 
 public class UtteranceLinker extends JCasAnnotator_ImplBase {
 

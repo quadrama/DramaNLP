@@ -16,7 +16,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
-import de.unistuttgart.quadrama.api.Drama;
+import de.unistuttgart.ims.drama.api.Drama;
 
 public class TestFolgerReader {
 

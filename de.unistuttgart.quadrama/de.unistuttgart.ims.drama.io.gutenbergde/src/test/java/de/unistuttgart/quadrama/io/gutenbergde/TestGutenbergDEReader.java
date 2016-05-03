@@ -22,14 +22,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
-import de.unistuttgart.quadrama.api.Act;
-import de.unistuttgart.quadrama.api.Drama;
-import de.unistuttgart.quadrama.api.DramatisPersonae;
-import de.unistuttgart.quadrama.api.FrontMatter;
-import de.unistuttgart.quadrama.api.MainMatter;
-import de.unistuttgart.quadrama.api.Scene;
-import de.unistuttgart.quadrama.api.Speaker;
-import de.unistuttgart.quadrama.api.Utterance;
+import de.unistuttgart.ims.drama.api.Act;
+import de.unistuttgart.ims.drama.api.Drama;
+import de.unistuttgart.ims.drama.api.DramatisPersonae;
+import de.unistuttgart.ims.drama.api.FrontMatter;
+import de.unistuttgart.ims.drama.api.MainMatter;
+import de.unistuttgart.ims.drama.api.Scene;
+import de.unistuttgart.ims.drama.api.Speaker;
+import de.unistuttgart.ims.drama.api.Utterance;
 
 public class TestGutenbergDEReader {
 

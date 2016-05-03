@@ -7,8 +7,8 @@ import org.apache.uima.fit.factory.JCasBuilder;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
-import de.unistuttgart.quadrama.api.Speech;
-import de.unistuttgart.quadrama.api.Utterance;
+import de.unistuttgart.ims.drama.api.Speech;
+import de.unistuttgart.ims.drama.api.Utterance;
 import de.unistuttgart.quadrama.core.api.Origin;
 
 /**

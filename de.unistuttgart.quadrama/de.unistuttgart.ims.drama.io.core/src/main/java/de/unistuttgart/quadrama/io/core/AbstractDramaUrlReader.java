@@ -22,7 +22,7 @@ import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.util.Level;
 import org.apache.uima.util.Progress;
 
-import de.unistuttgart.quadrama.api.Drama;
+import de.unistuttgart.ims.drama.api.Drama;
 
 public abstract class AbstractDramaUrlReader extends
 		JCasCollectionReader_ImplBase {

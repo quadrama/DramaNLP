@@ -8,7 +8,7 @@ import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
-import de.unistuttgart.quadrama.api.Figure;
+import de.unistuttgart.ims.drama.api.Figure;
 
 public class FigureReferenceAnnotator extends JCasAnnotator_ImplBase {
 

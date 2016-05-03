@@ -19,12 +19,12 @@ import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.DirectedPseudograph;
 import org.jgrapht.graph.SimpleWeightedGraph;
 
-import de.unistuttgart.quadrama.api.Figure;
-import de.unistuttgart.quadrama.api.FigureMention;
-import de.unistuttgart.quadrama.api.MainMatter;
-import de.unistuttgart.quadrama.api.Scene;
-import de.unistuttgart.quadrama.api.Speaker;
-import de.unistuttgart.quadrama.api.Utterance;
+import de.unistuttgart.ims.drama.api.Figure;
+import de.unistuttgart.ims.drama.api.FigureMention;
+import de.unistuttgart.ims.drama.api.MainMatter;
+import de.unistuttgart.ims.drama.api.Scene;
+import de.unistuttgart.ims.drama.api.Speaker;
+import de.unistuttgart.ims.drama.api.Utterance;
 import de.unistuttgart.quadrama.graph.ext.GraphExporter;
 
 public class NetworkExtractor extends JCasAnnotator_ImplBase {

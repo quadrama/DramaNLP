@@ -19,9 +19,9 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 
-import de.unistuttgart.quadrama.api.Drama;
-import de.unistuttgart.quadrama.api.Figure;
-import de.unistuttgart.quadrama.api.Speaker;
+import de.unistuttgart.ims.drama.api.Drama;
+import de.unistuttgart.ims.drama.api.Figure;
+import de.unistuttgart.ims.drama.api.Speaker;
 
 @TypeCapability(inputs = { "de.unistuttgart.quadrama.api.Figure:Reference" },
 outputs = { "de.unistuttgart.quadrama.api.Speaker:Figure" })

@@ -16,7 +16,7 @@ import org.jgrapht.ext.VertexNameProvider;
 import org.jgrapht.graph.DefaultWeightedEdge;
 
 import de.tudarmstadt.ukp.dkpro.core.api.io.JCasFileWriter_ImplBase;
-import de.unistuttgart.quadrama.api.Figure;
+import de.unistuttgart.ims.drama.api.Figure;
 import de.unistuttgart.quadrama.graph.ext.GraphImporter;
 
 public class DotExporter extends JCasFileWriter_ImplBase {
