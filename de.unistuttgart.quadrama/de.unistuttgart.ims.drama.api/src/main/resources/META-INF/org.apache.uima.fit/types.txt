@@ -1,1 +1,1 @@
-classpath*:quadramatypes.xml
+classpath*:dramatypes.xml
