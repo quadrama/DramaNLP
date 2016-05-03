@@ -78,7 +78,6 @@
     <module>de.unistuttgart.ims.drama.io.gutenbergde</module>
     <module>de.unistuttgart.ims.drama.core</module>
     <module>de.unistuttgart.ims.drama.io.core</module>
-    <module>de.unistuttgart.ims.drama.experiments</module>
     <module>de.unistuttgart.ims.drama.io.dot</module>
     <module>de.unistuttgart.ims.drama.graph</module>
     <module>de.unistuttgart.ims.drama.io.configuration</module>
@@ -88,6 +87,5 @@
     <module>de.unistuttgart.ims.drama.io.tei.textgrid</module>
     <module>de.unistuttgart.ims.drama.db</module>
     <module>de.unistuttgart.ims.drama.db.orm</module>
-    <module>de.unistuttgart.ims.drama.ag</module>
   </modules>
 </project>
