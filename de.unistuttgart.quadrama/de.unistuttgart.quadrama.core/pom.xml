@@ -3,11 +3,11 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>de.unistuttgart.quadrama</groupId>
-    <artifactId>de.unistuttgart.quadrama</artifactId>
+    <groupId>de.unistuttgart.ims</groupId>
+    <artifactId>de.unistuttgart.ims.drama</artifactId>
     <version>0.2-SNAPSHOT</version>
   </parent>
-  <artifactId>de.unistuttgart.quadrama.core</artifactId>
+  <artifactId>de.unistuttgart.ims.drama.core</artifactId>
   <name>de.unistuttgart.quadrama.core</name>
   <url>http://maven.apache.org</url>
   <properties>
@@ -56,8 +56,8 @@
     	<scope>test</scope>
     </dependency>
     <dependency>
-    	<groupId>de.unistuttgart.quadrama</groupId>
-    	<artifactId>de.unistuttgart.quadrama.api</artifactId>
+    	<groupId>de.unistuttgart.ims</groupId>
+    	<artifactId>de.unistuttgart.ims.drama.api</artifactId>
     	<version>0.2-SNAPSHOT</version>
     </dependency>
     <dependency>
@@ -66,9 +66,9 @@
     	<version>3.6</version>
     </dependency>
     <dependency>
-    	<groupId>de.unistuttgart.quadrama</groupId>
+    	<groupId>de.unistuttgart.ims</groupId>
     	<artifactId>
-    		de.unistuttgart.quadrama.io.tei.textgrid
+    		de.unistuttgart.ims.drama.io.tei.textgrid
     	</artifactId>
     	<version>0.2-SNAPSHOT</version>
     	<scope>test</scope>

@@ -3,11 +3,11 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>de.unistuttgart.quadrama</groupId>
-    <artifactId>de.unistuttgart.quadrama</artifactId>
+    <groupId>de.unistuttgart.ims</groupId>
+    <artifactId>de.unistuttgart.ims.drama</artifactId>
     <version>0.2-SNAPSHOT</version>
   </parent>
-  <artifactId>de.unistuttgart.quadrama.io.gutenbergde</artifactId>
+  <artifactId>de.unistuttgart.ims.drama.io.gutenbergde</artifactId>
   <name>de.unistuttgart.quadrama.io.gutenbergde</name>
   <url>http://maven.apache.org</url>
   <properties>
@@ -44,13 +44,13 @@
     	<version>1.8.3</version>
     </dependency>
     <dependency>
-    	<groupId>de.unistuttgart.quadrama</groupId>
-    	<artifactId>de.unistuttgart.quadrama.io.core</artifactId>
+    	<groupId>de.unistuttgart.ims</groupId>
+    	<artifactId>de.unistuttgart.ims.drama.io.core</artifactId>
     	<version>0.2-SNAPSHOT</version>
     </dependency>
     <dependency>
-    	<groupId>de.unistuttgart.quadrama</groupId>
-    	<artifactId>de.unistuttgart.quadrama.api</artifactId>
+    	<groupId>de.unistuttgart.ims</groupId>
+    	<artifactId>de.unistuttgart.ims.drama.api</artifactId>
     	<version>0.2-SNAPSHOT</version>
     </dependency>
     <dependency>
