@@ -33,10 +33,10 @@ import de.unistuttgart.quadrama.api.SpeakerFigure;
  *
  */
 @TypeCapability(inputs = { "de.unistuttgart.quadrama.api.Figure",
-		"de.unistuttgart.quadrama.api.Speaker" }, outputs = {
+"de.unistuttgart.quadrama.api.Speaker" }, outputs = {
 		"de.unistuttgart.quadrama.api.Speaker:Figure",
 		"de.unistuttgart.quadrama.api.SpeakerFigure",
-		"de.unistuttgart.quadrama.api.Figure:Id" })
+"de.unistuttgart.quadrama.api.Figure:Id" })
 public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 
 	public static final String PARAM_CREATE_SPEAKER_FIGURE =
@@ -56,7 +56,7 @@ public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 						+ getClass().getName()
 						+ " on "
 						+ JCasUtil.selectSingle(jcas, Drama.class)
-								.getDocumentId());
+						.getDocumentId());
 
 		Map<String, Figure> map = new HashMap<String, Figure>();
 		Map<String, Figure> referenceMap = new HashMap<String, Figure>();
@@ -72,15 +72,17 @@ public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 		Set<Speaker> unassigned = new HashSet<Speaker>();
 
 		for (Speaker cm : JCasUtil.select(jcas, Speaker.class)) {
-			String sName =
-					cm.getCoveredText().trim().replaceAll("[.,;]", "")
-							.toLowerCase();
-			if (map.containsKey(sName))
-				cm.setFigure(map.get(sName));
-			else if (referenceMap.containsKey(sName))
-				cm.setFigure(referenceMap.get(sName));
-			else
-				unassigned.add(cm);
+			if (cm.getFigure() == null) {
+				String sName =
+						cm.getCoveredText().trim().replaceAll("[.,;]", "")
+								.toLowerCase();
+				if (map.containsKey(sName))
+					cm.setFigure(map.get(sName));
+				else if (referenceMap.containsKey(sName))
+					cm.setFigure(referenceMap.get(sName));
+				else
+					unassigned.add(cm);
+			}
 		}
 
 		unassigned = assignLevel2(map.values(), unassigned);
@@ -147,7 +149,7 @@ public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 				if (figure.getDescription() != null) {
 					String[] nameParts =
 							figure.getDescription().getCoveredText()
-									.toLowerCase().split(" +");
+							.toLowerCase().split(" +");
 					if (ArrayUtils
 							.contains(nameParts, speaker.getCoveredText())) {
 						speaker.setFigure(figure);
