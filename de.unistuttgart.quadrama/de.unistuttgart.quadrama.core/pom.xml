@@ -53,7 +53,6 @@
     		de.tudarmstadt.ukp.dkpro.core.api.segmentation-asl
     	</artifactId>
     	<version>${dkpro.version}</version>
-    	<scope>test</scope>
     </dependency>
     <dependency>
     	<groupId>de.unistuttgart.ims</groupId>
