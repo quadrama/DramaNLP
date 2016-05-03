@@ -19,7 +19,6 @@ import org.apache.uima.fit.pipeline.JCasIterator;
 import org.apache.uima.fit.pipeline.SimplePipeline;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
-import org.junit.Test;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.unistuttgart.ims.drama.api.Act;
@@ -37,7 +36,7 @@ public class TestTextgridTEIUriReader {
 	String csvFilename = "src/test/resources/numbers.csv";
 
 	@SuppressWarnings("resource")
-	@Test
+	
 	public void testReader() throws UIMAException, IOException {
 		CSVParser reader =
 				new CSVParser(new FileReader(new File(csvFilename)),

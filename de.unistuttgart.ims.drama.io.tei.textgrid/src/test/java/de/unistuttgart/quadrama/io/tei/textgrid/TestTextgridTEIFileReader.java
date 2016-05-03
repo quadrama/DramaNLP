@@ -250,17 +250,4 @@ public class TestTextgridTEIFileReader {
 		}
 	}
 
-	@Test
-	public void downloadTexts() throws Exception {
-		description =
-				CollectionReaderFactory.createReaderDescription(
-						TextgridTEIUrlReader.class,
-						TextgridTEIUrlReader.PARAM_URL_LIST,
-						"src/test/resources/urls.txt",
-						TextgridTEIUrlReader.PARAM_LANGUAGE, "de");
-		SimplePipeline.runPipeline(description, AnalysisEngineFactory
-				.createEngineDescription(XmiWriter.class,
-						XmiWriter.PARAM_TARGET_LOCATION, "target/doc/",
-						XmiWriter.PARAM_USE_DOCUMENT_ID, true));
 	}
-}
