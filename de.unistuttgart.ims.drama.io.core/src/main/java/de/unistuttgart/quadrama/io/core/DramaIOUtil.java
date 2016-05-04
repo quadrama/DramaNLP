@@ -18,38 +18,38 @@ public class DramaIOUtil {
 		jcas.removeAllIncludingSubtypes(HTMLAnnotation.type);
 	}
 
-	public static <T extends Annotation> Collection<T> select2Annotation(
-			JCas jcas, Element rootElement,
-			Map<String, HTMLAnnotation> annoMap, String cssSelector,
-			Class<T> annoClass, Annotation coveringAnnotation) {
+	public static <T extends Annotation> Collection<T> select2Annotation(JCas jcas, Element rootElement,
+			Map<String, HTMLAnnotation> annoMap, String cssSelector, Class<T> annoClass,
+			Annotation coveringAnnotation) {
 		HashSet<T> set = new HashSet<T>();
 		Elements elms = rootElement.select(cssSelector);
 		for (Element elm : elms) {
 			HTMLAnnotation hAnno = annoMap.get(elm.cssSelector());
-			if (coveringAnnotation == null
-					|| (coveringAnnotation.getBegin() <= hAnno.getBegin() && coveringAnnotation
-					.getEnd() >= hAnno.getEnd()))
-				set.add(AnnotationFactory.createAnnotation(jcas,
-						hAnno.getBegin(), hAnno.getEnd(), annoClass));
+			if (elm.hasText() || elm.childNodeSize() > 0) {
+				if (coveringAnnotation == null || (coveringAnnotation.getBegin() <= hAnno.getBegin()
+						&& coveringAnnotation.getEnd() >= hAnno.getEnd()))
+					set.add(AnnotationFactory.createAnnotation(jcas, hAnno.getBegin(), hAnno.getEnd(), annoClass));
+			}
 		}
 		return set;
 	}
 
-	public static <T extends Annotation> T selectRange2Annotation(JCas jcas,
-			Element rootElement, Map<String, HTMLAnnotation> annoMap,
-			String beginCssSelector, String endCssSelector, Class<T> annoClass) {
+	public static <T extends Annotation> T selectRange2Annotation(JCas jcas, Element rootElement,
+			Map<String, HTMLAnnotation> annoMap, String beginCssSelector, String endCssSelector, Class<T> annoClass) {
 		Elements elms = rootElement.select(beginCssSelector);
 		int begin = jcas.size();
 		for (Element elm : elms) {
 			HTMLAnnotation hAnno = annoMap.get(elm.cssSelector());
-			if (hAnno.getBegin() < begin) begin = hAnno.getBegin();
+			if (hAnno.getBegin() < begin)
+				begin = hAnno.getBegin();
 		}
 
 		elms = rootElement.select(endCssSelector);
 		int end = 0;
 		for (Element elm : elms) {
 			HTMLAnnotation hAnno = annoMap.get(elm.cssSelector());
-			if (hAnno.getEnd() > end) end = hAnno.getEnd();
+			if (hAnno.getEnd() > end)
+				end = hAnno.getEnd();
 		}
 
 		return AnnotationFactory.createAnnotation(jcas, begin, end, annoClass);
