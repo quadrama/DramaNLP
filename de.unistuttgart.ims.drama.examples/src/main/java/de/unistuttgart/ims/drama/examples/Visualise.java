@@ -13,6 +13,7 @@ import org.apache.uima.resource.ResourceInitializationException;
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.tudarmstadt.ukp.dkpro.core.languagetool.LanguageToolSegmenter;
 import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordPosTagger;
+import de.unistuttgart.ims.drama.io.network.DotExporter;
 import de.unistuttgart.quadrama.core.DramaSpeechSegmenter;
 import de.unistuttgart.quadrama.core.FigureMentionDetection;
 import de.unistuttgart.quadrama.core.FigureReferenceAnnotator;
@@ -20,7 +21,6 @@ import de.unistuttgart.quadrama.core.FigureSpeechStatistics;
 import de.unistuttgart.quadrama.core.SpeakerIdentifier;
 import de.unistuttgart.quadrama.core.UtteranceLinker;
 import de.unistuttgart.quadrama.graph.NetworkExtractor;
-import de.unistuttgart.quadrama.io.dot.DotExporter;
 import de.unistuttgart.quadrama.io.html.ConfigurationHTMLExporter;
 import de.unistuttgart.quadrama.io.tei.textgrid.TextgridTEIUrlReader;
 

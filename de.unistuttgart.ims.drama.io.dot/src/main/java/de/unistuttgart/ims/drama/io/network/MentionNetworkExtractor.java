@@ -1,4 +1,4 @@
-package de.unistuttgart.quadrama.io.dot;
+package de.unistuttgart.ims.drama.io.network;
 
 import static org.apache.commons.io.IOUtils.closeQuietly;
 
