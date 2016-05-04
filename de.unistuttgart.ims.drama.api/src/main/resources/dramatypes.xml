@@ -220,37 +220,5 @@
       <description/>
       <supertypeName>de.unistuttgart.ims.drama.api.Heading</supertypeName>
     </typeDescription>
-    <typeDescription>
-      <name>de.unistuttgart.ims.drama.api.ag.FigureProperties</name>
-      <description>This annotation collects the figure properties that Anja annotated</description>
-      <supertypeName>uima.tcas.Annotation</supertypeName>
-      <features>
-        <featureDescription>
-          <name>Gender</name>
-          <description/>
-          <rangeTypeName>uima.cas.String</rangeTypeName>
-        </featureDescription>
-        <featureDescription>
-          <name>Polarity</name>
-          <description>The polarity towards the conflict (pro/contra)</description>
-          <rangeTypeName>uima.cas.String</rangeTypeName>
-        </featureDescription>
-        <featureDescription>
-          <name>FigureType</name>
-          <description>This feature stores the figure type, i.e., the reference figure from romeo and juliet</description>
-          <rangeTypeName>uima.cas.String</rangeTypeName>
-        </featureDescription>
-        <featureDescription>
-          <name>SocialClass</name>
-          <description>The social class ("Stand") of the figure, if known</description>
-          <rangeTypeName>uima.cas.String</rangeTypeName>
-        </featureDescription>
-      <featureDescription>
-          <name>Figure</name>
-          <description/>
-          <rangeTypeName>de.unistuttgart.ims.drama.api.Figure</rangeTypeName>
-        </featureDescription>
-      </features>
-    </typeDescription>
   </types>
 </typeSystemDescription>
