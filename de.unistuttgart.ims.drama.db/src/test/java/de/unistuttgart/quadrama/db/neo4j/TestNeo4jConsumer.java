@@ -7,19 +7,15 @@ import org.apache.uima.fit.factory.AnalysisEngineFactory;
 import org.apache.uima.fit.factory.CollectionReaderFactory;
 import org.apache.uima.fit.pipeline.SimplePipeline;
 import org.apache.uima.resource.ResourceInitializationException;
-import org.junit.Test;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiReader;
 
 public class TestNeo4jConsumer {
-	@Test
-	public void testConsumer() throws ResourceInitializationException,
-			UIMAException, IOException {
-		SimplePipeline.runPipeline(CollectionReaderFactory
-				.createReaderDescription(XmiReader.class,
-						XmiReader.PARAM_SOURCE_LOCATION,
-						"src/test/resources/*.xmi", XmiReader.PARAM_LENIENT,
-						true), AnalysisEngineFactory
-						.createEngineDescription(Neo4jConsumer.class));
+
+	public void testConsumer() throws ResourceInitializationException, UIMAException, IOException {
+		SimplePipeline.runPipeline(
+				CollectionReaderFactory.createReaderDescription(XmiReader.class, XmiReader.PARAM_SOURCE_LOCATION,
+						"src/test/resources/*.xmi", XmiReader.PARAM_LENIENT, true),
+				AnalysisEngineFactory.createEngineDescription(Neo4jConsumer.class));
 	}
 }

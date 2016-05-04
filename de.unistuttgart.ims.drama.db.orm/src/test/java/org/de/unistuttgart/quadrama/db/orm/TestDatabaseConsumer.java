@@ -9,8 +9,6 @@ import org.apache.uima.fit.factory.AnalysisEngineFactory;
 import org.apache.uima.fit.factory.CollectionReaderFactory;
 import org.apache.uima.fit.pipeline.SimplePipeline;
 import org.apache.uima.resource.ResourceInitializationException;
-import org.junit.Before;
-import org.junit.Test;
 
 import com.j256.ormlite.db.MysqlDatabaseType;
 
@@ -22,24 +20,16 @@ public class TestDatabaseConsumer {
 	CollectionReaderDescription crd;
 	String dbUrl = "jdbc:mysql://localhost/de.unistuttgart.quadrama";
 
-	@Before
 	public void setUp() throws ResourceInitializationException {
-		crd =
-				CollectionReaderFactory.createReaderDescription(
-						XmiReader.class, XmiReader.PARAM_SOURCE_LOCATION,
-						"src/test/resources/*.xmi");
+		crd = CollectionReaderFactory.createReaderDescription(XmiReader.class, XmiReader.PARAM_SOURCE_LOCATION,
+				"src/test/resources/*.xmi");
 
 	}
 
-	@Test
-	public void testDatabaseConsumer() throws ResourceInitializationException,
-	UIMAException, IOException {
-		SimplePipeline.runPipeline(crd, AnalysisEngineFactory
-				.createEngineDescription(DatabaseConsumer.class,
-						DatabaseConsumer.PARAM_DB_URL, dbUrl,
-						DatabaseConsumer.PARAM_DB_PASSWORD, "",
-						DatabaseConsumer.PARAM_DB_USERNAME, "root",
-						DatabaseConsumer.PARAM_DATABASETYPE,
-						MysqlDatabaseType.class));
+	public void testDatabaseConsumer() throws ResourceInitializationException, UIMAException, IOException {
+		SimplePipeline.runPipeline(crd,
+				AnalysisEngineFactory.createEngineDescription(DatabaseConsumer.class, DatabaseConsumer.PARAM_DB_URL,
+						dbUrl, DatabaseConsumer.PARAM_DB_PASSWORD, "", DatabaseConsumer.PARAM_DB_USERNAME, "root",
+						DatabaseConsumer.PARAM_DATABASETYPE, MysqlDatabaseType.class));
 	}
 }
