@@ -321,7 +321,7 @@
             </features>
         </typeDescription>
         <typeDescription>
-            <name>de.unistuttgart.quadrama.api.Drama</name>
+            <name>de.unistuttgart.ims.drama.api.Drama</name>
             <description/>
             <supertypeName>de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData</supertypeName>
             <features>
@@ -343,7 +343,7 @@
             </features>
         </typeDescription>
         <typeDescription>
-            <name>de.unistuttgart.quadrama.api.DramaSegment</name>
+            <name>de.unistuttgart.ims.drama.api.DramaSegment</name>
             <description/>
             <supertypeName>uima.tcas.Annotation</supertypeName>
             <features>
@@ -355,12 +355,12 @@
             </features>
         </typeDescription>
         <typeDescription>
-            <name>de.unistuttgart.quadrama.api.DramatisPersonae</name>
+            <name>de.unistuttgart.ims.drama.api.DramatisPersonae</name>
             <description/>
             <supertypeName>uima.tcas.Annotation</supertypeName>
         </typeDescription>
         <typeDescription>
-            <name>de.unistuttgart.quadrama.api.Figure</name>
+            <name>de.unistuttgart.ims.drama.api.Figure</name>
             <description/>
             <supertypeName>uima.tcas.Annotation</supertypeName>
             <features>
@@ -372,7 +372,7 @@
                 <featureDescription>
                     <name>Description</name>
                     <description/>
-                    <rangeTypeName>de.unistuttgart.quadrama.api.FigureDescription</rangeTypeName>
+                    <rangeTypeName>de.unistuttgart.ims.drama.api.FigureDescription</rangeTypeName>
                 </featureDescription>
                 <featureDescription>
                     <name>NumberOfUtterances</name>
@@ -412,54 +412,54 @@
             </features>
         </typeDescription>
         <typeDescription>
-            <name>de.unistuttgart.quadrama.api.FigureDescription</name>
+            <name>de.unistuttgart.ims.drama.api.FigureDescription</name>
             <description/>
             <supertypeName>uima.tcas.Annotation</supertypeName>
         </typeDescription>
         <typeDescription>
-            <name>de.unistuttgart.quadrama.api.FigureMention</name>
+            <name>de.unistuttgart.ims.drama.api.FigureMention</name>
             <description/>
             <supertypeName>uima.tcas.Annotation</supertypeName>
             <features>
                 <featureDescription>
                     <name>Figure</name>
                     <description/>
-                    <rangeTypeName>de.unistuttgart.quadrama.api.Figure</rangeTypeName>
+                    <rangeTypeName>de.unistuttgart.ims.drama.api.Figure</rangeTypeName>
                 </featureDescription>
             </features>
         </typeDescription>
         <typeDescription>
-            <name>de.unistuttgart.quadrama.api.Footnote</name>
+            <name>de.unistuttgart.ims.drama.api.Footnote</name>
             <description/>
             <supertypeName>uima.tcas.Annotation</supertypeName>
         </typeDescription>
         <typeDescription>
-            <name>de.unistuttgart.quadrama.api.FrontMatter</name>
+            <name>de.unistuttgart.ims.drama.api.FrontMatter</name>
             <description/>
             <supertypeName>uima.tcas.Annotation</supertypeName>
         </typeDescription>
         <typeDescription>
-            <name>de.unistuttgart.quadrama.api.Heading</name>
+            <name>de.unistuttgart.ims.drama.api.Heading</name>
             <description/>
             <supertypeName>uima.tcas.Annotation</supertypeName>
         </typeDescription>
         <typeDescription>
-            <name>de.unistuttgart.quadrama.api.MainMatter</name>
+            <name>de.unistuttgart.ims.drama.api.MainMatter</name>
             <description/>
             <supertypeName>uima.tcas.Annotation</supertypeName>
         </typeDescription>
         <typeDescription>
-            <name>de.unistuttgart.quadrama.api.Scene</name>
+            <name>de.unistuttgart.ims.drama.api.Scene</name>
             <description/>
-            <supertypeName>de.unistuttgart.quadrama.api.DramaSegment</supertypeName>
+            <supertypeName>de.unistuttgart.ims.drama.api.DramaSegment</supertypeName>
         </typeDescription>
         <typeDescription>
-            <name>de.unistuttgart.quadrama.api.SceneHeading</name>
+            <name>de.unistuttgart.ims.drama.api.SceneHeading</name>
             <description/>
-            <supertypeName>de.unistuttgart.quadrama.api.Heading</supertypeName>
+            <supertypeName>de.unistuttgart.ims.drama.api.Heading</supertypeName>
         </typeDescription>
         <typeDescription>
-            <name>de.unistuttgart.quadrama.api.Speaker</name>
+            <name>de.unistuttgart.ims.drama.api.Speaker</name>
             <description/>
             <supertypeName>uima.tcas.Annotation</supertypeName>
             <features>
@@ -471,59 +471,59 @@
                 <featureDescription>
                     <name>Figure</name>
                     <description/>
-                    <rangeTypeName>de.unistuttgart.quadrama.api.Figure</rangeTypeName>
+                    <rangeTypeName>de.unistuttgart.ims.drama.api.Figure</rangeTypeName>
                 </featureDescription>
             </features>
         </typeDescription>
         <typeDescription>
-            <name>de.unistuttgart.quadrama.api.SpeakerFigure</name>
+            <name>de.unistuttgart.ims.drama.api.SpeakerFigure</name>
             <description/>
-            <supertypeName>de.unistuttgart.quadrama.api.Figure</supertypeName>
+            <supertypeName>de.unistuttgart.ims.drama.api.Figure</supertypeName>
         </typeDescription>
         <typeDescription>
-            <name>de.unistuttgart.quadrama.api.Speech</name>
-            <description/>
-            <supertypeName>uima.tcas.Annotation</supertypeName>
-        </typeDescription>
-        <typeDescription>
-            <name>de.unistuttgart.quadrama.api.SpeechProse</name>
-            <description/>
-            <supertypeName>de.unistuttgart.quadrama.api.Speech</supertypeName>
-        </typeDescription>
-        <typeDescription>
-            <name>de.unistuttgart.quadrama.api.SpeechVerse</name>
-            <description/>
-            <supertypeName>de.unistuttgart.quadrama.api.Speech</supertypeName>
-        </typeDescription>
-        <typeDescription>
-            <name>de.unistuttgart.quadrama.api.StageDirection</name>
+            <name>de.unistuttgart.ims.drama.api.Speech</name>
             <description/>
             <supertypeName>uima.tcas.Annotation</supertypeName>
         </typeDescription>
         <typeDescription>
-            <name>de.unistuttgart.quadrama.api.Utterance</name>
+            <name>de.unistuttgart.ims.drama.api.SpeechProse</name>
+            <description/>
+            <supertypeName>de.unistuttgart.ims.drama.api.Speech</supertypeName>
+        </typeDescription>
+        <typeDescription>
+            <name>de.unistuttgart.ims.drama.api.SpeechVerse</name>
+            <description/>
+            <supertypeName>de.unistuttgart.ims.drama.api.Speech</supertypeName>
+        </typeDescription>
+        <typeDescription>
+            <name>de.unistuttgart.ims.drama.api.StageDirection</name>
+            <description/>
+            <supertypeName>uima.tcas.Annotation</supertypeName>
+        </typeDescription>
+        <typeDescription>
+            <name>de.unistuttgart.ims.drama.api.Utterance</name>
             <description/>
             <supertypeName>uima.tcas.Annotation</supertypeName>
             <features>
                 <featureDescription>
                     <name>Speaker</name>
                     <description/>
-                    <rangeTypeName>de.unistuttgart.quadrama.api.Speaker</rangeTypeName>
+                    <rangeTypeName>de.unistuttgart.ims.drama.api.Speaker</rangeTypeName>
                 </featureDescription>
                 <featureDescription>
                     <name>Stage</name>
                     <description/>
-                    <rangeTypeName>de.unistuttgart.quadrama.api.StageDirection</rangeTypeName>
+                    <rangeTypeName>de.unistuttgart.ims.drama.api.StageDirection</rangeTypeName>
                 </featureDescription>
                 <featureDescription>
                     <name>Speech</name>
                     <description/>
-                    <rangeTypeName>de.unistuttgart.quadrama.api.Speech</rangeTypeName>
+                    <rangeTypeName>de.unistuttgart.ims.drama.api.Speech</rangeTypeName>
                 </featureDescription>
             </features>
         </typeDescription>
         <typeDescription>
-            <name>de.unistuttgart.quadrama.api.ag.FigureProperties</name>
+            <name>de.unistuttgart.ims.drama.api.ag.FigureProperties</name>
             <description/>
             <supertypeName>uima.tcas.Annotation</supertypeName>
             <features>
@@ -550,7 +550,19 @@
                 <featureDescription>
                     <name>Figure</name>
                     <description/>
-                    <rangeTypeName>de.unistuttgart.quadrama.api.Figure</rangeTypeName>
+                    <rangeTypeName>de.unistuttgart.ims.drama.api.Figure</rangeTypeName>
+                </featureDescription>
+            </features>
+        </typeDescription>
+        <typeDescription>
+            <name>de.unistuttgart.quadrama.core.api.Origin</name>
+            <description/>
+            <supertypeName>uima.tcas.Annotation</supertypeName>
+            <features>
+                <featureDescription>
+                    <name>Offset</name>
+                    <description/>
+                    <rangeTypeName>uima.cas.Integer</rangeTypeName>
                 </featureDescription>
             </features>
         </typeDescription>
@@ -677,14 +689,14 @@
             <supertypeName>de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Split</supertypeName>
         </typeDescription>
         <typeDescription>
-            <name>de.unistuttgart.quadrama.api.Act</name>
+            <name>de.unistuttgart.ims.drama.api.Act</name>
             <description/>
-            <supertypeName>de.unistuttgart.quadrama.api.DramaSegment</supertypeName>
+            <supertypeName>de.unistuttgart.ims.drama.api.DramaSegment</supertypeName>
         </typeDescription>
         <typeDescription>
-            <name>de.unistuttgart.quadrama.api.ActHeading</name>
+            <name>de.unistuttgart.ims.drama.api.ActHeading</name>
             <description/>
-            <supertypeName>de.unistuttgart.quadrama.api.Heading</supertypeName>
+            <supertypeName>de.unistuttgart.ims.drama.api.Heading</supertypeName>
         </typeDescription>
     </types>
 </typeSystemDescription>
