@@ -2,6 +2,7 @@ package de.unistuttgart.quadrama.io.tei.textgrid;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -170,6 +171,15 @@ public class TestTextgridTEIFileReader {
 			for (Act act : JCasUtil.select(jcas, Act.class)) {
 				assertEquals(1, JCasUtil.selectCovered(ActHeading.class, act).size());
 			}
+		}
+		// check that speaker annotations are not empty
+		for (Speaker speaker : JCasUtil.select(jcas, Speaker.class)) {
+			assertNotEquals(speaker.getBegin(), speaker.getEnd());
+		}
+
+		// check that figure annotations are not empty
+		for (Figure figure : JCasUtil.select(jcas, Figure.class)) {
+			assertNotEquals(figure.getBegin(), figure.getEnd());
 		}
 	}
 
