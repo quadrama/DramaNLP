@@ -25,6 +25,7 @@ import org.apache.uima.resource.ResourceInitializationException;
 import org.junit.Before;
 import org.junit.Test;
 
+import de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData;
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.unistuttgart.ims.drama.api.Act;
 import de.unistuttgart.ims.drama.api.ActHeading;
@@ -149,9 +150,11 @@ public class TestTextgridTEIFileReader {
 	}
 
 	private void checkGold(JCas jcas, CSVRecord gold) {
-		assertEquals((int) Integer.valueOf(gold.get(1)), JCasUtil.select(jcas, Act.class).size());
-		assertEquals((int) Integer.valueOf(gold.get(2)), JCasUtil.select(jcas, Scene.class).size());
-		assertEquals((int) Integer.valueOf(gold.get(3)), JCasUtil.select(jcas, Figure.class).size());
+		String documentId = DocumentMetaData.get(jcas).getDocumentId();
+		assertEquals(documentId, (int) Integer.valueOf(gold.get(1)), JCasUtil.select(jcas, Act.class).size());
+		assertEquals(documentId, (int) Integer.valueOf(gold.get(2)), JCasUtil.select(jcas, Scene.class).size());
+		if (Integer.valueOf(gold.get(3)) > 0)
+			assertEquals(documentId, (int) Integer.valueOf(gold.get(3)), JCasUtil.select(jcas, Figure.class).size());
 
 	}
 
