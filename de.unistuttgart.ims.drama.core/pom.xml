@@ -99,7 +99,7 @@
 							<!-- REQUIRED -->
 							<typeSystemIncludes>
 								<!-- one or more ant-like file patterns identifying top level descriptors -->
-								<typeSystemInclude>src/main/java/de/unistuttgart/quadrama/core/api/Types.xml</typeSystemInclude>
+								<typeSystemInclude>src/main/resources/drama/OriginTypes.xml</typeSystemInclude>
 							</typeSystemIncludes>
 							<!-- true or false, default = false -->
 							<!-- if true, then although the complete merged type system will be 
