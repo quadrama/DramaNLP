@@ -63,7 +63,7 @@ public class TestTextgridTEIFileReader {
 		assertTrue(JCasUtil.exists(jcas, Act.class));
 		assertTrue(JCasUtil.exists(jcas, Scene.class));
 		assertTrue(JCasUtil.exists(jcas, Speaker.class));
-		// there is now Dramatis Personae in ndtw.0
+		// there is no Dramatis Personae in ndtw.0
 		assertFalse(JCasUtil.exists(jcas, DramatisPersonae.class));
 		assertFalse(JCasUtil.exists(jcas, Figure.class));
 
