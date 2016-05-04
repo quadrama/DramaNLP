@@ -209,8 +209,8 @@ public class TextGridUtil {
 				fixFigureAnnotations(jcas);
 			} catch (NoSuchElementException e) {
 				System.err.println("No dramatis personae annotation in drama "
-						+ Drama.get(jcas).getDocumentTitle());
-				e.printStackTrace();
+						+ Drama.get(jcas).getDocumentId());
+				// e.printStackTrace();
 			}
 		}
 	}
