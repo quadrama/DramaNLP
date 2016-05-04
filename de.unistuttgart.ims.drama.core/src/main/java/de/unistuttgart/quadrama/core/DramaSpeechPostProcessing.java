@@ -31,30 +31,19 @@ public class DramaSpeechPostProcessing extends JCasAnnotator_ImplBase {
 
 		try {
 			// map tokens
-			JCas utteranceCas =
-					jcas.getView(DramaSpeechSegmenter.SOFA_UTTERANCES);
+			JCas utteranceCas = jcas.getView(DramaSpeechSegmenter.SOFA_UTTERANCES);
 			for (Origin origin : JCasUtil.select(utteranceCas, Origin.class)) {
 				for (Token token : JCasUtil.selectCovered(Token.class, origin)) {
-					int begin =
-							token.getBegin() + origin.getOffset()
-									- origin.getBegin();
-					int end =
-							token.getEnd() + origin.getOffset()
-									- origin.getBegin();
-					AnnotationFactory.createAnnotation(jcas, begin, end,
-							Token.class);
+					int begin = token.getBegin() + origin.getOffset() - origin.getBegin();
+					int end = token.getEnd() + origin.getOffset() - origin.getBegin();
+					AnnotationFactory.createAnnotation(jcas, begin, end, Token.class);
 				}
 			}
 
 			// map sentences
-			Map<Token, Collection<Origin>> covers =
-					JCasUtil.indexCovering(utteranceCas, Token.class,
-							Origin.class);
-			for (Sentence sentence : JCasUtil.select(utteranceCas,
-					Sentence.class)) {
-				List<Token> tokens =
-						JCasUtil.selectCovered(utteranceCas, Token.class,
-								sentence);
+			Map<Token, Collection<Origin>> covers = JCasUtil.indexCovering(utteranceCas, Token.class, Origin.class);
+			for (Sentence sentence : JCasUtil.select(utteranceCas, Sentence.class)) {
+				List<Token> tokens = JCasUtil.selectCovered(utteranceCas, Token.class, sentence);
 
 				// we search for the first and last token
 				Token firstToken = tokens.get(0);
@@ -63,24 +52,16 @@ public class DramaSpeechPostProcessing extends JCasAnnotator_ImplBase {
 				try {
 					firstOrigin = covers.get(firstToken).iterator().next();
 				} catch (NoSuchElementException e) {
-					getLogger().log(
-							Level.SEVERE,
-							"Re-mapping of token '"
-									+ firstToken.getCoveredText()
-									+ "' did not succeed.");
+					getLogger().log(Level.SEVERE,
+							"Re-mapping of token '" + firstToken.getCoveredText() + "' did not succeed.");
 					continue;
 				}
-				int begin =
-						sentence.getBegin() + firstOrigin.getOffset()
-						- firstOrigin.getBegin();
+				int begin = sentence.getBegin() + firstOrigin.getOffset() - firstOrigin.getBegin();
 				Origin lastOrigin = covers.get(lastToken).iterator().next();
-				int end =
-						sentence.getEnd() + lastOrigin.getOffset()
-						- lastOrigin.getBegin();
+				int end = sentence.getEnd() + lastOrigin.getOffset() - lastOrigin.getBegin();
 
 				// annotations in the target view may span non-token content
-				AnnotationFactory.createAnnotation(jcas, begin, end,
-						Sentence.class);
+				AnnotationFactory.createAnnotation(jcas, begin, end, Sentence.class);
 			}
 
 		} catch (CASException e) {
