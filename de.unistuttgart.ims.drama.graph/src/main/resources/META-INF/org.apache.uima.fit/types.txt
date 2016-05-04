@@ -1,1 +1,1 @@
-classpath*:de/unistuttgart/quadrama/graph/ext/Types.xml
+classpath*:de/unistuttgart/ims/drama/graph/Types.xml
