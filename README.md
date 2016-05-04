@@ -4,10 +4,14 @@ This project collects a number of UIMA components to process dramatic texts. We 
 Currently, the following components are provided
 
 ## de.unistuttgart.ims.drama.api
-Data structures and UIMA annotation types for dramatic texts.
+UIMA annotation types for dramatic texts.
 
-## de.unistuttgart.quadrama.io.gutenbergde
+## de.unistuttgart.ims.drama.io.gutenbergde
 Reads in dramatic texts from HTML files downloaded from gutenberg.spiegel.de
+Currently, this component expects preprocessing. Scripts can be found in `src/main/perl`.
 
-## de.unistuttgart.quadrama.core
+## de.unistuttgart.ims.drama.io.tei.textgrid
+Parsing textgrid TEI texts, as good as possible.
+
+## de.unistuttgart.ims.drama.core
 Components that allow processing of dramatic texts. We make use of standard dkpro components for specific portions of the dramatic texts (e.g., figure speech)
