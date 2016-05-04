@@ -21,21 +21,14 @@ public class TestNetworkExtractor {
 
 	@Before
 	public void setUp() throws ResourceInitializationException {
-		crd =
-				CollectionReaderFactory.createReaderDescription(
-						XmiReader.class, XmiReader.PARAM_SOURCE_LOCATION,
-						"src/test/resources/*.xmi", XmiReader.PARAM_LENIENT,
-						true);
+		crd = CollectionReaderFactory.createReaderDescription(XmiReader.class, XmiReader.PARAM_SOURCE_LOCATION,
+				"src/test/resources/*.xmi");
 	}
 
 	@Test
-	public void testNetworkExtractor() throws ResourceInitializationException,
-			UIMAException, IOException {
-		SimplePipeline.runPipeline(crd, AnalysisEngineFactory
-				.createEngineDescription(SpeakerIdentifier.class),
-				AnalysisEngineFactory
-						.createEngineDescription(NetworkExtractor.class),
-				AnalysisEngineFactory.createEngineDescription(XmiWriter.class,
-						XmiWriter.PARAM_TARGET_LOCATION, "target/"));
+	public void testNetworkExtractor() throws ResourceInitializationException, UIMAException, IOException {
+		SimplePipeline.runPipeline(crd, AnalysisEngineFactory.createEngineDescription(SpeakerIdentifier.class),
+				AnalysisEngineFactory.createEngineDescription(NetworkExtractor.class), AnalysisEngineFactory
+						.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION, "target/"));
 	}
 }
