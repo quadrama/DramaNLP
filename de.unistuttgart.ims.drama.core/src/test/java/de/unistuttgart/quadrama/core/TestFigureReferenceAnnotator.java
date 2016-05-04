@@ -20,18 +20,12 @@ import de.unistuttgart.ims.drama.api.Figure;
 
 public class TestFigureReferenceAnnotator {
 	@Test
-	public void testFigureReferenceAnnotator()
-			throws ResourceInitializationException {
-		CollectionReaderDescription reader =
-				CollectionReaderFactory.createReaderDescription(
-						XmiReader.class, XmiReader.PARAM_SOURCE_LOCATION,
-						"src/test/resources/FigureReferenceAnnotator/*.xmi",
-						XmiReader.PARAM_LENIENT, true);
-		AnalysisEngineDescription engine =
-				AnalysisEngineFactory
+	public void testFigureReferenceAnnotator() throws ResourceInitializationException {
+		CollectionReaderDescription reader = CollectionReaderFactory.createReaderDescription(XmiReader.class,
+				XmiReader.PARAM_SOURCE_LOCATION, "src/test/resources/FigureReferenceAnnotator/*.xmi");
+		AnalysisEngineDescription engine = AnalysisEngineFactory
 				.createEngineDescription(FigureReferenceAnnotator.class);
-		JCasIterator iterator =
-				SimplePipeline.iteratePipeline(reader, engine).iterator();
+		JCasIterator iterator = SimplePipeline.iteratePipeline(reader, engine).iterator();
 		while (iterator.hasNext()) {
 			JCas jcas = iterator.next();
 			assertTrue(JCasUtil.exists(jcas, Figure.class));

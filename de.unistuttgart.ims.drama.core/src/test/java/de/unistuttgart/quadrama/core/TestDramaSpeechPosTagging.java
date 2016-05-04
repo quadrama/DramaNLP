@@ -23,7 +23,6 @@ import org.xml.sax.SAXException;
 
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.NN;
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS;
-import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.tudarmstadt.ukp.dkpro.core.languagetool.LanguageToolSegmenter;
 import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordPosTagger;
 
@@ -35,28 +34,19 @@ public class TestDramaSpeechPosTagging {
 	@Before
 	public void setUp() throws UIMAException, SAXException, IOException {
 
-		TypeSystemDescription tsd =
-				TypeSystemDescriptionFactory.createTypeSystemDescription();
+		TypeSystemDescription tsd = TypeSystemDescriptionFactory.createTypeSystemDescription();
 		jcas = JCasFactory.createJCas(tsd);
-		XmiCasDeserializer.deserialize(
-				getClass().getResourceAsStream("/test.xmi"), jcas.getCas(),
-				true);
-		desc =
-				DramaSpeechSegmenter
-				.getWrappedSegmenterDescription(LanguageToolSegmenter.class);
+		XmiCasDeserializer.deserialize(getClass().getResourceAsStream("/rfxf.0.xmi"), jcas.getCas(), true);
+		jcas.setDocumentLanguage("de");
+		desc = DramaSpeechSegmenter.getWrappedSegmenterDescription(LanguageToolSegmenter.class);
 	}
 
 	@Test
-	public void testSegmentation() throws ResourceInitializationException,
-	AnalysisEngineProcessException {
+	public void testSegmentation() throws ResourceInitializationException, AnalysisEngineProcessException {
 
-		SimplePipeline.runPipeline(jcas, desc, AnalysisEngineFactory
-				.createEngineDescription(StanfordPosTagger.class),
-				AnalysisEngineFactory.createEngineDescription(XmiWriter.class,
-						XmiWriter.PARAM_TARGET_LOCATION, "target"));
+		SimplePipeline.runPipeline(jcas, desc, AnalysisEngineFactory.createEngineDescription(StanfordPosTagger.class));
 
 		assertTrue(JCasUtil.exists(jcas, POS.class));
-		assertEquals("Leder", JCasUtil.selectByIndex(jcas, NN.class, 0)
-				.getCoveredText());
+		assertEquals("Liebe", JCasUtil.selectByIndex(jcas, NN.class, 0).getCoveredText());
 	}
 }

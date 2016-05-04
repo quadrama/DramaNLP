@@ -9,7 +9,6 @@ import org.apache.uima.UIMAException;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.impl.XmiCasDeserializer;
-import org.apache.uima.fit.factory.AnalysisEngineFactory;
 import org.apache.uima.fit.factory.JCasFactory;
 import org.apache.uima.fit.factory.TypeSystemDescriptionFactory;
 import org.apache.uima.fit.pipeline.SimplePipeline;
@@ -22,7 +21,6 @@ import org.junit.Test;
 import org.xml.sax.SAXException;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
-import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.tudarmstadt.ukp.dkpro.core.languagetool.LanguageToolSegmenter;
 
 public class TestDramaSpeechSegmentation {
@@ -33,30 +31,21 @@ public class TestDramaSpeechSegmentation {
 	@Before
 	public void setUp() throws UIMAException, SAXException, IOException {
 
-		TypeSystemDescription tsd =
-				TypeSystemDescriptionFactory.createTypeSystemDescription();
+		TypeSystemDescription tsd = TypeSystemDescriptionFactory.createTypeSystemDescription();
 		jcas = JCasFactory.createJCas(tsd);
-		XmiCasDeserializer.deserialize(
-				getClass().getResourceAsStream("/test.xmi"), jcas.getCas(),
-				true);
+		XmiCasDeserializer.deserialize(getClass().getResourceAsStream("/rfxf.0.xmi"), jcas.getCas(), true);
+		jcas.setDocumentLanguage("de");
 
-		desc =
-				DramaSpeechSegmenter
-						.getWrappedSegmenterDescription(LanguageToolSegmenter.class);
+		desc = DramaSpeechSegmenter.getWrappedSegmenterDescription(LanguageToolSegmenter.class);
 	}
 
 	@Test
-	public void testSegmentation() throws ResourceInitializationException,
-	AnalysisEngineProcessException {
+	public void testSegmentation() throws ResourceInitializationException, AnalysisEngineProcessException {
 
-		SimplePipeline.runPipeline(jcas, desc, AnalysisEngineFactory
-				.createEngineDescription(XmiWriter.class,
-						XmiWriter.PARAM_TARGET_LOCATION, "target"));
+		SimplePipeline.runPipeline(jcas, desc);
 
 		assertTrue(JCasUtil.exists(jcas, Token.class));
-		assertEquals("Zieh", JCasUtil.selectByIndex(jcas, Token.class, 0)
-				.getCoveredText());
-		assertEquals(";", JCasUtil.selectByIndex(jcas, Token.class, 20)
-				.getCoveredText());
+		assertEquals("Unbegreiflich", JCasUtil.selectByIndex(jcas, Token.class, 0).getCoveredText());
+		assertEquals("ruhig", JCasUtil.selectByIndex(jcas, Token.class, 20).getCoveredText());
 	}
 }
