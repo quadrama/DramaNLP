@@ -1,7 +1,6 @@
 package de.unistuttgart.quadrama.io.gutenbergde;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
@@ -37,29 +36,20 @@ public class TestGutenbergDEReader {
 
 	@Before
 	public void setUp() throws ResourceInitializationException {
-		description =
-				CollectionReaderFactory.createReaderDescription(
-						GutenbergDEReader.class,
-						GutenbergDEReader.PARAM_INPUT_DIRECTORY,
-						"src/test/resources/test1");
+		description = CollectionReaderFactory.createReaderDescription(GutenbergDEReader.class,
+				GutenbergDEReader.PARAM_INPUT_DIRECTORY, "src/test/resources/test1");
 	}
 
 	@Test
 	public void testReader() throws UIMAException, IOException {
-		JCasIterator iter =
-				SimplePipeline.iteratePipeline(
-						description,
-						AnalysisEngineFactory.createEngineDescription(
-								XmiWriter.class,
-								XmiWriter.PARAM_TARGET_LOCATION, "target/doc"))
-						.iterator();
+		JCasIterator iter = SimplePipeline.iteratePipeline(description, AnalysisEngineFactory
+				.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION, "target/doc")).iterator();
 		JCas jcas;
 
 		jcas = iter.next();
 		// sanity check
 		// 1.xml
-		assertEquals("1.xml", JCasUtil.selectSingle(jcas, Drama.class)
-				.getDocumentId());
+		assertEquals("1", JCasUtil.selectSingle(jcas, Drama.class).getDocumentId());
 		assertTrue(JCasUtil.exists(jcas, Drama.class));
 		assertTrue(JCasUtil.exists(jcas, Act.class));
 		assertTrue(JCasUtil.exists(jcas, Scene.class));
@@ -72,31 +62,27 @@ public class TestGutenbergDEReader {
 
 		// Balkony scene
 		Scene scene = JCasUtil.selectByIndex(jcas, Scene.class, 7);
-		Iterator<Utterance> utteranceIter =
-				JCasUtil.selectCovered(Utterance.class, scene).iterator();
+		Iterator<Utterance> utteranceIter = JCasUtil.selectCovered(Utterance.class, scene).iterator();
 		Utterance utter;
 		utter = utteranceIter.next();
 		assertTrue(utter.getCoveredText().endsWith("berühren möchte!"));
-		Set<String> s =
-				new HashSet<String>(JCasUtil.toText(JCasUtil.selectCovered(
-						Speaker.class, scene)));
+		Set<String> s = new HashSet<String>(JCasUtil.toText(JCasUtil.selectCovered(Speaker.class, scene)));
 		assertEquals(2, s.size());
 
 		jcas = iter.next();
 		// sanity check
 		// 2.xml
-		
+
 		// TODO: Currently, we don'T detect scenes and acts correctly
-		assertEquals("2.xml", JCasUtil.selectSingle(jcas, Drama.class)
-				.getDocumentId());
+		assertEquals("2", JCasUtil.selectSingle(jcas, Drama.class).getDocumentId());
 		assertTrue(JCasUtil.exists(jcas, Drama.class));
-		//assertTrue(JCasUtil.exists(jcas, Act.class));
-		//assertFalse(JCasUtil.exists(jcas, Scene.class));
+		// assertTrue(JCasUtil.exists(jcas, Act.class));
+		// assertFalse(JCasUtil.exists(jcas, Scene.class));
 		assertTrue(JCasUtil.exists(jcas, Speaker.class));
 		assertTrue(JCasUtil.exists(jcas, DramatisPersonae.class));
 		assertTrue(JCasUtil.exists(jcas, FrontMatter.class));
 		assertTrue(JCasUtil.exists(jcas, MainMatter.class));
-		//assertEquals(3, JCasUtil.select(jcas, Act.class).size());
+		// assertEquals(3, JCasUtil.select(jcas, Act.class).size());
 
 	}
 }
