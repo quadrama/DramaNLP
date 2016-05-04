@@ -15,6 +15,7 @@ import de.tudarmstadt.ukp.dkpro.core.languagetool.LanguageToolSegmenter;
 import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordPosTagger;
 import de.unistuttgart.quadrama.core.DramaSpeechSegmenter;
 import de.unistuttgart.quadrama.core.FigureMentionDetection;
+import de.unistuttgart.quadrama.core.FigureReferenceAnnotator;
 import de.unistuttgart.quadrama.core.FigureSpeechStatistics;
 import de.unistuttgart.quadrama.core.SpeakerIdentifier;
 import de.unistuttgart.quadrama.core.UtteranceLinker;
@@ -29,10 +30,11 @@ public class Visualise {
 		System.setProperty("java.util.logging.config.file", "src/main/resources/logging.properties");
 
 		CollectionReaderDescription crd = CollectionReaderFactory.createReaderDescription(TextgridTEIUrlReader.class,
-				TextgridTEIUrlReader.PARAM_URL_LIST, "src/main/resources/urls.txt");
+				TextgridTEIUrlReader.PARAM_INPUT_DIRECTORY, "src/main/resources");
 
 		SimplePipeline.runPipeline(crd,
 				DramaSpeechSegmenter.getWrappedSegmenterDescription(LanguageToolSegmenter.class),
+				createEngineDescription(FigureReferenceAnnotator.class),
 				createEngineDescription(SpeakerIdentifier.class, SpeakerIdentifier.PARAM_CREATE_SPEAKER_FIGURE, true),
 				createEngineDescription(UtteranceLinker.class), createEngineDescription(StanfordPosTagger.class),
 				// createEngineDescription(StanfordNamedEntityRecognizer.class),
