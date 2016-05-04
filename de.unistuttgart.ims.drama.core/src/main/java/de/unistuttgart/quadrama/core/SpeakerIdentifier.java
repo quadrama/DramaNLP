@@ -24,39 +24,28 @@ import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.api.SpeakerFigure;
 
 /**
- * Before reference string
- * mean 446.82978723404256 18.148936170212774
- * min 3.0 1.0
- * max 1771.0 79.0
+ * Before reference string mean 446.82978723404256 18.148936170212774 min 3.0
+ * 1.0 max 1771.0 79.0
  * 
  * @author reiterns
  *
  */
-@TypeCapability(inputs = { "de.unistuttgart.quadrama.api.Figure",
-"de.unistuttgart.quadrama.api.Speaker" }, outputs = {
-		"de.unistuttgart.quadrama.api.Speaker:Figure",
-		"de.unistuttgart.quadrama.api.SpeakerFigure",
-"de.unistuttgart.quadrama.api.Figure:Id" })
+@TypeCapability(inputs = { "de.unistuttgart.quadrama.api.Figure", "de.unistuttgart.quadrama.api.Speaker" }, outputs = {
+		"de.unistuttgart.quadrama.api.Speaker:Figure", "de.unistuttgart.quadrama.api.SpeakerFigure",
+		"de.unistuttgart.quadrama.api.Figure:Id" })
 public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 
-	public static final String PARAM_CREATE_SPEAKER_FIGURE =
-			"Create speaker figure";
+	public static final String PARAM_CREATE_SPEAKER_FIGURE = "Create speaker figure";
 
-	@ConfigurationParameter(name = PARAM_CREATE_SPEAKER_FIGURE,
-			mandatory = false)
+	@ConfigurationParameter(name = PARAM_CREATE_SPEAKER_FIGURE, mandatory = false)
 	boolean createSpeakerFigure = false;
 
 	int threshold = 2;
 
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
-		getLogger().log(
-				Level.INFO,
-				"Running "
-						+ getClass().getName()
-						+ " on "
-						+ JCasUtil.selectSingle(jcas, Drama.class)
-						.getDocumentId());
+		getLogger().log(Level.INFO,
+				"Running " + getClass().getName() + " on " + JCasUtil.selectSingle(jcas, Drama.class).getDocumentId());
 
 		Map<String, Figure> map = new HashMap<String, Figure>();
 		Map<String, Figure> referenceMap = new HashMap<String, Figure>();
@@ -65,17 +54,14 @@ public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 			figure.setId(figureId++);
 			map.put(figure.getCoveredText().trim().toLowerCase(), figure);
 			if (figure.getReference() != null)
-				referenceMap.put(figure.getReference().trim().toLowerCase(),
-						figure);
+				referenceMap.put(figure.getReference().trim().toLowerCase(), figure);
 		}
 
 		Set<Speaker> unassigned = new HashSet<Speaker>();
 
 		for (Speaker cm : JCasUtil.select(jcas, Speaker.class)) {
 			if (cm.getFigure() == null) {
-				String sName =
-						cm.getCoveredText().trim().replaceAll("[.,;]", "")
-								.toLowerCase();
+				String sName = cm.getCoveredText().trim().replaceAll("[.,;]", "").toLowerCase();
 				if (map.containsKey(sName))
 					cm.setFigure(map.get(sName));
 				else if (referenceMap.containsKey(sName))
@@ -90,14 +76,10 @@ public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 		unassigned = assignLevDistance(map.values(), unassigned, threshold);
 
 		if (!unassigned.isEmpty())
-			getLogger().log(
-					Level.WARNING,
-					unassigned.size() + " unassigned speakers: "
-							+ JCasUtil.toText(unassigned));
+			getLogger().log(Level.WARNING, unassigned.size() + " unassigned speakers: " + JCasUtil.toText(unassigned));
 
 		if (createSpeakerFigure) {
-			Map<String, TreeSet<Speaker>> unassignedMap =
-					new HashMap<String, TreeSet<Speaker>>();
+			Map<String, TreeSet<Speaker>> unassignedMap = new HashMap<String, TreeSet<Speaker>>();
 			for (Speaker speaker : unassigned) {
 				if (!unassignedMap.containsKey(speaker.getCoveredText().trim()))
 					unassignedMap.put(speaker.getCoveredText().trim(),
@@ -107,15 +89,11 @@ public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 
 			for (String s : unassignedMap.keySet()) {
 				Speaker speaker = unassignedMap.get(s).first();
-				getLogger().log(
-						Level.WARNING,
-						"Creating SpeakerFigure for "
-								+ speaker.getCoveredText());
-				Figure fig =
-						AnnotationFactory.createAnnotation(jcas,
-								speaker.getBegin(), speaker.getEnd(),
-								SpeakerFigure.class);
+				getLogger().log(Level.WARNING, "Creating SpeakerFigure for " + speaker.getCoveredText());
+				Figure fig = AnnotationFactory.createAnnotation(jcas, speaker.getBegin(), speaker.getEnd(),
+						SpeakerFigure.class);
 				fig.setId(figureId++);
+				fig.setReference(speaker.getCoveredText());
 				for (Speaker sp : unassignedMap.get(s)) {
 					sp.setFigure(fig);
 				}
@@ -124,46 +102,42 @@ public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 
 	}
 
-	protected Set<Speaker> assignLevel2(Collection<Figure> figures,
-			Collection<Speaker> speakers) {
+	protected Set<Speaker> assignLevel2(Collection<Figure> figures, Collection<Speaker> speakers) {
 		Set<Speaker> unassigned = new HashSet<Speaker>();
 		for (Speaker speaker : speakers) {
 			for (Figure figure : figures) {
-				String[] nameParts =
-						figure.getCoveredText().toLowerCase().split(" +");
-				if (ArrayUtils.contains(nameParts, speaker.getCoveredText()
-						.toLowerCase().trim())) {
+				String[] nameParts = figure.getCoveredText().toLowerCase().split(" +");
+				if (ArrayUtils.contains(nameParts, speaker.getCoveredText().toLowerCase().trim())) {
 					speaker.setFigure(figure);
-				} else {}
+				} else {
+				}
 			}
-			if (speaker.getFigure() == null) unassigned.add(speaker);
+			if (speaker.getFigure() == null)
+				unassigned.add(speaker);
 		}
 		return unassigned;
 	}
 
-	protected Set<Speaker> assignLevel3(Collection<Figure> figures,
-			Collection<Speaker> speakers) {
+	protected Set<Speaker> assignLevel3(Collection<Figure> figures, Collection<Speaker> speakers) {
 		Set<Speaker> unassigned = new HashSet<Speaker>();
 		for (Speaker speaker : speakers) {
 			for (Figure figure : figures) {
 				if (figure.getDescription() != null) {
-					String[] nameParts =
-							figure.getDescription().getCoveredText()
-							.toLowerCase().split(" +");
-					if (ArrayUtils
-							.contains(nameParts, speaker.getCoveredText())) {
+					String[] nameParts = figure.getDescription().getCoveredText().toLowerCase().split(" +");
+					if (ArrayUtils.contains(nameParts, speaker.getCoveredText())) {
 						speaker.setFigure(figure);
 					}
 				}
 			}
-			if (speaker.getFigure() == null) unassigned.add(speaker);
+			if (speaker.getFigure() == null)
+				unassigned.add(speaker);
 
 		}
 		return unassigned;
 	}
 
-	protected Set<Speaker> assignLevDistance(Collection<Figure> figures,
-			Collection<Speaker> speakers, int maxDistance) {
+	protected Set<Speaker> assignLevDistance(Collection<Figure> figures, Collection<Speaker> speakers,
+			int maxDistance) {
 		Set<Speaker> unassigned = new HashSet<Speaker>();
 		for (Speaker speaker : speakers) {
 			String sName = speaker.getCoveredText().trim().toLowerCase();
@@ -174,7 +148,8 @@ public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 					speaker.setFigure(figure);
 				}
 			}
-			if (speaker.getFigure() == null) unassigned.add(speaker);
+			if (speaker.getFigure() == null)
+				unassigned.add(speaker);
 
 		}
 		return unassigned;
