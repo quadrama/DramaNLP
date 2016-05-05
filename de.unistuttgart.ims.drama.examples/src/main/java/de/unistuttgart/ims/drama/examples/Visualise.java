@@ -14,6 +14,7 @@ import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.tudarmstadt.ukp.dkpro.core.languagetool.LanguageToolSegmenter;
 import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordPosTagger;
 import de.unistuttgart.ims.drama.io.network.DotExporter;
+import de.unistuttgart.ims.drama.io.network.JsonExporter;
 import de.unistuttgart.quadrama.core.DramaSpeechSegmenter;
 import de.unistuttgart.quadrama.core.FigureMentionDetection;
 import de.unistuttgart.quadrama.core.FigureReferenceAnnotator;
@@ -41,11 +42,6 @@ public class Visualise {
 				createEngineDescription(FigureSpeechStatistics.class),
 				createEngineDescription(FigureMentionDetection.class),
 				/*
-				 * Export html view of configuration
-				 */
-				createEngineDescription(ConfigurationHTMLExporter.class,
-						ConfigurationHTMLExporter.PARAM_TARGET_LOCATION, "target/html/"),
-				/*
 				 * Extract copresence network
 				 */
 				createEngineDescription(NetworkExtractor.class),
@@ -55,9 +51,17 @@ public class Visualise {
 				createEngineDescription(NetworkExtractor.class, NetworkExtractor.PARAM_VIEW_NAME, "MentionNetwork",
 						NetworkExtractor.PARAM_NETWORK_TYPE, "MentionNetwork"),
 				/*
+				 * Export html view of configuration
+				 */
+				createEngineDescription(ConfigurationHTMLExporter.class,
+						ConfigurationHTMLExporter.PARAM_TARGET_LOCATION, "target/html/"),
+				/*
 				 * print xmi
 				 */
 				createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION, "target/xmi/"),
+				createEngineDescription(JsonExporter.class, JsonExporter.PARAM_VIEW_NAME, "MentionNetwork",
+						JsonExporter.PARAM_TARGET_LOCATION, "target/html", JsonExporter.PARAM_JAVASCRIPT_VARIABLE,
+						"graph"),
 				createEngineDescription(DotExporter.class, DotExporter.PARAM_VIEW_NAME, "MentionNetwork",
 						DotExporter.PARAM_TARGET_LOCATION, "target/net/mentions/"),
 				createEngineDescription(DotExporter.class, DotExporter.PARAM_VIEW_NAME, "Copresence",

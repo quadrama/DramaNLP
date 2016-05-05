@@ -9,69 +9,45 @@
 <script src="exporting.js"></script>
 <script src="data.js"></script>
 <script src="jquery-ui.js"></script>
+<script src="sigma.min.js"></script>
+<script src="sigma.layout.forceAtlas2.min.js"></script>
+<script src="sigma.plugins.dragNodes.min.js"></script>
+<script src="script.js"></script>
 <script>
 
-function load(id) {
-	$("#hc"+id).highcharts({
-		title:{
-			text:data[id]['id']
-		},
-		chart: {
-			type:'line',
-			zoomType: 'x'
-		},
-    	xAxis: {
-             plotBands: data[id]["plotBands"]
-        },
-        yAxis: {
-        	//categories: speakers
-        },
-        plotOptions: {
-            series: {
-            	lineWidth:1
-                // connectNulls: false // by default
-            }
-        },
-        tooltip: {
-            crosshairs: true,
-            headerFormat:"",
-            useHTML:true,
-            pointFormat: "<div style=\"width:200px;max-width:300px; white-space:normal\"><span style=\"color:{point.color}\">{series.name}</span>: {point.name}</div>"
-        },
-        series:data[id]["data"]
-    });
-	var dramaData = data[id];
 
-	$("#tab"+id).append("<h2>Figure speech overview</h2><div><table width=\"100%\"></table></div>");
-
-	$("#tab"+id+" table").DataTable( {
-	        data: dramaData["data"].map(function(cur, ind, arr) {
-				return [
-					cur['name'],
-					cur['stats']['words'],
-					cur['stats']['utterances'],
-					Number(cur['stats']['meanUtteranceLength']).toFixed(2)
-				]
-			}),
-	        columns: [
-	            { title: "Figure" },
-	            { title: "Words" },
-	            { title: "Utterances" },
-	            { title: "Mean Utt. Length" }
-	        ]
-	    } );
-
-
-}
 
 $(function () {
 	for (index = 0; index < data.length; index++) {
+		var ind = index;
 		$("#tabs ul").append("<li><a href=\"#tab"+index+"\">"+data[index]['id']+"</a></li>");
-		$("#tabs").append("<div id=\"tab"+index+"\"><h2>Figure presence chart</h2><div class=\"hc\" id=\"hc"+index+"\"></div></div>");
-		load(index);
+		loadChart(index);
+		loadTable(index);
+		loadNetwork(index);
 		$("#tab"+index).accordion({
 			header: "h2",
 			active:0
+		});
+		$("#tab"+index).on( "accordionactivate", function( event, ui ) {
+			if ($(ui.newPanel).hasClass("network")) {
+				// Let's first initialize sigma:
+			    var sig = new sigma('network'+ind);
+
+			    // Then, let's add some data to display:
+			    for (var i = 0; i < data[ind]["network"]["nodes"].length; i++) {
+			    	sig.graph.addNode(data[ind]["network"]["nodes"][i]);
+			    }
+			    for (var i = 0; i < data[ind]["network"]["edges"].length; i++) {
+			    	sig.graph.addEdge(data[ind]["network"]["edges"][i]);
+			    }
+			    sig.startForceAtlas2({});
+
+			   
+			    
+			    sig.refresh();
+			    window.setTimeout(function() { sig.stopForceAtlas2(); }, 5000);
+
+			};
 		});
 	}
 	$("#tabs").tabs();

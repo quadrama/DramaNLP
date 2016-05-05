@@ -4,19 +4,24 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
 import org.apache.commons.compress.utils.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
+import org.apache.uima.cas.CASException;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.util.Level;
+import org.jgrapht.Graph;
+import org.jgrapht.graph.DefaultWeightedEdge;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -27,6 +32,7 @@ import de.unistuttgart.ims.drama.api.Heading;
 import de.unistuttgart.ims.drama.api.Scene;
 import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.Utterance;
+import de.unistuttgart.quadrama.graph.ext.GraphImporter;
 
 public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 	static String[] colors = new String[] { "#EEF", "#FEE", "#EFE" };
@@ -36,16 +42,15 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
 
+		String documentId = DocumentMetaData.get(jcas).getDocumentId();
 		JSONArray pbArr = new JSONArray();
 
 		int c = 0;
 		for (Scene segment : JCasUtil.select(jcas, Scene.class)) {
 			JSONObject labelObj = new JSONObject();
-			List<Heading> headings =
-					JCasUtil.selectCovered(Heading.class, segment);
+			List<Heading> headings = JCasUtil.selectCovered(Heading.class, segment);
 			if (headings.isEmpty()) {
-				labelObj.put("text", segment.getCoveredText().substring(0, 15)
-						.trim());
+				labelObj.put("text", segment.getCoveredText().substring(0, 15).trim());
 			} else {
 				labelObj.put("text", headings.get(0).getCoveredText());
 			}
@@ -61,15 +66,14 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 			pbArr.put(obj);
 		}
 
-		SortedSet<Figure> figures =
-				new TreeSet<Figure>(new Comparator<Figure>() {
+		SortedSet<Figure> figures = new TreeSet<Figure>(new Comparator<Figure>() {
 
-					public int compare(Figure o1, Figure o2) {
+			@Override
+			public int compare(Figure o1, Figure o2) {
 
-						return Integer.compare(o2.getNumberOfWords(),
-								o1.getNumberOfWords());
-					}
-				});
+				return Integer.compare(o2.getNumberOfWords(), o1.getNumberOfWords());
+			}
+		});
 
 		figures.addAll(JCasUtil.select(jcas, Figure.class));
 
@@ -91,8 +95,7 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 			if (Double.isNaN((figure.getUtteranceLengthArithmeticMean())))
 				statsObject.put("meanUtteranceLength", 0);
 			else
-				statsObject.put("meanUtteranceLength",
-						figure.getUtteranceLengthArithmeticMean());
+				statsObject.put("meanUtteranceLength", figure.getUtteranceLengthArithmeticMean());
 			j.put("stats", statsObject);
 			// also, each cast member gets an integer (to be used as y-position
 			// in the chart)
@@ -107,10 +110,8 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 			if (utterance.getSpeaker() != null)
 				figure = utterance.getSpeaker().getFigure();
 			if (figure != null && speaker_index.containsKey(figure)) {
-				String s =
-						StringUtils.join(JCasUtil.toText(JCasUtil
-								.selectCovered(jcas, Speech.class, utterance)),
-								'\n');
+				String s = StringUtils.join(JCasUtil.toText(JCasUtil.selectCovered(jcas, Speech.class, utterance)),
+						'\n');
 
 				double yvalue = (-0.1 - (0.05 * speaker_index.get(figure)));
 				JSONObject arrval = new JSONObject();
@@ -129,8 +130,7 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 				series.get(figure).append("data", null);
 
 			} else {
-				getLogger().log(Level.WARNING,
-						"Not assigned: " + utterance.getCoveredText());
+				getLogger().log(Level.WARNING, "Not assigned: " + utterance.getCoveredText());
 			}
 		}
 
@@ -143,17 +143,45 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 		JSONObject obj = new JSONObject();
 		obj.put("plotBands", pbArr);
 		obj.put("data", jsonSeries);
-		obj.put("id", JCasUtil.selectSingle(jcas, DocumentMetaData.class)
-				.getDocumentId());
+		obj.put("id", JCasUtil.selectSingle(jcas, DocumentMetaData.class).getDocumentId());
 
-		objectMap.put(JCasUtil.selectSingle(jcas, DocumentMetaData.class)
-				.getDocumentId(), obj);
+		Graph<Figure, DefaultWeightedEdge> graph;
+		try {
+			Random rand = new Random();
+			graph = GraphImporter.getGraph(jcas, "Copresence");
+			JSONObject json = new JSONObject();
+			for (Figure figure : graph.vertexSet()) {
+				JSONObject figObj = new JSONObject();
+				figObj.put("id", figure.getReference());
+				figObj.put("label", figure.getCoveredText());
+				figObj.put("size", 1);
+				figObj.put("x", rand.nextInt(5));
+				figObj.put("y", rand.nextInt(5));
+				json.append("nodes", figObj);
+			}
+			int edgeId = 0;
+			for (DefaultWeightedEdge edge : graph.edgeSet()) {
+				JSONObject eObj = new JSONObject();
+				Figure src = graph.getEdgeSource(edge);
+				Figure tgt = graph.getEdgeTarget(edge);
+				eObj.put("source", src.getReference());
+				eObj.put("target", tgt.getReference());
+				eObj.put("id", edgeId++);
+				json.append("edges", eObj);
+			}
+			obj.put("network", json);
+		} catch (CASException | ClassNotFoundException | InstantiationException | IllegalAccessException
+				| IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		objectMap.put(documentId, obj);
 
 	}
 
 	@Override
-	public void collectionProcessComplete()
-			throws AnalysisEngineProcessException {
+	public void collectionProcessComplete() throws AnalysisEngineProcessException {
 		super.collectionProcessComplete();
 
 		InputStream is = null;
@@ -245,7 +273,17 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 		} catch (IOException e) {
 			throw new AnalysisEngineProcessException(e);
 		}
-
+		try {
+			copyFile("/html/sigma.min.js", "sigma.min", ".js");
+			copyFile("/html/sigma.layout.forceAtlas2.min.js", "sigma.layout.forceAtlas2.min", ".js");
+		} catch (IOException e) {
+			throw new AnalysisEngineProcessException(e);
+		}
+		try {
+			copyFile("/html/script.js", "script", ".js");
+		} catch (IOException e) {
+			throw new AnalysisEngineProcessException(e);
+		}
 		JSONArray arr = new JSONArray();
 		for (String n : objectMap.keySet()) {
 			arr.put(objectMap.get(n));
@@ -263,8 +301,7 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 		}
 	}
 
-	protected void copyFile(String sourcePath, String targetName,
-			String targetExt) throws IOException {
+	protected void copyFile(String sourcePath, String targetName, String targetExt) throws IOException {
 		InputStream is = null;
 		OutputStream os = null;
 
