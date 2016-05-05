@@ -17,26 +17,22 @@ import de.unistuttgart.ims.drama.api.Figure;
 import de.unistuttgart.quadrama.graph.ext.api.GraphMetaData;
 
 public class GraphImporter {
-	public static Graph<Figure, DefaultWeightedEdge> getGraph(JCas jcas,
-			String viewName) throws ClassNotFoundException,
-			InstantiationException, IllegalAccessException,
-			IllegalArgumentException, InvocationTargetException,
-			NoSuchMethodException, SecurityException, CASException {
+	public static Graph<Figure, DefaultWeightedEdge> getGraph(JCas jcas, String viewName)
+			throws ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException,
+			InvocationTargetException, NoSuchMethodException, SecurityException, CASException {
 
 		JCas graphView = jcas.getView(viewName);
 
 		Map<Integer, Figure> figureMap = new HashMap<Integer, Figure>();
 		for (Figure figure : JCasUtil.select(jcas, Figure.class)) {
-			figureMap.put(figure.hashCode(), figure);
+			figureMap.put(figure.getBegin(), figure);
 		}
-		GraphMetaData gmd =
-				JCasUtil.selectSingle(graphView, GraphMetaData.class);
+		GraphMetaData gmd = JCasUtil.selectSingle(graphView, GraphMetaData.class);
 
 		Class<?> cl = Class.forName(gmd.getGraphClassName());
 		@SuppressWarnings("unchecked")
-		Graph<Figure, DefaultWeightedEdge> graph =
-				(Graph<Figure, DefaultWeightedEdge>) cl.getConstructor(
-						Class.class).newInstance(DefaultWeightedEdge.class);
+		Graph<Figure, DefaultWeightedEdge> graph = (Graph<Figure, DefaultWeightedEdge>) cl.getConstructor(Class.class)
+				.newInstance(DefaultWeightedEdge.class);
 		boolean weighted = false;
 		if (graph instanceof WeightedGraph) {
 			weighted = true;
@@ -58,14 +54,16 @@ public class GraphImporter {
 
 				Figure sFigure = figureMap.get(sId);
 				Figure tFigure = figureMap.get(tId);
-				if (!graph.containsVertex(sFigure)) graph.addVertex(sFigure);
-				if (!graph.containsVertex(tFigure)) graph.addVertex(tFigure);
+				if (!graph.containsVertex(sFigure))
+					graph.addVertex(sFigure);
+				if (!graph.containsVertex(tFigure))
+					graph.addVertex(tFigure);
 				Object edge = graph.addEdge(sFigure, tFigure);
 				if (weighted) {
 					double w = Double.valueOf(m.group(3));
 					if (edge != null)
-						((WeightedGraph<Figure, DefaultWeightedEdge>) graph)
-								.setEdgeWeight((DefaultWeightedEdge) edge, w);
+						((WeightedGraph<Figure, DefaultWeightedEdge>) graph).setEdgeWeight((DefaultWeightedEdge) edge,
+								w);
 				}
 			}
 		}

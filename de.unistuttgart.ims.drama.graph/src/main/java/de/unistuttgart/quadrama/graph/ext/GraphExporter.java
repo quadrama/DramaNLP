@@ -18,13 +18,11 @@ public class GraphExporter {
 		for (Figure figure1 : graph.vertexSet()) {
 			for (Figure figure2 : graph.vertexSet()) {
 				if (graph.containsEdge(figure1, figure2)) {
-					sw.write(figure1.hashCode() + " " + figure2.hashCode());
+					sw.write(figure1.getBegin() + " " + figure2.getBegin());
 					Object edge = graph.getEdge(figure1, figure2);
 					try {
 						@SuppressWarnings("unchecked")
-						double w =
-								((WeightedGraph<Figure, Object>) graph)
-										.getEdgeWeight(edge);
+						double w = ((WeightedGraph<Figure, Object>) graph).getEdgeWeight(edge);
 						sw.write(" " + w);
 					} catch (ClassCastException e) {
 						// we try to cast, but ignore it if impossible
@@ -37,12 +35,9 @@ public class GraphExporter {
 		sw.close();
 		jcas.setDocumentText(sw.toString());
 		jcas.setDocumentLanguage("");
-		GraphMetaData graphAnnotation =
-				AnnotationFactory.createAnnotation(jcas, 0, 1,
-						GraphMetaData.class);
+		GraphMetaData graphAnnotation = AnnotationFactory.createAnnotation(jcas, 0, 1, GraphMetaData.class);
 		graphAnnotation.setGraphClassName(graph.getClass().getCanonicalName());
-		graphAnnotation.setEdgeClassName(graph.edgeSet().iterator().next()
-				.getClass().getCanonicalName());
+		graphAnnotation.setEdgeClassName(graph.edgeSet().iterator().next().getClass().getCanonicalName());
 
 	}
 }
