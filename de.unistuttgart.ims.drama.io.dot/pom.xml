@@ -35,6 +35,11 @@
   		<artifactId>de.unistuttgart.ims.drama.graph</artifactId>
   		<version>0.2-SNAPSHOT</version>
   	</dependency>
+  	<dependency>
+  		<groupId>org.json</groupId>
+  		<artifactId>json</artifactId>
+  		<version>20151123</version>
+  	</dependency>
   </dependencies>
   <description>Module to write out graph content found on a view.</description>
 </project>
