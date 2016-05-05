@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="format.css">
 <link rel="stylesheet" type="text/css" href="datatables.min.css"/>
 
-<script type="text/javascript" src="datatables.min.js"></script>
+<script src="datatables.min.js"></script>
 <script src="highcharts.js"></script>
 <script src="exporting.js"></script>
 <script src="data.js"></script>
@@ -18,39 +18,29 @@
 
 
 $(function () {
-	for (index = 0; index < data.length; index++) {
-		var ind = index;
-		$("#tabs ul").append("<li><a href=\"#tab"+index+"\">"+data[index]['id']+"</a></li>");
-		loadChart(index);
-		loadTable(index);
-		loadNetwork(index);
-		$("#tab"+index).accordion({
-			header: "h2",
-			active:0
-		});
-		$("#tab"+index).on( "accordionactivate", function( event, ui ) {
-			if ($(ui.newPanel).hasClass("network")) {
-				// Let's first initialize sigma:
-			    var sig = new sigma('network'+ind);
-
-			    // Then, let's add some data to display:
-			    for (var i = 0; i < data[ind]["network"]["nodes"].length; i++) {
-			    	sig.graph.addNode(data[ind]["network"]["nodes"][i]);
-			    }
-			    for (var i = 0; i < data[ind]["network"]["edges"].length; i++) {
-			    	sig.graph.addEdge(data[ind]["network"]["edges"][i]);
-			    }
-			    sig.startForceAtlas2({});
-
-			   
-			    
-			    sig.refresh();
-			    window.setTimeout(function() { sig.stopForceAtlas2(); }, 5000);
-
-			};
-		});
-	}
+	loadChart();
+	loadTable();
+	loadNetwork();
 	$("#tabs").tabs();
+	$("#tabs").on( "tabsactivate", function( event, ui ) {
+		
+		if ($(ui.newPanel).is("#mentionnetwork")) {
+			// Let's first initialize sigma:
+			var sig = new sigma('mnet');
+
+		    // Then, let's add some data to display:
+		    for (var i = 0; i < data["network"]["nodes"].length; i++) {
+		    	sig.graph.addNode(data["network"]["nodes"][i]);
+		    }
+		    for (var i = 0; i < data["network"]["edges"].length; i++) {
+		    	sig.graph.addEdge(data["network"]["edges"][i]);
+		    }
+		    sig.startForceAtlas2({});
+		    sig.refresh();
+			window.setTimeout(function() { sig.stopForceAtlas2(); }, 5000);
+
+		};
+	});
 });
         
 </script>

@@ -148,7 +148,7 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 		Graph<Figure, DefaultWeightedEdge> graph;
 		try {
 			Random rand = new Random();
-			graph = GraphImporter.getGraph(jcas, "Copresence");
+			graph = GraphImporter.getGraph(jcas, "MentionNetwork");
 			JSONObject json = new JSONObject();
 			for (Figure figure : graph.vertexSet()) {
 				JSONObject figObj = new JSONObject();
@@ -177,6 +177,24 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 		}
 
 		objectMap.put(documentId, obj);
+		try {
+			copyFile("/html/index.html", documentId, ".html");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		OutputStream os = null;
+		try {
+			os = getOutputStream("data", ".js");
+			OutputStreamWriter osw = new OutputStreamWriter(os);
+			osw.write("var data = " + obj.toString());
+			osw.flush();
+			osw.close();
+		} catch (IOException e) {
+			throw new AnalysisEngineProcessException(e);
+		} finally {
+			IOUtils.closeQuietly(os);
+		}
 
 	}
 
@@ -186,16 +204,6 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 
 		InputStream is = null;
 		OutputStream os = null;
-		try {
-			is = getClass().getResourceAsStream("/html/index.html");
-			os = getOutputStream("index", ".html");
-			IOUtils.copy(is, os);
-		} catch (IOException e) {
-			throw new AnalysisEngineProcessException(e);
-		} finally {
-			IOUtils.closeQuietly(os);
-			IOUtils.closeQuietly(is);
-		}
 
 		try {
 			is = getClass().getResourceAsStream("/html/exporting.js");
@@ -276,6 +284,7 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 		try {
 			copyFile("/html/sigma.min.js", "sigma.min", ".js");
 			copyFile("/html/sigma.layout.forceAtlas2.min.js", "sigma.layout.forceAtlas2.min", ".js");
+			copyFile("/html/sigma.plugins.dragNodes.min.js", "sigma.plugins.dragNodes.min", ".js");
 		} catch (IOException e) {
 			throw new AnalysisEngineProcessException(e);
 		}
@@ -283,21 +292,6 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 			copyFile("/html/script.js", "script", ".js");
 		} catch (IOException e) {
 			throw new AnalysisEngineProcessException(e);
-		}
-		JSONArray arr = new JSONArray();
-		for (String n : objectMap.keySet()) {
-			arr.put(objectMap.get(n));
-		}
-		try {
-			os = getOutputStream("data", ".js");
-			OutputStreamWriter osw = new OutputStreamWriter(os);
-			osw.write("var data = " + arr.toString());
-			osw.flush();
-			osw.close();
-		} catch (IOException e) {
-			throw new AnalysisEngineProcessException(e);
-		} finally {
-			IOUtils.closeQuietly(os);
 		}
 	}
 
