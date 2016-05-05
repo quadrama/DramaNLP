@@ -5,11 +5,11 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -147,27 +147,21 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 
 		Graph<Figure, DefaultWeightedEdge> graph;
 		try {
-			Random rand = new Random();
 			graph = GraphImporter.getGraph(jcas, "MentionNetwork");
 			JSONObject json = new JSONObject();
-			for (Figure figure : graph.vertexSet()) {
+			List<Figure> figureList = new ArrayList<Figure>(graph.vertexSet());
+			for (Figure figure : figureList) {
 				JSONObject figObj = new JSONObject();
-				figObj.put("id", figure.getReference());
 				figObj.put("label", figure.getCoveredText());
-				figObj.put("size", 1);
-				figObj.put("x", rand.nextInt(5));
-				figObj.put("y", rand.nextInt(5));
 				json.append("nodes", figObj);
 			}
-			int edgeId = 0;
 			for (DefaultWeightedEdge edge : graph.edgeSet()) {
 				JSONObject eObj = new JSONObject();
 				Figure src = graph.getEdgeSource(edge);
 				Figure tgt = graph.getEdgeTarget(edge);
-				eObj.put("source", src.getReference());
-				eObj.put("target", tgt.getReference());
-				eObj.put("id", edgeId++);
-				json.append("edges", eObj);
+				eObj.put("source", figureList.indexOf(src));
+				eObj.put("target", figureList.indexOf(tgt));
+				json.append("links", eObj);
 			}
 			obj.put("network", json);
 		} catch (CASException | ClassNotFoundException | InstantiationException | IllegalAccessException
@@ -281,18 +275,7 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 		} catch (IOException e) {
 			throw new AnalysisEngineProcessException(e);
 		}
-		try {
-			copyFile("/html/sigma.min.js", "sigma.min", ".js");
-			copyFile("/html/sigma.layout.forceAtlas2.min.js", "sigma.layout.forceAtlas2.min", ".js");
-			copyFile("/html/sigma.plugins.dragNodes.min.js", "sigma.plugins.dragNodes.min", ".js");
-		} catch (IOException e) {
-			throw new AnalysisEngineProcessException(e);
-		}
-		try {
-			copyFile("/html/script.js", "script", ".js");
-		} catch (IOException e) {
-			throw new AnalysisEngineProcessException(e);
-		}
+
 	}
 
 	protected void copyFile(String sourcePath, String targetName, String targetExt) throws IOException {

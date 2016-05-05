@@ -57,6 +57,15 @@ function loadTable() {
 function loadNetwork() {
 	$("#tabs ul").append("<li><a href=\"#mentionnetwork\">Mention Network</a></li>");
 
-	$("#tabs").append("<div id=\"mentionnetwork\" style=\"height:400px;\"><div id=\"mnet\"></div></div>");
-	$("#mnet").css("height", "100%");
+	$("#tabs").append("<div id=\"mentionnetwork\" style=\"height:400px;\"></div>");
 }
+
+
+
+	function dblclick(d) {
+	  d3.select(this).classed("fixed", d.fixed = false);
+	}
+
+	function dragstart(d) {
+	  d3.select(this).classed("fixed", d.fixed = true);
+	}

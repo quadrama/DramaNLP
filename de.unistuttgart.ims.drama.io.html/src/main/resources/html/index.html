@@ -3,7 +3,29 @@
 <link rel="stylesheet" href="jquery-ui.css">
 <link rel="stylesheet" href="format.css">
 <link rel="stylesheet" type="text/css" href="datatables.min.css"/>
+<style>
+.link {
+  stroke: #000;
+  stroke-width: 1.5px;
+}
 
+.node {
+  cursor: move;
+  fill: #ccc;
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+.node text {
+	font:10pt sans-serif;
+	color:#000;
+	fill:#000;
+}
+
+.node.fixed {
+  fill: #f00;
+}
+</style>
 <script src="datatables.min.js"></script>
 <script src="highcharts.js"></script>
 <script src="exporting.js"></script>
@@ -12,6 +34,7 @@
 <script src="sigma.min.js"></script>
 <script src="sigma.layout.forceAtlas2.min.js"></script>
 <script src="sigma.plugins.dragNodes.min.js"></script>
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script src="script.js"></script>
 <script>
 
@@ -25,20 +48,53 @@ $(function () {
 	$("#tabs").on( "tabsactivate", function( event, ui ) {
 		
 		if ($(ui.newPanel).is("#mentionnetwork")) {
-			// Let's first initialize sigma:
-			var sig = new sigma('mnet');
+			var width = 960,
+		    height = 500;
+			var svg = d3.select("#mentionnetwork").append("svg")
+		    .attr("width", width)
+		    .attr("height", height);
 
-		    // Then, let's add some data to display:
-		    for (var i = 0; i < data["network"]["nodes"].length; i++) {
-		    	sig.graph.addNode(data["network"]["nodes"][i]);
-		    }
-		    for (var i = 0; i < data["network"]["edges"].length; i++) {
-		    	sig.graph.addEdge(data["network"]["edges"][i]);
-		    }
-		    sig.startForceAtlas2({});
-		    sig.refresh();
-			window.setTimeout(function() { sig.stopForceAtlas2(); }, 5000);
+			var force = d3.layout.force()
+		    	.size([width, height])
+		    	.charge(-400)
+		    	.linkDistance(40);
 
+			force.drag().on("dragstart", dragstart);
+
+	
+			force.nodes(data["network"]["nodes"])
+				.links(data["network"]["links"])
+				.start();
+			
+			var link = svg.selectAll(".link")
+				.data(data["network"]["links"])
+				.enter().append("line")
+		      	.attr("class", "link");
+
+		  	var node = svg.selectAll(".node")
+		  		.data(data["network"]["nodes"])
+		    	.enter().append("g")
+			  	.attr("class", "node")
+		      	.call(force.drag);
+		  	
+		  	node.append("circle")
+		     	.attr("r", 12)
+		      	.on("dblclick", dblclick);
+		  	
+		  	node.append("text")
+		      .attr("dx", 12)
+		      .attr("dy", ".35em")
+		      .style("font-weight", "normal")
+		      .text(function(d) { return d.label });
+
+		  	force.on("tick", function() {
+		  	    link.attr("x1", function(d) { return d.source.x; })
+		        .attr("y1", function(d) { return d.source.y; })
+		        .attr("x2", function(d) { return d.target.x; })
+		        .attr("y2", function(d) { return d.target.y; });
+
+		    node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+		  });
 		};
 	});
 });
