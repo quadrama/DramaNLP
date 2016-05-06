@@ -25,6 +25,7 @@ import de.unistuttgart.ims.drama.api.MainMatter;
 import de.unistuttgart.ims.drama.api.Scene;
 import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.api.Utterance;
+import de.unistuttgart.quadrama.core.DramaUtil;
 import de.unistuttgart.quadrama.graph.ext.GraphExporter;
 
 public class NetworkExtractor extends JCasAnnotator_ImplBase {
@@ -32,8 +33,7 @@ public class NetworkExtractor extends JCasAnnotator_ImplBase {
 	public static final String PARAM_VIEW_NAME = "View Name";
 	public static final String PARAM_NETWORK_TYPE = "Network Type";
 
-	@ConfigurationParameter(name = PARAM_NETWORK_TYPE,
-			defaultValue = "Copresence", mandatory = false)
+	@ConfigurationParameter(name = PARAM_NETWORK_TYPE, defaultValue = "Copresence", mandatory = false)
 	NetworkType networkType = NetworkType.Copresence;
 
 	@ConfigurationParameter(name = PARAM_VIEW_NAME, mandatory = false)
@@ -48,9 +48,7 @@ public class NetworkExtractor extends JCasAnnotator_ImplBase {
 			break;
 		case Copresence:
 		default:
-			graph =
-			extractNetwork(jcas,
-					JCasUtil.selectSingle(jcas, MainMatter.class));
+			graph = extractNetwork(jcas, JCasUtil.selectSingle(jcas, MainMatter.class));
 		}
 		GraphExporter gmlExporter = new GraphExporter();
 		try {
@@ -65,18 +63,14 @@ public class NetworkExtractor extends JCasAnnotator_ImplBase {
 		}
 	}
 
-	protected DirectedGraph<Figure, DefaultEdge>
-	extractMentionNetwork(JCas jcas) {
-		DirectedGraph<Figure, DefaultEdge> graph =
-				new DirectedPseudograph<Figure, DefaultEdge>(DefaultEdge.class);
+	protected DirectedGraph<Figure, DefaultEdge> extractMentionNetwork(JCas jcas) {
+		DirectedGraph<Figure, DefaultEdge> graph = new DirectedPseudograph<Figure, DefaultEdge>(DefaultEdge.class);
 
 		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
-			Speaker speaker = utterance.getSpeaker();
+			Speaker speaker = DramaUtil.getSpeaker(utterance);
 			if (speaker != null)
-				for (FigureMention mention : JCasUtil.selectCovered(jcas,
-						FigureMention.class, utterance)) {
-					if (speaker.getFigure() != null
-							&& mention.getFigure() != null) {
+				for (FigureMention mention : JCasUtil.selectCovered(jcas, FigureMention.class, utterance)) {
+					if (speaker.getFigure() != null && mention.getFigure() != null) {
 						if (!graph.containsVertex(speaker.getFigure()))
 							graph.addVertex(speaker.getFigure());
 						if (!graph.containsVertex(mention.getFigure()))
@@ -88,11 +82,9 @@ public class NetworkExtractor extends JCasAnnotator_ImplBase {
 		return graph;
 	}
 
-	protected WeightedGraph<Figure, DefaultWeightedEdge> extractNetwork(
-			JCas jcas, Annotation range) {
-		SimpleWeightedGraph<Figure, DefaultWeightedEdge> graph =
-				new SimpleWeightedGraph<Figure, DefaultWeightedEdge>(
-						DefaultWeightedEdge.class);
+	protected WeightedGraph<Figure, DefaultWeightedEdge> extractNetwork(JCas jcas, Annotation range) {
+		SimpleWeightedGraph<Figure, DefaultWeightedEdge> graph = new SimpleWeightedGraph<Figure, DefaultWeightedEdge>(
+				DefaultWeightedEdge.class);
 		for (Figure figure : JCasUtil.select(jcas, Figure.class)) {
 
 			if (!graph.containsVertex(figure)) {
@@ -101,21 +93,24 @@ public class NetworkExtractor extends JCasAnnotator_ImplBase {
 		}
 
 		for (Scene scene : JCasUtil.select(jcas, Scene.class)) {
-			List<Speaker> speakers =
-					JCasUtil.selectCovered(Speaker.class, scene);
+			List<Speaker> speakers = JCasUtil.selectCovered(Speaker.class, scene);
 			for (Speaker s1 : speakers) {
 				Figure gf1 = s1.getFigure();
-				if (gf1 != null) for (Speaker s2 : speakers) {
-					Figure gf2 = s2.getFigure();
-					if (gf2 != null) if (graph.containsEdge(gf1, gf2)) {
-						DefaultWeightedEdge edge = graph.getEdge(gf1, gf2);
-						double w = graph.getEdgeWeight(edge);
-						graph.setEdgeWeight(edge, w + 1.0);
-					} else {
-						if (gf1 != gf2) graph.addEdge(gf1, gf2);
+				if (gf1 != null)
+					for (Speaker s2 : speakers) {
+						Figure gf2 = s2.getFigure();
+						if (gf2 != null)
+							if (graph.containsEdge(gf1, gf2)) {
+								DefaultWeightedEdge edge = graph.getEdge(gf1, gf2);
+								double w = graph.getEdgeWeight(edge);
+								graph.setEdgeWeight(edge, w + 1.0);
+							} else {
+								if (gf1 != gf2)
+									graph.addEdge(gf1, gf2);
+							}
 					}
-				}
-			};
+			}
+			;
 		}
 		return graph;
 	}
