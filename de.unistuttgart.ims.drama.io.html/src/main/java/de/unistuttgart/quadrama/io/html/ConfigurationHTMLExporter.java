@@ -27,17 +27,18 @@ import org.json.JSONObject;
 
 import de.tudarmstadt.ukp.dkpro.core.api.io.JCasFileWriter_ImplBase;
 import de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData;
+import de.unistuttgart.ims.commons.Counter;
+import de.unistuttgart.ims.drama.api.Field;
 import de.unistuttgart.ims.drama.api.Figure;
 import de.unistuttgart.ims.drama.api.Heading;
 import de.unistuttgart.ims.drama.api.Scene;
 import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.Utterance;
+import de.unistuttgart.quadrama.core.DramaUtil;
 import de.unistuttgart.quadrama.graph.ext.GraphImporter;
 
 public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 	static String[] colors = new String[] { "#EEF", "#FEE", "#EFE" };
-
-	Map<String, JSONObject> objectMap = new HashMap<String, JSONObject>();
 
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
@@ -172,7 +173,10 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 			e.printStackTrace();
 		}
 
-		objectMap.put(documentId, obj);
+		if (JCasUtil.exists(jcas, Field.class)) {
+			obj.put("field", extractFieldInformation(jcas));
+		}
+
 		InputStream is = null;
 		OutputStream os = null;
 		OutputStreamWriter osw = null;
@@ -206,6 +210,34 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 			IOUtils.closeQuietly(os);
 		}
 
+	}
+
+	private JSONObject extractFieldInformation(JCas jcas) {
+		JSONObject json = new JSONObject();
+		SortedSet<String> fields = new TreeSet<String>();
+		for (Figure figure : JCasUtil.select(jcas, Figure.class)) {
+			JSONObject figObj = new JSONObject();
+			if (figure.getNumberOfWords() > 100) {
+				Counter<String> fieldCount = new Counter<String>();
+				for (Speech speech : DramaUtil.getSpeeches(jcas, figure)) {
+					for (Field field : JCasUtil.selectCovered(jcas, Field.class, speech)) {
+						fieldCount.add(field.getName());
+						fields.add(field.getName());
+					}
+
+				}
+				for (String fName : fields) {
+					figObj.append("fields", fieldCount.get(fName));
+				}
+			}
+			figObj.put("name", figure.getReference());
+			json.append("figures", figObj);
+		}
+		for (String fName : fields) {
+			json.append("fields", fName);
+		}
+
+		return json;
 	}
 
 	@Override
@@ -281,6 +313,11 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 			IOUtils.closeQuietly(is);
 		}
 
+		try {
+			copyFile("/html/script.js", "script", ".js");
+		} catch (IOException e) {
+			throw new AnalysisEngineProcessException(e);
+		}
 		try {
 			copyFile("/html/jquery-ui.css", "jquery-ui", ".css");
 		} catch (IOException e) {
