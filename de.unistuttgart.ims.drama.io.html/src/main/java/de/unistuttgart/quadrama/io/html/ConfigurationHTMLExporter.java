@@ -148,22 +148,24 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 		Graph<Figure, DefaultWeightedEdge> graph;
 		try {
 			graph = GraphImporter.getGraph(jcas, "MentionNetwork");
-			JSONObject json = new JSONObject();
-			List<Figure> figureList = new ArrayList<Figure>(graph.vertexSet());
-			for (Figure figure : figureList) {
-				JSONObject figObj = new JSONObject();
-				figObj.put("label", figure.getCoveredText());
-				json.append("nodes", figObj);
+			if (graph != null) {
+				JSONObject json = new JSONObject();
+				List<Figure> figureList = new ArrayList<Figure>(graph.vertexSet());
+				for (Figure figure : figureList) {
+					JSONObject figObj = new JSONObject();
+					figObj.put("label", figure.getCoveredText());
+					json.append("nodes", figObj);
+				}
+				for (DefaultWeightedEdge edge : graph.edgeSet()) {
+					JSONObject eObj = new JSONObject();
+					Figure src = graph.getEdgeSource(edge);
+					Figure tgt = graph.getEdgeTarget(edge);
+					eObj.put("source", figureList.indexOf(src));
+					eObj.put("target", figureList.indexOf(tgt));
+					json.append("links", eObj);
+				}
+				obj.put("network", json);
 			}
-			for (DefaultWeightedEdge edge : graph.edgeSet()) {
-				JSONObject eObj = new JSONObject();
-				Figure src = graph.getEdgeSource(edge);
-				Figure tgt = graph.getEdgeTarget(edge);
-				eObj.put("source", figureList.indexOf(src));
-				eObj.put("target", figureList.indexOf(tgt));
-				json.append("links", eObj);
-			}
-			obj.put("network", json);
 		} catch (CASException | ClassNotFoundException | InstantiationException | IllegalAccessException
 				| IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
 			// TODO Auto-generated catch block
@@ -171,16 +173,30 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 		}
 
 		objectMap.put(documentId, obj);
+		InputStream is = null;
+		OutputStream os = null;
+		OutputStreamWriter osw = null;
+
 		try {
-			copyFile("/html/index.html", documentId, ".html");
+			os = getOutputStream(documentId, ".html");
+			is = getClass().getResourceAsStream("/html/index.html");
+			String index = new String(IOUtils.toByteArray(is), "UTF-8");
+			index = index.replace("${DOCUMENTID}", documentId);
+			osw = new OutputStreamWriter(os);
+			osw.write(index);
+			osw.flush();
+			osw.close();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			IOUtils.closeQuietly(os);
+			IOUtils.closeQuietly(is);
+			IOUtils.closeQuietly(osw);
 		}
 
-		OutputStream os = null;
 		try {
-			os = getOutputStream("data", ".js");
-			OutputStreamWriter osw = new OutputStreamWriter(os);
+			os = getOutputStream(documentId, ".js");
+			osw = new OutputStreamWriter(os);
 			osw.write("var data = " + obj.toString());
 			osw.flush();
 			osw.close();
