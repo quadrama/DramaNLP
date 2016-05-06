@@ -1,5 +1,8 @@
 package de.unistuttgart.quadrama.core;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -26,5 +29,19 @@ public class DramaUtil {
 			}
 		}
 		return ret;
+	}
+
+	public static Collection<Utterance> selectFullUtterances(JCas jcas) {
+		final Iterator<Utterance> baseIterator = JCasUtil.iterator(jcas, Utterance.class);
+
+		List<Utterance> fullUtterances = new ArrayList<Utterance>();
+		while (baseIterator.hasNext()) {
+			Utterance utt = baseIterator.next();
+			if (!JCasUtil.selectCovered(jcas, Speaker.class, utt).isEmpty()
+					&& JCasUtil.selectCovered(jcas, Speaker.class, utt).get(0).getFigure() != null)
+				fullUtterances.add(utt);
+		}
+		return fullUtterances;
+
 	}
 }
