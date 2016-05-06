@@ -31,6 +31,14 @@ public class DramaUtil {
 		return ret;
 	}
 
+	public static Speaker getSpeaker(Utterance utterance) {
+		try {
+			return JCasUtil.selectCovered(Speaker.class, utterance).get(0);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
 	public static Collection<Utterance> selectFullUtterances(JCas jcas) {
 		final Iterator<Utterance> baseIterator = JCasUtil.iterator(jcas, Utterance.class);
 
