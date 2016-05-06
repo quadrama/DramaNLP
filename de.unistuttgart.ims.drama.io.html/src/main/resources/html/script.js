@@ -3,7 +3,27 @@ var colors = [ "#EEF", "#FEE", "#EFE" ];
 function loadChart() {
 	$("#tabs ul").append("<li><a href=\"#hc\">Figure Presence Chart</a></li>");
 	$("#tabs").append("<div class=\"hc\" id=\"hc\"></div>");
-
+	var segments;
+	if ("seg2" in data["segments"]) {
+		segments = data["segments"]["seg2"];
+	} else /* if ("seg1" in data["segments"]) */ {
+		segments = data["segments"]["seg1"];
+	}
+	var pb = segments.map(function(cur, i, _) {
+		return {
+			from:cur["begin"],
+			to:cur["end"],
+			color:colors[i % 3],
+			label:{
+				text:cur["heading"],
+				rotation:270,
+				align:"center",
+				verticalAlign:"bottom",
+				y:-30
+			}
+		}
+	});
+		
 	$("#hc")
 			.highcharts(
 					{
@@ -13,33 +33,10 @@ function loadChart() {
 							zoomType : 'x'
 						},
 						xAxis : {
-							plotBands : function() {
-								var segments;
-								if ("seg2" in data["segments"]) {
-									segments = data["segments"]["seg2"];
-								} else /*if ("seg1" in data["segments"])*/ {
-									segments = data["segments"]["seg1"];
-								}
-								return segments.map(function(cur, i, _) {
-									var o = {
-											from:cur["begin"],
-											to:cur["end"],
-											color:colors[i % 3],
-											label:{
-												text:cur["heading"],
-												rotation:270,
-												align:"center",
-												verticalAlign:"bottom",
-												y:-30
-											}
-										};
-									console.log(o);
-									return o;
-								})
-							}
+							plotBands : pb
 						},
 						yAxis : {
-						//categories: speakers
+						// categories: speakers
 						},
 						plotOptions : {
 							series : {
