@@ -19,6 +19,7 @@ import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
+import org.apache.uima.json.JsonCasSerializer;
 import org.jgrapht.Graph;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.json.JSONArray;
@@ -31,7 +32,6 @@ import de.unistuttgart.ims.drama.api.ActHeading;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Field;
 import de.unistuttgart.ims.drama.api.Figure;
-import de.unistuttgart.ims.drama.api.Heading;
 import de.unistuttgart.ims.drama.api.Scene;
 import de.unistuttgart.ims.drama.api.SceneHeading;
 import de.unistuttgart.ims.drama.api.Speaker;
@@ -41,7 +41,6 @@ import de.unistuttgart.quadrama.core.DramaUtil;
 import de.unistuttgart.quadrama.graph.ext.GraphImporter;
 
 public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
-	static String[] colors = new String[] { "#EEF", "#FEE", "#EFE" };
 
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
@@ -49,27 +48,6 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
 		String documentId = drama.getDocumentId();
 		JSONObject obj = new JSONObject();
-
-		int c = 0;
-		for (Scene segment : JCasUtil.select(jcas, Scene.class)) {
-			JSONObject labelObj = new JSONObject();
-			List<Heading> headings = JCasUtil.selectCovered(Heading.class, segment);
-			if (headings.isEmpty()) {
-				labelObj.put("text", segment.getCoveredText().substring(0, 15).trim());
-			} else {
-				labelObj.put("text", headings.get(0).getCoveredText());
-			}
-			labelObj.put("rotation", 270);
-			labelObj.put("align", "center");
-			labelObj.put("verticalAlign", "bottom");
-			labelObj.put("y", -30);
-			JSONObject lobj = new JSONObject();
-			lobj.put("from", segment.getBegin());
-			lobj.put("to", segment.getEnd());
-			lobj.put("color", colors[c++ % 3]);
-			lobj.put("label", labelObj);
-			obj.append("plotBands", lobj);
-		}
 
 		SortedSet<Figure> figures = new TreeSet<Figure>(new Comparator<Figure>() {
 			@Override
@@ -175,7 +153,7 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 		if (JCasUtil.exists(jcas, Field.class)) {
 			obj.put("field", extractFieldInformation(jcas));
 		}
-		obj.put("segments", this.extractSegmentation(jcas));
+		obj.put("segments", extractSegmentation(jcas));
 		InputStream is = null;
 		OutputStream os = null;
 		OutputStreamWriter osw = null;
@@ -201,6 +179,21 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 			os = getOutputStream(documentId, ".js");
 			osw = new OutputStreamWriter(os);
 			osw.write("var data = " + obj.toString());
+			osw.flush();
+			osw.close();
+		} catch (IOException e) {
+			throw new AnalysisEngineProcessException(e);
+		} finally {
+			IOUtils.closeQuietly(os);
+		}
+
+		try {
+			os = getOutputStream(documentId, ".json");
+
+			osw = new OutputStreamWriter(os);
+			JsonCasSerializer jcs = new JsonCasSerializer();
+			jcs.setPrettyPrint(true); // do some configuration
+			jcs.serialize(jcas.getCas(), osw); // serialize into sw
 			osw.flush();
 			osw.close();
 		} catch (IOException e) {
@@ -240,12 +233,10 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 				json.append("seg2", actJson);
 			}
 		}
-
 		return json;
-
 	}
 
-	private JSONObject extractFieldInformation(JCas jcas) {
+	protected JSONObject extractFieldInformation(JCas jcas) {
 		JSONObject json = new JSONObject();
 		SortedSet<String> fields = new TreeSet<String>();
 		for (Figure figure : JCasUtil.select(jcas, Figure.class)) {
@@ -257,7 +248,6 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 						fieldCount.add(field.getName());
 						fields.add(field.getName());
 					}
-
 				}
 				for (String fName : fields) {
 					figObj.append("fields", fieldCount.get(fName));
@@ -269,7 +259,6 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 		for (String fName : fields) {
 			json.append("fields", fName);
 		}
-
 		return json;
 	}
 
