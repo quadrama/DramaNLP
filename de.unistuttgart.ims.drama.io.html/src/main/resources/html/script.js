@@ -6,24 +6,24 @@ function loadChart() {
 	var segments;
 	if ("seg2" in data["segments"]) {
 		segments = data["segments"]["seg2"];
-	} else /* if ("seg1" in data["segments"]) */ {
+	} else /* if ("seg1" in data["segments"]) */{
 		segments = data["segments"]["seg1"];
 	}
 	var pb = segments.map(function(cur, i, _) {
 		return {
-			from:cur["begin"],
-			to:cur["end"],
-			color:colors[i % 3],
-			label:{
-				text:cur["heading"],
-				rotation:270,
-				align:"center",
-				verticalAlign:"bottom",
-				y:-30
+			from : cur["begin"],
+			to : cur["end"],
+			color : colors[i % 3],
+			label : {
+				text : cur["heading"],
+				rotation : 270,
+				align : "center",
+				verticalAlign : "bottom",
+				y : -30
 			}
 		}
 	});
-		
+
 	$("#hc")
 			.highcharts(
 					{
@@ -83,21 +83,23 @@ function loadTable() {
 }
 
 function loadFieldTable() {
-	$("#tabs ul").append("<li><a href=\"#fields\">Figures and Semantic Fields</a></li>");
-	$("#tabs").append("<div id=\"fields\"><table width=\"100%\"></table></div>");
+	$("#tabs ul").append(
+			"<li><a href=\"#fields\">Figures and Semantic Fields</a></li>");
+	$("#tabs")
+			.append("<div id=\"fields\"><table width=\"100%\"></table></div>");
 
-	$("#fields table").DataTable(
-	{
+	$("#fields table").DataTable({
 		data : data["field"]["figures"].map(function(cur, ind, arr) {
-			return [cur['name']].concat(cur["fields"]);
+			return [ cur['name'] ].concat(cur["fields"]);
 		}),
 		columns : [ {
-				title : "Figure"
-			} ].concat(data["field"]["fields"].map(function(cur, _, _) {
-				return {title:cur};
-			}))
-	}
-	);
+			title : "Figure"
+		} ].concat(data["field"]["fields"].map(function(cur, _, _) {
+			return {
+				title : cur
+			};
+		}))
+	});
 }
 
 function loadNetwork() {
@@ -106,37 +108,37 @@ function loadNetwork() {
 
 	$("#tabs").append(
 			"<div id=\"mentionnetwork\" style=\"height:400px;\"></div>");
-	
-	var width = 960, height = 500;
-	var svg = d3.select("#mentionnetwork")
-			.append("svg").attr("width", width)
-			.attr("height", height);
 
-	var force = d3.layout.force().size(
-			[ width, height ]).charge(-400)
+	var width = 960, height = 500;
+	var svg = d3.select("#mentionnetwork").append("svg").attr("width", width)
+			.attr("height", height);
+	svg.append("defs").selectAll("marker").data(
+			[ "suit", "licensing", "resolved" ]).enter().append("marker").attr(
+			"id", function(d) {
+				return d;
+			}).attr("viewBox", "0 -5 10 10").attr("refX", 25).attr("refY", 0)
+			.attr("markerWidth", 6).attr("markerHeight", 6).attr("orient",
+					"auto").append("path").attr("d",
+					"M0,-5L10,0L0,5 L10,0 L0, -5").style("stroke", "#000")
+			.style("opacity", "1");
+	var force = d3.layout.force().size([ width, height ]).charge(-400)
 			.linkDistance(40);
 
 	force.drag().on("dragstart", dragstart);
 
-	force.nodes(data["network"]["nodes"])
-			.links(data["network"]["links"])
+	force.nodes(data["network"]["nodes"]).links(data["network"]["links"])
 			.start();
 
-	var link = svg.selectAll(".link").data(
-			data["network"]["links"]).enter()
-			.append("line").attr("class",
-					"link");
+	var link = svg.selectAll(".link").data(data["network"]["links"]).enter()
+			.append("line").attr("class", "link").attr("marker-end",
+					"url(#suit)");
 
-	var node = svg.selectAll(".node").data(
-			data["network"]["nodes"]).enter()
-			.append("g").attr("class", "node")
-			.call(force.drag);
+	var node = svg.selectAll(".node").data(data["network"]["nodes"]).enter()
+			.append("g").attr("class", "node").call(force.drag);
 
-	node.append("circle").attr("r", 12).on(
-			"dblclick", dblclick);
+	node.append("circle").attr("r", 12).on("dblclick", dblclick);
 
-	node.append("text").attr("dx", 12).attr(
-			"dy", ".35em").style("font-weight",
+	node.append("text").attr("dx", 12).attr("dy", ".35em").style("font-weight",
 			"normal").text(function(d) {
 		return d.label
 	});
@@ -153,8 +155,7 @@ function loadNetwork() {
 		});
 
 		node.attr("transform", function(d) {
-			return "translate(" + d.x + ","
-					+ d.y + ")";
+			return "translate(" + d.x + "," + d.y + ")";
 		});
 	});
 }

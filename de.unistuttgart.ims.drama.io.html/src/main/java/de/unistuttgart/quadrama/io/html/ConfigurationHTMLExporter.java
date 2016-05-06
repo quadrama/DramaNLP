@@ -117,43 +117,16 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 				jsonSeries.put(series.get(s));
 		}
 
-		// obj.put("plotBands", pbArr);
 		obj.put("data", jsonSeries);
 		obj.put("id", documentId);
 		obj.put("author", drama.getAuthorname());
 		obj.put("title", drama.getDocumentTitle());
 
-		Graph<Figure, DefaultWeightedEdge> graph;
-		try {
-			graph = GraphImporter.getGraph(jcas, "MentionNetwork");
-			if (graph != null) {
-				JSONObject json = new JSONObject();
-				List<Figure> figureList = new ArrayList<Figure>(graph.vertexSet());
-				for (Figure figure : figureList) {
-					JSONObject figObj = new JSONObject();
-					figObj.put("label", figure.getCoveredText());
-					json.append("nodes", figObj);
-				}
-				for (DefaultWeightedEdge edge : graph.edgeSet()) {
-					JSONObject eObj = new JSONObject();
-					Figure src = graph.getEdgeSource(edge);
-					Figure tgt = graph.getEdgeTarget(edge);
-					eObj.put("source", figureList.indexOf(src));
-					eObj.put("target", figureList.indexOf(tgt));
-					json.append("links", eObj);
-				}
-				obj.put("network", json);
-			}
-		} catch (CASException | ClassNotFoundException | InstantiationException | IllegalAccessException
-				| IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
 		if (JCasUtil.exists(jcas, Field.class)) {
 			obj.put("field", extractFieldInformation(jcas));
 		}
 		obj.put("segments", extractSegmentation(jcas));
+		obj.put("network", extractNetworkInformation(jcas, "MentionNetwork"));
 		InputStream is = null;
 		OutputStream os = null;
 		OutputStreamWriter osw = null;
@@ -234,6 +207,36 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 			}
 		}
 		return json;
+	}
+
+	protected JSONObject extractNetworkInformation(JCas jcas, String viewName) {
+		JSONObject obj = new JSONObject();
+		obj.put("viewName", viewName);
+		Graph<Figure, DefaultWeightedEdge> graph;
+		try {
+			graph = GraphImporter.getGraph(jcas, viewName);
+			if (graph != null) {
+				List<Figure> figureList = new ArrayList<Figure>(graph.vertexSet());
+				for (Figure figure : figureList) {
+					JSONObject figObj = new JSONObject();
+					figObj.put("label", figure.getCoveredText());
+					obj.append("nodes", figObj);
+				}
+				for (DefaultWeightedEdge edge : graph.edgeSet()) {
+					JSONObject eObj = new JSONObject();
+					Figure src = graph.getEdgeSource(edge);
+					Figure tgt = graph.getEdgeTarget(edge);
+					eObj.put("source", figureList.indexOf(src));
+					eObj.put("target", figureList.indexOf(tgt));
+					obj.append("links", eObj);
+				}
+			}
+		} catch (CASException | ClassNotFoundException | InstantiationException | IllegalAccessException
+				| IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return obj;
 	}
 
 	protected JSONObject extractFieldInformation(JCas jcas) {
