@@ -10,26 +10,21 @@ import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.Utterance;
 
+@Deprecated
 public class UtteranceLinker extends JCasAnnotator_ImplBase {
 
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
 		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
 			try {
-				utterance.setSpeaker(JCasUtil.selectCovered(Speaker.class,
-						utterance).get(0));
+				utterance.setSpeaker(JCasUtil.selectCovered(Speaker.class, utterance).get(0));
 			} catch (IndexOutOfBoundsException e) {
-				getLogger()
-				.log(Level.WARNING,
-						"No speaker in utterance "
-								+ utterance.getCoveredText());
+				getLogger().log(Level.WARNING, "No speaker in utterance " + utterance.getCoveredText());
 			}
 			try {
-				utterance.setSpeech(JCasUtil.selectCovered(Speech.class,
-						utterance).get(0));
+				utterance.setSpeech(JCasUtil.selectCovered(Speech.class, utterance).get(0));
 			} catch (IndexOutOfBoundsException e) {
-				getLogger().log(Level.WARNING,
-						"No speech in utterance " + utterance.getCoveredText());
+				getLogger().log(Level.WARNING, "No speech in utterance " + utterance.getCoveredText());
 			}
 		}
 	}
