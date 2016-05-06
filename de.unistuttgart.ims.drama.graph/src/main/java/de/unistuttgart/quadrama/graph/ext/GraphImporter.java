@@ -27,6 +27,8 @@ public class GraphImporter {
 		for (Figure figure : JCasUtil.select(jcas, Figure.class)) {
 			figureMap.put(figure.getBegin(), figure);
 		}
+		if (!JCasUtil.exists(jcas, GraphMetaData.class))
+			return null;
 		GraphMetaData gmd = JCasUtil.selectSingle(graphView, GraphMetaData.class);
 
 		Class<?> cl = Class.forName(gmd.getGraphClassName());

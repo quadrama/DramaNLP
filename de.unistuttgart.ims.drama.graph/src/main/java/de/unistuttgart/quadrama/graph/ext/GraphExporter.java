@@ -37,7 +37,8 @@ public class GraphExporter {
 		jcas.setDocumentLanguage("");
 		GraphMetaData graphAnnotation = AnnotationFactory.createAnnotation(jcas, 0, 1, GraphMetaData.class);
 		graphAnnotation.setGraphClassName(graph.getClass().getCanonicalName());
-		graphAnnotation.setEdgeClassName(graph.edgeSet().iterator().next().getClass().getCanonicalName());
+		if (!graph.edgeSet().isEmpty())
+			graphAnnotation.setEdgeClassName(graph.edgeSet().iterator().next().getClass().getCanonicalName());
 
 	}
 }
