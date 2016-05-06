@@ -53,7 +53,7 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 			Figure currentFigure = null;
 			try {
 				currentFigure = JCasUtil.selectCovered(jcas, Speaker.class, utterance).get(0).getFigure();
-			} catch (NullPointerException e) {
+			} catch (NullPointerException | IndexOutOfBoundsException e) {
 
 			}
 			for (Speech speech : JCasUtil.selectCovered(jcas, Speech.class, utterance)) {
