@@ -5,9 +5,7 @@ function loadChart() {
 	$("#hc")
 			.highcharts(
 					{
-						title : {
-							text : data['id']
-						},
+						title : null,
 						chart : {
 							type : 'line',
 							zoomType : 'x'
@@ -86,6 +84,57 @@ function loadNetwork() {
 
 	$("#tabs").append(
 			"<div id=\"mentionnetwork\" style=\"height:400px;\"></div>");
+	
+	var width = 960, height = 500;
+	var svg = d3.select("#mentionnetwork")
+			.append("svg").attr("width", width)
+			.attr("height", height);
+
+	var force = d3.layout.force().size(
+			[ width, height ]).charge(-400)
+			.linkDistance(40);
+
+	force.drag().on("dragstart", dragstart);
+
+	force.nodes(data["network"]["nodes"])
+			.links(data["network"]["links"])
+			.start();
+
+	var link = svg.selectAll(".link").data(
+			data["network"]["links"]).enter()
+			.append("line").attr("class",
+					"link");
+
+	var node = svg.selectAll(".node").data(
+			data["network"]["nodes"]).enter()
+			.append("g").attr("class", "node")
+			.call(force.drag);
+
+	node.append("circle").attr("r", 12).on(
+			"dblclick", dblclick);
+
+	node.append("text").attr("dx", 12).attr(
+			"dy", ".35em").style("font-weight",
+			"normal").text(function(d) {
+		return d.label
+	});
+
+	force.on("tick", function() {
+		link.attr("x1", function(d) {
+			return d.source.x;
+		}).attr("y1", function(d) {
+			return d.source.y;
+		}).attr("x2", function(d) {
+			return d.target.x;
+		}).attr("y2", function(d) {
+			return d.target.y;
+		});
+
+		node.attr("transform", function(d) {
+			return "translate(" + d.x + ","
+					+ d.y + ")";
+		});
+	});
 }
 
 function dblclick(d) {

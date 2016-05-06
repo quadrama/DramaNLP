@@ -19,19 +19,19 @@ import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
-import org.apache.uima.util.Level;
 import org.jgrapht.Graph;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import de.tudarmstadt.ukp.dkpro.core.api.io.JCasFileWriter_ImplBase;
-import de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData;
 import de.unistuttgart.ims.commons.Counter;
+import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Field;
 import de.unistuttgart.ims.drama.api.Figure;
 import de.unistuttgart.ims.drama.api.Heading;
 import de.unistuttgart.ims.drama.api.Scene;
+import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.Utterance;
 import de.unistuttgart.quadrama.core.DramaUtil;
@@ -43,8 +43,9 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
 
-		String documentId = DocumentMetaData.get(jcas).getDocumentId();
-		JSONArray pbArr = new JSONArray();
+		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
+		String documentId = drama.getDocumentId();
+		JSONObject obj = new JSONObject();
 
 		int c = 0;
 		for (Scene segment : JCasUtil.select(jcas, Scene.class)) {
@@ -59,19 +60,17 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 			labelObj.put("align", "center");
 			labelObj.put("verticalAlign", "bottom");
 			labelObj.put("y", -30);
-			JSONObject obj = new JSONObject();
-			obj.put("from", segment.getBegin());
-			obj.put("to", segment.getEnd());
-			obj.put("color", colors[c++ % 3]);
-			obj.put("label", labelObj);
-			pbArr.put(obj);
+			JSONObject lobj = new JSONObject();
+			lobj.put("from", segment.getBegin());
+			lobj.put("to", segment.getEnd());
+			lobj.put("color", colors[c++ % 3]);
+			lobj.put("label", labelObj);
+			obj.append("plotBands", lobj);
 		}
 
 		SortedSet<Figure> figures = new TreeSet<Figure>(new Comparator<Figure>() {
-
 			@Override
 			public int compare(Figure o1, Figure o2) {
-
 				return Integer.compare(o2.getNumberOfWords(), o1.getNumberOfWords());
 			}
 		});
@@ -90,6 +89,8 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 			j.put("lineWidth", 5);
 			j.put("data", new JSONArray());
 			series.put(figure, j);
+
+			// statistics
 			JSONObject statsObject = new JSONObject();
 			statsObject.put("words", figure.getNumberOfWords());
 			statsObject.put("utterances", figure.getNumberOfUtterances());
@@ -98,19 +99,15 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 			else
 				statsObject.put("meanUtteranceLength", figure.getUtteranceLengthArithmeticMean());
 			j.put("stats", statsObject);
-			// also, each cast member gets an integer (to be used as y-position
-			// in the chart)
 			speaker_index.put(figure, next_speaker_index++);
 
 		}
 
 		JSONObject serie = new JSONObject();
 		serie.put("name", "characters");
-		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
-			Figure figure = null;
-			if (utterance.getSpeaker() != null)
-				figure = utterance.getSpeaker().getFigure();
-			if (figure != null && speaker_index.containsKey(figure)) {
+		for (Utterance utterance : DramaUtil.selectFullUtterances(jcas)) {
+			Figure figure = JCasUtil.selectCovered(jcas, Speaker.class, utterance).get(0).getFigure();
+			if (speaker_index.containsKey(figure)) {
 				String s = StringUtils.join(JCasUtil.toText(JCasUtil.selectCovered(jcas, Speech.class, utterance)),
 						'\n');
 
@@ -130,8 +127,6 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 				// inserted to end the spoken intervall
 				series.get(figure).append("data", null);
 
-			} else {
-				getLogger().log(Level.WARNING, "Not assigned: " + utterance.getCoveredText());
 			}
 		}
 
@@ -141,10 +136,11 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 				jsonSeries.put(series.get(s));
 		}
 
-		JSONObject obj = new JSONObject();
-		obj.put("plotBands", pbArr);
+		// obj.put("plotBands", pbArr);
 		obj.put("data", jsonSeries);
-		obj.put("id", JCasUtil.selectSingle(jcas, DocumentMetaData.class).getDocumentId());
+		obj.put("id", documentId);
+		obj.put("author", drama.getAuthorname());
+		obj.put("title", drama.getDocumentTitle());
 
 		Graph<Figure, DefaultWeightedEdge> graph;
 		try {
