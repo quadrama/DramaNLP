@@ -81,13 +81,14 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 				statsObject.put("meanUtteranceLength", figure.getUtteranceLengthArithmeticMean());
 			j.put("stats", statsObject);
 			speaker_index.put(figure, next_speaker_index++);
-
+			// obj.append("figures", j);
 		}
 
 		JSONObject serie = new JSONObject();
 		serie.put("name", "characters");
 		for (Utterance utterance : DramaUtil.selectFullUtterances(jcas)) {
-			Figure figure = JCasUtil.selectCovered(jcas, Speaker.class, utterance).get(0).getFigure();
+			Speaker sp = DramaUtil.getSpeaker(utterance);
+			Figure figure = sp.getFigure();
 			if (speaker_index.containsKey(figure)) {
 				String s = StringUtils.join(JCasUtil.toText(JCasUtil.selectCovered(jcas, Speech.class, utterance)),
 						'\n');
@@ -242,19 +243,21 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 	protected JSONObject extractFieldInformation(JCas jcas) {
 		JSONObject json = new JSONObject();
 		SortedSet<String> fields = new TreeSet<String>();
+
+		for (Field f : JCasUtil.select(jcas, Field.class))
+			fields.add(f.getName());
+
 		for (Figure figure : JCasUtil.select(jcas, Figure.class)) {
 			JSONObject figObj = new JSONObject();
-			if (figure.getNumberOfWords() > 100) {
-				Counter<String> fieldCount = new Counter<String>();
-				for (Speech speech : DramaUtil.getSpeeches(jcas, figure)) {
-					for (Field field : JCasUtil.selectCovered(jcas, Field.class, speech)) {
-						fieldCount.add(field.getName());
-						fields.add(field.getName());
-					}
+			Counter<String> fieldCount = new Counter<String>();
+			for (Speech speech : DramaUtil.getSpeeches(jcas, figure)) {
+				for (Field field : JCasUtil.selectCovered(jcas, Field.class, speech)) {
+					fieldCount.add(field.getName());
+					fields.add(field.getName());
 				}
-				for (String fName : fields) {
-					figObj.append("fields", fieldCount.get(fName));
-				}
+			}
+			for (String fName : fields) {
+				figObj.append("fields", fieldCount.get(fName));
 			}
 			figObj.put("name", figure.getReference());
 			json.append("figures", figObj);

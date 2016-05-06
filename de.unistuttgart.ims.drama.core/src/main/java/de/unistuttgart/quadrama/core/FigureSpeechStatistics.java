@@ -27,18 +27,17 @@ public class FigureSpeechStatistics extends JCasAnnotator_ImplBase {
 
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
-		Map<Figure, SummaryStatistics> spokenWords =
-				new HashMap<Figure, SummaryStatistics>();
+		Map<Figure, SummaryStatistics> spokenWords = new HashMap<Figure, SummaryStatistics>();
 
 		for (Figure figure : JCasUtil.select(jcas, Figure.class)) {
 			spokenWords.put(figure, new SummaryStatistics());
 		}
 
 		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
-			if (utterance.getSpeaker() != null) {
-				Figure figure = utterance.getSpeaker().getFigure();
-				spokenWords.get(figure).addValue(
-						JCasUtil.selectCovered(Token.class, utterance).size());
+			try {
+				Figure figure = DramaUtil.getSpeaker(utterance).getFigure();
+				spokenWords.get(figure).addValue(JCasUtil.selectCovered(Token.class, utterance).size());
+			} catch (NullPointerException e) {
 			}
 		}
 
@@ -56,8 +55,7 @@ public class FigureSpeechStatistics extends JCasAnnotator_ImplBase {
 				figure.setUtteranceLengthArithmeticMean(ss.getMean());
 				figure.setUtteranceLengthMin((int) ss.getMin());
 				figure.setUtteranceLengthMax((int) ss.getMax());
-				figure.setUtteranceLengthStandardDeviation(ss
-						.getStandardDeviation());
+				figure.setUtteranceLengthStandardDeviation(ss.getStandardDeviation());
 				figure.setNumberOfWords((int) (ss.getSum()));
 
 			}
