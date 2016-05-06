@@ -15,6 +15,7 @@ public class GraphExporter {
 
 	public void export(JCas jcas, Graph<Figure, ?> graph) throws IOException {
 		StringWriter sw = new StringWriter();
+		sw.write(" \n");
 		for (Figure figure1 : graph.vertexSet()) {
 			for (Figure figure2 : graph.vertexSet()) {
 				if (graph.containsEdge(figure1, figure2)) {
