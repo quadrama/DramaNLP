@@ -26,11 +26,14 @@ import org.json.JSONObject;
 
 import de.tudarmstadt.ukp.dkpro.core.api.io.JCasFileWriter_ImplBase;
 import de.unistuttgart.ims.commons.Counter;
+import de.unistuttgart.ims.drama.api.Act;
+import de.unistuttgart.ims.drama.api.ActHeading;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Field;
 import de.unistuttgart.ims.drama.api.Figure;
 import de.unistuttgart.ims.drama.api.Heading;
 import de.unistuttgart.ims.drama.api.Scene;
+import de.unistuttgart.ims.drama.api.SceneHeading;
 import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.Utterance;
@@ -172,7 +175,7 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 		if (JCasUtil.exists(jcas, Field.class)) {
 			obj.put("field", extractFieldInformation(jcas));
 		}
-
+		obj.put("segments", this.extractSegmentation(jcas));
 		InputStream is = null;
 		OutputStream os = null;
 		OutputStreamWriter osw = null;
@@ -205,6 +208,40 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 		} finally {
 			IOUtils.closeQuietly(os);
 		}
+
+	}
+
+	protected JSONObject extractSegmentation(JCas jcas) {
+		JSONObject json = new JSONObject();
+
+		for (Act act : JCasUtil.select(jcas, Act.class)) {
+			JSONObject actJson = new JSONObject();
+			List<ActHeading> headings = JCasUtil.selectCovered(ActHeading.class, act);
+			if (headings.isEmpty()) {
+				actJson.put("heading", act.getCoveredText().substring(0, 15).trim());
+			} else {
+				actJson.put("heading", headings.get(0).getCoveredText());
+			}
+			actJson.put("begin", act.getBegin());
+			actJson.put("end", act.getEnd());
+			json.append("seg1", actJson);
+		}
+		if (JCasUtil.select(jcas, Act.class).size() != JCasUtil.select(jcas, Scene.class).size()) {
+			for (Scene scene : JCasUtil.select(jcas, Scene.class)) {
+				JSONObject actJson = new JSONObject();
+				List<SceneHeading> headings = JCasUtil.selectCovered(SceneHeading.class, scene);
+				if (headings.isEmpty()) {
+					actJson.put("heading", scene.getCoveredText().substring(0, 15).trim());
+				} else {
+					actJson.put("heading", headings.get(0).getCoveredText());
+				}
+				actJson.put("begin", scene.getBegin());
+				actJson.put("end", scene.getEnd());
+				json.append("seg2", actJson);
+			}
+		}
+
+		return json;
 
 	}
 
