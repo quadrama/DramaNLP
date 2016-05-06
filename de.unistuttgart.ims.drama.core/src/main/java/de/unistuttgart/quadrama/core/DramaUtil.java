@@ -15,7 +15,7 @@ import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.Utterance;
 
 public class DramaUtil {
-	public static List<Speech> getSpeeches(JCas jcas, Figure figure) {
+	public static Collection<Speech> getSpeeches(JCas jcas, Figure figure) {
 		List<Speech> ret = new LinkedList<Speech>();
 		for (Utterance u : JCasUtil.select(jcas, Utterance.class)) {
 			Speaker sp;

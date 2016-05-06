@@ -1,8 +1,10 @@
 package de.unistuttgart.quadrama.core;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Collection;
 import java.util.Iterator;
 
 import org.apache.uima.fit.factory.AnnotationFactory;
@@ -12,9 +14,50 @@ import org.junit.Test;
 
 import de.unistuttgart.ims.drama.api.Figure;
 import de.unistuttgart.ims.drama.api.Speaker;
+import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.Utterance;
 
 public class TestDramaUtil {
+
+	@SuppressWarnings("unused")
+	@Test
+	public void testGetSpeeches() throws Exception {
+		JCas jcas = JCasFactory.createJCas();
+		jcas.setDocumentText("Lorem ipsum dolor sit amet, consetetur sadipscing");
+
+		assertEquals(0, DramaUtil.getSpeeches(jcas, null).size());
+
+		Figure[] figure = new Figure[] { AnnotationFactory.createAnnotation(jcas, 0, 0, Figure.class),
+				AnnotationFactory.createAnnotation(jcas, 0, 0, Figure.class) };
+		assertEquals(0, DramaUtil.getSpeeches(jcas, figure[0]).size());
+		assertEquals(0, DramaUtil.getSpeeches(jcas, figure[1]).size());
+
+		Utterance[] utterances = new Utterance[] { AnnotationFactory.createAnnotation(jcas, 0, 5, Utterance.class),
+				AnnotationFactory.createAnnotation(jcas, 6, 10, Utterance.class),
+				AnnotationFactory.createAnnotation(jcas, 11, 15, Utterance.class) };
+		assertEquals(0, DramaUtil.getSpeeches(jcas, figure[0]).size());
+		assertEquals(0, DramaUtil.getSpeeches(jcas, figure[1]).size());
+		Speaker[] speaker = new Speaker[] { AnnotationFactory.createAnnotation(jcas, 0, 1, Speaker.class),
+				AnnotationFactory.createAnnotation(jcas, 6, 7, Speaker.class),
+				AnnotationFactory.createAnnotation(jcas, 11, 12, Speaker.class), };
+		assertEquals(0, DramaUtil.getSpeeches(jcas, figure[0]).size());
+		assertEquals(0, DramaUtil.getSpeeches(jcas, figure[1]).size());
+		Speech[] speech = new Speech[] { AnnotationFactory.createAnnotation(jcas, 1, 5, Speech.class),
+				AnnotationFactory.createAnnotation(jcas, 7, 9, Speech.class),
+				AnnotationFactory.createAnnotation(jcas, 9, 10, Speech.class),
+				AnnotationFactory.createAnnotation(jcas, 13, 4, Speech.class) };
+		speaker[0].setFigure(figure[0]);
+		speaker[1].setFigure(figure[1]);
+		speaker[2].setFigure(figure[0]);
+
+		Collection<Speech> sp;
+		sp = DramaUtil.getSpeeches(jcas, figure[0]);
+		assertEquals(2, sp.size());
+
+		sp = DramaUtil.getSpeeches(jcas, figure[1]);
+		assertEquals(2, sp.size());
+
+	}
 
 	@Test
 	public void TestGetFullUtterances() throws Exception {
