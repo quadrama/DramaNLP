@@ -220,5 +220,22 @@
       <description/>
       <supertypeName>de.unistuttgart.ims.drama.api.Heading</supertypeName>
     </typeDescription>
+    <typeDescription>
+    	<name>de.unistuttgart.ims.drama.api.Field</name>
+    	<description></description>
+    	<supertypeName>uima.tcas.Annotation</supertypeName>
+    	<features>
+    		<featureDescription>
+    			<name>Name</name>
+    			<rangeTypeName>uima.cas.String</rangeTypeName>
+    			<description></description>
+    		</featureDescription>
+    		<featureDescription>
+    			<name>Amount</name>
+    			<rangeTypeName>uima.cas.Double</rangeTypeName>
+    			<description></description>
+    		</featureDescription>
+    	</features>
+    </typeDescription>
   </types>
 </typeSystemDescription>
