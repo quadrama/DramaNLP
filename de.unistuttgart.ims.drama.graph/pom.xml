@@ -74,7 +74,6 @@
   		<groupId>de.unistuttgart.ims</groupId>
   		<artifactId>de.unistuttgart.ims.drama.core</artifactId>
   		<version>0.2-SNAPSHOT</version>
-  		<scope>test</scope>
   	</dependency>
   </dependencies>
 </project>
