@@ -50,7 +50,7 @@ public class ExtractFigureSpeech extends JCasConsumer_ImplBase {
 		Map<Figure, Writer> writerMap = new HashMap<Figure, Writer>();
 		try {
 			for (Figure figure : JCasUtil.select(jcas, Figure.class)) {
-				writerMap.put(figure, new FileWriter(new File(file, figure.getCoveredText())));
+				writerMap.put(figure, new FileWriter(new File(file, figure.getCoveredText() + ".txt")));
 			}
 			for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
 				try {
