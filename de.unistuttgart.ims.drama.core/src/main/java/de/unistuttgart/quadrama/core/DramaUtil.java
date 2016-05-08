@@ -34,6 +34,14 @@ public class DramaUtil {
 		}
 	}
 
+	public static Figure getFigure(Utterance u) {
+		Speaker s = getSpeaker(u);
+		if (s != null)
+			return s.getFigure();
+		else
+			return null;
+	}
+
 	public static Collection<Utterance> selectFullUtterances(JCas jcas) {
 		final Iterator<Utterance> baseIterator = JCasUtil.iterator(jcas, Utterance.class);
 
