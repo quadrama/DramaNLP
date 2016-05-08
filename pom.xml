@@ -108,7 +108,7 @@
 		<module>de.unistuttgart.ims.drama.graph</module>
 		<module>de.unistuttgart.ims.drama.io.configuration</module>
 		<module>de.unistuttgart.ims.drama.io.html</module>
-		<module>de.unistuttgart.ims.drama.inter</module>
+		
 		<module>de.unistuttgart.ims.drama.io.tei.folger</module>
 		<module>de.unistuttgart.ims.drama.io.tei.textgrid</module>
 		<module>de.unistuttgart.ims.drama.db</module>
