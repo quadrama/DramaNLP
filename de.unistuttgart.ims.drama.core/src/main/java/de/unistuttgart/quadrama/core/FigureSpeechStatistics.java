@@ -15,6 +15,7 @@ import org.apache.uima.jcas.JCas;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.unistuttgart.ims.drama.api.Figure;
 import de.unistuttgart.ims.drama.api.Utterance;
+import de.unistuttgart.ims.drama.util.DramaUtil;
 
 public class FigureSpeechStatistics extends JCasAnnotator_ImplBase {
 

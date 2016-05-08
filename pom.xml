@@ -114,5 +114,6 @@
 		<module>de.unistuttgart.ims.drama.db</module>
 		<module>de.unistuttgart.ims.drama.db.orm</module>
 		<module>de.unistuttgart.ims.drama.examples</module>
+		<module>de.unistuttgart.ims.drama.util</module>
 	</modules>
 </project>

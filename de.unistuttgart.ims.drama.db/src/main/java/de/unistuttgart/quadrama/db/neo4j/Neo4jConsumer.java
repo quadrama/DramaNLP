@@ -29,6 +29,7 @@ import de.unistuttgart.ims.drama.api.Figure;
 import de.unistuttgart.ims.drama.api.Scene;
 import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.api.Utterance;
+import de.unistuttgart.ims.drama.util.DramaUtil;
 
 public class Neo4jConsumer extends JCasAnnotator_ImplBase {
 
@@ -39,8 +40,7 @@ public class Neo4jConsumer extends JCasAnnotator_ImplBase {
 	Client client;
 
 	@Override
-	public void initialize(final UimaContext context)
-			throws ResourceInitializationException {
+	public void initialize(final UimaContext context) throws ResourceInitializationException {
 		super.initialize(context);
 		clientConfig = new ClientConfig();
 		String username = "neo4j";
@@ -48,19 +48,13 @@ public class Neo4jConsumer extends JCasAnnotator_ImplBase {
 		feature = HttpAuthenticationFeature.basic(username, password);
 
 		JSONObject clearCommand = new JSONObject();
-		clearCommand.append("statements", new JSONObject(
-				"{statement:\"MATCH (n) DETACH DELETE n\"}"));
+		clearCommand.append("statements", new JSONObject("{statement:\"MATCH (n) DETACH DELETE n\"}"));
 		client = ClientBuilder.newClient(clientConfig);
-		WebTarget wt =
-				client.target(serverRootURI + "db/data/transaction/commit");
+		WebTarget wt = client.target(serverRootURI + "db/data/transaction/commit");
 		wt.register(feature);
-		Response response =
-				wt.request()
-				.accept(MediaType.APPLICATION_JSON)
-				.post(Entity.entity(clearCommand.toString(),
-						MediaType.APPLICATION_JSON));
-		System.out.println(String.format("GET on [%s], status code [%d]",
-				serverRootURI, response.getStatus()));
+		Response response = wt.request().accept(MediaType.APPLICATION_JSON)
+				.post(Entity.entity(clearCommand.toString(), MediaType.APPLICATION_JSON));
+		System.out.println(String.format("GET on [%s], status code [%d]", serverRootURI, response.getStatus()));
 		response.close();
 
 		String nodeEntryPointUri = serverRootURI + "db/data/node";
@@ -83,8 +77,7 @@ public class Neo4jConsumer extends JCasAnnotator_ImplBase {
 		int actOrder = 0;
 		for (Scene act : JCasUtil.select(aJCas, Scene.class)) {
 			object = new JSONObject();
-			object.put("name",
-					StringUtils.substring(act.getCoveredText(), 0, 20));
+			object.put("name", StringUtils.substring(act.getCoveredText(), 0, 20));
 			object.put("order", actOrder++);
 			URI actURI = storeInDatabase(object);
 			setLabel(actURI, "Act");
@@ -94,7 +87,8 @@ public class Neo4jConsumer extends JCasAnnotator_ImplBase {
 				try {
 					if (speaker.getFigure() != null)
 						figures.add(speaker.getFigure());
-				} catch (NullPointerException e) {}
+				} catch (NullPointerException e) {
+				}
 			}
 			for (Figure figure : figures) {
 				URI figureURI = uriMap.get(figure);
@@ -102,14 +96,13 @@ public class Neo4jConsumer extends JCasAnnotator_ImplBase {
 			}
 
 			if (false)
-				for (Utterance utterance : JCasUtil.selectCovered(
-						Utterance.class, act)) {
+				for (Utterance utterance : JCasUtil.selectCovered(Utterance.class, act)) {
 					object = new JSONObject();
 					object.put("text", utterance.getCoveredText());
 					URI utteranceURI = storeInDatabase(object);
 					setLabel(utteranceURI, "Utterance");
 					try {
-						Figure fig = utterance.getSpeaker().getFigure();
+						Figure fig = DramaUtil.getFigure(utterance);
 						relate(uriMap.get(fig), utteranceURI, "utters");
 					} catch (NullPointerException e) {
 						// matching error
@@ -124,32 +117,20 @@ public class Neo4jConsumer extends JCasAnnotator_ImplBase {
 		JSONObject obj = new JSONObject();
 		obj.put("to", uri2.toASCIIString());
 		obj.put("type", type);
-		Response r =
-				client.target(uri1.toString() + "/relationships")
-						.request()
-						.accept(MediaType.APPLICATION_JSON)
-						.post(Entity.entity(obj.toString(),
-								MediaType.APPLICATION_JSON));
+		Response r = client.target(uri1.toString() + "/relationships").request().accept(MediaType.APPLICATION_JSON)
+				.post(Entity.entity(obj.toString(), MediaType.APPLICATION_JSON));
 		return r.getStatus();
 	}
 
 	private int setLabel(URI uri, String label) {
-		Response r =
-				client.target(uri.toString() + "/labels")
-						.request()
-						.accept(MediaType.APPLICATION_JSON)
-						.post(Entity.entity("\"" + label + "\"",
-								MediaType.APPLICATION_JSON));
+		Response r = client.target(uri.toString() + "/labels").request().accept(MediaType.APPLICATION_JSON)
+				.post(Entity.entity("\"" + label + "\"", MediaType.APPLICATION_JSON));
 		return r.getStatus();
 	}
 
 	private URI storeInDatabase(JSONObject obj) {
-		Response response =
-				nodeWebTarget
-				.request()
-				.accept(MediaType.APPLICATION_JSON)
-				.post(Entity.entity(obj.toString(),
-						MediaType.APPLICATION_JSON));
+		Response response = nodeWebTarget.request().accept(MediaType.APPLICATION_JSON)
+				.post(Entity.entity(obj.toString(), MediaType.APPLICATION_JSON));
 
 		return response.getLocation();
 

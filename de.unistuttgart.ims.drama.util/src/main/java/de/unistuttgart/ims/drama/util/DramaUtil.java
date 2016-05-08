@@ -1,4 +1,4 @@
-package de.unistuttgart.quadrama.core;
+package de.unistuttgart.ims.drama.util;
 
 import java.util.ArrayList;
 import java.util.Collection;

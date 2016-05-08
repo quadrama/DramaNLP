@@ -37,7 +37,7 @@ import de.unistuttgart.ims.drama.api.SceneHeading;
 import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.Utterance;
-import de.unistuttgart.quadrama.core.DramaUtil;
+import de.unistuttgart.ims.drama.util.DramaUtil;
 import de.unistuttgart.quadrama.graph.ext.GraphImporter;
 
 public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {

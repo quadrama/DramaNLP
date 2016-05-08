@@ -25,7 +25,7 @@ import de.unistuttgart.ims.drama.api.MainMatter;
 import de.unistuttgart.ims.drama.api.Scene;
 import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.api.Utterance;
-import de.unistuttgart.quadrama.core.DramaUtil;
+import de.unistuttgart.ims.drama.util.DramaUtil;
 import de.unistuttgart.quadrama.graph.ext.GraphExporter;
 
 public class NetworkExtractor extends JCasAnnotator_ImplBase {

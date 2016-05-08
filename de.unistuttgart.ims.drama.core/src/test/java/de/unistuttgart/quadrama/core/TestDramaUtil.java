@@ -16,6 +16,7 @@ import de.unistuttgart.ims.drama.api.Figure;
 import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.Utterance;
+import de.unistuttgart.ims.drama.util.DramaUtil;
 
 public class TestDramaUtil {
 

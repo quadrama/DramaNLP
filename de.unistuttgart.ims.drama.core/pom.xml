@@ -82,6 +82,11 @@
     	<artifactId>commons-csv</artifactId>
     	<version>1.2</version>
     </dependency>
+    <dependency>
+    	<groupId>de.unistuttgart.ims.drama</groupId>
+    	<artifactId>de.unistuttgart.ims.drama.util</artifactId>
+    	<version>0.2-SNAPSHOT</version>
+    </dependency>
   </dependencies>
   <build>
 		<plugins>

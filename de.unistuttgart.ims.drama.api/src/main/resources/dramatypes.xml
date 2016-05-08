@@ -39,23 +39,6 @@
       <name>de.unistuttgart.ims.drama.api.Utterance</name>
       <description/>
       <supertypeName>uima.tcas.Annotation</supertypeName>
-      <features>
-        <featureDescription>
-          <name>Speaker</name>
-          <description/>
-          <rangeTypeName>de.unistuttgart.ims.drama.api.Speaker</rangeTypeName>
-        </featureDescription>
-        <featureDescription>
-          <name>Stage</name>
-          <description/>
-          <rangeTypeName>de.unistuttgart.ims.drama.api.StageDirection</rangeTypeName>
-        </featureDescription>
-      <featureDescription>
-          <name>Speech</name>
-          <description/>
-          <rangeTypeName>de.unistuttgart.ims.drama.api.Speech</rangeTypeName>
-        </featureDescription>
-      </features>
     </typeDescription>
     <typeDescription>
       <name>de.unistuttgart.ims.drama.api.StageDirection</name>

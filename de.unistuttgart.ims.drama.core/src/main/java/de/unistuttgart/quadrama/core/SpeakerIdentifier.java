@@ -22,6 +22,7 @@ import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Figure;
 import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.api.SpeakerFigure;
+import de.unistuttgart.ims.drama.util.AnnotationComparator;
 
 /**
  * Before reference string mean 446.82978723404256 18.148936170212774 min 3.0
