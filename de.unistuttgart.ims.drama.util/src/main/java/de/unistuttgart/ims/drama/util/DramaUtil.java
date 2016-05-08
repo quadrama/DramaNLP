@@ -6,10 +6,12 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.uima.fit.factory.AnnotationFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
 import de.unistuttgart.ims.drama.api.Figure;
+import de.unistuttgart.ims.drama.api.FigureType;
 import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.Utterance;
@@ -54,5 +56,12 @@ public class DramaUtil {
 		}
 		return fullUtterances;
 
+	}
+
+	public static FigureType assignFigureType(JCas jcas, Figure figure, String cl, String value) {
+		FigureType ft = AnnotationFactory.createAnnotation(jcas, figure.getBegin(), figure.getEnd(), FigureType.class);
+		ft.setTypeClass(cl);
+		ft.setTypeValue(value);
+		return ft;
 	}
 }
