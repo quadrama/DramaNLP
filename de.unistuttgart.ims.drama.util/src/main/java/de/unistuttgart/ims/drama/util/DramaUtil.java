@@ -64,4 +64,12 @@ public class DramaUtil {
 		ft.setTypeValue(value);
 		return ft;
 	}
+
+	public static String getTypeValue(JCas jcas, Figure figure, String typeClass) {
+		for (FigureType ft : JCasUtil.selectCovered(FigureType.class, figure)) {
+			if (typeClass.equals(ft.getTypeClass()))
+				return ft.getTypeValue();
+		}
+		return null;
+	}
 }
