@@ -2,6 +2,8 @@ package de.unistuttgart.ims.drama.util;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Collection;
@@ -13,10 +15,10 @@ import org.apache.uima.jcas.JCas;
 import org.junit.Test;
 
 import de.unistuttgart.ims.drama.api.Figure;
+import de.unistuttgart.ims.drama.api.FigureType;
 import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.Utterance;
-import de.unistuttgart.ims.drama.util.DramaUtil;
 
 public class TestDramaUtil {
 
@@ -85,5 +87,39 @@ public class TestDramaUtil {
 		iter.next();
 		assertFalse(iter.hasNext());
 
+	}
+
+	@Test
+	public void TestGetTypeValue() throws Exception {
+		JCas jcas = JCasFactory.createJCas();
+		jcas.setDocumentText("Lorem ipsum dolor sit amet, consetetur sadipscing");
+		Figure[] figure = new Figure[] { AnnotationFactory.createAnnotation(jcas, 0, 5, Figure.class),
+				AnnotationFactory.createAnnotation(jcas, 6, 7, Figure.class),
+				AnnotationFactory.createAnnotation(jcas, 8, 10, Figure.class) };
+
+		assertNull(DramaUtil.getTypeValue(jcas, figure[0], "Gender"));
+		assertNull(DramaUtil.getTypeValue(jcas, figure[1], "Gender"));
+		assertNull(DramaUtil.getTypeValue(jcas, figure[2], "Gender"));
+
+		FigureType ft = AnnotationFactory.createAnnotation(jcas, 6, 7, FigureType.class);
+
+		assertNull(DramaUtil.getTypeValue(jcas, figure[0], "Gender"));
+		assertNull(DramaUtil.getTypeValue(jcas, figure[1], "Gender"));
+		assertNull(DramaUtil.getTypeValue(jcas, figure[2], "Gender"));
+
+		ft.setTypeClass("Gender");
+		ft.setTypeValue("m");
+		assertNull(DramaUtil.getTypeValue(jcas, figure[0], "Gender"));
+		assertNotNull(DramaUtil.getTypeValue(jcas, figure[1], "Gender"));
+		assertEquals("m", DramaUtil.getTypeValue(jcas, figure[1], "Gender"));
+		assertNull(DramaUtil.getTypeValue(jcas, figure[2], "Gender"));
+
+		ft = AnnotationFactory.createAnnotation(jcas, 6, 7, FigureType.class);
+		ft.setTypeClass("Gender");
+		ft.setTypeValue("f");
+		assertNull(DramaUtil.getTypeValue(jcas, figure[0], "Gender"));
+		assertNotNull(DramaUtil.getTypeValue(jcas, figure[1], "Gender"));
+		assertEquals("m", DramaUtil.getTypeValue(jcas, figure[1], "Gender"));
+		assertNull(DramaUtil.getTypeValue(jcas, figure[2], "Gender"));
 	}
 }

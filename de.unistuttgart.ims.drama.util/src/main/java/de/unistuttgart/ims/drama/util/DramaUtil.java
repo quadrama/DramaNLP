@@ -2,6 +2,7 @@ package de.unistuttgart.ims.drama.util;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -63,6 +64,12 @@ public class DramaUtil {
 		ft.setTypeClass(cl);
 		ft.setTypeValue(value);
 		return ft;
+	}
+
+	public static Collection<FigureType> getAllFigureTypes(Figure figure) {
+		if (figure != null)
+			return JCasUtil.selectCovered(FigureType.class, figure);
+		return new HashSet<FigureType>();
 	}
 
 	public static String getTypeValue(JCas jcas, Figure figure, String typeClass) {
