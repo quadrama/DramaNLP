@@ -39,6 +39,11 @@
   		<version>1.7.0</version>
   		<scope>test</scope>
   	</dependency>
+  	<dependency>
+  		<groupId>de.unistuttgart.ims.drama</groupId>
+  		<artifactId>de.unistuttgart.ims.drama.util</artifactId>
+  		<version>0.2-SNAPSHOT</version>
+  	</dependency>
   </dependencies>
   <description>Base module to provide generic io capabilities</description>
   <build>
