@@ -2,12 +2,11 @@ package de.unistuttgart.quadrama.io.core;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.Writer;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.uima.UimaContext;
@@ -19,7 +18,6 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 
 import de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData;
-import de.unistuttgart.ims.drama.api.FigureType;
 import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.Utterance;
@@ -37,12 +35,11 @@ public class ExtractSpeechByType extends JCasConsumer_ImplBase {
 	@ConfigurationParameter(name = PARAM_TYPE, mandatory = true)
 	String sortingType = null;
 
-	@ConfigurationParameter(name = PARAM_MERGED, mandatory = true, defaultValue = "true")
+	@ConfigurationParameter(name = PARAM_MERGED, mandatory = false, defaultValue = "true")
 	boolean merged = true;
 
 	File outputDirectory;
 	Map<String, Writer> writerMap = new HashMap<String, Writer>();
-	boolean first = true;
 
 	@Override
 	public void initialize(final UimaContext context) throws ResourceInitializationException {
@@ -67,42 +64,27 @@ public class ExtractSpeechByType extends JCasConsumer_ImplBase {
 			file = new File(outputDirectory, documentId);
 			file.mkdir();
 		}
-		Set<String> typeValues = new HashSet<String>();
-		for (FigureType ft : JCasUtil.select(jcas, FigureType.class)) {
-			if (ft.getTypeClass().equalsIgnoreCase(sortingType))
-				typeValues.add(ft.getTypeValue());
-		}
 
 		try {
-
-			if ((merged && first) || !merged)
-				for (String v : typeValues) {
-					writerMap.put(v, new FileWriter(new File(file, v + ".txt")));
-				}
 			for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
 				try {
 					Speaker speaker = JCasUtil.selectCovered(Speaker.class, utterance).get(0);
 					if (speaker.getFigure() != null) {
 						List<Speech> speeches = JCasUtil.selectCovered(Speech.class, utterance);
 						String writerIndex = DramaUtil.getTypeValue(jcas, speaker.getFigure(), sortingType);
+
 						for (Speech speech : speeches) {
-							if (writerMap.containsKey(writerIndex)) {
-								writerMap.get(writerIndex).write(speech.getCoveredText());
-								writerMap.get(writerIndex).write(" ");
-							}
+							getWriter(file, writerIndex).write(speech.getCoveredText());
+							getWriter(file, writerIndex).write(" ");
 						}
-						if (writerMap.containsKey(writerIndex))
-							writerMap.get(writerIndex).write("\n");
+						getWriter(file, writerIndex).write("\n");
 					}
 				} catch (IndexOutOfBoundsException e) {
 					// there is no speaker annotation in this utterance
 				}
 			}
 			if (!merged)
-				for (Writer writer : writerMap.values()) {
-					writer.flush();
-					writer.close();
-				}
+				closeWriters();
 
 		} catch (Exception e) {
 			throw new AnalysisEngineProcessException(e);
@@ -112,21 +94,31 @@ public class ExtractSpeechByType extends JCasConsumer_ImplBase {
 					IOUtils.closeQuietly(writer);
 				}
 		}
-		if (first)
-			first = false;
+
 	}
 
 	@Override
 	public void collectionProcessComplete() throws AnalysisEngineProcessException {
 		super.collectionProcessComplete();
 		if (merged)
-			for (Writer writer : writerMap.values()) {
-				try {
-					writer.flush();
-				} catch (Exception e) {
+			closeWriters();
+	}
 
-				}
-				IOUtils.closeQuietly(writer);
+	protected void closeWriters() {
+		for (Writer w : writerMap.values()) {
+			try {
+				w.flush();
+			} catch (IOException e) {
 			}
+			IOUtils.closeQuietly(w);
+		}
+		writerMap.clear();
+	}
+
+	protected Writer getWriter(File file, String value) throws IOException {
+		if (!writerMap.containsKey(value)) {
+			writerMap.put(value, new FileWriter(new File(file, value + ".txt")));
+		}
+		return writerMap.get(value);
 	}
 }
