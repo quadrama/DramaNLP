@@ -29,11 +29,14 @@ import de.unistuttgart.ims.drama.util.DramaUtil;
 public class ExtractSpeechByFigure extends JCasConsumer_ImplBase {
 
 	public static final String PARAM_OUTPUT_DIRECTORY = "Output Directory";
+
+	@Deprecated
 	public static final String PARAM_TYPE = "Sorting Type";
 
 	@ConfigurationParameter(name = PARAM_OUTPUT_DIRECTORY)
 	String outputDirectoryName;
 
+	@Deprecated
 	@ConfigurationParameter(name = PARAM_TYPE, mandatory = false)
 	String sortingType = null;
 
