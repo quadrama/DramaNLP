@@ -26,7 +26,7 @@ import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.Utterance;
 import de.unistuttgart.ims.drama.util.DramaUtil;
 
-public class ExtractFigureSpeech extends JCasConsumer_ImplBase {
+public class ExtractSpeechByFigure extends JCasConsumer_ImplBase {
 
 	public static final String PARAM_OUTPUT_DIRECTORY = "Output Directory";
 	public static final String PARAM_TYPE = "Sorting Type";

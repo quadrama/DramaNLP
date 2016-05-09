@@ -15,9 +15,9 @@ import org.apache.uima.resource.ResourceInitializationException;
 import org.junit.Test;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiReader;
-import de.unistuttgart.quadrama.io.core.ExtractFigureSpeech;
+import de.unistuttgart.quadrama.io.core.ExtractSpeechByFigure;
 
-public class TestExtractFigureSpeech {
+public class TestExtractSpeechByFigure {
 
 	@Test
 	public void testExtractFigureSpeech() throws ResourceInitializationException, UIMAException, IOException {
@@ -26,8 +26,8 @@ public class TestExtractFigureSpeech {
 		SimplePipeline.runPipeline(
 				CollectionReaderFactory.createReaderDescription(XmiReader.class, XmiReader.PARAM_SOURCE_LOCATION,
 						"src/test/resources/*.xmi", XmiReader.PARAM_LENIENT, true),
-				AnalysisEngineFactory.createEngineDescription(ExtractFigureSpeech.class,
-						ExtractFigureSpeech.PARAM_OUTPUT_DIRECTORY, tdir.getAbsolutePath()));
+				AnalysisEngineFactory.createEngineDescription(ExtractSpeechByFigure.class,
+						ExtractSpeechByFigure.PARAM_OUTPUT_DIRECTORY, tdir.getAbsolutePath()));
 		File rdir = new File(tdir, "vndf.0");
 		assertTrue(rdir.exists());
 		assertTrue(rdir.isDirectory());
