@@ -17,5 +17,9 @@
   		<artifactId>de.unistuttgart.ims.drama.api</artifactId>
   		<version>0.2-SNAPSHOT</version>
   	</dependency>
+  	<dependency>
+  		<groupId>junit</groupId>
+  		<artifactId>junit</artifactId>
+  	</dependency>
   </dependencies>
 </project>

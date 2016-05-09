@@ -1,4 +1,4 @@
-package de.unistuttgart.quadrama.core;
+package de.unistuttgart.ims.drama.util;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
