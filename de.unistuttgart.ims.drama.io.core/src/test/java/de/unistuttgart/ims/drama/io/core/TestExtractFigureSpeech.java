@@ -1,7 +1,12 @@
 package de.unistuttgart.ims.drama.io.core;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.io.File;
 import java.io.IOException;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.uima.UIMAException;
 import org.apache.uima.fit.factory.AnalysisEngineFactory;
 import org.apache.uima.fit.factory.CollectionReaderFactory;
@@ -16,10 +21,16 @@ public class TestExtractFigureSpeech {
 
 	@Test
 	public void testExtractFigureSpeech() throws ResourceInitializationException, UIMAException, IOException {
+		File tdir = new File("target/texts/");
+		FileUtils.deleteDirectory(tdir);
 		SimplePipeline.runPipeline(
 				CollectionReaderFactory.createReaderDescription(XmiReader.class, XmiReader.PARAM_SOURCE_LOCATION,
 						"src/test/resources/*.xmi", XmiReader.PARAM_LENIENT, true),
 				AnalysisEngineFactory.createEngineDescription(ExtractFigureSpeech.class,
-						ExtractFigureSpeech.PARAM_OUTPUT_DIRECTORY, "target/texts"));
+						ExtractFigureSpeech.PARAM_OUTPUT_DIRECTORY, tdir.getAbsolutePath()));
+		File rdir = new File(tdir, "vndf.0");
+		assertTrue(rdir.exists());
+		assertTrue(rdir.isDirectory());
+		assertEquals(45, rdir.listFiles().length);
 	}
 }
