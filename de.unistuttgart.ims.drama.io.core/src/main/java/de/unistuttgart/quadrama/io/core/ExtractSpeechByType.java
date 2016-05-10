@@ -58,12 +58,12 @@ public class ExtractSpeechByType extends JCasConsumer_ImplBase {
 		String documentId = DocumentMetaData.get(jcas).getDocumentId();
 
 		File file;
-		if (merged) {
-			file = outputDirectory;
-		} else {
-			file = new File(outputDirectory, documentId);
-			file.mkdir();
-		}
+		// if (merged) {
+		file = outputDirectory;
+		// } else {
+		// file = new File(outputDirectory, documentId);
+		// file.mkdir();
+		// }
 
 		try {
 			for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
@@ -72,12 +72,15 @@ public class ExtractSpeechByType extends JCasConsumer_ImplBase {
 					if (speaker.getFigure() != null) {
 						List<Speech> speeches = JCasUtil.selectCovered(Speech.class, utterance);
 						String writerIndex = DramaUtil.getTypeValue(jcas, speaker.getFigure(), sortingType);
-
-						for (Speech speech : speeches) {
-							getWriter(file, writerIndex).write(speech.getCoveredText());
-							getWriter(file, writerIndex).write(" ");
+						if (writerIndex != null) {
+							if (!merged)
+								writerIndex = documentId + "_" + writerIndex;
+							for (Speech speech : speeches) {
+								getWriter(file, writerIndex).write(speech.getCoveredText());
+								getWriter(file, writerIndex).write(" ");
+							}
+							getWriter(file, writerIndex).write("\n");
 						}
-						getWriter(file, writerIndex).write("\n");
 					}
 				} catch (IndexOutOfBoundsException e) {
 					// there is no speaker annotation in this utterance
