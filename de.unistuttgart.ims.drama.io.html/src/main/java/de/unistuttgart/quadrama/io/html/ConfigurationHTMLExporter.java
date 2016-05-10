@@ -65,7 +65,7 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 		for (Figure figure : figures) {
 			// we make one series for each cast member
 			JSONObject j = new JSONObject();
-			j.put("name", figure.getCoveredText());
+			j.put("name", figure.getReference());
 			j.put("visible", figure.getNumberOfWords() > 100);
 			j.put("lineWidth", 5);
 			j.put("data", new JSONArray());
