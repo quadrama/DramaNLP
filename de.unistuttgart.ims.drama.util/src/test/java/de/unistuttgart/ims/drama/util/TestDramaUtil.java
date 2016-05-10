@@ -14,6 +14,7 @@ import org.apache.uima.fit.factory.JCasFactory;
 import org.apache.uima.jcas.JCas;
 import org.junit.Test;
 
+import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Figure;
 import de.unistuttgart.ims.drama.api.FigureType;
 import de.unistuttgart.ims.drama.api.Speaker;
@@ -121,5 +122,29 @@ public class TestDramaUtil {
 		assertNotNull(DramaUtil.getTypeValue(jcas, figure[1], "Gender"));
 		assertEquals("m", DramaUtil.getTypeValue(jcas, figure[1], "Gender"));
 		assertNull(DramaUtil.getTypeValue(jcas, figure[2], "Gender"));
+	}
+
+	@Test
+	public void testGetDisplayId() throws Exception {
+		JCas jcas = JCasFactory.createJCas();
+		jcas.setDocumentText("Lorem ipsum dolor sit amet, consetetur sadipscing");
+		Drama drama;
+		drama = new Drama(jcas);
+		drama.addToIndexes();
+		drama.setDocumentTitle("The dog barks");
+		drama.setDocumentId("test");
+		assertEquals("Tdb", DramaUtil.getDisplayId(jcas));
+
+		drama.setDocumentTitle("The dog barks2");
+		assertEquals("Tdb", DramaUtil.getDisplayId(jcas));
+
+		drama.setDocumentTitle("Romeo und Julia");
+		assertEquals("RuJ", DramaUtil.getDisplayId(jcas));
+
+		drama.setDocumentTitle("");
+		assertEquals("test", DramaUtil.getDisplayId(jcas));
+
+		drama.setDocumentTitle(null);
+		assertEquals("test", DramaUtil.getDisplayId(jcas));
 	}
 }

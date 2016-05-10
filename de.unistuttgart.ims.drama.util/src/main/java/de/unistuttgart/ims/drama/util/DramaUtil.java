@@ -11,6 +11,7 @@ import org.apache.uima.fit.factory.AnnotationFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
+import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Figure;
 import de.unistuttgart.ims.drama.api.FigureType;
 import de.unistuttgart.ims.drama.api.Speaker;
@@ -78,5 +79,17 @@ public class DramaUtil {
 				return ft.getTypeValue();
 		}
 		return null;
+	}
+
+	public static String getDisplayId(JCas jcas) {
+		String title = JCasUtil.selectSingle(jcas, Drama.class).getDocumentTitle();
+		if (title == null || title.length() == 0) {
+			return JCasUtil.selectSingle(jcas, Drama.class).getDocumentId();
+		}
+		StringBuilder b = new StringBuilder();
+		for (String s : title.split(" ")) {
+			b.append(s.charAt(0));
+		}
+		return b.toString();
 	}
 }
