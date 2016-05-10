@@ -43,6 +43,6 @@ public class TestExtractSpeechByType {
 						ExtractSpeechByType.PARAM_TYPE, "Gender", ExtractSpeechByType.PARAM_MERGED, false));
 		assertTrue(tdir.exists());
 		assertTrue(tdir.isDirectory());
-		assertEquals(1, tdir.listFiles().length);
+		assertEquals(2, tdir.listFiles().length);
 	}
 }
