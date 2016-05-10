@@ -1,7 +1,9 @@
 package de.unistuttgart.quadrama.core;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -29,15 +31,21 @@ public class FigureSpeechStatistics extends JCasAnnotator_ImplBase {
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
 		Map<Figure, SummaryStatistics> spokenWords = new HashMap<Figure, SummaryStatistics>();
-
+		Map<Figure, Set<String>> types = new HashMap<Figure, Set<String>>();
 		for (Figure figure : JCasUtil.select(jcas, Figure.class)) {
 			spokenWords.put(figure, new SummaryStatistics());
+			types.put(figure, new HashSet<String>());
 		}
 
 		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
 			try {
 				Figure figure = DramaUtil.getSpeaker(utterance).getFigure();
-				spokenWords.get(figure).addValue(JCasUtil.selectCovered(Token.class, utterance).size());
+				int n = 0;
+				for (Token token : JCasUtil.selectCovered(Token.class, utterance)) {
+					n++;
+					types.get(token.getCoveredText());
+				}
+				spokenWords.get(figure).addValue(n);
 			} catch (NullPointerException e) {
 			}
 		}
@@ -47,7 +55,7 @@ public class FigureSpeechStatistics extends JCasAnnotator_ImplBase {
 			JCasBuilder b = new JCasBuilder(statView);
 			for (Figure figure : JCasUtil.select(jcas, Figure.class)) {
 				SummaryStatistics ss = spokenWords.get(figure);
-				b.add(figure.getCoveredText());
+				b.add(figure.getReference());
 				b.add("\n");
 				b.add(ss.toString());
 				b.add("====\n");
@@ -58,6 +66,7 @@ public class FigureSpeechStatistics extends JCasAnnotator_ImplBase {
 				figure.setUtteranceLengthMax((int) ss.getMax());
 				figure.setUtteranceLengthStandardDeviation(ss.getStandardDeviation());
 				figure.setNumberOfWords((int) (ss.getSum()));
+				figure.setTypeTokenRatio100(types.size() / ss.getSum());
 
 			}
 			b.close();
