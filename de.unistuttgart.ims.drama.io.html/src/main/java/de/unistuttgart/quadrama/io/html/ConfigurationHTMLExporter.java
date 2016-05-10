@@ -220,7 +220,7 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 				List<Figure> figureList = new ArrayList<Figure>(graph.vertexSet());
 				for (Figure figure : figureList) {
 					JSONObject figObj = new JSONObject();
-					figObj.put("label", figure.getCoveredText());
+					figObj.put("label", figure.getReference());
 					obj.append("nodes", figObj);
 				}
 				for (DefaultWeightedEdge edge : graph.edgeSet()) {
