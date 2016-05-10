@@ -83,10 +83,15 @@ public class DramaUtil {
 
 	public static String getDisplayId(JCas jcas) {
 		String title = JCasUtil.selectSingle(jcas, Drama.class).getDocumentTitle();
-		if (title == null || title.length() == 0) {
+		String author = JCasUtil.selectSingle(jcas, Drama.class).getAuthorname();
+		if (title == null || author == null || author.length() == 0 || title.length() == 0) {
 			return JCasUtil.selectSingle(jcas, Drama.class).getDocumentId();
 		}
 		StringBuilder b = new StringBuilder();
+		for (String s : author.split(" ")) {
+			b.append(s.charAt(0));
+		}
+		b.append('_');
 		for (String s : title.split(" ")) {
 			b.append(s.charAt(0));
 		}

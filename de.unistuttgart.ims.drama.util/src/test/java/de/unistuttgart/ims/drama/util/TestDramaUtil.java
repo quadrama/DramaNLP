@@ -133,13 +133,14 @@ public class TestDramaUtil {
 		drama.addToIndexes();
 		drama.setDocumentTitle("The dog barks");
 		drama.setDocumentId("test");
-		assertEquals("Tdb", DramaUtil.getDisplayId(jcas));
+		drama.setAuthorname("No author");
+		assertEquals("Na_Tdb", DramaUtil.getDisplayId(jcas));
 
 		drama.setDocumentTitle("The dog barks2");
-		assertEquals("Tdb", DramaUtil.getDisplayId(jcas));
+		assertEquals("Na_Tdb", DramaUtil.getDisplayId(jcas));
 
 		drama.setDocumentTitle("Romeo und Julia");
-		assertEquals("RuJ", DramaUtil.getDisplayId(jcas));
+		assertEquals("Na_RuJ", DramaUtil.getDisplayId(jcas));
 
 		drama.setDocumentTitle("");
 		assertEquals("test", DramaUtil.getDisplayId(jcas));
