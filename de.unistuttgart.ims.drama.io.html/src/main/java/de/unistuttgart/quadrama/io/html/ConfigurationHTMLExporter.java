@@ -46,7 +46,7 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
 
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
-		String documentId = drama.getDocumentId();
+		String documentId = DramaUtil.getDisplayId(jcas);
 		JSONObject obj = new JSONObject();
 
 		SortedSet<Figure> figures = new TreeSet<Figure>(new Comparator<Figure>() {

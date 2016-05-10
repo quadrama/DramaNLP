@@ -14,7 +14,6 @@ import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
-import de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData;
 import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.Utterance;
@@ -35,15 +34,9 @@ public class ExtractSpeechByType extends AbstractExtractSpeechConsumer {
 
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
-		String documentId = DocumentMetaData.get(jcas).getDocumentId();
 
 		File file;
-		// if (merged) {
 		file = outputDirectory;
-		// } else {
-		// file = new File(outputDirectory, documentId);
-		// file.mkdir();
-		// }
 
 		try {
 			for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
@@ -54,7 +47,7 @@ public class ExtractSpeechByType extends AbstractExtractSpeechConsumer {
 						String writerIndex = DramaUtil.getTypeValue(jcas, speaker.getFigure(), sortingType);
 						if (writerIndex != null) {
 							if (!merged)
-								writerIndex = documentId + "_" + writerIndex;
+								writerIndex = DramaUtil.getDisplayId(jcas) + "_" + writerIndex;
 							for (Speech speech : speeches) {
 								getWriter(file, writerIndex).write(speech.getCoveredText());
 								getWriter(file, writerIndex).write(" ");

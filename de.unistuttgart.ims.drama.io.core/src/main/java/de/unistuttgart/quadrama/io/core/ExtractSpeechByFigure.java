@@ -4,20 +4,15 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.Writer;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
-import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
-import de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData;
 import de.unistuttgart.ims.drama.api.Figure;
-import de.unistuttgart.ims.drama.api.FigureType;
 import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.Utterance;
@@ -25,45 +20,23 @@ import de.unistuttgart.ims.drama.util.DramaUtil;
 
 public class ExtractSpeechByFigure extends AbstractExtractSpeechConsumer {
 
-	@Deprecated
-	public static final String PARAM_TYPE = "Sorting Type";
-
-	@Deprecated
-	@ConfigurationParameter(name = PARAM_TYPE, mandatory = false)
-	String sortingType = null;
-
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
-		String documentId = DocumentMetaData.get(jcas).getDocumentId();
-		File file = new File(outputDirectory, documentId);
+		File file = new File(outputDirectory, DramaUtil.getDisplayId(jcas));
 		file.mkdir();
-		Set<String> typeValues = new HashSet<String>();
-		if (sortingType != null)
-			for (FigureType ft : JCasUtil.select(jcas, FigureType.class)) {
-				if (ft.getTypeClass().equalsIgnoreCase(sortingType))
-					typeValues.add(ft.getTypeValue());
-			}
 
 		Map<String, Writer> writerMap = new HashMap<String, Writer>();
 		try {
-			if (sortingType == null)
-				for (Figure figure : JCasUtil.select(jcas, Figure.class)) {
-					writerMap.put(figure.getReference(),
-							new FileWriter(new File(file, figure.getCoveredText() + ".txt")));
-				}
-			else
-				for (String v : typeValues) {
-					writerMap.put(v, new FileWriter(new File(file, v + ".txt")));
-				}
+			for (Figure figure : JCasUtil.select(jcas, Figure.class)) {
+				writerMap.put(figure.getReference(), new FileWriter(new File(file, figure.getCoveredText() + ".txt")));
+			}
 			for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
 				try {
 					Speaker speaker = JCasUtil.selectCovered(Speaker.class, utterance).get(0);
 					if (speaker.getFigure() != null) {
 						List<Speech> speeches = JCasUtil.selectCovered(Speech.class, utterance);
 						String writerIndex = speaker.getFigure().getReference();
-						if (sortingType != null) {
-							writerIndex = DramaUtil.getTypeValue(jcas, speaker.getFigure(), sortingType);
-						}
+
 						for (Speech speech : speeches) {
 
 							if (writerMap.containsKey(writerIndex)) {
