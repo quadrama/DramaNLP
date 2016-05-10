@@ -9,12 +9,10 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
-import org.apache.uima.resource.ResourceInitializationException;
 
 import de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData;
 import de.unistuttgart.ims.drama.api.Speaker;
@@ -33,20 +31,7 @@ public class ExtractSpeechByType extends AbstractExtractSpeechConsumer {
 	@ConfigurationParameter(name = PARAM_MERGED, mandatory = false, defaultValue = "true")
 	boolean merged = true;
 
-	File outputDirectory;
 	Map<String, Writer> writerMap = new HashMap<String, Writer>();
-
-	@Override
-	public void initialize(final UimaContext context) throws ResourceInitializationException {
-		super.initialize(context);
-		outputDirectory = new File(outputDirectoryName);
-
-		if (!outputDirectory.exists())
-			outputDirectory.mkdirs();
-		if (!outputDirectory.isDirectory())
-			throw new ResourceInitializationException();
-
-	}
 
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
