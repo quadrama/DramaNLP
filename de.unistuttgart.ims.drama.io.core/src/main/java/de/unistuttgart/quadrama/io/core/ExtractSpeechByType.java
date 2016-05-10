@@ -24,12 +24,8 @@ import de.unistuttgart.ims.drama.util.DramaUtil;
 
 public class ExtractSpeechByType extends AbstractExtractSpeechConsumer {
 
-	public static final String PARAM_OUTPUT_DIRECTORY = "Output Directory";
 	public static final String PARAM_TYPE = "Sorting Type";
 	public static final String PARAM_MERGED = "Merged";
-
-	@ConfigurationParameter(name = PARAM_OUTPUT_DIRECTORY)
-	String outputDirectoryName;
 
 	@ConfigurationParameter(name = PARAM_TYPE, mandatory = true)
 	String sortingType = null;
