@@ -11,7 +11,6 @@ import java.util.Map;
 import org.apache.commons.io.IOUtils;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
-import org.apache.uima.fit.component.JCasConsumer_ImplBase;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
@@ -23,7 +22,7 @@ import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.Utterance;
 import de.unistuttgart.ims.drama.util.DramaUtil;
 
-public class ExtractSpeechByType extends JCasConsumer_ImplBase {
+public class ExtractSpeechByType extends AbstractExtractSpeechConsumer {
 
 	public static final String PARAM_OUTPUT_DIRECTORY = "Output Directory";
 	public static final String PARAM_TYPE = "Sorting Type";
