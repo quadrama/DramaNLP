@@ -76,6 +76,11 @@ public class JsonExporter extends JCasFileWriter_ImplBase {
 		try {
 			os = this.getOutputStream(aJCas, ".json");
 			osw = new OutputStreamWriter(os);
+			if (javascriptVariableName != null) {
+				osw.write("var ");
+				osw.write(javascriptVariableName);
+				osw.write(" = ");
+			}
 			osw.write(json.toString());
 			osw.flush();
 			osw.close();
