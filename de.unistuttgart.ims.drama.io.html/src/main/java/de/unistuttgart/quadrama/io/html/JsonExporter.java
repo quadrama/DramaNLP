@@ -3,6 +3,7 @@ package de.unistuttgart.quadrama.io.html;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.compress.utils.IOUtils;
@@ -22,7 +23,10 @@ import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Figure;
 import de.unistuttgart.ims.drama.api.Scene;
 import de.unistuttgart.ims.drama.api.SceneHeading;
+import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.Translator;
+import de.unistuttgart.ims.drama.api.Utterance;
+import de.unistuttgart.ims.drama.util.DramaUtil;
 
 public class JsonExporter extends JCasFileWriter_ImplBase {
 
@@ -31,8 +35,12 @@ public class JsonExporter extends JCasFileWriter_ImplBase {
 	@ConfigurationParameter(name = PARAM_JAVASCRIPT, mandatory = false)
 	String javascriptVariableName = null;
 
+	static boolean includeType = false;
+
 	@Override
 	public void process(JCas aJCas) throws AnalysisEngineProcessException {
+		List<Figure> figureList = new ArrayList<Figure>();
+
 		JSONObject json = new JSONObject();
 		JSONObject md = new JSONObject();
 
@@ -49,6 +57,7 @@ public class JsonExporter extends JCasFileWriter_ImplBase {
 		// figures
 		for (Figure figure : JCasUtil.select(aJCas, Figure.class)) {
 			json.append("figures", convert(figure, true));
+			figureList.add(figure);
 		}
 
 		// segments
@@ -57,20 +66,33 @@ public class JsonExporter extends JCasFileWriter_ImplBase {
 			if (ahl.isEmpty()) {
 				json.append("acts", convert(act, false));
 			} else {
-				json.append("acts", convert(act, false).put("heading", ahl.get(0).getCoveredText()));
+				json.append("acts", convert(act, false).put("head", ahl.get(0).getCoveredText()));
 			}
 			for (Scene scene : JCasUtil.selectCovered(Scene.class, act)) {
 				List<SceneHeading> shl = JCasUtil.selectCovered(SceneHeading.class, scene);
 				if (shl.isEmpty()) {
-					json.append("scenes", convert(scene, false));
+					json.append("scs", convert(scene, false));
 				} else {
-					json.append("scenes", convert(scene, false).put("heading", shl.get(0).getCoveredText()));
+					json.append("scs", convert(scene, false).put("head", shl.get(0).getCoveredText()));
 				}
 			}
 		}
+		// utterances
+		for (Utterance utterance : JCasUtil.select(aJCas, Utterance.class)) {
+			Figure f = DramaUtil.getFigure(utterance);
+			int figureIndex = figureList.indexOf(f);
+			JSONObject obj = new JSONObject();
+			obj.put("f", figureIndex);
+			obj.put("begin", utterance.getBegin());
+			obj.put("end", utterance.getEnd());
+			for (Speech speech : JCasUtil.selectCovered(Speech.class, utterance)) {
+				obj.append("s", convert(speech, true));
+			}
+			json.append("utt", obj);
+		}
 
 		// assembly
-		json.put("metadata", md);
+		json.put("meta", md);
 		OutputStream os = null;
 		OutputStreamWriter osw;
 		try {
@@ -95,7 +117,9 @@ public class JsonExporter extends JCasFileWriter_ImplBase {
 	public static <T extends Annotation> JSONObject convert(T annotation, boolean includeText) {
 		JSONObject object = new JSONObject();
 		if (includeText)
-			object.put("coveredText", annotation.getCoveredText());
+			object.put("txt", annotation.getCoveredText());
+		if (includeType)
+			object.put("type", annotation.getType().getName());
 		for (Feature feature : annotation.getType().getFeatures()) {
 			if (feature.getRange().isPrimitive()) {
 				object.put(feature.getShortName(), annotation.getFeatureValueAsString(feature));
