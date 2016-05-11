@@ -41,7 +41,7 @@ public class SetDramaMetaData extends JCasAnnotator_ImplBase {
 	String translatorName = null;
 
 	@ConfigurationParameter(name = PARAM_TRANSLATOR_PND, mandatory = false)
-	long translatorPnd = -1;
+	String translatorPnd = null;
 
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
@@ -51,7 +51,7 @@ public class SetDramaMetaData extends JCasAnnotator_ImplBase {
 		if (authorName != null)
 			author.setName(authorName);
 		if (authorPnd != null)
-			author.setPnd(Long.valueOf(authorPnd));
+			author.setPnd(authorPnd);
 		if (dramaId != null)
 			drama.setDocumentId(dramaId);
 		if (referenceDate > 0)
@@ -66,7 +66,7 @@ public class SetDramaMetaData extends JCasAnnotator_ImplBase {
 		}
 		if (translatorName != null)
 			translator.setName(translatorName);
-		if (translatorPnd > 0)
+		if (translatorPnd != null)
 			translator.setPnd(translatorPnd);
 
 	}

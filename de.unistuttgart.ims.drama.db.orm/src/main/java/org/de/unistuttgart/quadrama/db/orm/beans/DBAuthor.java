@@ -21,7 +21,7 @@ public class DBAuthor {
 	Date death;
 
 	@DatabaseField(unique = true)
-	long pnd;
+	String pnd;
 
 	public int getId() {
 		return id;
@@ -55,11 +55,11 @@ public class DBAuthor {
 		this.death = death;
 	}
 
-	public long getPnd() {
+	public String getPnd() {
 		return pnd;
 	}
 
-	public void setPnd(long pnd) {
+	public void setPnd(String pnd) {
 		this.pnd = pnd;
 	}
 }
