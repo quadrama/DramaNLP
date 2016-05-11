@@ -118,16 +118,6 @@
 					<description>Is this drama a translation?</description>
 					<rangeTypeName>uima.cas.Boolean</rangeTypeName>
 				</featureDescription>
-				<featureDescription>
-					<name>TranslatorName</name>
-					<rangeTypeName>uima.cas.String</rangeTypeName>
-					<description></description>
-				</featureDescription>
-				<featureDescription>
-					<name>TranslatorPnd</name>
-					<rangeTypeName>uima.cas.String</rangeTypeName>
-					<description></description>
-				</featureDescription>
 			</features>
 		</typeDescription>
 		<typeDescription>
@@ -285,6 +275,33 @@
 					<description></description>
 				</featureDescription>
 			</features>
+		</typeDescription>
+		<typeDescription>
+			<name>de.unistuttgart.ims.drama.api.Person</name>
+			<description>Represents a (real) person</description>
+			<supertypeName>uima.tcas.Annotation</supertypeName>
+			<features>
+				<featureDescription>
+					<name>Name</name>
+					<rangeTypeName>uima.cas.String</rangeTypeName>
+					<description>The full name of the person</description>
+				</featureDescription>
+				<featureDescription>
+					<name>Pnd</name>
+					<rangeTypeName>uima.cas.Long</rangeTypeName>
+					<description>The entry in the person norm database</description>
+				</featureDescription>
+			</features>
+		</typeDescription>
+		<typeDescription>
+			<name>de.unistuttgart.ims.drama.api.Author</name>
+			<description>A person who is author of the drama</description>
+			<supertypeName>de.unistuttgart.ims.drama.api.Person</supertypeName>
+		</typeDescription>
+		<typeDescription>
+			<name>de.unistuttgart.ims.drama.api.Translator</name>
+			<description>A person who is a translator of the drama</description>
+			<supertypeName>de.unistuttgart.ims.drama.api.Person</supertypeName>
 		</typeDescription>
 	</types>
 </typeSystemDescription>

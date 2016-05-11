@@ -3,10 +3,12 @@ package de.unistuttgart.quadrama.core;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
+import org.apache.uima.fit.factory.AnnotationFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
 import de.unistuttgart.ims.drama.api.Drama;
+import de.unistuttgart.ims.drama.api.Translator;
 
 public class SetDramaMetaData extends JCasAnnotator_ImplBase {
 
@@ -38,7 +40,7 @@ public class SetDramaMetaData extends JCasAnnotator_ImplBase {
 	String translatorName = null;
 
 	@ConfigurationParameter(name = PARAM_TRANSLATOR_PND, mandatory = false)
-	String translatorPnd = null;
+	long translatorPnd = -1;
 
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
@@ -54,10 +56,16 @@ public class SetDramaMetaData extends JCasAnnotator_ImplBase {
 			drama.setReferenceDate(referenceDate);
 
 		drama.setTranslation(translation);
+		Translator translator;
+		if (JCasUtil.exists(jcas, Translator.class)) {
+			translator = JCasUtil.selectSingle(jcas, Translator.class);
+		} else {
+			translator = AnnotationFactory.createAnnotation(jcas, 0, 1, Translator.class);
+		}
 		if (translatorName != null)
-			drama.setTranslatorName(translatorName);
-		if (translatorPnd != null)
-			drama.setTranslatorPnd(translatorPnd);
+			translator.setName(translatorName);
+		if (translatorPnd > 0)
+			translator.setPnd(translatorPnd);
 
 	}
 }
