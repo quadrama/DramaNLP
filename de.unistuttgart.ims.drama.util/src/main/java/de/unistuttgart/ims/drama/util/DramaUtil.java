@@ -10,6 +10,7 @@ import java.util.List;
 import org.apache.uima.fit.factory.AnnotationFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.tcas.Annotation;
 
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Figure;
@@ -22,6 +23,17 @@ public class DramaUtil {
 	public static Collection<Speech> getSpeeches(JCas jcas, Figure figure) {
 		List<Speech> ret = new LinkedList<Speech>();
 		for (Utterance u : JCasUtil.select(jcas, Utterance.class)) {
+			Speaker sp = DramaUtil.getSpeaker(u);
+			if (sp != null && sp.getFigure() == figure) {
+				ret.addAll(JCasUtil.selectCovered(jcas, Speech.class, u));
+			}
+		}
+		return ret;
+	}
+
+	public static Collection<Speech> getSpeeches(JCas jcas, Figure figure, Annotation coveringAnnotation) {
+		List<Speech> ret = new LinkedList<Speech>();
+		for (Utterance u : JCasUtil.selectCovered(jcas, Utterance.class, coveringAnnotation)) {
 			Speaker sp = DramaUtil.getSpeaker(u);
 			if (sp != null && sp.getFigure() == figure) {
 				ret.addAll(JCasUtil.selectCovered(jcas, Speech.class, u));
