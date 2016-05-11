@@ -17,10 +17,12 @@ import org.json.JSONObject;
 import de.tudarmstadt.ukp.dkpro.core.api.io.JCasFileWriter_ImplBase;
 import de.unistuttgart.ims.drama.api.Act;
 import de.unistuttgart.ims.drama.api.ActHeading;
+import de.unistuttgart.ims.drama.api.Author;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Figure;
 import de.unistuttgart.ims.drama.api.Scene;
 import de.unistuttgart.ims.drama.api.SceneHeading;
+import de.unistuttgart.ims.drama.api.Translator;
 
 public class JsonExporter extends JCasFileWriter_ImplBase {
 
@@ -39,10 +41,10 @@ public class JsonExporter extends JCasFileWriter_ImplBase {
 		md.put("documentId", drama.getDocumentId());
 		md.put("documentTitle", drama.getDocumentTitle());
 
-		JSONObject author = new JSONObject();
-		author.put("name", drama.getAuthorname());
-		author.put("pnd", drama.getAuthorPnd());
-		md.put("author", author);
+		for (Author author : JCasUtil.select(aJCas, Author.class))
+			md.append("authors", convert(author, false));
+		for (Translator translator : JCasUtil.select(aJCas, Translator.class))
+			md.append("translators", convert(translator, false));
 
 		// figures
 		for (Figure figure : JCasUtil.select(aJCas, Figure.class)) {
