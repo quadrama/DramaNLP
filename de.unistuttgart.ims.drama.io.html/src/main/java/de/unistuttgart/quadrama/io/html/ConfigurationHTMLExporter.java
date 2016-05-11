@@ -119,7 +119,8 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 		}
 
 		obj.put("data", jsonSeries);
-		obj.put("id", documentId);
+		obj.put("displayId", documentId);
+		obj.put("id", drama.getDocumentId());
 		obj.put("author", drama.getAuthorname());
 		obj.put("title", drama.getDocumentTitle());
 
