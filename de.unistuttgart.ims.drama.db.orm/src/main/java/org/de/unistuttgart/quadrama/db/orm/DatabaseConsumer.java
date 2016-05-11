@@ -101,7 +101,7 @@ public class DatabaseConsumer extends JCasConsumer_ImplBase {
 			List<DBAuthor> auths = null;
 			DBAuthor dbAuthor;
 			for (Author author : authors) {
-				if (author.getPnd() > 0) {
+				if (author.getPnd() != null) {
 					auths = authorDao.queryForEq("pnd", author.getPnd());
 				} else if (author.getName() != null) {
 					auths = authorDao.queryForEq("name", author.getName());

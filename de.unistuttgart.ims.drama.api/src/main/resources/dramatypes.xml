@@ -278,7 +278,7 @@
 				</featureDescription>
 				<featureDescription>
 					<name>Pnd</name>
-					<rangeTypeName>uima.cas.Long</rangeTypeName>
+					<rangeTypeName>uima.cas.String</rangeTypeName>
 					<description>The entry in the person norm database</description>
 				</featureDescription>
 			</features>

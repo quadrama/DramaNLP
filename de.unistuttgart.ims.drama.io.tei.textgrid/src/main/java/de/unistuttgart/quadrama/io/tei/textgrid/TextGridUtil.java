@@ -59,7 +59,7 @@ public class TextGridUtil {
 			author.setEnd(1);
 			author.setName(authorElement.text());
 			if (authorElement.hasAttr("key")) {
-				author.setPnd(Long.valueOf(authorElement.attr("key").replace("pnd:", "")));
+				author.setPnd(authorElement.attr("key").replace("pnd:", ""));
 			}
 		}
 
