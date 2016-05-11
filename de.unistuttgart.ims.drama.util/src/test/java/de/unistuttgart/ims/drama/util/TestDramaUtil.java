@@ -14,6 +14,7 @@ import org.apache.uima.fit.factory.JCasFactory;
 import org.apache.uima.jcas.JCas;
 import org.junit.Test;
 
+import de.unistuttgart.ims.drama.api.Author;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Figure;
 import de.unistuttgart.ims.drama.api.FigureType;
@@ -133,7 +134,8 @@ public class TestDramaUtil {
 		drama.addToIndexes();
 		drama.setDocumentTitle("The dog barks");
 		drama.setDocumentId("test");
-		drama.setAuthorname("No author");
+		AnnotationFactory.createAnnotation(jcas, 0, 1, Author.class).setName("No author");
+
 		assertEquals("Na_Tdb", DramaUtil.getDisplayId(jcas));
 
 		drama.setDocumentTitle("The dog barks2");

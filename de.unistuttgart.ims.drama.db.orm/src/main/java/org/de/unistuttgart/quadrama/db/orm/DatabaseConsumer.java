@@ -3,6 +3,7 @@ package org.de.unistuttgart.quadrama.db.orm;
 import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
+import java.util.Collection;
 import java.util.List;
 
 import org.apache.commons.dbcp2.BasicDataSource;
@@ -30,6 +31,7 @@ import com.j256.ormlite.jdbc.DataSourceConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
+import de.unistuttgart.ims.drama.api.Author;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Figure;
 
@@ -54,8 +56,7 @@ public class DatabaseConsumer extends JCasConsumer_ImplBase {
 	ConnectionSource connectionSource;
 
 	@Override
-	public void initialize(final UimaContext context)
-			throws ResourceInitializationException {
+	public void initialize(final UimaContext context) throws ResourceInitializationException {
 		super.initialize(context);
 		try {
 			BasicDataSource ds = new BasicDataSource();
@@ -67,15 +68,11 @@ public class DatabaseConsumer extends JCasConsumer_ImplBase {
 
 			TableUtils.createTableIfNotExists(connectionSource, DBDrama.class);
 			TableUtils.createTableIfNotExists(connectionSource, DBFigure.class);
-			TableUtils.createTableIfNotExists(connectionSource,
-					DBFigureType.class);
+			TableUtils.createTableIfNotExists(connectionSource, DBFigureType.class);
 			TableUtils.createTableIfNotExists(connectionSource, DBAuthor.class);
-			TableUtils.createTableIfNotExists(connectionSource,
-					DBPublisher.class);
-			TableUtils.createTableIfNotExists(connectionSource,
-					DBRelation.class);
-			TableUtils.createTableIfNotExists(connectionSource,
-					DBFigureRelation.class);
+			TableUtils.createTableIfNotExists(connectionSource, DBPublisher.class);
+			TableUtils.createTableIfNotExists(connectionSource, DBRelation.class);
+			TableUtils.createTableIfNotExists(connectionSource, DBFigureRelation.class);
 
 		} catch (SQLException e) {
 			throw new ResourceInitializationException(e);
@@ -88,12 +85,9 @@ public class DatabaseConsumer extends JCasConsumer_ImplBase {
 			ByteArrayOutputStream os = new ByteArrayOutputStream();
 			XmiCasSerializer.serialize(jcas.getCas(), os);
 			String xmi = os.toString("UTF-8");
-			Dao<DBAuthor, Integer> authorDao =
-					DaoManager.createDao(connectionSource, DBAuthor.class);
-			Dao<DBDrama, Integer> dramaDao =
-					DaoManager.createDao(connectionSource, DBDrama.class);
-			Dao<DBFigure, Integer> figureDao =
-					DaoManager.createDao(connectionSource, DBFigure.class);
+			Dao<DBAuthor, Integer> authorDao = DaoManager.createDao(connectionSource, DBAuthor.class);
+			Dao<DBDrama, Integer> dramaDao = DaoManager.createDao(connectionSource, DBDrama.class);
+			Dao<DBFigure, Integer> figureDao = DaoManager.createDao(connectionSource, DBFigure.class);
 
 			Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
 
@@ -103,21 +97,25 @@ public class DatabaseConsumer extends JCasConsumer_ImplBase {
 			dbDrama.setTextgridUrl(drama.getDocumentUri());
 			dbDrama.setDocumentId(drama.getDocumentId());
 
-			List<DBAuthor> auths;
-			if (drama.getAuthorPnd() != null)
-				auths = authorDao.queryForEq("pnd", drama.getAuthorPnd());
-			else
-				auths = authorDao.queryForEq("name", drama.getAuthorname());
+			Collection<Author> authors = JCasUtil.select(jcas, Author.class);
+			List<DBAuthor> auths = null;
 			DBAuthor dbAuthor;
-			if (auths.isEmpty()) {
-				dbAuthor = new DBAuthor();
-				dbAuthor.setPnd(drama.getAuthorPnd());
-				dbAuthor.setName(drama.getAuthorname());
-				authorDao.create(dbAuthor);
-			} else {
-				dbAuthor = auths.get(0);
+			for (Author author : authors) {
+				if (author.getPnd() > 0) {
+					auths = authorDao.queryForEq("pnd", author.getPnd());
+				} else if (author.getName() != null) {
+					auths = authorDao.queryForEq("name", author.getName());
+				}
+				if (auths.isEmpty()) {
+					dbAuthor = new DBAuthor();
+					dbAuthor.setPnd(author.getPnd());
+					dbAuthor.setName(author.getName());
+					authorDao.create(dbAuthor);
+				} else
+					dbAuthor = auths.get(0);
+				dbDrama.setAuthor(dbAuthor);
 			}
-			dbDrama.setAuthor(dbAuthor);
+
 			dramaDao.create(dbDrama);
 
 			for (Figure figure : JCasUtil.select(jcas, Figure.class)) {

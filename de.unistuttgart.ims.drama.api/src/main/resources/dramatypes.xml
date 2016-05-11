@@ -79,17 +79,7 @@
 			</supertypeName>
 			<features>
 				<featureDescription>
-					<name>Authorname</name>
-					<description />
-					<rangeTypeName>uima.cas.String</rangeTypeName>
-				</featureDescription>
-				<featureDescription>
 					<name>DramaId</name>
-					<description />
-					<rangeTypeName>uima.cas.String</rangeTypeName>
-				</featureDescription>
-				<featureDescription>
-					<name>AuthorPnd</name>
 					<description />
 					<rangeTypeName>uima.cas.String</rangeTypeName>
 				</featureDescription>

@@ -7,6 +7,7 @@ import org.apache.uima.fit.factory.AnnotationFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
+import de.unistuttgart.ims.drama.api.Author;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Translator;
 
@@ -46,10 +47,11 @@ public class SetDramaMetaData extends JCasAnnotator_ImplBase {
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
 
+		Author author = AnnotationFactory.createAnnotation(jcas, 0, 1, Author.class);
 		if (authorName != null)
-			drama.setAuthorname(authorName);
+			author.setName(authorName);
 		if (authorPnd != null)
-			drama.setAuthorPnd(authorPnd);
+			author.setPnd(Long.valueOf(authorPnd));
 		if (dramaId != null)
 			drama.setDocumentId(dramaId);
 		if (referenceDate > 0)

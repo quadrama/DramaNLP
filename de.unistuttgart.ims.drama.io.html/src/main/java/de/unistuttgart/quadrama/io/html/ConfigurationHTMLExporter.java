@@ -29,6 +29,7 @@ import de.tudarmstadt.ukp.dkpro.core.api.io.JCasFileWriter_ImplBase;
 import de.unistuttgart.ims.commons.Counter;
 import de.unistuttgart.ims.drama.api.Act;
 import de.unistuttgart.ims.drama.api.ActHeading;
+import de.unistuttgart.ims.drama.api.Author;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Field;
 import de.unistuttgart.ims.drama.api.Figure;
@@ -121,7 +122,9 @@ public class ConfigurationHTMLExporter extends JCasFileWriter_ImplBase {
 		obj.put("data", jsonSeries);
 		obj.put("displayId", documentId);
 		obj.put("id", drama.getDocumentId());
-		obj.put("author", drama.getAuthorname());
+		for (Author author : JCasUtil.select(jcas, Author.class)) {
+			obj.append("author", author.getName());
+		}
 		obj.put("title", drama.getDocumentTitle());
 
 		if (JCasUtil.exists(jcas, Field.class)) {

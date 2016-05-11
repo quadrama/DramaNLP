@@ -11,6 +11,7 @@ import org.apache.uima.fit.factory.AnnotationFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
+import de.unistuttgart.ims.drama.api.Author;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Figure;
 import de.unistuttgart.ims.drama.api.FigureType;
@@ -83,7 +84,10 @@ public class DramaUtil {
 
 	public static String getDisplayId(JCas jcas) {
 		String title = JCasUtil.selectSingle(jcas, Drama.class).getDocumentTitle();
-		String author = JCasUtil.selectSingle(jcas, Drama.class).getAuthorname();
+
+		String author = "";
+		if (JCasUtil.exists(jcas, Author.class))
+			author = JCasUtil.select(jcas, Author.class).iterator().next().getName();
 		int date = JCasUtil.selectSingle(jcas, Drama.class).getReferenceDate();
 		if (title == null || author == null || author.length() == 0 || title.length() == 0) {
 			return JCasUtil.selectSingle(jcas, Drama.class).getDocumentId();
