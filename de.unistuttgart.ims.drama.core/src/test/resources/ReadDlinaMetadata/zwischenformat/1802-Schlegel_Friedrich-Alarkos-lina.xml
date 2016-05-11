@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://raw.githubusercontent.com/DLiNa/project/master/rules/lina.rnc"?>
+<?xml-model href="http://raw.githubusercontent.com/DLiNa/project/master/rules/lina.sch"?>
+<play xmlns="http://lina.digital" id="164">
+  <?xml-model href="https://raw.githubusercontent.com/DLiNa/project/master/rules/lina.rnc"?>
+  <?xml-model href="https://raw.githubusercontent.com/DLiNa/project/master/rules/lina.sch"?>
+  <header>
+    <title>Alarkos</title>
+    <subtitle>Ein Trauerspiel in zwei Aufzügen</subtitle>
+    <genretitle>Trauerspiel</genretitle>
+    <author key="pnd:118607987">Schlegel, Friedrich</author>
+    <date type="print" when="1802">1802</date>
+    <date type="premiere" when="1802">1802</date>
+    <date type="written" when="1801">August bis Mitte Dezember 1801</date>
+    <source>https://textgridlab.org/1.0/tgcrud-public/rest/textgrid:v341.0/data</source>
+  </header>
+  <personae>
+    <character>
+      <name>SOLISA</name>
+      <alias xml:id="solisa">
+        <name>SOLISA</name>
+      </alias>
+    </character>
+    <character>
+      <name>ALVARO</name>
+      <alias xml:id="alvaro">
+        <name>ALVARO</name>
+      </alias>
+    </character>
+    <character>
+      <name>LAURA</name>
+      <alias xml:id="laura">
+        <name>LAURA</name>
+      </alias>
+    </character>
+    <character>
+      <name>RICARDO</name>
+      <alias xml:id="ricardo">
+        <name>RICARDO</name>
+      </alias>
+    </character>
+    <character>
+      <name>OCTAVIO</name>
+      <alias xml:id="octavio">
+        <name>OCTAVIO</name>
+      </alias>
+    </character>
+    <character>
+      <name>DER KÖNIG</name>
+      <alias xml:id="der_könig">
+        <name>DER KÖNIG</name>
+      </alias>
+    </character>
+    <character>
+      <name>ALARCOS</name>
+      <alias xml:id="alarcos">
+        <name>ALARCOS</name>
+      </alias>
+    </character>
+    <character>
+      <name>CLARA</name>
+      <alias xml:id="clara">
+        <name>CLARA</name>
+      </alias>
+    </character>
+    <character>
+      <name>DAGOBERT</name>
+      <alias xml:id="dagobert">
+        <name>DAGOBERT</name>
+      </alias>
+    </character>
+    <character>
+      <name>EINE WÄRTERIN</name>
+      <alias xml:id="eine_wärterin">
+        <name>EINE WÄRTERIN</name>
+      </alias>
+    </character>
+    <character>
+      <name>CORNELIA</name>
+      <alias xml:id="cornelia">
+        <name>CORNELIA</name>
+      </alias>
+    </character>
+  </personae>
+  <text>
+    <div>
+      <head>Personen</head>
+    </div>
+    <div>
+      <head>1. Akt</head>
+      <div>
+        <head>1. Szene</head>
+        <div>
+          <head>Erste Szene.</head>
+          <sp who="#solisa">
+            <amount n="11" unit="speech_acts"/>
+            <amount n="776" unit="words"/>
+            <amount n="104" unit="lines"/>
+            <amount n="4213" unit="chars"/>
+          </sp>
+          <sp who="#alvaro">
+            <amount n="7" unit="speech_acts"/>
+            <amount n="417" unit="words"/>
+            <amount n="54" unit="lines"/>
+            <amount n="2260" unit="chars"/>
+          </sp>
+          <sp who="#laura">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="201" unit="words"/>
+            <amount n="30" unit="lines"/>
+            <amount n="1044" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>2. Szene</head>
+        <div>
+          <head>Zweite Szene.</head>
+          <sp who="#ricardo">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="27" unit="words"/>
+            <amount n="3" unit="lines"/>
+            <amount n="136" unit="chars"/>
+          </sp>
+          <sp who="#octavio">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="43" unit="words"/>
+            <amount n="6" unit="lines"/>
+            <amount n="252" unit="chars"/>
+          </sp>
+          <sp who="#der_könig">
+            <amount n="8" unit="speech_acts"/>
+            <amount n="350" unit="words"/>
+            <amount n="42" unit="lines"/>
+            <amount n="1912" unit="chars"/>
+          </sp>
+          <sp who="#alvaro">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="131" unit="words"/>
+            <amount n="17" unit="lines"/>
+            <amount n="717" unit="chars"/>
+          </sp>
+          <sp who="#solisa">
+            <amount n="6" unit="speech_acts"/>
+            <amount n="242" unit="words"/>
+            <amount n="27" unit="lines"/>
+            <amount n="1304" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>3. Szene</head>
+        <div>
+          <head>Dritte Szene.</head>
+          <sp who="#ricardo">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="15" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="77" unit="chars"/>
+          </sp>
+          <sp who="#alarcos">
+            <amount n="11" unit="speech_acts"/>
+            <amount n="562" unit="words"/>
+            <amount n="65" unit="lines"/>
+            <amount n="2955" unit="chars"/>
+          </sp>
+          <sp who="#octavio">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="38" unit="words"/>
+            <amount n="5" unit="lines"/>
+            <amount n="230" unit="chars"/>
+          </sp>
+          <sp who="#der_könig">
+            <amount n="9" unit="speech_acts"/>
+            <amount n="319" unit="words"/>
+            <amount n="41" unit="lines"/>
+            <amount n="1720" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>4. Szene</head>
+        <div>
+          <head>Vierte Szene.</head>
+          <sp who="#clara">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="390" unit="words"/>
+            <amount n="50" unit="lines"/>
+            <amount n="2070" unit="chars"/>
+          </sp>
+          <sp who="#dagobert">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="253" unit="words"/>
+            <amount n="32" unit="lines"/>
+            <amount n="1374" unit="chars"/>
+          </sp>
+          <sp who="#eine_wärterin">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="16" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="89" unit="chars"/>
+          </sp>
+          <sp who="#cornelia">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="163" unit="words"/>
+            <amount n="22" unit="lines"/>
+            <amount n="921" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>5. Szene</head>
+        <div>
+          <head>Fünfte Szene.</head>
+          <sp who="#alvaro">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="234" unit="words"/>
+            <amount n="31" unit="lines"/>
+            <amount n="1309" unit="chars"/>
+          </sp>
+          <sp who="#alarcos">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="559" unit="words"/>
+            <amount n="64" unit="lines"/>
+            <amount n="3087" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>6. Szene</head>
+        <div>
+          <head>Sechste Szene.</head>
+          <sp who="#solisa">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="330" unit="words"/>
+            <amount n="48" unit="lines"/>
+            <amount n="1828" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+    </div>
+    <div>
+      <head>2. Akt</head>
+      <div>
+        <head>Zweiter Akt.</head>
+        <sp who="#alarcos">
+          <amount n="34" unit="speech_acts"/>
+          <amount n="2382" unit="words"/>
+          <amount n="268" unit="lines"/>
+          <amount n="13021" unit="chars"/>
+        </sp>
+        <sp who="#dagobert">
+          <amount n="16" unit="speech_acts"/>
+          <amount n="1118" unit="words"/>
+          <amount n="128" unit="lines"/>
+          <amount n="6269" unit="chars"/>
+        </sp>
+        <sp who="#clara">
+          <amount n="22" unit="speech_acts"/>
+          <amount n="943" unit="words"/>
+          <amount n="111" unit="lines"/>
+          <amount n="5174" unit="chars"/>
+        </sp>
+        <sp who="#cornelia">
+          <amount n="3" unit="speech_acts"/>
+          <amount n="560" unit="words"/>
+          <amount n="62" unit="lines"/>
+          <amount n="3141" unit="chars"/>
+        </sp>
+        <sp who="#alvaro">
+          <amount n="3" unit="speech_acts"/>
+          <amount n="230" unit="words"/>
+          <amount n="32" unit="lines"/>
+          <amount n="1358" unit="chars"/>
+        </sp>
+        <sp who="#ricardo">
+          <amount n="9" unit="speech_acts"/>
+          <amount n="196" unit="words"/>
+          <amount n="26" unit="lines"/>
+          <amount n="1089" unit="chars"/>
+        </sp>
+        <sp who="#octavio">
+          <amount n="9" unit="speech_acts"/>
+          <amount n="191" unit="words"/>
+          <amount n="26" unit="lines"/>
+          <amount n="1117" unit="chars"/>
+        </sp>
+      </div>
+    </div>
+  </text>
+</play>

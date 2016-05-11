@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://raw.githubusercontent.com/DLiNa/project/master/rules/lina.rnc"?>
+<?xml-model href="http://raw.githubusercontent.com/DLiNa/project/master/rules/lina.sch"?>
+<play xmlns="http://lina.digital" id="38">
+  <header>
+    <title>Die natürliche Tochter</title>
+    <subtitle>Trauerspiel</subtitle>
+    <genretitle>Trauerspiel</genretitle>
+    <author key="pnd:118540238">Goethe, Johann Wolfgang von</author>
+    <date type="print" when="1804">1804</date>
+    <date type="premiere" when="1803">1803</date>
+    <date type="written" when="1803">1799–1803</date>
+    <source>https://textgridlab.org/1.0/tgcrud-public/rest/textgrid:11g3h.0/data</source>
+  </header>
+  <personae>
+    <character>
+      <name>KÖNIG</name>
+      <alias xml:id="könig">
+        <name>KÖNIG</name>
+      </alias>
+    </character>
+    <character>
+      <name>HERZOG</name>
+      <alias xml:id="herzog">
+        <name>HERZOG</name>
+      </alias>
+    </character>
+    <character>
+      <name>GRAF</name>
+      <alias xml:id="graf">
+        <name>GRAF</name>
+      </alias>
+    </character>
+    <character>
+      <name>EUGENIE</name>
+      <alias xml:id="eugenie">
+        <name>EUGENIE</name>
+      </alias>
+    </character>
+    <character>
+      <name>SEKRETÄR</name>
+      <alias xml:id="sekretär">
+        <name>SEKRETÄR</name>
+      </alias>
+    </character>
+    <character>
+      <name>HOFMEISTERIN</name>
+      <alias xml:id="hofmeisterin">
+        <name>HOFMEISTERIN</name>
+      </alias>
+    </character>
+    <character>
+      <name>WELTGEISTLICHER</name>
+      <alias xml:id="weltgeistlicher">
+        <name>WELTGEISTLICHER</name>
+      </alias>
+    </character>
+    <character>
+      <name>GERICHTSRAT</name>
+      <alias xml:id="gerichtsrat">
+        <name>GERICHTSRAT</name>
+      </alias>
+    </character>
+    <character>
+      <name>GOUVERNEUR</name>
+      <alias xml:id="gouverneur">
+        <name>GOUVERNEUR</name>
+      </alias>
+    </character>
+    <character>
+      <name>ÄBTISSIN</name>
+      <alias xml:id="äbtissin">
+        <name>ÄBTISSIN</name>
+      </alias>
+    </character>
+    <character>
+      <name>MÖNCH</name>
+      <alias xml:id="mönch">
+        <name>MÖNCH</name>
+      </alias>
+    </character>
+  </personae>
+  <text>
+    <div>
+      <head>Personen</head>
+    </div>
+    <div>
+      <head>1. Akt</head>
+      <div>
+        <head>1. Auftritt</head>
+        <div>
+          <head>Erster Auftritt</head>
+          <sp who="#könig">
+            <amount n="12" unit="speech_acts"/>
+            <amount n="366" unit="words"/>
+            <amount n="55" unit="lines"/>
+            <amount n="2131" unit="chars"/>
+          </sp>
+          <sp who="#herzog">
+            <amount n="11" unit="speech_acts"/>
+            <amount n="654" unit="words"/>
+            <amount n="97" unit="lines"/>
+            <amount n="3749" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>2. Auftritt</head>
+        <div>
+          <head>Zweiter Auftritt</head>
+          <sp who="#könig">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="11" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="61" unit="chars"/>
+          </sp>
+          <sp who="#graf">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="19" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="117" unit="chars"/>
+          </sp>
+          <sp who="#herzog">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="19" unit="words"/>
+            <amount n="3" unit="lines"/>
+            <amount n="92" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>3. Auftritt</head>
+        <div>
+          <head>Dritter Auftritt</head>
+          <sp who="#könig">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="54" unit="words"/>
+            <amount n="8" unit="lines"/>
+            <amount n="310" unit="chars"/>
+          </sp>
+          <sp who="#graf">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="231" unit="words"/>
+            <amount n="33" unit="lines"/>
+            <amount n="1295" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>4. Auftritt</head>
+        <div>
+          <head>Vierter Auftritt</head>
+          <sp who="#herzog">
+            <amount n="8" unit="speech_acts"/>
+            <amount n="224" unit="words"/>
+            <amount n="37" unit="lines"/>
+            <amount n="1250" unit="chars"/>
+          </sp>
+          <sp who="#könig">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="46" unit="words"/>
+            <amount n="8" unit="lines"/>
+            <amount n="272" unit="chars"/>
+          </sp>
+          <sp who="#graf">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="3" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="14" unit="chars"/>
+          </sp>
+          <sp who="#eugenie">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="83" unit="words"/>
+            <amount n="11" unit="lines"/>
+            <amount n="429" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>5. Auftritt</head>
+        <div>
+          <head>Fünfter Auftritt</head>
+          <sp who="#könig">
+            <amount n="9" unit="speech_acts"/>
+            <amount n="703" unit="words"/>
+            <amount n="100" unit="lines"/>
+            <amount n="3879" unit="chars"/>
+          </sp>
+          <sp who="#herzog">
+            <amount n="6" unit="speech_acts"/>
+            <amount n="118" unit="words"/>
+            <amount n="17" unit="lines"/>
+            <amount n="633" unit="chars"/>
+          </sp>
+          <sp who="#eugenie">
+            <amount n="7" unit="speech_acts"/>
+            <amount n="481" unit="words"/>
+            <amount n="65" unit="lines"/>
+            <amount n="2559" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>6. Auftritt</head>
+        <div>
+          <head>Sechster Auftritt</head>
+          <sp who="#eugenie">
+            <amount n="23" unit="speech_acts"/>
+            <amount n="680" unit="words"/>
+            <amount n="98" unit="lines"/>
+            <amount n="3806" unit="chars"/>
+          </sp>
+          <sp who="#herzog">
+            <amount n="23" unit="speech_acts"/>
+            <amount n="924" unit="words"/>
+            <amount n="129" unit="lines"/>
+            <amount n="5168" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+    </div>
+    <div>
+      <head>2. Akt</head>
+      <div>
+        <head>1. Auftritt</head>
+        <div>
+          <head>Erster Auftritt</head>
+          <sp who="#sekretär">
+            <amount n="17" unit="speech_acts"/>
+            <amount n="1051" unit="words"/>
+            <amount n="145" unit="lines"/>
+            <amount n="5839" unit="chars"/>
+          </sp>
+          <sp who="#hofmeisterin">
+            <amount n="16" unit="speech_acts"/>
+            <amount n="698" unit="words"/>
+            <amount n="92" unit="lines"/>
+            <amount n="3738" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>2. Auftritt</head>
+        <div>
+          <head>Zweiter Auftritt</head>
+          <sp who="#hofmeisterin">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="117" unit="words"/>
+            <amount n="17" unit="lines"/>
+            <amount n="683" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>3. Auftritt</head>
+        <div>
+          <head>Dritter Auftritt</head>
+          <sp who="#eugenie">
+            <amount n="7" unit="speech_acts"/>
+            <amount n="167" unit="words"/>
+            <amount n="24" unit="lines"/>
+            <amount n="953" unit="chars"/>
+          </sp>
+          <sp who="#hofmeisterin">
+            <amount n="6" unit="speech_acts"/>
+            <amount n="112" unit="words"/>
+            <amount n="17" unit="lines"/>
+            <amount n="636" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>4. Auftritt</head>
+        <div>
+          <head>Vierter Auftritt</head>
+          <sp who="#eugenie">
+            <amount n="6" unit="speech_acts"/>
+            <amount n="407" unit="words"/>
+            <amount n="60" unit="lines"/>
+            <amount n="2227" unit="chars"/>
+          </sp>
+          <sp who="#hofmeisterin">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="21" unit="words"/>
+            <amount n="6" unit="lines"/>
+            <amount n="102" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>5. Auftritt</head>
+        <div>
+          <head>Fünfter Auftritt</head>
+          <sp who="#hofmeisterin">
+            <amount n="20" unit="speech_acts"/>
+            <amount n="317" unit="words"/>
+            <amount n="47" unit="lines"/>
+            <amount n="1863" unit="chars"/>
+          </sp>
+          <sp who="#eugenie">
+            <amount n="19" unit="speech_acts"/>
+            <amount n="739" unit="words"/>
+            <amount n="104" unit="lines"/>
+            <amount n="4167" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+    </div>
+    <div>
+      <head>3. Akt</head>
+      <div>
+        <head>1. Auftritt</head>
+        <div>
+          <head>Erster Auftritt</head>
+          <sp who="#sekretär">
+            <amount n="17" unit="speech_acts"/>
+            <amount n="272" unit="words"/>
+            <amount n="38" unit="lines"/>
+            <amount n="1466" unit="chars"/>
+          </sp>
+          <sp who="#weltgeistlicher">
+            <amount n="16" unit="speech_acts"/>
+            <amount n="560" unit="words"/>
+            <amount n="79" unit="lines"/>
+            <amount n="3111" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>2. Auftritt</head>
+        <div>
+          <head>Zweiter Auftritt</head>
+          <sp who="#herzog">
+            <amount n="11" unit="speech_acts"/>
+            <amount n="795" unit="words"/>
+            <amount n="113" unit="lines"/>
+            <amount n="4537" unit="chars"/>
+          </sp>
+          <sp who="#sekretär">
+            <amount n="10" unit="speech_acts"/>
+            <amount n="293" unit="words"/>
+            <amount n="43" unit="lines"/>
+            <amount n="1687" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>3. Auftritt</head>
+        <div>
+          <head>Dritter Auftritt</head>
+          <sp who="#sekretär">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="45" unit="words"/>
+            <amount n="7" unit="lines"/>
+            <amount n="278" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>4. Auftritt</head>
+        <div>
+          <head>Vierter Auftritt</head>
+          <sp who="#weltgeistlicher">
+            <amount n="20" unit="speech_acts"/>
+            <amount n="790" unit="words"/>
+            <amount n="115" unit="lines"/>
+            <amount n="4449" unit="chars"/>
+          </sp>
+          <sp who="#herzog">
+            <amount n="20" unit="speech_acts"/>
+            <amount n="1319" unit="words"/>
+            <amount n="188" unit="lines"/>
+            <amount n="7390" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+    </div>
+    <div>
+      <head>4. Akt</head>
+      <div>
+        <head>1. Auftritt</head>
+        <div>
+          <head>Erster Auftritt</head>
+          <sp who="#hofmeisterin">
+            <amount n="19" unit="speech_acts"/>
+            <amount n="608" unit="words"/>
+            <amount n="86" unit="lines"/>
+            <amount n="3458" unit="chars"/>
+          </sp>
+          <sp who="#gerichtsrat">
+            <amount n="19" unit="speech_acts"/>
+            <amount n="368" unit="words"/>
+            <amount n="53" unit="lines"/>
+            <amount n="2086" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>2. Auftritt</head>
+        <div>
+          <head>Zweiter Auftritt</head>
+          <sp who="#gerichtsrat">
+            <amount n="37" unit="speech_acts"/>
+            <amount n="1253" unit="words"/>
+            <amount n="178" unit="lines"/>
+            <amount n="7099" unit="chars"/>
+          </sp>
+          <sp who="#eugenie">
+            <amount n="37" unit="speech_acts"/>
+            <amount n="1330" unit="words"/>
+            <amount n="185" unit="lines"/>
+            <amount n="7428" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>3. Auftritt</head>
+        <div>
+          <head>Dritter Auftritt</head>
+          <sp who="#hofmeisterin">
+            <amount n="8" unit="speech_acts"/>
+            <amount n="107" unit="words"/>
+            <amount n="15" unit="lines"/>
+            <amount n="605" unit="chars"/>
+          </sp>
+          <sp who="#gerichtsrat">
+            <amount n="8" unit="speech_acts"/>
+            <amount n="163" unit="words"/>
+            <amount n="25" unit="lines"/>
+            <amount n="1009" unit="chars"/>
+          </sp>
+          <sp who="#eugenie">
+            <amount n="6" unit="speech_acts"/>
+            <amount n="47" unit="words"/>
+            <amount n="7" unit="lines"/>
+            <amount n="294" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>4. Auftritt</head>
+        <div>
+          <head>Vierter Auftritt</head>
+          <sp who="#eugenie">
+            <amount n="11" unit="speech_acts"/>
+            <amount n="497" unit="words"/>
+            <amount n="68" unit="lines"/>
+            <amount n="2751" unit="chars"/>
+          </sp>
+          <sp who="#hofmeisterin">
+            <amount n="10" unit="speech_acts"/>
+            <amount n="219" unit="words"/>
+            <amount n="28" unit="lines"/>
+            <amount n="1151" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+    </div>
+    <div>
+      <head>5. Akt</head>
+      <div>
+        <head>1. Auftritt</head>
+        <div>
+          <head>Erster Auftritt</head>
+          <sp who="#eugenie">
+            <amount n="7" unit="speech_acts"/>
+            <amount n="268" unit="words"/>
+            <amount n="38" unit="lines"/>
+            <amount n="1525" unit="chars"/>
+          </sp>
+          <sp who="#hofmeisterin">
+            <amount n="7" unit="speech_acts"/>
+            <amount n="108" unit="words"/>
+            <amount n="15" unit="lines"/>
+            <amount n="603" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>2. Auftritt</head>
+        <div>
+          <head>Zweiter Auftritt</head>
+          <sp who="#eugenie">
+            <amount n="11" unit="speech_acts"/>
+            <amount n="172" unit="words"/>
+            <amount n="23" unit="lines"/>
+            <amount n="924" unit="chars"/>
+          </sp>
+          <sp who="#gouverneur">
+            <amount n="10" unit="speech_acts"/>
+            <amount n="288" unit="words"/>
+            <amount n="41" unit="lines"/>
+            <amount n="1663" unit="chars"/>
+          </sp>
+          <sp who="#hofmeisterin">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="50" unit="words"/>
+            <amount n="7" unit="lines"/>
+            <amount n="279" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>3. Auftritt</head>
+        <div>
+          <head>Dritter Auftritt</head>
+          <sp who="#eugenie">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="196" unit="words"/>
+            <amount n="27" unit="lines"/>
+            <amount n="1057" unit="chars"/>
+          </sp>
+          <sp who="#hofmeisterin">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="37" unit="words"/>
+            <amount n="6" unit="lines"/>
+            <amount n="204" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>4. Auftritt</head>
+        <div>
+          <head>Vierter Auftritt</head>
+          <sp who="#eugenie">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="143" unit="words"/>
+            <amount n="20" unit="lines"/>
+            <amount n="798" unit="chars"/>
+          </sp>
+          <sp who="#äbtissin">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="181" unit="words"/>
+            <amount n="24" unit="lines"/>
+            <amount n="953" unit="chars"/>
+          </sp>
+          <sp who="#hofmeisterin">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="28" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="170" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>5. Auftritt</head>
+        <div>
+          <head>Fünfter Auftritt</head>
+          <sp who="#eugenie">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="203" unit="words"/>
+            <amount n="28" unit="lines"/>
+            <amount n="1115" unit="chars"/>
+          </sp>
+          <sp who="#hofmeisterin">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="72" unit="words"/>
+            <amount n="12" unit="lines"/>
+            <amount n="427" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>6. Auftritt</head>
+        <div>
+          <head>Sechster Auftritt</head>
+          <sp who="#eugenie">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="514" unit="words"/>
+            <amount n="72" unit="lines"/>
+            <amount n="2873" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>7. Auftritt</head>
+        <div>
+          <head>Siebenter Auftritt</head>
+          <sp who="#eugenie">
+            <amount n="10" unit="speech_acts"/>
+            <amount n="237" unit="words"/>
+            <amount n="33" unit="lines"/>
+            <amount n="1315" unit="chars"/>
+          </sp>
+          <sp who="#mönch">
+            <amount n="10" unit="speech_acts"/>
+            <amount n="746" unit="words"/>
+            <amount n="106" unit="lines"/>
+            <amount n="4131" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>8. Auftritt</head>
+        <div>
+          <head>Achter Auftritt</head>
+          <sp who="#eugenie">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="376" unit="words"/>
+            <amount n="53" unit="lines"/>
+            <amount n="2105" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>9. Auftritt</head>
+        <div>
+          <head>Neunter Auftritt</head>
+          <sp who="#gerichtsrat">
+            <amount n="7" unit="speech_acts"/>
+            <amount n="271" unit="words"/>
+            <amount n="38" unit="lines"/>
+            <amount n="1537" unit="chars"/>
+          </sp>
+          <sp who="#eugenie">
+            <amount n="7" unit="speech_acts"/>
+            <amount n="352" unit="words"/>
+            <amount n="50" unit="lines"/>
+            <amount n="1987" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+    </div>
+  </text>
+</play>

@@ -1,0 +1,1591 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="https://raw.githubusercontent.com/DLiNa/project/master/rules/lina.rnc"?>
+<?xml-model href="https://raw.githubusercontent.com/DLiNa/project/master/rules/lina.sch"?>
+<play xmlns="http://lina.digital" id="225">
+  <header>
+    <title>Die deutschen Kleinstädter</title>
+    <subtitle>Ein Lustspiel in vier Akten</subtitle>
+    <genretitle>Lustspiel</genretitle>
+    <author key="pnd:118565796">Kotzebue, August von</author>
+    <date type="print" when="1803"/>
+    <date type="premiere" when="1808"/>
+    <date type="written" when="1806">1803–1805/06</date>
+    <source>https://textgridlab.org/1.0/tgcrud-public/rest/textgrid:r2m4.0/data</source>
+  </header>
+  <personae>
+    <character>
+      <name>SABINE</name>
+      <alias xml:id="sabine">
+        <name>SABINE</name>
+      </alias>
+    </character>
+    <character>
+      <name>MAGD</name>
+      <alias xml:id="magd">
+        <name>MAGD</name>
+      </alias>
+      <alias xml:id="die_magd">
+        <name>DIE MAGD</name>
+      </alias>
+    </character>
+    <character>
+      <name>FRAU STAAR</name>
+      <alias xml:id="frau_staar">
+        <name>FRAU STAAR</name>
+      </alias>
+    </character>
+    <character>
+      <name>HERR STAAR</name>
+      <alias xml:id="herr_staar">
+        <name>HERR STAAR</name>
+      </alias>
+    </character>
+    <character>
+      <name>BAUER</name>
+      <alias xml:id="bauer">
+        <name>BAUER</name>
+      </alias>
+    </character>
+    <character>
+      <name>FRAU BRENDEL</name>
+      <alias xml:id="frau_brendel">
+        <name>FRAU BRENDEL</name>
+      </alias>
+    </character>
+    <character>
+      <name>FRAU MORGENROTH</name>
+      <alias xml:id="frau_morgenroth">
+        <name>FRAU MORGENROTH</name>
+      </alias>
+    </character>
+    <character>
+      <name>SPERLING</name>
+      <alias xml:id="sperling">
+        <name>SPERLING</name>
+      </alias>
+    </character>
+    <character>
+      <name>DIE KINDER</name>
+      <alias xml:id="die_kinder">
+        <name>DIE KINDER</name>
+      </alias>
+    </character>
+    <character>
+      <name>OLMERS</name>
+      <alias xml:id="olmers">
+        <name>OLMERS</name>
+      </alias>
+    </character>
+    <character>
+      <name>DER BÜRGERMEISTER</name>
+      <alias xml:id="der_bürgermeister">
+        <name>DER BÜRGERMEISTER</name>
+      </alias>
+      <alias xml:id="bürgermeister">
+        <name>BÜRGERMEISTER</name>
+      </alias>
+    </character>
+    <character>
+      <name>NACHTWÄCHTER</name>
+      <alias xml:id="nachtwächter">
+        <name>NACHTWÄCHTER</name>
+      </alias>
+    </character>
+    <character>
+      <name>KLAUS</name>
+      <alias xml:id="klaus">
+        <name>KLAUS</name>
+      </alias>
+    </character>
+  </personae>
+  <text>
+    <div>
+      <head>Personen</head>
+    </div>
+    <div>
+      <head>1. Akt</head>
+      <div>
+        <head>1. Szene</head>
+        <div>
+          <head>Erste Szene</head>
+          <sp who="#sabine">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="99" unit="words"/>
+            <amount n="495" unit="chars"/>
+          </sp>
+          <sp who="#die_magd">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="1" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="12" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>2. Szene</head>
+        <div>
+          <head>Zweite Szene</head>
+          <sp who="#magd">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="41" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="270" unit="chars"/>
+          </sp>
+          <sp who="#sabine">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="13" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="82" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>3. Szene</head>
+        <div>
+          <head>Dritte Szene</head>
+          <sp who="#sabine">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="268" unit="words"/>
+            <amount n="1415" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>4. Szene</head>
+        <div>
+          <head>Vierte Szene</head>
+          <sp who="#frau_staar">
+            <amount n="19" unit="speech_acts"/>
+            <amount n="644" unit="words"/>
+            <amount n="10" unit="lines"/>
+            <amount n="3584" unit="chars"/>
+          </sp>
+          <sp who="#sabine">
+            <amount n="18" unit="speech_acts"/>
+            <amount n="155" unit="words"/>
+            <amount n="16" unit="lines"/>
+            <amount n="867" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>5. Szene</head>
+        <div>
+          <head>Fünfte Szene</head>
+          <sp who="#frau_staar">
+            <amount n="6" unit="speech_acts"/>
+            <amount n="80" unit="words"/>
+            <amount n="5" unit="lines"/>
+            <amount n="416" unit="chars"/>
+          </sp>
+          <sp who="#herr_staar">
+            <amount n="9" unit="speech_acts"/>
+            <amount n="184" unit="words"/>
+            <amount n="3" unit="lines"/>
+            <amount n="1029" unit="chars"/>
+          </sp>
+          <sp who="#sabine">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="50" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="294" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>6. Szene</head>
+        <div>
+          <head>Sechste Szene</head>
+          <sp who="#bürgermeister">
+            <amount n="11" unit="speech_acts"/>
+            <amount n="264" unit="words"/>
+            <amount n="5" unit="lines"/>
+            <amount n="1527" unit="chars"/>
+          </sp>
+          <sp who="#sabine">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="3" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="20" unit="chars"/>
+          </sp>
+          <sp who="#herr_staar">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="19" unit="words"/>
+            <amount n="5" unit="lines"/>
+            <amount n="101" unit="chars"/>
+          </sp>
+          <sp who="#frau_staar">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="31" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="143" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>7. Szene</head>
+        <div>
+          <head>Siebente Szene</head>
+          <sp who="#sabine">
+            <amount n="6" unit="speech_acts"/>
+            <amount n="60" unit="words"/>
+            <amount n="5" unit="lines"/>
+            <amount n="338" unit="chars"/>
+          </sp>
+          <sp who="#frau_staar">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="25" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="156" unit="chars"/>
+          </sp>
+          <sp who="#bürgermeister">
+            <amount n="10" unit="speech_acts"/>
+            <amount n="180" unit="words"/>
+            <amount n="8" unit="lines"/>
+            <amount n="1132" unit="chars"/>
+          </sp>
+          <sp who="#herr_staar">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="10" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="54" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>8. Szene</head>
+        <div>
+          <head>Achte Szene</head>
+          <sp who="#magd">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="36" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="200" unit="chars"/>
+          </sp>
+          <sp who="#bürgermeister">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="85" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="500" unit="chars"/>
+          </sp>
+          <sp who="#frau_staar">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="12" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="65" unit="chars"/>
+          </sp>
+          <sp who="#sabine">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="17" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="124" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>9. Szene</head>
+        <div>
+          <head>Neunte Szene</head>
+          <sp who="#bauer">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="103" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="584" unit="chars"/>
+          </sp>
+          <sp who="#bürgermeister">
+            <amount n="20" unit="speech_acts"/>
+            <amount n="633" unit="words"/>
+            <amount n="9" unit="lines"/>
+            <amount n="3588" unit="chars"/>
+          </sp>
+          <sp who="#herr_staar">
+            <amount n="9" unit="speech_acts"/>
+            <amount n="161" unit="words"/>
+            <amount n="7" unit="lines"/>
+            <amount n="986" unit="chars"/>
+          </sp>
+          <sp who="#frau_staar">
+            <amount n="13" unit="speech_acts"/>
+            <amount n="160" unit="words"/>
+            <amount n="10" unit="lines"/>
+            <amount n="969" unit="chars"/>
+          </sp>
+          <sp who="#sabine">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="25" unit="words"/>
+            <amount n="5" unit="lines"/>
+            <amount n="137" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>10. Szene</head>
+        <div>
+          <head>Zehnte Szene</head>
+          <sp who="#frau_staar">
+            <amount n="10" unit="speech_acts"/>
+            <amount n="121" unit="words"/>
+            <amount n="8" unit="lines"/>
+            <amount n="690" unit="chars"/>
+          </sp>
+          <sp who="#sabine">
+            <amount n="10" unit="speech_acts"/>
+            <amount n="69" unit="words"/>
+            <amount n="10" unit="lines"/>
+            <amount n="379" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>11. Szene</head>
+        <div>
+          <head>Eilfte Szene</head>
+          <sp who="#frau_staar">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="278" unit="words"/>
+            <amount n="1659" unit="chars"/>
+          </sp>
+          <sp who="#die_magd">
+            <amount n="2" unit="speech_acts"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>12. Szene</head>
+        <div>
+          <head>Zwölfte Szene</head>
+          <sp who="#frau_brendel">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="108" unit="words"/>
+            <amount n="630" unit="chars"/>
+          </sp>
+          <sp who="#frau_staar">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="68" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="381" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>13. Szene</head>
+        <div>
+          <head>Dreizehnte Szene</head>
+          <sp who="#frau_morgenroth">
+            <amount n="15" unit="speech_acts"/>
+            <amount n="272" unit="words"/>
+            <amount n="12" unit="lines"/>
+            <amount n="1549" unit="chars"/>
+          </sp>
+          <sp who="#frau_staar">
+            <amount n="12" unit="speech_acts"/>
+            <amount n="271" unit="words"/>
+            <amount n="7" unit="lines"/>
+            <amount n="1574" unit="chars"/>
+          </sp>
+          <sp who="#frau_brendel">
+            <amount n="15" unit="speech_acts"/>
+            <amount n="163" unit="words"/>
+            <amount n="12" unit="lines"/>
+            <amount n="922" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>14. Szene</head>
+        <div>
+          <head>Vierzehnte Szene</head>
+          <sp who="#sperling">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="140" unit="words"/>
+            <amount n="852" unit="chars"/>
+          </sp>
+          <sp who="#frau_staar #frau_brendel #frau_morgenroth">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="3" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="17" unit="chars"/>
+          </sp>
+          <sp who="#frau_staar">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="40" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="227" unit="chars"/>
+          </sp>
+          <sp who="#frau_brendel">
+            <amount n="8" unit="speech_acts"/>
+            <amount n="59" unit="words"/>
+            <amount n="7" unit="lines"/>
+            <amount n="341" unit="chars"/>
+          </sp>
+          <sp who="#frau_morgenroth">
+            <amount n="8" unit="speech_acts"/>
+            <amount n="87" unit="words"/>
+            <amount n="7" unit="lines"/>
+            <amount n="453" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>15. Szene</head>
+        <div>
+          <head>Fünfzehnte Szene</head>
+          <sp who="#frau_staar">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="46" unit="words"/>
+            <amount n="3" unit="lines"/>
+            <amount n="268" unit="chars"/>
+          </sp>
+          <sp who="#sperling">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="16" unit="words"/>
+            <amount n="3" unit="lines"/>
+            <amount n="96" unit="chars"/>
+          </sp>
+          <sp who="#frau_brendel">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="20" unit="words"/>
+            <amount n="3" unit="lines"/>
+            <amount n="112" unit="chars"/>
+          </sp>
+          <sp who="#frau_morgenroth">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="19" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="105" unit="chars"/>
+          </sp>
+          <sp who="#die_kinder">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="2" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="7" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>16. Szene</head>
+        <div>
+          <head>Sechzehnte Szene</head>
+          <sp who="#herr_staar">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="38" unit="words"/>
+            <amount n="3" unit="lines"/>
+            <amount n="202" unit="chars"/>
+          </sp>
+          <sp who="#bürgermeister">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="25" unit="words"/>
+            <amount n="3" unit="lines"/>
+            <amount n="123" unit="chars"/>
+          </sp>
+          <sp who="#sperling">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="16" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="80" unit="chars"/>
+          </sp>
+          <sp who="#sabine">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="5" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="26" unit="chars"/>
+          </sp>
+          <sp who="#die_kinder">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="4" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="33" unit="chars"/>
+          </sp>
+          <sp who="#frau_staar">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="20" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="130" unit="chars"/>
+          </sp>
+          <sp who="#frau_brendel">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="15" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="116" unit="chars"/>
+          </sp>
+          <sp who="#frau_morgenroth">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="17" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="103" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+    </div>
+    <div>
+      <head>2. Akt</head>
+      <div>
+        <head>1. Szene</head>
+        <div>
+          <head>Erste Szene</head>
+          <sp who="#frau_brendel">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="13" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="63" unit="chars"/>
+          </sp>
+          <sp who="#frau_morgenroth">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="4" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="21" unit="chars"/>
+          </sp>
+          <sp who="#frau_staar">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="8" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="41" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>2. Szene</head>
+        <div>
+          <head>Zweite Szene</head>
+          <sp who="#bürgermeister">
+            <amount n="10" unit="speech_acts"/>
+            <amount n="171" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="1087" unit="chars"/>
+          </sp>
+          <sp who="#olmers">
+            <amount n="20" unit="speech_acts"/>
+            <amount n="209" unit="words"/>
+            <amount n="18" unit="lines"/>
+            <amount n="1204" unit="chars"/>
+          </sp>
+          <sp who="#frau_brendel #frau_morgenroth">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="9" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="44" unit="chars"/>
+          </sp>
+          <sp who="#frau_staar">
+            <amount n="7" unit="speech_acts"/>
+            <amount n="65" unit="words"/>
+            <amount n="5" unit="lines"/>
+            <amount n="392" unit="chars"/>
+          </sp>
+          <sp who="#sabine">
+            <amount n="7" unit="speech_acts"/>
+            <amount n="65" unit="words"/>
+            <amount n="7" unit="lines"/>
+            <amount n="347" unit="chars"/>
+          </sp>
+          <sp who="#herr_staar">
+            <amount n="6" unit="speech_acts"/>
+            <amount n="61" unit="words"/>
+            <amount n="6" unit="lines"/>
+            <amount n="351" unit="chars"/>
+          </sp>
+          <sp who="#sperling">
+            <amount n="8" unit="speech_acts"/>
+            <amount n="69" unit="words"/>
+            <amount n="7" unit="lines"/>
+            <amount n="408" unit="chars"/>
+          </sp>
+          <sp who="#frau_brendel">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="12" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="75" unit="chars"/>
+          </sp>
+          <sp who="#frau_morgenroth">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="12" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="67" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>3. Szene</head>
+        <div>
+          <head>Dritte Szene</head>
+          <sp who="#frau_staar">
+            <amount n="14" unit="speech_acts"/>
+            <amount n="186" unit="words"/>
+            <amount n="11" unit="lines"/>
+            <amount n="1006" unit="chars"/>
+          </sp>
+          <sp who="#frau_brendel">
+            <amount n="11" unit="speech_acts"/>
+            <amount n="82" unit="words"/>
+            <amount n="11" unit="lines"/>
+            <amount n="419" unit="chars"/>
+          </sp>
+          <sp who="#frau_morgenroth">
+            <amount n="9" unit="speech_acts"/>
+            <amount n="107" unit="words"/>
+            <amount n="8" unit="lines"/>
+            <amount n="560" unit="chars"/>
+          </sp>
+          <sp who="#frau_brendel #frau_morgenroth">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="4" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="20" unit="chars"/>
+          </sp>
+          <sp who="#frau_brendel #frau_morgenroth">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="3" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="10" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>4. Szene</head>
+        <div>
+          <head>Vierte Szene</head>
+          <sp who="#frau_staar">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="89" unit="words"/>
+            <amount n="407" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>5. Szene</head>
+        <div>
+          <head>Fünfte Szene</head>
+          <sp who="#frau_staar">
+            <amount n="13" unit="speech_acts"/>
+            <amount n="231" unit="words"/>
+            <amount n="9" unit="lines"/>
+            <amount n="1196" unit="chars"/>
+          </sp>
+          <sp who="#bürgermeister">
+            <amount n="11" unit="speech_acts"/>
+            <amount n="123" unit="words"/>
+            <amount n="10" unit="lines"/>
+            <amount n="656" unit="chars"/>
+          </sp>
+          <sp who="#herr_staar">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="34" unit="words"/>
+            <amount n="5" unit="lines"/>
+            <amount n="202" unit="chars"/>
+          </sp>
+          <sp who="#sperling">
+            <amount n="6" unit="speech_acts"/>
+            <amount n="32" unit="words"/>
+            <amount n="6" unit="lines"/>
+            <amount n="186" unit="chars"/>
+          </sp>
+          <sp who="#bürgermeister #herr_staar">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="2" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="9" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>6. Szene</head>
+        <div>
+          <head>Sechste Szene</head>
+          <sp who="#olmers">
+            <amount n="7" unit="speech_acts"/>
+            <amount n="53" unit="words"/>
+            <amount n="6" unit="lines"/>
+            <amount n="313" unit="chars"/>
+          </sp>
+          <sp who="#bürgermeister">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="23" unit="words"/>
+            <amount n="3" unit="lines"/>
+            <amount n="138" unit="chars"/>
+          </sp>
+          <sp who="#herr_staar">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="10" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="45" unit="chars"/>
+          </sp>
+          <sp who="#sperling">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="6" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="35" unit="chars"/>
+          </sp>
+          <sp who="#frau_staar">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="7" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="37" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>7. Szene</head>
+        <div>
+          <head>Siebente Szene</head>
+          <sp who="#magd">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="21" unit="words"/>
+            <amount n="120" unit="chars"/>
+          </sp>
+          <sp who="#bürgermeister">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="39" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="251" unit="chars"/>
+          </sp>
+          <sp who="#olmers">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="117" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="639" unit="chars"/>
+          </sp>
+          <sp who="#frau_staar">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="16" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="97" unit="chars"/>
+          </sp>
+          <sp who="#herr_staar">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="16" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="93" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>8. Szene</head>
+        <div>
+          <head>Achte Szene</head>
+          <sp who="#bürgermeister">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="55" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="295" unit="chars"/>
+          </sp>
+          <sp who="#sabine">
+            <amount n="14" unit="speech_acts"/>
+            <amount n="173" unit="words"/>
+            <amount n="11" unit="lines"/>
+            <amount n="923" unit="chars"/>
+          </sp>
+          <sp who="#herr_staar">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="36" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="225" unit="chars"/>
+          </sp>
+          <sp who="#frau_staar">
+            <amount n="11" unit="speech_acts"/>
+            <amount n="145" unit="words"/>
+            <amount n="8" unit="lines"/>
+            <amount n="804" unit="chars"/>
+          </sp>
+          <sp who="#bürgermeister #herr_staar #frau_staar #sperling">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="2" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="11" unit="chars"/>
+          </sp>
+          <sp who="#sperling">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="13" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="76" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>9. Szene</head>
+        <div>
+          <head>Neunte Szene</head>
+          <sp who="#sabine">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="34" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="206" unit="chars"/>
+          </sp>
+          <sp who="#sperling">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="95" unit="words"/>
+            <amount n="584" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>10. Szene</head>
+        <div>
+          <head>Zehnte Szene</head>
+          <sp who="#olmers">
+            <amount n="18" unit="speech_acts"/>
+            <amount n="194" unit="words"/>
+            <amount n="14" unit="lines"/>
+            <amount n="1118" unit="chars"/>
+          </sp>
+          <sp who="#sabine">
+            <amount n="14" unit="speech_acts"/>
+            <amount n="167" unit="words"/>
+            <amount n="12" unit="lines"/>
+            <amount n="926" unit="chars"/>
+          </sp>
+          <sp who="#sperling">
+            <amount n="22" unit="speech_acts"/>
+            <amount n="258" unit="words"/>
+            <amount n="18" unit="lines"/>
+            <amount n="1498" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>11. Szene</head>
+        <div>
+          <head>Eilfte Szene</head>
+          <sp who="#frau_staar">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="25" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="148" unit="chars"/>
+          </sp>
+          <sp who="#olmers">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="2" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="10" unit="chars"/>
+          </sp>
+          <sp who="#sperling">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="54" unit="words"/>
+            <amount n="312" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+    </div>
+    <div>
+      <head>3. Akt</head>
+      <div>
+        <head>1. Szene</head>
+        <div>
+          <head>Erste Szene</head>
+          <sp who="#frau_staar">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="106" unit="words"/>
+            <amount n="607" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>2. Szene</head>
+        <div>
+          <head>Zweite Szene</head>
+          <sp who="#frau_staar">
+            <amount n="9" unit="speech_acts"/>
+            <amount n="72" unit="words"/>
+            <amount n="8" unit="lines"/>
+            <amount n="413" unit="chars"/>
+          </sp>
+          <sp who="#frau_brendel">
+            <amount n="8" unit="speech_acts"/>
+            <amount n="67" unit="words"/>
+            <amount n="8" unit="lines"/>
+            <amount n="369" unit="chars"/>
+          </sp>
+          <sp who="#frau_morgenroth">
+            <amount n="7" unit="speech_acts"/>
+            <amount n="65" unit="words"/>
+            <amount n="7" unit="lines"/>
+            <amount n="365" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>3. Szene</head>
+        <div>
+          <head>Dritte Szene</head>
+          <sp who="#herr_staar">
+            <amount n="6" unit="speech_acts"/>
+            <amount n="93" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="571" unit="chars"/>
+          </sp>
+          <sp who="#frau_brendel">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="35" unit="words"/>
+            <amount n="3" unit="lines"/>
+            <amount n="199" unit="chars"/>
+          </sp>
+          <sp who="#frau_staar">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="82" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="470" unit="chars"/>
+          </sp>
+          <sp who="#frau_morgenroth">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="20" unit="words"/>
+            <amount n="115" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>4. Szene</head>
+        <div>
+          <head>Vierte Szene</head>
+          <sp who="#sperling">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="78" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="442" unit="chars"/>
+          </sp>
+          <sp who="#herr_staar">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="49" unit="words"/>
+            <amount n="5" unit="lines"/>
+            <amount n="270" unit="chars"/>
+          </sp>
+          <sp who="#frau_brendel">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="14" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="78" unit="chars"/>
+          </sp>
+          <sp who="#frau_morgenroth">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="2" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="16" unit="chars"/>
+          </sp>
+          <sp who="#frau_staar">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="2" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="13" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>5. Szene</head>
+        <div>
+          <head>Fünfte Szene</head>
+          <sp who="#frau_staar">
+            <amount n="7" unit="speech_acts"/>
+            <amount n="62" unit="words"/>
+            <amount n="6" unit="lines"/>
+            <amount n="366" unit="chars"/>
+          </sp>
+          <sp who="#sabine">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="165" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="868" unit="chars"/>
+          </sp>
+          <sp who="#herr_staar">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="9" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="49" unit="chars"/>
+          </sp>
+          <sp who="#frau_brendel">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="11" unit="words"/>
+            <amount n="3" unit="lines"/>
+            <amount n="67" unit="chars"/>
+          </sp>
+          <sp who="#frau_morgenroth">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="22" unit="words"/>
+            <amount n="3" unit="lines"/>
+            <amount n="112" unit="chars"/>
+          </sp>
+          <sp who="#sperling">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="8" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="39" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>6. Szene</head>
+        <div>
+          <head>Sechste Szene</head>
+          <sp who="#bürgermeister">
+            <amount n="6" unit="speech_acts"/>
+            <amount n="69" unit="words"/>
+            <amount n="5" unit="lines"/>
+            <amount n="375" unit="chars"/>
+          </sp>
+          <sp who="#olmers">
+            <amount n="9" unit="speech_acts"/>
+            <amount n="125" unit="words"/>
+            <amount n="7" unit="lines"/>
+            <amount n="696" unit="chars"/>
+          </sp>
+          <sp who="#sabine">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="33" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="155" unit="chars"/>
+          </sp>
+          <sp who="#frau_staar">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="71" unit="words"/>
+            <amount n="438" unit="chars"/>
+          </sp>
+          <sp who="#herr_staar">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="32" unit="words"/>
+            <amount n="202" unit="chars"/>
+          </sp>
+          <sp who="#sperling">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="7" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="43" unit="chars"/>
+          </sp>
+          <sp who="#frau_brendel">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="40" unit="words"/>
+            <amount n="228" unit="chars"/>
+          </sp>
+          <sp who="#frau_morgenroth">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="15" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="98" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>7. Szene</head>
+        <div>
+          <head>Siebente Szene</head>
+          <sp who="#bürgermeister">
+            <amount n="7" unit="speech_acts"/>
+            <amount n="46" unit="words"/>
+            <amount n="6" unit="lines"/>
+            <amount n="285" unit="chars"/>
+          </sp>
+          <sp who="#olmers">
+            <amount n="7" unit="speech_acts"/>
+            <amount n="105" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="596" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>8. Szene</head>
+        <div>
+          <head>Achte Szene</head>
+          <sp who="#der_bürgermeister">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="156" unit="words"/>
+            <amount n="801" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>9. Szene</head>
+        <div>
+          <head>Neunte Szene</head>
+          <sp who="#frau_brendel">
+            <amount n="25" unit="speech_acts"/>
+            <amount n="223" unit="words"/>
+            <amount n="23" unit="lines"/>
+            <amount n="1321" unit="chars"/>
+          </sp>
+          <sp who="#frau_staar">
+            <amount n="21" unit="speech_acts"/>
+            <amount n="196" unit="words"/>
+            <amount n="19" unit="lines"/>
+            <amount n="1073" unit="chars"/>
+          </sp>
+          <sp who="#herr_staar">
+            <amount n="16" unit="speech_acts"/>
+            <amount n="186" unit="words"/>
+            <amount n="13" unit="lines"/>
+            <amount n="1035" unit="chars"/>
+          </sp>
+          <sp who="#bürgermeister">
+            <amount n="19" unit="speech_acts"/>
+            <amount n="293" unit="words"/>
+            <amount n="10" unit="lines"/>
+            <amount n="1770" unit="chars"/>
+          </sp>
+          <sp who="#frau_brendel #frau_morgenroth">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="7" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="35" unit="chars"/>
+          </sp>
+          <sp who="#frau_morgenroth">
+            <amount n="19" unit="speech_acts"/>
+            <amount n="165" unit="words"/>
+            <amount n="19" unit="lines"/>
+            <amount n="971" unit="chars"/>
+          </sp>
+          <sp who="#frau_staar #frau_brendel #bürgermeister #frau_morgenroth">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="4" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="18" unit="chars"/>
+          </sp>
+          <sp who="#frau_staar #frau_brendel">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="8" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="41" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>10. Szene</head>
+        <div>
+          <head>Zehnte Szene</head>
+          <sp who="#olmers">
+            <amount n="7" unit="speech_acts"/>
+            <amount n="91" unit="words"/>
+            <amount n="5" unit="lines"/>
+            <amount n="542" unit="chars"/>
+          </sp>
+          <sp who="#bürgermeister">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="43" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="231" unit="chars"/>
+          </sp>
+          <sp who="#frau_staar">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="33" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="181" unit="chars"/>
+          </sp>
+          <sp who="#herr_staar">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="26" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="153" unit="chars"/>
+          </sp>
+          <sp who="#frau_brendel">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="63" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="322" unit="chars"/>
+          </sp>
+          <sp who="#frau_morgenroth">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="50" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="262" unit="chars"/>
+          </sp>
+          <sp who="#olmers #frau_staar #herr_staar #frau_brendel #frau_morgenroth #bürgermeister">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="6" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="32" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>11. Szene</head>
+        <div>
+          <head>Eilfte Szene</head>
+          <sp who="#olmers">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="58" unit="words"/>
+            <amount n="298" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>12. Szene</head>
+        <div>
+          <head>Zwölfte Szene</head>
+          <sp who="#sabine">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="40" unit="words"/>
+            <amount n="3" unit="lines"/>
+            <amount n="216" unit="chars"/>
+          </sp>
+          <sp who="#olmers">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="12" unit="words"/>
+            <amount n="3" unit="lines"/>
+            <amount n="72" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>13. Szene</head>
+        <div>
+          <head>Dreizehnte Szene</head>
+          <sp who="#olmers">
+            <amount n="21" unit="speech_acts"/>
+            <amount n="179" unit="words"/>
+            <amount n="19" unit="lines"/>
+            <amount n="967" unit="chars"/>
+          </sp>
+          <sp who="#sabine">
+            <amount n="25" unit="speech_acts"/>
+            <amount n="336" unit="words"/>
+            <amount n="18" unit="lines"/>
+            <amount n="1902" unit="chars"/>
+          </sp>
+          <sp who="#sperling">
+            <amount n="30" unit="speech_acts"/>
+            <amount n="466" unit="words"/>
+            <amount n="27" unit="lines"/>
+            <amount n="2566" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>14. Szene</head>
+        <div>
+          <head>Vierzehnte Szene</head>
+          <sp who="#sperling">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="95" unit="words"/>
+            <amount n="8" unit="lines"/>
+            <amount n="495" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+    </div>
+    <div>
+      <head>4. Akt</head>
+      <div>
+        <head>1. Szene</head>
+        <div>
+          <head>Erste Szene</head>
+          <sp who="#olmers">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="142" unit="words"/>
+            <amount n="823" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>2. Szene</head>
+        <div>
+          <head>Zweite Szene</head>
+          <sp who="#sabine">
+            <amount n="23" unit="speech_acts"/>
+            <amount n="647" unit="words"/>
+            <amount n="12" unit="lines"/>
+            <amount n="3670" unit="chars"/>
+          </sp>
+          <sp who="#olmers">
+            <amount n="22" unit="speech_acts"/>
+            <amount n="189" unit="words"/>
+            <amount n="20" unit="lines"/>
+            <amount n="1032" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>3. Szene</head>
+        <div>
+          <head>Dritte Szene</head>
+          <sp who="#sperling">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="62" unit="words"/>
+            <amount n="7" unit="lines"/>
+            <amount n="386" unit="chars"/>
+          </sp>
+          <sp who="#sabine">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="60" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="330" unit="chars"/>
+          </sp>
+          <sp who="#olmers">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="9" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="45" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>4. Szene</head>
+        <div>
+          <head>Vierte Szene</head>
+          <sp who="#nachtwächter">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="34" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="159" unit="chars"/>
+          </sp>
+          <sp who="#sperling">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="16" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="83" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>5. Szene</head>
+        <div>
+          <head>Fünfte Szene</head>
+          <sp who="#frau_staar">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="23" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="105" unit="chars"/>
+          </sp>
+          <sp who="#nachtwächter">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="12" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="65" unit="chars"/>
+          </sp>
+          <sp who="#sperling">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="7" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="55" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>6. Szene</head>
+        <div>
+          <head>Sechste Szene</head>
+          <sp who="#herr_staar">
+            <amount n="7" unit="speech_acts"/>
+            <amount n="77" unit="words"/>
+            <amount n="7" unit="lines"/>
+            <amount n="440" unit="chars"/>
+          </sp>
+          <sp who="#frau_staar">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="15" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="74" unit="chars"/>
+          </sp>
+          <sp who="#sperling">
+            <amount n="7" unit="speech_acts"/>
+            <amount n="59" unit="words"/>
+            <amount n="7" unit="lines"/>
+            <amount n="359" unit="chars"/>
+          </sp>
+          <sp who="#sabine">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="21" unit="words"/>
+            <amount n="5" unit="lines"/>
+            <amount n="96" unit="chars"/>
+          </sp>
+          <sp who="#olmers">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="13" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="63" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>7. Szene</head>
+        <div>
+          <head>Siebente Szene</head>
+          <sp who="#olmers">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="41" unit="words"/>
+            <amount n="5" unit="lines"/>
+            <amount n="226" unit="chars"/>
+          </sp>
+          <sp who="#sabine">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="141" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="777" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>8. Szene</head>
+        <div>
+          <head>Achte Szene</head>
+          <sp who="#klaus">
+            <amount n="8" unit="speech_acts"/>
+            <amount n="121" unit="words"/>
+            <amount n="6" unit="lines"/>
+            <amount n="642" unit="chars"/>
+          </sp>
+          <sp who="#bürgermeister">
+            <amount n="7" unit="speech_acts"/>
+            <amount n="42" unit="words"/>
+            <amount n="6" unit="lines"/>
+            <amount n="223" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>9. Szene</head>
+        <div>
+          <head>Neunte Szene</head>
+          <sp who="#bürgermeister">
+            <amount n="21" unit="speech_acts"/>
+            <amount n="571" unit="words"/>
+            <amount n="7" unit="lines"/>
+            <amount n="3195" unit="chars"/>
+          </sp>
+          <sp who="#klaus">
+            <amount n="16" unit="speech_acts"/>
+            <amount n="370" unit="words"/>
+            <amount n="10" unit="lines"/>
+            <amount n="2151" unit="chars"/>
+          </sp>
+          <sp who="#herr_staar">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="64" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="331" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>10. Szene</head>
+        <div>
+          <head>Zehnte Szene</head>
+          <sp who="#herr_staar">
+            <amount n="8" unit="speech_acts"/>
+            <amount n="74" unit="words"/>
+            <amount n="7" unit="lines"/>
+            <amount n="415" unit="chars"/>
+          </sp>
+          <sp who="#bürgermeister">
+            <amount n="12" unit="speech_acts"/>
+            <amount n="106" unit="words"/>
+            <amount n="12" unit="lines"/>
+            <amount n="615" unit="chars"/>
+          </sp>
+          <sp who="#klaus">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="5" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="33" unit="chars"/>
+          </sp>
+          <sp who="#sperling">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="31" unit="words"/>
+            <amount n="3" unit="lines"/>
+            <amount n="168" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>11. Szene</head>
+        <div>
+          <head>Eilfte Szene</head>
+          <sp who="#sperling">
+            <amount n="9" unit="speech_acts"/>
+            <amount n="84" unit="words"/>
+            <amount n="8" unit="lines"/>
+            <amount n="503" unit="chars"/>
+          </sp>
+          <sp who="#bürgermeister">
+            <amount n="21" unit="speech_acts"/>
+            <amount n="163" unit="words"/>
+            <amount n="20" unit="lines"/>
+            <amount n="894" unit="chars"/>
+          </sp>
+          <sp who="#klaus">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="50" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="289" unit="chars"/>
+          </sp>
+          <sp who="#herr_staar">
+            <amount n="13" unit="speech_acts"/>
+            <amount n="119" unit="words"/>
+            <amount n="11" unit="lines"/>
+            <amount n="657" unit="chars"/>
+          </sp>
+          <sp who="#sperling #bürgermeister #klaus #herr_staar #sabine #frau_staar">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="2" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="9" unit="chars"/>
+          </sp>
+          <sp who="#sabine">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="39" unit="words"/>
+            <amount n="3" unit="lines"/>
+            <amount n="226" unit="chars"/>
+          </sp>
+          <sp who="#bürgermeister #herr_staar">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="5" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="27" unit="chars"/>
+          </sp>
+          <sp who="#olmers">
+            <amount n="6" unit="speech_acts"/>
+            <amount n="70" unit="words"/>
+            <amount n="5" unit="lines"/>
+            <amount n="391" unit="chars"/>
+          </sp>
+          <sp who="#frau_staar">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="33" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="170" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>12. Szene</head>
+        <div>
+          <head>Zwölfte Szene</head>
+          <sp who="#frau_staar">
+            <amount n="15" unit="speech_acts"/>
+            <amount n="157" unit="words"/>
+            <amount n="12" unit="lines"/>
+            <amount n="972" unit="chars"/>
+          </sp>
+          <sp who="#sperling">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="77" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="410" unit="chars"/>
+          </sp>
+          <sp who="#bürgermeister">
+            <amount n="8" unit="speech_acts"/>
+            <amount n="77" unit="words"/>
+            <amount n="7" unit="lines"/>
+            <amount n="461" unit="chars"/>
+          </sp>
+          <sp who="#herr_staar">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="30" unit="words"/>
+            <amount n="5" unit="lines"/>
+            <amount n="182" unit="chars"/>
+          </sp>
+          <sp who="#olmers">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="73" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="486" unit="chars"/>
+          </sp>
+          <sp who="#sabine">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="19" unit="words"/>
+            <amount n="125" unit="chars"/>
+          </sp>
+          <sp who="#klaus">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="28" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="154" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+    </div>
+  </text>
+</play>

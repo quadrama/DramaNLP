@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://raw.githubusercontent.com/DLiNa/project/master/rules/lina.rnc"?>
+<?xml-model href="http://raw.githubusercontent.com/DLiNa/project/master/rules/lina.sch"?>
+<play xmlns="http://lina.digital" id="412">
+  <header>
+    <title>Der vierundzwanzigste Februar</title>
+    <subtitle>Eine Tragödie in einem Akt</subtitle>
+    <genretitle>Tragödie</genretitle>
+    <author key="pnd:118767208">Werner, Zacharias</author>
+    <date type="print" when="1815">1815</date>
+    <date type="premiere" when="1809">1809</date>
+    <date type="written"/>
+    <source>https://textgridlab.org/1.0/tgcrud-public/rest/textgrid:x5bv.0/data</source>
+  </header>
+  <personae>
+    <character>
+      <name>TRUDE</name>
+      <alias xml:id="trude">
+        <name>TRUDE</name>
+      </alias>
+    </character>
+    <character>
+      <name>KUNZ</name>
+      <alias xml:id="kunz">
+        <name>KUNZ</name>
+      </alias>
+    </character>
+    <character>
+      <name>KURT</name>
+      <alias xml:id="kurt">
+        <name>KURT</name>
+      </alias>
+    </character>
+  </personae>
+  <text>
+    <div>
+      <head>Personen</head>
+    </div>
+    <div>
+      <head>1. Auftritt</head>
+      <div>
+        <head>Erster Auftritt</head>
+        <sp who="#trude">
+          <amount n="1" unit="speech_acts"/>
+          <amount n="520" unit="words"/>
+          <amount n="62" unit="lines"/>
+          <amount n="2553" unit="chars"/>
+        </sp>
+      </div>
+    </div>
+    <div>
+      <head>2. Auftritt</head>
+      <div>
+        <head>Zweiter Auftritt</head>
+        <sp who="#trude">
+          <amount n="31" unit="speech_acts"/>
+          <amount n="637" unit="words"/>
+          <amount n="68" unit="lines"/>
+          <amount n="3531" unit="chars"/>
+        </sp>
+        <sp who="#kunz">
+          <amount n="31" unit="speech_acts"/>
+          <amount n="1178" unit="words"/>
+          <amount n="145" unit="lines"/>
+          <amount n="6092" unit="chars"/>
+        </sp>
+      </div>
+    </div>
+    <div>
+      <head>3. Auftritt</head>
+      <div>
+        <head>Dritter Auftritt</head>
+        <sp who="#kurt">
+          <amount n="87" unit="speech_acts"/>
+          <amount n="1947" unit="words"/>
+          <amount n="263" unit="lines"/>
+          <amount n="9798" unit="chars"/>
+        </sp>
+        <sp who="#kunz">
+          <amount n="134" unit="speech_acts"/>
+          <amount n="3567" unit="words"/>
+          <amount n="455" unit="lines"/>
+          <amount n="17552" unit="chars"/>
+        </sp>
+        <sp who="#trude">
+          <amount n="83" unit="speech_acts"/>
+          <amount n="864" unit="words"/>
+          <amount n="130" unit="lines"/>
+          <amount n="4047" unit="chars"/>
+        </sp>
+      </div>
+    </div>
+  </text>
+</play>
