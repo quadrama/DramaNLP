@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://raw.githubusercontent.com/DLiNa/project/master/rules/lina.rnc"?>
+<?xml-model href="http://raw.githubusercontent.com/DLiNa/project/master/rules/lina.sch"?>
+<play xmlns="http://lina.digital" id="440">
+  <header>
+    <title>Magie und Schicksal</title>
+    <subtitle>Drama in drei Akten</subtitle>
+    <genretitle/>
+    <author key="pnd:118543202">Günderode, Karoline von</author>
+    <date type="print" when="1805">1805</date>
+    <date type="premiere"/>
+    <date type="written"/>
+    <source>https://textgridlab.org/1.0/tgcrud-public/rest/textgrid:pb4c.0/data</source>
+  </header>
+  <personae>
+    <character>
+      <name>MAGIER</name>
+      <alias xml:id="magier">
+        <name>MAGIER</name>
+      </alias>
+    </character>
+    <character>
+      <name>LIGARES</name>
+      <alias xml:id="ligares">
+        <name>LIGARES</name>
+      </alias>
+    </character>
+    <character>
+      <name>ZENO</name>
+      <alias xml:id="zeno">
+        <name>ZENO</name>
+      </alias>
+    </character>
+    <character>
+      <name>BOTE</name>
+      <alias xml:id="bote">
+        <name>BOTE</name>
+      </alias>
+    </character>
+    <character>
+      <name>CASSANDRA</name>
+      <alias xml:id="cassandra">
+        <name>CASSANDRA</name>
+      </alias>
+    </character>
+    <character>
+      <name>TIMANDRAS</name>
+      <alias xml:id="timandras">
+        <name>TIMANDRAS</name>
+      </alias>
+    </character>
+    <character>
+      <name>LADIKÄ</name>
+      <alias xml:id="ladikä">
+        <name>LADIKÄ</name>
+      </alias>
+    </character>
+    <character>
+      <name>MANDANE</name>
+      <alias xml:id="mandane">
+        <name>MANDANE</name>
+      </alias>
+    </character>
+    <character>
+      <name>KNABE</name>
+      <alias xml:id="knabe">
+        <name>KNABE</name>
+      </alias>
+    </character>
+  </personae>
+  <text>
+    <div>
+      <head>Personen</head>
+    </div>
+    <div>
+      <head>1. Akt</head>
+      <div>
+        <head>Erster Akt</head>
+        <sp who="#magier">
+          <amount n="9" unit="speech_acts"/>
+          <amount n="879" unit="words"/>
+          <amount n="118" unit="lines"/>
+          <amount n="4822" unit="chars"/>
+        </sp>
+        <sp who="#ligares">
+          <amount n="14" unit="speech_acts"/>
+          <amount n="777" unit="words"/>
+          <amount n="105" unit="lines"/>
+          <amount n="4229" unit="chars"/>
+        </sp>
+        <sp who="#zeno">
+          <amount n="7" unit="speech_acts"/>
+          <amount n="265" unit="words"/>
+          <amount n="35" unit="lines"/>
+          <amount n="1431" unit="chars"/>
+        </sp>
+        <sp who="#bote">
+          <amount n="1" unit="speech_acts"/>
+          <amount n="15" unit="words"/>
+          <amount n="2" unit="lines"/>
+          <amount n="81" unit="chars"/>
+        </sp>
+        <sp who="#cassandra">
+          <amount n="5" unit="speech_acts"/>
+          <amount n="467" unit="words"/>
+          <amount n="62" unit="lines"/>
+          <amount n="2579" unit="chars"/>
+        </sp>
+        <sp who="#timandras">
+          <amount n="4" unit="speech_acts"/>
+          <amount n="190" unit="words"/>
+          <amount n="25" unit="lines"/>
+          <amount n="1041" unit="chars"/>
+        </sp>
+        <sp who="#ladikä">
+          <amount n="3" unit="speech_acts"/>
+          <amount n="54" unit="words"/>
+          <amount n="7" unit="lines"/>
+          <amount n="271" unit="chars"/>
+        </sp>
+        <sp who="#mandane">
+          <amount n="3" unit="speech_acts"/>
+          <amount n="30" unit="words"/>
+          <amount n="4" unit="lines"/>
+          <amount n="163" unit="chars"/>
+        </sp>
+      </div>
+    </div>
+    <div>
+      <head>2. Akt</head>
+      <div>
+        <head>Zweiter Akt</head>
+        <sp who="#ligares">
+          <amount n="17" unit="speech_acts"/>
+          <amount n="802" unit="words"/>
+          <amount n="104" unit="lines"/>
+          <amount n="4305" unit="chars"/>
+        </sp>
+        <sp who="#zeno">
+          <amount n="22" unit="speech_acts"/>
+          <amount n="526" unit="words"/>
+          <amount n="66" unit="lines"/>
+          <amount n="2801" unit="chars"/>
+        </sp>
+        <sp who="#timandras">
+          <amount n="8" unit="speech_acts"/>
+          <amount n="352" unit="words"/>
+          <amount n="46" unit="lines"/>
+          <amount n="1917" unit="chars"/>
+        </sp>
+        <sp who="#magier">
+          <amount n="11" unit="speech_acts"/>
+          <amount n="996" unit="words"/>
+          <amount n="129" unit="lines"/>
+          <amount n="5401" unit="chars"/>
+        </sp>
+        <sp who="#mandane">
+          <amount n="5" unit="speech_acts"/>
+          <amount n="266" unit="words"/>
+          <amount n="37" unit="lines"/>
+          <amount n="1504" unit="chars"/>
+        </sp>
+        <sp who="#ladikä">
+          <amount n="5" unit="speech_acts"/>
+          <amount n="251" unit="words"/>
+          <amount n="33" unit="lines"/>
+          <amount n="1379" unit="chars"/>
+        </sp>
+        <sp who="#knabe">
+          <amount n="2" unit="speech_acts"/>
+          <amount n="25" unit="words"/>
+          <amount n="3" unit="lines"/>
+          <amount n="122" unit="chars"/>
+        </sp>
+      </div>
+    </div>
+    <div>
+      <head>3. Akt</head>
+      <div>
+        <head>Dritter Akt</head>
+        <sp who="#ligares">
+          <amount n="26" unit="speech_acts"/>
+          <amount n="1387" unit="words"/>
+          <amount n="180" unit="lines"/>
+          <amount n="7536" unit="chars"/>
+        </sp>
+        <sp who="#knabe">
+          <amount n="3" unit="speech_acts"/>
+          <amount n="93" unit="words"/>
+          <amount n="12" unit="lines"/>
+          <amount n="486" unit="chars"/>
+        </sp>
+        <sp who="#zeno">
+          <amount n="3" unit="speech_acts"/>
+          <amount n="354" unit="words"/>
+          <amount n="48" unit="lines"/>
+          <amount n="1937" unit="chars"/>
+        </sp>
+        <sp who="#ladikä">
+          <amount n="14" unit="speech_acts"/>
+          <amount n="630" unit="words"/>
+          <amount n="86" unit="lines"/>
+          <amount n="3428" unit="chars"/>
+        </sp>
+        <sp who="#mandane">
+          <amount n="2" unit="speech_acts"/>
+          <amount n="24" unit="words"/>
+          <amount n="4" unit="lines"/>
+          <amount n="154" unit="chars"/>
+        </sp>
+        <sp who="#cassandra">
+          <amount n="13" unit="speech_acts"/>
+          <amount n="347" unit="words"/>
+          <amount n="46" unit="lines"/>
+          <amount n="1899" unit="chars"/>
+        </sp>
+      </div>
+    </div>
+  </text>
+</play>
