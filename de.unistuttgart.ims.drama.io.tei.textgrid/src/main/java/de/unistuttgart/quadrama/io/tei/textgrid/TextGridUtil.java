@@ -18,9 +18,11 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.parser.Parser;
+import org.jsoup.select.Elements;
 
 import de.unistuttgart.ims.drama.api.Act;
 import de.unistuttgart.ims.drama.api.ActHeading;
+import de.unistuttgart.ims.drama.api.Author;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.DramatisPersonae;
 import de.unistuttgart.ims.drama.api.Figure;
@@ -39,20 +41,27 @@ import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
 
 public class TextGridUtil {
 
-	public static void getNext(JCas jcas, InputStream file, Drama drama)
-			throws IOException, CollectionException {
+	public static void getNext(JCas jcas, InputStream file, Drama drama) throws IOException, CollectionException {
 
 		Document doc = Jsoup.parse(file, "UTF-8", "", Parser.xmlParser());
 
 		// meta data
 		drama.setDocumentTitle(doc.select("titleStmt > title").first().text());
-		drama.setAuthorname(doc.select("author").first().text());
-		if (!doc.select("author[key]").isEmpty())
-			drama.setAuthorPnd(doc.select("author[key]").attr("key")
-					.substring(4));
 		if (!doc.select("idno[type=\"TextGridUri\"]").isEmpty())
-			drama.setDocumentId(doc.select("idno[type=\"TextGridUri\"]")
-					.first().text().substring(9));
+			drama.setDocumentId(doc.select("idno[type=\"TextGridUri\"]").first().text().substring(9));
+
+		// Author
+		Elements authorElements = doc.select("author");
+		for (int i = 0; i < authorElements.size(); i++) {
+			Element authorElement = authorElements.get(i);
+			Author author = new Author(jcas);
+			author.setBegin(0);
+			author.setEnd(1);
+			author.setName(authorElement.text());
+			if (authorElement.hasAttr("key")) {
+				author.setPnd(Long.valueOf(authorElement.attr("key")));
+			}
+		}
 
 		Visitor vis = new Visitor(jcas);
 
@@ -60,60 +69,42 @@ public class TextGridUtil {
 		root.traverse(vis);
 		jcas = vis.getJCas();
 
-		select2Annotation(jcas, root, vis.getAnnotationMap(), "front",
-				FrontMatter.class, null);
-		select2Annotation(jcas, root, vis.getAnnotationMap(), "body",
-				MainMatter.class, null);
+		select2Annotation(jcas, root, vis.getAnnotationMap(), "front", FrontMatter.class, null);
+		select2Annotation(jcas, root, vis.getAnnotationMap(), "body", MainMatter.class, null);
 
 		MainMatter mainMatter = JCasUtil.selectSingle(jcas, MainMatter.class);
 
-		select2Annotation(jcas, root, vis.getAnnotationMap(), "speaker",
-				Speaker.class, null);
-		select2Annotation(jcas, root, vis.getAnnotationMap(), "stage",
-				StageDirection.class, mainMatter);
-		select2Annotation(jcas, root, vis.getAnnotationMap(), "sp",
-				Utterance.class, null);
-		select2Annotation(jcas, root, vis.getAnnotationMap(), "l",
-				Speech.class, mainMatter);
-		select2Annotation(jcas, root, vis.getAnnotationMap(), "ab",
-				Speech.class, mainMatter);
-		select2Annotation(jcas, root, vis.getAnnotationMap(), "p",
-				Speech.class, mainMatter);
+		select2Annotation(jcas, root, vis.getAnnotationMap(), "speaker", Speaker.class, null);
+		select2Annotation(jcas, root, vis.getAnnotationMap(), "stage", StageDirection.class, mainMatter);
+		select2Annotation(jcas, root, vis.getAnnotationMap(), "sp", Utterance.class, null);
+		select2Annotation(jcas, root, vis.getAnnotationMap(), "l", Speech.class, mainMatter);
+		select2Annotation(jcas, root, vis.getAnnotationMap(), "ab", Speech.class, mainMatter);
+		select2Annotation(jcas, root, vis.getAnnotationMap(), "p", Speech.class, mainMatter);
 
 		readActsAndScenes(jcas, root, vis.getAnnotationMap());
 		readDramatisPersonae(jcas, root, vis.getAnnotationMap());
 
 		fixSpeakerAnnotations(jcas);
 
-		AnnotationUtil.trim(new ArrayList<Speech>(JCasUtil.select(jcas,
-				Speech.class)));
-		AnnotationUtil.trim(new ArrayList<Utterance>(JCasUtil.select(jcas,
-				Utterance.class)));
-		AnnotationUtil.trim(new ArrayList<Scene>(JCasUtil.select(jcas,
-				Scene.class)));
-		AnnotationUtil
-				.trim(new ArrayList<Act>(JCasUtil.select(jcas, Act.class)));
+		AnnotationUtil.trim(new ArrayList<Speech>(JCasUtil.select(jcas, Speech.class)));
+		AnnotationUtil.trim(new ArrayList<Utterance>(JCasUtil.select(jcas, Utterance.class)));
+		AnnotationUtil.trim(new ArrayList<Scene>(JCasUtil.select(jcas, Scene.class)));
+		AnnotationUtil.trim(new ArrayList<Act>(JCasUtil.select(jcas, Act.class)));
 
 		// DramaIOUtil.cleanUp(jcas);
 
 	}
 
-	public static void readActs(JCas jcas, Element root,
-			Map<String, HTMLAnnotation> map) {
+	public static void readActs(JCas jcas, Element root, Map<String, HTMLAnnotation> map) {
 		if (!root.select("div[type=act]").isEmpty()) {
 			select2Annotation(jcas, root, map, "div[type=act]", Act.class, null);
-			select2Annotation(jcas, root, map,
-					"div[type=act] > div > desc > title", ActHeading.class,
-					null);
-			select2Annotation(jcas, root, map, "div[type=act] > div > head",
-					ActHeading.class, null);
+			select2Annotation(jcas, root, map, "div[type=act] > div > desc > title", ActHeading.class, null);
+			select2Annotation(jcas, root, map, "div[type=act] > div > head", ActHeading.class, null);
 		}
 		if (!JCasUtil.exists(jcas, Act.class)) {
 			select2Annotation(jcas, root, map, "body > div", Act.class, null);
-			select2Annotation(jcas, root, map, "body > div > head",
-					ActHeading.class, null);
-			select2Annotation(jcas, root, map, "body > div > desc > title",
-					ActHeading.class, null);
+			select2Annotation(jcas, root, map, "body > div > head", ActHeading.class, null);
+			select2Annotation(jcas, root, map, "body > div > desc > title", ActHeading.class, null);
 		}
 	}
 
@@ -130,104 +121,75 @@ public class TextGridUtil {
 	 * @param root
 	 * @param map
 	 */
-	public static void readScenes(JCas jcas, Element root,
-			Map<String, HTMLAnnotation> map) {
+	public static void readScenes(JCas jcas, Element root, Map<String, HTMLAnnotation> map) {
 		if (!root.select("div[type=scene]").isEmpty()) {
-			select2Annotation(jcas, root, map, "div[type=scene]", Scene.class,
-					null);
-			select2Annotation(jcas, root, map,
-					"div[type=scene] > div > desc > title", SceneHeading.class,
-					null);
+			select2Annotation(jcas, root, map, "div[type=scene]", Scene.class, null);
+			select2Annotation(jcas, root, map, "div[type=scene] > div > desc > title", SceneHeading.class, null);
 		} else {
 			if (JCasUtil.exists(jcas, Act.class))
 				for (Act act : JCasUtil.select(jcas, Act.class)) {
 
-					Collection<Scene> scenes =
-							select2Annotation(jcas, root, map,
-									"body > div > div:has(head)", Scene.class,
-									act);
+					Collection<Scene> scenes = select2Annotation(jcas, root, map, "body > div > div:has(head)",
+							Scene.class, act);
 					for (Scene sc : scenes) {
-						select2Annotation(jcas, root, map,
-								"div > desc > title", SceneHeading.class, sc);
+						select2Annotation(jcas, root, map, "div > desc > title", SceneHeading.class, sc);
 					}
 				}
 			else {
-				select2Annotation(jcas, root, map,
-						"body > div > div:not(:has(desc > title))",
-						Scene.class, null);
-				select2Annotation(jcas, root, map, "body > div > div > head",
-						SceneHeading.class, null);
-				select2Annotation(jcas, root, map,
-						"body > div > div > desc > title", SceneHeading.class,
-						null);
+				select2Annotation(jcas, root, map, "body > div > div:not(:has(desc > title))", Scene.class, null);
+				select2Annotation(jcas, root, map, "body > div > div > head", SceneHeading.class, null);
+				select2Annotation(jcas, root, map, "body > div > div > desc > title", SceneHeading.class, null);
 			}
 		}
 	}
 
-	public static void readActsAndScenes(JCas jcas, Element root,
-			Map<String, HTMLAnnotation> map) {
+	public static void readActsAndScenes(JCas jcas, Element root, Map<String, HTMLAnnotation> map) {
 		readActs(jcas, root, map);
 		readScenes(jcas, root, map);
 
 	}
 
-	public static void readDramatisPersonae(JCas jcas, Element root,
-			Map<String, HTMLAnnotation> map) {
+	public static void readDramatisPersonae(JCas jcas, Element root, Map<String, HTMLAnnotation> map) {
 		DramatisPersonae dp;
 		if (!root.select("castList").isEmpty()) {
-			dp =
-					select2Annotation(jcas, root, map, "castList",
-							DramatisPersonae.class, null).iterator().next();
+			dp = select2Annotation(jcas, root, map, "castList", DramatisPersonae.class, null).iterator().next();
 
 			Element castList = root.select("castList").first();
 			if (!castList.select("castItem role").isEmpty()) {
-				select2Annotation(jcas, castList, map, "castItem role",
-						Figure.class, dp);
-				Collection<FigureDescription> figDescs =
-						select2Annotation(jcas, castList, map,
-								"castItem roleDesc", FigureDescription.class,
-								dp);
+				select2Annotation(jcas, castList, map, "castItem role", Figure.class, dp);
+				Collection<FigureDescription> figDescs = select2Annotation(jcas, castList, map, "castItem roleDesc",
+						FigureDescription.class, dp);
 				for (FigureDescription figureDescription : figDescs) {
-					Figure fig =
-							JCasUtil.selectPreceding(Figure.class,
-									figureDescription, 1).get(0);
+					Figure fig = JCasUtil.selectPreceding(Figure.class, figureDescription, 1).get(0);
 					fig.setDescription(figureDescription);
 				}
 			} else {
-				select2Annotation(jcas, castList, map, "castItem",
-						Figure.class, null);
+				select2Annotation(jcas, castList, map, "castItem", Figure.class, null);
 			}
 		} else {
 			try {
-				dp =
-						select2Annotation(jcas, root, map,
-								"div[type=front] > div:has(p)",
-								DramatisPersonae.class, null).iterator().next();
+				dp = select2Annotation(jcas, root, map, "div[type=front] > div:has(p)", DramatisPersonae.class, null)
+						.iterator().next();
 
-				AnnotationUtil.trim(select2Annotation(jcas, root, map, "p",
-						Figure.class, dp));
+				AnnotationUtil.trim(select2Annotation(jcas, root, map, "p", Figure.class, dp));
 				fixFigureAnnotations(jcas);
 			} catch (NoSuchElementException e) {
-				System.err.println("No dramatis personae annotation in drama "
-						+ Drama.get(jcas).getDocumentId());
+				System.err.println("No dramatis personae annotation in drama " + Drama.get(jcas).getDocumentId());
 				// e.printStackTrace();
 			}
 		}
 	}
 
 	public static void fixFigureAnnotations(JCas jcas) {
-		for (Figure figure : new HashSet<Figure>(JCasUtil.select(jcas,
-				Figure.class))) {
+		for (Figure figure : new HashSet<Figure>(JCasUtil.select(jcas, Figure.class))) {
 			String s = figure.getCoveredText();
 			if (s.contains(",")) {
 				int oldEnd = figure.getEnd();
 				int i = s.indexOf(',');
 				figure.setEnd(figure.getBegin() + i);
 
-				FigureDescription fd =
-						AnnotationUtil.trim(AnnotationFactory.createAnnotation(
-								jcas, figure.getEnd() + 1, oldEnd,
-								FigureDescription.class));
+				FigureDescription fd = AnnotationUtil.trim(
+						AnnotationFactory.createAnnotation(jcas, figure.getEnd() + 1, oldEnd, FigureDescription.class));
 				figure.setDescription(fd);
 
 			}
@@ -237,8 +199,7 @@ public class TextGridUtil {
 	}
 
 	public static void fixSpeakerAnnotations(JCas jcas) {
-		for (Speaker speaker : new HashSet<Speaker>(JCasUtil.select(jcas,
-				Speaker.class))) {
+		for (Speaker speaker : new HashSet<Speaker>(JCasUtil.select(jcas, Speaker.class))) {
 			AnnotationUtil.trim(speaker, '.', ' ', '\t', '\n', '\r', '\f');
 		}
 

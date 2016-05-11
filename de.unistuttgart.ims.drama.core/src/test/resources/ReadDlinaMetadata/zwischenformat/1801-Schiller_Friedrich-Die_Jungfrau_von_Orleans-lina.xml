@@ -1,0 +1,1945 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="https://raw.githubusercontent.com/DLiNa/project/master/rules/lina.rnc"?>
+<?xml-model href="https://raw.githubusercontent.com/DLiNa/project/master/rules/lina.sch"?>
+<play xmlns="http://lina.digital" id="227">
+  <header>
+    <title>Die Jungfrau von Orleans</title>
+    <subtitle>Eine romantische Tragödie</subtitle>
+    <genretitle>Tragödie</genretitle>
+    <author key="pnd:118607626">Schiller, Friedrich</author>
+    <date type="print" when="1801"/>
+    <date type="premiere" when="1801"/>
+    <date type="written" when="1801">1800–1801</date>
+    <source>https://textgridlab.org/1.0/tgcrud-public/rest/textgrid:tz9d.0/data</source>
+  </header>
+  <personae>
+    <character>
+      <name>THIBAUT</name>
+      <alias xml:id="thibaut">
+        <name>THIBAUT</name>
+      </alias>
+    </character>
+    <character>
+      <name>LOUISON</name>
+      <alias xml:id="louison">
+        <name>LOUISON</name>
+      </alias>
+    </character>
+    <character>
+      <name>CLAUDE MARIE</name>
+      <alias xml:id="claude_marie">
+        <name>CLAUDE MARIE</name>
+      </alias>
+    </character>
+    <character>
+      <name>MARGOT</name>
+      <alias xml:id="margot">
+        <name>MARGOT</name>
+      </alias>
+    </character>
+    <character>
+      <name>RAIMOND</name>
+      <alias xml:id="raimond">
+        <name>RAIMOND</name>
+      </alias>
+    </character>
+    <character>
+      <name>BERTRAND</name>
+      <alias xml:id="bertrand">
+        <name>BERTRAND</name>
+      </alias>
+    </character>
+    <character>
+      <name>JOHANNA</name>
+      <alias xml:id="johanna">
+        <name>JOHANNA</name>
+      </alias>
+    </character>
+    <character>
+      <name>DUNOIS</name>
+      <alias xml:id="dunois">
+        <name>DUNOIS</name>
+      </alias>
+    </character>
+    <character>
+      <name>DU CHATEL</name>
+      <alias xml:id="du_chatel">
+        <name>DU CHATEL</name>
+      </alias>
+    </character>
+    <character>
+      <name>KARL</name>
+      <alias xml:id="karl">
+        <name>KARL</name>
+      </alias>
+      <alias xml:id="könig">
+        <name>KÖNIG</name>
+      </alias>
+    </character>
+    <character>
+      <name>EDELKNECHT</name>
+      <alias xml:id="edelknecht">
+        <name>EDELKNECHT</name>
+      </alias>
+    </character>
+    <character>
+      <name>RATSHERR</name>
+      <alias xml:id="ratsherr">
+        <name>RATSHERR</name>
+      </alias>
+    </character>
+    <character>
+      <name>SOREL</name>
+      <alias xml:id="sorel">
+        <name>SOREL</name>
+      </alias>
+    </character>
+    <character>
+      <name>LA HIRE</name>
+      <alias xml:id="la_hire">
+        <name>LA HIRE</name>
+      </alias>
+    </character>
+    <character>
+      <name>ERZBISCHOF</name>
+      <alias xml:id="erzbischof">
+        <name>ERZBISCHOF</name>
+      </alias>
+    </character>
+    <character>
+      <name>RAOUL</name>
+      <alias xml:id="raoul">
+        <name>RAOUL</name>
+      </alias>
+    </character>
+    <character>
+      <name>VIELE STIMMEN</name>
+      <alias xml:id="viele_stimmen">
+        <name>VIELE STIMMEN</name>
+      </alias>
+    </character>
+    <character>
+      <name>HEROLD</name>
+      <alias xml:id="herold">
+        <name>HEROLD</name>
+      </alias>
+    </character>
+    <character>
+      <name>TALBOT</name>
+      <alias xml:id="talbot">
+        <name>TALBOT</name>
+      </alias>
+    </character>
+    <character>
+      <name>LIONEL</name>
+      <alias xml:id="lionel">
+        <name>LIONEL</name>
+      </alias>
+    </character>
+    <character>
+      <name>BURGUND</name>
+      <alias xml:id="burgund">
+        <name>BURGUND</name>
+      </alias>
+    </character>
+    <character>
+      <name>ISABEAU</name>
+      <alias xml:id="isabeau">
+        <name>ISABEAU</name>
+      </alias>
+    </character>
+    <character>
+      <name>SCHILDWACHE</name>
+      <alias xml:id="schildwache">
+        <name>SCHILDWACHE</name>
+      </alias>
+    </character>
+    <character>
+      <name>ERSTER</name>
+      <alias xml:id="erster">
+        <name>ERSTER</name>
+      </alias>
+    </character>
+    <character>
+      <name>ZWEITER</name>
+      <alias xml:id="zweiter">
+        <name>ZWEITER</name>
+      </alias>
+    </character>
+    <character>
+      <name>DRITTER</name>
+      <alias xml:id="dritter">
+        <name>DRITTER</name>
+      </alias>
+    </character>
+    <character>
+      <name>VIERTER</name>
+      <alias xml:id="vierter">
+        <name>VIERTER</name>
+      </alias>
+    </character>
+    <character>
+      <name>FÜNFTER</name>
+      <alias xml:id="fünfter">
+        <name>FÜNFTER</name>
+      </alias>
+    </character>
+    <character>
+      <name>SOLDAT 2.5</name>
+      <alias xml:id="soldat_2.5">
+        <name>SOLDAT 2.5</name>
+      </alias>
+    </character>
+    <character>
+      <name>SOLDAT 5.11</name>
+      <alias xml:id="soldat_5.11">
+        <name>SOLDAT 5.11</name>
+      </alias>
+    </character>
+    <character>
+      <name>MONTGOMERY</name>
+      <alias xml:id="montgomery">
+        <name>MONTGOMERY</name>
+      </alias>
+    </character>
+    <character>
+      <name>RITTER</name>
+      <alias xml:id="ritter">
+        <name>RITTER</name>
+      </alias>
+    </character>
+    <character>
+      <name>CHATILLON</name>
+      <alias xml:id="chatillon">
+        <name>CHATILLON</name>
+      </alias>
+    </character>
+    <character>
+      <name>AGNES</name>
+      <alias xml:id="agnes">
+        <name>AGNES</name>
+      </alias>
+    </character>
+    <character>
+      <name>FASTOLF</name>
+      <alias xml:id="fastolf">
+        <name>FASTOLF</name>
+      </alias>
+    </character>
+    <character>
+      <name>SCHWARZER RITTER</name>
+      <alias xml:id="schwarzer_ritter">
+        <name>SCHWARZER RITTER</name>
+      </alias>
+    </character>
+    <character>
+      <name>ETIENNE</name>
+      <alias xml:id="etienne">
+        <name>ETIENNE</name>
+      </alias>
+    </character>
+    <character>
+      <name>VOLK</name>
+      <alias xml:id="volk">
+        <name>VOLK</name>
+      </alias>
+    </character>
+    <character>
+      <name>MEHRERE STIMMEN</name>
+      <alias xml:id="mehrere_stimmen">
+        <name>MEHRERE STIMMEN</name>
+      </alias>
+    </character>
+    <character>
+      <name>KÖHLER</name>
+      <alias xml:id="köhler">
+        <name>KÖHLER</name>
+      </alias>
+    </character>
+    <character>
+      <name>KÖHLERWEIB</name>
+      <alias xml:id="köhlerweib">
+        <name>KÖHLERWEIB</name>
+      </alias>
+    </character>
+    <character>
+      <name>KÖHLERBUB</name>
+      <alias xml:id="köhlerbub">
+        <name>KÖHLERBUB</name>
+      </alias>
+    </character>
+    <character>
+      <name>SOLDATEN</name>
+      <alias xml:id="soldaten">
+        <name>SOLDATEN</name>
+      </alias>
+    </character>
+    <character>
+      <name>ANFÜHRER DER SOLDATEN</name>
+      <alias xml:id="anführer_der_soldaten">
+        <name>ANFÜHRER DER SOLDATEN</name>
+      </alias>
+    </character>
+    <character>
+      <name>EDELMANN</name>
+      <alias xml:id="edelmann">
+        <name>EDELMANN</name>
+      </alias>
+    </character>
+    <character>
+      <name>HAUPTMANN</name>
+      <alias xml:id="hauptmann">
+        <name>HAUPTMANN</name>
+      </alias>
+    </character>
+  </personae>
+  <text>
+    <div>
+      <head>Personen</head>
+    </div>
+    <div>
+      <head>Prolog</head>
+      <div>
+        <head>1. Auftritt</head>
+        <div>
+          <head>Erster Auftritt</head>
+          <sp who="#thibaut">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="297" unit="words"/>
+            <amount n="40" unit="lines"/>
+            <amount n="1580" unit="chars"/>
+          </sp>
+          <sp who="#louison">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="4" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="27" unit="chars"/>
+          </sp>
+          <sp who="#claude_marie">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="2" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="14" unit="chars"/>
+          </sp>
+          <sp who="#margot">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="13" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="82" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>2. Auftritt</head>
+        <div>
+          <head>Zweiter Auftritt</head>
+          <sp who="#thibaut">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="624" unit="words"/>
+            <amount n="85" unit="lines"/>
+            <amount n="3466" unit="chars"/>
+          </sp>
+          <sp who="#raimond">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="208" unit="words"/>
+            <amount n="29" unit="lines"/>
+            <amount n="1154" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>3. Auftritt</head>
+        <div>
+          <head>Dritter Auftritt</head>
+          <sp who="#raimond">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="113" unit="words"/>
+            <amount n="17" unit="lines"/>
+            <amount n="622" unit="chars"/>
+          </sp>
+          <sp who="#bertrand">
+            <amount n="13" unit="speech_acts"/>
+            <amount n="852" unit="words"/>
+            <amount n="121" unit="lines"/>
+            <amount n="4663" unit="chars"/>
+          </sp>
+          <sp who="#thibaut">
+            <amount n="10" unit="speech_acts"/>
+            <amount n="276" unit="words"/>
+            <amount n="38" unit="lines"/>
+            <amount n="1453" unit="chars"/>
+          </sp>
+          <sp who="#johanna">
+            <amount n="8" unit="speech_acts"/>
+            <amount n="455" unit="words"/>
+            <amount n="60" unit="lines"/>
+            <amount n="2454" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>4. Auftritt</head>
+        <div>
+          <head>Vierter Auftritt</head>
+        </div>
+      </div>
+    </div>
+    <div>
+      <head>1. Akt</head>
+      <div>
+        <head>1. Auftritt</head>
+        <div>
+          <head>Erster Auftritt</head>
+          <sp who="#dunois">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="163" unit="words"/>
+            <amount n="21" unit="lines"/>
+            <amount n="858" unit="chars"/>
+          </sp>
+          <sp who="#du_chatel">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="5" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="19" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>2. Auftritt</head>
+        <div>
+          <head>Zweiter Auftritt</head>
+          <sp who="#karl">
+            <amount n="10" unit="speech_acts"/>
+            <amount n="376" unit="words"/>
+            <amount n="52" unit="lines"/>
+            <amount n="1987" unit="chars"/>
+          </sp>
+          <sp who="#dunois">
+            <amount n="7" unit="speech_acts"/>
+            <amount n="280" unit="words"/>
+            <amount n="37" unit="lines"/>
+            <amount n="1465" unit="chars"/>
+          </sp>
+          <sp who="#du_chatel">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="112" unit="words"/>
+            <amount n="15" unit="lines"/>
+            <amount n="598" unit="chars"/>
+          </sp>
+          <sp who="#edelknecht">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="7" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="36" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>3. Auftritt</head>
+        <div>
+          <head>Dritter Auftritt</head>
+          <sp who="#karl">
+            <amount n="8" unit="speech_acts"/>
+            <amount n="118" unit="words"/>
+            <amount n="18" unit="lines"/>
+            <amount n="623" unit="chars"/>
+          </sp>
+          <sp who="#ratsherr">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="182" unit="words"/>
+            <amount n="25" unit="lines"/>
+            <amount n="967" unit="chars"/>
+          </sp>
+          <sp who="#dunois">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="39" unit="words"/>
+            <amount n="7" unit="lines"/>
+            <amount n="228" unit="chars"/>
+          </sp>
+          <sp who="#du_chatel">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="14" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="73" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>4. Auftritt</head>
+        <div>
+          <head>Vierter Auftritt</head>
+          <sp who="#karl">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="292" unit="words"/>
+            <amount n="38" unit="lines"/>
+            <amount n="1538" unit="chars"/>
+          </sp>
+          <sp who="#sorel">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="217" unit="words"/>
+            <amount n="32" unit="lines"/>
+            <amount n="1157" unit="chars"/>
+          </sp>
+          <sp who="#du_chatel">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="13" unit="words"/>
+            <amount n="3" unit="lines"/>
+            <amount n="64" unit="chars"/>
+          </sp>
+          <sp who="#dunois">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="37" unit="words"/>
+            <amount n="5" unit="lines"/>
+            <amount n="184" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>5. Auftritt</head>
+        <div>
+          <head>Fünfter Auftritt</head>
+          <sp who="#karl">
+            <amount n="17" unit="speech_acts"/>
+            <amount n="412" unit="words"/>
+            <amount n="61" unit="lines"/>
+            <amount n="2307" unit="chars"/>
+          </sp>
+          <sp who="#la_hire">
+            <amount n="11" unit="speech_acts"/>
+            <amount n="360" unit="words"/>
+            <amount n="49" unit="lines"/>
+            <amount n="1903" unit="chars"/>
+          </sp>
+          <sp who="#dunois">
+            <amount n="7" unit="speech_acts"/>
+            <amount n="313" unit="words"/>
+            <amount n="45" unit="lines"/>
+            <amount n="1727" unit="chars"/>
+          </sp>
+          <sp who="#sorel">
+            <amount n="6" unit="speech_acts"/>
+            <amount n="353" unit="words"/>
+            <amount n="48" unit="lines"/>
+            <amount n="1945" unit="chars"/>
+          </sp>
+          <sp who="#ratsherr">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="41" unit="words"/>
+            <amount n="6" unit="lines"/>
+            <amount n="229" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>6. Auftritt</head>
+        <div>
+          <head>Sechster Auftritt</head>
+          <sp who="#karl">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="160" unit="words"/>
+            <amount n="22" unit="lines"/>
+            <amount n="866" unit="chars"/>
+          </sp>
+          <sp who="#du_chatel">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="75" unit="words"/>
+            <amount n="12" unit="lines"/>
+            <amount n="375" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>7. Auftritt</head>
+        <div>
+          <head>Siebenter Auftritt</head>
+          <sp who="#karl">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="52" unit="words"/>
+            <amount n="7" unit="lines"/>
+            <amount n="277" unit="chars"/>
+          </sp>
+          <sp who="#sorel">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="44" unit="words"/>
+            <amount n="6" unit="lines"/>
+            <amount n="236" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>8. Auftritt</head>
+        <div>
+          <head>Achter Auftritt</head>
+          <sp who="#sorel">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="53" unit="words"/>
+            <amount n="8" unit="lines"/>
+            <amount n="272" unit="chars"/>
+          </sp>
+          <sp who="#la_hire">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="60" unit="words"/>
+            <amount n="9" unit="lines"/>
+            <amount n="295" unit="chars"/>
+          </sp>
+          <sp who="#karl">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="19" unit="words"/>
+            <amount n="3" unit="lines"/>
+            <amount n="100" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>9. Auftritt</head>
+        <div>
+          <head>Neunter Auftritt</head>
+          <sp who="#erzbischof">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="21" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="112" unit="chars"/>
+          </sp>
+          <sp who="#karl">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="101" unit="words"/>
+            <amount n="15" unit="lines"/>
+            <amount n="539" unit="chars"/>
+          </sp>
+          <sp who="#raoul">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="412" unit="words"/>
+            <amount n="55" unit="lines"/>
+            <amount n="2263" unit="chars"/>
+          </sp>
+          <sp who="#sorel">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="13" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="67" unit="chars"/>
+          </sp>
+          <sp who="#viele_stimmen">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="6" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="40" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>10. Auftritt</head>
+        <div>
+          <head>Zehnter Auftritt</head>
+          <sp who="#dunois">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="50" unit="words"/>
+            <amount n="7" unit="lines"/>
+            <amount n="278" unit="chars"/>
+          </sp>
+          <sp who="#johanna">
+            <amount n="14" unit="speech_acts"/>
+            <amount n="889" unit="words"/>
+            <amount n="122" unit="lines"/>
+            <amount n="4826" unit="chars"/>
+          </sp>
+          <sp who="#karl">
+            <amount n="12" unit="speech_acts"/>
+            <amount n="168" unit="words"/>
+            <amount n="25" unit="lines"/>
+            <amount n="931" unit="chars"/>
+          </sp>
+          <sp who="#erzbischof">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="70" unit="words"/>
+            <amount n="10" unit="lines"/>
+            <amount n="412" unit="chars"/>
+          </sp>
+          <sp who="#la_hire">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="33" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="164" unit="chars"/>
+          </sp>
+          <sp who="#edelknecht">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="7" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="46" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>11. Auftritt</head>
+        <div>
+          <head>Eilfter Auftritt</head>
+          <sp who="#karl">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="27" unit="words"/>
+            <amount n="5" unit="lines"/>
+            <amount n="153" unit="chars"/>
+          </sp>
+          <sp who="#herold">
+            <amount n="6" unit="speech_acts"/>
+            <amount n="110" unit="words"/>
+            <amount n="14" unit="lines"/>
+            <amount n="583" unit="chars"/>
+          </sp>
+          <sp who="#dunois">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="29" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="172" unit="chars"/>
+          </sp>
+          <sp who="#johanna">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="249" unit="words"/>
+            <amount n="34" unit="lines"/>
+            <amount n="1384" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+    </div>
+    <div>
+      <head>2. Akt</head>
+      <div>
+        <head>1. Auftritt</head>
+        <div>
+          <head>Erster Auftritt</head>
+          <sp who="#talbot">
+            <amount n="7" unit="speech_acts"/>
+            <amount n="201" unit="words"/>
+            <amount n="26" unit="lines"/>
+            <amount n="1078" unit="chars"/>
+          </sp>
+          <sp who="#lionel">
+            <amount n="6" unit="speech_acts"/>
+            <amount n="163" unit="words"/>
+            <amount n="24" unit="lines"/>
+            <amount n="919" unit="chars"/>
+          </sp>
+          <sp who="#burgund">
+            <amount n="10" unit="speech_acts"/>
+            <amount n="250" unit="words"/>
+            <amount n="34" unit="lines"/>
+            <amount n="1350" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>2. Auftritt</head>
+        <div>
+          <head>Zweiter Auftritt</head>
+          <sp who="#isabeau">
+            <amount n="17" unit="speech_acts"/>
+            <amount n="830" unit="words"/>
+            <amount n="112" unit="lines"/>
+            <amount n="4594" unit="chars"/>
+          </sp>
+          <sp who="#lionel">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="66" unit="words"/>
+            <amount n="9" unit="lines"/>
+            <amount n="369" unit="chars"/>
+          </sp>
+          <sp who="#talbot">
+            <amount n="9" unit="speech_acts"/>
+            <amount n="134" unit="words"/>
+            <amount n="18" unit="lines"/>
+            <amount n="738" unit="chars"/>
+          </sp>
+          <sp who="#burgund">
+            <amount n="8" unit="speech_acts"/>
+            <amount n="111" unit="words"/>
+            <amount n="16" unit="lines"/>
+            <amount n="634" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>3. Auftritt</head>
+        <div>
+          <head>Dritter Auftritt</head>
+          <sp who="#talbot">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="146" unit="words"/>
+            <amount n="22" unit="lines"/>
+            <amount n="838" unit="chars"/>
+          </sp>
+          <sp who="#lionel">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="95" unit="words"/>
+            <amount n="14" unit="lines"/>
+            <amount n="542" unit="chars"/>
+          </sp>
+          <sp who="#burgund">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="24" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="125" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>4. Auftritt</head>
+        <div>
+          <head>Vierter Auftritt</head>
+          <sp who="#johanna">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="125" unit="words"/>
+            <amount n="16" unit="lines"/>
+            <amount n="695" unit="chars"/>
+          </sp>
+          <sp who="#schildwache #dunois #la_hire #ritter">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="4" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="22" unit="chars"/>
+          </sp>
+          <sp who="#schildwache">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="3" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="23" unit="chars"/>
+          </sp>
+          <sp who="#dunois">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="38" unit="words"/>
+            <amount n="5" unit="lines"/>
+            <amount n="192" unit="chars"/>
+          </sp>
+          <sp who="#la_hire">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="54" unit="words"/>
+            <amount n="7" unit="lines"/>
+            <amount n="300" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>5. Auftritt</head>
+        <div>
+          <head>Fünfter Auftritt</head>
+          <sp who="#erster">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="6" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="29" unit="chars"/>
+          </sp>
+          <sp who="#zweiter">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="10" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="52" unit="chars"/>
+          </sp>
+          <sp who="#dritter">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="7" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="37" unit="chars"/>
+          </sp>
+          <sp who="#vierter #fünfter">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="7" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="40" unit="chars"/>
+          </sp>
+          <sp who="#talbot">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="154" unit="words"/>
+            <amount n="22" unit="lines"/>
+            <amount n="870" unit="chars"/>
+          </sp>
+          <sp who="#soldat_2.5">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="6" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="36" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>6. Auftritt</head>
+        <div>
+          <head>Sechster Auftritt</head>
+          <sp who="#montgomery">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="243" unit="words"/>
+            <amount n="28" unit="lines"/>
+            <amount n="1336" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>7. Auftritt</head>
+        <div>
+          <head>Siebenter Auftritt</head>
+          <sp who="#johanna">
+            <amount n="7" unit="speech_acts"/>
+            <amount n="502" unit="words"/>
+            <amount n="62" unit="lines"/>
+            <amount n="2919" unit="chars"/>
+          </sp>
+          <sp who="#montgomery">
+            <amount n="7" unit="speech_acts"/>
+            <amount n="285" unit="words"/>
+            <amount n="34" unit="lines"/>
+            <amount n="1584" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>8. Auftritt</head>
+        <div>
+          <head>Achter Auftritt</head>
+        </div>
+      </div>
+      <div>
+        <head>9. Auftritt</head>
+        <div>
+          <head>Neunter Auftritt</head>
+          <sp who="#ritter">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="88" unit="words"/>
+            <amount n="13" unit="lines"/>
+            <amount n="511" unit="chars"/>
+          </sp>
+          <sp who="#johanna">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="44" unit="words"/>
+            <amount n="6" unit="lines"/>
+            <amount n="248" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>10. Auftritt</head>
+        <div>
+          <head>Zehnter Auftritt</head>
+          <sp who="#dunois">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="65" unit="words"/>
+            <amount n="9" unit="lines"/>
+            <amount n="344" unit="chars"/>
+          </sp>
+          <sp who="#la_hire">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="15" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="85" unit="chars"/>
+          </sp>
+          <sp who="#burgund">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="218" unit="words"/>
+            <amount n="30" unit="lines"/>
+            <amount n="1197" unit="chars"/>
+          </sp>
+          <sp who="#johanna">
+            <amount n="6" unit="speech_acts"/>
+            <amount n="507" unit="words"/>
+            <amount n="69" unit="lines"/>
+            <amount n="2739" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+    </div>
+    <div>
+      <head>3. Akt</head>
+      <div>
+        <head>1. Auftritt</head>
+        <div>
+          <head>Erster Auftritt</head>
+          <sp who="#dunois">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="269" unit="words"/>
+            <amount n="40" unit="lines"/>
+            <amount n="1496" unit="chars"/>
+          </sp>
+          <sp who="#la_hire">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="75" unit="words"/>
+            <amount n="12" unit="lines"/>
+            <amount n="409" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>2. Auftritt</head>
+        <div>
+          <head>Zweiter Auftritt</head>
+          <sp who="#karl">
+            <amount n="11" unit="speech_acts"/>
+            <amount n="308" unit="words"/>
+            <amount n="43" unit="lines"/>
+            <amount n="1673" unit="chars"/>
+          </sp>
+          <sp who="#chatillon">
+            <amount n="9" unit="speech_acts"/>
+            <amount n="160" unit="words"/>
+            <amount n="23" unit="lines"/>
+            <amount n="887" unit="chars"/>
+          </sp>
+          <sp who="#sorel">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="16" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="82" unit="chars"/>
+          </sp>
+          <sp who="#edelknecht">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="8" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="42" unit="chars"/>
+          </sp>
+          <sp who="#dunois">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="3" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="18" unit="chars"/>
+          </sp>
+          <sp who="#erzbischof">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="21" unit="words"/>
+            <amount n="3" unit="lines"/>
+            <amount n="113" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>3. Auftritt</head>
+        <div>
+          <head>Dritter Auftritt</head>
+          <sp who="#karl">
+            <amount n="8" unit="speech_acts"/>
+            <amount n="120" unit="words"/>
+            <amount n="17" unit="lines"/>
+            <amount n="650" unit="chars"/>
+          </sp>
+          <sp who="#burgund">
+            <amount n="10" unit="speech_acts"/>
+            <amount n="358" unit="words"/>
+            <amount n="49" unit="lines"/>
+            <amount n="1926" unit="chars"/>
+          </sp>
+          <sp who="#sorel">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="16" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="82" unit="chars"/>
+          </sp>
+          <sp who="#erzbischof">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="252" unit="words"/>
+            <amount n="33" unit="lines"/>
+            <amount n="1373" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>4. Auftritt</head>
+        <div>
+          <head>Vierter Auftritt</head>
+          <sp who="#karl">
+            <amount n="10" unit="speech_acts"/>
+            <amount n="420" unit="words"/>
+            <amount n="58" unit="lines"/>
+            <amount n="2241" unit="chars"/>
+          </sp>
+          <sp who="#burgund">
+            <amount n="6" unit="speech_acts"/>
+            <amount n="194" unit="words"/>
+            <amount n="26" unit="lines"/>
+            <amount n="1042" unit="chars"/>
+          </sp>
+          <sp who="#johanna">
+            <amount n="15" unit="speech_acts"/>
+            <amount n="918" unit="words"/>
+            <amount n="124" unit="lines"/>
+            <amount n="5016" unit="chars"/>
+          </sp>
+          <sp who="#sorel">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="98" unit="words"/>
+            <amount n="14" unit="lines"/>
+            <amount n="547" unit="chars"/>
+          </sp>
+          <sp who="#dunois">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="110" unit="words"/>
+            <amount n="14" unit="lines"/>
+            <amount n="562" unit="chars"/>
+          </sp>
+          <sp who="#la_hire">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="57" unit="words"/>
+            <amount n="8" unit="lines"/>
+            <amount n="315" unit="chars"/>
+          </sp>
+          <sp who="#erzbischof">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="64" unit="words"/>
+            <amount n="9" unit="lines"/>
+            <amount n="352" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>5. Auftritt</head>
+        <div>
+          <head>Fünfter Auftritt</head>
+          <sp who="#karl">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="67" unit="words"/>
+            <amount n="10" unit="lines"/>
+            <amount n="333" unit="chars"/>
+          </sp>
+          <sp who="#ritter">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="14" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="71" unit="chars"/>
+          </sp>
+          <sp who="#johanna">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="17" unit="words"/>
+            <amount n="3" unit="lines"/>
+            <amount n="100" unit="chars"/>
+          </sp>
+          <sp who="#dunois">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="15" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="87" unit="chars"/>
+          </sp>
+          <sp who="#burgund">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="6" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="33" unit="chars"/>
+          </sp>
+          <sp who="#agnes">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="47" unit="words"/>
+            <amount n="6" unit="lines"/>
+            <amount n="250" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>6. Auftritt</head>
+        <div>
+          <head>Sechster Auftritt</head>
+          <sp who="#talbot">
+            <amount n="6" unit="speech_acts"/>
+            <amount n="305" unit="words"/>
+            <amount n="43" unit="lines"/>
+            <amount n="1688" unit="chars"/>
+          </sp>
+          <sp who="#fastolf">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="19" unit="words"/>
+            <amount n="3" unit="lines"/>
+            <amount n="115" unit="chars"/>
+          </sp>
+          <sp who="#lionel">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="154" unit="words"/>
+            <amount n="21" unit="lines"/>
+            <amount n="867" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>7. Auftritt</head>
+        <div>
+          <head>Siebenter Auftritt</head>
+          <sp who="#burgund">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="13" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="66" unit="chars"/>
+          </sp>
+          <sp who="#dunois">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="52" unit="words"/>
+            <amount n="8" unit="lines"/>
+            <amount n="294" unit="chars"/>
+          </sp>
+          <sp who="#karl">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="154" unit="words"/>
+            <amount n="21" unit="lines"/>
+            <amount n="839" unit="chars"/>
+          </sp>
+          <sp who="#fastolf">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="37" unit="words"/>
+            <amount n="5" unit="lines"/>
+            <amount n="203" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>8. Auftritt</head>
+        <div>
+          <head>Achter Auftritt</head>
+          <sp who="#dunois">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="66" unit="words"/>
+            <amount n="9" unit="lines"/>
+            <amount n="315" unit="chars"/>
+          </sp>
+          <sp who="#la_hire">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="16" unit="words"/>
+            <amount n="3" unit="lines"/>
+            <amount n="81" unit="chars"/>
+          </sp>
+          <sp who="#burgund">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="14" unit="words"/>
+            <amount n="3" unit="lines"/>
+            <amount n="81" unit="chars"/>
+          </sp>
+          <sp who="#karl">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="3" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="17" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>9. Auftritt</head>
+        <div>
+          <head>Neunter Auftritt</head>
+          <sp who="#johanna">
+            <amount n="7" unit="speech_acts"/>
+            <amount n="246" unit="words"/>
+            <amount n="33" unit="lines"/>
+            <amount n="1320" unit="chars"/>
+          </sp>
+          <sp who="#schwarzer_ritter">
+            <amount n="6" unit="speech_acts"/>
+            <amount n="155" unit="words"/>
+            <amount n="20" unit="lines"/>
+            <amount n="813" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>10. Auftritt</head>
+        <div>
+          <head>Zehnter Auftritt</head>
+          <sp who="#lionel">
+            <amount n="15" unit="speech_acts"/>
+            <amount n="324" unit="words"/>
+            <amount n="45" unit="lines"/>
+            <amount n="1707" unit="chars"/>
+          </sp>
+          <sp who="#johanna">
+            <amount n="14" unit="speech_acts"/>
+            <amount n="90" unit="words"/>
+            <amount n="20" unit="lines"/>
+            <amount n="470" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>11. Auftritt</head>
+        <div>
+          <head>Eilfter Auftritt</head>
+          <sp who="#la_hire">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="19" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="107" unit="chars"/>
+          </sp>
+          <sp who="#dunois">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="53" unit="words"/>
+            <amount n="8" unit="lines"/>
+            <amount n="280" unit="chars"/>
+          </sp>
+          <sp who="#johanna">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="7" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="35" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+    </div>
+    <div>
+      <head>4. Akt</head>
+      <div>
+        <head>1. Auftritt</head>
+        <div>
+          <head>Erster Auftritt</head>
+          <sp who="#johanna">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="618" unit="words"/>
+            <amount n="96" unit="lines"/>
+            <amount n="3357" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>2. Auftritt</head>
+        <div>
+          <head>Zweiter Auftritt</head>
+          <sp who="#sorel">
+            <amount n="8" unit="speech_acts"/>
+            <amount n="590" unit="words"/>
+            <amount n="74" unit="lines"/>
+            <amount n="3009" unit="chars"/>
+          </sp>
+          <sp who="#johanna">
+            <amount n="8" unit="speech_acts"/>
+            <amount n="211" unit="words"/>
+            <amount n="30" unit="lines"/>
+            <amount n="1141" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>3. Auftritt</head>
+        <div>
+          <head>Dritter Auftritt</head>
+          <sp who="#dunois">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="115" unit="words"/>
+            <amount n="16" unit="lines"/>
+            <amount n="608" unit="chars"/>
+          </sp>
+          <sp who="#la_hire">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="99" unit="words"/>
+            <amount n="14" unit="lines"/>
+            <amount n="559" unit="chars"/>
+          </sp>
+          <sp who="#johanna">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="85" unit="words"/>
+            <amount n="12" unit="lines"/>
+            <amount n="487" unit="chars"/>
+          </sp>
+          <sp who="#sorel">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="29" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="162" unit="chars"/>
+          </sp>
+          <sp who="#du_chatel">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="34" unit="words"/>
+            <amount n="5" unit="lines"/>
+            <amount n="141" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>4. Auftritt</head>
+        <div>
+          <head>Vierter Auftritt</head>
+          <sp who="#bertrand">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="110" unit="words"/>
+            <amount n="15" unit="lines"/>
+            <amount n="576" unit="chars"/>
+          </sp>
+          <sp who="#etienne">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="36" unit="words"/>
+            <amount n="5" unit="lines"/>
+            <amount n="190" unit="chars"/>
+          </sp>
+          <sp who="#claude_marie">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="29" unit="words"/>
+            <amount n="5" unit="lines"/>
+            <amount n="169" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>5. Auftritt</head>
+        <div>
+          <head>Fünfter Auftritt</head>
+          <sp who="#louison">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="38" unit="words"/>
+            <amount n="6" unit="lines"/>
+            <amount n="222" unit="chars"/>
+          </sp>
+          <sp who="#margot">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="29" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="147" unit="chars"/>
+          </sp>
+          <sp who="#bertrand">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="4" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="22" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>6. Auftritt</head>
+        <div>
+          <head>Sechster Auftritt</head>
+        </div>
+      </div>
+      <div>
+        <head>7. Auftritt</head>
+        <div>
+          <head>Siebenter Auftritt</head>
+          <sp who="#margot">
+            <amount n="6" unit="speech_acts"/>
+            <amount n="77" unit="words"/>
+            <amount n="12" unit="lines"/>
+            <amount n="409" unit="chars"/>
+          </sp>
+          <sp who="#claude_marie">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="16" unit="words"/>
+            <amount n="3" unit="lines"/>
+            <amount n="81" unit="chars"/>
+          </sp>
+          <sp who="#louison">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="141" unit="words"/>
+            <amount n="18" unit="lines"/>
+            <amount n="676" unit="chars"/>
+          </sp>
+          <sp who="#bertrand">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="45" unit="words"/>
+            <amount n="6" unit="lines"/>
+            <amount n="223" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>8. Auftritt</head>
+        <div>
+          <head>Achter Auftritt</head>
+          <sp who="#raimond">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="88" unit="words"/>
+            <amount n="13" unit="lines"/>
+            <amount n="471" unit="chars"/>
+          </sp>
+          <sp who="#thibaut">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="115" unit="words"/>
+            <amount n="16" unit="lines"/>
+            <amount n="583" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>9. Auftritt</head>
+        <div>
+          <head>Neunter Auftritt</head>
+          <sp who="#johanna">
+            <amount n="12" unit="speech_acts"/>
+            <amount n="433" unit="words"/>
+            <amount n="59" unit="lines"/>
+            <amount n="2273" unit="chars"/>
+          </sp>
+          <sp who="#margot">
+            <amount n="9" unit="speech_acts"/>
+            <amount n="125" unit="words"/>
+            <amount n="19" unit="lines"/>
+            <amount n="655" unit="chars"/>
+          </sp>
+          <sp who="#louison">
+            <amount n="7" unit="speech_acts"/>
+            <amount n="82" unit="words"/>
+            <amount n="13" unit="lines"/>
+            <amount n="430" unit="chars"/>
+          </sp>
+          <sp who="#bertrand">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="7" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="41" unit="chars"/>
+          </sp>
+          <sp who="#claude_marie">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="24" unit="words"/>
+            <amount n="3" unit="lines"/>
+            <amount n="124" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>10. Auftritt</head>
+        <div>
+          <head>Zehnter Auftritt</head>
+          <sp who="#volk #sorel #erzbischof #burgund #dunois #la_hire #du_chatel">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="8" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="37" unit="chars"/>
+          </sp>
+          <sp who="#könig">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="194" unit="words"/>
+            <amount n="28" unit="lines"/>
+            <amount n="1091" unit="chars"/>
+          </sp>
+          <sp who="#volk">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="15" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="75" unit="chars"/>
+          </sp>
+          <sp who="#johanna">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="3" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="17" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>11. Auftritt</head>
+        <div>
+          <head>Eilfter Auftritt</head>
+          <sp who="#mehrere_stimmen">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="2" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="10" unit="chars"/>
+          </sp>
+          <sp who="#thibaut">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="205" unit="words"/>
+            <amount n="29" unit="lines"/>
+            <amount n="1150" unit="chars"/>
+          </sp>
+          <sp who="#burgund">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="26" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="144" unit="chars"/>
+          </sp>
+          <sp who="#du_chatel">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="13" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="77" unit="chars"/>
+          </sp>
+          <sp who="#dunois">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="59" unit="words"/>
+            <amount n="8" unit="lines"/>
+            <amount n="316" unit="chars"/>
+          </sp>
+          <sp who="#sorel">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="48" unit="words"/>
+            <amount n="7" unit="lines"/>
+            <amount n="265" unit="chars"/>
+          </sp>
+          <sp who="#la_hire">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="60" unit="words"/>
+            <amount n="9" unit="lines"/>
+            <amount n="358" unit="chars"/>
+          </sp>
+          <sp who="#erzbischof">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="32" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="167" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>12. Auftritt</head>
+        <div>
+          <head>Zwölfter Auftritt</head>
+          <sp who="#dunois">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="89" unit="words"/>
+            <amount n="12" unit="lines"/>
+            <amount n="495" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>13. Auftritt</head>
+        <div>
+          <head>Dreizehnter Auftritt</head>
+          <sp who="#du_chatel">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="49" unit="words"/>
+            <amount n="6" unit="lines"/>
+            <amount n="255" unit="chars"/>
+          </sp>
+          <sp who="#raimond">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="18" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="101" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+    </div>
+    <div>
+      <head>5. Akt</head>
+      <div>
+        <head>1. Auftritt</head>
+        <div>
+          <head>Erster Auftritt</head>
+          <sp who="#köhler">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="151" unit="words"/>
+            <amount n="20" unit="lines"/>
+            <amount n="785" unit="chars"/>
+          </sp>
+          <sp who="#köhlerweib">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="29" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="152" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>2. Auftritt</head>
+        <div>
+          <head>Zweiter Auftritt</head>
+          <sp who="#raimond">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="97" unit="words"/>
+            <amount n="13" unit="lines"/>
+            <amount n="533" unit="chars"/>
+          </sp>
+          <sp who="#köhler">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="101" unit="words"/>
+            <amount n="14" unit="lines"/>
+            <amount n="527" unit="chars"/>
+          </sp>
+          <sp who="#köhlerweib">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="55" unit="words"/>
+            <amount n="7" unit="lines"/>
+            <amount n="292" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>3. Auftritt</head>
+        <div>
+          <head>Dritter Auftritt</head>
+          <sp who="#köhlerweib">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="16" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="86" unit="chars"/>
+          </sp>
+          <sp who="#köhler">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="6" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="32" unit="chars"/>
+          </sp>
+          <sp who="#köhlerbub">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="14" unit="words"/>
+            <amount n="3" unit="lines"/>
+            <amount n="76" unit="chars"/>
+          </sp>
+          <sp who="#köhler #köhlerweib">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="5" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="20" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>4. Auftritt</head>
+        <div>
+          <head>Vierter Auftritt</head>
+          <sp who="#johanna">
+            <amount n="15" unit="speech_acts"/>
+            <amount n="433" unit="words"/>
+            <amount n="58" unit="lines"/>
+            <amount n="2269" unit="chars"/>
+          </sp>
+          <sp who="#raimond">
+            <amount n="14" unit="speech_acts"/>
+            <amount n="249" unit="words"/>
+            <amount n="36" unit="lines"/>
+            <amount n="1379" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>5. Auftritt</head>
+        <div>
+          <head>Fünfter Auftritt</head>
+          <sp who="#isabeau">
+            <amount n="7" unit="speech_acts"/>
+            <amount n="205" unit="words"/>
+            <amount n="31" unit="lines"/>
+            <amount n="1070" unit="chars"/>
+          </sp>
+          <sp who="#raimond">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="4" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="20" unit="chars"/>
+          </sp>
+          <sp who="#soldaten #anführer_der_soldaten">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="4" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="18" unit="chars"/>
+          </sp>
+          <sp who="#johanna">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="27" unit="words"/>
+            <amount n="6" unit="lines"/>
+            <amount n="151" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>6. Auftritt</head>
+        <div>
+          <head>Sechster Auftritt</head>
+          <sp who="#johanna">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="122" unit="words"/>
+            <amount n="18" unit="lines"/>
+            <amount n="691" unit="chars"/>
+          </sp>
+          <sp who="#anführer_der_soldaten">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="6" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="28" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>7. Auftritt</head>
+        <div>
+          <head>Siebenter Auftritt</head>
+          <sp who="#erzbischof">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="200" unit="words"/>
+            <amount n="27" unit="lines"/>
+            <amount n="1090" unit="chars"/>
+          </sp>
+          <sp who="#dunois">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="106" unit="words"/>
+            <amount n="15" unit="lines"/>
+            <amount n="584" unit="chars"/>
+          </sp>
+          <sp who="#du_chatel">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="12" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="72" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>8. Auftritt</head>
+        <div>
+          <head>Achter Auftritt</head>
+          <sp who="#edelmann">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="24" unit="words"/>
+            <amount n="3" unit="lines"/>
+            <amount n="125" unit="chars"/>
+          </sp>
+          <sp who="#dunois">
+            <amount n="6" unit="speech_acts"/>
+            <amount n="86" unit="words"/>
+            <amount n="15" unit="lines"/>
+            <amount n="444" unit="chars"/>
+          </sp>
+          <sp who="#raimond">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="147" unit="words"/>
+            <amount n="22" unit="lines"/>
+            <amount n="816" unit="chars"/>
+          </sp>
+          <sp who="#erzbischof">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="8" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="40" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>9. Auftritt</head>
+        <div>
+          <head>Neunter Auftritt</head>
+          <sp who="#fastolf">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="39" unit="words"/>
+            <amount n="5" unit="lines"/>
+            <amount n="205" unit="chars"/>
+          </sp>
+          <sp who="#isabeau">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="56" unit="words"/>
+            <amount n="8" unit="lines"/>
+            <amount n="298" unit="chars"/>
+          </sp>
+          <sp who="#lionel">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="115" unit="words"/>
+            <amount n="15" unit="lines"/>
+            <amount n="598" unit="chars"/>
+          </sp>
+          <sp who="#johanna">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="137" unit="words"/>
+            <amount n="19" unit="lines"/>
+            <amount n="719" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>10. Auftritt</head>
+        <div>
+          <head>Zehnter Auftritt</head>
+          <sp who="#hauptmann">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="24" unit="words"/>
+            <amount n="3" unit="lines"/>
+            <amount n="137" unit="chars"/>
+          </sp>
+          <sp who="#johanna">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="54" unit="words"/>
+            <amount n="8" unit="lines"/>
+            <amount n="316" unit="chars"/>
+          </sp>
+          <sp who="#fastolf">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="71" unit="words"/>
+            <amount n="10" unit="lines"/>
+            <amount n="357" unit="chars"/>
+          </sp>
+          <sp who="#lionel">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="111" unit="words"/>
+            <amount n="16" unit="lines"/>
+            <amount n="637" unit="chars"/>
+          </sp>
+          <sp who="#isabeau">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="25" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="138" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>11. Auftritt</head>
+        <div>
+          <head>Eilfter Auftritt</head>
+          <sp who="#johanna">
+            <amount n="11" unit="speech_acts"/>
+            <amount n="296" unit="words"/>
+            <amount n="39" unit="lines"/>
+            <amount n="1557" unit="chars"/>
+          </sp>
+          <sp who="#isabeau">
+            <amount n="11" unit="speech_acts"/>
+            <amount n="74" unit="words"/>
+            <amount n="14" unit="lines"/>
+            <amount n="408" unit="chars"/>
+          </sp>
+          <sp who="#soldat_5.11">
+            <amount n="16" unit="speech_acts"/>
+            <amount n="202" unit="words"/>
+            <amount n="33" unit="lines"/>
+            <amount n="1065" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>12. Auftritt</head>
+        <div>
+          <head>Zwölfter Auftritt</head>
+          <sp who="#isabeau">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="56" unit="words"/>
+            <amount n="8" unit="lines"/>
+            <amount n="298" unit="chars"/>
+          </sp>
+          <sp who="#soldat_5.11">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="123" unit="words"/>
+            <amount n="15" unit="lines"/>
+            <amount n="599" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>13. Auftritt</head>
+        <div>
+          <head>Dreizehnter Auftritt</head>
+          <sp who="#la_hire">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="28" unit="words"/>
+            <amount n="5" unit="lines"/>
+            <amount n="163" unit="chars"/>
+          </sp>
+          <sp who="#isabeau">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="10" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="58" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>14. Auftritt</head>
+        <div>
+          <head>Vierzehnter Auftritt</head>
+          <sp who="#sorel">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="23" unit="words"/>
+            <amount n="3" unit="lines"/>
+            <amount n="112" unit="chars"/>
+          </sp>
+          <sp who="#könig">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="66" unit="words"/>
+            <amount n="9" unit="lines"/>
+            <amount n="351" unit="chars"/>
+          </sp>
+          <sp who="#burgund">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="68" unit="words"/>
+            <amount n="10" unit="lines"/>
+            <amount n="355" unit="chars"/>
+          </sp>
+          <sp who="#johanna">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="168" unit="words"/>
+            <amount n="22" unit="lines"/>
+            <amount n="856" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+    </div>
+  </text>
+</play>

@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="https://raw.githubusercontent.com/DLiNa/project/master/rules/lina.rnc"?>
+<?xml-model href="https://raw.githubusercontent.com/DLiNa/project/master/rules/lina.sch"?>
+<play xmlns="http://lina.digital" id="95">
+  <header>
+    <title>Fidelio</title>
+    <subtitle>Oper in zwei Aufzügen</subtitle>
+    <genretitle>Oper</genretitle>
+    <author key="pnd:104332042">Sonnleithner, Joseph Ferdinand von</author>
+    <author key="pnd:1019498358">Breuning, Stephan von</author>
+    <author key="pnd:117409030">Treitschke, Georg Friedrich</author>
+    <date type="print"/>
+    <date type="premiere" when="1805"/>
+    <date type="written"/>
+    <source>https://textgridlab.org/1.0/tgcrud-public/rest/textgrid:vpv1.0/data</source>
+  </header>
+  <personae>
+    <character>
+      <name>JAQUINO</name>
+      <alias xml:id="jaquino">
+        <name>JAQUINO</name>
+      </alias>
+    </character>
+    <character>
+      <name>MARZELLINE</name>
+      <alias xml:id="marzelline">
+        <name>MARZELLINE</name>
+      </alias>
+    </character>
+    <character>
+      <name>ROCCO</name>
+      <alias xml:id="rocco">
+        <name>ROCCO</name>
+      </alias>
+    </character>
+    <character>
+      <name>LEONORE</name>
+      <alias xml:id="leonore">
+        <name>LEONORE</name>
+      </alias>
+    </character>
+    <character>
+      <name>PIZARRO</name>
+      <alias xml:id="pizarro">
+        <name>PIZARRO</name>
+      </alias>
+    </character>
+    <character>
+      <name>CHOR DER WACHE</name>
+      <alias xml:id="chor_der_wache">
+        <name>CHOR DER WACHE</name>
+      </alias>
+    </character>
+    <character>
+      <name>ERSTER GEFANGENER</name>
+      <alias xml:id="erster_gefangener">
+        <name>ERSTER GEFANGENER</name>
+      </alias>
+    </character>
+    <character>
+      <name>ZWEITER GEFANGENER</name>
+      <alias xml:id="zweiter_gefangener">
+        <name>ZWEITER GEFANGENER</name>
+      </alias>
+    </character>
+    <character>
+      <name>DIE GEFANGENEN</name>
+      <alias xml:id="die_gefangenen">
+        <name>DIE GEFANGENEN</name>
+      </alias>
+      <alias xml:id="chor_der_gefangenen">
+        <name>CHOR DER GEFANGENEN</name>
+      </alias>
+    </character>
+    <character>
+      <name>FLORESTAN</name>
+      <alias xml:id="florestan">
+        <name>FLORESTAN</name>
+      </alias>
+    </character>
+    <character>
+      <name>CHOR</name>
+      <alias xml:id="chor">
+        <name>CHOR</name>
+      </alias>
+    </character>
+    <character>
+      <name>FERNANDO</name>
+      <alias xml:id="fernando">
+        <name>FERNANDO</name>
+      </alias>
+    </character>
+  </personae>
+  <text>
+    <div>
+      <head>Personen</head>
+    </div>
+    <div>
+      <head>1. Akt</head>
+      <div>
+        <head>1. Auftritt</head>
+        <div>
+          <head>Erster Auftritt</head>
+          <sp who="#jaquino">
+            <amount n="22" unit="speech_acts"/>
+            <amount n="278" unit="words"/>
+            <amount n="30" unit="lines"/>
+            <amount n="1465" unit="chars"/>
+          </sp>
+          <sp who="#marzelline">
+            <amount n="20" unit="speech_acts"/>
+            <amount n="208" unit="words"/>
+            <amount n="31" unit="lines"/>
+            <amount n="1015" unit="chars"/>
+          </sp>
+          <sp who="#rocco">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="7" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="41" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>2. Auftritt</head>
+        <div>
+          <head>Zweiter Auftritt</head>
+          <sp who="#marzelline">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="206" unit="words"/>
+            <amount n="20" unit="lines"/>
+            <amount n="1062" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>3. Auftritt</head>
+        <div>
+          <head>Dritter Auftritt</head>
+          <sp who="#rocco">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="39" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="246" unit="chars"/>
+          </sp>
+          <sp who="#marzelline">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="29" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="159" unit="chars"/>
+          </sp>
+          <sp who="#jaquino">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="10" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="56" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>4. Auftritt</head>
+        <div>
+          <head>Vierter Auftritt</head>
+          <sp who="#marzelline">
+            <amount n="15" unit="speech_acts"/>
+            <amount n="245" unit="words"/>
+            <amount n="29" unit="lines"/>
+            <amount n="1249" unit="chars"/>
+          </sp>
+          <sp who="#rocco">
+            <amount n="29" unit="speech_acts"/>
+            <amount n="880" unit="words"/>
+            <amount n="50" unit="lines"/>
+            <amount n="4725" unit="chars"/>
+          </sp>
+          <sp who="#jaquino">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="60" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="334" unit="chars"/>
+          </sp>
+          <sp who="#leonore">
+            <amount n="21" unit="speech_acts"/>
+            <amount n="403" unit="words"/>
+            <amount n="30" unit="lines"/>
+            <amount n="2176" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>5. Auftritt</head>
+        <div>
+          <head>Fünfter Auftritt</head>
+          <sp who="#pizarro">
+            <amount n="16" unit="speech_acts"/>
+            <amount n="635" unit="words"/>
+            <amount n="61" unit="lines"/>
+            <amount n="3447" unit="chars"/>
+          </sp>
+          <sp who="#rocco">
+            <amount n="12" unit="speech_acts"/>
+            <amount n="106" unit="words"/>
+            <amount n="25" unit="lines"/>
+            <amount n="535" unit="chars"/>
+          </sp>
+          <sp who="#chor_der_wache">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="32" unit="words"/>
+            <amount n="6" unit="lines"/>
+            <amount n="160" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>6. Auftritt</head>
+        <div>
+          <head>Sechster Auftritt</head>
+        </div>
+      </div>
+      <div>
+        <head>7. Auftritt</head>
+        <div>
+          <head>Siebenter Auftritt</head>
+          <sp who="#jaquino">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="125" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="705" unit="chars"/>
+          </sp>
+          <sp who="#marzelline">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="63" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="346" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>8. Auftritt</head>
+        <div>
+          <head>Achter Auftritt</head>
+          <sp who="#rocco">
+            <amount n="5" unit="speech_acts"/>
+            <amount n="114" unit="words"/>
+            <amount n="3" unit="lines"/>
+            <amount n="646" unit="chars"/>
+          </sp>
+          <sp who="#marzelline">
+            <amount n="6" unit="speech_acts"/>
+            <amount n="56" unit="words"/>
+            <amount n="5" unit="lines"/>
+            <amount n="296" unit="chars"/>
+          </sp>
+          <sp who="#jaquino">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="14" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="74" unit="chars"/>
+          </sp>
+          <sp who="#leonore">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="48" unit="words"/>
+            <amount n="276" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>9. Auftritt</head>
+        <div>
+          <head>Neunter Auftritt</head>
+          <sp who="#chor_der_gefangenen #erster_gefangener #zweiter_gefangener">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="21" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="105" unit="chars"/>
+          </sp>
+          <sp who="#erster_gefangener">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="21" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="115" unit="chars"/>
+          </sp>
+          <sp who="#chor_der_gefangenen">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="13" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="65" unit="chars"/>
+          </sp>
+          <sp who="#zweiter_gefangener">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="13" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="71" unit="chars"/>
+          </sp>
+          <sp who="#chor_der_gefangenen">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="44" unit="words"/>
+            <amount n="7" unit="lines"/>
+            <amount n="227" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>10. Auftritt</head>
+        <div>
+          <head>Zehnter Auftritt</head>
+          <sp who="#leonore">
+            <amount n="12" unit="speech_acts"/>
+            <amount n="84" unit="words"/>
+            <amount n="16" unit="lines"/>
+            <amount n="410" unit="chars"/>
+          </sp>
+          <sp who="#rocco">
+            <amount n="11" unit="speech_acts"/>
+            <amount n="217" unit="words"/>
+            <amount n="39" unit="lines"/>
+            <amount n="1128" unit="chars"/>
+          </sp>
+          <sp who="#rocco #leonore">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="13" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="66" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>11. Auftritt</head>
+        <div>
+          <head>Elfter Auftritt</head>
+          <sp who="#marzelline">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="33" unit="words"/>
+            <amount n="9" unit="lines"/>
+            <amount n="170" unit="chars"/>
+          </sp>
+          <sp who="#rocco">
+            <amount n="6" unit="speech_acts"/>
+            <amount n="32" unit="words"/>
+            <amount n="8" unit="lines"/>
+            <amount n="171" unit="chars"/>
+          </sp>
+          <sp who="#jaquino">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="9" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="40" unit="chars"/>
+          </sp>
+          <sp who="#leonore">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="13" unit="words"/>
+            <amount n="3" unit="lines"/>
+            <amount n="62" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>12. Auftritt</head>
+        <div>
+          <head>Zwölfter Auftritt</head>
+          <sp who="#pizarro">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="69" unit="words"/>
+            <amount n="13" unit="lines"/>
+            <amount n="379" unit="chars"/>
+          </sp>
+          <sp who="#rocco">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="78" unit="words"/>
+            <amount n="15" unit="lines"/>
+            <amount n="411" unit="chars"/>
+          </sp>
+          <sp who="#die_gefangenen">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="22" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="132" unit="chars"/>
+          </sp>
+          <sp who="#marzelline">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="20" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="122" unit="chars"/>
+          </sp>
+          <sp who="#leonore">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="24" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="128" unit="chars"/>
+          </sp>
+          <sp who="#jaquino">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="26" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="129" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+    </div>
+    <div>
+      <head>2. Akt</head>
+      <div>
+        <head>1. Auftritt</head>
+        <div>
+          <head>Erster Auftritt</head>
+          <sp who="#florestan">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="132" unit="words"/>
+            <amount n="18" unit="lines"/>
+            <amount n="679" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>2. Auftritt</head>
+        <div>
+          <head>Zweiter Auftritt</head>
+          <sp who="#leonore">
+            <amount n="35" unit="speech_acts"/>
+            <amount n="381" unit="words"/>
+            <amount n="48" unit="lines"/>
+            <amount n="1941" unit="chars"/>
+          </sp>
+          <sp who="#rocco">
+            <amount n="31" unit="speech_acts"/>
+            <amount n="496" unit="words"/>
+            <amount n="34" unit="lines"/>
+            <amount n="2550" unit="chars"/>
+          </sp>
+          <sp who="#florestan">
+            <amount n="16" unit="speech_acts"/>
+            <amount n="224" unit="words"/>
+            <amount n="24" unit="lines"/>
+            <amount n="1192" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>3. Auftritt</head>
+        <div>
+          <head>Dritter Auftritt</head>
+          <sp who="#pizarro">
+            <amount n="13" unit="speech_acts"/>
+            <amount n="145" unit="words"/>
+            <amount n="23" unit="lines"/>
+            <amount n="772" unit="chars"/>
+          </sp>
+          <sp who="#rocco">
+            <amount n="8" unit="speech_acts"/>
+            <amount n="44" unit="words"/>
+            <amount n="8" unit="lines"/>
+            <amount n="237" unit="chars"/>
+          </sp>
+          <sp who="#leonore">
+            <amount n="11" unit="speech_acts"/>
+            <amount n="73" unit="words"/>
+            <amount n="15" unit="lines"/>
+            <amount n="371" unit="chars"/>
+          </sp>
+          <sp who="#florestan">
+            <amount n="6" unit="speech_acts"/>
+            <amount n="22" unit="words"/>
+            <amount n="6" unit="lines"/>
+            <amount n="113" unit="chars"/>
+          </sp>
+          <sp who="#rocco #pizarro">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="2" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="10" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>4. Auftritt</head>
+        <div>
+          <head>Vierter Aufritt</head>
+          <sp who="#jaquino">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="14" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="82" unit="chars"/>
+          </sp>
+          <sp who="#rocco">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="46" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="275" unit="chars"/>
+          </sp>
+          <sp who="#leonore #florestan">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="22" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="115" unit="chars"/>
+          </sp>
+          <sp who="#pizarro">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="16" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="101" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>5. Auftritt</head>
+        <div>
+          <head>Fünfter Auftritt</head>
+          <sp who="#florestan">
+            <amount n="7" unit="speech_acts"/>
+            <amount n="63" unit="words"/>
+            <amount n="8" unit="lines"/>
+            <amount n="372" unit="chars"/>
+          </sp>
+          <sp who="#leonore">
+            <amount n="7" unit="speech_acts"/>
+            <amount n="110" unit="words"/>
+            <amount n="5" unit="lines"/>
+            <amount n="617" unit="chars"/>
+          </sp>
+          <sp who="#leonore #florestan">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="34" unit="words"/>
+            <amount n="7" unit="lines"/>
+            <amount n="183" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>6. Auftritt</head>
+        <div>
+          <head>Sechster Auftritt</head>
+          <sp who="#rocco">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="112" unit="words"/>
+            <amount n="669" unit="chars"/>
+          </sp>
+          <sp who="#florestan">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="1" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="8" unit="chars"/>
+          </sp>
+          <sp who="#leonore">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="3" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="20" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>7. Auftritt</head>
+        <div>
+          <head>Siebenter Auftritt</head>
+          <sp who="#chor">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="31" unit="words"/>
+            <amount n="5" unit="lines"/>
+            <amount n="173" unit="chars"/>
+          </sp>
+          <sp who="#fernando">
+            <amount n="2" unit="speech_acts"/>
+            <amount n="67" unit="words"/>
+            <amount n="10" unit="lines"/>
+            <amount n="343" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+      <div>
+        <head>8. Auftritt</head>
+        <div>
+          <head>Achter Auftritt</head>
+          <sp who="#rocco">
+            <amount n="9" unit="speech_acts"/>
+            <amount n="82" unit="words"/>
+            <amount n="17" unit="lines"/>
+            <amount n="421" unit="chars"/>
+          </sp>
+          <sp who="#pizarro">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="13" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="63" unit="chars"/>
+          </sp>
+          <sp who="#fernando">
+            <amount n="7" unit="speech_acts"/>
+            <amount n="63" unit="words"/>
+            <amount n="13" unit="lines"/>
+            <amount n="340" unit="chars"/>
+          </sp>
+          <sp who="#rocco #leonore">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="6" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="33" unit="chars"/>
+          </sp>
+          <sp who="#marzelline">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="7" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="33" unit="chars"/>
+          </sp>
+          <sp who="#chor">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="67" unit="words"/>
+            <amount n="14" unit="lines"/>
+            <amount n="377" unit="chars"/>
+          </sp>
+          <sp who="#leonore">
+            <amount n="4" unit="speech_acts"/>
+            <amount n="44" unit="words"/>
+            <amount n="9" unit="lines"/>
+            <amount n="251" unit="chars"/>
+          </sp>
+          <sp who="#florestan">
+            <amount n="3" unit="speech_acts"/>
+            <amount n="36" unit="words"/>
+            <amount n="7" unit="lines"/>
+            <amount n="202" unit="chars"/>
+          </sp>
+          <sp who="#marzelline #rocco">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="8" unit="words"/>
+            <amount n="1" unit="lines"/>
+            <amount n="33" unit="chars"/>
+          </sp>
+          <sp who="#rocco #pizarro #fernando #marzelline #leonore #florestan">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="26" unit="words"/>
+            <amount n="4" unit="lines"/>
+            <amount n="128" unit="chars"/>
+          </sp>
+          <sp who="#rocco #pizarro #fernando #marzelline #florestan">
+            <amount n="1" unit="speech_acts"/>
+            <amount n="10" unit="words"/>
+            <amount n="2" unit="lines"/>
+            <amount n="54" unit="chars"/>
+          </sp>
+        </div>
+      </div>
+    </div>
+  </text>
+</play>
