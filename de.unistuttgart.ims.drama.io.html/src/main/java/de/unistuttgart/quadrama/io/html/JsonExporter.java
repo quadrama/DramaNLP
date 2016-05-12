@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.compress.utils.IOUtils;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -40,6 +42,7 @@ public class JsonExporter extends JCasFileWriter_ImplBase {
 	@Override
 	public void process(JCas aJCas) throws AnalysisEngineProcessException {
 		List<Figure> figureList = new ArrayList<Figure>();
+		Map<Figure, JSONObject> figureObjects = new HashMap<Figure, JSONObject>();
 
 		JSONObject json = new JSONObject();
 		JSONObject md = new JSONObject();
@@ -56,8 +59,10 @@ public class JsonExporter extends JCasFileWriter_ImplBase {
 
 		// figures
 		for (Figure figure : JCasUtil.select(aJCas, Figure.class)) {
-			json.append("figures", convert(figure, true));
+			JSONObject fObj = convert(figure, true);
+			json.append("figures", fObj);
 			figureList.add(figure);
+			figureObjects.put(figure, fObj);
 		}
 
 		// segments
@@ -80,6 +85,8 @@ public class JsonExporter extends JCasFileWriter_ImplBase {
 		// utterances
 		for (Utterance utterance : JCasUtil.select(aJCas, Utterance.class)) {
 			Figure f = DramaUtil.getFigure(utterance);
+			if (f == null)
+				continue;
 			int figureIndex = figureList.indexOf(f);
 			JSONObject obj = new JSONObject();
 			obj.put("f", figureIndex);
@@ -89,6 +96,7 @@ public class JsonExporter extends JCasFileWriter_ImplBase {
 				obj.append("s", convert(speech, true));
 			}
 			json.append("utt", obj);
+			figureObjects.get(f).append("utt", (json.getJSONArray("utt").length() - 1));
 		}
 
 		// assembly
