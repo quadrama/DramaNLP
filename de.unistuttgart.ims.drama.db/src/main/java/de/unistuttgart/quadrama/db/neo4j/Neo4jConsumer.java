@@ -31,6 +31,7 @@ import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.api.Utterance;
 import de.unistuttgart.ims.drama.util.DramaUtil;
 
+@Deprecated
 public class Neo4jConsumer extends JCasAnnotator_ImplBase {
 
 	String serverRootURI = "http://localhost:7474/";

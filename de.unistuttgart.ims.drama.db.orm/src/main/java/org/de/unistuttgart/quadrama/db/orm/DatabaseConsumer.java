@@ -35,6 +35,7 @@ import de.unistuttgart.ims.drama.api.Author;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Figure;
 
+@Deprecated
 public class DatabaseConsumer extends JCasConsumer_ImplBase {
 	public static final String PARAM_DB_URL = "Database URL";
 	public static final String PARAM_DATABASETYPE = "Database type";
