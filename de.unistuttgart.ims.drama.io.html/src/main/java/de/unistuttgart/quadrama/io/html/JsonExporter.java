@@ -104,7 +104,7 @@ public class JsonExporter extends JCasFileWriter_ImplBase {
 		OutputStream os = null;
 		OutputStreamWriter osw;
 		try {
-			os = this.getOutputStream(aJCas, ".json");
+			os = this.getOutputStream(aJCas, (javascriptVariableName != null ? ".js" : ".json"));
 			osw = new OutputStreamWriter(os);
 			if (javascriptVariableName != null) {
 				osw.write("var ");
