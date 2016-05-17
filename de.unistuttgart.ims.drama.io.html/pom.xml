@@ -66,5 +66,9 @@
   		<artifactId>de.unistuttgart.ims.drama.util</artifactId>
   		<version>0.2-SNAPSHOT</version>
   	</dependency>
+  	<dependency>
+  		<groupId>de.unistuttgart.ims</groupId>
+  		<artifactId>uimautil</artifactId>
+  	</dependency>
   </dependencies>
 </project>

@@ -22,6 +22,7 @@ import de.unistuttgart.ims.drama.api.Act;
 import de.unistuttgart.ims.drama.api.ActHeading;
 import de.unistuttgart.ims.drama.api.Author;
 import de.unistuttgart.ims.drama.api.Drama;
+import de.unistuttgart.ims.drama.api.Field;
 import de.unistuttgart.ims.drama.api.Figure;
 import de.unistuttgart.ims.drama.api.Scene;
 import de.unistuttgart.ims.drama.api.SceneHeading;
@@ -29,6 +30,7 @@ import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.Translator;
 import de.unistuttgart.ims.drama.api.Utterance;
 import de.unistuttgart.ims.drama.util.DramaUtil;
+import de.unistuttgart.ims.uimautil.WordListDescription;
 
 public class JsonExporter extends JCasFileWriter_ImplBase {
 
@@ -82,6 +84,14 @@ public class JsonExporter extends JCasFileWriter_ImplBase {
 				}
 			}
 		}
+		// fields
+		JSONObject fieldsObject = new JSONObject();
+
+		for (WordListDescription f : JCasUtil.select(aJCas, WordListDescription.class)) {
+			fieldsObject.put(f.getName(), convert(f, false));
+		}
+		json.put("fields", fieldsObject);
+
 		// utterances
 		for (Utterance utterance : JCasUtil.select(aJCas, Utterance.class)) {
 			Figure f = DramaUtil.getFigure(utterance);
@@ -93,7 +103,11 @@ public class JsonExporter extends JCasFileWriter_ImplBase {
 			obj.put("begin", utterance.getBegin());
 			obj.put("end", utterance.getEnd());
 			for (Speech speech : JCasUtil.selectCovered(Speech.class, utterance)) {
-				obj.append("s", convert(speech, true));
+				JSONObject sObj = convert(speech, true);
+				for (Field field : JCasUtil.selectCovered(Field.class, speech)) {
+					sObj.append("fields", field.getName());
+				}
+				obj.append("s", sObj);
 			}
 			json.append("utt", obj);
 			figureObjects.get(f).append("utt", (json.getJSONArray("utt").length() - 1));
