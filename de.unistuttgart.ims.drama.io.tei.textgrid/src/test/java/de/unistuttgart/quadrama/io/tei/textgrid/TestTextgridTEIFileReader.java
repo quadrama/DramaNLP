@@ -30,6 +30,7 @@ import de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData;
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.unistuttgart.ims.drama.api.Act;
 import de.unistuttgart.ims.drama.api.ActHeading;
+import de.unistuttgart.ims.drama.api.Author;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.DramatisPersonae;
 import de.unistuttgart.ims.drama.api.Figure;
@@ -64,6 +65,7 @@ public class TestTextgridTEIFileReader {
 		assertTrue(JCasUtil.exists(jcas, Act.class));
 		assertTrue(JCasUtil.exists(jcas, Scene.class));
 		assertTrue(JCasUtil.exists(jcas, Speaker.class));
+		assertTrue(JCasUtil.exists(jcas, Author.class));
 		// there is no Dramatis Personae in ndtw.0
 		assertFalse(JCasUtil.exists(jcas, DramatisPersonae.class));
 		assertFalse(JCasUtil.exists(jcas, Figure.class));
@@ -79,6 +81,7 @@ public class TestTextgridTEIFileReader {
 		assertTrue(JCasUtil.exists(jcas, Scene.class));
 		assertTrue(JCasUtil.exists(jcas, Speaker.class));
 		assertTrue(JCasUtil.exists(jcas, DramatisPersonae.class));
+		assertTrue(JCasUtil.exists(jcas, Author.class));
 
 		jcas = iter.next();
 		// general sanity checking
@@ -89,6 +92,7 @@ public class TestTextgridTEIFileReader {
 		assertTrue(JCasUtil.exists(jcas, Scene.class));
 		assertTrue(JCasUtil.exists(jcas, Speaker.class));
 		assertTrue(JCasUtil.exists(jcas, DramatisPersonae.class));
+		assertTrue(JCasUtil.exists(jcas, Author.class));
 		assertNotNull(JCasUtil.selectSingle(jcas, FrontMatter.class));
 		assertNotNull(JCasUtil.selectSingle(jcas, MainMatter.class));
 		assertEquals(5, JCasUtil.select(jcas, Act.class).size());

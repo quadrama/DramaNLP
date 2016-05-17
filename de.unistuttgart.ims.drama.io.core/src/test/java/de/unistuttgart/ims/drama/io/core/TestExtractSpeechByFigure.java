@@ -31,6 +31,6 @@ public class TestExtractSpeechByFigure {
 		File rdir = new File(tdir, "SW_RuJ");
 		assertTrue(rdir.exists());
 		assertTrue(rdir.isDirectory());
-		assertEquals(45, rdir.listFiles().length);
+		assertEquals(42, rdir.listFiles().length);
 	}
 }

@@ -61,6 +61,7 @@ public class TextGridUtil {
 			if (authorElement.hasAttr("key")) {
 				author.setPnd(authorElement.attr("key").replace("pnd:", ""));
 			}
+			author.addToIndexes();
 		}
 
 		Visitor vis = new Visitor(jcas);

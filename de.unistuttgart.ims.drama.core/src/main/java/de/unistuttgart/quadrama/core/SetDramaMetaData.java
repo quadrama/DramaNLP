@@ -16,6 +16,8 @@ public class SetDramaMetaData extends JCasAnnotator_ImplBase {
 	public static final String PARAM_AUTHOR_NAME = "Author Name";
 	public static final String PARAM_AUTHOR_PND = "Author PND";
 	public static final String PARAM_DRAMAID = "Drama Id";
+	public static final String PARAM_DRAMATITLE = "Drama Title";
+
 	public static final String PARAM_REFERENCEDATE = "Reference Date";
 
 	public static final String PARAM_TRANSLATION = "Translation";
@@ -30,6 +32,9 @@ public class SetDramaMetaData extends JCasAnnotator_ImplBase {
 
 	@ConfigurationParameter(name = PARAM_DRAMAID, mandatory = false)
 	String dramaId = null;
+
+	@ConfigurationParameter(name = PARAM_DRAMATITLE, mandatory = false)
+	String dramaTitle = null;
 
 	@ConfigurationParameter(name = PARAM_REFERENCEDATE, mandatory = false)
 	int referenceDate = -1;
@@ -56,6 +61,8 @@ public class SetDramaMetaData extends JCasAnnotator_ImplBase {
 			drama.setDocumentId(dramaId);
 		if (referenceDate > 0)
 			drama.setReferenceDate(referenceDate);
+		if (dramaTitle != null)
+			drama.setDocumentTitle(dramaTitle);
 
 		drama.setTranslation(translation);
 		Translator translator;
