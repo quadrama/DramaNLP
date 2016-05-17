@@ -47,12 +47,7 @@ public class JsonExporter extends JCasFileWriter_ImplBase {
 		Map<Figure, JSONObject> figureObjects = new HashMap<Figure, JSONObject>();
 
 		JSONObject json = new JSONObject();
-		JSONObject md = new JSONObject();
-
-		// meta data and author
-		Drama drama = JCasUtil.selectSingle(aJCas, Drama.class);
-		md.put("documentId", drama.getDocumentId());
-		md.put("documentTitle", drama.getDocumentTitle());
+		JSONObject md = convert(JCasUtil.selectSingle(aJCas, Drama.class), false);
 
 		for (Author author : JCasUtil.select(aJCas, Author.class))
 			md.append("authors", convert(author, false));
