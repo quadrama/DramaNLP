@@ -19,6 +19,6 @@ public class TestJsonExporter {
 				XmiReader.PARAM_SOURCE_LOCATION, "src/test/resources/*.xmi", XmiReader.PARAM_LENIENT, true);
 
 		SimplePipeline.runPipeline(crd, AnalysisEngineFactory.createEngineDescription(JsonExporter.class,
-				JsonExporter.PARAM_TARGET_LOCATION, "target/", JsonExporter.PARAM_JAVASCRIPT, "data"));
+				JsonExporter.PARAM_OUTPUT_DIRECTORY, "target/", JsonExporter.PARAM_JAVASCRIPT, "data"));
 	}
 }

@@ -1,10 +1,12 @@
 package de.unistuttgart.quadrama.io.html;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -17,13 +19,15 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.json.JSONObject;
 
-import de.tudarmstadt.ukp.dkpro.core.api.io.JCasFileWriter_ImplBase;
+import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Lemma;
+import de.unistuttgart.ims.commons.Counter;
 import de.unistuttgart.ims.drama.api.Act;
 import de.unistuttgart.ims.drama.api.ActHeading;
 import de.unistuttgart.ims.drama.api.Author;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Field;
 import de.unistuttgart.ims.drama.api.Figure;
+import de.unistuttgart.ims.drama.api.FigureType;
 import de.unistuttgart.ims.drama.api.Scene;
 import de.unistuttgart.ims.drama.api.SceneHeading;
 import de.unistuttgart.ims.drama.api.Speech;
@@ -31,18 +35,26 @@ import de.unistuttgart.ims.drama.api.Translator;
 import de.unistuttgart.ims.drama.api.Utterance;
 import de.unistuttgart.ims.drama.util.DramaUtil;
 import de.unistuttgart.ims.uimautil.WordListDescription;
+import de.unistuttgart.quadrama.io.core.AbstractDramaConsumer;
 
-public class JsonExporter extends JCasFileWriter_ImplBase {
+public class JsonExporter extends AbstractDramaConsumer {
 
 	public static final String PARAM_JAVASCRIPT = "Javascript declaration";
+	public static final String PARAM_COLLECTION_FILENAME = "Collect";
 
 	@ConfigurationParameter(name = PARAM_JAVASCRIPT, mandatory = false)
 	String javascriptVariableName = null;
 
+	@ConfigurationParameter(name = PARAM_COLLECTION_FILENAME, mandatory = false)
+	String collectionFilename = null;
+
 	static boolean includeType = false;
+
+	List<JSONObject> collectedObjects = new LinkedList<JSONObject>();
 
 	@Override
 	public void process(JCas aJCas) throws AnalysisEngineProcessException {
+		Map<Figure, Counter<String>> freq = new HashMap<Figure, Counter<String>>();
 		List<Figure> figureList = new ArrayList<Figure>();
 		Map<Figure, JSONObject> figureObjects = new HashMap<Figure, JSONObject>();
 
@@ -53,6 +65,9 @@ public class JsonExporter extends JCasFileWriter_ImplBase {
 			md.append("authors", convert(author, false));
 		for (Translator translator : JCasUtil.select(aJCas, Translator.class))
 			md.append("translators", convert(translator, false));
+		md.put("DisplayId", DramaUtil.getDisplayId(aJCas));
+
+		JSONObject figureTypes = new JSONObject();
 
 		// figures
 		for (Figure figure : JCasUtil.select(aJCas, Figure.class)) {
@@ -60,7 +75,16 @@ public class JsonExporter extends JCasFileWriter_ImplBase {
 			json.append("figures", fObj);
 			figureList.add(figure);
 			figureObjects.put(figure, fObj);
+			int fIndex = json.getJSONArray("figures").length();
+			for (FigureType ftype : DramaUtil.getAllFigureTypes(figure)) {
+				if (figureTypes.optJSONObject(ftype.getTypeClass()) == null)
+					figureTypes.put(ftype.getTypeClass(), new JSONObject());
+				figureTypes.getJSONObject(ftype.getTypeClass()).append(ftype.getTypeValue(), fIndex);
+			}
+			freq.put(figure, new Counter<String>());
+
 		}
+		json.put("ftypes", figureTypes);
 
 		// segments
 		for (Act act : JCasUtil.select(aJCas, Act.class)) {
@@ -103,18 +127,36 @@ public class JsonExporter extends JCasFileWriter_ImplBase {
 					sObj.append("fields", field.getName());
 				}
 				obj.append("s", sObj);
+
+				// word frequencies
+				for (Lemma lemma : JCasUtil.selectCovered(Lemma.class, speech)) {
+					freq.get(f).add(lemma.getValue());
+				}
 			}
 			json.append("utt", obj);
 			figureObjects.get(f).append("utt", (json.getJSONArray("utt").length() - 1));
 		}
 
+		for (Figure figure : freq.keySet()) {
+			int figureIndex = figureList.indexOf(figure);
+			JSONObject arr = new JSONObject();
+			for (String s : freq.get(figure).keySet()) {
+				JSONObject termObj = new JSONObject();
+				termObj.put("w", s);
+				termObj.put("c", freq.get(figure).get(s));
+				arr.put(s, termObj);
+			}
+			json.getJSONArray("figures").getJSONObject(figureIndex).put("freq", arr);
+		}
+
 		// assembly
 		json.put("meta", md);
-		OutputStream os = null;
-		OutputStreamWriter osw;
+		Writer osw = null;
+		if (collectionFilename != null)
+			collectedObjects.add(json);
 		try {
-			os = this.getOutputStream(aJCas, (javascriptVariableName != null ? ".js" : ".json"));
-			osw = new OutputStreamWriter(os);
+			osw = this.getWriter(aJCas, (javascriptVariableName != null ? ".js" : ".json"));// new
+																							// OutputStreamWriter(os);
 			if (javascriptVariableName != null) {
 				osw.write("var ");
 				osw.write(javascriptVariableName);
@@ -126,7 +168,7 @@ public class JsonExporter extends JCasFileWriter_ImplBase {
 		} catch (IOException e) {
 			throw new AnalysisEngineProcessException(e);
 		} finally {
-			IOUtils.closeQuietly(os);
+			IOUtils.closeQuietly(osw);
 		}
 
 	}
@@ -144,5 +186,32 @@ public class JsonExporter extends JCasFileWriter_ImplBase {
 		}
 
 		return object;
+	}
+
+	@Override
+	public void collectionProcessComplete() throws AnalysisEngineProcessException {
+		if (collectionFilename == null)
+			return;
+		FileWriter fw = null;
+		try {
+			fw = new FileWriter(
+					new File(outputDirectory, collectionFilename + (javascriptVariableName != null ? ".js" : ".json")));
+			fw.write(javascriptVariableName);
+			fw.write(" = new Array();\n");
+			int i = 0;
+			for (JSONObject obj : collectedObjects) {
+				fw.write(javascriptVariableName);
+				fw.write("[");
+				fw.write(String.valueOf(i++));
+				fw.write("] = ");
+				fw.write(obj.toString());
+				fw.write("\n");
+			}
+			fw.flush();
+		} catch (IOException e) {
+
+		} finally {
+			IOUtils.closeQuietly(fw);
+		}
 	}
 }

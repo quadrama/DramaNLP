@@ -114,6 +114,7 @@ public class DramaUtil {
 		for (String s : title.split(" ")) {
 			b.append(s.charAt(0));
 		}
+		b.append("_");
 		b.append(JCasUtil.selectSingle(jcas, Drama.class).getDocumentId());
 		return b.toString();
 	}
