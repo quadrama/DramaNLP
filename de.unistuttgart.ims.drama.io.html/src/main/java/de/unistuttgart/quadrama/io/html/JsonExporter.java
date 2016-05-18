@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.compress.utils.IOUtils;
+import org.apache.commons.math3.util.Pair;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.Feature;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
@@ -19,7 +20,7 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.json.JSONObject;
 
-import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Lemma;
+import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.unistuttgart.ims.commons.Counter;
 import de.unistuttgart.ims.drama.api.Act;
 import de.unistuttgart.ims.drama.api.ActHeading;
@@ -54,7 +55,7 @@ public class JsonExporter extends AbstractDramaConsumer {
 
 	@Override
 	public void process(JCas aJCas) throws AnalysisEngineProcessException {
-		Map<Figure, Counter<String>> freq = new HashMap<Figure, Counter<String>>();
+		Map<Figure, Counter<Pair<String, String>>> freq = new HashMap<Figure, Counter<Pair<String, String>>>();
 		List<Figure> figureList = new ArrayList<Figure>();
 		Map<Figure, JSONObject> figureObjects = new HashMap<Figure, JSONObject>();
 
@@ -75,13 +76,16 @@ public class JsonExporter extends AbstractDramaConsumer {
 			json.append("figures", fObj);
 			figureList.add(figure);
 			figureObjects.put(figure, fObj);
-			int fIndex = json.getJSONArray("figures").length();
+			int fIndex = json.getJSONArray("figures").length() - 1;
 			for (FigureType ftype : DramaUtil.getAllFigureTypes(figure)) {
 				if (figureTypes.optJSONObject(ftype.getTypeClass()) == null)
 					figureTypes.put(ftype.getTypeClass(), new JSONObject());
 				figureTypes.getJSONObject(ftype.getTypeClass()).append(ftype.getTypeValue(), fIndex);
 			}
-			freq.put(figure, new Counter<String>());
+			if (figureTypes.optJSONObject("All") == null)
+				figureTypes.put("All", new JSONObject());
+			figureTypes.getJSONObject("All").append("all", fIndex);
+			freq.put(figure, new Counter<Pair<String, String>>());
 
 		}
 		json.put("ftypes", figureTypes);
@@ -129,8 +133,9 @@ public class JsonExporter extends AbstractDramaConsumer {
 				obj.append("s", sObj);
 
 				// word frequencies
-				for (Lemma lemma : JCasUtil.selectCovered(Lemma.class, speech)) {
-					freq.get(f).add(lemma.getValue());
+				for (Token lemma : JCasUtil.selectCovered(Token.class, speech)) {
+					freq.get(f).add(new Pair<String, String>(lemma.getLemma().getValue(),
+							mapPosTag(lemma.getPos().getPosValue())));
 				}
 			}
 			json.append("utt", obj);
@@ -140,11 +145,12 @@ public class JsonExporter extends AbstractDramaConsumer {
 		for (Figure figure : freq.keySet()) {
 			int figureIndex = figureList.indexOf(figure);
 			JSONObject arr = new JSONObject();
-			for (String s : freq.get(figure).keySet()) {
+			for (Pair<String, String> s : freq.get(figure).keySet()) {
 				JSONObject termObj = new JSONObject();
-				termObj.put("w", s);
+				termObj.put("w", s.getFirst());
 				termObj.put("c", freq.get(figure).get(s));
-				arr.put(s, termObj);
+				termObj.put("pos", s.getSecond());
+				arr.put(s.getFirst() + "." + s.getSecond(), termObj);
 			}
 			json.getJSONArray("figures").getJSONObject(figureIndex).put("freq", arr);
 		}
@@ -213,5 +219,11 @@ public class JsonExporter extends AbstractDramaConsumer {
 		} finally {
 			IOUtils.closeQuietly(fw);
 		}
+	}
+
+	public static String mapPosTag(String s) {
+		if (s.startsWith("A"))
+			return s.substring(0, 3);
+		return s.substring(0, 2);
 	}
 }
