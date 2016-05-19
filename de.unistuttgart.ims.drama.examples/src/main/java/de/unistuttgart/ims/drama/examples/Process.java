@@ -12,6 +12,7 @@ import org.apache.uima.resource.ResourceInitializationException;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.tudarmstadt.ukp.dkpro.core.languagetool.LanguageToolSegmenter;
+import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordNamedEntityRecognizer;
 import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordPosTagger;
 import de.unistuttgart.quadrama.core.DramaSpeechSegmenter;
 import de.unistuttgart.quadrama.core.FigureMentionDetection;
@@ -35,7 +36,7 @@ public class Process {
 						createEngineDescription(SpeakerIdentifier.class, SpeakerIdentifier.PARAM_CREATE_SPEAKER_FIGURE,
 								true),
 						createEngineDescription(StanfordPosTagger.class),
-						// createEngineDescription(StanfordNamedEntityRecognizer.class),
+						createEngineDescription(StanfordNamedEntityRecognizer.class),
 						createEngineDescription(FigureSpeechStatistics.class),
 						createEngineDescription(FigureMentionDetection.class),
 						/*
@@ -47,7 +48,6 @@ public class Process {
 						 */
 						createEngineDescription(NetworkExtractor.class, NetworkExtractor.PARAM_VIEW_NAME,
 								"MentionNetwork", NetworkExtractor.PARAM_NETWORK_TYPE, "MentionNetwork"),
-
 						/*
 						 * print xmi
 						 */
