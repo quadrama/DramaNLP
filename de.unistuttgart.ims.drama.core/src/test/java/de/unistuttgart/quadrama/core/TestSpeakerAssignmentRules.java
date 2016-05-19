@@ -15,22 +15,14 @@ import de.unistuttgart.ims.drama.api.Speaker;
 public class TestSpeakerAssignmentRules {
 	@Test
 	public void testRules() throws Exception {
-		org.apache.uima.fit.pipeline.JCasIterator iter =
-				SimplePipeline
+		org.apache.uima.fit.pipeline.JCasIterator iter = SimplePipeline
 				.iteratePipeline(
-						CollectionReaderFactory
-										.createReaderDescription(
-												XmiReader.class,
-												XmiReader.PARAM_SOURCE_LOCATION,
-												"src/test/resources/SpeakerAssignmentRules/*.xmi"),
-								AnalysisEngineFactory
-										.createEngineDescription(FigureReferenceAnnotator.class),
-								AnalysisEngineFactory
-								.createEngineDescription(
-										SpeakerAssignmentRules.class,
-										SpeakerAssignmentRules.PARAM_RULE_FILE,
-										"src/test/resources/SpeakerAssignmentRules/speaker-assignment-mapping.csv"))
-										.iterator();
+						CollectionReaderFactory.createReaderDescription(XmiReader.class,
+								XmiReader.PARAM_SOURCE_LOCATION, "src/test/resources/SpeakerAssignmentRules/*.xmi"),
+						AnalysisEngineFactory.createEngineDescription(FigureReferenceAnnotator.class),
+						AnalysisEngineFactory.createEngineDescription(SpeakerAssignmentRules.class,
+								SpeakerAssignmentRules.PARAM_RULE_FILE, "src/test/resources/SpeakerAssignmentRules/speaker-assignment-mapping.tsv"))
+				.iterator();
 		if (iter.hasNext()) {
 			JCas jcas = iter.next();
 			for (Speaker speaker : JCasUtil.select(jcas, Speaker.class)) {
