@@ -23,8 +23,43 @@ import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Figure;
 import de.unistuttgart.ims.drama.api.Speaker;
 
-@TypeCapability(inputs = { "de.unistuttgart.quadrama.api.Figure:Reference" },
-outputs = { "de.unistuttgart.quadrama.api.Speaker:Figure" })
+/**
+ * This component reads manually created assignment rules from a CSV file. The
+ * assignment rules must contain lines that look like this:
+ * <p>
+ * <code>
+ * DRAMAID\tSPEAKER\tFIGURE_REFERENCE
+ * </code>
+ *
+ * </p>
+ * <table>
+ * <tr>
+ * <th>DRAMAID</th>
+ * <td>The document id of the drama. If the textgrid reader has been used, this
+ * is the 6 to 7 character string similar to <code>vndf.0</code>.</td>
+ * </tr>
+ * <tr>
+ * <th>SPEAKER</th>
+ * <td>The speaker entry within the drama text without punctuation. In TEI, this
+ * is the string enclosed in &lt;speaker&gt; tags.</td>
+ * </tr>
+ * <tr>
+ * <th>FIGURE_REFERENCE</th>
+ * <td>This is the entry from the dramatis personae table, up to the first
+ * punctuation string. E.g., the FIGURE_REFERENCE for "Romeo, Montagues Sohn"
+ * would be "Romeo".</td>
+ * </tr>
+ * </table>
+ * An example for such a speaker assignment file can be found <a href=
+ * "https://raw.githubusercontent.com/quadrama/DramaNLP/master/de.unistuttgart.ims.drama.core/src/test/resources/SpeakerAssignmentRules/speaker-assignment-mapping.tsv">
+ * online</a> or in this package unter
+ * <code>src/test/resources/SpakerAssignmentRules</code>.
+ * 
+ * @author reiterns
+ *
+ */
+@TypeCapability(inputs = { "de.unistuttgart.quadrama.api.Figure:Reference" }, outputs = {
+		"de.unistuttgart.quadrama.api.Speaker:Figure" })
 public class SpeakerAssignmentRules extends JCasAnnotator_ImplBase {
 
 	public static final String PARAM_RULE_FILE = "Rule File";
@@ -32,18 +67,14 @@ public class SpeakerAssignmentRules extends JCasAnnotator_ImplBase {
 	@ConfigurationParameter(name = PARAM_RULE_FILE)
 	String ruleFilename;
 
-	Map<String, Map<String, String>> ruleMap =
-			new HashMap<String, Map<String, String>>();
+	Map<String, Map<String, String>> ruleMap = new HashMap<String, Map<String, String>>();
 
 	@Override
-	public void initialize(final UimaContext context)
-			throws ResourceInitializationException {
+	public void initialize(final UimaContext context) throws ResourceInitializationException {
 		super.initialize(context);
 		CSVParser p = null;
 		try {
-			p =
-					new CSVParser(new FileReader(new File(ruleFilename)),
-							CSVFormat.TDF.withHeader((String) null));
+			p = new CSVParser(new FileReader(new File(ruleFilename)), CSVFormat.TDF.withHeader((String) null));
 			Iterator<CSVRecord> iter = p.iterator();
 			while (iter.hasNext()) {
 				CSVRecord rec = iter.next();
@@ -69,8 +100,7 @@ public class SpeakerAssignmentRules extends JCasAnnotator_ImplBase {
 			Map<String, String> myMap = ruleMap.get(tgId);
 			for (Speaker speaker : JCasUtil.select(jcas, Speaker.class)) {
 				if (myMap.containsKey(speaker.getCoveredText())) {
-					speaker.setFigure(referenceMap.get(myMap.get(speaker
-							.getCoveredText())));
+					speaker.setFigure(referenceMap.get(myMap.get(speaker.getCoveredText())));
 				}
 			}
 		}
