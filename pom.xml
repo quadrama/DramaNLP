@@ -2,18 +2,27 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<groupId>de.unistuttgart.ims</groupId>
 	<artifactId>de.unistuttgart.ims.drama</artifactId>
 	<version>0.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
-
 	<name>DramaNLP</name>
-	<url>https://github.com/nilsreiter/DramaNLP</url>
+	<url>https://github.com/quadrama/DramaNLP</url>
+	<description>Several component for processing dramatic texts (theatre plays) with Apache UIMA.</description>
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/quadrama/DramaNLP/issues</url>
+	</issueManagement>
+	<scm>
+		<url>https://github.com/quadrama/DramaNLP</url>
+		<connection>scm:git:git://github.com/quadrama/DramaNLP.git</connection>
+		<developerConnection>scm:git:git@github.com:quadrama/DramaNLP.git</developerConnection>
+	</scm>
 	<developers>
 		<developer>
 			<id>reiterns</id>
 			<name>Nils Reiter</name>
+			<url>https://github.com/nilsreiter</url>
 			<email>nils.reiter@ims.uni-stuttgart.de</email>
 		</developer>
 	</developers>
@@ -60,7 +69,6 @@
 			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 		</repository>
 	</distributionManagement>
-
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -104,15 +112,9 @@
 		<module>de.unistuttgart.ims.drama.io.gutenbergde</module>
 		<module>de.unistuttgart.ims.drama.core</module>
 		<module>de.unistuttgart.ims.drama.io.core</module>
-		
 		<module>de.unistuttgart.ims.drama.graph</module>
-		
-		
-		
 		<module>de.unistuttgart.ims.drama.io.tei.folger</module>
 		<module>de.unistuttgart.ims.drama.io.tei.textgrid</module>
-		
-		
 		<module>de.unistuttgart.ims.drama.examples</module>
 		<module>de.unistuttgart.ims.drama.util</module>
 	</modules>
