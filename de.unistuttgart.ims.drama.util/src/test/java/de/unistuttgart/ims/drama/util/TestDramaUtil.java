@@ -136,13 +136,13 @@ public class TestDramaUtil {
 		drama.setDocumentId("test");
 		AnnotationFactory.createAnnotation(jcas, 0, 1, Author.class).setName("No author");
 
-		assertEquals("Na_Tdb", DramaUtil.getDisplayId(jcas));
+		assertEquals("Na_Tdb_test", DramaUtil.getDisplayId(jcas));
 
 		drama.setDocumentTitle("The dog barks2");
-		assertEquals("Na_Tdb", DramaUtil.getDisplayId(jcas));
+		assertEquals("Na_Tdb_test", DramaUtil.getDisplayId(jcas));
 
 		drama.setDocumentTitle("Romeo und Julia");
-		assertEquals("Na_RuJ", DramaUtil.getDisplayId(jcas));
+		assertEquals("Na_RuJ_test", DramaUtil.getDisplayId(jcas));
 
 		drama.setDocumentTitle("");
 		assertEquals("test", DramaUtil.getDisplayId(jcas));
