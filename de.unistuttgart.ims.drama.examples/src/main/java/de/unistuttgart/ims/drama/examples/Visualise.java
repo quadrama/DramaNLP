@@ -19,7 +19,6 @@ import de.unistuttgart.quadrama.core.FigureReferenceAnnotator;
 import de.unistuttgart.quadrama.core.FigureSpeechStatistics;
 import de.unistuttgart.quadrama.core.SpeakerIdentifier;
 import de.unistuttgart.quadrama.graph.NetworkExtractor;
-import de.unistuttgart.quadrama.io.html.ConfigurationHTMLExporter;
 import de.unistuttgart.quadrama.io.tei.textgrid.TextgridTEIUrlReader;
 
 public class Visualise {
@@ -48,11 +47,7 @@ public class Visualise {
 						 */
 						createEngineDescription(NetworkExtractor.class, NetworkExtractor.PARAM_VIEW_NAME,
 								"MentionNetwork", NetworkExtractor.PARAM_NETWORK_TYPE, "MentionNetwork"),
-						/*
-						 * Export html view of configuration
-						 */
-						createEngineDescription(ConfigurationHTMLExporter.class,
-								ConfigurationHTMLExporter.PARAM_TARGET_LOCATION, "target/html/"),
+
 						/*
 						 * print xmi
 						 */
