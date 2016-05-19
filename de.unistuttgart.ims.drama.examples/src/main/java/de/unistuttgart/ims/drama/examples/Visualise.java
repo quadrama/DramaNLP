@@ -13,8 +13,6 @@ import org.apache.uima.resource.ResourceInitializationException;
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.tudarmstadt.ukp.dkpro.core.languagetool.LanguageToolSegmenter;
 import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordPosTagger;
-import de.unistuttgart.ims.drama.io.network.DotExporter;
-import de.unistuttgart.ims.drama.io.network.JsonExporter;
 import de.unistuttgart.quadrama.core.DramaSpeechSegmenter;
 import de.unistuttgart.quadrama.core.FigureMentionDetection;
 import de.unistuttgart.quadrama.core.FigureReferenceAnnotator;
@@ -58,13 +56,6 @@ public class Visualise {
 						/*
 						 * print xmi
 						 */
-						createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION, "target/xmi/"),
-						createEngineDescription(JsonExporter.class, JsonExporter.PARAM_VIEW_NAME, "MentionNetwork",
-								JsonExporter.PARAM_TARGET_LOCATION, "target/html",
-								JsonExporter.PARAM_JAVASCRIPT_VARIABLE, "graph"),
-						createEngineDescription(DotExporter.class, DotExporter.PARAM_VIEW_NAME, "MentionNetwork",
-								DotExporter.PARAM_TARGET_LOCATION, "target/net/mentions/"),
-						createEngineDescription(DotExporter.class, DotExporter.PARAM_VIEW_NAME, "Copresence",
-								DotExporter.PARAM_TARGET_LOCATION, "target/net/copresence/"));
+						createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION, "target/xmi/"));
 	}
 }
