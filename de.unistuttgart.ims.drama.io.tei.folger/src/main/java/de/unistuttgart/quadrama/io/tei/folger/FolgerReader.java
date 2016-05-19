@@ -15,15 +15,14 @@ import org.jsoup.nodes.TextNode;
 import org.jsoup.parser.Parser;
 
 import de.unistuttgart.ims.drama.api.Drama;
-import de.unistuttgart.quadrama.io.core.AbstractDramaFileReader;
+import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
 import de.unistuttgart.quadrama.io.core.Visitor;
 import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
 
-public class FolgerReader extends AbstractDramaFileReader {
+public class FolgerReader extends AbstractDramaUrlReader {
 
 	@Override
-	public void getNext(JCas jcas, InputStream file, Drama drama)
-			throws IOException, CollectionException {
+	public void getNext(JCas jcas, InputStream file, Drama drama) throws IOException, CollectionException {
 
 		getLogger().log(Level.INFO, "Now parsing XML document");
 		Document doc = Jsoup.parse(file, "UTF-8", "", Parser.xmlParser());
@@ -58,8 +57,7 @@ public class FolgerReader extends AbstractDramaFileReader {
 		public void tail(Node node, int depth) {
 			if (node.getClass().equals(Element.class)) {
 				Element elm = (Element) node;
-				HTMLAnnotation anno =
-						builder.add(beginMap.get(node), HTMLAnnotation.class);
+				HTMLAnnotation anno = builder.add(beginMap.get(node), HTMLAnnotation.class);
 				anno.setTag(elm.tagName());
 				anno.setId(elm.id());
 				if (elm.className().isEmpty())
@@ -67,8 +65,7 @@ public class FolgerReader extends AbstractDramaFileReader {
 				else
 					anno.setCls(elm.className());
 				annotationMap.put(elm.cssSelector(), anno);
-				if (elm.isBlock()
-						|| ArrayUtils.contains(blockElements, elm.tagName()))
+				if (elm.isBlock() || ArrayUtils.contains(blockElements, elm.tagName()))
 					builder.add("\n");
 
 			}
