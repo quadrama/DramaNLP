@@ -28,7 +28,7 @@ public class TestExtractSpeechByFigure {
 						"src/test/resources/*.xmi", XmiReader.PARAM_LENIENT, true),
 				AnalysisEngineFactory.createEngineDescription(ExtractSpeechByFigure.class,
 						ExtractSpeechByFigure.PARAM_OUTPUT_DIRECTORY, tdir.getAbsolutePath()));
-		File rdir = new File(tdir, "SW_RuJ");
+		File rdir = new File(tdir, "SW_RuJ_vndf.0");
 		assertTrue(rdir.exists());
 		assertTrue(rdir.isDirectory());
 		assertEquals(42, rdir.listFiles().length);
