@@ -5,7 +5,6 @@
     <artifactId>de.unistuttgart.ims.drama</artifactId>
     <version>0.3-SNAPSHOT</version>
   </parent>
-  <groupId>de.unistuttgart.ims.drama</groupId>
   <artifactId>de.unistuttgart.ims.drama.util</artifactId>
   <dependencies>
   	<dependency>
