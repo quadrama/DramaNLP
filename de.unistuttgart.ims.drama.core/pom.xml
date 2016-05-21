@@ -8,8 +8,6 @@
     <version>0.3-SNAPSHOT</version>
   </parent>
   <artifactId>de.unistuttgart.ims.drama.core</artifactId>
-  <name>de.unistuttgart.ims.drama.core</name>
-  <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>

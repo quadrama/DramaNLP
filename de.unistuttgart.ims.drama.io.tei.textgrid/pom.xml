@@ -6,7 +6,6 @@
     <version>0.3-SNAPSHOT</version>
   </parent>
   <artifactId>de.unistuttgart.ims.drama.io.tei.textgrid</artifactId>
-  <name>de.unistuttgart.ims.drama.io.textgridtei</name>
   <dependencies>
   	<dependency>
   		<groupId>junit</groupId>
