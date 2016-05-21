@@ -30,27 +30,34 @@ public class Process {
 		CollectionReaderDescription crd = CollectionReaderFactory.createReaderDescription(TextgridTEIUrlReader.class,
 				TextgridTEIUrlReader.PARAM_INPUT_DIRECTORY, "src/main/resources");
 
-		SimplePipeline
-				.runPipeline(crd, DramaSpeechSegmenter.getWrappedSegmenterDescription(LanguageToolSegmenter.class),
-						createEngineDescription(FigureReferenceAnnotator.class),
-						createEngineDescription(SpeakerIdentifier.class, SpeakerIdentifier.PARAM_CREATE_SPEAKER_FIGURE,
-								true),
-						createEngineDescription(StanfordPosTagger.class),
-						createEngineDescription(StanfordNamedEntityRecognizer.class),
-						createEngineDescription(FigureSpeechStatistics.class),
-						createEngineDescription(FigureMentionDetection.class),
-						/*
-						 * Extract copresence network
-						 */
-						createEngineDescription(NetworkExtractor.class),
-						/*
-						 * extract mention network
-						 */
-						createEngineDescription(NetworkExtractor.class, NetworkExtractor.PARAM_VIEW_NAME,
-								"MentionNetwork", NetworkExtractor.PARAM_NETWORK_TYPE, "MentionNetwork"),
-						/*
-						 * print xmi
-						 */
-						createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION, "target/xmi/"));
+		SimplePipeline.runPipeline(crd,
+				/*
+				 * Do segmentation.
+				 */
+				DramaSpeechSegmenter.getWrappedSegmenterDescription(LanguageToolSegmenter.class),
+				createEngineDescription(FigureReferenceAnnotator.class),
+				createEngineDescription(SpeakerIdentifier.class, SpeakerIdentifier.PARAM_CREATE_SPEAKER_FIGURE, true),
+				/*
+				 * standard NLP components. This works because dkpro only sees
+				 * tokens and sentences. The segmenter creates those only for
+				 * the figure speech (and not for stage directions)
+				 */
+				createEngineDescription(StanfordPosTagger.class),
+				createEngineDescription(StanfordNamedEntityRecognizer.class),
+				createEngineDescription(FigureSpeechStatistics.class),
+				createEngineDescription(FigureMentionDetection.class),
+				/*
+				 * Extract copresence network
+				 */
+				createEngineDescription(NetworkExtractor.class),
+				/*
+				 * extract mention network
+				 */
+				createEngineDescription(NetworkExtractor.class, NetworkExtractor.PARAM_VIEW_NAME, "MentionNetwork",
+						NetworkExtractor.PARAM_NETWORK_TYPE, "MentionNetwork"),
+				/*
+				 * print xmi
+				 */
+				createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION, "target/xmi/"));
 	}
 }
