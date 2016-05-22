@@ -1,5 +1,7 @@
 package de.unistuttgart.quadrama.core;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,11 +18,19 @@ public class FigureReferenceAnnotator extends JCasAnnotator_ImplBase {
 
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
+		Set<String> usedReferences = new HashSet<String>();
+
 		for (Figure figure : JCasUtil.select(jcas, Figure.class)) {
 			String s = figure.getCoveredText();
 			Matcher m = pattern.matcher(s);
 			if (m.find()) {
-				figure.setReference(s.substring(0, m.start()));
+				String refString = s.substring(0, m.start());
+				if (usedReferences.contains(refString)) {
+					figure.setReference(s);
+				} else {
+					usedReferences.add(refString);
+					figure.setReference(refString);
+				}
 			} else {
 				figure.setReference(s);
 			}
