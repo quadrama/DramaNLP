@@ -58,8 +58,8 @@ import de.unistuttgart.ims.drama.api.Speaker;
  * @author reiterns
  *
  */
-@TypeCapability(inputs = { "de.unistuttgart.quadrama.api.Figure:Reference" }, outputs = {
-		"de.unistuttgart.quadrama.api.Speaker:Figure" })
+@TypeCapability(inputs = { "de.unistuttgart.quadrama.api.Figure", "de.unistuttgart.quadrama.api.Figure:Reference",
+		"de.unistuttgart.quadrama.api.Speaker" }, outputs = { "de.unistuttgart.quadrama.api.Speaker:Figure" })
 public class SpeakerAssignmentRules extends JCasAnnotator_ImplBase {
 
 	public static final String PARAM_RULE_FILE = "Rule File";
