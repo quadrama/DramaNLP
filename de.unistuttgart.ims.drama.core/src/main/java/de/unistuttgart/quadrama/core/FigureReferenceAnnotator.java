@@ -32,7 +32,7 @@ public class FigureReferenceAnnotator extends JCasAnnotator_ImplBase {
 				if (usedReferences.contains(refString)) {
 					figure.setReference(s);
 					getLogger().warn(DocumentMetaData.get(jcas).getDocumentId()
-							+ " contains ambiguous reference string(s). Only asigned to the first occurrence.");
+							+ " contains ambiguous reference string(s). Only assigned to the first occurrence.");
 				} else {
 					usedReferences.add(refString);
 					figure.setReference(refString);
