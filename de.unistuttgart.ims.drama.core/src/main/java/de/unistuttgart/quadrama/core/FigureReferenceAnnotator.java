@@ -11,6 +11,7 @@ import org.apache.uima.fit.descriptor.TypeCapability;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
+import de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData;
 import de.unistuttgart.ims.drama.api.Figure;
 
 @TypeCapability(inputs = { "de.unistuttgart.ims.drama.api.Figure" }, outputs = {
@@ -30,6 +31,8 @@ public class FigureReferenceAnnotator extends JCasAnnotator_ImplBase {
 				String refString = s.substring(0, m.start());
 				if (usedReferences.contains(refString)) {
 					figure.setReference(s);
+					getLogger().warn(DocumentMetaData.get(jcas).getDocumentId()
+							+ " contains ambiguous reference string(s). Only asigned to the first occurrence.");
 				} else {
 					usedReferences.add(refString);
 					figure.setReference(refString);
