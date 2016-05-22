@@ -20,9 +20,9 @@ import de.unistuttgart.ims.drama.api.Figure;
 
 public class TestFigureReferenceAnnotator {
 	@Test
-	public void testFigureReferenceAnnotator() throws ResourceInitializationException {
+	public void testFigureReferenceAnnotator1() throws ResourceInitializationException {
 		CollectionReaderDescription reader = CollectionReaderFactory.createReaderDescription(XmiReader.class,
-				XmiReader.PARAM_SOURCE_LOCATION, "src/test/resources/FigureReferenceAnnotator/*.xmi");
+				XmiReader.PARAM_SOURCE_LOCATION, "src/test/resources/FigureReferenceAnnotator/rfxf.0.xmi");
 		AnalysisEngineDescription engine = AnalysisEngineFactory
 				.createEngineDescription(FigureReferenceAnnotator.class);
 		JCasIterator iterator = SimplePipeline.iteratePipeline(reader, engine).iterator();
@@ -32,6 +32,23 @@ public class TestFigureReferenceAnnotator {
 			for (Figure figure : JCasUtil.select(jcas, Figure.class)) {
 				assertNotNull(figure.getReference());
 				assertFalse(figure.getReference().contains(","));
+			}
+		}
+	}
+
+	@Test
+	public void testFigureReferenceAnnotator2() throws ResourceInitializationException {
+		CollectionReaderDescription reader = CollectionReaderFactory.createReaderDescription(XmiReader.class,
+				XmiReader.PARAM_SOURCE_LOCATION, "src/test/resources/FigureReferenceAnnotator/w3zd.0.xmi");
+		AnalysisEngineDescription engine = AnalysisEngineFactory
+				.createEngineDescription(FigureReferenceAnnotator.class);
+		JCasIterator iterator = SimplePipeline.iteratePipeline(reader, engine).iterator();
+		while (iterator.hasNext()) {
+			JCas jcas = iterator.next();
+			assertTrue(JCasUtil.exists(jcas, Figure.class));
+			for (Figure figure : JCasUtil.select(jcas, Figure.class)) {
+				assertNotNull(figure.getReference());
+				// assertFalse(figure.getReference().contains(","));
 			}
 		}
 	}
