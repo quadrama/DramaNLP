@@ -9,6 +9,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
+import org.apache.uima.fit.descriptor.TypeCapability;
 import org.apache.uima.fit.factory.AnnotationFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
@@ -18,10 +19,14 @@ import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.PR;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.unistuttgart.ims.drama.api.Figure;
 import de.unistuttgart.ims.drama.api.FigureMention;
-import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.Utterance;
+import de.unistuttgart.ims.drama.util.DramaUtil;
 
+@TypeCapability(inputs = { "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
+		"de.unistuttgart.ims.drama.api.Figure", "de.unistuttgart.ims.drama.api.Speech",
+		"de.unistuttgart.ims.drama.api.Speaker", "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.PR",
+		"de.unistuttgart.ims.drama.api.Utterance" }, outputs = { "de.unistuttgart.ims.drama.api.FigureMention" })
 public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 
 	Map<String, List<String>> firstPersonPronouns = new HashMap<String, List<String>>();
@@ -42,6 +47,8 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
 
+		// we create indices with figure names, figure reference strings and
+		// pronouns
 		Map<String, Figure> figureMap = new HashMap<String, Figure>();
 		for (Figure figure : JCasUtil.select(jcas, Figure.class)) {
 			figureMap.put(figure.getCoveredText(), figure);
@@ -51,11 +58,7 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 
 		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
 			Figure currentFigure = null;
-			try {
-				currentFigure = JCasUtil.selectCovered(jcas, Speaker.class, utterance).get(0).getFigure();
-			} catch (NullPointerException | IndexOutOfBoundsException e) {
-
-			}
+			currentFigure = DramaUtil.getFigure(utterance);
 			for (Speech speech : JCasUtil.selectCovered(jcas, Speech.class, utterance)) {
 				for (Token token : JCasUtil.selectCovered(Token.class, speech)) {
 					String surface = token.getCoveredText();
