@@ -2,6 +2,8 @@ package de.unistuttgart.quadrama.core;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -16,6 +18,7 @@ import org.apache.uima.jcas.JCas;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.unistuttgart.ims.drama.api.Figure;
+import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.Utterance;
 import de.unistuttgart.ims.drama.util.DramaUtil;
 
@@ -35,6 +38,12 @@ public class FigureSpeechStatistics extends JCasAnnotator_ImplBase {
 		for (Figure figure : JCasUtil.select(jcas, Figure.class)) {
 			spokenWords.put(figure, new SummaryStatistics());
 			types.put(figure, new HashSet<String>());
+
+			List<Token> figureTokens = new LinkedList<Token>();
+			for (Speech sp : DramaUtil.getSpeeches(jcas, figure)) {
+				figureTokens.addAll(JCasUtil.selectCovered(Token.class, sp));
+			}
+			figure.setTypeTokenRatio100(DramaUtil.ttr(figureTokens, 100, false));
 		}
 
 		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
@@ -66,7 +75,6 @@ public class FigureSpeechStatistics extends JCasAnnotator_ImplBase {
 				figure.setUtteranceLengthMax((int) ss.getMax());
 				figure.setUtteranceLengthStandardDeviation(ss.getStandardDeviation());
 				figure.setNumberOfWords((int) (ss.getSum()));
-				figure.setTypeTokenRatio100(types.size() / ss.getSum());
 
 			}
 			b.close();
