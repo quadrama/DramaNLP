@@ -20,5 +20,18 @@
   		<groupId>junit</groupId>
   		<artifactId>junit</artifactId>
   	</dependency>
+  	<dependency>
+  		<groupId>de.unistuttgart.ims</groupId>
+  		<artifactId>commons</artifactId>
+  		<version>0.1</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+  		<artifactId>
+  			de.tudarmstadt.ukp.dkpro.core.api.segmentation-asl
+  		</artifactId>
+  		<version>1.7.0</version>
+  		<scope>test</scope>
+  	</dependency>
   </dependencies>
 </project>

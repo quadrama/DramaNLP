@@ -12,6 +12,7 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 
+import de.unistuttgart.ims.commons.Counter;
 import de.unistuttgart.ims.drama.api.Author;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Figure;
@@ -117,5 +118,27 @@ public class DramaUtil {
 		b.append("_");
 		b.append(JCasUtil.selectSingle(jcas, Drama.class).getDocumentId());
 		return b.toString();
+	}
+
+	public static <T extends Annotation> double ttr(Collection<T> tokens, int window, boolean includeLastWindow) {
+		Counter<String> words = new Counter<String>();
+		double sum = 0.0;
+		double windows = 0;
+		int c = 0;
+		for (Annotation token : tokens) {
+			words.add(token.getCoveredText());
+			c++;
+			if (c > window) {
+				sum += (words.keySet().size() / (double) c);
+				words = new Counter<String>();
+				c = 0;
+				windows++;
+			}
+		}
+		if (includeLastWindow) {
+			sum += (words.keySet().size() / (double) c);
+			windows += c / (double) window;
+		}
+		return sum / windows;
 	}
 }
