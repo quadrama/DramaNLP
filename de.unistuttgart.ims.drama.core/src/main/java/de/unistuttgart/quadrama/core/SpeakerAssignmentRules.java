@@ -45,9 +45,14 @@ import de.unistuttgart.ims.drama.api.Speaker;
  * </tr>
  * <tr>
  * <th>FIGURE_REFERENCE</th>
- * <td>This is the entry from the dramatis personae table, up to the first
- * punctuation string. E.g., the FIGURE_REFERENCE for "Romeo, Montagues Sohn"
- * would be "Romeo".</td>
+ * <td>This is the entry from the dramatis personae table, in one of two
+ * variants:
+ * <ol>
+ * <li>up to the first punctuation string. E.g., the FIGURE_REFERENCE for
+ * "Romeo, Montagues Sohn" would be "Romeo"</li>
+ * <li>The entire string covered by the {@link Figure} annotation.</li>
+ * </ol>
+ * </td>
  * </tr>
  * </table>
  * An example for such a speaker assignment file can be found <a href=
@@ -58,8 +63,8 @@ import de.unistuttgart.ims.drama.api.Speaker;
  * @author reiterns
  *
  */
-@TypeCapability(inputs = { "de.unistuttgart.quadrama.api.Figure:Reference" }, outputs = {
-		"de.unistuttgart.quadrama.api.Speaker:Figure" })
+@TypeCapability(inputs = { "de.unistuttgart.quadrama.api.Figure", "de.unistuttgart.quadrama.api.Figure:Reference",
+		"de.unistuttgart.quadrama.api.Speaker" }, outputs = { "de.unistuttgart.quadrama.api.Speaker:Figure" })
 public class SpeakerAssignmentRules extends JCasAnnotator_ImplBase {
 
 	public static final String PARAM_RULE_FILE = "Rule File";
@@ -94,6 +99,7 @@ public class SpeakerAssignmentRules extends JCasAnnotator_ImplBase {
 		Map<String, Figure> referenceMap = new HashMap<String, Figure>();
 		for (Figure figure : JCasUtil.select(jcas, Figure.class)) {
 			referenceMap.put(figure.getReference(), figure);
+			referenceMap.put(figure.getCoveredText(), figure);
 		}
 		String tgId = JCasUtil.selectSingle(jcas, Drama.class).getDocumentId();
 		if (ruleMap.containsKey(tgId)) {
