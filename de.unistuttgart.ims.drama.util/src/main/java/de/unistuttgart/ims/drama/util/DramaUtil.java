@@ -129,14 +129,14 @@ public class DramaUtil {
 		for (Annotation token : tokens) {
 			words.add(token.getCoveredText());
 			c++;
-			if (c > windowSize) {
+			if (c >= windowSize) {
 				sum += (words.keySet().size() / (double) c);
 				words = new Counter<String>();
 				c = 0;
 				windows++;
 			}
 		}
-		if (includeLastWindow) {
+		if (includeLastWindow && c > 0) {
 			sum += (words.keySet().size() / (double) c);
 			windows += c / (double) windowSize;
 		} else if (windows == 0)
