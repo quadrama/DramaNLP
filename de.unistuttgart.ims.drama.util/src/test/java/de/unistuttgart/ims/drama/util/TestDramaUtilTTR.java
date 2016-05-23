@@ -43,5 +43,7 @@ public class TestDramaUtilTTR {
 		assertEquals(0.0, DramaUtil.ttr(JCasUtil.select(jcas, Token.class), tokens + 10, false), 1e-4);
 		assertEquals(0.5, DramaUtil.ttr(JCasUtil.select(jcas, Token.class), 4, false), 1e-4);
 		assertEquals(1 / 3.0, DramaUtil.ttr(JCasUtil.select(jcas, Token.class), 6, false), 1e-4);
+		assertEquals(0.2, DramaUtil.ttr(JCasUtil.select(jcas, Token.class), 10, false), 1e-4);
+
 	}
 }
