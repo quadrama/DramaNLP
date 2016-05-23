@@ -120,7 +120,8 @@ public class DramaUtil {
 		return b.toString();
 	}
 
-	public static <T extends Annotation> double ttr(Collection<T> tokens, int window, boolean includeLastWindow) {
+	public static <T extends Annotation> double ttr(final Collection<T> tokens, final int windowSize,
+			final boolean includeLastWindow) {
 		Counter<String> words = new Counter<String>();
 		double sum = 0.0;
 		double windows = 0;
@@ -128,7 +129,7 @@ public class DramaUtil {
 		for (Annotation token : tokens) {
 			words.add(token.getCoveredText());
 			c++;
-			if (c > window) {
+			if (c > windowSize) {
 				sum += (words.keySet().size() / (double) c);
 				words = new Counter<String>();
 				c = 0;
@@ -137,8 +138,9 @@ public class DramaUtil {
 		}
 		if (includeLastWindow) {
 			sum += (words.keySet().size() / (double) c);
-			windows += c / (double) window;
-		}
+			windows += c / (double) windowSize;
+		} else if (windows == 0)
+			return 0.0;
 		return sum / windows;
 	}
 }
