@@ -59,6 +59,10 @@ public class TestGutenbergDEReader {
 		assertTrue(JCasUtil.exists(jcas, FrontMatter.class));
 		assertTrue(JCasUtil.exists(jcas, MainMatter.class));
 		assertEquals(5, JCasUtil.select(jcas, Act.class).size());
+		// there are two scenes on
+		// http://gutenberg.spiegel.de/buch/romeo-und-juliette-2179/26, that's
+		// why 31 chapters on gutenberg.spiegel.de translate to 31 scenes (the
+		// first chapter being the front matter)
 		assertEquals(31, JCasUtil.select(jcas, Scene.class).size());
 
 		// 6th scene
