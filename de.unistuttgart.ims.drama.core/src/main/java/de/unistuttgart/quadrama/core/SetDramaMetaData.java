@@ -65,16 +65,17 @@ public class SetDramaMetaData extends JCasAnnotator_ImplBase {
 			drama.setDocumentTitle(dramaTitle);
 
 		drama.setTranslation(translation);
-		Translator translator;
-		if (JCasUtil.exists(jcas, Translator.class)) {
-			translator = JCasUtil.selectSingle(jcas, Translator.class);
-		} else {
-			translator = AnnotationFactory.createAnnotation(jcas, 0, 1, Translator.class);
+		if (translation) {
+			Translator translator;
+			if (JCasUtil.exists(jcas, Translator.class)) {
+				translator = JCasUtil.selectSingle(jcas, Translator.class);
+			} else {
+				translator = AnnotationFactory.createAnnotation(jcas, 0, 1, Translator.class);
+			}
+			if (translatorName != null)
+				translator.setName(translatorName);
+			if (translatorPnd != null)
+				translator.setPnd(translatorPnd);
 		}
-		if (translatorName != null)
-			translator.setName(translatorName);
-		if (translatorPnd != null)
-			translator.setPnd(translatorPnd);
-
 	}
 }

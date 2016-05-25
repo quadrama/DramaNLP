@@ -45,6 +45,7 @@ public class TestGutenbergDEReader {
 		JCasIterator iter = SimplePipeline.iteratePipeline(description, AnalysisEngineFactory
 				.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION, "target/doc")).iterator();
 		JCas jcas;
+		Scene scene;
 
 		jcas = iter.next();
 		// sanity check
@@ -58,10 +59,19 @@ public class TestGutenbergDEReader {
 		assertTrue(JCasUtil.exists(jcas, FrontMatter.class));
 		assertTrue(JCasUtil.exists(jcas, MainMatter.class));
 		assertEquals(5, JCasUtil.select(jcas, Act.class).size());
+		// there are two scenes on
+		// http://gutenberg.spiegel.de/buch/romeo-und-juliette-2179/26, that's
+		// why 31 chapters on gutenberg.spiegel.de translate to 31 scenes (the
+		// first chapter being the front matter)
 		assertEquals(31, JCasUtil.select(jcas, Scene.class).size());
 
+		// 6th scene
+		scene = JCasUtil.selectByIndex(jcas, Scene.class, 5);
+		assertEquals("oppeln.]", scene.getCoveredText().substring(scene.getCoveredText().length() - 8));
+		assertTrue(scene.getCoveredText().endsWith("verdoppeln.]"));
+
 		// Balkony scene
-		Scene scene = JCasUtil.selectByIndex(jcas, Scene.class, 7);
+		scene = JCasUtil.selectByIndex(jcas, Scene.class, 7);
 		Iterator<Utterance> utteranceIter = JCasUtil.selectCovered(Utterance.class, scene).iterator();
 		Utterance utter;
 		utter = utteranceIter.next();
