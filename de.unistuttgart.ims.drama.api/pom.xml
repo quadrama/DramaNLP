@@ -8,7 +8,7 @@
 	<parent>
 		<groupId>de.unistuttgart.ims</groupId>
 		<artifactId>de.unistuttgart.ims.drama</artifactId>
-		<version>0.2</version>
+		<version>0.2.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>de.unistuttgart.ims.drama.api</artifactId>
 	<name>de.unistuttgart.ims.drama.api</name>

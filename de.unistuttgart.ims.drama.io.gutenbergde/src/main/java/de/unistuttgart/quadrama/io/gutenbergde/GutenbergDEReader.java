@@ -96,6 +96,10 @@ public class GutenbergDEReader extends AbstractDramaUrlReader {
 				AnnotationFactory.createAnnotation(jcas, anno.getBegin(), anno.getEnd(), ActHeading.class);
 				if (currentActBegin >= 0) {
 					AnnotationFactory.createAnnotation(jcas, currentActBegin, anno.getBegin() - 1, Act.class);
+					if (currentSceneBegin >= 0) {
+						AnnotationFactory.createAnnotation(jcas, currentSceneBegin, anno.getBegin() - 1, Scene.class);
+						currentSceneBegin = -1;
+					}
 				}
 				currentActBegin = anno.getBegin();
 			}
@@ -143,7 +147,7 @@ public class GutenbergDEReader extends AbstractDramaUrlReader {
 				speech.removeFromIndexes();
 			} else
 				try {
-					AnnotationUtil.trimFront(speech, '.', ' ');
+					AnnotationUtil.trimBegin(speech, '.', ' ');
 				} catch (ArrayIndexOutOfBoundsException e) {
 					// ignore
 				}
