@@ -80,25 +80,22 @@ public class ReadDlinaMetadata extends JCasAnnotator_ImplBase {
 				}
 			}
 		}
-		if (d.getDlinaDatePremiere() != 0) {
-			d.setReferenceDate(d.getDlinaDatePremiere());
-			return;
+
+		d.setReferenceDate(2000);
+
+		int date = d.getDlinaDatePremiere();
+		if (date != 0 && date < d.getReferenceDate()) {
+			d.setReferenceDate(date);
 		}
-		if (d.getDlinaDatePrint() != 0 && d.getDlinaDateWritten() != 0) {
-			if (d.getDlinaDatePrint() <= d.getDlinaDateWritten() + 5)
-				d.setReferenceDate(d.getDlinaDatePrint());
-			else
-				d.setReferenceDate(d.getDlinaDateWritten());
-			return;
+		date = d.getDlinaDatePrint();
+		if (date != 0 && date < d.getReferenceDate()) {
+			d.setReferenceDate(date);
 		}
-		if (d.getDlinaDatePrint() != 0) {
-			d.setReferenceDate(d.getDlinaDatePrint());
-			return;
+		date = d.getDlinaDateWritten();
+		if (date != 0 && date < d.getReferenceDate()) {
+			d.setReferenceDate(date);
 		}
-		if (d.getDlinaDateWritten() != 0) {
-			d.setReferenceDate(d.getDlinaDateWritten());
-			return;
-		}
+		return;
 
 	}
 
