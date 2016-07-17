@@ -117,5 +117,6 @@
 		<module>de.unistuttgart.ims.drama.io.tei.textgrid</module>
 		<module>de.unistuttgart.ims.drama.examples</module>
 		<module>de.unistuttgart.ims.drama.util</module>
+		<module>de.unistuttgart.ims.drama.core.cr</module>
 	</modules>
 </project>
