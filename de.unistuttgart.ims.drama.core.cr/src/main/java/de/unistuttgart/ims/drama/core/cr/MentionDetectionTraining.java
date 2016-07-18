@@ -17,6 +17,7 @@ import com.lexicalscope.jewel.cli.CliFactory;
 import com.lexicalscope.jewel.cli.Option;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiReader;
+import de.unistuttgart.ims.drama.api.FigureMention;
 
 public class MentionDetectionTraining {
 
@@ -25,10 +26,12 @@ public class MentionDetectionTraining {
 
 		// a reader that loads the URIs of the training files
 		CollectionReaderDescription reader = CollectionReaderFactory.createReaderDescription(XmiReader.class,
-				XmiReader.PARAM_SOURCE_LOCATION, options.getTrainDirectory(), XmiReader.PARAM_LENIENT, true);
+				XmiReader.PARAM_SOURCE_LOCATION, options.getTrainDirectory() + "/*.xmi", XmiReader.PARAM_LENIENT, true);
 
 		// run the pipeline over the training corpus
 		SimplePipeline.runPipeline(reader,
+				createEngineDescription(TrainingAreaAnnotator.class, TrainingAreaAnnotator.PARAM_INSTANCE_CLASS,
+						FigureMention.class),
 				createEngineDescription(ClearTkMentionAnnotator.class, CleartkSequenceAnnotator.PARAM_IS_TRAINING, true,
 						DirectoryDataWriterFactory.PARAM_OUTPUT_DIRECTORY, options.getModelDirectory(),
 						DefaultSequenceDataWriterFactory.PARAM_DATA_WRITER_CLASS_NAME,

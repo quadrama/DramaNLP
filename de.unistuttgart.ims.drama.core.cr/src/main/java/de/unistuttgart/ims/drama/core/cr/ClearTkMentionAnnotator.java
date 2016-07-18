@@ -1,7 +1,9 @@
 package de.unistuttgart.ims.drama.core.cr;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -26,6 +28,7 @@ import org.cleartk.ml.feature.function.FeatureFunctionExtractor;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.unistuttgart.ims.drama.api.FigureMention;
+import de.unistuttgart.ims.entitydetection.api.TrainingArea;
 
 public class ClearTkMentionAnnotator extends CleartkSequenceAnnotator<String> {
 	FeatureExtractor1<Token> extractor;
@@ -60,8 +63,12 @@ public class ClearTkMentionAnnotator extends CleartkSequenceAnnotator<String> {
 
 	@Override
 	public void process(JCas jCas) throws AnalysisEngineProcessException {
+		Map<Sentence, Collection<TrainingArea>> index = JCasUtil.indexCovering(jCas, Sentence.class,
+				TrainingArea.class);
 
 		for (Sentence sentence : JCasUtil.select(jCas, Sentence.class)) {
+			if (!index.containsKey(sentence) || index.get(sentence).isEmpty())
+				continue;
 
 			// extract features for each token in the sentence
 			List<Token> tokens = JCasUtil.selectCovered(jCas, Token.class, sentence);
