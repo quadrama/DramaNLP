@@ -17,7 +17,9 @@ import com.lexicalscope.jewel.cli.CliFactory;
 import com.lexicalscope.jewel.cli.Option;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiReader;
+import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.unistuttgart.ims.drama.api.FigureMention;
+import de.unistuttgart.ims.drama.api.Speech;
 
 public class MentionDetectionTraining {
 
@@ -31,11 +33,12 @@ public class MentionDetectionTraining {
 		// run the pipeline over the training corpus
 		SimplePipeline.runPipeline(reader,
 				createEngineDescription(TrainingAreaAnnotator.class, TrainingAreaAnnotator.PARAM_INSTANCE_CLASS,
-						FigureMention.class),
+						FigureMention.class, TrainingAreaAnnotator.PARAM_CONTEXT_CLASS, Speech.class),
 				createEngineDescription(ClearTkMentionAnnotator.class, CleartkSequenceAnnotator.PARAM_IS_TRAINING, true,
 						DirectoryDataWriterFactory.PARAM_OUTPUT_DIRECTORY, options.getModelDirectory(),
 						DefaultSequenceDataWriterFactory.PARAM_DATA_WRITER_CLASS_NAME,
-						MalletCrfStringOutcomeDataWriter.class));
+						MalletCrfStringOutcomeDataWriter.class),
+				createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION, "target/"));
 
 		// train a Mallet CRF model on the training data
 		Train.main(options.getModelDirectory());
@@ -43,7 +46,7 @@ public class MentionDetectionTraining {
 
 	public interface Options {
 
-		@Option(longName = "train-dir", description = "The directory containing MASC-annotated files", defaultValue = "target/preprocessed/*.xmi")
+		@Option(longName = "train-dir", description = "The directory containing MASC-annotated files", defaultValue = "src/main/resources/*.xmi")
 		public File getTrainDirectory();
 
 		@Option(longName = "model-dir", description = "The directory where the model should be written", defaultValue = "target/")
