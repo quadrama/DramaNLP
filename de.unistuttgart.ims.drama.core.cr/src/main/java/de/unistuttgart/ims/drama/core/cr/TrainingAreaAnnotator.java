@@ -13,17 +13,21 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.apache.uima.resource.ResourceInitializationException;
 
-import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import de.unistuttgart.ims.entitydetection.api.TrainingArea;
 
 public class TrainingAreaAnnotator extends JCasAnnotator_ImplBase {
 
 	public static final String PARAM_INSTANCE_CLASS = "Instance class";
+	public static final String PARAM_CONTEXT_CLASS = "Context class";
 
 	@ConfigurationParameter(name = PARAM_INSTANCE_CLASS)
 	String instanceClassName;
 
+	@ConfigurationParameter(name = PARAM_CONTEXT_CLASS)
+	String contextClassName;
+
 	Class<? extends Annotation> instanceClass;
+	Class<? extends Annotation> contextClass;
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -34,29 +38,34 @@ public class TrainingAreaAnnotator extends JCasAnnotator_ImplBase {
 		} catch (ClassNotFoundException e) {
 			throw new ResourceInitializationException(e);
 		}
+		try {
+			contextClass = (Class<? extends Annotation>) Class.forName(contextClassName);
+		} catch (ClassNotFoundException e) {
+			throw new ResourceInitializationException(e);
+		}
 	}
 
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
-		Map<Sentence, Boolean> map = new HashMap<Sentence, Boolean>();
-		for (Sentence s : JCasUtil.select(jcas, Sentence.class)) {
+		Map<Annotation, Boolean> map = new HashMap<Annotation, Boolean>();
+		for (Annotation s : JCasUtil.select(jcas, Annotation.class)) {
 			map.put(s, false);
 		}
-		for (Sentence s : JCasUtil.select(jcas, Sentence.class)) {
+		for (Annotation s : JCasUtil.select(jcas, contextClass)) {
 			if (JCasUtil.selectCovered(instanceClass, s).size() > 0) {
 				map.put(s, true);
-				for (Sentence s1 : JCasUtil.selectPreceding(Sentence.class, s, 3)) {
+				for (Annotation s1 : JCasUtil.selectPreceding(Annotation.class, s, 3)) {
 					map.put(s1, true);
 				}
-				for (Sentence s2 : JCasUtil.selectFollowing(Sentence.class, s, 3)) {
+				for (Annotation s2 : JCasUtil.selectFollowing(Annotation.class, s, 3)) {
 					map.put(s2, true);
 				}
 			}
 		}
 
 		int begin = -1;
-		Sentence lastSentence = null;
-		for (Sentence s : map.keySet()) {
+		Annotation lastSentence = null;
+		for (Annotation s : map.keySet()) {
 			if (map.get(s) && begin < 0) {
 				begin = s.getBegin();
 			} else if (!map.get(s) && begin >= 0) {
