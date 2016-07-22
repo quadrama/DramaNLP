@@ -46,7 +46,7 @@ public class MentionDetectionTraining {
 
 	public interface Options {
 
-		@Option(longName = "train-dir", description = "The directory containing MASC-annotated files", defaultValue = "src/main/resources/*.xmi")
+		@Option(longName = "train-dir", description = "The directory containing MASC-annotated files", defaultValue = "src/main/resources/training/")
 		public File getTrainDirectory();
 
 		@Option(longName = "model-dir", description = "The directory where the model should be written", defaultValue = "target/")
