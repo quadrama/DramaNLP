@@ -15,6 +15,7 @@ import org.apache.uima.resource.ResourceInitializationException;
 
 import de.unistuttgart.ims.entitydetection.api.TrainingArea;
 
+@Deprecated
 public class TrainingAreaAnnotator extends JCasAnnotator_ImplBase {
 
 	public static final String PARAM_INSTANCE_CLASS = "Instance class";

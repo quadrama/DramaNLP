@@ -20,6 +20,8 @@ import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiReader;
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.unistuttgart.ims.drama.api.FigureMention;
 import de.unistuttgart.ims.drama.api.Speech;
+import de.unistuttgart.ims.entitydetection.api.TrainingArea;
+import de.unistuttgart.ims.uimautil.ContextWindowAnnotator;
 
 public class MentionDetectionTraining {
 
@@ -32,8 +34,9 @@ public class MentionDetectionTraining {
 
 		// run the pipeline over the training corpus
 		SimplePipeline.runPipeline(reader,
-				createEngineDescription(TrainingAreaAnnotator.class, TrainingAreaAnnotator.PARAM_INSTANCE_CLASS,
-						FigureMention.class, TrainingAreaAnnotator.PARAM_CONTEXT_CLASS, Speech.class),
+				createEngineDescription(ContextWindowAnnotator.class, ContextWindowAnnotator.PARAM_BASE_ANNOTATION,
+						FigureMention.class, ContextWindowAnnotator.PARAM_CONTEXT_CLASS, Speech.class,
+						ContextWindowAnnotator.PARAM_TARGET_ANNOTATION, TrainingArea.class),
 				createEngineDescription(ClearTkMentionAnnotator.class, CleartkSequenceAnnotator.PARAM_IS_TRAINING, true,
 						DirectoryDataWriterFactory.PARAM_OUTPUT_DIRECTORY, options.getModelDirectory(),
 						DefaultSequenceDataWriterFactory.PARAM_DATA_WRITER_CLASS_NAME,

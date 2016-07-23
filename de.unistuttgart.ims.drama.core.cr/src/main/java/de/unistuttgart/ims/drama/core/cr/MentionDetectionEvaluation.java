@@ -1,5 +1,7 @@
 package de.unistuttgart.ims.drama.core.cr;
 
+import static org.apache.uima.fit.factory.AnalysisEngineFactory.createEngineDescription;
+
 import java.io.File;
 import java.util.Arrays;
 import java.util.Collection;
@@ -32,14 +34,16 @@ import com.lexicalscope.jewel.cli.Option;
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiReader;
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.unistuttgart.ims.drama.api.FigureMention;
+import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.entitydetection.api.TrainingArea;
 import de.unistuttgart.ims.uimautil.ClearAnnotation;
+import de.unistuttgart.ims.uimautil.ContextWindowAnnotator;
 
 public class MentionDetectionEvaluation extends Evaluation_ImplBase<File, AnnotationStatistics<String>> {
 
 	public interface Options {
 		@Option(longName = "train-dir", description = "Specify the directory containing the training documents.  This is used for cross-validation and for training in a holdout set evaluator. "
-				+ "When we run this example we point to a directory containing training data from the MASC-1.0.3 corpus - i.e. a directory called 'MASC-1.0.3/data/written'", defaultValue = "target/preprocessed")
+				+ "When we run this example we point to a directory containing training data from the MASC-1.0.3 corpus - i.e. a directory called 'MASC-1.0.3/data/written'", defaultValue = "src/main/resources/training")
 		public File getTrainDirectory();
 
 		@Option(longName = "models-dir", description = "specify the directory in which to write out the trained model files", defaultValue = "target/models")
@@ -79,8 +83,10 @@ public class MentionDetectionEvaluation extends Evaluation_ImplBase<File, Annota
 		// assemble the training pipeline
 		AggregateBuilder aggregate = new AggregateBuilder();
 
-		aggregate.add(AnalysisEngineFactory.createEngineDescription(TrainingAreaAnnotator.class,
-				TrainingAreaAnnotator.PARAM_INSTANCE_CLASS, FigureMention.class));
+		aggregate
+				.add(createEngineDescription(ContextWindowAnnotator.class, ContextWindowAnnotator.PARAM_BASE_ANNOTATION,
+						FigureMention.class, ContextWindowAnnotator.PARAM_CONTEXT_CLASS, Speech.class,
+						ContextWindowAnnotator.PARAM_TARGET_ANNOTATION, TrainingArea.class));
 		// our NamedEntityChunker annotator, configured to write Mallet CRF
 		// training data
 		aggregate.add(AnalysisEngineFactory.createEngineDescription(ClearTkMentionAnnotator.class,
