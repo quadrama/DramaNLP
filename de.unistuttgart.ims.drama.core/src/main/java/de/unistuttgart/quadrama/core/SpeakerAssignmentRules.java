@@ -1,7 +1,8 @@
 package de.unistuttgart.quadrama.core;
 
-import java.io.File;
-import java.io.FileReader;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -67,10 +68,10 @@ import de.unistuttgart.ims.drama.api.Speaker;
 		"de.unistuttgart.quadrama.api.Speaker" }, outputs = { "de.unistuttgart.quadrama.api.Speaker:Figure" })
 public class SpeakerAssignmentRules extends JCasAnnotator_ImplBase {
 
-	public static final String PARAM_RULE_FILE = "Rule File";
+	public static final String PARAM_RULE_FILE_URL = "Rule File";
 
-	@ConfigurationParameter(name = PARAM_RULE_FILE)
-	String ruleFilename;
+	@ConfigurationParameter(name = PARAM_RULE_FILE_URL)
+	String ruleFileUrlString;
 
 	Map<String, Map<String, String>> ruleMap = new HashMap<String, Map<String, String>>();
 
@@ -78,8 +79,15 @@ public class SpeakerAssignmentRules extends JCasAnnotator_ImplBase {
 	public void initialize(final UimaContext context) throws ResourceInitializationException {
 		super.initialize(context);
 		CSVParser p = null;
+		URL ruleFileUrl = null;
 		try {
-			p = new CSVParser(new FileReader(new File(ruleFilename)), CSVFormat.TDF.withHeader((String) null));
+			ruleFileUrl = new URL(ruleFileUrlString);
+		} catch (MalformedURLException e1) {
+			throw new ResourceInitializationException(e1);
+		}
+
+		try {
+			p = new CSVParser(new InputStreamReader(ruleFileUrl.openStream()), CSVFormat.TDF.withHeader((String) null));
 			Iterator<CSVRecord> iter = p.iterator();
 			while (iter.hasNext()) {
 				CSVRecord rec = iter.next();
