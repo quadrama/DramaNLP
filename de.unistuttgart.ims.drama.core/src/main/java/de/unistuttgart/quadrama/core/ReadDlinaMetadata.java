@@ -10,6 +10,7 @@ import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
+import org.apache.uima.fit.descriptor.TypeCapability;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
@@ -20,12 +21,33 @@ import nu.xom.Document;
 import nu.xom.Element;
 import nu.xom.Elements;
 
+/**
+ * This component reads meta data provided by the dlina project. To use it,
+ * please clone the <a href="https://github.com/dlina/project/">dlina
+ * repository</a> and provide a path to the <code>data/zwischenformat</code>
+ * directory. This component then reads the xml files and copies the dates.
+ * 
+ * The component has been tested with revision <a href=
+ * "https://github.com/dlina/project/tree/b5c565092e5a3c84997daae4d34a3026014b64b4">
+ * b5c5650</a>.
+ * 
+ * A clone of the project can be found
+ * <a href="https://github.com/quadrama/dlina-project-fork">here</a>, if the
+ * original project gets removed.
+ * 
+ * @author reiterns
+ *
+ */
+@TypeCapability(inputs = { "de.unistuttgart.ims.drama.api.Drama" }, outputs = {
+		"de.unistuttgart.ims.drama.api.Drama:DlinaDateWritten", "de.unistuttgart.ims.drama.api.Drama:DlinaDatePrint",
+		"de.unistuttgart.ims.drama.api.Drama:DlinaDatePremiere" })
 public class ReadDlinaMetadata extends JCasAnnotator_ImplBase {
 
 	public static final String PARAM_DLINA_DIRECTORY = "Dlina Directory";
 
 	@ConfigurationParameter(name = PARAM_DLINA_DIRECTORY)
 	String dlinaDirectoryName;
+
 	File dlinaDirectory;
 
 	Map<String, Document> fileIndex = new HashMap<String, Document>();
@@ -79,21 +101,6 @@ public class ReadDlinaMetadata extends JCasAnnotator_ImplBase {
 					d.setDlinaDatePremiere(Integer.valueOf(whenAttVal));
 				}
 			}
-		}
-
-		d.setReferenceDate(2000);
-
-		int date = d.getDlinaDatePremiere();
-		if (date != 0 && date < d.getReferenceDate()) {
-			d.setReferenceDate(date);
-		}
-		date = d.getDlinaDatePrint();
-		if (date != 0 && date < d.getReferenceDate()) {
-			d.setReferenceDate(date);
-		}
-		date = d.getDlinaDateWritten();
-		if (date != 0 && date < d.getReferenceDate()) {
-			d.setReferenceDate(date);
 		}
 		return;
 
