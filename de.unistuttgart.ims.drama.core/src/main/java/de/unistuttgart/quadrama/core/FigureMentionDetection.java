@@ -1,6 +1,7 @@
 package de.unistuttgart.quadrama.core;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,7 +38,7 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 
 		try {
 			firstPersonPronouns.put("de",
-					IOUtils.readLines(getClass().getResourceAsStream("/pronouns/de/person1.csv")));
+					IOUtils.readLines(getClass().getResourceAsStream("/pronouns/de/person1-sg.csv")));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -57,25 +58,25 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 		List<String> pronouns = firstPersonPronouns.get(jcas.getDocumentLanguage());
 
 		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
-			Figure currentFigure = null;
-			currentFigure = DramaUtil.getFirstFigure(utterance);
-			for (Speech speech : JCasUtil.selectCovered(jcas, Speech.class, utterance)) {
-				for (Token token : JCasUtil.selectCovered(Token.class, speech)) {
-					String surface = token.getCoveredText();
-					if (figureMap.containsKey(surface)) {
-						FigureMention fm = AnnotationFactory.createAnnotation(jcas, token.getBegin(), token.getEnd(),
-								FigureMention.class);
-						fm.setFigure(figureMap.get(surface));
-					}
-				}
-				if (currentFigure != null)
-					for (PR pronoun : JCasUtil.selectCovered(jcas, PR.class, speech)) {
-						if (pronouns.contains(pronoun.getCoveredText())) {
-							AnnotationFactory
-									.createAnnotation(jcas, pronoun.getBegin(), pronoun.getEnd(), FigureMention.class)
-									.setFigure(currentFigure);
+			Collection<Figure> figures = DramaUtil.getFigures(utterance);
+			for (Figure currentFigure : figures) {
+				for (Speech speech : JCasUtil.selectCovered(jcas, Speech.class, utterance)) {
+					for (Token token : JCasUtil.selectCovered(Token.class, speech)) {
+						String surface = token.getCoveredText();
+						if (figureMap.containsKey(surface)) {
+							FigureMention fm = AnnotationFactory.createAnnotation(jcas, token.getBegin(),
+									token.getEnd(), FigureMention.class);
+							fm.setFigure(figureMap.get(surface));
 						}
 					}
+					if (figures.size() <= 1)
+						for (PR pronoun : JCasUtil.selectCovered(jcas, PR.class, speech)) {
+							if (pronouns.contains(pronoun.getCoveredText())) {
+								AnnotationFactory.createAnnotation(jcas, pronoun.getBegin(), pronoun.getEnd(),
+										FigureMention.class).setFigure(currentFigure);
+							}
+						}
+				}
 			}
 		}
 
