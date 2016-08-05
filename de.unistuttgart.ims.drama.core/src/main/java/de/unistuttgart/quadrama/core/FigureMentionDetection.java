@@ -1,6 +1,7 @@
 package de.unistuttgart.quadrama.core;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -37,8 +38,8 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 		super.initialize(context);
 
 		try {
-			firstPersonPronouns.put("de",
-					IOUtils.readLines(getClass().getResourceAsStream("/pronouns/de/person1-sg.csv")));
+			firstPersonPronouns.put("de", IOUtils.readLines(
+					getClass().getResourceAsStream("/pronouns/de/person1-sg.csv"), Charset.forName("UTF-8")));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
