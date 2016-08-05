@@ -7,8 +7,6 @@ This project collects a number of UIMA components to process dramatic texts. We 
 ## Usage
 The module `de.unistuttgart.ims.drama.examples` contains several classes with main methods to illustrate how to use the components. 
 
-### Visualise.main()
-Reads a list of urls from a file (the urls point to textgrid TEI XML documents), processes them and prints out UIMA XMI files, to be found in `target/`. The XMI files contain the drama text and all annotations.
 
 ## Components
 
@@ -29,6 +27,3 @@ Components that allow processing of dramatic texts. We make use of standard dkpr
 `DramaSpeechSegmenter.getWrappedSegmenterDescription(Class<? extends AnalysisComponent> compClass)` can be used
 to run a dkpro segmenter (for creating token and sentence annotations). Following dkpro components only rely on these annotations and can be used directly (as token and sentence annotations get projected into the drama text.
 Stage directions will not be analysed at the moment.
-
-### de.unistuttgart.ims.drama.graph
-Components to extract different kinds of networks from the text

@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.unistuttgart.ims</groupId>
 	<artifactId>de.unistuttgart.ims.drama</artifactId>
-	<version>0.2.1</version>
+	<version>0.3.0</version>
 	<packaging>pom</packaging>
 	<name>DramaNLP</name>
 	<url>https://github.com/quadrama/DramaNLP</url>
@@ -90,7 +90,12 @@
 			<dependency>
 				<groupId>de.unistuttgart.ims</groupId>
 				<artifactId>uimautil</artifactId>
-				<version>0.4.5</version>
+				<version>0.6.3</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>2.5</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

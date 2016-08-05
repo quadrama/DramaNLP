@@ -1,7 +1,8 @@
 package de.unistuttgart.quadrama.core;
 
-import java.io.File;
-import java.io.FileReader;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -45,9 +46,14 @@ import de.unistuttgart.ims.drama.api.Speaker;
  * </tr>
  * <tr>
  * <th>FIGURE_REFERENCE</th>
- * <td>This is the entry from the dramatis personae table, up to the first
- * punctuation string. E.g., the FIGURE_REFERENCE for "Romeo, Montagues Sohn"
- * would be "Romeo".</td>
+ * <td>This is the entry from the dramatis personae table, in one of two
+ * variants:
+ * <ol>
+ * <li>up to the first punctuation string. E.g., the FIGURE_REFERENCE for
+ * "Romeo, Montagues Sohn" would be "Romeo"</li>
+ * <li>The entire string covered by the {@link Figure} annotation.</li>
+ * </ol>
+ * </td>
  * </tr>
  * </table>
  * An example for such a speaker assignment file can be found <a href=
@@ -58,14 +64,14 @@ import de.unistuttgart.ims.drama.api.Speaker;
  * @author reiterns
  *
  */
-@TypeCapability(inputs = { "de.unistuttgart.quadrama.api.Figure:Reference" }, outputs = {
-		"de.unistuttgart.quadrama.api.Speaker:Figure" })
+@TypeCapability(inputs = { "de.unistuttgart.quadrama.api.Figure", "de.unistuttgart.quadrama.api.Figure:Reference",
+		"de.unistuttgart.quadrama.api.Speaker" }, outputs = { "de.unistuttgart.quadrama.api.Speaker:Figure" })
 public class SpeakerAssignmentRules extends JCasAnnotator_ImplBase {
 
-	public static final String PARAM_RULE_FILE = "Rule File";
+	public static final String PARAM_RULE_FILE_URL = "Rule File";
 
-	@ConfigurationParameter(name = PARAM_RULE_FILE)
-	String ruleFilename;
+	@ConfigurationParameter(name = PARAM_RULE_FILE_URL)
+	String ruleFileUrlString;
 
 	Map<String, Map<String, String>> ruleMap = new HashMap<String, Map<String, String>>();
 
@@ -73,8 +79,15 @@ public class SpeakerAssignmentRules extends JCasAnnotator_ImplBase {
 	public void initialize(final UimaContext context) throws ResourceInitializationException {
 		super.initialize(context);
 		CSVParser p = null;
+		URL ruleFileUrl = null;
 		try {
-			p = new CSVParser(new FileReader(new File(ruleFilename)), CSVFormat.TDF.withHeader((String) null));
+			ruleFileUrl = new URL(ruleFileUrlString);
+		} catch (MalformedURLException e1) {
+			throw new ResourceInitializationException(e1);
+		}
+
+		try {
+			p = new CSVParser(new InputStreamReader(ruleFileUrl.openStream()), CSVFormat.TDF.withHeader((String) null));
 			Iterator<CSVRecord> iter = p.iterator();
 			while (iter.hasNext()) {
 				CSVRecord rec = iter.next();
@@ -94,6 +107,7 @@ public class SpeakerAssignmentRules extends JCasAnnotator_ImplBase {
 		Map<String, Figure> referenceMap = new HashMap<String, Figure>();
 		for (Figure figure : JCasUtil.select(jcas, Figure.class)) {
 			referenceMap.put(figure.getReference(), figure);
+			referenceMap.put(figure.getCoveredText(), figure);
 		}
 		String tgId = JCasUtil.selectSingle(jcas, Drama.class).getDocumentId();
 		if (ruleMap.containsKey(tgId)) {

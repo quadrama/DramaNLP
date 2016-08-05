@@ -67,7 +67,7 @@ public class NetworkExtractor extends JCasAnnotator_ImplBase {
 		DirectedGraph<Figure, DefaultEdge> graph = new DirectedPseudograph<Figure, DefaultEdge>(DefaultEdge.class);
 
 		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
-			Speaker speaker = DramaUtil.getSpeaker(utterance);
+			Speaker speaker = DramaUtil.getFirstSpeaker(utterance);
 			if (speaker != null)
 				for (FigureMention mention : JCasUtil.selectCovered(jcas, FigureMention.class, utterance)) {
 					if (speaker.getFigure() != null && mention.getFigure() != null) {

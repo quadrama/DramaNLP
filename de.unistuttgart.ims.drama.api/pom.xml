@@ -8,11 +8,9 @@
 	<parent>
 		<groupId>de.unistuttgart.ims</groupId>
 		<artifactId>de.unistuttgart.ims.drama</artifactId>
-		<version>0.2.1</version>
+		<version>0.3.0</version>
 	</parent>
 	<artifactId>de.unistuttgart.ims.drama.api</artifactId>
-	<name>de.unistuttgart.ims.drama.api</name>
-	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>

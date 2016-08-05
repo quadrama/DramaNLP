@@ -10,6 +10,7 @@ import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
+import org.apache.uima.fit.descriptor.TypeCapability;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
@@ -20,12 +21,33 @@ import nu.xom.Document;
 import nu.xom.Element;
 import nu.xom.Elements;
 
+/**
+ * This component reads meta data provided by the dlina project. To use it,
+ * please clone the <a href="https://github.com/dlina/project/">dlina
+ * repository</a> and provide a path to the <code>data/zwischenformat</code>
+ * directory. This component then reads the xml files and copies the dates.
+ * 
+ * The component has been tested with revision <a href=
+ * "https://github.com/dlina/project/tree/b5c565092e5a3c84997daae4d34a3026014b64b4">
+ * b5c5650</a>.
+ * 
+ * A clone of the project can be found
+ * <a href="https://github.com/quadrama/dlina-project-fork">here</a>, if the
+ * original project gets removed.
+ * 
+ * @author reiterns
+ *
+ */
+@TypeCapability(inputs = { "de.unistuttgart.ims.drama.api.Drama" }, outputs = {
+		"de.unistuttgart.ims.drama.api.Drama:DlinaDateWritten", "de.unistuttgart.ims.drama.api.Drama:DlinaDatePrint",
+		"de.unistuttgart.ims.drama.api.Drama:DlinaDatePremiere" })
 public class ReadDlinaMetadata extends JCasAnnotator_ImplBase {
 
 	public static final String PARAM_DLINA_DIRECTORY = "Dlina Directory";
 
 	@ConfigurationParameter(name = PARAM_DLINA_DIRECTORY)
 	String dlinaDirectoryName;
+
 	File dlinaDirectory;
 
 	Map<String, Document> fileIndex = new HashMap<String, Document>();
@@ -80,25 +102,7 @@ public class ReadDlinaMetadata extends JCasAnnotator_ImplBase {
 				}
 			}
 		}
-		if (d.getDlinaDatePremiere() != 0) {
-			d.setReferenceDate(d.getDlinaDatePremiere());
-			return;
-		}
-		if (d.getDlinaDatePrint() != 0 && d.getDlinaDateWritten() != 0) {
-			if (d.getDlinaDatePrint() <= d.getDlinaDateWritten() + 5)
-				d.setReferenceDate(d.getDlinaDatePrint());
-			else
-				d.setReferenceDate(d.getDlinaDateWritten());
-			return;
-		}
-		if (d.getDlinaDatePrint() != 0) {
-			d.setReferenceDate(d.getDlinaDatePrint());
-			return;
-		}
-		if (d.getDlinaDateWritten() != 0) {
-			d.setReferenceDate(d.getDlinaDateWritten());
-			return;
-		}
+		return;
 
 	}
 
