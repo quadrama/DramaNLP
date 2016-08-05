@@ -19,6 +19,7 @@ import de.unistuttgart.ims.drama.api.Figure;
 import de.unistuttgart.ims.drama.api.Utterance;
 import de.unistuttgart.ims.drama.util.DramaUtil;
 
+@Deprecated
 public class FigureSpeechStatistics extends JCasAnnotator_ImplBase {
 
 	public static final String PARAM_WRITE_CSV = "Write CSV";
