@@ -58,7 +58,7 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 
 		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
 			Figure currentFigure = null;
-			currentFigure = DramaUtil.getFigure(utterance);
+			currentFigure = DramaUtil.getFirstFigure(utterance);
 			for (Speech speech : JCasUtil.selectCovered(jcas, Speech.class, utterance)) {
 				for (Token token : JCasUtil.selectCovered(Token.class, speech)) {
 					String surface = token.getCoveredText();

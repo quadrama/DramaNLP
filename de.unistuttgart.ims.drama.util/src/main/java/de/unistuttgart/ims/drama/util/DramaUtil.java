@@ -24,7 +24,7 @@ public class DramaUtil {
 	public static Collection<Speech> getSpeeches(JCas jcas, Figure figure) {
 		List<Speech> ret = new LinkedList<Speech>();
 		for (Utterance u : JCasUtil.select(jcas, Utterance.class)) {
-			Speaker sp = DramaUtil.getSpeaker(u);
+			Speaker sp = DramaUtil.getFirstSpeaker(u);
 			if (sp != null && sp.getFigure() == figure) {
 				ret.addAll(JCasUtil.selectCovered(jcas, Speech.class, u));
 			}
@@ -35,7 +35,7 @@ public class DramaUtil {
 	public static Collection<Speech> getSpeeches(JCas jcas, Figure figure, Annotation coveringAnnotation) {
 		List<Speech> ret = new LinkedList<Speech>();
 		for (Utterance u : JCasUtil.selectCovered(jcas, Utterance.class, coveringAnnotation)) {
-			Speaker sp = DramaUtil.getSpeaker(u);
+			Speaker sp = DramaUtil.getFirstSpeaker(u);
 			if (sp != null && sp.getFigure() == figure) {
 				ret.addAll(JCasUtil.selectCovered(jcas, Speech.class, u));
 			}
@@ -43,7 +43,15 @@ public class DramaUtil {
 		return ret;
 	}
 
-	public static Speaker getSpeaker(Utterance utterance) {
+	public static Collection<Speaker> getSpeakers(Utterance utterance) {
+		try {
+			return JCasUtil.selectCovered(Speaker.class, utterance);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	public static Speaker getFirstSpeaker(Utterance utterance) {
 		try {
 			return JCasUtil.selectCovered(Speaker.class, utterance).get(0);
 		} catch (Exception e) {
@@ -51,8 +59,17 @@ public class DramaUtil {
 		}
 	}
 
-	public static Figure getFigure(Utterance u) {
-		Speaker s = getSpeaker(u);
+	public static Collection<Figure> getFigures(Utterance u) {
+		Collection<Speaker> s = getSpeakers(u);
+		Collection<Figure> f = new LinkedList<Figure>();
+		for (Speaker speaker : s) {
+			f.add(speaker.getFigure());
+		}
+		return f;
+	}
+
+	public static Figure getFirstFigure(Utterance u) {
+		Speaker s = getFirstSpeaker(u);
 		if (s != null)
 			return s.getFigure();
 		else
