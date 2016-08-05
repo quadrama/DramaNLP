@@ -39,13 +39,14 @@ public class FigureSpeechStatistics extends JCasAnnotator_ImplBase {
 
 		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
 			try {
-				Figure figure = DramaUtil.getFirstSpeaker(utterance).getFigure();
-				int n = 0;
-				for (Token token : JCasUtil.selectCovered(Token.class, utterance)) {
-					n++;
-					types.get(token.getCoveredText());
+				for (Figure figure : DramaUtil.getFigures(utterance)) {
+					int n = 0;
+					for (Token token : JCasUtil.selectCovered(Token.class, utterance)) {
+						n++;
+						types.get(token.getCoveredText());
+					}
+					spokenWords.get(figure).addValue(n);
 				}
-				spokenWords.get(figure).addValue(n);
 			} catch (NullPointerException e) {
 			}
 		}
