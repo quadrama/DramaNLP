@@ -47,7 +47,6 @@ public class TestReadDlinaMetadata {
 		assertEquals(1802, d.getDlinaDatePrint());
 		assertEquals(0, d.getDlinaDatePremiere());
 		assertEquals(0, d.getDlinaDateWritten());
-		assertEquals(1802, d.getReferenceDate());
 
 		jcas = iter.next();
 		assertNotNull(jcas);
@@ -56,6 +55,5 @@ public class TestReadDlinaMetadata {
 		assertEquals(1801, d.getDlinaDatePrint());
 		assertEquals(1801, d.getDlinaDatePremiere());
 		assertEquals(1801, d.getDlinaDateWritten());
-		assertEquals(1801, d.getReferenceDate());
 	}
 }
