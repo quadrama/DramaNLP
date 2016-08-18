@@ -11,10 +11,15 @@ import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.descriptor.TypeCapability;
+import org.apache.uima.fit.factory.AnnotationFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 
+import de.unistuttgart.ims.drama.api.Date;
+import de.unistuttgart.ims.drama.api.DatePremiere;
+import de.unistuttgart.ims.drama.api.DatePrint;
+import de.unistuttgart.ims.drama.api.DateWritten;
 import de.unistuttgart.ims.drama.api.Drama;
 import nu.xom.Builder;
 import nu.xom.Document;
@@ -39,8 +44,8 @@ import nu.xom.Elements;
  *
  */
 @TypeCapability(inputs = { "de.unistuttgart.ims.drama.api.Drama" }, outputs = {
-		"de.unistuttgart.ims.drama.api.Drama:DlinaDateWritten", "de.unistuttgart.ims.drama.api.Drama:DlinaDatePrint",
-		"de.unistuttgart.ims.drama.api.Drama:DlinaDatePremiere" })
+		"de.unistuttgart.ims.drama.api.DateWritten", "de.unistuttgart.ims.drama.api.DatePremiere",
+		"de.unistuttgart.ims.drama.api.DatePrint" })
 public class ReadDlinaMetadata extends JCasAnnotator_ImplBase {
 
 	public static final String PARAM_DLINA_DIRECTORY = "Dlina Directory";
@@ -93,12 +98,17 @@ public class ReadDlinaMetadata extends JCasAnnotator_ImplBase {
 			Element dateElement = dateElements.get(i);
 			if (dateElement.getAttributeValue("when") != null) {
 				String whenAttVal = dateElement.getAttributeValue("when");
+				Date date = null;
 				if (dateElement.getAttributeValue("type").equals("print")) {
-					d.setDlinaDatePrint(Integer.valueOf(whenAttVal));
+					date = AnnotationFactory.createAnnotation(jcas, 0, 1, DatePrint.class);
 				} else if (dateElement.getAttributeValue("type").equals("written")) {
-					d.setDlinaDateWritten(Integer.valueOf(whenAttVal));
+					date = AnnotationFactory.createAnnotation(jcas, 0, 1, DateWritten.class);
 				} else if (dateElement.getAttributeValue("type").equals("premiere")) {
-					d.setDlinaDatePremiere(Integer.valueOf(whenAttVal));
+					date = AnnotationFactory.createAnnotation(jcas, 0, 1, DatePremiere.class);
+				}
+				if (date != null) {
+					date.setYear(Integer.valueOf(whenAttVal));
+					date.setSource("dlina");
 				}
 			}
 		}
