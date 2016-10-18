@@ -17,7 +17,6 @@ import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordPosTagger;
 import de.unistuttgart.quadrama.core.DramaSpeechSegmenter;
 import de.unistuttgart.quadrama.core.FigureMentionDetection;
 import de.unistuttgart.quadrama.core.FigureReferenceAnnotator;
-import de.unistuttgart.quadrama.core.FigureSpeechStatistics;
 import de.unistuttgart.quadrama.core.SpeakerIdentifier;
 import de.unistuttgart.quadrama.graph.NetworkExtractor;
 import de.unistuttgart.quadrama.io.tei.textgrid.TextgridTEIUrlReader;
@@ -44,7 +43,6 @@ public class Process {
 				 */
 				createEngineDescription(StanfordPosTagger.class),
 				createEngineDescription(StanfordNamedEntityRecognizer.class),
-				createEngineDescription(FigureSpeechStatistics.class),
 				createEngineDescription(FigureMentionDetection.class),
 				/*
 				 * Extract copresence network
