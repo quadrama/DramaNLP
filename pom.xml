@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.unistuttgart.ims</groupId>
 	<artifactId>de.unistuttgart.ims.drama</artifactId>
-	<version>0.3.0</version>
+	<version>0.3.1</version>
 	<packaging>pom</packaging>
 	<name>DramaNLP</name>
 	<url>https://github.com/quadrama/DramaNLP</url>
@@ -18,6 +18,13 @@
 		<connection>scm:git:git://github.com/quadrama/DramaNLP.git</connection>
 		<developerConnection>scm:git:git@github.com:quadrama/DramaNLP.git</developerConnection>
 	</scm>
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
 	<developers>
 		<developer>
 			<id>reiterns</id>
@@ -41,6 +48,30 @@
 			</activation>
 			<build>
 				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<version>2.10.4</version>
+						<configuration>
+							<tags>
+								<tag>
+									<name>generated</name>
+									<placement>a</placement>
+									<head>Generated</head>
+								</tag>
+								<tag>
+									<name>ordered</name>
+									<placement>a</placement>
+									<head></head>
+								</tag>
+								<tag>
+									<name>modifiable</name>
+									<placement>a</placement>
+									<head></head>
+								</tag>
+							</tags>
+						</configuration>
+					</plugin>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-gpg-plugin</artifactId>
@@ -90,7 +121,7 @@
 			<dependency>
 				<groupId>de.unistuttgart.ims</groupId>
 				<artifactId>uimautil</artifactId>
-				<version>0.6.3</version>
+				<version>0.4.5</version>
 			</dependency>
 			<dependency>
 				<groupId>commons-io</groupId>

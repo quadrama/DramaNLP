@@ -5,7 +5,7 @@
   <parent>
     <groupId>de.unistuttgart.ims</groupId>
     <artifactId>de.unistuttgart.ims.drama</artifactId>
-    <version>0.3.0</version>
+    <version>0.3.1</version>
   </parent>
   <artifactId>de.unistuttgart.ims.drama.core</artifactId>
   <properties>
@@ -55,7 +55,7 @@
     <dependency>
     	<groupId>de.unistuttgart.ims</groupId>
     	<artifactId>de.unistuttgart.ims.drama.api</artifactId>
-    	<version>0.3.0</version>
+    	<version>0.3.1</version>
     </dependency>
     <dependency>
     	<groupId>org.apache.commons</groupId>
@@ -67,7 +67,7 @@
     	<artifactId>
     		de.unistuttgart.ims.drama.io.tei.textgrid
     	</artifactId>
-    	<version>0.3.0</version>
+    	<version>0.3.1</version>
     	<scope>test</scope>
     </dependency>
     <dependency>
@@ -83,7 +83,7 @@
     <dependency>
     	<groupId>de.unistuttgart.ims</groupId>
     	<artifactId>de.unistuttgart.ims.drama.util</artifactId>
-    	<version>0.3.0</version>
+    	<version>0.3.1</version>
     </dependency>
     <dependency>
     	<groupId>xom</groupId>
@@ -93,6 +93,30 @@
   </dependencies>
   <build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.10.4</version>
+				<configuration>
+					<tags>
+						<tag>
+							<name>generated</name>
+							<placement>a</placement>
+							<head>Generated</head>
+						</tag>
+						<tag>
+							<name>ordered</name>
+							<placement>a</placement>
+							<head></head>
+						</tag>
+						<tag>
+							<name>modifiable</name>
+							<placement>a</placement>
+							<head></head>
+						</tag>
+					</tags>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.uima</groupId>
 				<artifactId>jcasgen-maven-plugin</artifactId>

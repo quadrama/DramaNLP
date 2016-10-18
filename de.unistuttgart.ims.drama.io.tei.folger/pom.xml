@@ -3,19 +3,19 @@
   <parent>
     <groupId>de.unistuttgart.ims</groupId>
     <artifactId>de.unistuttgart.ims.drama</artifactId>
-    <version>0.3.0</version>
+    <version>0.3.1</version>
   </parent>
   <artifactId>de.unistuttgart.ims.drama.io.tei.folger</artifactId>
   <dependencies>
   	<dependency>
   		<groupId>de.unistuttgart.ims</groupId>
   		<artifactId>de.unistuttgart.ims.drama.api</artifactId>
-  		<version>0.3.0</version>
+  		<version>0.3.1</version>
   	</dependency>
   	<dependency>
   		<groupId>de.unistuttgart.ims</groupId>
   		<artifactId>de.unistuttgart.ims.drama.io.core</artifactId>
-  		<version>0.3.0</version>
+  		<version>0.3.1</version>
   	</dependency>
   	<dependency>
   		<groupId>junit</groupId>
