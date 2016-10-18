@@ -41,6 +41,30 @@
 			</activation>
 			<build>
 				<plugins>
+				<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.10.4</version>
+				<configuration>
+					<tags>
+						<tag>
+							<name>generated</name>
+							<placement>a</placement>
+							<head>Generated</head>
+						</tag>
+						<tag>
+							<name>ordered</name>
+							<placement>a</placement>
+							<head></head>
+						</tag>
+						<tag>
+							<name>modifiable</name>
+							<placement>a</placement>
+							<head></head>
+						</tag>
+					</tags>
+				</configuration>
+			</plugin>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-gpg-plugin</artifactId>
