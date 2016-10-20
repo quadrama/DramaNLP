@@ -33,7 +33,7 @@ import de.unistuttgart.ims.drama.api.Speaker;
  * </code>
  *
  * </p>
- * <table>
+ * <table summary="table column definitions">
  * <tr>
  * <th>DRAMAID</th>
  * <td>The document id of the drama. If the textgrid reader has been used, this

@@ -3,7 +3,7 @@
   <parent>
     <groupId>de.unistuttgart.ims</groupId>
     <artifactId>de.unistuttgart.ims.drama</artifactId>
-    <version>0.3.1-SNAPSHOT</version>
+    <version>0.3.2-SNAPSHOT</version>
   </parent>
   <artifactId>de.unistuttgart.ims.drama.examples</artifactId>
   <dependencies>
@@ -14,7 +14,7 @@
   	<dependency>
   		<groupId>de.unistuttgart.ims</groupId>
   		<artifactId>de.unistuttgart.ims.drama.api</artifactId>
-  		<version>0.3.1-SNAPSHOT</version>
+  		<version>0.3.2-SNAPSHOT</version>
   	</dependency>
   	<dependency>
   		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
@@ -26,14 +26,14 @@
   	<dependency>
   		<groupId>de.unistuttgart.ims</groupId>
   		<artifactId>de.unistuttgart.ims.drama.core</artifactId>
-  		<version>0.3.1-SNAPSHOT</version>
+  		<version>0.3.2-SNAPSHOT</version>
   	</dependency>
   	<dependency>
   		<groupId>de.unistuttgart.ims</groupId>
   		<artifactId>
   			de.unistuttgart.ims.drama.io.tei.textgrid
   		</artifactId>
-  		<version>0.3.1-SNAPSHOT</version>
+  		<version>0.3.2-SNAPSHOT</version>
   	</dependency>
   	<dependency>
   		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
@@ -52,7 +52,7 @@
   	<dependency>
   		<groupId>de.unistuttgart.ims</groupId>
   		<artifactId>de.unistuttgart.ims.drama.graph</artifactId>
-  		<version>0.3.1-SNAPSHOT</version>
+  		<version>0.3.2-SNAPSHOT</version>
   	</dependency>
   </dependencies>
 </project>
