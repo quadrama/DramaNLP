@@ -13,6 +13,7 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 
 import de.unistuttgart.ims.drama.api.Author;
+import de.unistuttgart.ims.drama.api.DateReference;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Figure;
 import de.unistuttgart.ims.drama.api.FigureType;
@@ -117,7 +118,10 @@ public class DramaUtil {
 		String author = "";
 		if (JCasUtil.exists(jcas, Author.class))
 			author = JCasUtil.select(jcas, Author.class).iterator().next().getName();
-		int date = JCasUtil.selectSingle(jcas, Drama.class).getReferenceDate();
+		int date = 0;
+		if (JCasUtil.exists(jcas, DateReference.class)) {
+			date = JCasUtil.selectSingle(jcas, DateReference.class).getYear();
+		}
 		if (title == null || author == null || author.length() == 0 || title.length() == 0) {
 			return JCasUtil.selectSingle(jcas, Drama.class).getDocumentId();
 		}
