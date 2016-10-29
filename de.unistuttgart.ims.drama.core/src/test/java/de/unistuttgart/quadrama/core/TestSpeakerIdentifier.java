@@ -22,22 +22,16 @@ public class TestSpeakerIdentifier {
 
 	@Test
 	public void evaluateSpeakerAssignments() throws Exception {
-		JCasIterator iter =
-				SimplePipeline
-						.iteratePipeline(
-								CollectionReaderFactory
-										.createReaderDescription(
-												XmiReader.class,
-												XmiReader.PARAM_SOURCE_LOCATION,
-												"src/test/resources/SpeakerIdentifier/tx4z.0.xmi"),
-								createEngineDescription(FigureReferenceAnnotator.class),
-								createEngineDescription(
-										SpeakerIdentifier.class,
-										SpeakerIdentifier.PARAM_CREATE_SPEAKER_FIGURE,
-										false),
-								createEngineDescription(XmiWriter.class,
-										XmiWriter.PARAM_TARGET_LOCATION,
-										"target/doc")).iterator();
+		JCasIterator iter = SimplePipeline
+				.iteratePipeline(
+						CollectionReaderFactory.createReaderDescription(XmiReader.class,
+								XmiReader.PARAM_SOURCE_LOCATION, "src/test/resources/SpeakerIdentifier/tx4z.0.xmi",
+								XmiReader.PARAM_LENIENT, true),
+						createEngineDescription(FigureReferenceAnnotator.class),
+						createEngineDescription(SpeakerIdentifier.class, SpeakerIdentifier.PARAM_CREATE_SPEAKER_FIGURE,
+								false),
+						createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION, "target/doc"))
+				.iterator();
 		StringBuilder b = new StringBuilder();
 		CSVPrinter writer = new CSVPrinter(b, CSVFormat.TDF);
 		SummaryStatistics types = new SummaryStatistics();
@@ -56,8 +50,7 @@ public class TestSpeakerIdentifier {
 			}
 			types.addValue(unassigned.size());
 			tokens.addValue(s);
-			writer.printRecord(JCasUtil.selectSingle(jcas, Drama.class)
-					.getDocumentId(), s, unassigned.size(), all);
+			writer.printRecord(JCasUtil.selectSingle(jcas, Drama.class).getDocumentId(), s, unassigned.size(), all);
 		}
 		writer.printRecord("mean", tokens.getMean(), types.getMean());
 		writer.printRecord("min", tokens.getMin(), types.getMin());
