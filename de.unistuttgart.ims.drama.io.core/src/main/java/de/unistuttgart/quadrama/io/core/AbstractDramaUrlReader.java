@@ -52,7 +52,7 @@ public abstract class AbstractDramaUrlReader extends JCasCollectionReader_ImplBa
 
 				@Override
 				public boolean accept(File dir, String name) {
-					return name.endsWith(".xml");
+					return name.endsWith(".xml") || name.endsWith(".tei");
 				}
 
 			});
