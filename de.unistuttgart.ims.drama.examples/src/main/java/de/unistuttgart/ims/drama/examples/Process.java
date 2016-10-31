@@ -21,6 +21,7 @@ import de.unistuttgart.quadrama.core.SpeakerIdentifier;
 import de.unistuttgart.quadrama.graph.NetworkExtractor;
 import de.unistuttgart.quadrama.io.tei.textgrid.TextgridTEIUrlReader;
 
+@Deprecated
 public class Process {
 
 	public static void main(String[] args) throws ResourceInitializationException, UIMAException, IOException {
