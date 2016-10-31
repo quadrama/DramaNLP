@@ -37,7 +37,7 @@ public class TestGutenbergDEReader {
 	@Before
 	public void setUp() throws ResourceInitializationException {
 		description = CollectionReaderFactory.createReaderDescription(GutenbergDEReader.class,
-				GutenbergDEReader.PARAM_INPUT_DIRECTORY, "src/test/resources/test1");
+				GutenbergDEReader.PARAM_INPUT, "src/test/resources/test1");
 	}
 
 	@Test

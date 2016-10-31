@@ -24,21 +24,19 @@ import org.apache.uima.util.Progress;
 
 import de.unistuttgart.ims.drama.api.Drama;
 
-public abstract class AbstractDramaUrlReader extends
-		JCasCollectionReader_ImplBase {
+public abstract class AbstractDramaUrlReader extends JCasCollectionReader_ImplBase {
 	public static final String PARAM_URL_LIST = "URL List";
-	public static final String PARAM_INPUT_DIRECTORY = "Input Directory";
+	public static final String PARAM_INPUT = "Input";
 	public static final String PARAM_LANGUAGE = "Language";
 	public static final String PARAM_CLEANUP = "Cleanup";
 
-	@ConfigurationParameter(name = PARAM_INPUT_DIRECTORY, mandatory = false)
-	String inputDirectory = null;
+	@ConfigurationParameter(name = PARAM_INPUT, mandatory = false)
+	String input = null;
 
 	@ConfigurationParameter(name = PARAM_URL_LIST, mandatory = false)
 	String urlListFilename = null;
 
-	@ConfigurationParameter(name = PARAM_LANGUAGE, mandatory = false,
-			defaultValue = "de")
+	@ConfigurationParameter(name = PARAM_LANGUAGE, mandatory = false, defaultValue = "de")
 	String language = "de";
 
 	@ConfigurationParameter(name = PARAM_CLEANUP, mandatory = false)
@@ -48,16 +46,32 @@ public abstract class AbstractDramaUrlReader extends
 	int currentUrlIndex = 0;
 
 	@Override
-	public void initialize(UimaContext context)
-			throws ResourceInitializationException {
+	public void initialize(UimaContext context) throws ResourceInitializationException {
 		super.initialize(context);
-		if (urlListFilename != null) {
+		File inputFile = new File(input);
+
+		if (inputFile.isDirectory()) {
+			File inputDir = inputFile;
+			File[] files = inputDir.listFiles(new FilenameFilter() {
+
+				@Override
+				public boolean accept(File dir, String name) {
+					return name.endsWith(".xml");
+				}
+
+			});
+			try {
+				for (File file : files) {
+					urls.add(file.toURI().toURL());
+				}
+			} catch (Exception e) {
+				throw new ResourceInitializationException(e);
+
+			}
+		} else {
 			CSVParser r = null;
 			try {
-				r =
-						new CSVParser(
-								new FileReader(new File(urlListFilename)),
-								CSVFormat.TDF);
+				r = new CSVParser(new FileReader(new File(urlListFilename)), CSVFormat.TDF);
 				List<CSVRecord> records = r.getRecords();
 				for (CSVRecord rec : records) {
 					String s = rec.get(0);
@@ -73,35 +87,16 @@ public abstract class AbstractDramaUrlReader extends
 			} finally {
 				IOUtils.closeQuietly(r);
 			}
-		} else if (inputDirectory != null) {
-			File inputDir = new File(inputDirectory);
-			File[] files = inputDir.listFiles(new FilenameFilter() {
-
-				public boolean accept(File dir, String name) {
-					return name.endsWith(".xml");
-				}
-
-			});
-			try {
-				for (File file : files) {
-					urls.add(file.toURI().toURL());
-				}
-			} catch (Exception e) {
-				throw new ResourceInitializationException(e);
-
-			}
-		} else {
-			throw new ResourceInitializationException(
-					"You need to specify either PARAM_INPUT_DIRECTORY or PARAM_URL_LIST",
-					null);
 		}
 
 	}
 
+	@Override
 	public boolean hasNext() throws IOException, CollectionException {
 		return currentUrlIndex < urls.size();
 	}
 
+	@Override
 	public Progress[] getProgress() {
 		return null;
 	}
@@ -126,7 +121,6 @@ public abstract class AbstractDramaUrlReader extends
 		}
 	}
 
-	public abstract void getNext(JCas jcas, InputStream is, Drama drama)
-			throws IOException, CollectionException;
+	public abstract void getNext(JCas jcas, InputStream is, Drama drama) throws IOException, CollectionException;
 
 }

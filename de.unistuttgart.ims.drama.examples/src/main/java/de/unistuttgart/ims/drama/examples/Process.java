@@ -27,7 +27,7 @@ public class Process {
 		System.setProperty("java.util.logging.config.file", "src/main/resources/logging.properties");
 
 		CollectionReaderDescription crd = CollectionReaderFactory.createReaderDescription(TextgridTEIUrlReader.class,
-				TextgridTEIUrlReader.PARAM_INPUT_DIRECTORY, "src/main/resources");
+				TextgridTEIUrlReader.PARAM_INPUT, "src/main/resources");
 
 		SimplePipeline.runPipeline(crd,
 				/*
