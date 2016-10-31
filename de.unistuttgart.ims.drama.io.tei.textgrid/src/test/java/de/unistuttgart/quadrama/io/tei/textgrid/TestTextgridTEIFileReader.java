@@ -128,7 +128,7 @@ public class TestTextgridTEIFileReader {
 	}
 
 	@SuppressWarnings("resource")
-
+	@Test
 	public void testReaderFromURL() throws UIMAException, IOException {
 		CSVParser reader = new CSVParser(new FileReader(new File(csvFilename)),
 				CSVFormat.TDF.withHeader((String) null));
