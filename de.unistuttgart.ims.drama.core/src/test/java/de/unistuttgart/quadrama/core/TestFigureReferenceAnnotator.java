@@ -22,7 +22,8 @@ public class TestFigureReferenceAnnotator {
 	@Test
 	public void testFigureReferenceAnnotator1() throws ResourceInitializationException {
 		CollectionReaderDescription reader = CollectionReaderFactory.createReaderDescription(XmiReader.class,
-				XmiReader.PARAM_SOURCE_LOCATION, "src/test/resources/FigureReferenceAnnotator/rfxf.0.xmi");
+				XmiReader.PARAM_SOURCE_LOCATION, "src/test/resources/FigureReferenceAnnotator/rfxf.0.xmi",
+				XmiReader.PARAM_LENIENT, true);
 		AnalysisEngineDescription engine = AnalysisEngineFactory
 				.createEngineDescription(FigureReferenceAnnotator.class);
 		JCasIterator iterator = SimplePipeline.iteratePipeline(reader, engine).iterator();
@@ -39,7 +40,8 @@ public class TestFigureReferenceAnnotator {
 	@Test
 	public void testFigureReferenceAnnotator2() throws ResourceInitializationException {
 		CollectionReaderDescription reader = CollectionReaderFactory.createReaderDescription(XmiReader.class,
-				XmiReader.PARAM_SOURCE_LOCATION, "src/test/resources/FigureReferenceAnnotator/w3zd.0.xmi");
+				XmiReader.PARAM_SOURCE_LOCATION, "src/test/resources/FigureReferenceAnnotator/w3zd.0.xmi",
+				XmiReader.PARAM_LENIENT, true);
 		AnalysisEngineDescription engine = AnalysisEngineFactory
 				.createEngineDescription(FigureReferenceAnnotator.class);
 		JCasIterator iterator = SimplePipeline.iteratePipeline(reader, engine).iterator();

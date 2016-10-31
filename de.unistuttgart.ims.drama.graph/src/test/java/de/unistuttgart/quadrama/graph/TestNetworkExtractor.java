@@ -22,7 +22,7 @@ public class TestNetworkExtractor {
 	@Before
 	public void setUp() throws ResourceInitializationException {
 		crd = CollectionReaderFactory.createReaderDescription(XmiReader.class, XmiReader.PARAM_SOURCE_LOCATION,
-				"src/test/resources/*.xmi");
+				"src/test/resources/*.xmi", XmiReader.PARAM_LENIENT, true);
 	}
 
 	@Test

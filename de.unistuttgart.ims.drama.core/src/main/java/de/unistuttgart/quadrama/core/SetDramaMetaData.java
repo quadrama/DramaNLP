@@ -8,6 +8,7 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
 import de.unistuttgart.ims.drama.api.Author;
+import de.unistuttgart.ims.drama.api.DateReference;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Translator;
 
@@ -60,7 +61,7 @@ public class SetDramaMetaData extends JCasAnnotator_ImplBase {
 		if (dramaId != null)
 			drama.setDocumentId(dramaId);
 		if (referenceDate > 0)
-			drama.setReferenceDate(referenceDate);
+			AnnotationFactory.createAnnotation(jcas, 0, 1, DateReference.class).setYear(referenceDate);
 		if (dramaTitle != null)
 			drama.setDocumentTitle(dramaTitle);
 

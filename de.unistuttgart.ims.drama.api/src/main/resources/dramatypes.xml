@@ -2,7 +2,7 @@
 <typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
 	<name>Drama</name>
 	<description />
-	<version>1.1</version>
+	<version>1.2</version>
 	<vendor>Nils Reiter</vendor>
 	<imports>
 		<import name="desc.type.metadata_customized" />
@@ -84,28 +84,8 @@
 					<rangeTypeName>uima.cas.String</rangeTypeName>
 				</featureDescription>
 				<featureDescription>
-					<name>ReferenceDate</name>
-					<description></description>
-					<rangeTypeName>uima.cas.Integer</rangeTypeName>
-				</featureDescription>
-				<featureDescription>
-					<name>DlinaDatePrint</name>
-					<description></description>
-					<rangeTypeName>uima.cas.Integer</rangeTypeName>
-				</featureDescription>
-				<featureDescription>
-					<name>DlinaDatePremiere</name>
-					<description></description>
-					<rangeTypeName>uima.cas.Integer</rangeTypeName>
-				</featureDescription>
-				<featureDescription>
-					<name>DlinaDateWritten</name>
-					<description></description>
-					<rangeTypeName>uima.cas.Integer</rangeTypeName>
-				</featureDescription>
-				<featureDescription>
 					<name>Translation</name>
-					<description>Is this drama a translation?</description>
+					<description>Deprecated. Is this drama a translation?</description>
 					<rangeTypeName>uima.cas.Boolean</rangeTypeName>
 				</featureDescription>
 			</features>
@@ -269,7 +249,7 @@
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.Person</name>
 			<description>Represents a (real) person</description>
-			<supertypeName>uima.tcas.Annotation</supertypeName>
+			<supertypeName>de.unistuttgart.ims.drama.api.Metadatum</supertypeName>
 			<features>
 				<featureDescription>
 					<name>Name</name>
@@ -292,6 +272,50 @@
 			<name>de.unistuttgart.ims.drama.api.Translator</name>
 			<description>A person who is a translator of the drama</description>
 			<supertypeName>de.unistuttgart.ims.drama.api.Person</supertypeName>
+		</typeDescription>
+		<typeDescription>
+			<name>de.unistuttgart.ims.drama.api.Metadatum</name>
+			<description>super type for all kinds of meta data</description>
+			<supertypeName>uima.tcas.Annotation</supertypeName>
+			<features>
+				<featureDescription>
+					<name>Source</name>
+					<description>Describes the source of this meta datum</description>
+					<rangeTypeName>uima.cas.String</rangeTypeName>
+				</featureDescription>
+			</features>
+		</typeDescription>
+		<typeDescription>
+			<name>de.unistuttgart.ims.drama.api.Date</name>
+			<description>Describes a calendar date</description>
+			<supertypeName>de.unistuttgart.ims.drama.api.Metadatum</supertypeName>
+			<features>
+				<featureDescription>
+					<name>Year</name>
+					<description>The year of the date</description>
+					<rangeTypeName>uima.cas.Integer</rangeTypeName>
+				</featureDescription>
+			</features>
+		</typeDescription>
+		<typeDescription>
+			<name>de.unistuttgart.ims.drama.api.DateWritten</name>
+			<description>The date a drama was written</description>
+			<supertypeName>de.unistuttgart.ims.drama.api.Date</supertypeName>
+		</typeDescription>
+		<typeDescription>
+			<name>de.unistuttgart.ims.drama.api.DatePrint</name>
+			<description>The date a drama was written</description>
+			<supertypeName>de.unistuttgart.ims.drama.api.Date</supertypeName>
+		</typeDescription>
+		<typeDescription>
+			<name>de.unistuttgart.ims.drama.api.DatePremiere</name>
+			<description>The date a drama was written</description>
+			<supertypeName>de.unistuttgart.ims.drama.api.Date</supertypeName>
+		</typeDescription>
+		<typeDescription>
+			<name>de.unistuttgart.ims.drama.api.DateReference</name>
+			<description>The date a drama was written</description>
+			<supertypeName>de.unistuttgart.ims.drama.api.Date</supertypeName>
 		</typeDescription>
 	</types>
 </typeSystemDescription>

@@ -3,10 +3,12 @@ package de.unistuttgart.quadrama.core;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.descriptor.TypeCapability;
+import org.apache.uima.fit.factory.AnnotationFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
-import de.unistuttgart.ims.drama.api.Drama;
+import de.unistuttgart.ims.drama.api.Date;
+import de.unistuttgart.ims.drama.api.DateReference;
 
 /**
  * Based on the three dlina dates, we set the reference date to the earliest
@@ -15,31 +17,29 @@ import de.unistuttgart.ims.drama.api.Drama;
  * @author reiterns
  *
  */
-@TypeCapability(inputs = { "de.unistuttgart.ims.drama.api.Drama:DlinaDateWritten",
-		"de.unistuttgart.ims.drama.api.Drama:DlinaDatePrint",
-		"de.unistuttgart.ims.drama.api.Drama:DlinaDatePremiere" }, outputs = {
-				"de.unistuttgart.ims.drama.api.Drama:ReferenceDate" })
+@TypeCapability(inputs = { "de.unistuttgart.ims.drama.api.DateWritten", "de.unistuttgart.ims.drama.api.DatePrint",
+		"de.unistuttgart.ims.drama.api.DatePremiere" }, outputs = { "de.unistuttgart.ims.drama.api.DateReference" })
 
 public class SetReferenceDate extends JCasAnnotator_ImplBase {
 
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
-		Drama d = JCasUtil.selectSingle(jcas, Drama.class);
 
-		d.setReferenceDate(2000);
+		int year = Integer.MAX_VALUE;
+		for (Date date : JCasUtil.select(jcas, Date.class)) {
+			if (date.getYear() <= year) {
+				year = date.getYear();
+			}
+		}
 
-		int date = d.getDlinaDatePremiere();
-		if (date != 0 && date < d.getReferenceDate()) {
-			d.setReferenceDate(date);
+		if (year != Integer.MAX_VALUE) {
+			try {
+				JCasUtil.selectSingle(jcas, DateReference.class).setYear(year);
+			} catch (IllegalArgumentException e) {
+				AnnotationFactory.createAnnotation(jcas, 0, 1, DateReference.class).setYear(year);
+			}
 		}
-		date = d.getDlinaDatePrint();
-		if (date != 0 && date < d.getReferenceDate()) {
-			d.setReferenceDate(date);
-		}
-		date = d.getDlinaDateWritten();
-		if (date != 0 && date < d.getReferenceDate()) {
-			d.setReferenceDate(date);
-		}
+
 	}
 
 }

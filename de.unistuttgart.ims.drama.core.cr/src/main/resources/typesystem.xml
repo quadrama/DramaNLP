@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
+    <name>Type System for entity detection</name>
+  <description/>
+  <version>1</version>
+  <vendor/>
+  <types>
+    <typeDescription>
+      <name>de.unistuttgart.ims.entitydetection.api.TrainingArea</name>
+      <description/>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features />
+    </typeDescription>
+  </types>
+</typeSystemDescription>
