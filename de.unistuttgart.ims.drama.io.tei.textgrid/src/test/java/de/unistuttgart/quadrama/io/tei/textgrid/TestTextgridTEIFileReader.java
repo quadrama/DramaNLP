@@ -135,7 +135,7 @@ public class TestTextgridTEIFileReader {
 		List<CSVRecord> records = reader.getRecords();
 
 		description = CollectionReaderFactory.createReaderDescription(TextgridTEIUrlReader.class,
-				TextgridTEIUrlReader.PARAM_URL_LIST, csvFilename, TextgridTEIUrlReader.PARAM_LANGUAGE, "de");
+				TextgridTEIUrlReader.PARAM_INPUT, csvFilename, TextgridTEIUrlReader.PARAM_LANGUAGE, "de");
 		JCasIterator iter = SimplePipeline
 				.iteratePipeline(description, AnalysisEngineFactory.createEngineDescription(XmiWriter.class,
 						XmiWriter.PARAM_TARGET_LOCATION, "target/doc/", XmiWriter.PARAM_USE_DOCUMENT_ID, true))

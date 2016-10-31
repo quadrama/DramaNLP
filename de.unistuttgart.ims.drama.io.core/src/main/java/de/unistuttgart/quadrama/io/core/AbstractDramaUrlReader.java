@@ -25,16 +25,12 @@ import org.apache.uima.util.Progress;
 import de.unistuttgart.ims.drama.api.Drama;
 
 public abstract class AbstractDramaUrlReader extends JCasCollectionReader_ImplBase {
-	public static final String PARAM_URL_LIST = "URL List";
 	public static final String PARAM_INPUT = "Input";
 	public static final String PARAM_LANGUAGE = "Language";
 	public static final String PARAM_CLEANUP = "Cleanup";
 
 	@ConfigurationParameter(name = PARAM_INPUT, mandatory = false)
 	String input = null;
-
-	@ConfigurationParameter(name = PARAM_URL_LIST, mandatory = false)
-	String urlListFilename = null;
 
 	@ConfigurationParameter(name = PARAM_LANGUAGE, mandatory = false, defaultValue = "de")
 	String language = "de";
@@ -71,7 +67,7 @@ public abstract class AbstractDramaUrlReader extends JCasCollectionReader_ImplBa
 		} else {
 			CSVParser r = null;
 			try {
-				r = new CSVParser(new FileReader(new File(urlListFilename)), CSVFormat.TDF);
+				r = new CSVParser(new FileReader(inputFile), CSVFormat.TDF);
 				List<CSVRecord> records = r.getRecords();
 				for (CSVRecord rec : records) {
 					String s = rec.get(0);

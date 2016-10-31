@@ -25,7 +25,7 @@ public class TestReadDlinaMetadata {
 	public static void setUp() throws Exception {
 		SimplePipeline.runPipeline(
 				CollectionReaderFactory.createReaderDescription(TextgridTEIUrlReader.class,
-						TextgridTEIUrlReader.PARAM_URL_LIST, "src/test/resources/ReadDlinaMetadata/urls.txt"),
+						TextgridTEIUrlReader.PARAM_INPUT, "src/test/resources/ReadDlinaMetadata/urls.txt"),
 				AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
 						"src/test/resources/ReadDlinaMetadata/xmi/"));
 	}
