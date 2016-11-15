@@ -167,6 +167,7 @@ public class TextGridUtil {
 				}
 			} else {
 				select2Annotation(jcas, castList, map, "castItem", Figure.class, null);
+				fixFigureAnnotations(jcas);
 			}
 		} else {
 			try {
