@@ -7,4 +7,35 @@
   </parent>
   <artifactId>de.unistuttgart.ims.drama.core.ml</artifactId>
   <name>de.unistuttgart.ims.drama.core.ml</name>
+  <dependencies>
+  	<dependency>
+  		<groupId>org.cleartk</groupId>
+  		<artifactId>cleartk-ml</artifactId>
+  		<version>2.0.0</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.cleartk</groupId>
+  		<artifactId>cleartk-eval</artifactId>
+  		<version>2.0.0</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.cleartk</groupId>
+  		<artifactId>cleartk-ml-weka</artifactId>
+  		<version>2.0.0</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>de.unistuttgart.ims</groupId>
+  		<artifactId>uimautil</artifactId>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.cleartk</groupId>
+  		<artifactId>cleartk-ml-mallet</artifactId>
+  		<version>2.0.0</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>de.unistuttgart.ims</groupId>
+  		<artifactId>de.unistuttgart.ims.drama.api</artifactId>
+  		<version>0.4.1-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
 </project>
