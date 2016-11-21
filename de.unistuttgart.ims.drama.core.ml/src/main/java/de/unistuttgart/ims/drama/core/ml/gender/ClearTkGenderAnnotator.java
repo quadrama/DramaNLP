@@ -51,7 +51,8 @@ public class ClearTkGenderAnnotator extends CleartkAnnotator<String> {
 		this.contextExtractor = new CleartkExtractor.Covered();
 
 		this.tokenExtractor = new CombinedExtractor1<Token>(new CoveredTextExtractor<Token>(),
-				new ListFeatureExtractor(maleFirstNames), new ListFeatureExtractor(femaleFirstNames));
+				new ListFeatureExtractor("male first names", maleFirstNames),
+				new ListFeatureExtractor("female first name", femaleFirstNames));
 
 	}
 
@@ -76,14 +77,16 @@ public class ClearTkGenderAnnotator extends CleartkAnnotator<String> {
 	class ListFeatureExtractor implements FeatureExtractor1<Token> {
 
 		List<String> strList;
+		String fName;
 
-		public ListFeatureExtractor(List<String> list) {
+		public ListFeatureExtractor(String featureName, List<String> list) {
 			strList = list;
+			fName = featureName;
 		}
 
 		@Override
 		public List<Feature> extract(JCas view, Token focusAnnotation) throws CleartkExtractorException {
-			return Arrays.asList(new Feature(strList.contains(focusAnnotation.getCoveredText().toLowerCase())));
+			return Arrays.asList(new Feature(fName, strList.contains(focusAnnotation.getCoveredText().toLowerCase())));
 		}
 
 	}
