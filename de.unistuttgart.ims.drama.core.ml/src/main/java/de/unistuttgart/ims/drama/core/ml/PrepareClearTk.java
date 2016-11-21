@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CASException;
+import org.apache.uima.cas.Feature;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.factory.AnnotationFactory;
@@ -63,6 +64,7 @@ public class PrepareClearTk extends JCasAnnotator_ImplBase {
 		try {
 			newView = jcas.createView(viewName);
 		} catch (CASException e) {
+			e.printStackTrace();
 			throw new AnalysisEngineProcessException(e);
 		}
 
@@ -75,8 +77,16 @@ public class PrepareClearTk extends JCasAnnotator_ImplBase {
 
 			for (Class<Annotation> subClass : subAnnotations) {
 				for (Annotation sub : JCasUtil.selectCovered(subClass, a)) {
-					AnnotationFactory.createAnnotation(newView, sub.getBegin() + relativ, sub.getEnd() + relativ,
-							subClass);
+					int tgtBegin = sub.getBegin() + relativ, tgtEnd = sub.getEnd() + relativ;
+					Annotation tgt = AnnotationFactory.createAnnotation(newView, sub.getBegin() + relativ,
+							sub.getEnd() + relativ, subClass);
+
+					for (Feature feature : sub.getType().getFeatures()) {
+						if (feature.getRange().isPrimitive())
+							tgt.setFeatureValueFromString(feature, sub.getFeatureValueAsString(feature));
+					}
+					tgt.setBegin(tgtBegin);
+					tgt.setEnd(tgtEnd);
 				}
 			}
 		}
