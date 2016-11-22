@@ -4,7 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.unistuttgart.ims</groupId>
 	<artifactId>de.unistuttgart.ims.drama</artifactId>
+<<<<<<< HEAD
 	<version>0.4.0</version>
+=======
+	<version>0.4.1</version>
+>>>>>>> release/0.4.1
 	<packaging>pom</packaging>
 	<name>DramaNLP</name>
 	<url>https://github.com/quadrama/DramaNLP</url>
@@ -154,5 +158,6 @@
 		<module>de.unistuttgart.ims.drama.examples</module>
 		<module>de.unistuttgart.ims.drama.util</module>
 		<module>de.unistuttgart.ims.drama.core.cr</module>
+		<module>de.unistuttgart.ims.drama.core.ml</module>
 	</modules>
 </project>

@@ -167,6 +167,7 @@ public class TextGridUtil {
 				}
 			} else {
 				select2Annotation(jcas, castList, map, "castItem", Figure.class, null);
+				//fixFigureAnnotations(jcas);
 			}
 		} else {
 			try {
@@ -174,7 +175,7 @@ public class TextGridUtil {
 						.iterator().next();
 
 				AnnotationUtil.trim(select2Annotation(jcas, root, map, "p", Figure.class, dp));
-				fixFigureAnnotations(jcas);
+				// fixFigureAnnotations(jcas);
 			} catch (NoSuchElementException e) {
 				System.err.println("No dramatis personae annotation in drama " + Drama.get(jcas).getDocumentId());
 				// e.printStackTrace();

@@ -1,6 +1,7 @@
 package de.unistuttgart.quadrama.io.gutenbergde;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
@@ -36,12 +37,13 @@ public class TestGutenbergDEReader {
 
 	@Before
 	public void setUp() throws ResourceInitializationException {
-		description = CollectionReaderFactory.createReaderDescription(GutenbergDEReader.class,
-				GutenbergDEReader.PARAM_INPUT_DIRECTORY, "src/test/resources/test1");
+
 	}
 
 	@Test
-	public void testReader() throws UIMAException, IOException {
+	public void testReader1() throws UIMAException, IOException {
+		description = CollectionReaderFactory.createReaderDescription(GutenbergDEReader.class,
+				GutenbergDEReader.PARAM_INPUT, "src/test/resources/test1");
 		JCasIterator iter = SimplePipeline.iteratePipeline(description, AnalysisEngineFactory
 				.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION, "target/doc")).iterator();
 		JCas jcas;
@@ -79,7 +81,20 @@ public class TestGutenbergDEReader {
 		Set<String> s = new HashSet<String>(JCasUtil.toText(JCasUtil.selectCovered(Speaker.class, scene)));
 		assertEquals(2, s.size());
 
+		assertFalse(iter.hasNext());
+
+	}
+
+	public void testReader2() throws ResourceInitializationException {
+		description = CollectionReaderFactory.createReaderDescription(GutenbergDEReader.class,
+				GutenbergDEReader.PARAM_INPUT, "src/test/resources/test2");
+		JCasIterator iter = SimplePipeline.iteratePipeline(description, AnalysisEngineFactory
+				.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION, "target/doc")).iterator();
+		JCas jcas;
+		Scene scene;
+
 		jcas = iter.next();
+
 		// sanity check
 		// 2.xml
 
@@ -92,7 +107,9 @@ public class TestGutenbergDEReader {
 		assertTrue(JCasUtil.exists(jcas, DramatisPersonae.class));
 		assertTrue(JCasUtil.exists(jcas, FrontMatter.class));
 		assertTrue(JCasUtil.exists(jcas, MainMatter.class));
+
 		// assertEquals(3, JCasUtil.select(jcas, Act.class).size());
 
+		assertFalse(iter.hasNext());
 	}
 }

@@ -4,7 +4,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.io.FileReader;
@@ -47,7 +49,7 @@ public class TestTextgridTEIFileReader {
 	@Before
 	public void setUp() throws ResourceInitializationException {
 		description = CollectionReaderFactory.createReaderDescription(TextgridTEIUrlReader.class,
-				TextgridTEIUrlReader.PARAM_INPUT_DIRECTORY, "src/test/resources/textgridFiles");
+				TextgridTEIUrlReader.PARAM_INPUT, "src/test/resources/textgridFiles");
 	}
 
 	@Test
@@ -55,76 +57,82 @@ public class TestTextgridTEIFileReader {
 		JCasIterator iter = SimplePipeline.iteratePipeline(description, AnalysisEngineFactory
 				.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION, "target/doc")).iterator();
 
-		JCas jcas;
+		check(iter.next());
+		check(iter.next());
+		check(iter.next());
+
+	}
+
+	public void check(JCas jcas) {
 		Speaker speaker;
 		Figure figure;
 
-		jcas = iter.next();
-		assertTrue(JCasUtil.exists(jcas, Drama.class));
-		assertEquals("ndtw.0", JCasUtil.selectSingle(jcas, Drama.class).getDocumentId());
-		assertTrue(JCasUtil.exists(jcas, Act.class));
-		assertTrue(JCasUtil.exists(jcas, Scene.class));
-		assertTrue(JCasUtil.exists(jcas, Speaker.class));
-		assertTrue(JCasUtil.exists(jcas, Author.class));
-		// there is no Dramatis Personae in ndtw.0
-		assertFalse(JCasUtil.exists(jcas, DramatisPersonae.class));
-		assertFalse(JCasUtil.exists(jcas, Figure.class));
+		String id = JCasUtil.selectSingle(jcas, Drama.class).getDocumentId();
+		if (id.equals("ndtw.0")) {
+			assertTrue(JCasUtil.exists(jcas, Drama.class));
+			assertEquals("ndtw.0", JCasUtil.selectSingle(jcas, Drama.class).getDocumentId());
+			assertTrue(JCasUtil.exists(jcas, Act.class));
+			assertTrue(JCasUtil.exists(jcas, Scene.class));
+			assertTrue(JCasUtil.exists(jcas, Speaker.class));
+			assertTrue(JCasUtil.exists(jcas, Author.class));
+			// there is no Dramatis Personae in ndtw.0
+			assertFalse(JCasUtil.exists(jcas, DramatisPersonae.class));
+			assertFalse(JCasUtil.exists(jcas, Figure.class));
 
-		assertEquals(3, JCasUtil.select(jcas, Act.class).size());
-		assertEquals(19, JCasUtil.select(jcas, Scene.class).size());
+			assertEquals(3, JCasUtil.select(jcas, Act.class).size());
+			assertEquals(19, JCasUtil.select(jcas, Scene.class).size());
+		} else if (id.equals("r134.0")) {
+			assertTrue(JCasUtil.exists(jcas, Drama.class));
+			assertEquals("r134.0", JCasUtil.selectSingle(jcas, Drama.class).getDocumentId());
+			assertTrue(JCasUtil.exists(jcas, Figure.class));
+			assertTrue(JCasUtil.exists(jcas, Act.class));
+			assertTrue(JCasUtil.exists(jcas, Scene.class));
+			assertTrue(JCasUtil.exists(jcas, Speaker.class));
+			assertTrue(JCasUtil.exists(jcas, DramatisPersonae.class));
+			assertTrue(JCasUtil.exists(jcas, Author.class));
+		} else if (id.equals("vndf.0")) {
+			assertTrue(JCasUtil.exists(jcas, Drama.class));
+			assertEquals("vndf.0", JCasUtil.selectSingle(jcas, Drama.class).getDocumentId());
+			assertTrue(JCasUtil.exists(jcas, Figure.class));
+			assertTrue(JCasUtil.exists(jcas, Act.class));
+			assertTrue(JCasUtil.exists(jcas, Scene.class));
+			assertTrue(JCasUtil.exists(jcas, Speaker.class));
+			assertTrue(JCasUtil.exists(jcas, DramatisPersonae.class));
+			assertTrue(JCasUtil.exists(jcas, Author.class));
+			assertNotNull(JCasUtil.selectSingle(jcas, FrontMatter.class));
+			assertNotNull(JCasUtil.selectSingle(jcas, MainMatter.class));
+			assertEquals(5, JCasUtil.select(jcas, Act.class).size());
+			assertEquals(24, JCasUtil.select(jcas, Scene.class).size());
 
-		jcas = iter.next();
-		assertTrue(JCasUtil.exists(jcas, Drama.class));
-		assertEquals("r134.0", JCasUtil.selectSingle(jcas, Drama.class).getDocumentId());
-		assertTrue(JCasUtil.exists(jcas, Figure.class));
-		assertTrue(JCasUtil.exists(jcas, Act.class));
-		assertTrue(JCasUtil.exists(jcas, Scene.class));
-		assertTrue(JCasUtil.exists(jcas, Speaker.class));
-		assertTrue(JCasUtil.exists(jcas, DramatisPersonae.class));
-		assertTrue(JCasUtil.exists(jcas, Author.class));
+			Act act;
+			act = JCasUtil.selectByIndex(jcas, Act.class, 0);
+			assertEquals(5, JCasUtil.selectCovered(Scene.class, act).size());
+			act = JCasUtil.selectByIndex(jcas, Act.class, 1);
+			assertEquals(6, JCasUtil.selectCovered(Scene.class, act).size());
+			act = JCasUtil.selectByIndex(jcas, Act.class, 2);
+			assertEquals(5, JCasUtil.selectCovered(Scene.class, act).size());
+			act = JCasUtil.selectByIndex(jcas, Act.class, 3);
+			assertEquals(5, JCasUtil.selectCovered(Scene.class, act).size());
+			act = JCasUtil.selectByIndex(jcas, Act.class, 4);
+			assertEquals(3, JCasUtil.selectCovered(Scene.class, act).size());
 
-		jcas = iter.next();
-		// general sanity checking
-		assertTrue(JCasUtil.exists(jcas, Drama.class));
-		assertEquals("vndf.0", JCasUtil.selectSingle(jcas, Drama.class).getDocumentId());
-		assertTrue(JCasUtil.exists(jcas, Figure.class));
-		assertTrue(JCasUtil.exists(jcas, Act.class));
-		assertTrue(JCasUtil.exists(jcas, Scene.class));
-		assertTrue(JCasUtil.exists(jcas, Speaker.class));
-		assertTrue(JCasUtil.exists(jcas, DramatisPersonae.class));
-		assertTrue(JCasUtil.exists(jcas, Author.class));
-		assertNotNull(JCasUtil.selectSingle(jcas, FrontMatter.class));
-		assertNotNull(JCasUtil.selectSingle(jcas, MainMatter.class));
-		assertEquals(5, JCasUtil.select(jcas, Act.class).size());
-		assertEquals(24, JCasUtil.select(jcas, Scene.class).size());
+			// figures
+			// should be 24, but we can't identify the last lines
+			assertEquals(26, JCasUtil.select(jcas, Figure.class).size());
+			figure = JCasUtil.selectByIndex(jcas, Figure.class, 0);
+			assertEquals("Escalus, Prinz von Verona", figure.getCoveredText());
+			assertNull(figure.getDescription());
 
-		Act act;
-		act = JCasUtil.selectByIndex(jcas, Act.class, 0);
-		assertEquals(5, JCasUtil.selectCovered(Scene.class, act).size());
-		act = JCasUtil.selectByIndex(jcas, Act.class, 1);
-		assertEquals(6, JCasUtil.selectCovered(Scene.class, act).size());
-		act = JCasUtil.selectByIndex(jcas, Act.class, 2);
-		assertEquals(5, JCasUtil.selectCovered(Scene.class, act).size());
-		act = JCasUtil.selectByIndex(jcas, Act.class, 3);
-		assertEquals(5, JCasUtil.selectCovered(Scene.class, act).size());
-		act = JCasUtil.selectByIndex(jcas, Act.class, 4);
-		assertEquals(3, JCasUtil.selectCovered(Scene.class, act).size());
+			figure = JCasUtil.selectByIndex(jcas, Figure.class, 10);
+			assertEquals("Bruder Marcus, von demselben Orden", figure.getCoveredText());
+			assertNull(figure.getDescription());
 
-		// figures
-		// should be 24, but we can't identify the last lines
-		assertEquals(26, JCasUtil.select(jcas, Figure.class).size());
-		figure = JCasUtil.selectByIndex(jcas, Figure.class, 0);
-		assertEquals("Escalus", figure.getCoveredText());
-		assertEquals("Prinz von Verona", figure.getDescription().getCoveredText().trim());
-
-		figure = JCasUtil.selectByIndex(jcas, Figure.class, 10);
-		assertEquals("Bruder Marcus", figure.getCoveredText());
-		assertEquals("von demselben Orden", figure.getDescription().getCoveredText().trim());
-
-		// speakers
-		speaker = JCasUtil.selectByIndex(jcas, Speaker.class, 0);
-		assertEquals("SIMSON", speaker.getCoveredText());
-
+			// speakers
+			speaker = JCasUtil.selectByIndex(jcas, Speaker.class, 0);
+			assertEquals("SIMSON", speaker.getCoveredText());
+		} else {
+			fail();
+		}
 	}
 
 	@SuppressWarnings("resource")
@@ -135,7 +143,7 @@ public class TestTextgridTEIFileReader {
 		List<CSVRecord> records = reader.getRecords();
 
 		description = CollectionReaderFactory.createReaderDescription(TextgridTEIUrlReader.class,
-				TextgridTEIUrlReader.PARAM_URL_LIST, csvFilename, TextgridTEIUrlReader.PARAM_LANGUAGE, "de");
+				TextgridTEIUrlReader.PARAM_INPUT, csvFilename, TextgridTEIUrlReader.PARAM_LANGUAGE, "de");
 		JCasIterator iter = SimplePipeline
 				.iteratePipeline(description, AnalysisEngineFactory.createEngineDescription(XmiWriter.class,
 						XmiWriter.PARAM_TARGET_LOCATION, "target/doc/", XmiWriter.PARAM_USE_DOCUMENT_ID, true))

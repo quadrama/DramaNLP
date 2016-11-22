@@ -21,13 +21,14 @@ import de.unistuttgart.quadrama.core.SpeakerIdentifier;
 import de.unistuttgart.quadrama.graph.NetworkExtractor;
 import de.unistuttgart.quadrama.io.tei.textgrid.TextgridTEIUrlReader;
 
+@Deprecated
 public class Process {
 
 	public static void main(String[] args) throws ResourceInitializationException, UIMAException, IOException {
 		System.setProperty("java.util.logging.config.file", "src/main/resources/logging.properties");
 
 		CollectionReaderDescription crd = CollectionReaderFactory.createReaderDescription(TextgridTEIUrlReader.class,
-				TextgridTEIUrlReader.PARAM_INPUT_DIRECTORY, "src/main/resources");
+				TextgridTEIUrlReader.PARAM_INPUT, "src/main/resources");
 
 		SimplePipeline.runPipeline(crd,
 				/*

@@ -3,7 +3,7 @@
   <parent>
     <groupId>de.unistuttgart.ims</groupId>
     <artifactId>de.unistuttgart.ims.drama</artifactId>
-    <version>0.4.0</version>
+    <version>0.4.1</version>
   </parent>
   <artifactId>de.unistuttgart.ims.drama.io.core</artifactId>
   <dependencies>
@@ -19,7 +19,7 @@
   	<dependency>
   		<groupId>de.unistuttgart.ims</groupId>
   		<artifactId>de.unistuttgart.ims.drama.api</artifactId>
-  		<version>0.4.0</version>
+  		<version>0.4.1</version>
   	</dependency>
   	<dependency>
   		<groupId>org.apache.commons</groupId>
@@ -41,7 +41,7 @@
   	<dependency>
   		<groupId>de.unistuttgart.ims</groupId>
   		<artifactId>de.unistuttgart.ims.drama.util</artifactId>
-  		<version>0.4.0</version>
+  		<version>0.4.1</version>
   	</dependency>
   </dependencies>
   <build>

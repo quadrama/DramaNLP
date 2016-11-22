@@ -17,8 +17,8 @@ public class TestFolgerReader {
 	CollectionReaderDescription description;
 
 	public void setUp() throws ResourceInitializationException {
-		description = CollectionReaderFactory.createReaderDescription(FolgerReader.class,
-				FolgerReader.PARAM_INPUT_DIRECTORY, "src/test/resources/");
+		description = CollectionReaderFactory.createReaderDescription(FolgerReader.class, FolgerReader.PARAM_INPUT,
+				"src/test/resources/");
 	}
 
 	public void testReader() throws UIMAException, IOException {
