@@ -90,6 +90,10 @@
     	<artifactId>xom</artifactId>
     	<version>1.2.5</version>
     </dependency>
+    <dependency>
+    	<groupId>de.unistuttgart.ims</groupId>
+    	<artifactId>uimautil</artifactId>
+    </dependency>
   </dependencies>
   <build>
 		<plugins>
