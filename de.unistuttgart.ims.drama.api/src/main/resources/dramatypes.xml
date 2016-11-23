@@ -102,7 +102,7 @@
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.Figure</name>
-			<description>Represents on figure in the play. Each figure should
+			<description>Represents one figure in the play. Each figure should
 				only have one Figure annotation (and multiple Speaker annotations)
 			</description>
 			<supertypeName>uima.tcas.Annotation</supertypeName>
@@ -117,6 +117,11 @@
 					<description />
 					<rangeTypeName>de.unistuttgart.ims.drama.api.FigureDescription
 					</rangeTypeName>
+				</featureDescription>
+				<featureDescription>
+					<name>Name</name>
+					<description />
+					<rangeTypeName>de.unistuttgart.ims.drama.api.FigureName</rangeTypeName>
 				</featureDescription>
 				<featureDescription>
 					<name>NumberOfUtterances</name>
@@ -199,6 +204,11 @@
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.FigureDescription</name>
+			<description />
+			<supertypeName>uima.tcas.Annotation</supertypeName>
+		</typeDescription>
+		<typeDescription>
+			<name>de.unistuttgart.ims.drama.api.FigureName</name>
 			<description />
 			<supertypeName>uima.tcas.Annotation</supertypeName>
 		</typeDescription>

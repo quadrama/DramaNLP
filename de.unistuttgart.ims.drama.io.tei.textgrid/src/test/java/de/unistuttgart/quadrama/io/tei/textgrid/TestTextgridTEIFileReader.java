@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -119,12 +120,12 @@ public class TestTextgridTEIFileReader {
 			// should be 24, but we can't identify the last lines
 			assertEquals(26, JCasUtil.select(jcas, Figure.class).size());
 			figure = JCasUtil.selectByIndex(jcas, Figure.class, 0);
-			assertEquals("Escalus", figure.getCoveredText());
-			assertEquals("Prinz von Verona", figure.getDescription().getCoveredText().trim());
+			assertEquals("Escalus, Prinz von Verona", figure.getCoveredText());
+			assertNull(figure.getDescription());
 
 			figure = JCasUtil.selectByIndex(jcas, Figure.class, 10);
-			assertEquals("Bruder Marcus", figure.getCoveredText());
-			assertEquals("von demselben Orden", figure.getDescription().getCoveredText().trim());
+			assertEquals("Bruder Marcus, von demselben Orden", figure.getCoveredText());
+			assertNull(figure.getDescription());
 
 			// speakers
 			speaker = JCasUtil.selectByIndex(jcas, Speaker.class, 0);
