@@ -28,6 +28,7 @@ public abstract class AbstractDramaUrlReader extends JCasCollectionReader_ImplBa
 	public static final String PARAM_INPUT = "Input";
 	public static final String PARAM_LANGUAGE = "Language";
 	public static final String PARAM_CLEANUP = "Cleanup";
+	public static final String PARAM_ID_PREFIX = "Id Prefix";
 
 	@ConfigurationParameter(name = PARAM_INPUT, mandatory = false)
 	String input = null;
@@ -38,8 +39,12 @@ public abstract class AbstractDramaUrlReader extends JCasCollectionReader_ImplBa
 	@ConfigurationParameter(name = PARAM_CLEANUP, mandatory = false)
 	boolean cleanUp = false;
 
+	@ConfigurationParameter(name = PARAM_ID_PREFIX, mandatory = false, defaultValue = "")
+	String idPrefix;
+
 	List<URL> urls = new LinkedList<URL>();
 	int currentUrlIndex = 0;
+	static final String idSeparator = ":";
 
 	@Override
 	public void initialize(UimaContext context) throws ResourceInitializationException {
@@ -104,7 +109,10 @@ public abstract class AbstractDramaUrlReader extends JCasCollectionReader_ImplBa
 		getLogger().debug("Processing url " + url);
 
 		Drama drama = new Drama(jcas);
-		drama.setDocumentId(String.valueOf(currentUrlIndex));
+		if (!idPrefix.isEmpty())
+			drama.setDocumentId(idPrefix + idSeparator + String.valueOf(currentUrlIndex));
+		else
+			drama.setDocumentId(String.valueOf(currentUrlIndex));
 		// drama.setDocumentBaseUri("https://textgridlab.org/1.0/tgcrud-public/rest/");
 		drama.setDocumentUri(url.toString());
 		drama.addToIndexes();
