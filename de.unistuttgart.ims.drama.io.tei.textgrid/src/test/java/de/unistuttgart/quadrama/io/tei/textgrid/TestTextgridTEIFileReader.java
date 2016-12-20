@@ -29,7 +29,6 @@ import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.unistuttgart.ims.drama.api.Act;
 import de.unistuttgart.ims.drama.api.ActHeading;
 import de.unistuttgart.ims.drama.api.Drama;
-import de.unistuttgart.ims.drama.api.DramatisPersonae;
 import de.unistuttgart.ims.drama.api.Figure;
 import de.unistuttgart.ims.drama.api.Scene;
 import de.unistuttgart.ims.drama.api.Speaker;
@@ -82,21 +81,17 @@ public class TestTextgridTEIFileReader {
 	}
 
 	private void checkSanity(JCas jcas) {
-		assertTrue(JCasUtil.exists(jcas, Drama.class));
-		assertTrue(JCasUtil.exists(jcas, Figure.class));
-		assertTrue(JCasUtil.exists(jcas, Act.class));
-		assertTrue(JCasUtil.exists(jcas, Scene.class));
-		assertTrue(JCasUtil.exists(jcas, Speaker.class));
-		assertTrue(JCasUtil.exists(jcas, DramatisPersonae.class));
+		assertTrue(Drama.get(jcas).getDocumentId(), JCasUtil.exists(jcas, Drama.class));
+		assertTrue(Drama.get(jcas).getDocumentId(), JCasUtil.exists(jcas, Speaker.class));
 
 		if (JCasUtil.exists(jcas, ActHeading.class)) {
 			for (Act act : JCasUtil.select(jcas, Act.class)) {
-				assertEquals(1, JCasUtil.selectCovered(ActHeading.class, act).size());
+				assertEquals(Drama.get(jcas).getDocumentId(), 1, JCasUtil.selectCovered(ActHeading.class, act).size());
 			}
 		}
 		// check that speaker annotations are not empty
 		for (Speaker speaker : JCasUtil.select(jcas, Speaker.class)) {
-			assertNotEquals(speaker.getBegin(), speaker.getEnd());
+			assertNotEquals(Drama.get(jcas).getDocumentId(), speaker.getBegin(), speaker.getEnd());
 		}
 
 		// check that figure annotations are not empty
