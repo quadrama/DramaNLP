@@ -41,7 +41,8 @@ import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
 
 public class TextGridUtil {
 
-	public static void getNext(JCas jcas, InputStream file, Drama drama) throws IOException, CollectionException {
+	public static void getNext(JCas jcas, InputStream file, Drama drama, boolean strict)
+			throws IOException, CollectionException {
 
 		Document doc = Jsoup.parse(file, "UTF-8", "", Parser.xmlParser());
 
@@ -82,7 +83,7 @@ public class TextGridUtil {
 		select2Annotation(jcas, root, vis.getAnnotationMap(), "ab", Speech.class, mainMatter);
 		select2Annotation(jcas, root, vis.getAnnotationMap(), "p", Speech.class, mainMatter);
 
-		readActsAndScenes(jcas, root, vis.getAnnotationMap());
+		readActsAndScenes(jcas, root, vis.getAnnotationMap(), strict);
 		readDramatisPersonae(jcas, root, vis.getAnnotationMap());
 
 		fixSpeakerAnnotations(jcas);
@@ -97,13 +98,13 @@ public class TextGridUtil {
 
 	}
 
-	public static void readActs(JCas jcas, Element root, Map<String, HTMLAnnotation> map) {
+	public static void readActs(JCas jcas, Element root, Map<String, HTMLAnnotation> map, boolean strict) {
 		if (!root.select("div[type=act]").isEmpty()) {
 			select2Annotation(jcas, root, map, "div[type=act]", Act.class, null);
 			select2Annotation(jcas, root, map, "div[type=act] > div > desc > title", ActHeading.class, null);
 			select2Annotation(jcas, root, map, "div[type=act] > div > head", ActHeading.class, null);
 		}
-		if (!JCasUtil.exists(jcas, Act.class)) {
+		if (!strict && !JCasUtil.exists(jcas, Act.class)) {
 			select2Annotation(jcas, root, map, "body > div", Act.class, null);
 			select2Annotation(jcas, root, map, "body > div > head", ActHeading.class, null);
 			select2Annotation(jcas, root, map, "body > div > desc > title", ActHeading.class, null);
@@ -123,11 +124,11 @@ public class TextGridUtil {
 	 * @param root
 	 * @param map
 	 */
-	public static void readScenes(JCas jcas, Element root, Map<String, HTMLAnnotation> map) {
+	public static void readScenes(JCas jcas, Element root, Map<String, HTMLAnnotation> map, boolean strict) {
 		if (!root.select("div[type=scene]").isEmpty()) {
 			select2Annotation(jcas, root, map, "div[type=scene]", Scene.class, null);
 			select2Annotation(jcas, root, map, "div[type=scene] > div > desc > title", SceneHeading.class, null);
-		} else {
+		} else if (!strict) {
 			if (JCasUtil.exists(jcas, Act.class))
 				for (Act act : JCasUtil.select(jcas, Act.class)) {
 
@@ -145,9 +146,9 @@ public class TextGridUtil {
 		}
 	}
 
-	public static void readActsAndScenes(JCas jcas, Element root, Map<String, HTMLAnnotation> map) {
-		readActs(jcas, root, map);
-		readScenes(jcas, root, map);
+	public static void readActsAndScenes(JCas jcas, Element root, Map<String, HTMLAnnotation> map, boolean strict) {
+		readActs(jcas, root, map, strict);
+		readScenes(jcas, root, map, strict);
 
 	}
 
@@ -167,7 +168,7 @@ public class TextGridUtil {
 				}
 			} else {
 				select2Annotation(jcas, castList, map, "castItem", Figure.class, null);
-				//fixFigureAnnotations(jcas);
+				// fixFigureAnnotations(jcas);
 			}
 		} else {
 			try {

@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<TEI xmlns:jxb="http://java.sun.com/xml/ns/jaxb" xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns="http://www.tei-c.org/ns/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://textgrid.info/namespaces/metadata/core/2010" xmlns:tgl="http://textgrid.info/namespaces/metadata/language/2010" xmlns:tgs="http://textgrid.info/namespaces/metadata/script/2010" xmlns:tgr="http://textgrid.info/namespaces/metadata/agent/2010" xml:id="tg72" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria">
+<?xml version="1.0" encoding="UTF-8"?><TEI xmlns:jxb="http://java.sun.com/xml/ns/jaxb" xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns="http://www.tei-c.org/ns/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://textgrid.info/namespaces/metadata/core/2010" xmlns:tgl="http://textgrid.info/namespaces/metadata/language/2010" xmlns:tgs="http://textgrid.info/namespaces/metadata/script/2010" xmlns:tgr="http://textgrid.info/namespaces/metadata/agent/2010" xml:id="tg72" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria">
    <teiHeader xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:a="http://www.textgrid.info/namespace/digibib/authors">
       <fileDesc>
          <titleStmt>
@@ -133,7 +132,7 @@ Rosaura, Dame d'Honneur der Donna Solina.</castItem>
                            
                         </div>
                      </div>
-                     <div subtype="work:no" type="act" xml:id="tg74" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/1. Akt">
+                     <div type="act" subtype="work:no" xml:id="tg74" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/1. Akt">
                         <div>
                            <desc>
                               <title>1. Akt</title>
@@ -141,7 +140,7 @@ Rosaura, Dame d'Honneur der Donna Solina.</castItem>
                         </div>
                         
                         
-                        <div subtype="work:no" type="scene" xml:id="tg75" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/1. Akt/1. Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg75" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/1. Akt/1. Szene">
                            <div>
                               <desc>
                                  <title>1. Szene</title>
@@ -487,7 +486,7 @@ Herz – Still mein Mund! währe fort! umschwirre mich seligmachende Harmonie! i
                               </div>
                            </div>
                         </div>
-                        <div subtype="work:no" type="scene" xml:id="tg76" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/1. Akt/2. Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg76" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/1. Akt/2. Szene">
                            <div>
                               <desc>
                                  <title>2. Szene</title>
@@ -973,7 +972,7 @@ weißt, was dir Solina gab. Ich bitt dich Närrchen, rede nicht, deine Brust ist
                               </div>
                            </div>
                         </div>
-                        <div subtype="work:no" type="scene" xml:id="tg77" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/1. Akt/3. Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg77" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/1. Akt/3. Szene">
                            <div>
                               <desc>
                                  <title>3. Szene</title>
@@ -1269,7 +1268,7 @@ Tag, meine Laura, war ein harter Tag. Bewahre mich zu klagen! aber es war ein ha
                            </div>
                         </div>
                      </div>
-                     <div subtype="work:no" type="act" xml:id="tg78" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/2. Akt">
+                     <div type="act" subtype="work:no" xml:id="tg78" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/2. Akt">
                         <div>
                            <desc>
                               <title>2. Akt</title>
@@ -1277,7 +1276,7 @@ Tag, meine Laura, war ein harter Tag. Bewahre mich zu klagen! aber es war ein ha
                         </div>
                         
                         
-                        <div subtype="work:no" type="scene" xml:id="tg79" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/2. Akt/1. Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg79" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/2. Akt/1. Szene">
                            <div>
                               <desc>
                                  <title>1. Szene</title>
@@ -1314,7 +1313,7 @@ Sanften Schlaf, Madonna! Deinem heiligen Mädchen Kraft und Genesen! Und willst 
                               </div>
                            </div>
                         </div>
-                        <div subtype="work:no" type="scene" xml:id="tg80" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/2. Akt/2. Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg80" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/2. Akt/2. Szene">
                            <div>
                               <desc>
                                  <title>2. Szene</title>
@@ -1445,7 +1444,7 @@ Es muß zu Ende. Ich kann nichts dafür, daß ich an diesem Gedanken häng und z
                               </div>
                            </div>
                         </div>
-                        <div subtype="work:no" type="scene" xml:id="tg81" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/2. Akt/3. Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg81" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/2. Akt/3. Szene">
                            <div>
                               <desc>
                                  <title>3. Szene</title>
@@ -1845,7 +1844,7 @@ Augenbraunen hier Halt gemacht, und abscheren lassen; oder sind sie so schraff v
                               </div>
                            </div>
                         </div>
-                        <div subtype="work:no" type="scene" xml:id="tg82" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/2. Akt/4. Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg82" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/2. Akt/4. Szene">
                            <div>
                               <desc>
                                  <title>4. Szene</title>
@@ -2069,7 +2068,7 @@ meinen Haß zu stärken. Komm! und dann will ich dich zu einem kranken Lamm füh
                               </div>
                            </div>
                         </div>
-                        <div subtype="work:no" type="scene" xml:id="tg83" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/2. Akt/5. Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg83" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/2. Akt/5. Szene">
                            <div>
                               <desc>
                                  <title>5. Szene</title>
@@ -2283,7 +2282,7 @@ ward. – Sie gingen nach dem Wasserfall, kehrten zurück, und ich nahm in der F
                               </div>
                            </div>
                         </div>
-                        <div subtype="work:no" type="scene" xml:id="tg84" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/2. Akt/6. Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg84" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/2. Akt/6. Szene">
                            <div>
                               <desc>
                                  <title>6. Szene</title>
@@ -2315,7 +2314,7 @@ ward. – Sie gingen nach dem Wasserfall, kehrten zurück, und ich nahm in der F
                            </div>
                         </div>
                      </div>
-                     <div subtype="work:no" type="act" xml:id="tg85" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/3. Akt">
+                     <div type="act" subtype="work:no" xml:id="tg85" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/3. Akt">
                         <div>
                            <desc>
                               <title>3. Akt</title>
@@ -2323,7 +2322,7 @@ ward. – Sie gingen nach dem Wasserfall, kehrten zurück, und ich nahm in der F
                         </div>
                         
                         
-                        <div subtype="work:no" type="scene" xml:id="tg86" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/3. Akt/1. Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg86" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/3. Akt/1. Szene">
                            <div>
                               <desc>
                                  <title>1. Szene</title>
@@ -2551,7 +2550,7 @@ wo alles durch einen Knall verschwindet. Schwarz fiel's nieder, und finster in m
                               </div>
                            </div>
                         </div>
-                        <div subtype="work:no" type="scene" xml:id="tg87" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/3. Akt/2. Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg87" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/3. Akt/2. Szene">
                            <div>
                               <desc>
                                  <title>2. Szene</title>
@@ -2920,7 +2919,7 @@ mir den Gefallen getan, ein Fädchen um ihr Herz zu knüpfen. Hab ich's getroffe
                            </div>
                         </div>
                      </div>
-                     <div subtype="work:no" type="act" xml:id="tg88" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/4. Akt">
+                     <div type="act" subtype="work:no" xml:id="tg88" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/4. Akt">
                         <div>
                            <desc>
                               <title>4. Akt</title>
@@ -2928,7 +2927,7 @@ mir den Gefallen getan, ein Fädchen um ihr Herz zu knüpfen. Hab ich's getroffe
                         </div>
                         
                         
-                        <div subtype="work:no" type="scene" xml:id="tg89" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/4. Akt/1. Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg89" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/4. Akt/1. Szene">
                            <div>
                               <desc>
                                  <title>1. Szene</title>
@@ -3427,7 +3426,7 @@ nagendem Zweifel! Ich will dir dann eröffnen, will dir zeigen, daß ich gewacht
                               </div>
                            </div>
                         </div>
-                        <div subtype="work:no" type="scene" xml:id="tg90" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/4. Akt/2. Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg90" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/4. Akt/2. Szene">
                            <div>
                               <desc>
                                  <title>2. Szene</title>
@@ -3665,7 +3664,7 @@ Philosophie! – Hm! er macht große Dinge mit sich selbst aus. – Des Menschen
                               </div>
                            </div>
                         </div>
-                        <div subtype="work:no" type="scene" xml:id="tg91" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/4. Akt/3. Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg91" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/4. Akt/3. Szene">
                            <div>
                               <desc>
                                  <title>3. Szene</title>
@@ -3708,7 +3707,7 @@ Augenblick, er hascht darnach, zieht sich's plötzlich in die Höhe und er weiß
                               </div>
                            </div>
                         </div>
-                        <div subtype="work:no" type="scene" xml:id="tg92" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/4. Akt/4. Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg92" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/4. Akt/4. Szene">
                            <div>
                               <desc>
                                  <title>4. Szene</title>
@@ -3959,7 +3958,7 @@ retten! Stark Julio! ich hör dich ferne wüten, deine Donna ist nah. <hi rend="
                            </div>
                         </div>
                      </div>
-                     <div subtype="work:no" type="act" xml:id="tg93" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/5. Akt">
+                     <div type="act" subtype="work:no" xml:id="tg93" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/5. Akt">
                         <div>
                            <desc>
                               <title>5. Akt</title>
@@ -3967,7 +3966,7 @@ retten! Stark Julio! ich hör dich ferne wüten, deine Donna ist nah. <hi rend="
                         </div>
                         
                         
-                        <div subtype="work:no" type="scene" xml:id="tg94" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/5. Akt/1. Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg94" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/5. Akt/1. Szene">
                            <div>
                               <desc>
                                  <title>1. Szene</title>
@@ -4110,7 +4109,7 @@ Herzen drücktest – ich bitt dich laß ihn für zwanzig arbeiten. Nur laß ihn
                               </div>
                            </div>
                         </div>
-                        <div subtype="work:no" type="scene" xml:id="tg95" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/5. Akt/2. Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg95" n="/Literatur/M/Klinger, Friedrich Maximilian/Dramen/Die neue Arria/5. Akt/2. Szene">
                            <div>
                               <desc>
                                  <title>2. Szene</title>
