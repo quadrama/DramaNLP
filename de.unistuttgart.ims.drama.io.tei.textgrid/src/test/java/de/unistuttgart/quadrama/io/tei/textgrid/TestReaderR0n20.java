@@ -27,7 +27,8 @@ public class TestReaderR0n20 {
 	@Before
 	public void setUp() throws ResourceInitializationException {
 		description = CollectionReaderFactory.createReaderDescription(TextgridTEIUrlReader.class,
-				TextgridTEIUrlReader.PARAM_INPUT, "src/test/resources/textgridFiles/r0n2.0.xml");
+				TextgridTEIUrlReader.PARAM_INPUT, "src/test/resources/textgridFiles/r0n2.0.xml",
+				TextgridTEIUrlReader.PARAM_STRICT, true);
 		AggregateBuilder b = new AggregateBuilder();
 		if (TestGenerics.debug)
 			b.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
