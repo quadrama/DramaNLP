@@ -12,10 +12,9 @@ import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
 public class TextgridTEIUrlReader extends AbstractDramaUrlReader {
 
 	@Override
-	public void getNext(JCas jcas, InputStream file, Drama drama)
-			throws IOException, CollectionException {
+	public void getNext(JCas jcas, InputStream file, Drama drama) throws IOException, CollectionException {
 
-		TextGridUtil.getNext(jcas, file, drama);
+		TextGridUtil.getNext(jcas, file, drama, true);
 
 	}
 
