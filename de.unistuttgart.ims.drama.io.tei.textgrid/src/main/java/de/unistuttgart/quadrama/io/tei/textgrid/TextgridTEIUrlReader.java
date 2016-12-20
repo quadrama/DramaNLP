@@ -27,7 +27,7 @@ public class TextgridTEIUrlReader extends AbstractDramaUrlReader {
 	@Override
 	public void getNext(JCas jcas, InputStream file, Drama drama) throws IOException, CollectionException {
 
-		TextGridUtil.getNext(jcas, file, drama, true);
+		TextGridUtil.getNext(jcas, file, drama, strict);
 
 	}
 
