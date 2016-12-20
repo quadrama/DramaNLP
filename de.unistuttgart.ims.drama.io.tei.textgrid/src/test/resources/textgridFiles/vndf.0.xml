@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<TEI xmlns:jxb="http://java.sun.com/xml/ns/jaxb" xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns="http://www.tei-c.org/ns/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://textgrid.info/namespaces/metadata/core/2010" xmlns:tgl="http://textgrid.info/namespaces/metadata/language/2010" xmlns:tgs="http://textgrid.info/namespaces/metadata/script/2010" xmlns:tgr="http://textgrid.info/namespaces/metadata/agent/2010" xml:id="tg742" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia">
+<?xml version="1.0" encoding="UTF-8"?><TEI xmlns:jxb="http://java.sun.com/xml/ns/jaxb" xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns="http://www.tei-c.org/ns/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://textgrid.info/namespaces/metadata/core/2010" xmlns:tgl="http://textgrid.info/namespaces/metadata/language/2010" xmlns:tgs="http://textgrid.info/namespaces/metadata/script/2010" xmlns:tgr="http://textgrid.info/namespaces/metadata/agent/2010" xml:id="tg742" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia">
    <teiHeader xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:a="http://www.textgrid.info/namespace/digibib/authors">
       <fileDesc>
          <titleStmt>
@@ -135,7 +134,7 @@ Personen</head>
                      
                      
                      
-                     <div subtype="work:no" xml:id="tg743" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Erster Aufzug">
+                     <div type="act" subtype="work:no" xml:id="tg743" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Erster Aufzug">
                         <div>
                            <desc>
                               <title>Erster Aufzug</title>
@@ -143,7 +142,7 @@ Personen</head>
                         </div>
                         
                         
-                        <div subtype="work:no" type="scene" xml:id="tg744" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Erster Aufzug/Erste Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg744" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Erster Aufzug/Erste Szene">
                            <div>
                               <desc>
                                  <title>Erste Szene</title>
@@ -783,7 +782,7 @@ Personen</head>
                         </div>
 
 
-                        <div subtype="work:no" type="scene" xml:id="tg745" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Erster Aufzug/Zweite Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg745" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Erster Aufzug/Zweite Szene">
                            <div>
                               <desc>
                                  <title>Zweite Szene</title>
@@ -1036,7 +1035,7 @@ Personen</head>
                         </div>
 
 
-                        <div subtype="work:no" type="scene" xml:id="tg746" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Erster Aufzug/Dritte Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg746" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Erster Aufzug/Dritte Szene">
                            <div>
                               <desc>
                                  <title>Dritte Szene</title>
@@ -1313,7 +1312,7 @@ Personen</head>
                         </div>
 
 
-                        <div subtype="work:no" type="scene" xml:id="tg747" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Erster Aufzug/Vierte Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg747" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Erster Aufzug/Vierte Szene">
                            <div>
                               <desc>
                                  <title>Vierte Szene</title>
@@ -1621,7 +1620,7 @@ Personen</head>
                         </div>
 
 
-                        <div subtype="work:no" type="scene" xml:id="tg748" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Erster Aufzug/Fünfte Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg748" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Erster Aufzug/Fünfte Szene">
                            <div>
                               <desc>
                                  <title>Fünfte Szene</title>
@@ -2094,7 +2093,7 @@ Personen</head>
                      </div>
 
 
-                     <div subtype="work:no" xml:id="tg749" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Zweiter Aufzug">
+                     <div type="act" subtype="work:no" xml:id="tg749" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Zweiter Aufzug">
                         <div>
                            <desc>
                               <title>Zweiter Aufzug</title>
@@ -2102,7 +2101,7 @@ Personen</head>
                         </div>
                         
                         
-                        <div subtype="work:no" type="scene" xml:id="tg750" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Zweiter Aufzug/Erste Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg750" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Zweiter Aufzug/Erste Szene">
                            <div>
                               <desc>
                                  <title>Erste Szene</title>
@@ -2230,7 +2229,7 @@ Personen</head>
                         </div>
 
 
-                        <div subtype="work:no" type="scene" xml:id="tg751" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Zweiter Aufzug/Zweite Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg751" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Zweiter Aufzug/Zweite Szene">
                            <div>
                               <desc>
                                  <title>Zweite Szene</title>
@@ -2757,7 +2756,7 @@ Personen</head>
                         </div>
 
 
-                        <div subtype="work:no" type="scene" xml:id="tg752" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Zweiter Aufzug/Dritte Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg752" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Zweiter Aufzug/Dritte Szene">
                            <div>
                               <desc>
                                  <title>Dritte Szene</title>
@@ -2970,7 +2969,7 @@ Personen</head>
                         </div>
 
 
-                        <div subtype="work:no" type="scene" xml:id="tg753" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Zweiter Aufzug/Vierte Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg753" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Zweiter Aufzug/Vierte Szene">
                            <div>
                               <desc>
                                  <title>Vierte Szene</title>
@@ -3308,7 +3307,7 @@ Personen</head>
                         </div>
 
 
-                        <div subtype="work:no" type="scene" xml:id="tg754" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Zweiter Aufzug/Fünfte Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg754" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Zweiter Aufzug/Fünfte Szene">
                            <div>
                               <desc>
                                  <title>Fünfte Szene</title>
@@ -3503,7 +3502,7 @@ Personen</head>
                         </div>
 
 
-                        <div subtype="work:no" type="scene" xml:id="tg755" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Zweiter Aufzug/Sechste Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg755" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Zweiter Aufzug/Sechste Szene">
                            <div>
                               <desc>
                                  <title>Sechste Szene</title>
@@ -3621,7 +3620,7 @@ Personen</head>
                      </div>
 
 
-                     <div subtype="work:no" xml:id="tg756" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Dritter Aufzug">
+                     <div type="act" subtype="work:no" xml:id="tg756" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Dritter Aufzug">
                         <div>
                            <desc>
                               <title>Dritter Aufzug</title>
@@ -3629,7 +3628,7 @@ Personen</head>
                         </div>
                         
                         
-                        <div subtype="work:no" type="scene" xml:id="tg757" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Dritter Aufzug/Erste Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg757" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Dritter Aufzug/Erste Szene">
                            <div>
                               <desc>
                                  <title>Erste Szene</title>
@@ -4145,7 +4144,7 @@ Personen</head>
                         </div>
 
 
-                        <div subtype="work:no" type="scene" xml:id="tg758" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Dritter Aufzug/Zweite Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg758" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Dritter Aufzug/Zweite Szene">
                            <div>
                               <desc>
                                  <title>Zweite Szene</title>
@@ -4453,7 +4452,7 @@ Personen</head>
                         </div>
 
 
-                        <div subtype="work:no" type="scene" xml:id="tg759" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Dritter Aufzug/Dritte Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg759" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Dritter Aufzug/Dritte Szene">
                            <div>
                               <desc>
                                  <title>Dritte Szene</title>
@@ -4896,7 +4895,7 @@ Personen</head>
                         </div>
 
 
-                        <div subtype="work:no" type="scene" xml:id="tg760" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Dritter Aufzug/Vierte Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg760" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Dritter Aufzug/Vierte Szene">
                            <div>
                               <desc>
                                  <title>Vierte Szene</title>
@@ -5010,7 +5009,7 @@ Personen</head>
                         </div>
 
 
-                        <div subtype="work:no" type="scene" xml:id="tg761" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Dritter Aufzug/Fünfte Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg761" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Dritter Aufzug/Fünfte Szene">
                            <div>
                               <desc>
                                  <title>Fünfte Szene</title>
@@ -5699,7 +5698,7 @@ Personen</head>
                      </div>
 
 
-                     <div subtype="work:no" xml:id="tg762" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Vierter Aufzug">
+                     <div type="act" subtype="work:no" xml:id="tg762" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Vierter Aufzug">
                         <div>
                            <desc>
                               <title>Vierter Aufzug</title>
@@ -5707,7 +5706,7 @@ Personen</head>
                         </div>
                         
                         
-                        <div subtype="work:no" type="scene" xml:id="tg763" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Vierter Aufzug/Erste Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg763" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Vierter Aufzug/Erste Szene">
                            <div>
                               <desc>
                                  <title>Erste Szene</title>
@@ -6027,7 +6026,7 @@ Personen</head>
                         </div>
 
 
-                        <div subtype="work:no" type="scene" xml:id="tg764" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Vierter Aufzug/Zweite Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg764" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Vierter Aufzug/Zweite Szene">
                            <div>
                               <desc>
                                  <title>Zweite Szene</title>
@@ -6198,7 +6197,7 @@ Personen</head>
                         </div>
 
 
-                        <div subtype="work:no" type="scene" xml:id="tg765" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Vierter Aufzug/Dritte Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg765" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Vierter Aufzug/Dritte Szene">
                            <div>
                               <desc>
                                  <title>Dritte Szene</title>
@@ -6336,7 +6335,7 @@ Personen</head>
                         </div>
 
 
-                        <div subtype="work:no" type="scene" xml:id="tg766" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Vierter Aufzug/Vierte Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg766" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Vierter Aufzug/Vierte Szene">
                            <div>
                               <desc>
                                  <title>Vierte Szene</title>
@@ -6489,7 +6488,7 @@ Personen</head>
                         </div>
 
 
-                        <div subtype="work:no" type="scene" xml:id="tg767" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Vierter Aufzug/Fünfte Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg767" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Vierter Aufzug/Fünfte Szene">
                            <div>
                               <desc>
                                  <title>Fünfte Szene</title>
@@ -6861,7 +6860,7 @@ Personen</head>
                      </div>
 
 
-                     <div subtype="work:no" xml:id="tg768" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Fünfter Aufzug">
+                     <div type="act" subtype="work:no" xml:id="tg768" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Fünfter Aufzug">
                         <div>
                            <desc>
                               <title>Fünfter Aufzug</title>
@@ -6869,7 +6868,7 @@ Personen</head>
                         </div>
                         
                         
-                        <div subtype="work:no" type="scene" xml:id="tg769" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Fünfter Aufzug/Erste Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg769" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Fünfter Aufzug/Erste Szene">
                            <div>
                               <desc>
                                  <title>Erste Szene</title>
@@ -7081,7 +7080,7 @@ Personen</head>
                         </div>
 
 
-                        <div subtype="work:no" type="scene" xml:id="tg770" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Fünfter Aufzug/Zweite Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg770" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Fünfter Aufzug/Zweite Szene">
                            <div>
                               <desc>
                                  <title>Zweite Szene</title>
@@ -7185,7 +7184,7 @@ Personen</head>
                         </div>
 
 
-                        <div subtype="work:no" type="scene" xml:id="tg771" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Fünfter Aufzug/Dritte Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg771" n="/Literatur/M/Shakespeare, William/Tragödien/Romeo und Julia/Fünfter Aufzug/Dritte Szene">
                            <div>
                               <desc>
                                  <title>Dritte Szene</title>

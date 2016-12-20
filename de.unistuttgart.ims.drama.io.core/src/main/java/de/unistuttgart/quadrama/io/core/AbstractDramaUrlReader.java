@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
@@ -28,6 +29,7 @@ public abstract class AbstractDramaUrlReader extends JCasCollectionReader_ImplBa
 	public static final String PARAM_INPUT = "Input";
 	public static final String PARAM_LANGUAGE = "Language";
 	public static final String PARAM_CLEANUP = "Cleanup";
+	public static final String PARAM_ID_PREFIX = "Id Prefix";
 
 	@ConfigurationParameter(name = PARAM_INPUT, mandatory = false)
 	String input = null;
@@ -38,8 +40,12 @@ public abstract class AbstractDramaUrlReader extends JCasCollectionReader_ImplBa
 	@ConfigurationParameter(name = PARAM_CLEANUP, mandatory = false)
 	boolean cleanUp = false;
 
+	@ConfigurationParameter(name = PARAM_ID_PREFIX, mandatory = false, defaultValue = "")
+	String idPrefix;
+
 	List<URL> urls = new LinkedList<URL>();
 	int currentUrlIndex = 0;
+	static final String idSeparator = ":";
 
 	@Override
 	public void initialize(UimaContext context) throws ResourceInitializationException {
@@ -63,6 +69,13 @@ public abstract class AbstractDramaUrlReader extends JCasCollectionReader_ImplBa
 			} catch (Exception e) {
 				throw new ResourceInitializationException(e);
 
+			}
+		} else if (input.endsWith(".xml") || input.endsWith(".tei")) {
+			try {
+				urls.add(inputFile.toURI().toURL());
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		} else {
 			CSVParser r = null;
@@ -104,7 +117,10 @@ public abstract class AbstractDramaUrlReader extends JCasCollectionReader_ImplBa
 		getLogger().debug("Processing url " + url);
 
 		Drama drama = new Drama(jcas);
-		drama.setDocumentId(String.valueOf(currentUrlIndex));
+		if (!idPrefix.isEmpty())
+			drama.setDocumentId(idPrefix + idSeparator + String.valueOf(currentUrlIndex));
+		else
+			drama.setDocumentId(String.valueOf(currentUrlIndex));
 		// drama.setDocumentBaseUri("https://textgridlab.org/1.0/tgcrud-public/rest/");
 		drama.setDocumentUri(url.toString());
 		drama.addToIndexes();

@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<TEI xmlns:jxb="http://java.sun.com/xml/ns/jaxb" xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns="http://www.tei-c.org/ns/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://textgrid.info/namespaces/metadata/core/2010" xmlns:tgl="http://textgrid.info/namespaces/metadata/language/2010" xmlns:tgs="http://textgrid.info/namespaces/metadata/script/2010" xmlns:tgr="http://textgrid.info/namespaces/metadata/agent/2010" xml:id="tg73" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna">
+<?xml version="1.0" encoding="UTF-8"?><TEI xmlns:jxb="http://java.sun.com/xml/ns/jaxb" xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns="http://www.tei-c.org/ns/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://textgrid.info/namespaces/metadata/core/2010" xmlns:tgl="http://textgrid.info/namespaces/metadata/language/2010" xmlns:tgs="http://textgrid.info/namespaces/metadata/script/2010" xmlns:tgr="http://textgrid.info/namespaces/metadata/agent/2010" xml:id="tg73" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna">
    <teiHeader xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:a="http://www.textgrid.info/namespace/digibib/authors">
       <fileDesc>
          <titleStmt>
@@ -82,7 +81,7 @@
                      
                      
                      
-                     <div subtype="work:no" type="act" xml:id="tg74" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/1. Akt">
+                     <div type="act" subtype="work:no" xml:id="tg74" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/1. Akt">
                         <div>
                            <desc>
                               <title>1. Akt</title>
@@ -90,7 +89,7 @@
                         </div>
                         
                         
-                        <div subtype="work:no" xml:id="tg75" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/1. Akt/1. Auftritt">
+                        <div type="scene" subtype="work:no" xml:id="tg75" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/1. Akt/1. Auftritt">
                            <div>
                               <desc>
                                  <title>1. Auftritt</title>
@@ -159,7 +158,7 @@ erlebe, was mit Alcimna, meiner Pflege-Tochter, geschehen soll; es ist izt sechs
                               </div>
                            </div>
                         </div>
-                        <div subtype="work:no" xml:id="tg76" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/1. Akt/2. Auftritt">
+                        <div type="scene" subtype="work:no" xml:id="tg76" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/1. Akt/2. Auftritt">
                            <div>
                               <desc>
                                  <title>2. Auftritt</title>
@@ -217,7 +216,7 @@ gesucht; doch hieher wird sie wol kommen. Hælt sie die geschæftige Mutter auf?
                               </div>
                            </div>
                         </div>
-                        <div subtype="work:no" xml:id="tg77" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/1. Akt/3. Auftritt">
+                        <div type="scene" subtype="work:no" xml:id="tg77" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/1. Akt/3. Auftritt">
                            <div>
                               <desc>
                                  <title>3. Auftritt</title>
@@ -330,7 +329,7 @@ da; ich hab sie erst vorgestern geschnitten; die tœnt fyrtreflich; ich habe sch
                               </div>
                            </div>
                         </div>
-                        <div subtype="work:no" xml:id="tg78" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/1. Akt/4. Auftritt">
+                        <div type="scene" subtype="work:no" xml:id="tg78" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/1. Akt/4. Auftritt">
                            <div>
                               <desc>
                                  <title>4. Auftritt</title>
@@ -524,7 +523,7 @@ Wie sie des Fryhlings Wonne</l>
                               </div>
                            </div>
                         </div>
-                        <div subtype="work:no" xml:id="tg79" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/1. Akt/5. Auftritt">
+                        <div type="scene" subtype="work:no" xml:id="tg79" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/1. Akt/5. Auftritt">
                            <div>
                               <desc>
                                  <title>5. Auftritt</title>
@@ -604,7 +603,7 @@ Wie sie des Fryhlings Wonne</l>
                            </div>
                         </div>
                      </div>
-                     <div subtype="work:no" type="act" xml:id="tg80" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/2. Akt">
+                     <div type="act" subtype="work:no" xml:id="tg80" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/2. Akt">
                         <div>
                            <desc>
                               <title>2. Akt</title>
@@ -612,7 +611,7 @@ Wie sie des Fryhlings Wonne</l>
                         </div>
                         
                         
-                        <div subtype="work:no" xml:id="tg81" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/2. Akt/1. Auftritt">
+                        <div type="scene" subtype="work:no" xml:id="tg81" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/2. Akt/1. Auftritt">
                            <div>
                               <desc>
                                  <title>1. Auftritt</title>
@@ -659,7 +658,7 @@ und zutræglichste sey; sie empfindet hier dasjenige, was man empfindet, wenn ma
                               </div>
                            </div>
                         </div>
-                        <div subtype="work:no" xml:id="tg82" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/2. Akt/2. Auftritt">
+                        <div type="scene" subtype="work:no" xml:id="tg82" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/2. Akt/2. Auftritt">
                            <div>
                               <desc>
                                  <title>2. Auftritt</title>
@@ -777,7 +776,7 @@ haben, das unsre Bæume und unsre Herde geben. Aber ihr machet mich so vieles sc
                               </div>
                            </div>
                         </div>
-                        <div subtype="work:no" xml:id="tg83" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/2. Akt/3. Auftritt">
+                        <div type="scene" subtype="work:no" xml:id="tg83" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/2. Akt/3. Auftritt">
                            <div>
                               <desc>
                                  <title>3. Auftritt</title>
@@ -852,7 +851,7 @@ nicht zu lange geniessen, ohne dafyr den Gœttern zu danken; lass uns eilen, ihn
                               </div>
                            </div>
                         </div>
-                        <div subtype="work:no" xml:id="tg84" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/2. Akt/4. Auftritt">
+                        <div type="scene" subtype="work:no" xml:id="tg84" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/2. Akt/4. Auftritt">
                            <div>
                               <desc>
                                  <title>4. Auftritt</title>
@@ -1010,7 +1009,7 @@ wie die Gratien, und ich, ich bin zu empfindlich fyr alle Reize, als dass ich ei
                               </div>
                            </div>
                         </div>
-                        <div subtype="work:no" xml:id="tg85" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/2. Akt/5. Auftritt">
+                        <div type="scene" subtype="work:no" xml:id="tg85" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/2. Akt/5. Auftritt">
                            <div>
                               <desc>
                                  <title>5. Auftritt</title>
@@ -1132,7 +1131,7 @@ seinen Nachbar auf seinem Feld yberfiele, um das fyr sich zu haben; und das ist 
                               </div>
                            </div>
                         </div>
-                        <div subtype="work:no" xml:id="tg86" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/2. Akt/6. Auftritt">
+                        <div type="scene" subtype="work:no" xml:id="tg86" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/2. Akt/6. Auftritt">
                            <div>
                               <desc>
                                  <title>6. Auftritt</title>
@@ -1186,7 +1185,7 @@ seinen Nachbar auf seinem Feld yberfiele, um das fyr sich zu haben; und das ist 
                               </div>
                            </div>
                         </div>
-                        <div subtype="work:no" xml:id="tg87" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/2. Akt/7. Auftritt">
+                        <div type="scene" subtype="work:no" xml:id="tg87" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/2. Akt/7. Auftritt">
                            <div>
                               <desc>
                                  <title>7. Auftritt</title>
@@ -1266,7 +1265,7 @@ seinen Nachbar auf seinem Feld yberfiele, um das fyr sich zu haben; und das ist 
                            </div>
                         </div>
                      </div>
-                     <div subtype="work:no" type="act" xml:id="tg88" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/3. Akt">
+                     <div type="act" subtype="work:no" xml:id="tg88" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/3. Akt">
                         <div>
                            <desc>
                               <title>3. Akt</title>
@@ -1274,7 +1273,7 @@ seinen Nachbar auf seinem Feld yberfiele, um das fyr sich zu haben; und das ist 
                         </div>
                         
                         
-                        <div subtype="work:no" xml:id="tg89" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/3. Akt/1. Auftritt">
+                        <div type="scene" subtype="work:no" xml:id="tg89" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/3. Akt/1. Auftritt">
                            <div>
                               <desc>
                                  <title>1. Auftritt</title>
@@ -1384,7 +1383,7 @@ Spiel mit mir haben? Wenn dies alles so ist, so must doch du und Evander mit nac
                               </div>
                            </div>
                         </div>
-                        <div subtype="work:no" xml:id="tg90" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/3. Akt/2. Auftritt">
+                        <div type="scene" subtype="work:no" xml:id="tg90" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/3. Akt/2. Auftritt">
                            <div>
                               <desc>
                                  <title>2. Auftritt</title>
@@ -1470,7 +1469,7 @@ bey diesen, die ich zu deiner Bedienung mitgenommen habe; ich werde dich bald in
                               </div>
                            </div>
                         </div>
-                        <div subtype="work:no" xml:id="tg91" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/3. Akt/3. Auftritt">
+                        <div type="scene" subtype="work:no" xml:id="tg91" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/3. Akt/3. Auftritt">
                            <div>
                               <desc>
                                  <title>3. Auftritt</title>
@@ -1669,7 +1668,7 @@ nach der Stadt gehen, wenn man ihr alle Hofnung raubt; sie ist zu sehr verliebt,
                               </div>
                            </div>
                         </div>
-                        <div subtype="work:no" xml:id="tg92" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/3. Akt/4. Auftritt">
+                        <div type="scene" subtype="work:no" xml:id="tg92" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/3. Akt/4. Auftritt">
                            <div>
                               <desc>
                                  <title>4. Auftritt</title>
@@ -1696,7 +1695,7 @@ izt eil ich in deinen Arm, bey dir erhollt sich mein vor Verwirrung pochendes He
                               </div>
                            </div>
                         </div>
-                        <div subtype="work:no" xml:id="tg93" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/3. Akt/5. Auftritt">
+                        <div type="scene" subtype="work:no" xml:id="tg93" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/3. Akt/5. Auftritt">
                            <div>
                               <desc>
                                  <title>5. Auftritt</title>
@@ -1814,7 +1813,7 @@ mir Dienste zu thun, die ich nicht nœthig habe. Ich kann diese Unterthænigkeit
                               </div>
                            </div>
                         </div>
-                        <div subtype="work:no" xml:id="tg94" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/3. Akt/6. Auftritt">
+                        <div type="scene" subtype="work:no" xml:id="tg94" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/3. Akt/6. Auftritt">
                            <div>
                               <desc>
                                  <title>6. Auftritt</title>
@@ -1864,7 +1863,7 @@ mir Dienste zu thun, die ich nicht nœthig habe. Ich kann diese Unterthænigkeit
                               </div>
                            </div>
                         </div>
-                        <div subtype="work:no" xml:id="tg95" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/3. Akt/7. Auftritt">
+                        <div type="scene" subtype="work:no" xml:id="tg95" n="/Literatur/M/Gessner, Salomon/Drama/Evander und Alcimna/3. Akt/7. Auftritt">
                            <div>
                               <desc>
                                  <title>7. Auftritt</title>

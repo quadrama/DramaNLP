@@ -38,6 +38,16 @@
 			</supertypeName>
 		</typeDescription>
 		<typeDescription>
+			<name>de.unistuttgart.ims.drama.api.LevelSegment</name>
+			<supertypeName>de.unistuttgart.ims.drama.api.DramaSegment</supertypeName>
+			<features>
+				<featureDescription>
+					<name>Level</name>
+					<rangeTypeName>uima.cas.Integer</rangeTypeName>
+				</featureDescription>
+			</features>
+		</typeDescription>
+		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.Utterance</name>
 			<description />
 			<supertypeName>uima.tcas.Annotation</supertypeName>
@@ -326,6 +336,11 @@
 			<name>de.unistuttgart.ims.drama.api.DateReference</name>
 			<description>The date a drama was written</description>
 			<supertypeName>de.unistuttgart.ims.drama.api.Date</supertypeName>
+		</typeDescription>
+		<typeDescription>
+			<name>de.unistuttgart.ims.drama.api.LevelSegmentHeading</name>
+			<description />
+			<supertypeName>de.unistuttgart.ims.drama.api.Heading</supertypeName>
 		</typeDescription>
 	</types>
 </typeSystemDescription>
