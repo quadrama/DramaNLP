@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<TEI xmlns:jxb="http://java.sun.com/xml/ns/jaxb" xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns="http://www.tei-c.org/ns/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://textgrid.info/namespaces/metadata/core/2010" xmlns:tgl="http://textgrid.info/namespaces/metadata/language/2010" xmlns:tgs="http://textgrid.info/namespaces/metadata/script/2010" xmlns:tgr="http://textgrid.info/namespaces/metadata/agent/2010" xml:id="tg174" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea">
+<?xml version="1.0" encoding="UTF-8"?><TEI xmlns:jxb="http://java.sun.com/xml/ns/jaxb" xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns="http://www.tei-c.org/ns/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://textgrid.info/namespaces/metadata/core/2010" xmlns:tgl="http://textgrid.info/namespaces/metadata/language/2010" xmlns:tgs="http://textgrid.info/namespaces/metadata/script/2010" xmlns:tgr="http://textgrid.info/namespaces/metadata/agent/2010" xml:id="tg174" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea">
    <teiHeader xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:a="http://www.textgrid.info/namespace/digibib/authors">
       <fileDesc>
          <titleStmt>
@@ -119,7 +118,7 @@
                            
                         </div>
                      </div>
-                     <div subtype="work:no" xml:id="tg176" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/1. Auftritt">
+                     <div type="scene" subtype="work:no" xml:id="tg176" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/1. Auftritt">
                         <div>
                            <desc>
                               <title>1. Auftritt</title>
@@ -511,7 +510,7 @@ Vernunft keilförmig, mit Gelassenheit,</l>
                            </div>
                         </div>
                      </div>
-                     <div subtype="work:no" xml:id="tg177" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/2. Auftritt">
+                     <div type="scene" subtype="work:no" xml:id="tg177" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/2. Auftritt">
                         <div>
                            <desc>
                               <title>2. Auftritt</title>
@@ -765,7 +764,7 @@ Gilt's einen Kampf um ihn auf Tod und Leben:</l>
                            </div>
                         </div>
                      </div>
-                     <div subtype="work:no" xml:id="tg178" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/3. Auftritt">
+                     <div type="scene" subtype="work:no" xml:id="tg178" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/3. Auftritt">
                         <div>
                            <desc>
                               <title>3. Auftritt</title>
@@ -1303,7 +1302,7 @@ Vom Sitz springt er, der Staubbedeckte, nieder!</l>
                            </div>
                         </div>
                      </div>
-                     <div subtype="work:no" xml:id="tg179" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/4. Auftritt">
+                     <div type="scene" subtype="work:no" xml:id="tg179" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/4. Auftritt">
                         <div>
                            <desc>
                               <title>4. Auftritt</title>
@@ -1720,7 +1719,7 @@ Nicht ehr zu meinen Freunden will ich lenken,</l>
                            </div>
                         </div>
                      </div>
-                     <div subtype="work:no" xml:id="tg180" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/5. Auftritt">
+                     <div type="scene" subtype="work:no" xml:id="tg180" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/5. Auftritt">
                         <div>
                            <desc>
                               <title>5. Auftritt</title>
@@ -2244,7 +2243,7 @@ Soll mit der sanftesten Umarmung ihn</l>
                            </div>
                         </div>
                      </div>
-                     <div subtype="work:no" xml:id="tg181" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/6. Auftritt">
+                     <div type="scene" subtype="work:no" xml:id="tg181" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/6. Auftritt">
                         <div>
                            <desc>
                               <title>6. Auftritt</title>
@@ -2601,7 +2600,7 @@ So heftig sie im Kampfgewühl getroffen?</l>
                            </div>
                         </div>
                      </div>
-                     <div subtype="work:no" xml:id="tg182" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/7. Auftritt">
+                     <div type="scene" subtype="work:no" xml:id="tg182" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/7. Auftritt">
                         <div>
                            <desc>
                               <title>7. Auftritt</title>
@@ -3029,7 +3028,7 @@ Seht, wie sie in dem goldnen Kriegsschmuck funkelnd,</l>
                            </div>
                         </div>
                      </div>
-                     <div subtype="work:no" xml:id="tg183" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/8. Auftritt">
+                     <div type="scene" subtype="work:no" xml:id="tg183" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/8. Auftritt">
                         <div>
                            <desc>
                               <title>8. Auftritt</title>
@@ -3191,7 +3190,7 @@ Sich über sie, Penthesilea! ruft er,</l>
                            </div>
                         </div>
                      </div>
-                     <div subtype="work:no" xml:id="tg184" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/9. Auftritt">
+                     <div type="scene" subtype="work:no" xml:id="tg184" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/9. Auftritt">
                         <div>
                            <desc>
                               <title>9. Auftritt</title>
@@ -4098,7 +4097,7 @@ Jedwedes Haupt, das unsrer Lust gefiel.</l>
                            </div>
                         </div>
                      </div>
-                     <div subtype="work:no" xml:id="tg185" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/10. Auftritt">
+                     <div type="scene" subtype="work:no" xml:id="tg185" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/10. Auftritt">
                         <div>
                            <desc>
                               <title>10. Auftritt</title>
@@ -4210,7 +4209,7 @@ Jedwedes Haupt, das unsrer Lust gefiel.</l>
                            </div>
                         </div>
                      </div>
-                     <div subtype="work:no" xml:id="tg186" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/11. Auftritt">
+                     <div type="scene" subtype="work:no" xml:id="tg186" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/11. Auftritt">
                         <div>
                            <desc>
                               <title>11. Auftritt</title>
@@ -4521,7 +4520,7 @@ Jedwedes Haupt, das unsrer Lust gefiel.</l>
                            </div>
                         </div>
                      </div>
-                     <div subtype="work:no" xml:id="tg187" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/12. Auftritt">
+                     <div type="scene" subtype="work:no" xml:id="tg187" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/12. Auftritt">
                         <div>
                            <desc>
                               <title>12. Auftritt</title>
@@ -4740,7 +4739,7 @@ Jedwedes Haupt, das unsrer Lust gefiel.</l>
                            </div>
                         </div>
                      </div>
-                     <div subtype="work:no" xml:id="tg188" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/13. Auftritt">
+                     <div type="scene" subtype="work:no" xml:id="tg188" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/13. Auftritt">
                         <div>
                            <desc>
                               <title>13. Auftritt</title>
@@ -4965,7 +4964,7 @@ So fordr'es früher nicht, beschwör ich dich!</l>
                            </div>
                         </div>
                      </div>
-                     <div subtype="work:no" xml:id="tg189" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/14. Auftritt">
+                     <div type="scene" subtype="work:no" xml:id="tg189" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/14. Auftritt">
                         <div>
                            <desc>
                               <title>14. Auftritt</title>
@@ -5571,7 +5570,7 @@ Sie fährt sich mit der Hand über die Stirne.</hi>
                            </div>
                         </div>
                      </div>
-                     <div subtype="work:no" xml:id="tg190" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/15. Auftritt">
+                     <div type="scene" subtype="work:no" xml:id="tg190" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/15. Auftritt">
                         <div>
                            <desc>
                               <title>15. Auftritt</title>
@@ -6806,7 +6805,7 @@ Hier ward ein Mensch, so hab ich ihn gewollt!</l>
                            </div>
                         </div>
                      </div>
-                     <div subtype="work:no" xml:id="tg191" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/16. Auftritt">
+                     <div type="scene" subtype="work:no" xml:id="tg191" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/16. Auftritt">
                         <div>
                            <desc>
                               <title>16. Auftritt</title>
@@ -6917,7 +6916,7 @@ Hier ward ein Mensch, so hab ich ihn gewollt!</l>
                            </div>
                         </div>
                      </div>
-                     <div subtype="work:no" xml:id="tg192" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/17. Auftritt">
+                     <div type="scene" subtype="work:no" xml:id="tg192" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/17. Auftritt">
                         <div>
                            <desc>
                               <title>17. Auftritt</title>
@@ -7032,7 +7031,7 @@ Den schneiden dir die Frauen eben ab.</l>
                            </div>
                         </div>
                      </div>
-                     <div subtype="work:no" xml:id="tg193" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/18. Auftritt">
+                     <div type="scene" subtype="work:no" xml:id="tg193" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/18. Auftritt">
                         <div>
                            <desc>
                               <title>18. Auftritt</title>
@@ -7113,7 +7112,7 @@ Den schneiden dir die Frauen eben ab.</l>
                            </div>
                         </div>
                      </div>
-                     <div subtype="work:no" xml:id="tg194" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/19. Auftritt">
+                     <div type="scene" subtype="work:no" xml:id="tg194" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/19. Auftritt">
                         <div>
                            <desc>
                               <title>19. Auftritt</title>
@@ -7296,7 +7295,7 @@ Den schneiden dir die Frauen eben ab.</l>
                            </div>
                         </div>
                      </div>
-                     <div subtype="work:no" xml:id="tg195" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/20. Auftritt">
+                     <div type="scene" subtype="work:no" xml:id="tg195" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/20. Auftritt">
                         <div>
                            <desc>
                               <title>20. Auftritt</title>
@@ -7755,7 +7754,7 @@ Und wie ein Donnerkeil aus Wetterwolken,</l>
                            </div>
                         </div>
                      </div>
-                     <div subtype="work:no" xml:id="tg196" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/21. Auftritt">
+                     <div type="scene" subtype="work:no" xml:id="tg196" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/21. Auftritt">
                         <div>
                            <desc>
                               <title>21. Auftritt</title>
@@ -8167,7 +8166,7 @@ Du wirst mir, Sohn des Tydeus, bitt ich, jetzt,</l>
                            </div>
                         </div>
                      </div>
-                     <div subtype="work:no" xml:id="tg197" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/22. Auftritt">
+                     <div type="scene" subtype="work:no" xml:id="tg197" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/22. Auftritt">
                         <div>
                            <desc>
                               <title>22. Auftritt</title>
@@ -8389,7 +8388,7 @@ Du wirst mir, Sohn des Tydeus, bitt ich, jetzt,</l>
                            </div>
                         </div>
                      </div>
-                     <div subtype="work:no" xml:id="tg198" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/23. Auftritt">
+                     <div type="scene" subtype="work:no" xml:id="tg198" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/23. Auftritt">
                         <div>
                            <desc>
                               <title>23. Auftritt</title>
@@ -8580,7 +8579,7 @@ Den Pfeil, der eines Ebers Busen traf,</l>
                            </div>
                         </div>
                      </div>
-                     <div subtype="work:no" xml:id="tg199" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/24. Auftritt">
+                     <div type="scene" subtype="work:no" xml:id="tg199" n="/Literatur/M/Kleist, Heinrich von/Dramen/Penthesilea/24. Auftritt">
                         <div>
                            <desc>
                               <title>24. Auftritt</title>

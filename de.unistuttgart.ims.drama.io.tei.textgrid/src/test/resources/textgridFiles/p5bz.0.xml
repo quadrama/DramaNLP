@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<TEI xmlns:jxb="http://java.sun.com/xml/ns/jaxb" xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns="http://www.tei-c.org/ns/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://textgrid.info/namespaces/metadata/core/2010" xmlns:tgl="http://textgrid.info/namespaces/metadata/language/2010" xmlns:tgs="http://textgrid.info/namespaces/metadata/script/2010" xmlns:tgr="http://textgrid.info/namespaces/metadata/agent/2010" xml:id="tg51" n="/Literatur/M/Gutzkow, Karl/Dramen/Zopf und Schwert">
+<?xml version="1.0" encoding="UTF-8"?><TEI xmlns:jxb="http://java.sun.com/xml/ns/jaxb" xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns="http://www.tei-c.org/ns/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://textgrid.info/namespaces/metadata/core/2010" xmlns:tgl="http://textgrid.info/namespaces/metadata/language/2010" xmlns:tgs="http://textgrid.info/namespaces/metadata/script/2010" xmlns:tgr="http://textgrid.info/namespaces/metadata/agent/2010" xml:id="tg51" n="/Literatur/M/Gutzkow, Karl/Dramen/Zopf und Schwert">
    <teiHeader xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:a="http://www.textgrid.info/namespace/digibib/authors">
       <fileDesc>
          <titleStmt>
@@ -165,7 +164,7 @@ gab. Es ist viel weniger nötig, daß die komischen Einfälle des Polonius belac
                            </div>
                         </div>
                      </div>
-                     <div subtype="work:no" type="act" xml:id="tg54" n="/Literatur/M/Gutzkow, Karl/Dramen/Zopf und Schwert/1. Akt">
+                     <div type="act" subtype="work:no" xml:id="tg54" n="/Literatur/M/Gutzkow, Karl/Dramen/Zopf und Schwert/1. Akt">
                         <div>
                            <desc>
                               <title>1. Akt</title>
@@ -173,7 +172,7 @@ gab. Es ist viel weniger nötig, daß die komischen Einfälle des Polonius belac
                         </div>
                         
                         
-                        <div subtype="work:no" type="scene" xml:id="tg55" n="/Literatur/M/Gutzkow, Karl/Dramen/Zopf und Schwert/1. Akt/[1. Szene]">
+                        <div type="scene" subtype="work:no" xml:id="tg55" n="/Literatur/M/Gutzkow, Karl/Dramen/Zopf und Schwert/1. Akt/[1. Szene]">
                            <div>
                               <desc>
                                  <title>[1. Szene]</title>
@@ -1277,7 +1276,7 @@ werden? Das führt ja geradewegs in ein Trauerspiel oder – <hi rend="italic" x
                            </div>
                         </div>
                      </div>
-                     <div subtype="work:no" type="act" xml:id="tg63" n="/Literatur/M/Gutzkow, Karl/Dramen/Zopf und Schwert/2. Akt">
+                     <div type="act" subtype="work:no" xml:id="tg63" n="/Literatur/M/Gutzkow, Karl/Dramen/Zopf und Schwert/2. Akt">
                         <div>
                            <desc>
                               <title>2. Akt</title>
@@ -1285,7 +1284,7 @@ werden? Das führt ja geradewegs in ein Trauerspiel oder – <hi rend="italic" x
                         </div>
                         
                         
-                        <div subtype="work:no" type="scene" xml:id="tg64" n="/Literatur/M/Gutzkow, Karl/Dramen/Zopf und Schwert/2. Akt/1. Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg64" n="/Literatur/M/Gutzkow, Karl/Dramen/Zopf und Schwert/2. Akt/1. Szene">
                            <div>
                               <desc>
                                  <title>1. Szene</title>
@@ -2144,7 +2143,7 @@ ja etwas von den Kolonien – von dem Land an, Erbprinz, wo der Tabak wächst. S
                               </div>
                            </div>
                         </div>
-                        <div subtype="work:no" type="scene" xml:id="tg71" n="/Literatur/M/Gutzkow, Karl/Dramen/Zopf und Schwert/2. Akt/2. Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg71" n="/Literatur/M/Gutzkow, Karl/Dramen/Zopf und Schwert/2. Akt/2. Szene">
                            <div>
                               <desc>
                                  <title>2. Szene</title>
@@ -2883,7 +2882,7 @@ Noch drei Mann treten herein ohne Gewehr. Der eine trägt eine Bibel, der andere
                            </div>
                         </div>
                      </div>
-                     <div subtype="work:no" type="act" xml:id="tg75" n="/Literatur/M/Gutzkow, Karl/Dramen/Zopf und Schwert/3. Akt">
+                     <div type="act" subtype="work:no" xml:id="tg75" n="/Literatur/M/Gutzkow, Karl/Dramen/Zopf und Schwert/3. Akt">
                         <div>
                            <desc>
                               <title>3. Akt</title>
@@ -2891,7 +2890,7 @@ Noch drei Mann treten herein ohne Gewehr. Der eine trägt eine Bibel, der andere
                         </div>
                         
                         
-                        <div subtype="work:no" type="scene" xml:id="tg76" n="/Literatur/M/Gutzkow, Karl/Dramen/Zopf und Schwert/3. Akt/1. Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg76" n="/Literatur/M/Gutzkow, Karl/Dramen/Zopf und Schwert/3. Akt/1. Szene">
                            <div>
                               <desc>
                                  <title>1. Szene</title>
@@ -4352,7 +4351,7 @@ ERBPRINZ.</speaker>
                            </div>
                         </div>
                      </div>
-                     <div subtype="work:no" type="act" xml:id="tg84" n="/Literatur/M/Gutzkow, Karl/Dramen/Zopf und Schwert/4. Akt">
+                     <div type="act" subtype="work:no" xml:id="tg84" n="/Literatur/M/Gutzkow, Karl/Dramen/Zopf und Schwert/4. Akt">
                         <div>
                            <desc>
                               <title>4. Akt</title>
@@ -4360,7 +4359,7 @@ ERBPRINZ.</speaker>
                         </div>
                         
                         
-                        <div subtype="work:no" type="scene" xml:id="tg85" n="/Literatur/M/Gutzkow, Karl/Dramen/Zopf und Schwert/4. Akt/1. Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg85" n="/Literatur/M/Gutzkow, Karl/Dramen/Zopf und Schwert/4. Akt/1. Szene">
                            <div>
                               <desc>
                                  <title>1. Szene</title>
@@ -4945,7 +4944,7 @@ hervorziehen, Pfeil auf Pfeil auf diesen groben Despotismus abschießen, und wen
                               </div>
                            </div>
                         </div>
-                        <div subtype="work:no" type="scene" xml:id="tg90" n="/Literatur/M/Gutzkow, Karl/Dramen/Zopf und Schwert/4. Akt/2. Szene">
+                        <div type="scene" subtype="work:no" xml:id="tg90" n="/Literatur/M/Gutzkow, Karl/Dramen/Zopf und Schwert/4. Akt/2. Szene">
                            <div>
                               <desc>
                                  <title>2. Szene</title>
@@ -5682,7 +5681,7 @@ hervorziehen, Pfeil auf Pfeil auf diesen groben Despotismus abschießen, und wen
                            </div>
                         </div>
                      </div>
-                     <div subtype="work:no" type="act" xml:id="tg93" n="/Literatur/M/Gutzkow, Karl/Dramen/Zopf und Schwert/5. Akt">
+                     <div type="act" subtype="work:no" xml:id="tg93" n="/Literatur/M/Gutzkow, Karl/Dramen/Zopf und Schwert/5. Akt">
                         <div>
                            <desc>
                               <title>5. Akt</title>
@@ -5690,7 +5689,7 @@ hervorziehen, Pfeil auf Pfeil auf diesen groben Despotismus abschießen, und wen
                         </div>
                         
                         
-                        <div subtype="work:no" type="scene" xml:id="tg94" n="/Literatur/M/Gutzkow, Karl/Dramen/Zopf und Schwert/5. Akt/[1. Szene]">
+                        <div type="scene" subtype="work:no" xml:id="tg94" n="/Literatur/M/Gutzkow, Karl/Dramen/Zopf und Schwert/5. Akt/[1. Szene]">
                            <div>
                               <desc>
                                  <title>[1. Szene]</title>
