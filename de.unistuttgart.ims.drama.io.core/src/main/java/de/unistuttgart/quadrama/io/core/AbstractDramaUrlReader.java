@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
@@ -68,6 +69,13 @@ public abstract class AbstractDramaUrlReader extends JCasCollectionReader_ImplBa
 			} catch (Exception e) {
 				throw new ResourceInitializationException(e);
 
+			}
+		} else if (input.endsWith(".xml") || input.endsWith(".tei")) {
+			try {
+				urls.add(inputFile.toURI().toURL());
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		} else {
 			CSVParser r = null;

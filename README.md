@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/quadrama/DramaNLP.svg?branch=master)](https://travis-ci.org/quadrama/DramaNLP)
-
+[![DOI](https://www.zenodo.org/badge/57984264.svg)](https://www.zenodo.org/badge/latestdoi/57984264)
 
 # DramaNLP
 This project collects a number of UIMA components to process dramatic texts. We follow general design ideas implemented in dkpro.
