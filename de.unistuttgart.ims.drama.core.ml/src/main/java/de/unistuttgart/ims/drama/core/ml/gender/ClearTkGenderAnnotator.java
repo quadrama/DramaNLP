@@ -32,6 +32,8 @@ public class ClearTkGenderAnnotator extends CleartkAnnotator<String> {
 
 	List<String> maleFirstNames;
 	List<String> femaleFirstNames;
+	List<String> maleTitles;
+	List<String> femaleTitles;
 
 	@Override
 	public void initialize(UimaContext context) throws ResourceInitializationException {
@@ -45,6 +47,8 @@ public class ClearTkGenderAnnotator extends CleartkAnnotator<String> {
 		try {
 			maleFirstNames = IOUtils.readLines(this.getClass().getResourceAsStream("/gender/m.csv"), "UTF-8");
 			femaleFirstNames = IOUtils.readLines(this.getClass().getResourceAsStream("/gender/f.csv"), "UTF-8");
+			maleTitles = IOUtils.readLines(this.getClass().getResourceAsStream("/gender/m.titles.csv"), "UTF-8");
+			femaleTitles = IOUtils.readLines(this.getClass().getResourceAsStream("/gender/f.titles.csv"), "UTF-8");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -52,7 +56,9 @@ public class ClearTkGenderAnnotator extends CleartkAnnotator<String> {
 
 		this.tokenExtractor = new CombinedExtractor1<Token>(new CoveredTextExtractor<Token>(),
 				new ListFeatureExtractor("male first names", maleFirstNames),
-				new ListFeatureExtractor("female first name", femaleFirstNames));
+				new ListFeatureExtractor("female first name", femaleFirstNames),
+				new ListFeatureExtractor("male titles", maleTitles),
+				new ListFeatureExtractor("female titles", femaleTitles));
 
 	}
 
