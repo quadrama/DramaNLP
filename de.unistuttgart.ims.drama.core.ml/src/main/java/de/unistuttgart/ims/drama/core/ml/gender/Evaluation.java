@@ -62,15 +62,6 @@ public class Evaluation extends AbstractEvaluation {
 		AnnotationStatistics<String> crossValidationStats = evaluator.trainAndTest(trainFiles, testFiles);// AnnotationStatistics.addAll(foldStats);
 
 		System.out.println(crossValidationStats);
-		/*
-		 * for (String s : Arrays.asList("m", "f")) {
-		 * System.out.format("%1.3f\t%1.3f\t%1.3f\t%d\t%d\t%d\t%s\n",
-		 * crossValidationStats.precision(s), crossValidationStats.recall(s),
-		 * crossValidationStats.f1(s),
-		 * crossValidationStats.countReferenceOutcomes(s),
-		 * crossValidationStats.countPredictedOutcomes(s),
-		 * crossValidationStats.countCorrectOutcomes(s), s); }
-		 */
 	}
 
 	@Override
