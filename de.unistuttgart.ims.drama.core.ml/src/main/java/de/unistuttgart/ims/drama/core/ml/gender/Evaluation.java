@@ -61,7 +61,16 @@ public class Evaluation extends AbstractEvaluation {
 		AbstractEvaluation evaluator = new Evaluation(options.getModelsDirectory());
 		AnnotationStatistics<String> crossValidationStats = evaluator.trainAndTest(trainFiles, testFiles);// AnnotationStatistics.addAll(foldStats);
 
-		System.err.println(crossValidationStats);
+		System.out.println(crossValidationStats);
+		/*
+		 * for (String s : Arrays.asList("m", "f")) {
+		 * System.out.format("%1.3f\t%1.3f\t%1.3f\t%d\t%d\t%d\t%s\n",
+		 * crossValidationStats.precision(s), crossValidationStats.recall(s),
+		 * crossValidationStats.f1(s),
+		 * crossValidationStats.countReferenceOutcomes(s),
+		 * crossValidationStats.countPredictedOutcomes(s),
+		 * crossValidationStats.countCorrectOutcomes(s), s); }
+		 */
 	}
 
 	@Override
@@ -139,7 +148,8 @@ public class Evaluation extends AbstractEvaluation {
 			systemMentions = JCasUtil.select(systemView, FigureType.class);
 
 			// compare the system mentions to the gold mentions
-			stats.add(goldMentions, systemMentions);
+			stats.add(goldMentions, systemMentions, AnnotationStatistics.annotationToSpan(),
+					AnnotationStatistics.annotationToFeatureValue("TypeValue"));
 		}
 
 		return stats;
