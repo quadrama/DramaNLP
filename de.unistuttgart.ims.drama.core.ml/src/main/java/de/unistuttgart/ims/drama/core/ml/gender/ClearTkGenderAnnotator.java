@@ -58,7 +58,7 @@ public class ClearTkGenderAnnotator extends CleartkAnnotator<String> {
 				new ListFeatureExtractor("male first names", maleFirstNames),
 				new ListFeatureExtractor("female first name", femaleFirstNames),
 				new ListFeatureExtractor("male titles", maleTitles),
-				new ListFeatureExtractor("female titles", femaleTitles));
+				new ListFeatureExtractor("female titles", femaleTitles), new SuffixFeatureExtractor("in"));
 
 	}
 
@@ -78,6 +78,22 @@ public class ClearTkGenderAnnotator extends CleartkAnnotator<String> {
 
 		}
 
+	}
+
+	class SuffixFeatureExtractor implements FeatureExtractor1<Token> {
+
+		String suf = "in";
+
+		public SuffixFeatureExtractor(String suffix) {
+			suf = suffix;
+		}
+
+		@Override
+		public List<Feature> extract(JCas view, Token focusAnnotation) throws CleartkExtractorException {
+			String surf = focusAnnotation.getCoveredText();
+			return Arrays
+					.asList(new Feature("Suffix_" + suf, Character.isUpperCase(surf.charAt(0)) && surf.endsWith(suf)));
+		}
 	}
 
 	class ListFeatureExtractor implements FeatureExtractor1<Token> {
