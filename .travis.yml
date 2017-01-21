@@ -1,3 +1,5 @@
 language: java
 jdk:
   - oraclejdk8
+notifications:
+  slack: quadrama:0jGO6p0xkb5l0vSK00tQSJMr
