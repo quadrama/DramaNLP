@@ -51,7 +51,7 @@ public class FigureDetailsAnnotator extends JCasAnnotator_ImplBase {
 				} else {
 					// if no comma is contained in the line, we assume it to be
 					// a name (for the time being)
-					fName = AnnotationFactory.createAnnotation(jcas, b, figure.getEnd(), Name.class);
+					fName = AnnotationFactory.createAnnotation(jcas, b, figure.getEnd(), FigureName.class);
 					figure.setName(fName);
 
 				}
