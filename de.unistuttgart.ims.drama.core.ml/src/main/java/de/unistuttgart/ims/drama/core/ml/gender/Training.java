@@ -26,8 +26,7 @@ public class Training {
 
 	public static void main(String[] args) throws Exception {
 		CollectionReaderDescription reader = CollectionReaderFactory.createReaderDescription(XmiReader.class,
-				XmiReader.PARAM_SOURCE_LOCATION, "src/main/resources/gender/training/*.xmi", XmiReader.PARAM_LENIENT,
-				true);
+				XmiReader.PARAM_SOURCE_LOCATION, "src/main/resources/gender/*/*.xmi", XmiReader.PARAM_LENIENT, true);
 
 		String tmpView = "DP";
 
