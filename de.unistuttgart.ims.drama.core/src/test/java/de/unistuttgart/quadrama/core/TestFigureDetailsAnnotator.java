@@ -17,8 +17,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import de.unistuttgart.ims.drama.api.Figure;
-import de.unistuttgart.ims.drama.api.figure.Description;
-import de.unistuttgart.ims.drama.api.figure.Name;
+import de.unistuttgart.ims.drama.api.FigureDescription;
+import de.unistuttgart.ims.drama.api.FigureName;
 
 public class TestFigureDetailsAnnotator {
 
@@ -40,8 +40,8 @@ public class TestFigureDetailsAnnotator {
 		SimplePipeline.runPipeline(jcas, AnalysisEngineFactory.createEngine(FigureDetailsAnnotator.class));
 
 		Figure figure;
-		Name name;
-		Description desc;
+		FigureName name;
+		FigureDescription desc;
 
 		figure = JCasUtil.selectByIndex(jcas, Figure.class, 0);
 		name = figure.getName();

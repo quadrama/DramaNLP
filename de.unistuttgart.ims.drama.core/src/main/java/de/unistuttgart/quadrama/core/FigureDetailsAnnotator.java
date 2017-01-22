@@ -11,8 +11,8 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
 import de.unistuttgart.ims.drama.api.Figure;
-import de.unistuttgart.ims.drama.api.figure.Description;
-import de.unistuttgart.ims.drama.api.figure.Name;
+import de.unistuttgart.ims.drama.api.FigureDescription;
+import de.unistuttgart.ims.drama.api.FigureName;
 import de.unistuttgart.ims.uimautil.AnnotationUtil;
 
 @TypeCapability(inputs = { "de.unistuttgart.ims.drama.api.Figure" }, outputs = {
@@ -21,8 +21,8 @@ public class FigureDetailsAnnotator extends JCasAnnotator_ImplBase {
 
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
-		Name fName = null;
-		Description fDesc = null;
+		FigureName fName = null;
+		FigureDescription fDesc = null;
 		Set<Figure> waitingForDescription = new HashSet<Figure>();
 		for (Figure figure : JCasUtil.select(jcas, Figure.class)) {
 			if (figure.getCoveredText().split(",").length <= 2) {
@@ -30,15 +30,15 @@ public class FigureDetailsAnnotator extends JCasAnnotator_ImplBase {
 				int commaPosition = figure.getCoveredText().indexOf(',');
 				if (figure.getCoveredText().endsWith(",")) {
 					// the line ends with a comma
-					fName = AnnotationFactory.createAnnotation(jcas, b, b + commaPosition, Name.class);
+					fName = AnnotationFactory.createAnnotation(jcas, b, b + commaPosition, FigureName.class);
 
 					AnnotationUtil.trim(fName);
 					figure.setName(fName);
 					waitingForDescription.add(figure);
 				} else if (commaPosition != -1) {
-					fName = AnnotationFactory.createAnnotation(jcas, b, b + commaPosition, Name.class);
+					fName = AnnotationFactory.createAnnotation(jcas, b, b + commaPosition, FigureName.class);
 					fDesc = AnnotationFactory.createAnnotation(jcas, b + commaPosition + 1, figure.getEnd(),
-							Description.class);
+							FigureDescription.class);
 
 					AnnotationUtil.trim(fName);
 					AnnotationUtil.trim(fDesc);
