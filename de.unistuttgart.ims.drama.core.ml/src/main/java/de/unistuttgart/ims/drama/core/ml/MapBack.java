@@ -26,6 +26,7 @@ public class MapBack extends JCasAnnotator_ImplBase {
 
 	Class<Annotation> annotationClass;
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void initialize(final UimaContext context) throws ResourceInitializationException {
 		super.initialize(context);
