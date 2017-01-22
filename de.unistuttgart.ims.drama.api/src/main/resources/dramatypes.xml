@@ -125,13 +125,13 @@
 				<featureDescription>
 					<name>Description</name>
 					<description />
-					<rangeTypeName>de.unistuttgart.ims.drama.api.FigureDescription
+					<rangeTypeName>de.unistuttgart.ims.drama.api.figure.Description
 					</rangeTypeName>
 				</featureDescription>
 				<featureDescription>
 					<name>Name</name>
 					<description />
-					<rangeTypeName>de.unistuttgart.ims.drama.api.FigureName</rangeTypeName>
+					<rangeTypeName>de.unistuttgart.ims.drama.api.figure.Name</rangeTypeName>
 				</featureDescription>
 				<featureDescription>
 					<name>NumberOfUtterances</name>
@@ -213,12 +213,12 @@
 			<supertypeName>de.unistuttgart.ims.drama.api.Figure</supertypeName>
 		</typeDescription>
 		<typeDescription>
-			<name>de.unistuttgart.ims.drama.api.FigureDescription</name>
+			<name>de.unistuttgart.ims.drama.api.figure.Description</name>
 			<description />
 			<supertypeName>uima.tcas.Annotation</supertypeName>
 		</typeDescription>
 		<typeDescription>
-			<name>de.unistuttgart.ims.drama.api.FigureName</name>
+			<name>de.unistuttgart.ims.drama.api.figure.Name</name>
 			<description />
 			<supertypeName>uima.tcas.Annotation</supertypeName>
 		</typeDescription>

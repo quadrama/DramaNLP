@@ -26,7 +26,6 @@ import de.unistuttgart.ims.drama.api.Author;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.DramatisPersonae;
 import de.unistuttgart.ims.drama.api.Figure;
-import de.unistuttgart.ims.drama.api.FigureDescription;
 import de.unistuttgart.ims.drama.api.FrontMatter;
 import de.unistuttgart.ims.drama.api.MainMatter;
 import de.unistuttgart.ims.drama.api.Scene;
@@ -35,6 +34,7 @@ import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.StageDirection;
 import de.unistuttgart.ims.drama.api.Utterance;
+import de.unistuttgart.ims.drama.api.figure.Description;
 import de.unistuttgart.ims.uimautil.AnnotationUtil;
 import de.unistuttgart.quadrama.io.core.Visitor;
 import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
@@ -160,9 +160,9 @@ public class TextGridUtil {
 			Element castList = root.select("castList").first();
 			if (!castList.select("castItem role").isEmpty()) {
 				select2Annotation(jcas, castList, map, "castItem role", Figure.class, dp);
-				Collection<FigureDescription> figDescs = select2Annotation(jcas, castList, map, "castItem roleDesc",
-						FigureDescription.class, dp);
-				for (FigureDescription figureDescription : figDescs) {
+				Collection<Description> figDescs = select2Annotation(jcas, castList, map, "castItem roleDesc",
+						Description.class, dp);
+				for (Description figureDescription : figDescs) {
 					Figure fig = JCasUtil.selectPreceding(Figure.class, figureDescription, 1).get(0);
 					fig.setDescription(figureDescription);
 				}
@@ -192,8 +192,8 @@ public class TextGridUtil {
 				int i = s.indexOf(',');
 				figure.setEnd(figure.getBegin() + i);
 
-				FigureDescription fd = AnnotationUtil.trim(
-						AnnotationFactory.createAnnotation(jcas, figure.getEnd() + 1, oldEnd, FigureDescription.class));
+				Description fd = AnnotationUtil
+						.trim(AnnotationFactory.createAnnotation(jcas, figure.getEnd() + 1, oldEnd, Description.class));
 				figure.setDescription(fd);
 
 			}
