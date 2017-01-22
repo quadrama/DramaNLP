@@ -7,7 +7,11 @@ import java.util.List;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.uima.UimaContext;
+import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
+import org.apache.uima.cas.CAS;
+import org.apache.uima.fit.factory.AggregateBuilder;
+import org.apache.uima.fit.factory.AnalysisEngineFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
@@ -19,9 +23,15 @@ import org.cleartk.ml.feature.extractor.CleartkExtractorException;
 import org.cleartk.ml.feature.extractor.CombinedExtractor1;
 import org.cleartk.ml.feature.extractor.CoveredTextExtractor;
 import org.cleartk.ml.feature.extractor.FeatureExtractor1;
+import org.cleartk.ml.jar.GenericJarClassifierFactory;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
+import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
+import de.unistuttgart.ims.drama.api.DramatisPersonae;
 import de.unistuttgart.ims.drama.api.Figure;
+import de.unistuttgart.ims.drama.api.FigureType;
+import de.unistuttgart.ims.drama.core.ml.MapBack;
+import de.unistuttgart.ims.drama.core.ml.PrepareClearTk;
 import de.unistuttgart.ims.drama.util.DramaUtil;
 
 public class ClearTkGenderAnnotator extends CleartkAnnotator<String> {
@@ -111,6 +121,25 @@ public class ClearTkGenderAnnotator extends CleartkAnnotator<String> {
 			return Arrays.asList(new Feature(fName, strList.contains(focusAnnotation.getCoveredText().toLowerCase())));
 		}
 
+	}
+
+	public static AnalysisEngineDescription getEngineDescription(String genderModelUrl)
+			throws ResourceInitializationException {
+		String tmpView = "Dramatis Personae";
+
+		AggregateBuilder b = new AggregateBuilder();
+
+		b.add(AnalysisEngineFactory.createEngineDescription(PrepareClearTk.class, PrepareClearTk.PARAM_VIEW_NAME,
+				tmpView, PrepareClearTk.PARAM_ANNOTATION_TYPE, DramatisPersonae.class,
+				PrepareClearTk.PARAM_SUBANNOTATIONS, Arrays.asList(Figure.class, FigureType.class)));
+		b.add(AnalysisEngineFactory.createEngineDescription(BreakIteratorSegmenter.class), CAS.NAME_DEFAULT_SOFA,
+				tmpView);
+		b.add(AnalysisEngineFactory.createEngineDescription(ClearTkGenderAnnotator.class,
+				GenericJarClassifierFactory.PARAM_CLASSIFIER_JAR_PATH, genderModelUrl), CAS.NAME_DEFAULT_SOFA, tmpView);
+		b.add(AnalysisEngineFactory.createEngineDescription(MapBack.class, MapBack.PARAM_ANNOTATION_TYPE,
+				FigureType.class, MapBack.PARAM_VIEW_NAME, tmpView));
+
+		return b.createAggregateDescription();
 	}
 
 }
