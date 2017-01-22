@@ -92,7 +92,8 @@ public class DramaUtil {
 	}
 
 	public static FigureType assignFigureType(JCas jcas, Figure figure, String cl, String value) {
-		FigureType ft = AnnotationFactory.createAnnotation(jcas, figure.getBegin(), figure.getEnd(), FigureType.class);
+		FigureType ft = AnnotationFactory.createAnnotation(jcas, figure.getBegin(), figure.getBegin() + 1,
+				FigureType.class);
 		ft.setTypeClass(cl);
 		ft.setTypeValue(value);
 		return ft;
