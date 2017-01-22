@@ -16,7 +16,7 @@ import de.unistuttgart.ims.drama.api.FigureName;
 import de.unistuttgart.ims.uimautil.AnnotationUtil;
 
 @TypeCapability(inputs = { "de.unistuttgart.ims.drama.api.Figure" }, outputs = {
-		"de.unistuttgart.ims.drama.api.FigureName", "de.unistuttgart.ims.drama.api.FigureDescription" })
+		"de.unistuttgart.ims.drama.api.figure.Name", "de.unistuttgart.ims.drama.api.figure.Description" })
 public class FigureDetailsAnnotator extends JCasAnnotator_ImplBase {
 
 	@Override
@@ -49,7 +49,11 @@ public class FigureDetailsAnnotator extends JCasAnnotator_ImplBase {
 						f.setDescription(fDesc);
 					}
 				} else {
-					// no comma is contained in the line
+					// if no comma is contained in the line, we assume it to be
+					// a name (for the time being)
+					fName = AnnotationFactory.createAnnotation(jcas, b, figure.getEnd(), FigureName.class);
+					figure.setName(fName);
+
 				}
 			}
 		}

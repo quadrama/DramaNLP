@@ -83,7 +83,8 @@ public class TestFigureDetailsAnnotator {
 		name = figure.getName();
 		desc = figure.getDescription();
 		assertEquals("Volk", figure.getCoveredText());
-		assertNull(name);
+		assertNotNull(name);
+		assertEquals("Volk", name.getCoveredText());
 		assertNull(desc);
 
 	}
