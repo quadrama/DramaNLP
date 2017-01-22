@@ -111,8 +111,8 @@ public class Evaluation extends AbstractEvaluation {
 		aggregate.add(AnalysisEngineFactory.createEngineDescription(PrepareClearTk.class,
 				PrepareClearTk.PARAM_VIEW_NAME, silverViewName, PrepareClearTk.PARAM_ANNOTATION_TYPE,
 				DramatisPersonae.class, PrepareClearTk.PARAM_SUBANNOTATIONS, Arrays.asList(Figure.class)));
-		aggregate.add(AnalysisEngineFactory.createEngineDescription(BreakIteratorSegmenter.class),
-				CAS.NAME_DEFAULT_SOFA, silverViewName);
+		aggregate.add(AnalysisEngineFactory.createEngineDescription(BreakIteratorSegmenter.class,
+				BreakIteratorSegmenter.PARAM_WRITE_SENTENCE, false), CAS.NAME_DEFAULT_SOFA, silverViewName);
 		aggregate.add(
 				AnalysisEngineFactory.createEngineDescription(tagger, CleartkSequenceAnnotator.PARAM_IS_TRAINING, false,
 						GenericJarClassifierFactory.PARAM_CLASSIFIER_JAR_PATH,

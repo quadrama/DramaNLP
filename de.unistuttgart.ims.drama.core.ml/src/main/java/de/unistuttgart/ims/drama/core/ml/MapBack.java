@@ -26,6 +26,7 @@ public class MapBack extends JCasAnnotator_ImplBase {
 
 	Class<Annotation> annotationClass;
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void initialize(final UimaContext context) throws ResourceInitializationException {
 		super.initialize(context);
@@ -51,7 +52,9 @@ public class MapBack extends JCasAnnotator_ImplBase {
 							src.getEnd() + relativ, annotationClass);
 					for (Feature feature : src.getType().getFeatures()) {
 						if (feature.getRange().isPrimitive()) {
-							tgt.setFeatureValue(feature, src.getFeatureValue(feature));
+							if (feature.getRange().getName().equalsIgnoreCase("uima.cas.String")) {
+								tgt.setStringValue(feature, src.getStringValue(feature));
+							}
 						}
 					}
 				}

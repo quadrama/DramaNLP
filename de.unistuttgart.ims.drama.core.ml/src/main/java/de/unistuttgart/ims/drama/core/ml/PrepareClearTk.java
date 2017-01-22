@@ -36,6 +36,7 @@ public class PrepareClearTk extends JCasAnnotator_ImplBase {
 	Class<Annotation> annotationClass;
 	List<Class<Annotation>> subAnnotations = new LinkedList<Class<Annotation>>();
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void initialize(final UimaContext context) throws ResourceInitializationException {
 		super.initialize(context);
