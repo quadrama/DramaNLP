@@ -29,7 +29,6 @@ import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
 import de.unistuttgart.ims.drama.api.DramatisPersonae;
 import de.unistuttgart.ims.drama.api.Figure;
-import de.unistuttgart.ims.drama.api.FigureType;
 import de.unistuttgart.ims.drama.core.ml.AbstractEvaluation;
 import de.unistuttgart.ims.drama.core.ml.PrepareClearTk;
 
@@ -72,7 +71,7 @@ public class Evaluation extends AbstractEvaluation {
 
 		b.add(AnalysisEngineFactory.createEngineDescription(PrepareClearTk.class, PrepareClearTk.PARAM_VIEW_NAME,
 				tmpView, PrepareClearTk.PARAM_ANNOTATION_TYPE, DramatisPersonae.class,
-				PrepareClearTk.PARAM_SUBANNOTATIONS, Arrays.asList(Figure.class, FigureType.class)));
+				PrepareClearTk.PARAM_SUBANNOTATIONS, Arrays.asList(Figure.class)));
 		b.add(AnalysisEngineFactory.createEngineDescription(BreakIteratorSegmenter.class), CAS.NAME_DEFAULT_SOFA,
 				tmpView);
 		b.add(AnalysisEngineFactory.createEngineDescription(ClearTkGenderAnnotator.class,
@@ -99,10 +98,9 @@ public class Evaluation extends AbstractEvaluation {
 		// * create the gold view
 		// * load the text
 		// * load the MASC annotations
-		aggregate
-				.add(AnalysisEngineFactory.createEngineDescription(PrepareClearTk.class, PrepareClearTk.PARAM_VIEW_NAME,
-						goldViewName, PrepareClearTk.PARAM_ANNOTATION_TYPE, DramatisPersonae.class,
-						PrepareClearTk.PARAM_SUBANNOTATIONS, Arrays.asList(Figure.class, FigureType.class)));
+		aggregate.add(AnalysisEngineFactory.createEngineDescription(PrepareClearTk.class,
+				PrepareClearTk.PARAM_VIEW_NAME, goldViewName, PrepareClearTk.PARAM_ANNOTATION_TYPE,
+				DramatisPersonae.class, PrepareClearTk.PARAM_SUBANNOTATIONS, Arrays.asList(Figure.class)));
 
 		// Annotators processing the default (system) view:
 		// * load the text
@@ -134,13 +132,13 @@ public class Evaluation extends AbstractEvaluation {
 			JCas systemView = jCas.getView(silverViewName);
 
 			// extract the named entity mentions from both gold and system views
-			Collection<FigureType> goldMentions, systemMentions;
-			goldMentions = JCasUtil.select(goldView, FigureType.class);
-			systemMentions = JCasUtil.select(systemView, FigureType.class);
+			Collection<Figure> goldMentions, systemMentions;
+			goldMentions = JCasUtil.select(goldView, Figure.class);
+			systemMentions = JCasUtil.select(systemView, Figure.class);
 
 			// compare the system mentions to the gold mentions
 			stats.add(goldMentions, systemMentions, AnnotationStatistics.annotationToSpan(),
-					AnnotationStatistics.annotationToFeatureValue("TypeValue"));
+					AnnotationStatistics.annotationToFeatureValue("Gender"));
 		}
 
 		return stats;
