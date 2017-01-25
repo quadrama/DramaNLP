@@ -1,6 +1,8 @@
 package de.unistuttgart.ims.drama.core.ml.gender;
 
 import java.io.File;
+import java.io.FilenameFilter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -55,14 +57,36 @@ public class Evaluation extends AbstractEvaluation {
 		Options options = CliFactory.parseArguments(Options.class, args);
 
 		// find training files
-		List<File> trainFiles = Arrays.asList(options.getTrainDirectory().listFiles());
-		List<File> testFiles = Arrays.asList(options.getTestDirectory().listFiles());
+		List<File> trainFiles = Arrays.asList(options.getTrainDirectory().listFiles(new FilenameFilter() {
+
+			@Override
+			public boolean accept(File dir, String name) {
+				return name.endsWith("xmi");
+			}
+		}));
+		List<File> testFiles = Arrays.asList(options.getTestDirectory().listFiles(new FilenameFilter() {
+
+			@Override
+			public boolean accept(File dir, String name) {
+				return name.endsWith("xmi");
+			}
+		}));
+
+		List<File> allFiles = new ArrayList<File>();
+		allFiles.addAll(trainFiles);
+		allFiles.addAll(testFiles);
 
 		AbstractEvaluation evaluator = new Evaluation(options.getModelsDirectory());
-		AnnotationStatistics<String> crossValidationStats = evaluator.trainAndTest(trainFiles, testFiles);// AnnotationStatistics.addAll(foldStats);
+		List<AnnotationStatistics<String>> crossValidationStatsList = evaluator.crossValidation(allFiles, 5); // .trainAndTest(trainFiles,
+		// testFiles);//
+		// AnnotationStatistics.addAll(foldStats);
+		AnnotationStatistics<String> crossValidationStats = AnnotationStatistics.addAll(crossValidationStatsList);
 
+		// for (AnnotationStatistics<String> crossValidationStats :
+		// crossValidationStatsList) {
 		System.out.println(crossValidationStats);
 		System.out.println(ClearTkUtil.toCmdLine(crossValidationStats.confusions()));
+		// }
 	}
 
 	@Override
@@ -81,7 +105,8 @@ public class Evaluation extends AbstractEvaluation {
 				DirectoryDataWriterFactory.PARAM_OUTPUT_DIRECTORY, directory), CAS.NAME_DEFAULT_SOFA, tmpView);
 		b.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
 				"target/xmi"));
-		SimplePipeline.runPipeline(collectionReader, b.createAggregateDescription());
+
+		SimplePipeline.runPipeline(collectionReader, b.createAggregate());
 
 		Train.main(directory, new String[] { "-t", "0" });
 	}
