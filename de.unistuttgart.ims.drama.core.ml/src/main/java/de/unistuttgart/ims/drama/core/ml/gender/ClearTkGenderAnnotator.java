@@ -78,12 +78,12 @@ public class ClearTkGenderAnnotator extends CleartkAnnotator<String> {
 			List<Feature> features = extractor.extract(jcas, figure);
 			features.addAll(contextExtractor.extract(jcas, figure, null, Token.class, tokenExtractor));
 			if (this.isTraining()) {
-				String outcome = DramaUtil.getTypeValue(jcas, figure, "Gender");
+				String outcome = DramaUtil.getTypeValue(jcas, figure, "Gender");// figure.getGender();
 				if (outcome != null)
 					this.dataWriter.write(new Instance<String>(outcome, features));
 			} else {
 				String category = this.classifier.classify(features);
-				DramaUtil.assignFigureType(jcas, figure, "Gender", category);
+				figure.setGender(category);
 			}
 
 		}
