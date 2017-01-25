@@ -30,6 +30,7 @@ import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
 import de.unistuttgart.ims.drama.api.DramatisPersonae;
 import de.unistuttgart.ims.drama.api.Figure;
 import de.unistuttgart.ims.drama.core.ml.AbstractEvaluation;
+import de.unistuttgart.ims.drama.core.ml.ClearTkUtil;
 import de.unistuttgart.ims.drama.core.ml.PrepareClearTk;
 
 public class Evaluation extends AbstractEvaluation {
@@ -61,6 +62,7 @@ public class Evaluation extends AbstractEvaluation {
 		AnnotationStatistics<String> crossValidationStats = evaluator.trainAndTest(trainFiles, testFiles);// AnnotationStatistics.addAll(foldStats);
 
 		System.out.println(crossValidationStats);
+		System.out.println(ClearTkUtil.toCmdLine(crossValidationStats.confusions()));
 	}
 
 	@Override
