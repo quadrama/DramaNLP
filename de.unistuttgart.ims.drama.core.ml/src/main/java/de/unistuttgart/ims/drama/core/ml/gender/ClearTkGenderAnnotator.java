@@ -1,7 +1,6 @@
 package de.unistuttgart.ims.drama.core.ml.gender;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -50,7 +49,7 @@ public class ClearTkGenderAnnotator extends CleartkAnnotator<String> {
 		extractor = new CombinedExtractor1<Figure>(new CoveredTextExtractor<Figure>(), new FeatureExtractor1<Figure>() {
 			@Override
 			public List<Feature> extract(JCas view, Figure focusAnnotation) throws CleartkExtractorException {
-				return new ArrayList<Feature>();
+				return Arrays.asList(new Feature("Length", focusAnnotation.getEnd() - focusAnnotation.getBegin()));
 			}
 		});
 		try {
@@ -63,11 +62,19 @@ public class ClearTkGenderAnnotator extends CleartkAnnotator<String> {
 		}
 		this.contextExtractor = new CleartkExtractor.Covered();
 
-		this.tokenExtractor = new CombinedExtractor1<Token>(new CoveredTextExtractor<Token>(),
-				new ListFeatureExtractor("male first names", maleFirstNames),
-				new ListFeatureExtractor("female first name", femaleFirstNames),
-				new ListFeatureExtractor("male titles", maleTitles),
-				new ListFeatureExtractor("female titles", femaleTitles), new SuffixFeatureExtractor("in"));
+		try {
+			this.tokenExtractor = new CombinedExtractor1<Token>(new CoveredTextExtractor<Token>(),
+					new ListFeatureExtractor("male_first_names", maleFirstNames),
+					new ListFeatureExtractor("female_first_name", femaleFirstNames),
+					new ListFeatureExtractor("male_titles", maleTitles),
+					new ListFeatureExtractor("female_titles", femaleTitles),
+					new ListFeatureExtractor("numerals",
+							IOUtils.readLines(this.getClass().getResourceAsStream("/gender/numbers.csv"), "UTF-8")),
+					new SuffixFeatureExtractor("in"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
