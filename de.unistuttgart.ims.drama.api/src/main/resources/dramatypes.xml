@@ -39,7 +39,8 @@
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.LevelSegment</name>
-			<supertypeName>de.unistuttgart.ims.drama.api.DramaSegment</supertypeName>
+			<supertypeName>de.unistuttgart.ims.drama.api.DramaSegment
+			</supertypeName>
 			<features>
 				<featureDescription>
 					<name>Level</name>
@@ -111,6 +112,25 @@
 			<supertypeName>de.unistuttgart.ims.drama.api.Speech</supertypeName>
 		</typeDescription>
 		<typeDescription>
+			<name>de.unistuttgart.ims.drama.api.figure.Gender</name>
+			<description/>
+			<supertypeName>uima.cas.String</supertypeName>
+			<allowedValues>
+						<value>
+							<string>m</string>
+							<description>male</description>
+						</value>
+						<value>
+							<string>f</string>
+							<description>female</description>
+						</value>
+						<value>
+							<string>o</string>
+							<description>other (e.g., group or unspecifiable)</description>
+						</value>
+					</allowedValues>
+		</typeDescription>
+		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.Figure</name>
 			<description>Represents one figure in the play. Each figure should
 				only have one Figure annotation (and multiple Speaker annotations)
@@ -131,7 +151,13 @@
 				<featureDescription>
 					<name>Name</name>
 					<description />
-					<rangeTypeName>de.unistuttgart.ims.drama.api.FigureName</rangeTypeName>
+					<rangeTypeName>de.unistuttgart.ims.drama.api.FigureName
+					</rangeTypeName>
+				</featureDescription>
+				<featureDescription>
+					<name>Gender</name>
+					<description />
+					<rangeTypeName>de.unistuttgart.ims.drama.api.figure.Gender</rangeTypeName>
 				</featureDescription>
 				<featureDescription>
 					<name>NumberOfUtterances</name>
@@ -172,14 +198,17 @@
 				</featureDescription>
 				<featureDescription>
 					<name>TypeTokenRatio100</name>
-					<description>Standardized type token ration, measured over 100 tokens</description>
+					<description>Standardized type token ration, measured over 100
+						tokens</description>
 					<rangeTypeName>uima.cas.Double</rangeTypeName>
 				</featureDescription>
 			</features>
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.FigureType</name>
-			<description>This annotations represents the assignment of a figure to a type. A figure can be assigned to multiple types, we add multiple annotations then.</description>
+			<description>This annotations represents the assignment of a figure
+				to a type. A figure can be assigned to multiple types, we add
+				multiple annotations then.</description>
 			<supertypeName>uima.tcas.Annotation</supertypeName>
 			<features>
 				<featureDescription>
@@ -209,7 +238,8 @@
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.SpeakerFigure</name>
 			<description>This type can be used to add figures on the fly, that
-				are not declared in the dramatis personae.</description>
+				are not declared in the dramatis personae.
+			</description>
 			<supertypeName>de.unistuttgart.ims.drama.api.Figure</supertypeName>
 		</typeDescription>
 		<typeDescription>
@@ -269,7 +299,8 @@
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.Person</name>
 			<description>Represents a (real) person</description>
-			<supertypeName>de.unistuttgart.ims.drama.api.Metadatum</supertypeName>
+			<supertypeName>de.unistuttgart.ims.drama.api.Metadatum
+			</supertypeName>
 			<features>
 				<featureDescription>
 					<name>Name</name>
@@ -308,7 +339,8 @@
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.Date</name>
 			<description>Describes a calendar date</description>
-			<supertypeName>de.unistuttgart.ims.drama.api.Metadatum</supertypeName>
+			<supertypeName>de.unistuttgart.ims.drama.api.Metadatum
+			</supertypeName>
 			<features>
 				<featureDescription>
 					<name>Year</name>
