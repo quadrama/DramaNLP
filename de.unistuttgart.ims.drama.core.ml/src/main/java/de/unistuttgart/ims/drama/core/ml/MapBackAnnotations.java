@@ -14,7 +14,7 @@ import org.apache.uima.resource.ResourceInitializationException;
 
 import de.unistuttgart.quadrama.core.api.Origin;
 
-public class MapBack extends JCasAnnotator_ImplBase {
+public class MapBackAnnotations extends JCasAnnotator_ImplBase {
 	public static final String PARAM_ANNOTATION_TYPE = "Annotation type";
 	public static final String PARAM_VIEW_NAME = "View name";
 

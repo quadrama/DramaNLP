@@ -30,7 +30,7 @@ import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
 import de.unistuttgart.ims.drama.api.DramatisPersonae;
 import de.unistuttgart.ims.drama.api.Figure;
 import de.unistuttgart.ims.drama.api.FigureType;
-import de.unistuttgart.ims.drama.core.ml.MapBack;
+import de.unistuttgart.ims.drama.core.ml.MapBackAnnotations;
 import de.unistuttgart.ims.drama.core.ml.PrepareClearTk;
 
 public class ClearTkGenderAnnotator extends CleartkAnnotator<String> {
@@ -135,8 +135,8 @@ public class ClearTkGenderAnnotator extends CleartkAnnotator<String> {
 				BreakIteratorSegmenter.PARAM_WRITE_SENTENCE, false), CAS.NAME_DEFAULT_SOFA, tmpView);
 		b.add(AnalysisEngineFactory.createEngineDescription(ClearTkGenderAnnotator.class,
 				GenericJarClassifierFactory.PARAM_CLASSIFIER_JAR_PATH, genderModelUrl), CAS.NAME_DEFAULT_SOFA, tmpView);
-		b.add(AnalysisEngineFactory.createEngineDescription(MapBack.class, MapBack.PARAM_ANNOTATION_TYPE,
-				FigureType.class, MapBack.PARAM_VIEW_NAME, tmpView));
+		b.add(AnalysisEngineFactory.createEngineDescription(MapBackAnnotations.class, MapBackAnnotations.PARAM_ANNOTATION_TYPE,
+				FigureType.class, MapBackAnnotations.PARAM_VIEW_NAME, tmpView));
 
 		return b.createAggregateDescription();
 	}
