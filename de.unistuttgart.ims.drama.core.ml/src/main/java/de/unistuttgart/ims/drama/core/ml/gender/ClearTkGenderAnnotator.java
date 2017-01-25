@@ -30,9 +30,8 @@ import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
 import de.unistuttgart.ims.drama.api.DramatisPersonae;
 import de.unistuttgart.ims.drama.api.Figure;
 import de.unistuttgart.ims.drama.api.FigureType;
-import de.unistuttgart.ims.drama.core.ml.MapBack;
+import de.unistuttgart.ims.drama.core.ml.MapBackFeature;
 import de.unistuttgart.ims.drama.core.ml.PrepareClearTk;
-import de.unistuttgart.ims.drama.util.DramaUtil;
 
 public class ClearTkGenderAnnotator extends CleartkAnnotator<String> {
 
@@ -78,12 +77,12 @@ public class ClearTkGenderAnnotator extends CleartkAnnotator<String> {
 			List<Feature> features = extractor.extract(jcas, figure);
 			features.addAll(contextExtractor.extract(jcas, figure, null, Token.class, tokenExtractor));
 			if (this.isTraining()) {
-				String outcome = DramaUtil.getTypeValue(jcas, figure, "Gender");
+				String outcome = figure.getGender();
 				if (outcome != null)
 					this.dataWriter.write(new Instance<String>(outcome, features));
 			} else {
 				String category = this.classifier.classify(features);
-				DramaUtil.assignFigureType(jcas, figure, "Gender", category);
+				figure.setGender(category);
 			}
 
 		}
@@ -136,8 +135,9 @@ public class ClearTkGenderAnnotator extends CleartkAnnotator<String> {
 				BreakIteratorSegmenter.PARAM_WRITE_SENTENCE, false), CAS.NAME_DEFAULT_SOFA, tmpView);
 		b.add(AnalysisEngineFactory.createEngineDescription(ClearTkGenderAnnotator.class,
 				GenericJarClassifierFactory.PARAM_CLASSIFIER_JAR_PATH, genderModelUrl), CAS.NAME_DEFAULT_SOFA, tmpView);
-		b.add(AnalysisEngineFactory.createEngineDescription(MapBack.class, MapBack.PARAM_ANNOTATION_TYPE,
-				FigureType.class, MapBack.PARAM_VIEW_NAME, tmpView));
+		b.add(AnalysisEngineFactory.createEngineDescription(MapBackFeature.class, MapBackFeature.PARAM_ANNOTATION_TYPE,
+				FigureType.class, MapBackFeature.PARAM_VIEW_NAME, tmpView, MapBackFeature.PARAM_FEATURE_NAME,
+				"Gender"));
 
 		return b.createAggregateDescription();
 	}

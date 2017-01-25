@@ -22,7 +22,6 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.junit.Before;
-import org.junit.Test;
 
 import de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData;
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
@@ -45,7 +44,7 @@ public class TestTextgridTEIFileReader {
 	}
 
 	@SuppressWarnings("resource")
-	@Test
+	// @Test
 	public void testReaderFromURL() throws UIMAException, IOException {
 		CSVParser reader = new CSVParser(new FileReader(new File(csvFilename)),
 				CSVFormat.TDF.withHeader((String) null));
