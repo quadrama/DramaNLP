@@ -157,7 +157,7 @@
 				<featureDescription>
 					<name>Gender</name>
 					<description />
-					<rangeTypeName>de.unistuttgart.ims.drama.api.figure.Gender</rangeTypeName>
+					<rangeTypeName>uima.cas.String</rangeTypeName>
 				</featureDescription>
 				<featureDescription>
 					<name>NumberOfUtterances</name>
