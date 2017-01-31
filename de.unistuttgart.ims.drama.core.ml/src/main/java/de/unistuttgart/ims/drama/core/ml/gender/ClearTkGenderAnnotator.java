@@ -26,6 +26,8 @@ import org.cleartk.ml.jar.GenericJarClassifierFactory;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
+import de.unistuttgart.ims.cleartkutil.ListFeatureExtractor;
+import de.unistuttgart.ims.cleartkutil.SuffixFeatureExtractor;
 import de.unistuttgart.ims.drama.api.DramatisPersonae;
 import de.unistuttgart.ims.drama.api.Figure;
 import de.unistuttgart.ims.drama.api.FigureType;
@@ -64,13 +66,13 @@ public class ClearTkGenderAnnotator extends CleartkAnnotator<String> {
 
 		try {
 			this.tokenExtractor = new CombinedExtractor1<Token>(new CoveredTextExtractor<Token>(),
-					new ListFeatureExtractor("male_first_names", maleFirstNames),
-					new ListFeatureExtractor("female_first_name", femaleFirstNames),
-					new ListFeatureExtractor("male_titles", maleTitles),
-					new ListFeatureExtractor("female_titles", femaleTitles),
-					new ListFeatureExtractor("numerals",
+					new ListFeatureExtractor<Token>("male_first_names", maleFirstNames),
+					new ListFeatureExtractor<Token>("female_first_name", femaleFirstNames),
+					new ListFeatureExtractor<Token>("male_titles", maleTitles),
+					new ListFeatureExtractor<Token>("female_titles", femaleTitles),
+					new ListFeatureExtractor<Token>("numerals",
 							IOUtils.readLines(this.getClass().getResourceAsStream("/gender/numbers.csv"), "UTF-8")),
-					new SuffixFeatureExtractor("in"));
+					new SuffixFeatureExtractor<Token>("in"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -92,39 +94,6 @@ public class ClearTkGenderAnnotator extends CleartkAnnotator<String> {
 				figure.setGender(category);
 			}
 
-		}
-
-	}
-
-	class SuffixFeatureExtractor implements FeatureExtractor1<Token> {
-
-		String suf = "in";
-
-		public SuffixFeatureExtractor(String suffix) {
-			suf = suffix;
-		}
-
-		@Override
-		public List<Feature> extract(JCas view, Token focusAnnotation) throws CleartkExtractorException {
-			String surf = focusAnnotation.getCoveredText();
-			return Arrays
-					.asList(new Feature("Suffix_" + suf, Character.isUpperCase(surf.charAt(0)) && surf.endsWith(suf)));
-		}
-	}
-
-	class ListFeatureExtractor implements FeatureExtractor1<Token> {
-
-		List<String> strList;
-		String fName;
-
-		public ListFeatureExtractor(String featureName, List<String> list) {
-			strList = list;
-			fName = featureName;
-		}
-
-		@Override
-		public List<Feature> extract(JCas view, Token focusAnnotation) throws CleartkExtractorException {
-			return Arrays.asList(new Feature(fName, strList.contains(focusAnnotation.getCoveredText().toLowerCase())));
 		}
 
 	}
