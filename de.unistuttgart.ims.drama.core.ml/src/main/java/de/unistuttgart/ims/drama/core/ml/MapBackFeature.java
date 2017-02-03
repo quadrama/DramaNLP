@@ -54,7 +54,7 @@ public class MapBackFeature extends JCasAnnotator_ImplBase {
 					int tgtBegin = src.getBegin() + relativ;
 					int tgtEnd = src.getEnd() + relativ;
 					for (Annotation tgt : JCasUtil.selectCovered(jcas, annotationClass, tgtBegin, tgtEnd)) {
-						if (tgt.getBegin() == src.getBegin() && tgt.getEnd() == src.getEnd()) {
+						if (tgtBegin == tgt.getBegin() && tgtEnd == tgt.getEnd()) {
 							Feature feature = tgt.getType().getFeatureByBaseName(featureName);
 							if (feature.getRange().getName().equalsIgnoreCase("uima.cas.String")) {
 								tgt.setStringValue(feature, src.getStringValue(feature));
