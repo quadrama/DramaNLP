@@ -262,6 +262,11 @@
 					<description />
 					<rangeTypeName>uima.cas.Integer</rangeTypeName>
 				</featureDescription>
+				<featureDescription>
+					<name>Regular</name>
+					<description>Is this a regular segment?</description>
+					<rangeTypeName>uima.cas.Boolean</rangeTypeName>
+				</featureDescription>
 			</features>
 		</typeDescription>
 		<typeDescription>
