@@ -155,5 +155,6 @@
 		<module>de.unistuttgart.ims.drama.util</module>
 		<module>de.unistuttgart.ims.drama.core.cr</module>
 		<module>de.unistuttgart.ims.drama.core.ml</module>
+		<module>de.unistuttgart.ims.drama.meta</module>
 	</modules>
 </project>
