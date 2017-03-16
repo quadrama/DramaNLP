@@ -39,6 +39,7 @@ public class QD {
 	public static final Resource NAMESPACE = m_model.createResource(NS);
 
 	public static final Resource Premiere = m_model.createResource(NS + "Premiere");
+	public static final Resource GenreAssignment = m_model.createResource(NS + "GenreAssignment");
 	public static final Resource LiteraryGenre = m_model.createResource(NS + "LiteraryGenre");
 	public static final Resource Drama = m_model.createResource(NS + "Drama");
 	public static final Resource Tragedy = m_model.createResource(NS + "Tragedy");
@@ -46,5 +47,7 @@ public class QD {
 	public static final Property isAnnotated = m_model.createProperty(NS + "isAnnotated");
 	public static final Property hasPremiere = m_model.createProperty(NS + "hasPremiere");
 	public static final Property hasGenre = m_model.createProperty(NS + "hasGenre");
+	public static final Property genreAssignment = m_model.createProperty(NS + "genreAssignment");
+	public static final Property certainty = m_model.createProperty(NS + "certainty");
 
 }
