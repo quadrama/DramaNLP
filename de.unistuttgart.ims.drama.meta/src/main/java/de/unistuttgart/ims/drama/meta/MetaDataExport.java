@@ -14,7 +14,6 @@ import org.apache.jena.rdfxml.xmloutput.impl.BaseXMLWriter;
 import org.apache.jena.rdfxml.xmloutput.impl.Basic;
 import org.apache.jena.vocabulary.DC_11;
 import org.apache.jena.vocabulary.OWL2;
-import org.apache.jena.vocabulary.RDF;
 import org.apache.jena.vocabulary.RDFS;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -71,7 +70,11 @@ public class MetaDataExport extends JCasAnnotator_ImplBase {
 				GND.work);
 		dramaResource.addProperty(RDFS.comment, "http://textgridrep.org/textgrid:" + d.getDocumentId());
 		dramaResource.addProperty(DC_11.title, d.getDocumentTitle());
-		dramaResource.addProperty(RDF.type, QD.Drama);
+		Resource ga = model.createResource(QD.GenreAssignment);
+		ga.addProperty(RDFS.label, "Genre assignment for " + d.getDocumentTitle());
+		ga.addProperty(QD.hasGenre, QD.Drama);
+		ga.addLiteral(QD.certainty, 1.0);
+		dramaResource.addProperty(QD.genreAssignment, ga);
 
 		for (Author a : JCasUtil.select(jcas, Author.class)) {
 			Resource authorResource;
