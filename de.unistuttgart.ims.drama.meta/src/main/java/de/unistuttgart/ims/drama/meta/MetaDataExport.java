@@ -57,23 +57,24 @@ public class MetaDataExport extends JCasAnnotator_ImplBase {
 		InputStream in = null;
 		try {
 			in = new FileInputStream(outputFileName);
-			model.read(in, null);
+			model.read(in, "http://github.com/quadrama/metadata/ontology.owl");
 			in.close();
 		} catch (IOException e) {
 			Ontology o = model.createOntology("http://github.com/quadrama/metadata/ontology.owl");
 			o.setRDFType(OWL2.Ontology);
-			o.addImport(model.createResource("http://d-nb.info/standards/elementset/gnd.rdf"));
-			o.addImport(model.createResource("http://www.w3.org/ns/oa.rdf"));
-			o.addImport(model.createResource("https://raw.githubusercontent.com/quadrama/ontology/master/qdo.rdf"));
+			// o.addImport(model.createResource("http://d-nb.info/standards/elementset/gnd.rdf"));
+			// o.addImport(model.createResource("http://www.w3.org/ns/oa.rdf"));
+			// o.addImport(model.createResource("https://raw.githubusercontent.com/quadrama/ontology/master/qdo.rdf"));
+			model.setNsPrefix("gndo", "http://d-nb.info/standards/elementset/gnd#");
+			model.setNsPrefix("gnd", "http://d-nb.info/gnd/");
+			model.setNsPrefix("dc", "http://purl.org/dc/elements/1.1/");
+			model.setNsPrefix("oa", "http://www.w3.org/ns/oa#");
+			model.setNsPrefix("dbo", "http://dbpedia.org/ontology/");
+			model.setNsPrefix("qd", QD.NS);
 		} finally {
 			IOUtils.closeQuietly(in);
 		}
-		model.setNsPrefix("gndo", "http://d-nb.info/standards/elementset/gnd#");
-		model.setNsPrefix("gnd", "http://d-nb.info/gnd/");
-		model.setNsPrefix("dc", "http://purl.org/dc/elements/1.1/");
-		model.setNsPrefix("oa", "http://www.w3.org/ns/oa#");
-		model.setNsPrefix("dbo", "http://dbpedia.org/ontology/");
-		model.setNsPrefix("qd", QD.NS);
+
 	}
 
 	@Override
