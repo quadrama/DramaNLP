@@ -1,9 +1,9 @@
 package de.unistuttgart.ims.drama.meta;
 
+import java.io.File;
 import java.io.IOException;
 
 import org.apache.uima.UIMAException;
-import org.apache.uima.fit.factory.AnalysisEngineFactory;
 import org.apache.uima.fit.factory.CollectionReaderFactory;
 import org.apache.uima.fit.pipeline.SimplePipeline;
 import org.apache.uima.resource.ResourceInitializationException;
@@ -17,7 +17,6 @@ public class TestMetaDataExport {
 		SimplePipeline.runPipeline(
 				CollectionReaderFactory.createReaderDescription(XmiReader.class, XmiReader.PARAM_SOURCE_LOCATION,
 						"src/test/resources/*.xmi", XmiReader.PARAM_LENIENT, true),
-				AnalysisEngineFactory.createEngineDescription(MetaDataExport.class, MetaDataExport.PARAM_OUTPUT,
-						"target/ontology.owl"));
+				MetaDataExport.getDescription(new File("target/ontology.owl")));
 	}
 }

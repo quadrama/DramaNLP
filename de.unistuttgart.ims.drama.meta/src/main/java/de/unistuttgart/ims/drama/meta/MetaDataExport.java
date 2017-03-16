@@ -16,9 +16,11 @@ import org.apache.jena.vocabulary.DC_11;
 import org.apache.jena.vocabulary.OWL2;
 import org.apache.jena.vocabulary.RDFS;
 import org.apache.uima.UimaContext;
+import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
+import org.apache.uima.fit.factory.AnalysisEngineFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
@@ -182,6 +184,11 @@ public class MetaDataExport extends JCasAnnotator_ImplBase {
 			}
 
 		}
+	}
+
+	public static AnalysisEngineDescription getDescription(File outputFile) throws ResourceInitializationException {
+		return AnalysisEngineFactory.createEngineDescription(MetaDataExport.class, MetaDataExport.PARAM_OUTPUT,
+				outputFile);
 	}
 
 }
