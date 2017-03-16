@@ -1,8 +1,10 @@
 package de.unistuttgart.ims.drama.meta;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Writer;
 
 import org.apache.commons.compress.utils.IOUtils;
@@ -51,18 +53,27 @@ public class MetaDataExport extends JCasAnnotator_ImplBase {
 	public void initialize(final UimaContext context) throws ResourceInitializationException {
 		super.initialize(context);
 
-		model = ModelFactory.createOntologyModel(); // .createDefaultModel();
+		model = ModelFactory.createOntologyModel();
+		InputStream in = null;
+		try {
+			in = new FileInputStream(outputFileName);
+			model.read(in, null);
+			in.close();
+		} catch (IOException e) {
+			Ontology o = model.createOntology("http://github.com/quadrama/metadata/ontology.owl");
+			o.setRDFType(OWL2.Ontology);
+			o.addImport(model.createResource("http://d-nb.info/standards/elementset/gnd.rdf"));
+			o.addImport(model.createResource("http://www.w3.org/ns/oa.rdf"));
+			o.addImport(model.createResource("https://raw.githubusercontent.com/quadrama/ontology/master/qdo.rdf"));
+		} finally {
+			IOUtils.closeQuietly(in);
+		}
 		model.setNsPrefix("gndo", "http://d-nb.info/standards/elementset/gnd#");
 		model.setNsPrefix("gnd", "http://d-nb.info/gnd/");
 		model.setNsPrefix("dc", "http://purl.org/dc/elements/1.1/");
 		model.setNsPrefix("oa", "http://www.w3.org/ns/oa#");
 		model.setNsPrefix("dbo", "http://dbpedia.org/ontology/");
 		model.setNsPrefix("qd", QD.NS);
-		Ontology o = model.createOntology("http://github.com/quadrama/metadata/ontology.owl");
-		o.setRDFType(OWL2.Ontology);
-		o.addImport(model.createResource("http://d-nb.info/standards/elementset/gnd.rdf"));
-		o.addImport(model.createResource("http://www.w3.org/ns/oa.rdf"));
-		o.addImport(model.createResource("https://raw.githubusercontent.com/quadrama/ontology/master/qdo.rdf"));
 	}
 
 	@Override
@@ -134,8 +145,12 @@ public class MetaDataExport extends JCasAnnotator_ImplBase {
 						GND.literaryOrLegendaryCharacter);
 				figureResource.addProperty(QD.from, dramaResource);
 				figureResource.addProperty(RDFS.label, s);
-				Resource figureAnnotation = model.createResource(OA.Annotation);
-				Resource textPositionSelector = model.createResource(OA.TextPositionSelector);
+				Resource figureAnnotation = model.createResource(
+						"http://textgridrep.org/textgrid:" + d.getDocumentId() + "#" + s.toLowerCase() + "/annotation",
+						OA.Annotation);
+				Resource textPositionSelector = model.createResource(
+						"http://textgridrep.org/textgrid:" + d.getDocumentId() + "/" + f.getBegin() + "-" + f.getEnd(),
+						OA.TextPositionSelector);
 				textPositionSelector.addLiteral(OA.start, f.getBegin());
 				textPositionSelector.addLiteral(OA.end, f.getEnd());
 				figureAnnotation.addProperty(OA.hasTarget, textPositionSelector);
