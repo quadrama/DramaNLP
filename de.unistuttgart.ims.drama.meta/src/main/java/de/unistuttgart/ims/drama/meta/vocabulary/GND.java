@@ -45,6 +45,13 @@ public class GND {
 	public static final Resource literaryOrLegendaryCharacter = m_model
 			.createResource("http://d-nb.info/standards/elementset/gnd#LiteraryOrLegendaryCharacter");
 
+	public static final Resource gender_male = m_model
+			.createResource("http://d-nb.info/standards/vocab/gnd/gender#male");
+	public static final Resource gender_female = m_model
+			.createResource("http://d-nb.info/standards/vocab/gnd/gender#female");
+	public static final Resource gender_notknown = m_model
+			.createResource("http://d-nb.info/standards/vocab/gnd/gender#notKnown");
+
 	public static final Property variantNameForThePerson = m_model
 			.createProperty("http://d-nb.info/standards/elementset/gnd#variantNameForThePerson");
 	public static final Property creator = m_model.createProperty("http://d-nb.info/standards/elementset/gnd#creator");

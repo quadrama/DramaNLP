@@ -18,7 +18,7 @@ public class QD {
 	 * The namespace of the vocabalary as a string ({@value})
 	 * </p>
 	 */
-	public static final String NS = "http://github.com/quadrama/metadata/ontology.owl";
+	public static final String NS = "http://github.com/quadrama/ontology/qdo.rdf#";
 
 	/**
 	 * <p>
@@ -38,10 +38,13 @@ public class QD {
 	 */
 	public static final Resource NAMESPACE = m_model.createResource(NS);
 
-	public static final Resource Premiere = m_model
-			.createResource("http://github.com/quadrama/metadata/dramav.rdf#Premiere");
-	public static final Property premiere = m_model
-			.createProperty("http://github.com/quadrama/metadata/dramav.rdf#Premiere");
-	public static final Property from = m_model.createProperty("http://github.com/quadrama/metadata/dramav.rdf#from");
+	public static final Resource Premiere = m_model.createResource(NS + "Premiere");
+	public static final Resource LiteraryGenre = m_model.createResource(NS + "LiteraryGenre");
+	public static final Resource Drama = m_model.createResource(NS + "Drama");
+	public static final Resource Tragedy = m_model.createResource(NS + "Tragedy");
+	public static final Property from = m_model.createProperty(NS + "From");
+	public static final Property isAnnotated = m_model.createProperty(NS + "isAnnotated");
+	public static final Property hasPremiere = m_model.createProperty(NS + "hasPremiere");
+	public static final Property hasGenre = m_model.createProperty(NS + "hasGenre");
 
 }
