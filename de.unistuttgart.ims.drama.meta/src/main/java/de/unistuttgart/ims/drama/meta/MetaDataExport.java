@@ -14,6 +14,7 @@ import org.apache.jena.rdfxml.xmloutput.impl.BaseXMLWriter;
 import org.apache.jena.rdfxml.xmloutput.impl.Basic;
 import org.apache.jena.vocabulary.DC_11;
 import org.apache.jena.vocabulary.OWL2;
+import org.apache.jena.vocabulary.RDF;
 import org.apache.jena.vocabulary.RDFS;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -33,6 +34,7 @@ import de.unistuttgart.ims.drama.api.DramatisPersonae;
 import de.unistuttgart.ims.drama.api.Figure;
 import de.unistuttgart.ims.drama.api.Translator;
 import de.unistuttgart.ims.drama.meta.vocabulary.GND;
+import de.unistuttgart.ims.drama.meta.vocabulary.OA;
 import de.unistuttgart.ims.drama.meta.vocabulary.QD;
 
 public class MetaDataExport extends JCasAnnotator_ImplBase {
@@ -52,9 +54,14 @@ public class MetaDataExport extends JCasAnnotator_ImplBase {
 		model.setNsPrefix("gndo", "http://d-nb.info/standards/elementset/gnd#");
 		model.setNsPrefix("gnd", "http://d-nb.info/gnd/");
 		model.setNsPrefix("dc", "http://purl.org/dc/elements/1.1/");
+		model.setNsPrefix("oa", "http://www.w3.org/ns/oa#");
+		model.setNsPrefix("dbo", "http://dbpedia.org/ontology/");
+		model.setNsPrefix("qd", QD.NS);
 		Ontology o = model.createOntology("http://github.com/quadrama/metadata/ontology.owl");
 		o.setRDFType(OWL2.Ontology);
 		o.addImport(model.createResource("http://d-nb.info/standards/elementset/gnd.rdf"));
+		o.addImport(model.createResource("http://www.w3.org/ns/oa.rdf"));
+		o.addImport(model.createResource("https://raw.githubusercontent.com/quadrama/ontology/master/qdo.rdf"));
 	}
 
 	@Override
@@ -62,8 +69,10 @@ public class MetaDataExport extends JCasAnnotator_ImplBase {
 		Drama d = JCasUtil.selectSingle(jcas, Drama.class);
 		Resource dramaResource = model.createIndividual("http://textgridrep.org/textgrid:" + d.getDocumentId(),
 				GND.work);
+		dramaResource.addProperty(RDFS.comment, "http://textgridrep.org/textgrid:" + d.getDocumentId());
 		dramaResource.addProperty(DC_11.title, d.getDocumentTitle());
-		dramaResource.addProperty(RDFS.label, d.getDocumentTitle());
+		dramaResource.addProperty(RDF.type, QD.Drama);
+
 		for (Author a : JCasUtil.select(jcas, Author.class)) {
 			Resource authorResource;
 			if (a.getPnd() != null) {
@@ -73,6 +82,10 @@ public class MetaDataExport extends JCasAnnotator_ImplBase {
 			}
 			dramaResource.addProperty(GND.creator, authorResource);
 			authorResource.addProperty(GND.variantNameForThePerson, a.getName());
+			String auShort = a.getName().split(",")[0];
+			authorResource.addProperty(RDFS.label, auShort);
+			dramaResource.addProperty(RDFS.label, auShort + ": " + d.getDocumentTitle());
+
 		}
 
 		for (Date date : JCasUtil.select(jcas, DateWritten.class)) {
@@ -89,7 +102,7 @@ public class MetaDataExport extends JCasAnnotator_ImplBase {
 			Resource rep = model.createResource(QD.Premiere);
 			rep.addProperty(RDFS.label, "Premiere of " + d.getDocumentTitle());
 			rep.addProperty(GND.associatedDate, String.valueOf(year));
-			dramaResource.addProperty(QD.premiere, rep);
+			dramaResource.addProperty(QD.hasPremiere, rep);
 		}
 
 		for (Translator a : JCasUtil.select(jcas, Translator.class)) {
@@ -108,6 +121,7 @@ public class MetaDataExport extends JCasAnnotator_ImplBase {
 			for (Figure f : JCasUtil.selectCovered(jcas, Figure.class, dp)) {
 				String s = f.getReference();
 				s = s.split(",")[0];
+				s = s.replaceAll(" ", "_");
 				// String[] p = s.split(" ");
 				// s = p[p.length - 1];
 				Resource figureResource = model.createResource(
@@ -115,17 +129,33 @@ public class MetaDataExport extends JCasAnnotator_ImplBase {
 						GND.literaryOrLegendaryCharacter);
 				figureResource.addProperty(QD.from, dramaResource);
 				figureResource.addProperty(RDFS.label, s);
+				Resource figureAnnotation = model.createResource(OA.Annotation);
+				Resource textPositionSelector = model.createResource(OA.TextPositionSelector);
+				textPositionSelector.addLiteral(OA.start, f.getBegin());
+				textPositionSelector.addLiteral(OA.end, f.getEnd());
+				figureAnnotation.addProperty(OA.hasTarget, textPositionSelector);
+				figureResource.addProperty(QD.isAnnotated, figureAnnotation);
 				if (f.getName() != null)
 					figureResource.addProperty(GND.variantNameForThePerson, f.getName().getCoveredText());
 				figureResource.addProperty(GND.variantNameForThePerson, f.getCoveredText());
 
-				if (f.getGender() != null)
-					figureResource.addProperty(GND.gender, f.getGender());
+				if (f.getGender() != null) {
+					figureResource.addProperty(GND.gender, getGenderResource(f));
+				}
 				if (f.getDescription() != null)
 					figureResource.addProperty(GND.functionOrRoleAsLiteral, f.getDescription().getCoveredText());
 			}
 		}
 
+	}
+
+	protected Resource getGenderResource(Figure f) {
+		if (f.getGender().startsWith("m"))
+			return GND.gender_male;
+		else if (f.getGender().startsWith("f"))
+			return GND.gender_female;
+		else
+			return GND.gender_notknown;
 	}
 
 	@Override
