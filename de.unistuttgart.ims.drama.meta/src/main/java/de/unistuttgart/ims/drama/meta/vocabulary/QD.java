@@ -49,5 +49,6 @@ public class QD {
 	public static final Property hasGenre = m_model.createProperty(NS + "hasGenre");
 	public static final Property genreAssignment = m_model.createProperty(NS + "genreAssignment");
 	public static final Property certainty = m_model.createProperty(NS + "certainty");
+	public static final Property alsoSpelledAs = m_model.createProperty(NS + "alsoSpelledAs");
 
 }
