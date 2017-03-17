@@ -10,12 +10,12 @@ import org.apache.uima.resource.ResourceInitializationException;
 /**
  * This class provides a convenient way to get an aggregate analysis engine that
  * re-maps the views so that tokenization can be done on the utterances view
- * {@link DramaSpeechSegmenter#SOFA_UTTERANCES}.
+ * {@link D#SOFA_UTTERANCES}.
  * 
  * @author Nils Reiter
  *
  */
-public class DramaSpeechSegmenter {
+public class D {
 	public static final String SOFA_UTTERANCES = "Utterances";
 
 	public static AnalysisEngineDescription getWrappedSegmenterDescription(
