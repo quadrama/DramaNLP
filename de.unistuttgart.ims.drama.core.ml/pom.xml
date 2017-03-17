@@ -42,7 +42,6 @@
   		<artifactId>
   			de.tudarmstadt.ukp.dkpro.core.io.xmi-asl
   		</artifactId>
-  		<version>${dkpro.version}</version>
   	</dependency>
   	<dependency>
   		<groupId>de.unistuttgart.ims</groupId>
@@ -75,14 +74,12 @@
   		<artifactId>
   			de.tudarmstadt.ukp.dkpro.core.tokit-asl
   		</artifactId>
-  		<version>${dkpro.version}</version>
   	</dependency>
   	<dependency>
   		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
   		<artifactId>
   			de.tudarmstadt.ukp.dkpro.core.api.ner-asl
   		</artifactId>
-  		<version>${dkpro.version}</version>
   	</dependency>
   	<dependency>
   		<groupId>org.apache.commons</groupId>

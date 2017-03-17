@@ -20,7 +20,6 @@
   		<artifactId>
   			de.tudarmstadt.ukp.dkpro.core.io.xmi-asl
   		</artifactId>
-  		<version>${dkpro.version}</version>
   		<scope>test</scope>
   	</dependency>
   	<dependency>
