@@ -30,7 +30,7 @@ public class FigureReferenceFactory {
 		}
 
 		for (Figure figure : figures.keySet()) {
-			figure.setReference(figures.get(figure).replaceAll(" ", "_").replaceAll("[^a-z_A-Z]", ""));
+			figure.setReference(figures.get(figure).replaceAll(" ", "_").replaceAll("[^a-z_A-Z]", "").toLowerCase());
 		}
 	}
 }
