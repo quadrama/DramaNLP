@@ -41,7 +41,9 @@ public class FigureDetailsAnnotator extends JCasAnnotator_ImplBase {
 							FigureDescription.class);
 
 					AnnotationUtil.trim(fName);
+					AnnotationUtil.trim(fName, ',', '.');
 					AnnotationUtil.trim(fDesc);
+					AnnotationUtil.trim(fDesc, ',', '.');
 
 					figure.setName(fName);
 					figure.setDescription(fDesc);
