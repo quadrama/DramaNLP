@@ -112,8 +112,7 @@ public class ClearTkGenderAnnotator extends CleartkAnnotator<String> {
 		b.add(AnalysisEngineFactory.createEngineDescription(ClearTkGenderAnnotator.class,
 				GenericJarClassifierFactory.PARAM_CLASSIFIER_JAR_PATH, genderModelUrl), CAS.NAME_DEFAULT_SOFA, tmpView);
 		b.add(AnalysisEngineFactory.createEngineDescription(MapBackFeature.class, MapBackFeature.PARAM_ANNOTATION_TYPE,
-				FigureType.class, MapBackFeature.PARAM_VIEW_NAME, tmpView, MapBackFeature.PARAM_FEATURE_NAME,
-				"Gender"));
+				Figure.class, MapBackFeature.PARAM_VIEW_NAME, tmpView, MapBackFeature.PARAM_FEATURE_NAME, "Gender"));
 
 		return b.createAggregateDescription();
 	}
