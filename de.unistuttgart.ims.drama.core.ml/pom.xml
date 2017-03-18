@@ -3,7 +3,7 @@
   <parent>
     <groupId>de.unistuttgart.ims</groupId>
     <artifactId>de.unistuttgart.ims.drama</artifactId>
-    <version>0.4.4-SNAPSHOT</version>
+    <version>0.4.5-SNAPSHOT</version>
   </parent>
   <artifactId>de.unistuttgart.ims.drama.core.ml</artifactId>
   <name>de.unistuttgart.ims.drama.core.ml</name>
@@ -35,7 +35,7 @@
   	<dependency>
   		<groupId>de.unistuttgart.ims</groupId>
   		<artifactId>de.unistuttgart.ims.drama.api</artifactId>
-  		<version>0.4.4-SNAPSHOT</version>
+  		<version>0.4.5-SNAPSHOT</version>
   	</dependency>
   	<dependency>
   		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
@@ -48,7 +48,7 @@
   		<artifactId>
   			de.unistuttgart.ims.drama.io.tei.textgrid
   		</artifactId>
-  		<version>0.4.4-SNAPSHOT</version>
+  		<version>0.4.5-SNAPSHOT</version>
   	</dependency>
   	<dependency>
   		<groupId>org.cleartk</groupId>
@@ -63,7 +63,7 @@
   	<dependency>
   		<groupId>de.unistuttgart.ims</groupId>
   		<artifactId>de.unistuttgart.ims.drama.core</artifactId>
-  		<version>0.4.4-SNAPSHOT</version>
+  		<version>0.4.5-SNAPSHOT</version>
   	</dependency>
   	<dependency>
   		<groupId>junit</groupId>

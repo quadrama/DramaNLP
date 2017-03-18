@@ -4,9 +4,8 @@
 	<parent>
 		<groupId>de.unistuttgart.ims</groupId>
 		<artifactId>de.unistuttgart.ims.drama</artifactId>
-		<version>0.4.4-SNAPSHOT</version>
+		<version>0.4.5-SNAPSHOT</version>
 	</parent>
-	<groupId>de.unistuttgart.ims.drama</groupId>
 	<artifactId>de.unistuttgart.ims.drama.meta</artifactId>
 	<dependencies>
 		<dependency>
@@ -24,7 +23,7 @@
 		<dependency>
 			<groupId>de.unistuttgart.ims</groupId>
 			<artifactId>de.unistuttgart.ims.drama.util</artifactId>
-			<version>0.4.4-SNAPSHOT</version>
+			<version>0.4.5-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
@@ -58,7 +57,7 @@
 		<dependency>
 			<groupId>de.unistuttgart.ims</groupId>
 			<artifactId>de.unistuttgart.ims.drama.core</artifactId>
-			<version>0.4.4-SNAPSHOT</version>
+			<version>0.4.5-SNAPSHOT</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
