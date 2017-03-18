@@ -3,7 +3,7 @@
   <parent>
     <groupId>de.unistuttgart.ims</groupId>
     <artifactId>de.unistuttgart.ims.drama</artifactId>
-    <version>0.4.3</version>
+    <version>0.4.4</version>
   </parent>
   <artifactId>de.unistuttgart.ims.drama.core.ml</artifactId>
   <name>de.unistuttgart.ims.drama.core.ml</name>
@@ -35,21 +35,20 @@
   	<dependency>
   		<groupId>de.unistuttgart.ims</groupId>
   		<artifactId>de.unistuttgart.ims.drama.api</artifactId>
-  		<version>0.4.3</version>
+  		<version>0.4.4</version>
   	</dependency>
   	<dependency>
   		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
   		<artifactId>
   			de.tudarmstadt.ukp.dkpro.core.io.xmi-asl
   		</artifactId>
-  		<version>${dkpro.version}</version>
   	</dependency>
   	<dependency>
   		<groupId>de.unistuttgart.ims</groupId>
   		<artifactId>
   			de.unistuttgart.ims.drama.io.tei.textgrid
   		</artifactId>
-  		<version>0.4.3</version>
+  		<version>0.4.4</version>
   	</dependency>
   	<dependency>
   		<groupId>org.cleartk</groupId>
@@ -64,7 +63,7 @@
   	<dependency>
   		<groupId>de.unistuttgart.ims</groupId>
   		<artifactId>de.unistuttgart.ims.drama.core</artifactId>
-  		<version>0.4.3</version>
+  		<version>0.4.4</version>
   	</dependency>
   	<dependency>
   		<groupId>junit</groupId>
@@ -75,20 +74,23 @@
   		<artifactId>
   			de.tudarmstadt.ukp.dkpro.core.tokit-asl
   		</artifactId>
-  		<version>${dkpro.version}</version>
   	</dependency>
   	<dependency>
   		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
   		<artifactId>
   			de.tudarmstadt.ukp.dkpro.core.api.ner-asl
   		</artifactId>
-  		<version>${dkpro.version}</version>
   	</dependency>
   	<dependency>
   		<groupId>org.apache.commons</groupId>
   		<artifactId>commons-collections4</artifactId>
   		<version>4.0</version>
   		<scope>test</scope>
+  	</dependency>
+  	<dependency>
+  		<groupId>de.unistuttgart.ims</groupId>
+  		<artifactId>cleartk-util</artifactId>
+  		<version>0.1.0</version>
   	</dependency>
   </dependencies>
 </project>

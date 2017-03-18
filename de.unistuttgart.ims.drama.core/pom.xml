@@ -5,7 +5,7 @@
   <parent>
     <groupId>de.unistuttgart.ims</groupId>
     <artifactId>de.unistuttgart.ims.drama</artifactId>
-    <version>0.4.3</version>
+    <version>0.4.4</version>
   </parent>
   <artifactId>de.unistuttgart.ims.drama.core</artifactId>
   <properties>
@@ -26,7 +26,6 @@
     	<artifactId>
     		de.tudarmstadt.ukp.dkpro.core.languagetool-asl
     	</artifactId>
-    	<version>${dkpro.version}</version>
     	<scope>test</scope>
     </dependency>
     <dependency>
@@ -34,7 +33,6 @@
     	<artifactId>
     		de.tudarmstadt.ukp.dkpro.core.io.xmi-asl
     	</artifactId>
-    	<version>${dkpro.version}</version>
     	<scope>test</scope>
     </dependency>
     <dependency>
@@ -42,7 +40,6 @@
     	<artifactId>
     		de.tudarmstadt.ukp.dkpro.core.stanfordnlp-gpl
     	</artifactId>
-    	<version>${dkpro.version}</version>
     	<scope>test</scope>
     </dependency>
     <dependency>
@@ -50,12 +47,11 @@
     	<artifactId>
     		de.tudarmstadt.ukp.dkpro.core.api.segmentation-asl
     	</artifactId>
-    	<version>${dkpro.version}</version>
     </dependency>
     <dependency>
     	<groupId>de.unistuttgart.ims</groupId>
     	<artifactId>de.unistuttgart.ims.drama.api</artifactId>
-    	<version>0.4.3</version>
+    	<version>0.4.4</version>
     </dependency>
     <dependency>
     	<groupId>org.apache.commons</groupId>
@@ -67,7 +63,7 @@
     	<artifactId>
     		de.unistuttgart.ims.drama.io.tei.textgrid
     	</artifactId>
-    	<version>0.4.3</version>
+    	<version>0.4.4</version>
     	<scope>test</scope>
     </dependency>
     <dependency>
@@ -83,7 +79,7 @@
     <dependency>
     	<groupId>de.unistuttgart.ims</groupId>
     	<artifactId>de.unistuttgart.ims.drama.util</artifactId>
-    	<version>0.4.3</version>
+    	<version>0.4.4</version>
     </dependency>
     <dependency>
     	<groupId>xom</groupId>

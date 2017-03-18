@@ -20,7 +20,8 @@ public class TestMapBack {
 		other.setDocumentText("blubb blubb");
 		assertEquals(2, IteratorUtils.toList(jcas.getViewIterator()).size());
 
-		// assertEquals(1, IteratorUtils.toList(jcas.getViewIterator()).size());
+		other.getCasImpl().reset();
+		assertEquals(1, IteratorUtils.toList(jcas.getViewIterator()).size());
 
 	}
 }

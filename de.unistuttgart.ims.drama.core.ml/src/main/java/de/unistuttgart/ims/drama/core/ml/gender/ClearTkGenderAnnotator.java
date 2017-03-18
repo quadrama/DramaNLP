@@ -1,7 +1,6 @@
 package de.unistuttgart.ims.drama.core.ml.gender;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -27,12 +26,13 @@ import org.cleartk.ml.jar.GenericJarClassifierFactory;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
+import de.unistuttgart.ims.cleartkutil.ListFeatureExtractor;
+import de.unistuttgart.ims.cleartkutil.SuffixFeatureExtractor;
 import de.unistuttgart.ims.drama.api.DramatisPersonae;
 import de.unistuttgart.ims.drama.api.Figure;
 import de.unistuttgart.ims.drama.api.FigureType;
-import de.unistuttgart.ims.drama.core.ml.MapBack;
+import de.unistuttgart.ims.drama.core.ml.MapBackFeature;
 import de.unistuttgart.ims.drama.core.ml.PrepareClearTk;
-import de.unistuttgart.ims.drama.util.DramaUtil;
 
 public class ClearTkGenderAnnotator extends CleartkAnnotator<String> {
 
@@ -51,7 +51,7 @@ public class ClearTkGenderAnnotator extends CleartkAnnotator<String> {
 		extractor = new CombinedExtractor1<Figure>(new CoveredTextExtractor<Figure>(), new FeatureExtractor1<Figure>() {
 			@Override
 			public List<Feature> extract(JCas view, Figure focusAnnotation) throws CleartkExtractorException {
-				return new ArrayList<Feature>();
+				return Arrays.asList(new Feature("Length", focusAnnotation.getEnd() - focusAnnotation.getBegin()));
 			}
 		});
 		try {
@@ -64,11 +64,19 @@ public class ClearTkGenderAnnotator extends CleartkAnnotator<String> {
 		}
 		this.contextExtractor = new CleartkExtractor.Covered();
 
-		this.tokenExtractor = new CombinedExtractor1<Token>(new CoveredTextExtractor<Token>(),
-				new ListFeatureExtractor("male first names", maleFirstNames),
-				new ListFeatureExtractor("female first name", femaleFirstNames),
-				new ListFeatureExtractor("male titles", maleTitles),
-				new ListFeatureExtractor("female titles", femaleTitles), new SuffixFeatureExtractor("in"));
+		try {
+			this.tokenExtractor = new CombinedExtractor1<Token>(new CoveredTextExtractor<Token>(),
+					new ListFeatureExtractor<Token>("male_first_names", maleFirstNames),
+					new ListFeatureExtractor<Token>("female_first_name", femaleFirstNames),
+					new ListFeatureExtractor<Token>("male_titles", maleTitles),
+					new ListFeatureExtractor<Token>("female_titles", femaleTitles),
+					new ListFeatureExtractor<Token>("numerals",
+							IOUtils.readLines(this.getClass().getResourceAsStream("/gender/numbers.csv"), "UTF-8")),
+					new SuffixFeatureExtractor<Token>("in"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
@@ -78,54 +86,21 @@ public class ClearTkGenderAnnotator extends CleartkAnnotator<String> {
 			List<Feature> features = extractor.extract(jcas, figure);
 			features.addAll(contextExtractor.extract(jcas, figure, null, Token.class, tokenExtractor));
 			if (this.isTraining()) {
-				String outcome = DramaUtil.getTypeValue(jcas, figure, "Gender");
+				String outcome = figure.getGender();
 				if (outcome != null)
 					this.dataWriter.write(new Instance<String>(outcome, features));
 			} else {
 				String category = this.classifier.classify(features);
-				DramaUtil.assignFigureType(jcas, figure, "Gender", category);
+				figure.setGender(category);
 			}
 
 		}
 
 	}
 
-	class SuffixFeatureExtractor implements FeatureExtractor1<Token> {
-
-		String suf = "in";
-
-		public SuffixFeatureExtractor(String suffix) {
-			suf = suffix;
-		}
-
-		@Override
-		public List<Feature> extract(JCas view, Token focusAnnotation) throws CleartkExtractorException {
-			String surf = focusAnnotation.getCoveredText();
-			return Arrays
-					.asList(new Feature("Suffix_" + suf, Character.isUpperCase(surf.charAt(0)) && surf.endsWith(suf)));
-		}
-	}
-
-	class ListFeatureExtractor implements FeatureExtractor1<Token> {
-
-		List<String> strList;
-		String fName;
-
-		public ListFeatureExtractor(String featureName, List<String> list) {
-			strList = list;
-			fName = featureName;
-		}
-
-		@Override
-		public List<Feature> extract(JCas view, Token focusAnnotation) throws CleartkExtractorException {
-			return Arrays.asList(new Feature(fName, strList.contains(focusAnnotation.getCoveredText().toLowerCase())));
-		}
-
-	}
-
 	public static AnalysisEngineDescription getEngineDescription(String genderModelUrl)
 			throws ResourceInitializationException {
-		String tmpView = "Dramatis Personae";
+		String tmpView = "tmp:Dramatis Personae";
 
 		AggregateBuilder b = new AggregateBuilder();
 
@@ -136,8 +111,8 @@ public class ClearTkGenderAnnotator extends CleartkAnnotator<String> {
 				BreakIteratorSegmenter.PARAM_WRITE_SENTENCE, false), CAS.NAME_DEFAULT_SOFA, tmpView);
 		b.add(AnalysisEngineFactory.createEngineDescription(ClearTkGenderAnnotator.class,
 				GenericJarClassifierFactory.PARAM_CLASSIFIER_JAR_PATH, genderModelUrl), CAS.NAME_DEFAULT_SOFA, tmpView);
-		b.add(AnalysisEngineFactory.createEngineDescription(MapBack.class, MapBack.PARAM_ANNOTATION_TYPE,
-				FigureType.class, MapBack.PARAM_VIEW_NAME, tmpView));
+		b.add(AnalysisEngineFactory.createEngineDescription(MapBackFeature.class, MapBackFeature.PARAM_ANNOTATION_TYPE,
+				Figure.class, MapBackFeature.PARAM_VIEW_NAME, tmpView, MapBackFeature.PARAM_FEATURE_NAME, "Gender"));
 
 		return b.createAggregateDescription();
 	}

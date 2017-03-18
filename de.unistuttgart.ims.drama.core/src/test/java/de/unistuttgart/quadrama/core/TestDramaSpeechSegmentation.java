@@ -36,7 +36,7 @@ public class TestDramaSpeechSegmentation {
 		XmiCasDeserializer.deserialize(getClass().getResourceAsStream("/rfxf.0.xmi"), jcas.getCas(), true);
 		jcas.setDocumentLanguage("de");
 
-		desc = DramaSpeechSegmenter.getWrappedSegmenterDescription(LanguageToolSegmenter.class);
+		desc = D.getWrappedSegmenterDescription(LanguageToolSegmenter.class);
 	}
 
 	@Test

@@ -3,14 +3,14 @@
   <parent>
     <groupId>de.unistuttgart.ims</groupId>
     <artifactId>de.unistuttgart.ims.drama</artifactId>
-    <version>0.4.3</version>
+    <version>0.4.4</version>
   </parent>
   <artifactId>de.unistuttgart.ims.drama.core.cr</artifactId>
   <dependencies>
   	<dependency>
   		<groupId>de.unistuttgart.ims</groupId>
   		<artifactId>de.unistuttgart.ims.drama.api</artifactId>
-  		<version>0.4.3</version>
+  		<version>0.4.4</version>
   	</dependency>
   	    <dependency>
     	<groupId>org.cleartk</groupId>
@@ -32,14 +32,12 @@
     	<artifactId>
     		de.tudarmstadt.ukp.dkpro.core.api.segmentation-asl
     	</artifactId>
-    	<version>${dkpro.version}</version>
     </dependency>
     <dependency>
     	<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
     	<artifactId>
     		de.tudarmstadt.ukp.dkpro.core.io.xmi-asl
     	</artifactId>
-    	<version>${dkpro.version}</version>
     </dependency>
     <dependency>
     	<groupId>de.unistuttgart.ims</groupId>

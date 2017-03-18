@@ -14,7 +14,7 @@ import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.tudarmstadt.ukp.dkpro.core.languagetool.LanguageToolSegmenter;
 import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordNamedEntityRecognizer;
 import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordPosTagger;
-import de.unistuttgart.quadrama.core.DramaSpeechSegmenter;
+import de.unistuttgart.quadrama.core.D;
 import de.unistuttgart.quadrama.core.FigureMentionDetection;
 import de.unistuttgart.quadrama.core.FigureReferenceAnnotator;
 import de.unistuttgart.quadrama.core.SpeakerIdentifier;
@@ -34,7 +34,7 @@ public class Process {
 				/*
 				 * Do segmentation.
 				 */
-				DramaSpeechSegmenter.getWrappedSegmenterDescription(LanguageToolSegmenter.class),
+				D.getWrappedSegmenterDescription(LanguageToolSegmenter.class),
 				createEngineDescription(FigureReferenceAnnotator.class),
 				createEngineDescription(SpeakerIdentifier.class, SpeakerIdentifier.PARAM_CREATE_SPEAKER_FIGURE, true),
 				/*

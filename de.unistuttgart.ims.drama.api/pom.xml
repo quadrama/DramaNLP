@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>de.unistuttgart.ims</groupId>
 		<artifactId>de.unistuttgart.ims.drama</artifactId>
-		<version>0.4.3</version>
+		<version>0.4.4</version>
 	</parent>
 	<artifactId>de.unistuttgart.ims.drama.api</artifactId>
 	<properties>
@@ -82,7 +82,6 @@
 			<artifactId>
     		de.tudarmstadt.ukp.dkpro.core.api.metadata-asl
     	</artifactId>
-			<version>${dkpro.version}</version>
 		</dependency>
 	</dependencies>
 </project>

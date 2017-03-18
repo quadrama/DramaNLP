@@ -100,9 +100,17 @@ public class TextGridUtil {
 
 	public static void readActs(JCas jcas, Element root, Map<String, HTMLAnnotation> map, boolean strict) {
 		if (!root.select("div[type=act]").isEmpty()) {
-			select2Annotation(jcas, root, map, "div[type=act]", Act.class, null);
+			for (Act a : select2Annotation(jcas, root, map, "div[type=act]", Act.class, null)) {
+				a.setRegular(true);
+			}
+
 			select2Annotation(jcas, root, map, "div[type=act] > div > desc > title", ActHeading.class, null);
 			select2Annotation(jcas, root, map, "div[type=act] > div > head", ActHeading.class, null);
+
+			for (Act prol : select2Annotation(jcas, root, map, "div[type=prologue]", Act.class, null)) {
+				prol.setRegular(false);
+			}
+
 		}
 		if (!strict && !JCasUtil.exists(jcas, Act.class)) {
 			select2Annotation(jcas, root, map, "body > div", Act.class, null);
