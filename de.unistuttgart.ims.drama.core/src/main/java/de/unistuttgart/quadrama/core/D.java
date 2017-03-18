@@ -16,7 +16,7 @@ import org.apache.uima.resource.ResourceInitializationException;
  *
  */
 public class D {
-	public static final String SOFA_UTTERANCES = "Utterances";
+	public static final String SOFA_UTTERANCES = "tmp:Utterances";
 
 	public static AnalysisEngineDescription getWrappedSegmenterDescription(Class<? extends AnalysisComponent> compClass)
 			throws ResourceInitializationException {
