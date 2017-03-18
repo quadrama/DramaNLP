@@ -100,7 +100,7 @@ public class ClearTkGenderAnnotator extends CleartkAnnotator<String> {
 
 	public static AnalysisEngineDescription getEngineDescription(String genderModelUrl)
 			throws ResourceInitializationException {
-		String tmpView = "Dramatis Personae";
+		String tmpView = "tmp:Dramatis Personae";
 
 		AggregateBuilder b = new AggregateBuilder();
 
