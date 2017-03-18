@@ -18,19 +18,21 @@ import org.apache.uima.resource.ResourceInitializationException;
 public class D {
 	public static final String SOFA_UTTERANCES = "Utterances";
 
-	public static AnalysisEngineDescription getWrappedSegmenterDescription(
-			Class<? extends AnalysisComponent> compClass)
+	public static AnalysisEngineDescription getWrappedSegmenterDescription(Class<? extends AnalysisComponent> compClass)
 			throws ResourceInitializationException {
 		AggregateBuilder builder = new AggregateBuilder();
-		AnalysisEngineDescription aed =
-				AnalysisEngineFactory
-						.createEngineDescription(DramaSpeechPreparation.class);
+		AnalysisEngineDescription aed = AnalysisEngineFactory.createEngineDescription(DramaSpeechPreparation.class);
 		builder.add(aed);
-		builder.add(AnalysisEngineFactory.createEngineDescription(compClass),
-				CAS.NAME_DEFAULT_SOFA, SOFA_UTTERANCES);
-		builder.add(AnalysisEngineFactory
-				.createEngineDescription(DramaSpeechPostProcessing.class));
+		builder.add(AnalysisEngineFactory.createEngineDescription(compClass), CAS.NAME_DEFAULT_SOFA, SOFA_UTTERANCES);
+		builder.add(AnalysisEngineFactory.createEngineDescription(DramaSpeechPostProcessing.class));
 
+		return builder.createAggregateDescription();
+	}
+
+	public static AnalysisEngineDescription getDramatisPersonaeProcessing() throws ResourceInitializationException {
+		AggregateBuilder builder = new AggregateBuilder();
+		builder.add(AnalysisEngineFactory.createEngineDescription(FigureReferenceAnnotator.class));
+		builder.add(AnalysisEngineFactory.createEngineDescription(FigureDetailsAnnotator.class));
 		return builder.createAggregateDescription();
 	}
 }
