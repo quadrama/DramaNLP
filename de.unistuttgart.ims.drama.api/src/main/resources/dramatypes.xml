@@ -19,9 +19,21 @@
 					<rangeTypeName>uima.cas.Integer</rangeTypeName>
 				</featureDescription>
 				<featureDescription>
+					<name>XmlId</name>
+					<description />
+					<rangeTypeName>uima.cas.StringArray</rangeTypeName>
+				</featureDescription>
+				<featureDescription>
 					<name>Figure</name>
 					<description />
 					<rangeTypeName>de.unistuttgart.ims.drama.api.Figure</rangeTypeName>
+				</featureDescription>
+				<featureDescription>
+					<name>CastFigure</name>
+					<description />
+					<rangeTypeName>uima.cas.FSArray</rangeTypeName>
+					<elementType>de.unistuttgart.ims.drama.api.CastFigure</elementType>
+					<multipleReferencesAllowed>false</multipleReferencesAllowed>
 				</featureDescription>
 			</features>
 		</typeDescription>
@@ -39,11 +51,13 @@
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.LevelSegment</name>
+			<description />
 			<supertypeName>de.unistuttgart.ims.drama.api.DramaSegment
 			</supertypeName>
 			<features>
 				<featureDescription>
 					<name>Level</name>
+					<description />
 					<rangeTypeName>uima.cas.Integer</rangeTypeName>
 				</featureDescription>
 			</features>
@@ -52,6 +66,14 @@
 			<name>de.unistuttgart.ims.drama.api.Utterance</name>
 			<description />
 			<supertypeName>uima.tcas.Annotation</supertypeName>
+			<features>
+				<featureDescription>
+					<name>CastFigure</name>
+					<description />
+					<rangeTypeName>de.unistuttgart.ims.drama.api.CastFigure
+					</rangeTypeName>
+				</featureDescription>
+			</features>
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.StageDirection</name>
@@ -99,6 +121,13 @@
 					<description>Deprecated. Is this drama a translation?</description>
 					<rangeTypeName>uima.cas.Boolean</rangeTypeName>
 				</featureDescription>
+				<featureDescription>
+					<name>CastList</name>
+					<description />
+					<rangeTypeName>uima.cas.FSArray</rangeTypeName>
+					<elementType>de.unistuttgart.ims.drama.api.CastFigure</elementType>
+					<multipleReferencesAllowed>false</multipleReferencesAllowed>
+				</featureDescription>
 			</features>
 		</typeDescription>
 		<typeDescription>
@@ -113,22 +142,22 @@
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.figure.Gender</name>
-			<description/>
+			<description />
 			<supertypeName>uima.cas.String</supertypeName>
 			<allowedValues>
-						<value>
-							<string>m</string>
-							<description>male</description>
-						</value>
-						<value>
-							<string>f</string>
-							<description>female</description>
-						</value>
-						<value>
-							<string>o</string>
-							<description>other (e.g., group or unspecifiable)</description>
-						</value>
-					</allowedValues>
+				<value>
+					<string>m</string>
+					<description>male</description>
+				</value>
+				<value>
+					<string>f</string>
+					<description>female</description>
+				</value>
+				<value>
+					<string>o</string>
+					<description>other (e.g., group or unspecifiable)</description>
+				</value>
+			</allowedValues>
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.Figure</name>
@@ -141,6 +170,11 @@
 					<name>Id</name>
 					<description />
 					<rangeTypeName>uima.cas.Integer</rangeTypeName>
+				</featureDescription>
+				<featureDescription>
+					<name>XmlId</name>
+					<description />
+					<rangeTypeName>uima.cas.String</rangeTypeName>
 				</featureDescription>
 				<featureDescription>
 					<name>Description</name>
@@ -199,7 +233,8 @@
 				<featureDescription>
 					<name>TypeTokenRatio100</name>
 					<description>Standardized type token ration, measured over 100
-						tokens</description>
+						tokens
+					</description>
 					<rangeTypeName>uima.cas.Double</rangeTypeName>
 				</featureDescription>
 			</features>
@@ -208,7 +243,8 @@
 			<name>de.unistuttgart.ims.drama.api.FigureType</name>
 			<description>This annotations represents the assignment of a figure
 				to a type. A figure can be assigned to multiple types, we add
-				multiple annotations then.</description>
+				multiple annotations then.
+			</description>
 			<supertypeName>uima.tcas.Annotation</supertypeName>
 			<features>
 				<featureDescription>
@@ -286,18 +322,18 @@
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.Field</name>
-			<description></description>
+			<description />
 			<supertypeName>uima.tcas.Annotation</supertypeName>
 			<features>
 				<featureDescription>
 					<name>Name</name>
+					<description />
 					<rangeTypeName>uima.cas.String</rangeTypeName>
-					<description></description>
 				</featureDescription>
 				<featureDescription>
 					<name>Amount</name>
+					<description />
 					<rangeTypeName>uima.cas.Double</rangeTypeName>
-					<description></description>
 				</featureDescription>
 			</features>
 		</typeDescription>
@@ -309,13 +345,13 @@
 			<features>
 				<featureDescription>
 					<name>Name</name>
-					<rangeTypeName>uima.cas.String</rangeTypeName>
 					<description>The full name of the person</description>
+					<rangeTypeName>uima.cas.String</rangeTypeName>
 				</featureDescription>
 				<featureDescription>
 					<name>Pnd</name>
-					<rangeTypeName>uima.cas.String</rangeTypeName>
 					<description>The entry in the person norm database</description>
+					<rangeTypeName>uima.cas.String</rangeTypeName>
 				</featureDescription>
 			</features>
 		</typeDescription>
@@ -378,6 +414,23 @@
 			<name>de.unistuttgart.ims.drama.api.LevelSegmentHeading</name>
 			<description />
 			<supertypeName>de.unistuttgart.ims.drama.api.Heading</supertypeName>
+		</typeDescription>
+		<typeDescription>
+			<name>de.unistuttgart.ims.drama.api.CastFigure</name>
+			<description />
+			<supertypeName>uima.cas.TOP</supertypeName>
+			<features>
+				<featureDescription>
+					<name>XmlId</name>
+					<description />
+					<rangeTypeName>uima.cas.String</rangeTypeName>
+				</featureDescription>
+				<featureDescription>
+					<name>Names</name>
+					<description />
+					<rangeTypeName>uima.cas.StringArray</rangeTypeName>
+				</featureDescription>
+			</features>
 		</typeDescription>
 	</types>
 </typeSystemDescription>
