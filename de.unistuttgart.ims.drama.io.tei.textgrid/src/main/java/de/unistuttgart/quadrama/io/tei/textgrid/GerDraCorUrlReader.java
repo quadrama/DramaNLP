@@ -108,8 +108,20 @@ public class GerDraCorUrlReader extends AbstractDramaUrlReader {
 		TextGridUtil.readActsAndScenes(jcas, root, vis.getAnnotationMap(), true);
 		TextGridUtil.readDramatisPersonae(jcas, root, vis.getAnnotationMap());
 
+		readCast(jcas, drama, doc);
+
+		AnnotationUtil.trim(new ArrayList<Figure>(JCasUtil.select(jcas, Figure.class)));
+		AnnotationUtil.trim(new ArrayList<Speech>(JCasUtil.select(jcas, Speech.class)));
+		AnnotationUtil.trim(new ArrayList<Utterance>(JCasUtil.select(jcas, Utterance.class)));
+		AnnotationUtil.trim(new ArrayList<Scene>(JCasUtil.select(jcas, Scene.class)));
+		AnnotationUtil.trim(new ArrayList<Act>(JCasUtil.select(jcas, Act.class)));
+
+	}
+
+	private static void readCast(JCas jcas, Drama drama, Document doc) {
 		Map<String, CastFigure> idFigureMap = new HashMap<String, CastFigure>();
 		Elements castEntries = doc.select("profileDesc > particDesc > listPerson > person");
+		castEntries.addAll(doc.select("profileDesc > particDesc > listPerson > personGrp"));
 		FSArray castListArray = new FSArray(jcas, castEntries.size());
 		for (int i = 0; i < castEntries.size(); i++) {
 			Element castEntry = castEntries.get(i);
@@ -132,13 +144,6 @@ public class GerDraCorUrlReader extends AbstractDramaUrlReader {
 			for (int i = 0; i < speaker.getXmlId().size(); i++)
 				speaker.setCastFigure(i, idFigureMap.get(speaker.getXmlId(i)));
 		}
-
-		AnnotationUtil.trim(new ArrayList<Figure>(JCasUtil.select(jcas, Figure.class)));
-		AnnotationUtil.trim(new ArrayList<Speech>(JCasUtil.select(jcas, Speech.class)));
-		AnnotationUtil.trim(new ArrayList<Utterance>(JCasUtil.select(jcas, Utterance.class)));
-		AnnotationUtil.trim(new ArrayList<Scene>(JCasUtil.select(jcas, Scene.class)));
-		AnnotationUtil.trim(new ArrayList<Act>(JCasUtil.select(jcas, Act.class)));
-
 	}
 
 }
