@@ -4,6 +4,9 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.io.IOException;
+
+import org.apache.uima.UIMAException;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.collection.CollectionReaderDescription;
 import org.apache.uima.fit.factory.AnalysisEngineFactory;
@@ -16,7 +19,9 @@ import org.apache.uima.resource.ResourceInitializationException;
 import org.junit.Test;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiReader;
+import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.unistuttgart.ims.drama.api.Figure;
+import de.unistuttgart.quadrama.io.tei.textgrid.TextgridTEIUrlReader;
 
 public class TestFigureReferenceAnnotator {
 	@Test
@@ -53,5 +58,19 @@ public class TestFigureReferenceAnnotator {
 				// assertFalse(figure.getReference().contains(","));
 			}
 		}
+	}
+
+	public static void main(String[] args) throws ResourceInitializationException, UIMAException, IOException {
+		SimplePipeline.runPipeline(
+				CollectionReaderFactory.createReaderDescription(TextgridTEIUrlReader.class,
+						TextgridTEIUrlReader.PARAM_INPUT, "http://www.textgridrep.org/textgrid:rfxf.0"),
+				AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_USE_DOCUMENT_ID, true,
+						XmiWriter.PARAM_TARGET_LOCATION, "src/test/resources/FigureReferenceAnnotator/"));
+
+		SimplePipeline.runPipeline(
+				CollectionReaderFactory.createReaderDescription(TextgridTEIUrlReader.class,
+						TextgridTEIUrlReader.PARAM_INPUT, "http://www.textgridrep.org/textgrid:w3zd.0"),
+				AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_USE_DOCUMENT_ID, true,
+						XmiWriter.PARAM_TARGET_LOCATION, "src/test/resources/FigureReferenceAnnotator/"));
 	}
 }
