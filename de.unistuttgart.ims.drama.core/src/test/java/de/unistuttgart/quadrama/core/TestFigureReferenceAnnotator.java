@@ -4,6 +4,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.io.File;
 import java.io.IOException;
 
 import org.apache.uima.UIMAException;
@@ -72,5 +73,7 @@ public class TestFigureReferenceAnnotator {
 						TextgridTEIUrlReader.PARAM_INPUT, "http://www.textgridrep.org/textgrid:w3zd.0"),
 				AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_USE_DOCUMENT_ID, true,
 						XmiWriter.PARAM_TARGET_LOCATION, "src/test/resources/FigureReferenceAnnotator/"));
+
+		new File("src/test/resources/FigureReferenceAnnotator/typesystem.xml").delete();
 	}
 }
