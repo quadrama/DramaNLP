@@ -111,7 +111,7 @@
             <title>1. Akt</title>
           </desc>
         </div>
-        <div>
+        <div type="scene">
           <div>
             <desc>
               <title>1. Auftritt</title>
@@ -172,7 +172,7 @@
             </div>
           </div>
         </div>
-        <div>
+        <div type="scene">
           <div>
             <desc>
               <title>2. Auftritt</title>
@@ -220,7 +220,7 @@
             </div>
           </div>
         </div>
-        <div>
+        <div type="scene">
           <div>
             <desc>
               <title>3. Auftritt</title>
@@ -325,7 +325,7 @@
             </div>
           </div>
         </div>
-        <div>
+        <div type="scene">
           <div>
             <desc>
               <title>4. Auftritt</title>
@@ -496,7 +496,7 @@
             </div>
           </div>
         </div>
-        <div>
+        <div type="scene">
           <div>
             <desc>
               <title>5. Auftritt</title>
@@ -577,7 +577,7 @@
             <title>2. Akt</title>
           </desc>
         </div>
-        <div>
+        <div type="scene">
           <div>
             <desc>
               <title>1. Auftritt</title>
@@ -616,7 +616,7 @@
             </div>
           </div>
         </div>
-        <div>
+        <div type="scene">
           <div>
             <desc>
               <title>2. Auftritt</title>
@@ -725,7 +725,7 @@
             </div>
           </div>
         </div>
-        <div>
+        <div type="scene">
           <div>
             <desc>
               <title>3. Auftritt</title>
@@ -792,7 +792,7 @@
             </div>
           </div>
         </div>
-        <div>
+        <div type="scene">
           <div>
             <desc>
               <title>4. Auftritt</title>
@@ -939,7 +939,7 @@
             </div>
           </div>
         </div>
-        <div>
+        <div type="scene">
           <div>
             <desc>
               <title>5. Auftritt</title>
@@ -1050,7 +1050,7 @@
             </div>
           </div>
         </div>
-        <div>
+        <div type="scene">
           <div>
             <desc>
               <title>6. Auftritt</title>
@@ -1096,7 +1096,7 @@
             </div>
           </div>
         </div>
-        <div>
+        <div type="scene">
           <div>
             <desc>
               <title>7. Auftritt</title>
@@ -1177,7 +1177,7 @@
             <title>3. Akt</title>
           </desc>
         </div>
-        <div>
+        <div type="scene">
           <div>
             <desc>
               <title>1. Auftritt</title>
@@ -1277,7 +1277,7 @@
             </div>
           </div>
         </div>
-        <div>
+        <div type="scene">
           <div>
             <desc>
               <title>2. Auftritt</title>
@@ -1356,7 +1356,7 @@
             </div>
           </div>
         </div>
-        <div>
+        <div type="scene">
           <div>
             <desc>
               <title>3. Auftritt</title>
@@ -1542,7 +1542,7 @@
             </div>
           </div>
         </div>
-        <div>
+        <div type="scene">
           <div>
             <desc>
               <title>4. Auftritt</title>
@@ -1561,7 +1561,7 @@
             </div>
           </div>
         </div>
-        <div>
+        <div type="scene">
           <div>
             <desc>
               <title>5. Auftritt</title>
@@ -1671,7 +1671,7 @@
             </div>
           </div>
         </div>
-        <div>
+        <div type="scene">
           <div>
             <desc>
               <title>6. Auftritt</title>
@@ -1714,7 +1714,7 @@
             </div>
           </div>
         </div>
-        <div>
+        <div type="scene">
           <div>
             <desc>
               <title>7. Auftritt</title>
