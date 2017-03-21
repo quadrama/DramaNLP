@@ -82,13 +82,15 @@ public class TestSpeakerAssignmentRules {
 	public static void main(String[] args) throws ResourceInitializationException, UIMAException, IOException {
 		SimplePipeline.runPipeline(
 				CollectionReaderFactory.createReaderDescription(TextgridTEIUrlReader.class,
-						TextgridTEIUrlReader.PARAM_INPUT, "http://www.textgridrep.org/textgrid:tx4z.0"),
+						TextgridTEIUrlReader.PARAM_INPUT, "http://www.textgridrep.org/textgrid:tx4z.0",
+						TextgridTEIUrlReader.PARAM_CLEANUP, true),
 				AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_USE_DOCUMENT_ID, true,
 						XmiWriter.PARAM_TARGET_LOCATION, "src/test/resources/SpeakerAssignmentRules/"));
 
 		SimplePipeline.runPipeline(
 				CollectionReaderFactory.createReaderDescription(TextgridTEIUrlReader.class,
-						TextgridTEIUrlReader.PARAM_INPUT, "http://www.textgridrep.org/textgrid:w3zd.0"),
+						TextgridTEIUrlReader.PARAM_INPUT, "http://www.textgridrep.org/textgrid:w3zd.0",
+						TextgridTEIUrlReader.PARAM_CLEANUP, true),
 				AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_USE_DOCUMENT_ID, true,
 						XmiWriter.PARAM_TARGET_LOCATION, "src/test/resources/SpeakerAssignmentRules/"));
 
