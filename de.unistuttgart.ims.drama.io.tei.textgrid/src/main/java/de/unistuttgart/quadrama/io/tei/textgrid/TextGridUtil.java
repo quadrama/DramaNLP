@@ -56,8 +56,6 @@ public class TextGridUtil {
 		for (int i = 0; i < authorElements.size(); i++) {
 			Element authorElement = authorElements.get(i);
 			Author author = new Author(jcas);
-			author.setBegin(0);
-			author.setEnd(1);
 			author.setName(authorElement.text());
 			if (authorElement.hasAttr("key")) {
 				author.setPnd(authorElement.attr("key").replace("pnd:", ""));

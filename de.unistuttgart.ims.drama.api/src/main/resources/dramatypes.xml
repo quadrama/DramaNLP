@@ -332,7 +332,7 @@
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.Metadatum</name>
 			<description>super type for all kinds of meta data</description>
-			<supertypeName>uima.tcas.Annotation</supertypeName>
+			<supertypeName>uima.cas.TOP</supertypeName>
 			<features>
 				<featureDescription>
 					<name>Source</name>

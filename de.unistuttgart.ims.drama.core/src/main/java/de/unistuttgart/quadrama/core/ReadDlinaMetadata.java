@@ -11,7 +11,6 @@ import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.descriptor.TypeCapability;
-import org.apache.uima.fit.factory.AnnotationFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
@@ -21,6 +20,7 @@ import de.unistuttgart.ims.drama.api.DatePremiere;
 import de.unistuttgart.ims.drama.api.DatePrint;
 import de.unistuttgart.ims.drama.api.DateWritten;
 import de.unistuttgart.ims.drama.api.Drama;
+import de.unistuttgart.ims.drama.util.DramaUtil;
 import nu.xom.Builder;
 import nu.xom.Document;
 import nu.xom.Element;
@@ -100,11 +100,11 @@ public class ReadDlinaMetadata extends JCasAnnotator_ImplBase {
 				String whenAttVal = dateElement.getAttributeValue("when");
 				Date date = null;
 				if (dateElement.getAttributeValue("type").equals("print")) {
-					date = AnnotationFactory.createAnnotation(jcas, 0, 1, DatePrint.class);
+					date = DramaUtil.createFeatureStructure(jcas, DatePrint.class);
 				} else if (dateElement.getAttributeValue("type").equals("written")) {
-					date = AnnotationFactory.createAnnotation(jcas, 0, 1, DateWritten.class);
+					date = DramaUtil.createFeatureStructure(jcas, DateWritten.class);
 				} else if (dateElement.getAttributeValue("type").equals("premiere")) {
-					date = AnnotationFactory.createAnnotation(jcas, 0, 1, DatePremiere.class);
+					date = DramaUtil.createFeatureStructure(jcas, DatePremiere.class);
 				}
 				if (date != null) {
 					date.setYear(Integer.valueOf(whenAttVal));
