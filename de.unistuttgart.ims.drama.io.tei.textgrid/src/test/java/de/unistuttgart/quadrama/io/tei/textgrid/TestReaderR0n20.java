@@ -25,7 +25,7 @@ public class TestReaderR0n20 {
 	static JCas jcas;
 
 	@BeforeClass
-	public void setUp() throws ResourceInitializationException {
+	public static void setUp() throws ResourceInitializationException {
 		description = CollectionReaderFactory.createReaderDescription(TextgridTEIUrlReader.class,
 				TextgridTEIUrlReader.PARAM_INPUT, "src/test/resources/textgridFiles/r0n2.0.xml",
 				TextgridTEIUrlReader.PARAM_STRICT, true);

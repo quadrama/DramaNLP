@@ -29,7 +29,7 @@ public class TestReaderP5bz0 {
 	static JCas jcas;
 
 	@BeforeClass
-	public void setUp() throws ResourceInitializationException {
+	public static void setUp() throws ResourceInitializationException {
 		description = CollectionReaderFactory.createReaderDescription(TextgridTEIUrlReader.class,
 				TextgridTEIUrlReader.PARAM_INPUT, "src/test/resources/textgridFiles/p5bz.0.xml");
 		AggregateBuilder b = new AggregateBuilder();
