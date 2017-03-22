@@ -17,13 +17,14 @@ import de.unistuttgart.ims.drama.api.Act;
 import de.unistuttgart.ims.drama.api.Scene;
 import de.unistuttgart.ims.drama.api.StageDirection;
 import de.unistuttgart.ims.drama.api.Utterance;
+import de.unistuttgart.ims.drama.util.AnnotationComparator;
 
 public class SceneActAnnotator extends JCasAnnotator_ImplBase {
 
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
 
-		SortedSet<Annotation> anchors = new TreeSet<Annotation>();
+		SortedSet<Annotation> anchors = new TreeSet<Annotation>(new AnnotationComparator());
 		anchors.addAll(JCasUtil.select(jcas, Utterance.class));
 		anchors.addAll(JCasUtil.select(jcas, Scene.class));
 		anchors.addAll(JCasUtil.select(jcas, Act.class));
