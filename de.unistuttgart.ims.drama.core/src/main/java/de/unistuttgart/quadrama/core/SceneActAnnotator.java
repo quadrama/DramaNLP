@@ -30,6 +30,9 @@ public class SceneActAnnotator extends JCasAnnotator_ImplBase {
 		anchors.addAll(JCasUtil.select(jcas, Act.class));
 		anchors.addAll(JCasUtil.select(jcas, StageDirection.class));
 
+		if (anchors.isEmpty())
+			return;
+
 		// Acts
 		if (!JCasUtil.exists(jcas, Act.class)) {
 			AnnotationFactory.createAnnotation(jcas, anchors.first().getBegin(), anchors.last().getEnd(), Act.class)
