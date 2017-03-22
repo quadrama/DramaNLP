@@ -12,7 +12,7 @@ import org.apache.uima.fit.pipeline.SimplePipeline;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
@@ -27,10 +27,10 @@ import de.unistuttgart.ims.drama.api.SceneHeading;
 import de.unistuttgart.ims.drama.api.Speaker;
 
 public class TestReaderVndf0 {
-	CollectionReaderDescription description;
-	JCas jcas;
+	static CollectionReaderDescription description;
+	static JCas jcas;
 
-	@Before
+	@BeforeClass
 	public void setUp() throws ResourceInitializationException {
 		description = CollectionReaderFactory.createReaderDescription(TextgridTEIUrlReader.class,
 				TextgridTEIUrlReader.PARAM_INPUT, "src/test/resources/textgridFiles/vndf.0.xml");
