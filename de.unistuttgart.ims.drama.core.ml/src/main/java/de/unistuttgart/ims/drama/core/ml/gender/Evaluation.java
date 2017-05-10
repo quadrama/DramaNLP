@@ -2,7 +2,6 @@ package de.unistuttgart.ims.drama.core.ml.gender;
 
 import java.io.File;
 import java.io.FilenameFilter;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -49,44 +48,26 @@ public class Evaluation extends AbstractEvaluation {
 		@Option(longName = "models-dir", description = "specify the directory in which to write out the trained model files", defaultValue = "target/models")
 		public File getModelsDirectory();
 
-		@Option(longName = "test-dir", defaultValue = "src/main/resources/gender/testing")
-		public File getTestDirectory();
 	}
 
 	public static void main(String[] args) throws Exception {
 		Options options = CliFactory.parseArguments(Options.class, args);
 
 		// find training files
-		List<File> trainFiles = Arrays.asList(options.getTrainDirectory().listFiles(new FilenameFilter() {
+		List<File> allFiles = Arrays.asList(options.getTrainDirectory().listFiles(new FilenameFilter() {
 
 			@Override
 			public boolean accept(File dir, String name) {
 				return name.endsWith("xmi");
 			}
 		}));
-		List<File> testFiles = Arrays.asList(options.getTestDirectory().listFiles(new FilenameFilter() {
-
-			@Override
-			public boolean accept(File dir, String name) {
-				return name.endsWith("xmi");
-			}
-		}));
-
-		List<File> allFiles = new ArrayList<File>();
-		allFiles.addAll(trainFiles);
-		allFiles.addAll(testFiles);
 
 		AbstractEvaluation evaluator = new Evaluation(options.getModelsDirectory());
 		List<AnnotationStatistics<String>> crossValidationStatsList = evaluator.crossValidation(allFiles, 5); // .trainAndTest(trainFiles,
-		// testFiles);//
-		// AnnotationStatistics.addAll(foldStats);
 		AnnotationStatistics<String> crossValidationStats = AnnotationStatistics.addAll(crossValidationStatsList);
 
-		// for (AnnotationStatistics<String> crossValidationStats :
-		// crossValidationStatsList) {
 		System.out.println(crossValidationStats);
 		System.out.println(ClearTkUtil.toCmdLine(crossValidationStats.confusions()));
-		// }
 	}
 
 	@Override

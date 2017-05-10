@@ -134,7 +134,7 @@ public class TestDramaUtil {
 		drama.addToIndexes();
 		drama.setDocumentTitle("The dog barks");
 		drama.setDocumentId("test");
-		AnnotationFactory.createAnnotation(jcas, 0, 1, Author.class).setName("No author");
+		DramaUtil.createFeatureStructure(jcas, Author.class).setName("No author");
 
 		assertEquals("Na_Tdb_test", DramaUtil.getDisplayId(jcas));
 

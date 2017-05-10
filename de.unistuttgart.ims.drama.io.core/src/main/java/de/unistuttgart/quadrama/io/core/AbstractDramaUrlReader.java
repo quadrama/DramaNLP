@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -70,12 +71,15 @@ public abstract class AbstractDramaUrlReader extends JCasCollectionReader_ImplBa
 				throw new ResourceInitializationException(e);
 
 			}
-		} else if (input.endsWith(".xml") || input.endsWith(".tei")) {
+		} else if (input.endsWith(".xml") || input.endsWith(".tei") || input.startsWith("http")) {
 			try {
-				urls.add(inputFile.toURI().toURL());
+				urls.add(new URL(input));
 			} catch (MalformedURLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				try {
+					urls.add(inputFile.toURI().toURL());
+				} catch (MalformedURLException e1) {
+					e1.printStackTrace();
+				}
 			}
 		} else {
 			CSVParser r = null;
@@ -126,7 +130,14 @@ public abstract class AbstractDramaUrlReader extends JCasCollectionReader_ImplBa
 		drama.addToIndexes();
 		jcas.setDocumentLanguage(language);
 
-		getNext(jcas, url.openStream(), drama);
+		if (url.getProtocol().equalsIgnoreCase("http")) {
+			URLConnection urlc = url.openConnection();
+			urlc.setRequestProperty("Accept", "application/xml");
+			getNext(jcas, urlc.getInputStream(), drama);
+		} else {
+			getNext(jcas, url.openStream(), drama);
+
+		}
 
 		if (cleanUp) {
 			DramaIOUtil.cleanUp(jcas);

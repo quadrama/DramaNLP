@@ -3,12 +3,12 @@ package de.unistuttgart.quadrama.core;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.descriptor.TypeCapability;
-import org.apache.uima.fit.factory.AnnotationFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
 import de.unistuttgart.ims.drama.api.Date;
 import de.unistuttgart.ims.drama.api.DateReference;
+import de.unistuttgart.ims.drama.util.DramaUtil;
 
 /**
  * Based on the three dlina dates, we set the reference date to the earliest
@@ -36,7 +36,7 @@ public class SetReferenceDate extends JCasAnnotator_ImplBase {
 			try {
 				JCasUtil.selectSingle(jcas, DateReference.class).setYear(year);
 			} catch (IllegalArgumentException e) {
-				AnnotationFactory.createAnnotation(jcas, 0, 1, DateReference.class).setYear(year);
+				DramaUtil.createFeatureStructure(jcas, DateReference.class).setYear(year);
 			}
 		}
 

@@ -71,7 +71,7 @@ public class TestGraphIO {
 				assertEquals(graph.containsEdge(figures[i], figures[j]), g2.containsEdge(figures[i], figures[j]));
 				if (graph.containsEdge(figures[i], figures[j])) {
 					assertEquals(graph.getEdgeWeight(graph.getEdge(figures[i], figures[j])),
-							g2.getEdgeWeight(g2.getEdge(figures[i], figures[j])), 1e-3);
+							g2.getEdgeWeight(g2.getEdge(figures[i], figures[j])), 0.1);
 				}
 			}
 		}

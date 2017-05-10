@@ -10,6 +10,7 @@ import java.util.List;
 import org.apache.uima.fit.factory.AnnotationFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.cas.TOP;
 import org.apache.uima.jcas.tcas.Annotation;
 
 import de.unistuttgart.ims.drama.api.Author;
@@ -139,5 +140,11 @@ public class DramaUtil {
 		b.append("_");
 		b.append(JCasUtil.selectSingle(jcas, Drama.class).getDocumentId());
 		return b.toString();
+	}
+
+	public static <T extends TOP> T createFeatureStructure(JCas jcas, Class<T> cls) {
+		T fs = jcas.getCas().createFS(JCasUtil.getType(jcas, cls));
+		fs.addToIndexes();
+		return fs;
 	}
 }
