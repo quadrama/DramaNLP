@@ -56,8 +56,6 @@ public class TextGridUtil {
 		for (int i = 0; i < authorElements.size(); i++) {
 			Element authorElement = authorElements.get(i);
 			Author author = new Author(jcas);
-			author.setBegin(0);
-			author.setEnd(1);
 			author.setName(authorElement.text());
 			if (authorElement.hasAttr("key")) {
 				author.setPnd(authorElement.attr("key").replace("pnd:", ""));
@@ -136,6 +134,9 @@ public class TextGridUtil {
 		if (!root.select("div[type=scene]").isEmpty()) {
 			select2Annotation(jcas, root, map, "div[type=scene]", Scene.class, null);
 			select2Annotation(jcas, root, map, "div[type=scene] > div > desc > title", SceneHeading.class, null);
+
+			for (Scene scene : JCasUtil.select(jcas, Scene.class))
+				scene.setRegular(true);
 		} else if (!strict) {
 			if (JCasUtil.exists(jcas, Act.class))
 				for (Act act : JCasUtil.select(jcas, Act.class)) {
@@ -157,7 +158,6 @@ public class TextGridUtil {
 	public static void readActsAndScenes(JCas jcas, Element root, Map<String, HTMLAnnotation> map, boolean strict) {
 		readActs(jcas, root, map, strict);
 		readScenes(jcas, root, map, strict);
-
 	}
 
 	public static void readDramatisPersonae(JCas jcas, Element root, Map<String, HTMLAnnotation> map) {

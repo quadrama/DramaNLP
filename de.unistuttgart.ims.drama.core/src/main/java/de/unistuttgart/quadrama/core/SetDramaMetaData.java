@@ -3,7 +3,6 @@ package de.unistuttgart.quadrama.core;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
-import org.apache.uima.fit.factory.AnnotationFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
@@ -11,6 +10,7 @@ import de.unistuttgart.ims.drama.api.Author;
 import de.unistuttgart.ims.drama.api.DateReference;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Translator;
+import de.unistuttgart.ims.drama.util.DramaUtil;
 
 public class SetDramaMetaData extends JCasAnnotator_ImplBase {
 
@@ -53,7 +53,8 @@ public class SetDramaMetaData extends JCasAnnotator_ImplBase {
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
 
-		Author author = AnnotationFactory.createAnnotation(jcas, 0, 1, Author.class);
+		Author author = new Author(jcas);
+		author.addToIndexes();
 		if (authorName != null)
 			author.setName(authorName);
 		if (authorPnd != null)
@@ -61,7 +62,7 @@ public class SetDramaMetaData extends JCasAnnotator_ImplBase {
 		if (dramaId != null)
 			drama.setDocumentId(dramaId);
 		if (referenceDate > 0)
-			AnnotationFactory.createAnnotation(jcas, 0, 1, DateReference.class).setYear(referenceDate);
+			DramaUtil.createFeatureStructure(jcas, DateReference.class).setYear(referenceDate);
 		if (dramaTitle != null)
 			drama.setDocumentTitle(dramaTitle);
 
@@ -71,7 +72,7 @@ public class SetDramaMetaData extends JCasAnnotator_ImplBase {
 			if (JCasUtil.exists(jcas, Translator.class)) {
 				translator = JCasUtil.selectSingle(jcas, Translator.class);
 			} else {
-				translator = AnnotationFactory.createAnnotation(jcas, 0, 1, Translator.class);
+				translator = DramaUtil.createFeatureStructure(jcas, Translator.class);
 			}
 			if (translatorName != null)
 				translator.setName(translatorName);
