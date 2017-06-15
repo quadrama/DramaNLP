@@ -23,7 +23,8 @@ public class TestTheatreClassicUrlReader {
 	@BeforeClass
 	public static void setUp() throws ResourceInitializationException {
 		description = CollectionReaderFactory.createReaderDescription(TheatreClassicUrlReader.class,
-				TheatreClassicUrlReader.PARAM_INPUT, "src/test/resources/tc/tc0623.tei.xml");
+				TheatreClassicUrlReader.PARAM_INPUT, "src/test/resources/tc/tc0623.tei.xml",
+				TheatreClassicUrlReader.PARAM_LANGUAGE, "fr");
 		AggregateBuilder b = new AggregateBuilder();
 		if (TestGenerics.debug)
 			b.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
