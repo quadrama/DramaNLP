@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -57,6 +58,9 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 			figureMap.put(figure.getReference(), figure);
 		}
 		List<String> pronouns = firstPersonPronouns.get(jcas.getDocumentLanguage());
+		if (pronouns == null) {
+			pronouns = new LinkedList<String>();
+		}
 
 		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
 			Collection<Figure> figures = DramaUtil.getFigures(utterance);
