@@ -1,0 +1,3233 @@
+<?xml-model href="https://raw.githubusercontent.com/cligs/reference/master/tei/standard/cligs.rnc" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title type="main">Le cid</title>
+        <title type="sub">Tragédie</title>
+        <title type="short">Cid</title>
+        <title type="idno">
+          <idno type="viaf"/>
+        </title>
+        <author>
+          <name type="full">CORNEILLE, Pierre</name>
+          <name type="short">CorneilleP</name>
+          <idno type="viaf"/>
+        </author>
+        <principal/>
+      </titleStmt>
+      <publicationStmt>
+        <publisher>CLiGS</publisher>
+        <idno type="cligs">tc0623</idno>
+        <date>2016</date>
+      </publicationStmt>
+      <sourceDesc>
+        <bibl type="digital-source"><date>2016</date>, <idno/>, <ref target="http://theatre-classique-fr/"/>. Publié par Paul Fièvre.</bibl>
+        <bibl type="print-source"><date>1682</date>, <idno/>, <ref target="#"/>. .</bibl>
+        <bibl type="edition-first"><date/>, <idno/>, <ref target="#"/>.</bibl>
+        <bibl type="performance-first"><date>1637</date>, <idno/>, <ref target="#"/>. Représentée pour la première fois le 4 janvier 1637 au Théâtre du Marais.</bibl>
+      </sourceDesc>
+    </fileDesc>
+    <profileDesc>
+      <abstract>
+        <p/>
+      </abstract>
+      <textClass>
+        <keywords scheme="keywords.csv">
+          <term type="supergenre">drama</term>
+          <term type="genre">Tragédie</term>
+          <term type="structure">cinq actes</term>
+          <term type="form">vers</term>
+          <term type="period">1681-1690</term>
+          <term type="taille">1750-2000</term>
+        </keywords>
+      </textClass>
+    </profileDesc>
+    <revisionDesc>
+      <change when="2017-02-03" who="cf">Initial TEI version.</change>
+    </revisionDesc>
+  </teiHeader>
+  <text>
+    <front>
+      <castList>
+        <head>ACTEURS</head>
+        <castItem>
+          <role xml:id="tc0623-DONFERNAND">DON FERNAND</role>
+        </castItem>
+        <castItem>
+          <role xml:id="tc0623-DONAURRAQUE">DONA URRAQUE </role>
+        </castItem>
+        <castItem>
+          <role xml:id="tc0623-DONDIEGUE">DON DIÈGUE</role>
+        </castItem>
+        <castItem>
+          <role xml:id="tc0623-DONGOMES">DON GOMES</role>
+        </castItem>
+        <castItem>
+          <role xml:id="tc0623-DONRODRIGUE">DON RODRIGUE</role>
+        </castItem>
+        <castItem>
+          <role xml:id="tc0623-DONSANCHE">DON SANCHE</role>
+        </castItem>
+        <castItem>
+          <role xml:id="tc0623-DONARIAS">DON ARIAS</role>
+        </castItem>
+        <castItem>
+          <role xml:id="tc0623-DONALONSE">DON ALONSE</role>
+        </castItem>
+        <castItem>
+          <role xml:id="tc0623-CHIMENE">CHIMÈNE</role>
+        </castItem>
+        <castItem>
+          <role xml:id="tc0623-LEONOR">LÉONOR</role>
+        </castItem>
+        <castItem>
+          <role xml:id="tc0623-ELVIRE">ELVIRE</role>
+        </castItem>
+        <castItem>
+          <role xml:id="tc0623-UnPage">Un Page</role>
+        </castItem>
+      </castList>
+      <set>
+        <p>La scène est à Séville.</p>
+      </set>
+    </front>
+    <body>
+      <div type="act" n="1">
+        <head>ACTE I</head>
+        <div type="scene" n="1">
+          <head>SCÈNE PREMIÈRE. Chimène, Elvire.</head>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="1">Elvire, m'as-tu fait un rapport bien sincère ?</l>
+            <l n="2">Ne déguises-tu rien de ce qu'a dit mon père ?</l>
+          </sp>
+          <sp who="tc0623-ELVIRE">
+            <speaker>ELVIRE.</speaker>
+            <l n="3">Tous mes sens à moi-même en sont encor charmés,</l>
+            <l n="4">Il estime Rodrigue autant que vous l'aimez,</l>
+            <l n="5">Et si je ne m'abuse à lire dans son âme,</l>
+            <l n="6">Il vous commandera de répondre à sa flamme.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="7">Dis-moi donc, je te prie, une seconde fois</l>
+            <l n="8">Ce qui te fait juger qu'il approuve mon choix,</l>
+            <l n="9">Apprends-moi de nouveau quel espoir j'en dois prendre ;</l>
+            <l n="10">Un si charmant discours ne se peut trop entendre,</l>
+            <l n="11">Tu ne peux trop promettre aux feux de notre amour</l>
+            <l n="12">La douce liberté de se montrer au jour.</l>
+            <note type="L">Brigue : Désir ambitieux pour obtenir quelque charge ou dignité, où l'on tâche de parvenir plus par adresse que par mérite. Se dit aussi de la cabale qui est intéressée à soutenir un parti que l'autre dans une élection. [F]</note>
+            <l n="13">Que t'a-t-il répondu sur la secrète brigue</l>
+            <l n="14">Que font auprès de toi Don Sanche et Don Rodrigue ?</l>
+            <l n="15">N'as-tu point trop fait voir quelle inégalité</l>
+            <l n="16">Entre ces deux amants me penche d'un côté ?</l>
+          </sp>
+          <sp who="tc0623-ELVIRE">
+            <speaker>ELVIRE.</speaker>
+            <l n="17">Non, j'ai peint votre coeur dans une indifférence</l>
+            <l n="18">Qui n'enfle d'aucun d'eux ni détruit l'espérance,</l>
+            <l n="19">Et sans les voir d'un oeil trop sévère ou trop doux,</l>
+            <l n="20">Attend l'ordre d'un père à choisir un époux.</l>
+            <l n="21">Ce respect l'a ravi, sa bouche et son visage</l>
+            <l n="22">M'en ont donné sur l'heure un digne témoignage,</l>
+            <l n="23">Et puisqu'il vous en faut encor faire un récit,</l>
+            <l n="24">Voici d'eux et de vous ce qu'en hâte il m'a dit.</l>
+            <l n="25">« Elle est dans le devoir ; tous deux sont dignes d'elle,</l>
+            <l n="26">Tous deux formés d'un sang, noble, vaillant, fidèle,</l>
+            <l n="27">Jeunes, mais qui font lire aisément dans leurs yeux</l>
+            <l n="28">L'éclatante vertu de leurs braves aïeux.</l>
+            <l n="29">Don Rodrigue surtout n'a trait en son visage</l>
+            <l n="30">Qui d'un homme de coeur ne soit la haute image,</l>
+            <l n="31">Et sort d'une maison si féconde en guerriers,</l>
+            <l n="32">Qu'ils y prennent naissance au milieu des lauriers.</l>
+            <l n="33">La valeur de son père en son temps sans pareille,</l>
+            <l n="34">Tant qu'a duré sa force, a passé pour merveille,</l>
+            <note>Le Vers 35 a été repris par Jean Racine dans sa comédie "Les Plaideurs" de 1669, ce qui offusqua Corneille.</note>
+            <l n="35">Ses rides sur son front ont gravé ses exploits,</l>
+            <l n="36">Et nous disent encor ce qu'il fut autrefois.</l>
+            <l n="37">Je me promets du fils ce que j'ai vu du père,</l>
+            <l n="38">Et ma fille en un mot peut l'aimer et me plaire. »</l>
+            <l n="39">Il allait au Conseil, dont l'heure qui pressait</l>
+            <l n="40">A tranché ce discours qu'à peine il commençait,</l>
+            <l n="41">Mais à ce peu de mots je crois que sa pensée</l>
+            <l n="42">Entre vos deux amants n'est pas fort balancée.</l>
+            <l n="43">Le roi doit à son fils élire un gouverneur,</l>
+            <l n="44">Et c'est lui que regarde un tel degré d'honneur,</l>
+            <l n="45">Ce choix n'est pas douteux, et sa rare vaillance</l>
+            <l n="46">Ne peut souffrir qu'on craigne aucune concurrence.</l>
+            <l n="47">Comme ses hauts exploits le rendent sans égal,</l>
+            <l n="48">Dans un espoir si juste il sera sans rival,</l>
+            <l n="49">Et puisque Don Rodrigue a résolu son père</l>
+            <l n="50">Au sortir du Conseil à proposer l'affaire,</l>
+            <l n="51">Je vous laisse à juger s'il prendra bien son temps,</l>
+            <l n="52">Et si tous vos désirs seront bientôt contents.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="53">Il semble toutefois que mon âme troublée</l>
+            <l n="54">Refuse cette joie, et s'en trouve accablée,</l>
+            <l n="55">Un moment donne au sort des visages divers,</l>
+            <l n="56">Et dans ce grand bonheur je crains un grand revers.</l>
+          </sp>
+          <sp who="tc0623-ELVIRE">
+            <speaker>ELVIRE.</speaker>
+            <l n="57">Vous verrez cette crainte heureusement déçue.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="58">Allons, quoi qu'il en soit, en attendre l'issue.</l>
+          </sp>
+        </div>
+        <div type="scene" n="2">
+          <head>SCÈNE II. L'Infante, Léonor, Le page.</head>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="59">Page, allez avertir Chimène de ma part</l>
+            <l n="60">Qu'aujourd'hui pour me voir elle attend un peu tard,</l>
+            <l n="61">Et que mon amitié se plaint de sa paresse.</l>
+          </sp>
+          <sp who="tc0623-LEONOR">
+            <speaker>LÉONOR.</speaker>
+            <l n="62">Madame, chaque jour même désir vous presse,</l>
+            <l n="63">Et dans son entretien je vous vois chaque jour</l>
+            <l n="64">Demander en quel point se trouve son amour.</l>
+          </sp>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="65">Ce n'est pas sans sujet, je l'ai presque forcée</l>
+            <l n="66">À recevoir les traits dont son âme est blessée ;</l>
+            <l n="67">Elle aime Don Rodrigue, et le tient de ma main,</l>
+            <l n="68">Et par moi Don Rodrigue a vaincu son dédain.</l>
+            <l n="69">Ainsi de ces amants ayant formé les chaînes,</l>
+            <l n="70">Je dois prendre intérêt à voir finir leurs peines.</l>
+          </sp>
+          <sp who="tc0623-LEONOR">
+            <speaker>LÉONOR.</speaker>
+            <l n="71">Madame, toutefois parmi leurs bons succès</l>
+            <l n="72">Vous montrez un chagrin qui va jusqu'à l'excès.</l>
+            <l n="73">Cet amour, qui tous deux les comble d'allégresse</l>
+            <l n="74">Fait-il de ce grand coeur la profonde tristesse,</l>
+            <l n="75">Et ce grand intérêt que vous prenez pour eux</l>
+            <l n="76">Vous rend-il malheureuse alors qu'ils sont heureux ?</l>
+            <l n="77">Mais je vais trop avant, et deviens indiscrète.</l>
+          </sp>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="78">Ma tristesse redouble à la tenir secrète.</l>
+            <l n="79">Écoute, écoute enfin comme j'ai combattu,</l>
+            <l n="80">Écoute quels assauts brave encor ma vertu.</l>
+            <l n="81">L'amour est un tyran qui n'épargne personne :</l>
+            <l n="82">Ce jeune cavalier, cet amant que je donne,</l>
+            <l n="83" part="I">Je l'aime.</l>
+          </sp>
+          <sp who="tc0623-LEONOR">
+            <speaker>LÉONOR.</speaker>
+            <l n="83" part="M">Vous l'aimez !</l>
+          </sp>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="83" part="F">Mets la main sur mon coeur,</l>
+            <l n="84">Et vois comme il se trouble au nom de son vainqueur,</l>
+            <l n="85" part="I">Comme il le reconnaît.</l>
+          </sp>
+          <sp who="tc0623-LEONOR">
+            <speaker>LÉONOR.</speaker>
+            <l n="85" part="F">Pardonnez-moi, Madame,</l>
+            <l n="86">Si je sors du respect pour blâmer cette flamme.</l>
+            <l n="87">Une grande princesse à ce point s'oublier,</l>
+            <l n="88">Que d'admettre en son coeur un simple cavalier !</l>
+            <l n="89">Et que dirait le Roi ? Que dirait la Castille ?</l>
+            <l n="90">Vous souvient-il encor de qui vous êtes fille ?</l>
+          </sp>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="91">Il m'en souvient si bien que j'épandrai mon sang,</l>
+            <l n="92">Avant que je m'abaisse à démentir mon rang.</l>
+            <l n="93">Je te répondrais bien que dans les belles âmes,</l>
+            <l n="94">Le seul mérite a droit de produire des flammes,</l>
+            <l n="95">Et si ma passion cherchait à s'excuser,</l>
+            <l n="96">Mille exemples fameux pourraient l'autoriser :</l>
+            <l n="97">Mais je n'en veux point suivre où ma gloire s'engage,</l>
+            <l n="98">La surprise des sens n'abat point mon courage,</l>
+            <l n="99">Et je me dis toujours qu'étant fille de Roi,</l>
+            <l n="100">Tout autre qu'un monarque est indigne de moi.</l>
+            <l n="101">Quand je vis que mon coeur ne se pouvait défendre,</l>
+            <l n="102">Moi-même je donnai ce que je n'osais prendre,</l>
+            <l n="103">Je mis au lieu de moi Chimène en ses liens,</l>
+            <l n="104">Et j'allumai leurs feux pour éteindre les miens.</l>
+            <l n="105">Ne t'étonne donc plus si mon âme gênée</l>
+            <l n="106">Avec impatience attend leur hyménée,</l>
+            <l n="107">Tu vois que mon repos en dépend aujourd'hui :</l>
+            <l n="108">Si l'amour vit d'espoir, il périt avec lui,</l>
+            <l n="109">C'est un feu qui s'éteint, faute de nourriture,</l>
+            <l n="110">Et malgré la rigueur de ma triste aventure,</l>
+            <l n="111">Si Chimène a jamais Rodrigue pour mari,</l>
+            <l n="112">Mon espérance est morte, et mon esprit guéri.</l>
+            <l n="113">Je souffre cependant un tourment incroyable,</l>
+            <l n="114">Jusques à cet hymen Rodrigue m'est aimable;</l>
+            <l n="115">Je travaille à le perdre, et le perds à regret,</l>
+            <l n="116">Et de là prend son cours mon déplaisir secret.</l>
+            <l n="117">Je vois avec chagrin que l'amour me contraigne</l>
+            <l n="118">À pousser des soupirs pour ce que je dédaigne,</l>
+            <l n="119">Je sens en deux partis mon esprit divisé,</l>
+            <l n="120">Si mon courage est haut, mon coeur est embrasé,</l>
+            <l n="121">Cet hymen m'est fatal, je le crains et souhaite,</l>
+            <l n="122">Je n'ose en espérer qu'une joie imparfaite,</l>
+            <l n="123">Ma gloire et mon amour ont pour moi tant d'appas,</l>
+            <l n="124">Que je meurs s'il s'achève, ou ne s'achève pas.</l>
+          </sp>
+          <sp who="tc0623-LEONOR">
+            <speaker>LÉONOR.</speaker>
+            <l n="125">Madame, après cela je n'ai rien à vous dire,</l>
+            <l n="126">Sinon que de vos maux avec vous je soupire :</l>
+            <l n="127">Je vous blâmais tantôt, je vous plains à présent.</l>
+            <l n="128">Mais puisque dans un mal si doux et si cuisant,</l>
+            <l n="129">Votre vertu combat et son charme et sa force,</l>
+            <l n="130">En repousse l'assaut, en rejette l'amorce,</l>
+            <l n="131">Elle rendra le calme à vos esprits flottants.</l>
+            <l n="132">Espérez donc tout d'elle, et du secours du temps,</l>
+            <l n="133">Espérez tout du ciel : il a trop de justice</l>
+            <l n="134">Pour laisser la vertu dans un si long supplice.</l>
+          </sp>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="135">Ma plus douce espérance est de perdre l'espoir.</l>
+          </sp>
+          <sp who="tc0623-PAGE">
+            <speaker>LE PAGE.</speaker>
+            <l n="136">Par vos commandements Chimène vous vient voir.</l>
+          </sp>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE, à Léonor.</speaker>
+            <l n="137">Allez l'entretenir en cette galerie.</l>
+          </sp>
+          <sp who="tc0623-LEONOR">
+            <speaker>LÉONOR.</speaker>
+            <l n="138">Voulez-vous demeurer dedans la rêverie ?</l>
+          </sp>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="139">Non, je veux seulement, malgré mon déplaisir</l>
+            <l n="140">Remettre mon visage un peu plus à loisir.</l>
+            <l n="141">Je vous suis. Juste ciel, d'où j'attends mon remède,</l>
+            <l n="142">Mets enfin quelque borne au mal qui me possède,</l>
+            <l n="143">Assure mon repos, assure mon honneur,</l>
+            <l n="144">Dans le bonheur d'autrui, je cherche mon bonheur,</l>
+            <l n="145">Cet hyménée à trois également importe ;</l>
+            <l n="146">Rends son effet plus prompt ou mon âme plus forte.</l>
+            <l n="147">D'un lien conjugal joindre ces deux amants,</l>
+            <l n="148">C'est briser tous mes fers et finir mes tourments.</l>
+            <l n="149">Mais je tarde un peu trop, allons trouver Chimène,</l>
+            <l n="150">Et par son entretien soulager notre peine.</l>
+          </sp>
+        </div>
+        <div type="scene" n="3">
+          <head>SCÈNE III. Le Comte, Don Diègue.</head>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="151">Enfin vous l'emportez, et la faveur du Roi</l>
+            <l n="152">Vous élève en un rang qui n'était dû qu'à moi,</l>
+            <l n="153">Il vous fait Gouverneur du prince de Castille.</l>
+          </sp>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="154">Cette marque d'honneur qu'il met dans ma famille</l>
+            <l n="155">Montre à tous qu'il est juste, et fait connaître assez</l>
+            <l n="156">Qu'il sait récompenser les services passés.</l>
+          </sp>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="157">Pour grands que soient les rois, ils sont ce que nous sommes,</l>
+            <l n="158">Ils peuvent se tromper comme les autres hommes,</l>
+            <l n="159">Et ce choix sert de preuve à tous les courtisans</l>
+            <l n="160">Qu'ils savent mal payer les services présents.</l>
+          </sp>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="161">Ne parlons plus d'un choix dont votre esprit s'irrite,</l>
+            <l n="162">La faveur l'a pu faire autant que le mérite,</l>
+            <l n="163">Mais on doit ce respect au pouvoir absolu,</l>
+            <l n="164">De n'examiner rien, quand un roi l'a voulu.</l>
+            <l n="165">À l'honneur qu'il m'a fait ajoutez-en un autre,</l>
+            <l n="166">Joignons d'un sacré noeud ma maison à la vôtre :</l>
+            <l n="167">Vous n'avez qu'une fille, et moi je n'ai qu'un fils,</l>
+            <l n="168">Leur hymen nous peut rendre à jamais plus qu'amis,</l>
+            <l n="169">Faites-nous cette grâce, et l'acceptez pour gendre.</l>
+          </sp>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="170">À des partis plus hauts ce beau fils doit prétendre,</l>
+            <l n="171">Et le nouvel éclat de votre dignité</l>
+            <l n="172">Lui doit enfler le coeur d'une autre vanité.</l>
+            <l n="173">Exercez-la, Monsieur, et gouvernez le Prince,</l>
+            <l n="174">Montrez-lui comme il faut régir une province,</l>
+            <l n="175">Faire trembler partout les peuples sous sa loi,</l>
+            <l n="176">Remplir les bons d'amour, et les méchants d'effroi,</l>
+            <l n="177">Joignez à ces vertus celles d'un capitaine,</l>
+            <l n="178">Montrez-lui comme il faut s'endurcir à la peine,</l>
+            <l n="179">Dans le métier de Mars se rendre sans égal,</l>
+            <l n="180">Passer les jours entiers et les nuits à cheval,</l>
+            <l n="181">Reposer tout armé, forcer une muraille,</l>
+            <l n="182">Et ne devoir qu'à soi le gain d'une bataille.</l>
+            <l n="183">Instruisez-le d'exemple, et rendez-le parfait,</l>
+            <l n="184">Expliquant à ses yeux vos leçons par l'effet.</l>
+          </sp>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="185">Pour s'instruire d'exemple, en dépit de l'envie,</l>
+            <l n="186">Il lira seulement l'histoire de ma vie.</l>
+            <l n="187">Là, dans un long tissu de belles actions,</l>
+            <l n="188">Il verra comme il faut dompter des nations,</l>
+            <l n="189">Attaquer une place, ordonner une armée,</l>
+            <l n="190">Et sur de grands exploits bâtir sa renommée.</l>
+          </sp>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="191">Les exemples vivants sont d'un autre pouvoir,</l>
+            <l n="192">Un prince dans un livre apprend mal son devoir.</l>
+            <l n="193">Et qu'a fait après tout ce grand nombre d'années,</l>
+            <l n="194">Que ne puisse égaler une de mes journées ?</l>
+            <l n="195">Si vous fûtes vaillant, je le suis aujourd'hui,</l>
+            <l n="196">Et ce bras du Royaume est le plus ferme appui.</l>
+            <note type="L">Aragon : grande province d'Espagne, une des douze capitaineries du royaume, est située entre celle de Vieille-Castille et de Navarre à l'Ouest, de Catalogne à l'Est, de Nouvelle-Castille au Sud, et touche à la France par sa frontière septentrionale ; Saragosse en est la capitale. [B]</note>
+            <note type="L">Grenade : ville d'Espagne (...) à 400 km au sud de Madrid, près du confluent de Xénil et du Darro, au milieu d'une vaste et riche plaine. [B]</note>
+            <l n="197">Grenade et l'Aragon tremblent quand ce fer brille,</l>
+            <l n="198">Mon nom sert de rempart à toute la Castille,</l>
+            <l n="199">Sans moi, vous passeriez bientôt sous d'autres lois,</l>
+            <l n="200">Et vous auriez bientôt vos ennemis pour Rois.</l>
+            <l n="201">Chaque jour, chaque instant, pour rehausser ma gloire,</l>
+            <l n="202">Met lauriers sur lauriers, victoire sur victoire :</l>
+            <l n="203">Le prince à mes côtés ferait dans les combats</l>
+            <l n="204">L'essai de son courage à l'ombre de mon bras ?</l>
+            <l n="205">Il apprendrait à vaincre en me regardant faire,</l>
+            <l n="206">Et pour répondre en hâte à son grand caractère,</l>
+            <l n="207" part="I">Il verrait...</l>
+          </sp>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="207" part="F">Je le sais, vous servez bien le Roi,</l>
+            <l n="208">Je vous ai vu combattre et commander sous moi :</l>
+            <l n="209">Quand l'âge dans mes nerfs a fait couler sa glace,</l>
+            <l n="210">Votre rare valeur a bien rempli ma place ;</l>
+            <l n="211">Enfin, pour épargner les discours superflus,</l>
+            <l n="212">Vous êtes aujourd'hui ce qu'autrefois je fus.</l>
+            <l n="213">Vous voyez toutefois qu'en cette concurrence</l>
+            <l n="214">Un monarque entre nous met quelque différence.</l>
+          </sp>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="215">Ce que je méritais, vous l'avez emporté.</l>
+          </sp>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="216">Qui l'a gagné sur vous l'avait mieux mérité.</l>
+          </sp>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="217">Qui peut mieux l'exercer en est bien le plus digne.</l>
+          </sp>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="218">En être refusé n'en est pas un bon signe.</l>
+          </sp>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="219">Vous l'avez eu par brigue, étant vieux courtisan.</l>
+          </sp>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="220">L'éclat de mes hauts faits fut mon seul partisan.</l>
+          </sp>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="221">Parlons-en mieux, le roi fait honneur à votre âge.</l>
+          </sp>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="222">Le roi, quand il en fait, le mesure au courage.</l>
+          </sp>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="223">Et par là cet honneur n'était dû qu'à mon bras.</l>
+          </sp>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="224">Qui n'a pu l'obtenir ne le méritait pas.</l>
+          </sp>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="225" part="I">Ne le méritait pas ! Moi ?</l>
+          </sp>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="225" part="M">Vous.</l>
+          </sp>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="225" part="F">Ton impudence,</l>
+            <l n="226">Téméraire vieillard, aura sa récompense.</l>
+            <stage>Il lui donne un soufflet.</stage>
+          </sp>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE, mettant l'épée à la main.</speaker>
+            <l n="227">Achève, et prends ma vie après un tel affront,</l>
+            <l n="228">Le premier dont ma race ait vu rougir son front.</l>
+          </sp>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="229">Et que penses-tu faire avec tant de faiblesse ?</l>
+          </sp>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="230">Ô Dieu ! Ma force usée en ce besoin me laisse !</l>
+          </sp>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="231">Ton épée est à moi ; mais tu serais trop vain,</l>
+            <l n="232">Si ce honteux trophée avait chargé ma main.</l>
+            <l n="233">Adieu, fais lire au prince, en dépit de l'envie,</l>
+            <l n="234">Pour son instruction, l'histoire de ta vie,</l>
+            <l n="235">D'un insolent discours ce juste châtiment</l>
+            <l n="236">Ne lui servira pas d'un petit ornement.</l>
+          </sp>
+        </div>
+        <div type="scene" n="4">
+          <head>SCÈNE IV.</head>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="237">Ô rage ! Ô désespoir ! Ô vieillesse ennemie !</l>
+            <l n="238">N'ai-je donc tant vécu que pour cette infamie ?</l>
+            <l n="239">Et ne suis-je blanchi dans les travaux guerriers</l>
+            <l n="240">Que pour voir en un jour flétrir tant de lauriers ?</l>
+            <l n="241">Mon bras, qu'avec respect toute l'Espagne admire,</l>
+            <l n="242">Mon bras, qui tant de fois a sauvé cet empire,</l>
+            <l n="243">Tant de fois affermi le trône de son Roi,</l>
+            <l n="244">Trahit donc ma querelle, et ne fait rien pour moi ?</l>
+            <l n="245">Ô cruel souvenir de ma gloire passée !</l>
+            <l n="246">Oeuvre de tant de jours en un jour effacée !</l>
+            <l n="247">Nouvelle dignité, fatale à mon bonheur !</l>
+            <l n="248">Précipice élevé d'où tombe mon honneur !</l>
+            <l n="249">Faut-il de votre éclat voir triompher le Comte,</l>
+            <l n="250">Et mourir sans vengeance, ou vivre dans la honte ?</l>
+            <l n="251">Comte, sois de mon prince à présent gouverneur,</l>
+            <l n="252">Ce haut rang n'admet point un homme sans honneur,</l>
+            <l n="253">Et ton jaloux orgueil par cet affront insigne</l>
+            <l n="254">Malgré le choix du Roi m'en a su rendre indigne.</l>
+            <l n="255">Et toi, de mes exploits glorieux instrument,</l>
+            <l n="256">Mais d'un corps tout de glace inutile ornement,</l>
+            <l n="257">Fer, jadis tant à craindre, et qui, dans cette offense</l>
+            <l n="258">M'as servi de parade, et non pas de défense ;</l>
+            <l n="259">Va, quitte désormais le dernier des humains,</l>
+            <l n="260">Passe, pour me venger, en de meilleures mains.</l>
+          </sp>
+        </div>
+        <div type="scene" n="5">
+          <head>SCÈNE V. Don diègue, Don Rodrigue.</head>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="261" part="I">Rodrigue, as-tu du coeur ?</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="261" part="F">Tout autre que mon père</l>
+            <l n="262" part="I">L'éprouverait sur l'heure.</l>
+          </sp>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="262" part="F">Agréable colère !</l>
+            <l n="263">Digne ressentiment à ma douleur bien doux !</l>
+            <l n="264">Je reconnais mon sang à ce noble courroux,</l>
+            <l n="265">Ma jeunesse revit en cette ardeur si prompte.</l>
+            <l n="266">Viens mon fils, viens mon sang, viens réparer ma honte,</l>
+            <l n="267" part="I">Viens me venger.</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="267" part="M">De quoi ?</l>
+          </sp>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="267" part="F">D'un affront si cruel,</l>
+            <l n="268">Qu'à l'honneur de tous deux il porte un coup mortel,</l>
+            <l n="269">D'un soufflet. L'insolent en eût perdu la vie,</l>
+            <l n="270">Mais mon âge a trompé ma généreuse envie,</l>
+            <l n="271">Et ce fer que mon bras ne peut plus soutenir,</l>
+            <l n="272">Je le remets au tien pour venger et punir.</l>
+            <l n="273">Va contre un arrogant éprouver ton courage,</l>
+            <l n="274">Ce n'est que dans le sang qu'on lave un tel outrage,</l>
+            <l n="275">Meurs, ou tue. Au surplus, pour ne te point flatter,</l>
+            <l n="276">Je te donne à combattre un homme à redouter,</l>
+            <l n="277">Je l'ai vu tout couvert de sang et de poussière,</l>
+            <l n="278">Porter partout l'effroi dans une armée entière</l>
+            <l n="279">J'ai vu par sa valeur cent escadrons rompus,</l>
+            <l n="280">Et pour t'en dire encor quelque chose de plus,</l>
+            <l n="281">Plus que brave soldat, plus que grand capitaine,</l>
+            <l n="282" part="I">C'est...</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="282" part="M">De grâce, achevez.</l>
+          </sp>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="282" part="F">Le père de Chimène.</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="283" part="I">Le...</l>
+          </sp>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="283" part="F">Ne réplique point, je connais ton amour,</l>
+            <l n="284">Mais qui peut vivre infâme est indigne du jour.</l>
+            <l n="285">Plus l'offenseur est cher, et plus grande est l'offense.</l>
+            <l n="286">Enfin tu sais l'affront, et tu tiens la vengeance,</l>
+            <l n="287">Je ne te dis plus rien, venge-moi, venge-toi,</l>
+            <l n="288">Montre-toi digne fils d'un père tel que moi ;</l>
+            <l n="289">Accablé des malheurs où le destin me range,</l>
+            <l n="290">Je vais les déplorer, va, cours, vole, et nous venge.</l>
+          </sp>
+        </div>
+        <div type="scene" n="6">
+          <head>SCÈNE VI.</head>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="291">Percé jusques au fond du coeur</l>
+            <l n="292">D'une atteinte imprévue aussi bien que mortelle,</l>
+            <l n="293">Misérable vengeur d'une juste querelle,</l>
+            <l n="294">Et malheureux objet d'une injuste rigueur :</l>
+            <l n="295">Je demeure immobile, et mon âme abattue</l>
+            <l n="296">Cède au coup qui me tue.</l>
+            <l n="297">Si près de voir mon feu récompensé,</l>
+            <l n="298">Ô Dieu ! L'étrange peine !</l>
+            <l n="299">En cet affront mon père est l'offensé,</l>
+            <l n="300">Et l'offenseur le père de Chimène !</l>
+            <l n="301">Que je sens de rudes combats !</l>
+            <l n="302">Contre mon propre honneur mon amour s'intéresse,</l>
+            <l n="303">Il faut venger un père, et perdre une maîtresse,</l>
+            <l n="304">L'un m'anime le coeur, l'autre retient mon bras.</l>
+            <l n="305">Réduit au triste choix ou de trahir ma flamme,</l>
+            <l n="306">Ou de vivre en infâme,</l>
+            <l n="307">Des deux côtés mon mal est infini.</l>
+            <l n="308">Ô Dieu, l'étrange peine !</l>
+            <l n="309">Faut-il laisser un affront impuni ?</l>
+            <l n="310">Faut-il punir le père de Chimène ?</l>
+            <l n="311">Père, maîtresse, honneur, amour,</l>
+            <l n="312">Noble et dure contrainte, aimable tyrannie,</l>
+            <l n="313">Tous mes plaisirs sont morts, ou ma gloire ternie.</l>
+            <l n="314">L'un me rend malheureux, l'autre indigne du jour.</l>
+            <l n="315">Cher et cruel espoir d'une âme généreuse,</l>
+            <l n="316">Mais ensemble amoureuse,</l>
+            <l n="317">Digne ennemi de mon plus grand bonheur,</l>
+            <l n="318">Fer, qui causes ma peine,</l>
+            <l n="319">M'es-tu donné pour venger mon honneur ?</l>
+            <l n="320">M'es-tu donné pour perdre ma Chimène ?</l>
+            <l n="321">Il vaut mieux courir au trépas,</l>
+            <l n="322">Je dois à ma maîtresse aussi bien qu'à mon père,</l>
+            <l n="323">J'attire en me vengeant sa haine et sa colère,</l>
+            <l n="324">J'attire ses mépris en ne me vengeant pas.</l>
+            <l n="325">À mon plus doux espoir l'un me rend infidèle,</l>
+            <l n="326">Et l'autre indigne d'elle,</l>
+            <l n="327">Mon mal augmente à le vouloir guérir,</l>
+            <l n="328">Tout redouble ma peine,</l>
+            <l n="329">Allons, mon âme, et puisqu'il faut mourir,</l>
+            <l n="330">Mourons du moins sans offenser Chimène.</l>
+            <l n="331">Mourir sans tirer ma raison !</l>
+            <l n="332">Rechercher un trépas si mortel à ma gloire !</l>
+            <l n="333">Endurer que l'Espagne impute à ma mémoire</l>
+            <l n="334">D'avoir mal soutenu l'honneur de ma maison !</l>
+            <l n="335">Respecter un amour dont mon âme égarée</l>
+            <l n="336">Voit la perte assurée !</l>
+            <note type="L">Penser : nom masculin au XVIIème pour « pensée ».</note>
+            <l n="337">N'écoutons plus ce penser suborneur</l>
+            <l n="338">Qui ne sert qu'à ma peine,</l>
+            <l n="339">Allons, mon bras, sauvons du moins l'honneur,</l>
+            <l n="340">Puisqu'après tout il faut perdre Chimène.</l>
+            <l n="341">Oui, mon esprit s'était déçu,</l>
+            <l n="342">Je dois tout à mon père avant qu'à ma maîtresse :</l>
+            <l n="343">Que je meure au combat, ou meure de tristesse,</l>
+            <l n="344">Je rendrai mon sang pur comme je l'ai reçu.</l>
+            <l n="345">Je m'accuse déjà de trop de négligence,</l>
+            <l n="346">Courons à la vengeance,</l>
+            <l n="347">Et tout honteux d'avoir tant balancé,</l>
+            <l n="348">Ne soyons plus en peine</l>
+            <l n="349">(Puisqu'aujourd'hui mon père est l'offensé)</l>
+            <l n="350">Si l'offenseur est père de Chimène.</l>
+          </sp>
+        </div>
+      </div>
+      <div type="act" n="2">
+        <head>ACTE II</head>
+        <div type="scene" n="1">
+          <head>SCÈNE PREMIÈRE. Don Arias, Le Comte.</head>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="351">Je l'avoue entre nous, mon sang un peu trop chaud</l>
+            <l n="352">S'est trop ému d'un mot, et l'a porté trop haut,</l>
+            <l n="353">Mais puisque c'en est fait, le coup est sans remède.</l>
+          </sp>
+          <sp who="tc0623-DONARIAS">
+            <speaker>DON ARIAS.</speaker>
+            <l n="354">Qu'aux volontés du roi ce grand courage cède,</l>
+            <l n="355">Il y prend grande part, et son coeur irrité</l>
+            <l n="356">Agira contre vous de pleine autorité.</l>
+            <l n="357">Aussi vous n'avez point de valable défense,</l>
+            <l n="358">Le rang de l'offensé, la grandeur de l'offense,</l>
+            <note type="L">Submissions : voir soumission. Humiliation, obéissance. [F]</note>
+            <l n="359">Demandent des devoirs et des submissions,</l>
+            <l n="360">Qui passent le commun des satisfactions.</l>
+          </sp>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="361">Le roi peut à son gré disposer de ma vie.</l>
+          </sp>
+          <sp who="tc0623-DONARIAS">
+            <speaker>DON ARIAS.</speaker>
+            <l n="362">De trop d'emportement votre faute est suivie.</l>
+            <l n="363">Le roi vous aime encore, apaisez son courroux,</l>
+            <l n="364">Il a dit, Je le veux. Désobéirez-vous ?</l>
+          </sp>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="365">Monsieur, pour conserver tout ce que j'ai d'estime,</l>
+            <l n="366">Désobéir un peu n'est pas un si grand crime,</l>
+            <l n="367">Et quelque grand qu'il soit, mes services présents</l>
+            <l n="368">Pour le faire abolir sont plus que suffisants.</l>
+          </sp>
+          <sp who="tc0623-DONARIAS">
+            <speaker>DON ARIAS.</speaker>
+            <l n="369">Quoi qu'on fasse d'illustre et de considérable,</l>
+            <l n="370">Jamais à son sujet un Roi n'est redevable :</l>
+            <l n="371">Vous vous flattez beaucoup, et vous devez savoir</l>
+            <l n="372">Que qui sert bien son Roi ne fait que son devoir.</l>
+            <l n="373">Vous vous perdrez, Monsieur, sur cette confiance.</l>
+          </sp>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="374">Je ne vous en croirai qu'après l'expérience.</l>
+          </sp>
+          <sp who="tc0623-DONARIAS">
+            <speaker>DON ARIAS.</speaker>
+            <l n="375">Vous devez redouter la puissance d'un Roi.</l>
+          </sp>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="376">Un jour seul ne perd pas un homme tel que moi.</l>
+            <l n="377">Que toute sa grandeur s'arme pour mon supplice,</l>
+            <l n="378">Tout l'État périra, s'il faut que je périsse.</l>
+          </sp>
+          <sp who="tc0623-DONARIAS">
+            <speaker>DON ARIAS.</speaker>
+            <l n="379">Quoi ? Vous craignez si peu le pouvoir souverain...</l>
+          </sp>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="380">D'un sceptre qui sans moi tomberait de sa main.</l>
+            <l n="381">Il a trop d'intérêt lui-même en ma personne,</l>
+            <l n="382">Et ma tête en tombant ferait choir sa couronne.</l>
+          </sp>
+          <sp who="tc0623-DONARIAS">
+            <speaker>DON ARIAS.</speaker>
+            <l n="383">Souffrez que la raison remette vos esprits.</l>
+            <l n="384" part="I">Prenez un bon conseil.</l>
+          </sp>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="384" part="F">Le conseil en est pris.</l>
+          </sp>
+          <sp who="tc0623-DONARIAS">
+            <speaker>DON ARIAS.</speaker>
+            <l n="385">Que lui dirai-je enfin ? Je lui dois rendre compte.</l>
+          </sp>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="386">Que je ne puis du tout consentir à ma honte.</l>
+          </sp>
+          <sp who="tc0623-DONARIAS">
+            <speaker>DON ARIAS.</speaker>
+            <l n="387">Mais songez que les Rois veulent être absolus.</l>
+          </sp>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="388">Le sort en est jeté, Monsieur, n'en parlons plus.</l>
+          </sp>
+          <sp who="tc0623-DONARIAS">
+            <speaker>DON ARIAS.</speaker>
+            <note type="L">Résoudre : Expliquer une difficulté, décider une question, trouver un problème. Signifie aussi conclure après avoir délibéré. [F]</note>
+            <l n="389">Adieu donc, puisqu'en vain je tâche à vous résoudre</l>
+            <note type="L">Foudre : (sens figuré masculin) Se dit de la colère de Dieu ou des rois. [L]</note>
+            <l n="390">Avec tous vos lauriers, craignez encor le foudre.</l>
+          </sp>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="391" part="I">Je l'attendrai sans peur.</l>
+          </sp>
+          <sp who="tc0623-DONARIAS">
+            <speaker>DON ARIAS.</speaker>
+            <l n="391" part="F">Mais non pas sans effet.</l>
+          </sp>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="392">Nous verrons donc par là Don Diègue satisfait.</l>
+            <stage>Il est seul.</stage>
+            <l n="393">Qui ne craint point la mort ne craint point les menaces,</l>
+            <l n="394">J'ai le coeur au-dessus des plus fières disgrâces,</l>
+            <l n="395">Et l'on peut me réduire à vivre sans bonheur,</l>
+            <l n="396">Mais non pas me résoudre à vivre sans honneur.</l>
+          </sp>
+        </div>
+        <div type="scene" n="2">
+          <head>SCÈNE II. Le Comte, Don Rodrigue.</head>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="397" part="I">À moi, Comte, deux mots.</l>
+          </sp>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="397" part="M">Parle.</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="397" part="F">Ôte-moi d'un doute.</l>
+            <l n="398" part="I">Connais-tu bien Don Diègue ?</l>
+          </sp>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="398" part="M">Oui.</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="398" part="F">Parlons bas, écoute.</l>
+            <l n="399">Sais-tu que ce vieillard fut la même vertu,</l>
+            <l n="400">La vaillance et l'honneur de son temps ? Le sais-tu ?</l>
+          </sp>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="401" part="I">Peut-être.</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="401" part="F">Cette ardeur que dans les yeux je porte,</l>
+            <l n="402" part="I">Sais-tu que c'est son sang ? Le sais-tu ?</l>
+          </sp>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="402" part="F">Que m'importe ?</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="403">À quatre pas d'ici je te le fais savoir.</l>
+          </sp>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="404" part="I">Jeune présomptueux !</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="404" part="F">Parle sans t'émouvoir.</l>
+            <l n="405">Je suis jeune, il est vrai, mais aux âmes bien nées</l>
+            <l n="406">La valeur n'attend point le nombre des années.</l>
+          </sp>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="407">Te mesurer à moi ! Qui t'a rendu si vain ?</l>
+            <l n="408">Toi qu'on n'a jamais vu les armes à la main ?</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="409">Mes pareils à deux fois ne se font point connaître,</l>
+            <l n="410">Et pour leurs coups d'essai veulent des coups de maître.</l>
+          </sp>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="411" part="I">Sais-tu bien qui je suis ?</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="411" part="F">Oui, tout autre que moi</l>
+            <l n="412">Au seul bruit de ton nom pourrait trembler d'effroi.</l>
+            <note>Palme : Se dit figurément en Morale d'une victoire, ou d'un avantage remporté en quelque combat ; à cause que le palme en était autrefois le symbole. [F]</note>
+            <l n="413">Les palmes dont je vois ta tête si couverte</l>
+            <l n="414">Semblent porter écrit le destin de ma perte,</l>
+            <l n="415">J'attaque en téméraire un bras toujours vainqueur,</l>
+            <l n="416">Mais j'aurai trop de force, ayant assez de coeur.</l>
+            <l n="417">À qui venge son père il n'est rien impossible,</l>
+            <l n="418">Ton bras est invaincu, mais non pas invincible.</l>
+          </sp>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="419">Ce grand coeur qui paraît aux discours que tu tiens</l>
+            <l n="420">Par tes yeux, chaque jour se découvrait aux miens,</l>
+            <l n="421">Et croyant voir en toi l'honneur de la Castille,</l>
+            <l n="422">Mon âme avec plaisir te destinait ma fille.</l>
+            <l n="423">Je sais ta passion, et suis ravi de voir</l>
+            <l n="424">Que tous ses mouvements cèdent à ton devoir,</l>
+            <note type="L">Magnanime : Qui a une grandeur d'âme et de courage, qui l'élève au dessus du commun des hommes. Il signifie beaucoup plus que brave et vaillant. [F]</note>
+            <l n="425">Qu'ils n'ont point affaibli cette ardeur magnanime,</l>
+            <l n="426">Que ta haute vertu répond à mon estime,</l>
+            <l n="427">Et que voulant pour gendre un cavalier parfait,</l>
+            <l n="428">Je ne me trompais point au choix que j'avais fait.</l>
+            <l n="429">Mais je sens que pour toi ma pitié s'intéresse,</l>
+            <l n="430">J'admire ton courage, et je plains ta jeunesse.</l>
+            <l n="431">Ne cherche point à faire un coup d'essai fatal,</l>
+            <l n="432">Dispense ma valeur d'un combat inégal,</l>
+            <l n="433">Trop peu d'honneur pour moi suivrait cette victoire,</l>
+            <l n="434">À vaincre sans péril, on triomphe sans gloire,</l>
+            <l n="435">On te croirait toujours abattu sans effort,</l>
+            <l n="436">Et j'aurais seulement le regret de ta mort.</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="437">D'une indigne pitié ton audace est suivie :</l>
+            <l n="438">Qui m'ose ôter l'honneur craint de m'ôter la vie !</l>
+          </sp>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="439" part="I">Retire-toi d'ici.</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="439" part="F">Marchons sans discourir.</l>
+          </sp>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="440" part="I">Es-tu si las de vivre ?</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="440" part="F">As-tu peur de mourir ?</l>
+          </sp>
+          <sp who="tc0623-LECOMTE">
+            <speaker>LE COMTE.</speaker>
+            <l n="441">Viens, tu fais ton devoir, et le fils dégénère</l>
+            <l n="442">Qui survit un moment à l'honneur de son père.</l>
+          </sp>
+        </div>
+        <div type="scene" n="3">
+          <head>SCÈNE III. L'Infante, Chimène, Léonor.</head>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="443">Apaise, ma Chimène, apaise ta douleur,</l>
+            <l n="444">Fais agir ta constance en ce coup de malheur,</l>
+            <l n="445">Tu reverras le calme après ce faible orage,</l>
+            <l n="446">Ton bonheur n'est couvert que d'un peu de nuage,</l>
+            <l n="447">Et tu n'as rien perdu pour le voir différer.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="448">Mon coeur outré d'ennuis n'ose rien espérer.</l>
+            <note type="L">Bonace : Calme de la mer, qui se dit quand le vent est abattu, ou a cessé. La bonace trompe souvent le Pilote. [F]</note>
+            <l n="449">Un orage si prompt qui trouble une bonace</l>
+            <l n="450">D'un naufrage certain nous porte la menace,</l>
+            <l n="451">Je n'en saurais douter, je péris dans le port.</l>
+            <l n="452">J'aimais, j'étais aimée, et nos pères d'accord,</l>
+            <l n="453">Et je vous en contais la charmante nouvelle</l>
+            <l n="454">Au malheureux moment que naissait leur querelle,</l>
+            <l n="455">Dont le récit fatal, sitôt qu'on vous l'a fait,</l>
+            <l n="456">D'une si douce attente a ruiné l'effet.</l>
+            <l n="457">Maudite ambition, détestable manie,</l>
+            <l n="458">Dont les plus généreux souffrent la tyrannie,</l>
+            <l n="459">Honneur impitoyable à mes plus chers désirs,</l>
+            <l n="460">Que tu me vas coûter de pleurs et de soupirs !</l>
+          </sp>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="461">Tu n'as dans leur querelle aucun sujet de craindre,</l>
+            <l n="462">Un moment l'a fait naître, un moment va l'éteindre,</l>
+            <l n="463">Elle a fait trop de bruit pour ne pas s'accorder,</l>
+            <l n="464">Puisque déjà le roi les veut accommoder,</l>
+            <l n="465">Et tu sais que mon âme, à tes ennuis sensible,</l>
+            <l n="466">Pour en tarir la source y fera l'impossible.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="467">Les accommodements ne font rien en ce point,</l>
+            <l n="468">De si mortels affronts ne se réparent point.</l>
+            <l n="469">En vain on fait agir la force ou la prudence,</l>
+            <l n="470">Si l'on guérit le mal, ce n'est qu'en apparence,</l>
+            <l n="471">La haine que les cours conservent au dedans</l>
+            <l n="472">Nourrit des feux cachés, mais d'autant plus ardents.</l>
+          </sp>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="473">Le saint noeud qui joindra Don Rodrigue et Chimène</l>
+            <l n="474">Des pères ennemis dissipera la haine,</l>
+            <l n="475">Et nous verrons bientôt votre amour le plus fort</l>
+            <note type="L">Discord : désunion, dispute , querelle. Il est vieux et hors d'usage. [F]</note>
+            <l n="476">Par un heureux hymen étouffer ce discord.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="477">Je le souhaite ainsi plus que je ne l'espère,</l>
+            <note type="L">Altier : Orgueileux, fier, qui commande avec hauteur. [F]</note>
+            <l n="478">Don Diègue est trop altier, et je connais mon père</l>
+            <l n="479">Je sens couler des pleurs que je veux retenir,</l>
+            <l n="480">Le passé me tourmente, et je crains l'avenir.</l>
+          </sp>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="481">Que crains-tu ? D'un vieillard l'impuissante faiblesse ?</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="482" part="I">Rodrigue a du courage.</l>
+          </sp>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="482" part="F">Il a trop de jeunesse.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="483">Les hommes valeureux le sont du premier coup.</l>
+          </sp>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="484">Tu ne dois pas pourtant le redouter beaucoup,</l>
+            <l n="485">Il est trop amoureux pour te vouloir déplaire,</l>
+            <l n="486">Et deux mots de ta bouche arrêtent sa colère.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="487">S'il ne m'obéit point, quel comble à mon ennui !</l>
+            <l n="488">Et s'il peut m'obéir, que dira-t-on de lui ?</l>
+            <l n="489">Étant né ce qu'il est, souffrir un tel outrage !</l>
+            <l n="490">Soit qu'il cède, ou résiste au feu qui me l'engage,</l>
+            <l n="491">Mon esprit ne peut qu'être ou honteux, ou confus,</l>
+            <l n="492">De son trop de respect, ou d'un juste refus.</l>
+          </sp>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="493">Chimène a l'âme haute, et quoiqu'intéressée,</l>
+            <l n="494">Elle ne peut souffrir une basse pensée :</l>
+            <l n="495">Mais si jusques au jour de l'accommodement</l>
+            <l n="496">Je fais mon prisonnier de ce parfait amant,</l>
+            <l n="497">Et que j'empêche ainsi l'effet de son courage,</l>
+            <l n="498">Ton esprit amoureux n'aura-t-il point d'ombrage ?</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="499">Ah ! Madame, en ce cas je n'ai plus de souci.</l>
+          </sp>
+        </div>
+        <div type="scene" n="4">
+          <head>SCÈNE IV. L'Infante, Chimène, Léonor, Le page.</head>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="500">Page, cherchez Rodrigue, et l'amenez ici.</l>
+          </sp>
+          <sp who="tc0623-PAGE">
+            <speaker>LE PAGE.</speaker>
+            <l n="501" part="I">Le comte de Gormas et lui...</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="501" part="F">Bon Dieu ! Je tremble.</l>
+          </sp>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="502" part="I">Parlez.</l>
+          </sp>
+          <sp who="tc0623-PAGE">
+            <speaker>LE PAGE.</speaker>
+            <l n="502" part="F">De ce palais ils sont sortis ensemble.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="503" part="I">Seuls ?</l>
+          </sp>
+          <sp who="tc0623-PAGE">
+            <speaker>LE PAGE.</speaker>
+            <l n="503" part="F">Seuls, et qui semblaient tout bas se quereller.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="504">Sans doute ils sont aux mains, il n'en faut plus parler.</l>
+            <l n="505">Madame, pardonnez à cette promptitude.</l>
+          </sp>
+        </div>
+        <div type="scene" n="5">
+          <head>SCÈNE V. L'Infante, Léonor.</head>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="506">Hélas ! Que dans l'esprit je sens d'inquiétude !</l>
+            <l n="507">Je pleure ses malheurs, son amant me ravit,</l>
+            <l n="508">Mon repos m'abandonne, et ma flamme revit.</l>
+            <l n="509">Ce qui va séparer Rodrigue de Chimène</l>
+            <l n="510">Fait renaître à la fois mon espoir et ma peine,</l>
+            <l n="511">Et leur division que je vois à regret,</l>
+            <l n="512">Dans mon esprit charmé jette un plaisir secret.</l>
+          </sp>
+          <sp who="tc0623-LEONOR">
+            <speaker>LÉONOR.</speaker>
+            <l n="513">Cette haute vertu qui règne dans votre âme</l>
+            <l n="514">Se rend-elle sitôt à cette lâche flamme ?</l>
+          </sp>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="515">Ne la nomme point lâche, à présent que chez moi</l>
+            <l n="516">Pompeuse et triomphante elle me fait la loi,</l>
+            <l n="517">Porte-lui du respect, puisqu'elle m'est si chère ;</l>
+            <l n="518">Ma vertu la combat, mais malgré moi j'espère,</l>
+            <l n="519">Et d'un si fol espoir mon coeur mal défendu</l>
+            <l n="520">Vole après un amant que Chimène a perdu.</l>
+          </sp>
+          <sp who="tc0623-LEONOR">
+            <speaker>LÉONOR.</speaker>
+            <l n="521">Vous laissez choir ainsi ce glorieux courage,</l>
+            <l n="522">Et la raison chez vous perd ainsi son usage ?</l>
+          </sp>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="523">Ah ! Qu'avec peu d'effet on entend la raison,</l>
+            <l n="524">Quand le coeur est atteint d'un si charmant poison !</l>
+            <l n="525">Et lorsque le malade aime sa maladie,</l>
+            <l n="526">Qu'il a peine à souffrir que l'on y remédie !</l>
+          </sp>
+          <sp who="tc0623-LEONOR">
+            <speaker>LÉONOR.</speaker>
+            <l n="527">Votre espoir vous séduit, votre mal vous est doux ;</l>
+            <l n="528">Mais enfin ce Rodrigue est indigne de vous.</l>
+          </sp>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="529">Je ne le sais que trop ; mais si ma vertu cède,</l>
+            <l n="530">Apprends comme l'amour flatte un coeur qu'il possède.</l>
+            <l n="531">Si Rodrigue une fois sort vainqueur du combat,</l>
+            <l n="532">Si dessous sa valeur ce grand guerrier s'abat,</l>
+            <l n="533">Je puis en faire cas, je puis l'aimer sans honte.</l>
+            <l n="534">Que ne fera-t-il point, s'il peut vaincre le Comte ?</l>
+            <l n="535">J'ose m'imaginer qu'à ses moindres exploits</l>
+            <l n="536">Les royaumes entiers tomberont sous ses lois,</l>
+            <l n="537">Et mon amour flatteur déjà me persuade</l>
+            <l n="538">Que je le vois assis au trône de Grenade,</l>
+            <note type="L">Mores (maures) : Homme noir ou femme noire, nés en une région d'Afrique appelée la Mauritanie [F]. Othello, le personnage de la pièce du même nom de Shakespeare est un maure.</note>
+            <l n="539">Les Mores subjugués trembler en l'adorant,</l>
+            <l n="540">L'Aragon recevoir ce nouveau conquérant,</l>
+            <l n="541">Le Portugal se rendre, et ses nobles journées</l>
+            <l n="542">Porter delà les mers ses hautes destinées,</l>
+            <l n="543">Du sang des Africains arroser ses lauriers,</l>
+            <l n="544">Enfin tout ce qu'on dit des plus fameux guerriers,</l>
+            <l n="545">Je l'attends de Rodrigue après cette victoire,</l>
+            <l n="546">Et fais de son amour un sujet de ma gloire.</l>
+          </sp>
+          <sp who="tc0623-LEONOR">
+            <speaker>LÉONOR.</speaker>
+            <l n="547">Mais, Madame, voyez où vous portez son bras,</l>
+            <l n="548">En suite d'un combat qui peut-être n'est pas.</l>
+          </sp>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="549">Rodrigue est offensé, le Comte a fait l'outrage ;</l>
+            <l n="550">Ils sont sortis ensemble : en faut-il davantage ?</l>
+          </sp>
+          <sp who="tc0623-LEONOR">
+            <speaker>LÉONOR.</speaker>
+            <l n="551">Eh bien, ils se battront, puisque vous le voulez,</l>
+            <l n="552">Mais Rodrigue ira-t-il si loin que vous allez ?</l>
+          </sp>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="553">Que veux-tu ? Je suis folle, et mon esprit s'égare,</l>
+            <l n="554">Tu vois par là quels maux cet amour me prépare.</l>
+            <l n="555">Viens dans mon cabinet consoler mes ennuis,</l>
+            <l n="556">Et ne me quitte point dans le trouble où je suis.</l>
+          </sp>
+        </div>
+        <div type="scene" n="6">
+          <head>SCÈNE VI. Don Fernand, Don Arias, Don Sanche.</head>
+          <sp who="tc0623-DONFERNAND">
+            <speaker>DON FERNAND.</speaker>
+            <l n="557">Le Comte est donc si vain et si peu raisonnable !</l>
+            <l n="558">Ose-t-il croire encor son crime pardonnable ?</l>
+          </sp>
+          <sp who="tc0623-DONARIAS">
+            <speaker>DON ARIAS.</speaker>
+            <l n="559">Je l'ai de votre part longtemps entretenu,</l>
+            <l n="560">J'ai fait mon pouvoir, Sire, et n'ai rien obtenu.</l>
+          </sp>
+          <sp who="tc0623-DONFERNAND">
+            <speaker>DON FERNAND.</speaker>
+            <l n="561">Justes cieux ! Ainsi donc un sujet téméraire</l>
+            <l n="562">A si peu de respect et de soin de me plaire !</l>
+            <l n="563">Il offense Don Diègue, et méprise son Roi !</l>
+            <l n="564">Au milieu de ma Cour il me donne la loi !</l>
+            <l n="565">Qu'il soit brave guerrier, qu'il soit grand capitaine,</l>
+            <l n="566">Je saurai bien rabattre une humeur si hautaine :</l>
+            <l n="567">Fût-il la valeur même et le dieu des combats,</l>
+            <l n="568">Il verra ce que c'est que de n'obéir pas.</l>
+            <l n="569">Quoi qu'ait pu mériter une telle insolence,</l>
+            <l n="570">Je l'ai voulu d'abord traiter sans violence,</l>
+            <l n="571">Mais puisqu'il en abuse, allez dès aujourd'hui,</l>
+            <l n="572">Soit qu'il résiste, ou non, vous assurer de lui.</l>
+          </sp>
+          <sp who="tc0623-DONSANCHE">
+            <speaker>DON SANCHE.</speaker>
+            <l n="573">Peut-être un peu de temps le rendrait moins rebelle,</l>
+            <l n="574">On l'a pris tout bouillant encor de sa querelle,</l>
+            <l n="575">Sire, dans la chaleur d'un premier mouvement</l>
+            <l n="576">Un coeur si généreux se rend malaisément ;</l>
+            <l n="577">Il voit bien qu'il a tort, mais une âme si haute</l>
+            <l n="578">N'est pas sitôt réduite à confesser sa faute.</l>
+          </sp>
+          <sp who="tc0623-DONFERNAND">
+            <speaker>DON FERNAND.</speaker>
+            <l n="579">Don Sanche, taisez-vous, et soyez averti</l>
+            <l n="580">Qu'on se rend criminel à prendre son parti.</l>
+          </sp>
+          <sp who="tc0623-DONSANCHE">
+            <speaker>DON SANCHE.</speaker>
+            <l n="581">J'obéis, et me tais, mais de grâce encor, sire,</l>
+            <l n="582" part="I">Deux mots en sa défense.</l>
+          </sp>
+          <sp who="tc0623-DONFERNAND">
+            <speaker>DON FERNAND.</speaker>
+            <l n="582" part="F">Et que pouvez-vous dire ?</l>
+          </sp>
+          <sp who="tc0623-DONSANCHE">
+            <speaker>DON SANCHE.</speaker>
+            <l n="583">Qu'une âme accoutumée aux grandes actions</l>
+            <l n="584">Ne se peut abaisser à des submissions :</l>
+            <l n="585">Elle n'en conçoit point qui s'expliquent sans honte,</l>
+            <l n="586">Et c'est à ce mot seul qu'a résisté le Comte.</l>
+            <l n="587">Il trouve en son devoir un peu trop de rigueur,</l>
+            <l n="588">Et vous obéirait, s'il avait moins de coeur.</l>
+            <l n="589">Commandez que son bras, nourri dans les alarmes,</l>
+            <l n="590">Répare cette injure à la pointe des armes,</l>
+            <l n="591">Il satisfera, Sire ; et vienne qui voudra,</l>
+            <l n="592">Attendant qu'il l'ait su, voici qui répondra.</l>
+          </sp>
+          <sp who="tc0623-DONFERNAND">
+            <speaker>DON FERNAND.</speaker>
+            <l n="593">Vous perdez le respect, mais je pardonne à l'âge,</l>
+            <l n="594">Et j'excuse l'ardeur en un jeune courage.</l>
+            <l n="595">Un roi dont la prudence a de meilleurs objets</l>
+            <note type="L">Ménager : Bon économe de son bien ; qui épargne, qui ne fait point de dépense superflue ; qui fait bien valoir ce qu'on lui donne à manier. [F]</note>
+            <l n="596">Est meilleur ménager du sang de ses sujets ;</l>
+            <l n="597">Je veille pour les miens, mes soucis les conservent,</l>
+            <l n="598">Comme le chef a soin des membres qui le servent.</l>
+            <l n="599">Ainsi votre raison n'est pas raison pour moi,</l>
+            <l n="600">Vous parlez en soldat, je dois agir en Roi,</l>
+            <l n="601">Et quoi qu'on veuille dire, et quoi qu'il ose croire,</l>
+            <l n="602">Le comte à m'obéir ne peut perdre sa gloire.</l>
+            <l n="603">D'ailleurs l'affront me touche, il a perdu d'honneur</l>
+            <l n="604">Celui que de mon fils j'ai fait le gouverneur.</l>
+            <l n="605">S'attaquer à mon choix, c'est se prendre à moi-même,</l>
+            <l n="606">Et faire un attentat sur le pouvoir suprême.</l>
+            <l n="607">N'en parlons plus. Au reste, on a vu dix vaisseaux</l>
+            <l n="608">De nos vieux ennemis arborer les drapeaux,</l>
+            <l n="609">Vers la bouche du fleuve ils ont osé paraître.</l>
+          </sp>
+          <sp who="tc0623-DONARIAS">
+            <speaker>DON ARIAS.</speaker>
+            <l n="610">Les Mores ont appris par force à vous connaître,</l>
+            <l n="611">Et tant de fois vaincus, ils ont perdu le coeur</l>
+            <l n="612">De se plus hasarder contre un si grand vainqueur.</l>
+          </sp>
+          <sp who="tc0623-DONFERNAND">
+            <speaker>DON FERNAND.</speaker>
+            <l n="613">Ils ne verront jamais sans quelque jalousie</l>
+            <l n="614">Mon sceptre en dépit d'eux régir l'Andalousie ;</l>
+            <l n="615">Et ce pays si beau qu'ils ont trop possédé</l>
+            <l n="616">Avec un oeil d'envie est toujours regardé.</l>
+            <l n="617">C'est l'unique raison qui m'a fait dans Séville</l>
+            <l n="618">Placer depuis dix ans le trône de Castille,</l>
+            <l n="619">Pour les voir de plus près, et d'un ordre plus prompt</l>
+            <l n="620">Renverser aussitôt ce qu'ils entreprendront.</l>
+          </sp>
+          <sp who="tc0623-DONARIAS">
+            <speaker>DON ARIAS.</speaker>
+            <l n="621">Ils savent aux dépens de leurs plus dignes têtes</l>
+            <l n="622">Combien votre présence assure vos conquêtes,</l>
+            <l n="623" part="I">Vous n'avez rien à craindre.</l>
+          </sp>
+          <sp who="tc0623-DONFERNAND">
+            <speaker>DON FERNAND.</speaker>
+            <l n="623" part="F">Et rien à négliger,</l>
+            <l n="624">Le trop de confiance attire le danger,</l>
+            <l n="625">Et vous n'ignorez pas qu'avec fort peu de peine</l>
+            <note type="C">Un flux de pleine mer ne peut amener les troupes jusqu'à Séville. Voir l'Examen 1660 en tête du texte.</note>
+            <l n="626">Un flux de pleine mer jusqu'ici les amène.</l>
+            <l n="627">Toutefois j'aurais tort de jeter dans les coeurs,</l>
+            <l n="628">L'avis étant mal sûr, de paniques terreurs,</l>
+            <l n="629">L'effroi que produirait cette alarme inutile</l>
+            <l n="630">Dans la nuit qui survient troublerait trop la ville.</l>
+            <l n="631">Faites doubler la garde aux murs et sur le port.</l>
+            <l n="632" part="I">C'est assez pour ce soir.</l>
+          </sp>
+        </div>
+        <div type="scene" n="7">
+          <head>SCÈNE VII. Don Fernand, Don Sanche, Don Alonse.</head>
+          <sp who="tc0623-DONALONSE">
+            <speaker>DON ALONSE.</speaker>
+            <l n="632" part="F">Sire, le Comte est mort,</l>
+            <l n="633">Don Diègue par son fils a vengé son offense.</l>
+          </sp>
+          <sp who="tc0623-DONFERNAND">
+            <speaker>DON FERNAND.</speaker>
+            <l n="634">Dès que j'ai su l'affront, j'ai prévu la vengeance ;</l>
+            <l n="635">Et j'ai voulu dès lors prévenir ce malheur.</l>
+          </sp>
+          <sp who="tc0623-DONALONSE">
+            <speaker>DON ALONSE.</speaker>
+            <l n="636">Chimène à vos genoux apporte sa douleur,</l>
+            <l n="637">Elle vient toute en pleurs vous demander justice.</l>
+          </sp>
+          <sp who="tc0623-DONFERNAND">
+            <speaker>DON FERNAND.</speaker>
+            <l n="638">Bien qu'à ses déplaisirs mon âme compatisse,</l>
+            <l n="639">Ce que le Comte a fait semble avoir mérité</l>
+            <l n="640">Ce digne châtiment de sa témérité.</l>
+            <l n="641">Quelque juste pourtant que puisse être sa peine,</l>
+            <l n="642">Je ne puis sans regret perdre un tel capitaine.</l>
+            <l n="643">Après un long service à mon état rendu,</l>
+            <l n="644">Après son sang pour moi mille fois répandu,</l>
+            <l n="645">À quelques sentiments que son orgueil m'oblige,</l>
+            <l n="646">Sa perte m'affaiblit, et son trépas m'afflige.</l>
+          </sp>
+        </div>
+        <div type="scene" n="8">
+          <head>SCÈNE VIII. Don Fernand, Don Diègue, Chimène, Don Sanche, Don Arias, Don Alonse.</head>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="647" part="I">Sire, sire, justice.</l>
+          </sp>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="647" part="F">Ah ! Sire, écoutez-nous.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="648" part="I">Je me jette à vos pieds.</l>
+          </sp>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="648" part="F">J'embrasse vos genoux.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="649" part="I">Je demande justice.</l>
+          </sp>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="649" part="F">Entendez ma défense.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="650">D'un jeune audacieux punissez l'insolence.</l>
+            <l n="651">Il a de votre sceptre abattu le soutien,</l>
+            <l n="652" part="I">Il a tué mon père.</l>
+          </sp>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="652" part="F">Il a vengé le sien.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="653">Au sang de ses sujets un Roi doit la justice.</l>
+          </sp>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="654">Pour la juste vengeance il n'est point de supplice.</l>
+          </sp>
+          <sp who="tc0623-DONFERNAND">
+            <speaker>DON FERNAND.</speaker>
+            <l n="655">Levez-vous l'un et l'autre, et parlez à loisir.</l>
+            <l n="656">Chimène, je prends part à votre déplaisir ;</l>
+            <l n="657">D'une égale douleur je sens mon âme atteinte.</l>
+            <l n="658">Vous parlerez après ne troublez pas sa plainte.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="659">Sire, mon père est mort, mes yeux ont vu son sang</l>
+            <l n="660">Couler à gros bouillons de son généreux flanc,</l>
+            <l n="661">Ce sang qui tant de fois garantit vos murailles,</l>
+            <l n="662">Ce sang qui tant de fois vous gagna des batailles,</l>
+            <l n="663">Ce sang qui tout sorti fume encor de courroux</l>
+            <l n="664">De se voir répandu pour d'autres que pour vous,</l>
+            <l n="665">Qu'au milieu des hasards n'osait verser la guerre,</l>
+            <l n="666">Rodrigue en votre Cour vient d'en couvrir la Terre.</l>
+            <l n="667">J'ai couru sur le lieu, sans force et sans couleur :</l>
+            <l n="668">Je l'ai trouvé sans vie. Excusez ma douleur,</l>
+            <l n="669">Sire, la voix me manque à ce récit funeste,</l>
+            <l n="670">Mes pleurs et mes soupirs vous diront mieux le reste.</l>
+          </sp>
+          <sp who="tc0623-DONFERNAND">
+            <speaker>DON FERNAND.</speaker>
+            <l n="671">Prends courage, ma fille, et sache qu'aujourd'hui</l>
+            <l n="672">Ton Roi te veut servir de père au lieu de lui.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="673">Sire, de trop d'honneur ma misère est suivie.</l>
+            <l n="674">Je vous l'ai déjà dit, je l'ai trouvé sans vie ;</l>
+            <l n="675">Son flanc était ouvert ; et pour mieux m'émouvoir,</l>
+            <l n="676">Son sang sur la poussière écrivait mon devoir ;</l>
+            <l n="677">Ou plutôt sa valeur en cet état réduite</l>
+            <l n="678">Me parlait par sa plaie, et hâtait ma poursuite ;</l>
+            <l n="679">Et pour se faire entendre au plus juste des rois,</l>
+            <l n="680">Par cette triste bouche elle empruntait ma voix.</l>
+            <l n="681">Sire, ne souffrez pas que sous votre puissance</l>
+            <l n="682">Règne devant vos yeux une telle licence ;</l>
+            <l n="683">Que les plus valeureux, avec impunité,</l>
+            <l n="684">Soient exposés aux coups de la témérité ;</l>
+            <l n="685">Qu'un jeune audacieux triomphe de leur gloire,</l>
+            <l n="686">Se baigne dans leur sang, et brave leur mémoire.</l>
+            <l n="687">Un si vaillant guerrier qu'on vient de vous ravir</l>
+            <l n="688">Éteint, s'il n'est vengé, l'ardeur de vous servir.</l>
+            <l n="689">Enfin mon père est mort, j'en demande vengeance,</l>
+            <l n="690">Plus pour votre intérêt que pour mon allégeance.</l>
+            <l n="691">Vous perdez en la mort d'un homme de son rang :</l>
+            <l n="692">Vengez-la par une autre, et le sang par le sang.</l>
+            <l n="693">Immolez, non à moi, mais à votre couronne,</l>
+            <l n="694">Mais à votre grandeur, mais à votre personne ;</l>
+            <l n="695">Immolez, dis-je, Sire, au bien de tout l'État</l>
+            <l n="696">Tout ce qu'enorgueillit un si haut attentat.</l>
+          </sp>
+          <sp who="tc0623-DONFERNAND">
+            <speaker>DON FERNAND.</speaker>
+            <l n="697" part="I">Don Diègue, répondez.</l>
+          </sp>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="697" part="F">Qu'on est digne d'envie</l>
+            <l n="698">Lorsqu'en perdant la force on perd aussi la vie,</l>
+            <l n="699">Et qu'un long âge apprête aux hommes généreux,</l>
+            <l n="700">Au bout de leur carrière, un destin malheureux !</l>
+            <l n="701">Moi, dont les longs travaux ont acquis tant de gloire,</l>
+            <l n="702">Moi, que jadis partout a suivi la victoire,</l>
+            <l n="703">Je me vois aujourd'hui, pour avoir trop vécu,</l>
+            <l n="704">Recevoir un affront et demeurer vaincu.</l>
+            <l n="705">Ce que n'a pu jamais combat, siège, embuscade,</l>
+            <l n="706">Ce que n'a pu jamais Aragon ni Grenade,</l>
+            <l n="707">Ni tous vos ennemis, ni tous mes envieux,</l>
+            <l n="708">Le Comte en votre Cour l'a fait presque à vos yeux,</l>
+            <l n="709">Jaloux de votre choix, et fier de l'avantage</l>
+            <l n="710">Que lui donnait sur moi l'impuissance de l'âge.</l>
+            <note type="L">Harnois : Armure complète, la cuirasse, la casque, et tout l'équipage des armes d'un cavalier pesamment armé. [F]</note>
+            <l n="711">Sire, ainsi ces cheveux blanchis sous le harnois,</l>
+            <l n="712">Ce sang pour vous servir prodigué tant de fois,</l>
+            <l n="713">Ce bras, jadis l'effroi d'une armée ennemie,</l>
+            <l n="714">Descendaient au tombeau tout chargés d'infamie,</l>
+            <l n="715">Si je n'eusse produit un fils digne de moi,</l>
+            <l n="716">Digne de son pays et digne de son roi.</l>
+            <l n="717">Il m'a prêté sa main, il a tué le Comte ;</l>
+            <l n="718">Il m'a rendu l'honneur, il a lavé ma honte.</l>
+            <l n="719">Si montrer du courage et du ressentiment,</l>
+            <l n="720">Si venger un soufflet mérite un châtiment,</l>
+            <l n="721">Sur moi seul doit tomber l'éclat de la tempête :</l>
+            <l n="722">Quand le bras a failli, l'on en punit la tête.</l>
+            <l n="723">Qu'on nomme crime, ou non, ce qui fait nos débats,</l>
+            <l n="724">Sire, j'en suis la tête, il n'en est que le bras.</l>
+            <l n="725">Si Chimène se plaint qu'il a tué son père,</l>
+            <l n="726">Il ne l'eût jamais fait si je l'eusse pu faire.</l>
+            <l n="727">Immolez donc ce chef que les ans vont ravir,</l>
+            <l n="728">Et conservez pour vous le bras qui peut servir.</l>
+            <l n="729">Aux dépens de mon sang satisfaites Chimène :</l>
+            <l n="730">Je n'y résiste point, je consens à ma peine ;</l>
+            <l n="731">Et loin de murmurer d'un rigoureux décret,</l>
+            <l n="732">Mourant sans déshonneur, je mourrai sans regret.</l>
+          </sp>
+          <sp who="tc0623-DONFERNAND">
+            <speaker>DON FERNAND.</speaker>
+            <l n="733">L'affaire est d'importance, et, bien considérée,</l>
+            <l n="734">Mérite en plein conseil d'être délibérée.</l>
+            <l n="735">Don Sanche, remettez Chimène en sa maison.</l>
+            <l n="736">Don Diègue aura ma Cour et sa foi pour prison.</l>
+            <l n="737">Qu'on me cherche son fils. Je vous ferai justice.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="738">Il est juste, grand roi, qu'un meurtrier périsse.</l>
+          </sp>
+          <sp who="tc0623-DONFERNAND">
+            <speaker>DON FERNAND.</speaker>
+            <l n="739">Prends du repos, ma fille, et calme tes douleurs.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="740">M'ordonner du repos, c'est croître mes malheurs.</l>
+          </sp>
+        </div>
+      </div>
+      <div type="act" n="3">
+        <head>ACTE III</head>
+        <div type="scene" n="1">
+          <head>SCÈNE I. Don Rodrigue, Elvire.</head>
+          <sp who="tc0623-ELVIRE">
+            <speaker>ELVIRE.</speaker>
+            <l n="741">Rodrigue, qu'as-tu fait ? Où viens-tu, misérable ?</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="742">Suivre le triste cours de mon sort déplorable.</l>
+          </sp>
+          <sp who="tc0623-ELVIRE">
+            <speaker>ELVIRE.</speaker>
+            <l n="743">Où prends-tu cette audace et ce nouvel orgueil,</l>
+            <l n="744">De paraître en des lieux que tu remplis de deuil ?</l>
+            <l n="745">Quoi ? Viens-tu jusqu'ici braver l'ombre du Comte ?</l>
+            <l n="746" part="I">Ne l'as-tu pas tué ?</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="746" part="F">Sa vie était ma honte :</l>
+            <l n="747">Mon honneur de ma main a voulu cet effort.</l>
+          </sp>
+          <sp who="tc0623-ELVIRE">
+            <speaker>ELVIRE.</speaker>
+            <l n="748">Mais chercher ton asile en la maison du mort !</l>
+            <l n="749">Jamais un meurtrier en fit-il son refuge ?</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="750">Et je n'y viens aussi que m'offrir à mon juge.</l>
+            <l n="751">Ne me regarde plus d'un visage étonné ;</l>
+            <l n="752">Je cherche le trépas après l'avoir donné.</l>
+            <l n="753">Mon juge est mon amour, mon juge est ma Chimène :</l>
+            <l n="754">Je mérite la mort de mériter sa haine,</l>
+            <l n="755">Et j'en viens recevoir, comme un bien souverain,</l>
+            <l n="756">Et l'arrêt de sa bouche, et le coup de sa main.</l>
+          </sp>
+          <sp who="tc0623-ELVIRE">
+            <speaker>ELVIRE.</speaker>
+            <l n="757">Fuis plutôt de ses yeux, fuis de sa violence ;</l>
+            <l n="758">À ses premiers transports dérobe ta présence :</l>
+            <l n="759">Va, ne t'expose point aux premiers mouvements</l>
+            <l n="760">Que poussera l'ardeur de ses ressentiments.</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="761">Non, non, ce cher objet à qui j'ai pu déplaire</l>
+            <l n="762">Ne peut pour mon supplice avoir trop de colère ;</l>
+            <l n="763">Et j'évite cent morts qui me vont accabler,</l>
+            <l n="764">Si pour mourir plus tôt je puis la redoubler.</l>
+          </sp>
+          <sp who="tc0623-ELVIRE">
+            <speaker>ELVIRE.</speaker>
+            <l n="765">Chimène est au palais, de pleurs toute baignée,</l>
+            <l n="766">Et n'en reviendra point que bien accompagnée.</l>
+            <l n="767">Rodrigue, fuis, de grâce : ôte-moi de souci.</l>
+            <l n="768">Que ne dira-t-on point si l'on te voit ici ?</l>
+            <l n="769">Veux-tu qu'un médisant, pour comble à sa misère,</l>
+            <l n="770">L'accuse d'y souffrir l'assassin de son père ?</l>
+            <l n="771">Elle va revenir ; elle vient, je la vois :</l>
+            <l n="772">Du moins, pour son honneur, Rodrigue, cache-toi.</l>
+          </sp>
+        </div>
+        <div type="scene" n="2">
+          <head>SCÈNE II. Don Sanche, Chimène, Elvire.</head>
+          <sp who="tc0623-DONSANCHE">
+            <speaker>DON SANCHE.</speaker>
+            <l n="773">Oui, Madame, il vous faut de sanglantes victimes :</l>
+            <l n="774">Votre colère est juste, et vos pleurs légitimes ;</l>
+            <l n="775">Et je n'entreprends pas, à force de parler,</l>
+            <l n="776">Ni de vous adoucir, ni de vous consoler.</l>
+            <l n="777">Mais si de vous servir je puis être capable,</l>
+            <l n="778">Employez mon épée à punir le coupable ;</l>
+            <l n="779">Employez mon amour à venger cette mort :</l>
+            <l n="780">Sous vos commandements mon bras sera trop fort.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="781" part="I">Malheureuse !</l>
+          </sp>
+          <sp who="tc0623-DONSANCHE">
+            <speaker>DON SANCHE.</speaker>
+            <l n="781" part="F">De grâce, acceptez mon service.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="782">J'offenserais le roi, qui m'a promis justice.</l>
+          </sp>
+          <sp who="tc0623-DONSANCHE">
+            <speaker>DON SANCHE.</speaker>
+            <l n="783">Vous savez qu'elle marche avec tant de langueur,</l>
+            <l n="784">Qu'assez souvent le crime échappe à sa longueur ;</l>
+            <l n="785">Son cours lent et douteux fait trop perdre de larmes.</l>
+            <l n="786">Souffrez qu'un cavalier vous venge par les armes.</l>
+            <l n="787">La voie en est plus sûre, et plus prompte à punir.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="788">C'est le dernier remède ; et s'il y faut venir,</l>
+            <l n="789">Et que de mes malheurs cette pitié vous dure,</l>
+            <l n="790">Vous serez libre alors de venger mon injure.</l>
+          </sp>
+          <sp who="tc0623-DONSANCHE">
+            <speaker>DON SANCHE.</speaker>
+            <l n="791">C'est l'unique bonheur où mon âme prétend ;</l>
+            <l n="792">Et pouvant l'espérer, je m'en vais trop content.</l>
+          </sp>
+        </div>
+        <div type="scene" n="3">
+          <head>SCÈNE III. Chimène, Elvire.</head>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="793">Enfin je me vois libre, et je puis sans contrainte</l>
+            <l n="794">De mes vives douleurs te faire voir l'atteinte ;</l>
+            <l n="795">Je puis donner passage à mes tristes soupirs ;</l>
+            <l n="796">Je puis t'ouvrir mon âme et tous mes déplaisirs.</l>
+            <l n="797">Mon père est mort, Elvire ; et la première épée</l>
+            <l n="798">Dont s'est armé Rodrigue, a sa trame coupée.</l>
+            <l n="799">Pleurez, pleurez, mes yeux, et fondez-vous en eau !</l>
+            <l n="800">La moitié de ma vie a mis l'autre au tombeau,</l>
+            <l n="801">Et m'oblige à venger, après ce coup funeste,</l>
+            <l n="802">Celle que je n'ai plus sur celle qui me reste.</l>
+          </sp>
+          <sp who="tc0623-ELVIRE">
+            <speaker>ELVIRE.</speaker>
+            <l n="803" part="I">Reposez-vous, madame.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="803" part="F">Ah ! Que mal à propos</l>
+            <l n="804">Dans un malheur si grand tu parles de repos !</l>
+            <l n="805">Par où sera jamais ma douleur apaisée,</l>
+            <l n="806">Si je ne puis haïr la main qui l'a causée ?</l>
+            <l n="807">Et que dois-je espérer qu'un tourment éternel,</l>
+            <l n="808">Si je poursuis un crime, aimant le criminel ?</l>
+          </sp>
+          <sp who="tc0623-ELVIRE">
+            <speaker>ELVIRE.</speaker>
+            <l n="809">Il vous prive d'un père, et vous l'aimez encore !</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="810">C'est peu de dire aimer, Elvire : je l'adore ;</l>
+            <l n="811">Ma passion s'oppose à mon ressentiment ;</l>
+            <l n="812">Dedans mon ennemi je trouve mon amant ;</l>
+            <l n="813">Et je sens qu'en dépit de toute ma colère,</l>
+            <l n="814">Rodrigue dans mon coeur combat encor mon père :</l>
+            <l n="815">Il l'attaque, il le presse, il cède, il se défend,</l>
+            <l n="816">Tantôt fort, tantôt faible, et tantôt triomphant ;</l>
+            <l n="817">Mais en ce dur combat de colère et de flamme,</l>
+            <l n="818">Il déchire mon coeur sans partager mon âme ;</l>
+            <l n="819">Et quoi que mon amour ait sur moi de pouvoir,</l>
+            <l n="820">Je ne consulte point pour suivre mon devoir :</l>
+            <l n="821">Je cours sans balancer où mon honneur m'oblige.</l>
+            <l n="822">Rodrigue m'est bien cher, son intérêt m'afflige ;</l>
+            <l n="823">Mon coeur prend son parti ; mais malgré son effort,</l>
+            <l n="824">Je sais ce que je suis, et que mon père est mort.</l>
+          </sp>
+          <sp who="tc0623-ELVIRE">
+            <speaker>ELVIRE.</speaker>
+            <l n="825" part="I">Pensez-vous le poursuivre ?</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="825" part="F">Ah ! Cruelle pensée !</l>
+            <l n="826">Et cruelle poursuite où je me vois forcée !</l>
+            <l n="827">Je demande sa tête, et crains de l'obtenir :</l>
+            <l n="828">Ma mort suivra la sienne, et je le veux punir !</l>
+          </sp>
+          <sp who="tc0623-ELVIRE">
+            <speaker>ELVIRE.</speaker>
+            <l n="829">Quittez, quittez, Madame, un dessein si tragique ;</l>
+            <l n="830">Ne vous imposez point de loi si tyrannique.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="831">Quoi ! Mon père étant mort, et presque entre mes bras,</l>
+            <note type="C">Orrai : future du verbe ouïr. Le verbe oeïr est maintenant défectif.</note>
+            <l n="832">Son sang criera vengeance, et je ne l'orrai pas !</l>
+            <l n="833">Mon coeur, honteusement surpris par d'autres charmes,</l>
+            <l n="834">Croira ne lui devoir que d'impuissantes larmes !</l>
+            <l n="835">Et je pourrai souffrir qu'un amour suborneur</l>
+            <l n="836">Sous un lâche silence étouffe mon honneur !</l>
+          </sp>
+          <sp who="tc0623-ELVIRE">
+            <speaker>ELVIRE.</speaker>
+            <l n="837">Madame, croyez-moi, vous serez excusable</l>
+            <l n="838">D'avoir moins de chaleur contre un objet aimable,</l>
+            <l n="839">Contre un amant si cher : vous avez assez fait,</l>
+            <l n="840">Vous avez vu le roi ; n'en pressez point l'effet,</l>
+            <l n="841">Ne vous obstinez point en cette humeur étrange.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="842">Il y va de ma gloire, il faut que je me venge ;</l>
+            <l n="843">Et de quoi que nous flatte un désir amoureux,</l>
+            <l n="844">Toute excuse est honteuse aux esprits généreux.</l>
+          </sp>
+          <sp who="tc0623-ELVIRE">
+            <speaker>ELVIRE.</speaker>
+            <l n="845">Mais vous aimez Rodrigue, il ne vous peut déplaire.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="846" part="I">Je l'avoue.</l>
+          </sp>
+          <sp who="tc0623-ELVIRE">
+            <speaker>ELVIRE.</speaker>
+            <l n="846" part="F">Après tout, que pensez-vous donc faire ?</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="847">Pour conserver ma gloire et finir mon ennui,</l>
+            <l n="848">Le poursuivre, le perdre, et mourir après lui.</l>
+          </sp>
+        </div>
+        <div type="scene" n="4">
+          <head>SCÈNE IV. Don Rodrigue, Chimène, Elvire.</head>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="849">Eh bien ! Sans vous donner la peine de poursuivre,</l>
+            <l n="850">Assurez-vous l'honneur de m'empêcher de vivre.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="851">Elvire, où sommes-nous, et qu'est-ce que je vois ?</l>
+            <l n="852">Rodrigue en ma maison ! Rodrigue devant moi !</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="853">N'épargnez point mon sang : goûtez sans résistance</l>
+            <l n="854">La douceur de ma perte et de votre vengeance.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="855" part="I">Hélas !</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="855" part="M">Écoute-moi.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="855" part="M">Je me meurs.</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="855" part="F">Un moment.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="856" part="I">Va, laisse-moi mourir.</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="856" part="F">Quatre mots seulement :</l>
+            <l n="857">Après ne me réponds qu'avec cette épée.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="858">Quoi ! Du sang de mon père encor toute trempée !</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="859" part="I">Ma Chimène...</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="859" part="F">Ôte-moi cet objet odieux,</l>
+            <l n="860">Qui reproche ton crime et ta vie à mes yeux.</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="861">Regarde-le plutôt pour exciter ta haine,</l>
+            <l n="862">Pour croître ta colère, et pour hâter ma peine.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="863" part="I">Il est teint de mon sang.</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="863" part="F">Plonge-le dans le mien,</l>
+            <l n="864">Et fais-lui perdre ainsi la teinture du tien.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="865">Ah ! Quelle cruauté, qui tout en un jour tue</l>
+            <l n="866">Le père par le fer, la fille par la vue !</l>
+            <l n="867">Ôte-moi cet objet, je ne le puis souffrir :</l>
+            <l n="868">Tu veux que je t'écoute, et tu me fais mourir !</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="869">Je fais ce que tu veux, mais sans quitter l'envie</l>
+            <l n="870">De finir par tes mains ma déplorable vie ;</l>
+            <l n="871">Car enfin n'attends pas de mon affection</l>
+            <l n="872">Un lâche repentir d'une bonne action.</l>
+            <l n="873">L'irréparable effet d'une chaleur trop prompte</l>
+            <l n="874">Déshonorait mon père, et me couvrait de honte.</l>
+            <l n="875">Tu sais comme un soufflet touche un homme de coeur ;</l>
+            <l n="876">J'avais part à l'affront, j'en ai cherché l'auteur :</l>
+            <l n="877">Je l'ai vu, j'ai vengé mon honneur et mon père ;</l>
+            <l n="878">Je le ferais encor, si j'avais à le faire.</l>
+            <l n="879">Ce n'est pas qu'en effet contre mon père et moi</l>
+            <l n="880">Ma flamme assez longtemps n'ait combattu pour toi ;</l>
+            <l n="881">Juge de son pouvoir : dans une telle offense</l>
+            <l n="882">J'ai pu délibérer si j'en prendrais vengeance.</l>
+            <l n="883">Réduit à te déplaire, ou souffrir un affront,</l>
+            <l n="884">J'ai pensé qu'à son tour mon bras était trop prompt ;</l>
+            <l n="885">Je me suis accusé de trop de violence ;</l>
+            <l n="886">Et ta beauté sans doute emportait la balance,</l>
+            <l n="887">À moins que d'opposer à tes plus forts appas</l>
+            <l n="888">Qu'un homme sans honneur ne te méritait pas ;</l>
+            <l n="889">Que malgré cette part que j'avais en ton âme,</l>
+            <l n="890">Qui m'aima généreux me haïrait infâme ;</l>
+            <l n="891">Qu'écouter ton amour, obéir à sa voix,</l>
+            <l n="892">C'était m'en rendre indigne et diffamer ton choix.</l>
+            <l n="893">Je te le dis encore ; et quoique j'en soupire,</l>
+            <l n="894">Jusqu'au dernier soupir je veux bien le redire :</l>
+            <l n="895">Je t'ai fait une offense, et j'ai dû m'y porter</l>
+            <l n="896">Pour effacer ma honte, et pour te mériter ;</l>
+            <l n="897">Mais quitte envers l'honneur, et quitte envers mon père,</l>
+            <l n="898">C'est maintenant à toi que je viens satisfaire :</l>
+            <l n="899">C'est pour t'offrir mon sang qu'en ce lieu tu me vois.</l>
+            <l n="900">J'ai fait ce que j'ai dû, je fais ce que je dois.</l>
+            <l n="901">Je sais qu'un père mort t'arme contre mon crime ;</l>
+            <l n="902">Je ne t'ai pas voulu dérober ta victime :</l>
+            <l n="903">Immole avec courage au sang qu'il a perdu</l>
+            <l n="904">Celui qui met sa gloire à l'avoir répandu.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="905">Ah ! Rodrigue, il est vrai, quoique ton ennemie,</l>
+            <l n="906">Je ne puis te blâmer d'avoir fui l'infâmie ;</l>
+            <l n="907">Et de quelque façon qu'éclatent mes douleurs,</l>
+            <l n="908">Je ne t'accuse point, je pleure mes malheurs.</l>
+            <l n="909">Je sais ce que l'honneur, après un tel outrage,</l>
+            <l n="910">Demandait à l'ardeur d'un généreux courage :</l>
+            <l n="911">Tu n'as fait le devoir que d'un homme de bien ;</l>
+            <l n="912">Mais aussi, le faisant, tu m'as appris le mien.</l>
+            <l n="913">Ta funeste valeur m'instruit par ta victoire ;</l>
+            <l n="914">Elle a vengé ton père et soutenu ta gloire :</l>
+            <l n="915">Même soin me regarde, et j'ai, pour m'affliger,</l>
+            <l n="916">Ma gloire à soutenir, et mon père à venger.</l>
+            <l n="917">Hélas ! Ton intérêt ici me désespère :</l>
+            <l n="918">Si quelque autre malheur m'avait ravi mon père,</l>
+            <l n="919">Mon âme aurait trouvé dans le bien de te voir</l>
+            <l n="920">L'unique allégement qu'elle eût pu recevoir ;</l>
+            <l n="921">Et contre ma douleur j'aurais senti des charmes,</l>
+            <l n="922">Quand une main si chère eût essuyé mes larmes.</l>
+            <l n="923">Mais il me faut te perdre après l'avoir perdu ;</l>
+            <l n="924">Cet effort sur ma flamme à mon honneur est dû ;</l>
+            <l n="925">Et cet affreux devoir, dont l'ordre m'assassine,</l>
+            <l n="926">Me force à travailler moi-même à ta ruine.</l>
+            <l n="927">Car enfin n'attends pas de mon affection</l>
+            <l n="928">De lâches sentiments pour ta punition.</l>
+            <l n="929">De quoi qu'en ta faveur notre amour m'entretienne,</l>
+            <l n="930">Ma générosité doit répondre à la tienne :</l>
+            <l n="931">Tu t'es, en m'offensant, montré digne de moi ;</l>
+            <l n="932">Je me dois, par ta mort, montrer digne de toi.</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="933">Ne diffère donc plus ce que l'honneur t'ordonne :</l>
+            <l n="934">Il demande ma tête, et je te l'abandonne ;</l>
+            <l n="935">Fais-en un sacrifice à ce noble intérêt :</l>
+            <l n="936">Le coup m'en sera doux, aussi bien que l'arrêt.</l>
+            <l n="937">Attendre après mon crime une lente justice,</l>
+            <l n="938">C'est reculer ta gloire autant que mon supplice.</l>
+            <l n="939">Je mourrai trop heureux, mourant d'un coup si beau.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="940">Va, je suis ta partie, et non pas ton bourreau.</l>
+            <l n="941">Si tu m'offres ta tête, est-ce à moi de la prendre ?</l>
+            <l n="942">Je la dois attaquer, mais tu dois la défendre ;</l>
+            <l n="943">C'est d'un autre que toi qu'il me faut l'obtenir,</l>
+            <l n="944">Et je dois te poursuivre, et non pas te punir.</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="945">De quoi qu'en ma faveur notre amour t'entretienne,</l>
+            <l n="946">Ta générosité doit répondre à la mienne ;</l>
+            <l n="947">Et pour venger un père emprunter d'autres bras,</l>
+            <l n="948">Ma Chimène, crois-moi, c'est n'y répondre pas :</l>
+            <l n="949">Ma main seule du mien a su venger l'offense,</l>
+            <l n="950">Ta main seule du tien doit prendre la vengeance.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="951">Cruel ! À quel propos sur ce point t'obstiner ?</l>
+            <l n="952">Tu t'es vengé sans aide, et tu m'en veux donner !</l>
+            <l n="953">Je suivrai ton exemple, et j'ai trop de courage</l>
+            <l n="954">Pour souffrir qu'avec toi ma gloire se partage.</l>
+            <l n="955">Mon père et mon honneur ne veulent rien devoir</l>
+            <l n="956">Aux traits de ton amour ni de ton désespoir.</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="957">Rigoureux point d'honneur ! Hélas ! Quoi que je fasse,</l>
+            <l n="958">Ne pourrai-je à la fin obtenir cette grâce ?</l>
+            <l n="959">Au nom d'un père mort, ou de notre amitié,</l>
+            <l n="960">Punis-moi par vengeance, ou du moins par pitié.</l>
+            <l n="961">Ton malheureux amant aura bien moins de peine</l>
+            <l n="962">À mourir par ta main qu'à vivre avec ta haine.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="963" part="I">Va, je ne te hais point.</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="963" part="M">Tu le dois.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="963" part="F">Je ne puis.</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="964">Crains-tu si peu le blâme, et si peu les faux bruits ?</l>
+            <l n="965">Quand on saura mon crime, et que ta flamme dure,</l>
+            <l n="966">Que ne publieront point l'envie et l'imposture !</l>
+            <l n="967">Force-les au silence, et sans plus discourir,</l>
+            <l n="968">Sauve ta renommée en me faisant mourir.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="969">Elle éclate bien mieux en te laissant la vie ;</l>
+            <l n="970">Et je veux que la voix de la plus noire envie</l>
+            <l n="971">Élève au ciel ma gloire et plaigne mes ennuis,</l>
+            <l n="972">Sachant que je t'adore et que je te poursuis.</l>
+            <l n="973">Va-t'en, ne montre plus à ma douleur extrême</l>
+            <l n="974">Ce qu'il faut que je perde, encore que je l'aime.</l>
+            <l n="975">Dans l'ombre de la nuit cache bien ton départ :</l>
+            <l n="976">Si l'on te voit sortir, mon honneur court hasard.</l>
+            <l n="977">La seule occasion qu'aura la médisance,</l>
+            <l n="978">C'est de savoir qu'ici j'ai souffert ta présence :</l>
+            <l n="979">Ne lui donne point lieu d'attaquer ma vertu.</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="980" part="I">Que je meure !</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="980" part="M">Va-t'en.</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="980" part="F">À quoi te résous-tu ?</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="981">Malgré des feux si beaux, qui troublent ma colère,</l>
+            <l n="982">Je ferai mon possible à bien venger mon père ;</l>
+            <l n="983">Mais malgré la rigueur d'un si cruel devoir,</l>
+            <l n="984">Mon unique souhait est de ne rien pouvoir.</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="985" part="I">Ô miracle d'amour !</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="985" part="F">Ô comble de misères !</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="986">Que de maux et de pleurs nous coûteront nos pères !</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="987" part="I">Rodrigue, qui l'eût cru ?</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="987" part="F">Chimène, qui l'eût dit ?</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <note type="L">Heur : rencontre avantageuse. (...) [F] [antonyme de malheur]</note>
+            <l n="988">Que notre heur fût si proche et sitôt se perdît ?</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="989">Et que si près du port, contre toute apparence,</l>
+            <l n="990">Un orage si prompt brisât notre espérance ?</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="991" part="I">Ah ! Mortelles douleurs !</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="991" part="F">Ah ! Regrets superflus !</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="992">Va-t'en, encore un coup, je ne t'écoute plus.</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="993">Adieu : je vais traîner une mourante vie,</l>
+            <l n="994">Tant que par ta poursuite elle me soit ravie.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="995">Si j'en obtiens l'effet, je t'engage ma foi</l>
+            <l n="996">De ne respirer pas un moment après toi.</l>
+            <l n="997">Adieu : sors, et surtout garde bien qu'on te voie.</l>
+          </sp>
+          <sp who="tc0623-ELVIRE">
+            <speaker>ELVIRE.</speaker>
+            <l n="998">Madame, quelques maux que le ciel nous envoie...</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="999">Ne m'importune plus, laisse-moi soupirer,</l>
+            <l n="1000">Je cherche le silence et la nuit pour pleurer.</l>
+          </sp>
+        </div>
+        <div type="scene" n="5">
+          <head>SCÈNE V.</head>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="1001">Jamais nous ne goûtons de parfaite allégresse :</l>
+            <l n="1002">Nos plus heureux succès sont mêlés de tristesse ;</l>
+            <l n="1003">Toujours quelques soucis en ces événements</l>
+            <l n="1004">Troublent la pureté de nos contentements.</l>
+            <l n="1005">Au milieu du bonheur mon âme en sent l'atteinte :</l>
+            <l n="1006">Je nage dans la joie, et je tremble de crainte.</l>
+            <l n="1007">J'ai vu mort l'ennemi qui m'avait outragé ;</l>
+            <l n="1008">Et je ne saurais voir la main qui m'a vengé.</l>
+            <l n="1009">En vain je m'y travaille, et d'un soin inutile,</l>
+            <l n="1010">Tout cassé que je suis, je cours toute la ville :</l>
+            <l n="1011">Ce peu que mes vieux ans m'ont laissé de vigueur</l>
+            <l n="1012">Se consume sans fruit à chercher ce vainqueur.</l>
+            <l n="1013">À toute heure, en tous lieux, dans une nuit si sombre,</l>
+            <l n="1014">Je pense l'embrasser, et n'embrasse qu'une ombre ;</l>
+            <l n="1015">Et mon amour, déçu par cet objet trompeur,</l>
+            <l n="1016">Se forme des soupçons qui redoublent ma peur.</l>
+            <l n="1017">Je ne découvre point de marques de sa fuite ;</l>
+            <l n="1018">Je crains du comte mort les amis et la suite ;</l>
+            <l n="1019">Leur nombre m'épouvante, et confond ma raison.</l>
+            <l n="1020">Rodrigue ne vit plus, ou respire en prison.</l>
+            <l n="1021">Justes cieux ! Me trompé-je encore à l'apparence,</l>
+            <l n="1022">Ou si je vois enfin mon unique espérance ?</l>
+            <l n="1023">C'est lui, n'en doutons plus ; mes voeux sont exaucés,</l>
+            <l n="1024">Ma crainte est dissipée, et mes ennuis cessés.</l>
+          </sp>
+        </div>
+        <div type="scene" n="6">
+          <head>SCÈNE VI. Don Diègue, Don Rodrigue.</head>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="1025">Rodrigue, enfin le ciel permet que je te voie !</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="1026" part="I">Hélas !</l>
+          </sp>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="1026" part="F">Ne mêle point de soupirs à ma joie ;</l>
+            <l n="1027">Laisse-moi prendre haleine afin de te louer.</l>
+            <l n="1028">Ma valeur n'a point lieu de te désavouer :</l>
+            <l n="1029">Tu l'as bien imitée, et ton illustre audace</l>
+            <l n="1030">Fait bien revivre en toi les héros de ma race :</l>
+            <l n="1031">C'est d'eux que tu descends, c'est de moi que tu viens :</l>
+            <l n="1032">Ton premier coup d'épée égale tous les miens ;</l>
+            <l n="1033">Et d'une belle ardeur ta jeunesse animée</l>
+            <l n="1034">Par cette grande épreuve atteint ma renommée.</l>
+            <l n="1035">Appui de ma vieillesse, et comble de mon heur,</l>
+            <l n="1036">Touche ces cheveux blancs à qui tu rends l'honneur,</l>
+            <l n="1037">Viens baiser cette joue, et reconnais la place</l>
+            <l n="1038">Où fut empreint l'affront que ton courage efface.</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="1039">L'honneur vous en est dû : je ne pouvais pas moins,</l>
+            <l n="1040">Étant sorti de vous et nourri par vos soins.</l>
+            <l n="1041">Je m'en tiens trop heureux, et mon âme est ravie</l>
+            <l n="1042">Que mon coup d'essai plaise à qui je dois la vie ;</l>
+            <l n="1043">Mais parmi vos plaisirs ne soyez point jaloux</l>
+            <l n="1044">Si je m'ose à mon tour satisfaire après vous.</l>
+            <l n="1045">Souffrez qu'en liberté mon désespoir éclate ;</l>
+            <l n="1046">Assez et trop longtemps votre discours le flatte.</l>
+            <l n="1047">Je ne me repens point de vous avoir servi ;</l>
+            <l n="1048">Mais rendez-moi le bien que ce coup m'a ravi.</l>
+            <l n="1049">Mon bras, pour vous venger, armé contre ma flamme,</l>
+            <l n="1050">Par ce coup glorieux m'a privé de mon âme ;</l>
+            <l n="1051">Ne me dites plus rien ; pour vous j'ai tout perdu :</l>
+            <l n="1052">Ce que je vous devais, je vous l'ai bien rendu.</l>
+          </sp>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="1053">Porte, porte plus haut le fruit de ta victoire :</l>
+            <l n="1054">Je t'ai donné la vie, et tu me rends ma gloire ;</l>
+            <l n="1055">Et d'autant que l'honneur m'est plus cher que le jour,</l>
+            <l n="1056">D'autant plus maintenant je te dois de retour.</l>
+            <l n="1057">Mais d'un coeur magnanime éloigne ces faiblesses ;</l>
+            <l n="1058">Nous n'avons qu'un honneur, il est tant de maîtresses !</l>
+            <l n="1059">L'amour n'est qu'un plaisir, l'honneur est un devoir.</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="1060" part="I">Ah ! Que me dites-vous ?</l>
+          </sp>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="1060" part="F">Ce que tu dois savoir.</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="1061">Mon honneur offensé sur moi-même se venge ;</l>
+            <l n="1062">Et vous m'osez pousser à la honte du change !</l>
+            <l n="1063">L'infamie est pareille, et suit également</l>
+            <l n="1064">Le guerrier sans courage et le perfide amant.</l>
+            <l n="1065">À ma fidélité ne faites point d'injure ;</l>
+            <l n="1066">Souffrez-moi généreux sans me rendre parjure :</l>
+            <l n="1067">Mes liens sont trop forts pour être ainsi rompus ;</l>
+            <l n="1068">Ma foi m'engage encor si je n'espère plus ;</l>
+            <l n="1069">Et ne pouvant quitter ni posséder Chimène,</l>
+            <l n="1070">Le trépas que je cherche est ma plus douce peine.</l>
+          </sp>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="1071">Il n'est pas temps encor de chercher le trépas :</l>
+            <l n="1072">Ton prince et ton pays ont besoin de ton bras.</l>
+            <l n="1073">La flotte qu'on craignait, dans ce grand fleuve entrée,</l>
+            <l n="1074">Croit surprendre la ville et piller la contrée.</l>
+            <l n="1075">Les Mores vont descendre, et le flux et la nuit</l>
+            <l n="1076">Dans une heure à nos murs les amène sans bruit.</l>
+            <l n="1077">La Cour est en désordre, et le peuple en alarmes :</l>
+            <l n="1078">On n'entend que des cris, on ne voit que des larmes.</l>
+            <l n="1079">Dans ce malheur public mon bonheur a permis</l>
+            <l n="1080">Que j'ai trouvé chez moi cinq cents de mes amis,</l>
+            <l n="1081">Qui sachant mon affront, poussés d'un même zèle,</l>
+            <l n="1082">Se venaient tous offrir à venger ma querelle.</l>
+            <l n="1083">Tu les as prévenus ; mais leurs vaillantes mains</l>
+            <l n="1084">Se tremperont bien mieux au sang des Africains.</l>
+            <l n="1085">Va marcher à leur tête où l'honneur te demande :</l>
+            <l n="1086">C'est toi que veut pour chef leur généreuse bande.</l>
+            <l n="1087">De ces vieux ennemis va soutenir l'abord :</l>
+            <l n="1088">Là, si tu veux mourir, trouve une belle mort ;</l>
+            <l n="1089">Prends-en l'occasion, puisqu'elle t'est offerte ;</l>
+            <l n="1090">Fais devoir à ton roi son salut à ta perte ;</l>
+            <l n="1091">Mais reviens-en plutôt les palmes sur le front.</l>
+            <l n="1092">Ne borne pas ta gloire à venger un affront ;</l>
+            <l n="1093">Porte-la plus avant : force par ta vaillance</l>
+            <l n="1094">Ce monarque au pardon, et Chimène au silence ;</l>
+            <l n="1095">Si tu l'aimes, apprends que revenir vainqueur,</l>
+            <l n="1096">C'est l'unique moyen de regagner son coeur.</l>
+            <l n="1097">Mais le temps est trop cher pour le perdre en paroles ;</l>
+            <l n="1098">Je t'arrête en discours, et je veux que tu voles.</l>
+            <l n="1099">Viens, suis-moi, va combattre, et montrer à ton roi</l>
+            <l n="1100">Que ce qu'il perd au comte il le recouvre en toi.</l>
+          </sp>
+        </div>
+      </div>
+      <div type="act" n="4">
+        <head>ACTE IV</head>
+        <div type="scene" n="1">
+          <head>SCÈNE PREMIÈRE. Chimène, Elvire.</head>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="1101">N'est-ce point un faux bruit ? Le sais-tu bien, Elvire ?</l>
+          </sp>
+          <sp who="tc0623-ELVIRE">
+            <speaker>ELVIRE.</speaker>
+            <l n="1102">Vous ne croiriez jamais comme chacun l'admire,</l>
+            <l n="1103">Et porte jusqu'au ciel, d'une commune voix,</l>
+            <l n="1104">De ce jeune héros les glorieux exploits.</l>
+            <l n="1105">Les Mores devant lui n'ont paru qu'à leur honte ;</l>
+            <l n="1106">Leur abord fut bien prompt, leur fuite encor plus prompte.</l>
+            <l n="1107">Trois heures de combat laissent à nos guerriers</l>
+            <l n="1108">Une victoire entière et deux rois prisonniers.</l>
+            <l n="1109">La valeur de leur chef ne trouvait point d'obstacles.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="1110">Et la main de Rodrigue a fait tous ces miracles ?</l>
+          </sp>
+          <sp who="tc0623-ELVIRE">
+            <speaker>ELVIRE.</speaker>
+            <l n="1111">De ses nobles efforts ces deux rois sont le prix :</l>
+            <l n="1112">Sa main les a vaincus, et sa main les a pris.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="1113">De qui peux-tu savoir ces nouvelles étranges ?</l>
+          </sp>
+          <sp who="tc0623-ELVIRE">
+            <speaker>ELVIRE.</speaker>
+            <l n="1114">Du peuple, qui partout fait sonner ses louanges,</l>
+            <l n="1115">Le nomme de sa joie et l'objet et l'auteur,</l>
+            <l n="1116">Son ange tutélaire, et son libérateur.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="1117">Et le roi, de quel oeil voit-il tant de vaillance ?</l>
+          </sp>
+          <sp who="tc0623-ELVIRE">
+            <speaker>ELVIRE.</speaker>
+            <l n="1118">Rodrigue n'ose encor paraître en sa présence ;</l>
+            <l n="1119">Mais Don Diègue ravi lui présente enchaînés,</l>
+            <l n="1120">Au nom de ce vainqueur, ces captifs couronnés,</l>
+            <l n="1121">Et demande pour grâce à ce généreux prince</l>
+            <l n="1122">Qu'il daigne voir la main qui sauve la province.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="1123" part="I">Mais n'est-il point blessé ?</l>
+          </sp>
+          <sp who="tc0623-ELVIRE">
+            <speaker>ELVIRE.</speaker>
+            <l n="1123" part="F">Je n'en ai rien appris.</l>
+            <l n="1124">Vous changez de couleur ! Reprenez vos esprits.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="1125">Reprenons donc aussi ma colère affaiblie :</l>
+            <l n="1126">Pour avoir soin de lui faut-il que je m'oublie ?</l>
+            <l n="1127">On le vante, on le loue, et mon coeur y consent !</l>
+            <l n="1128">Mon honneur est muet, mon devoir impuissant !</l>
+            <l n="1129">Silence, mon amour, laisse agir ma colère :</l>
+            <l n="1130">S'il a vaincu deux rois, il a tué mon père ;</l>
+            <l n="1131">Ces tristes vêtements, où je lis mon malheur,</l>
+            <l n="1132">Sont les premiers effets qu'ait produits sa valeur ;</l>
+            <l n="1133">Et quoi qu'on die ailleurs d'un coeur si magnanime,</l>
+            <l n="1134">Ici tous les objets me parlent de son crime.</l>
+            <l n="1135">Vous qui rendez la force à mes ressentiments,</l>
+            <l n="1136">Voiles, crêpes, habits, lugubres ornements,</l>
+            <note type="L">Pompe : Somptuosité ; appareil superbe ; dépense magnifique qu'on fait pour rendre quelque action plus recommandable, plus solennelle, et plus éclatante. [F]</note>
+            <l n="1137">Pompe que me prescrit sa première victoire,</l>
+            <l n="1138">Contre ma passion soutenez bien ma gloire ;</l>
+            <l n="1139">Et lorsque mon amour prendra trop de pouvoir,</l>
+            <l n="1140">Parlez à mon esprit de mon triste devoir,</l>
+            <l n="1141">Attaquez sans rien craindre une main triomphante.</l>
+          </sp>
+          <sp who="tc0623-ELVIRE">
+            <speaker>ELVIRE.</speaker>
+            <l n="1142">Modérez ces transports, voici venir l'Infante.</l>
+          </sp>
+        </div>
+        <div type="scene" n="2">
+          <head>SCÈNE II. L'Infante, Chimène, Léonor, Elvire.</head>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="1143">Je ne viens pas ici consoler tes douleurs ;</l>
+            <l n="1144">Je viens plutôt mêler mes soupirs à tes pleurs.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="1145">Prenez bien plutôt part à la commune joie,</l>
+            <l n="1146">Et goûtez le bonheur que le ciel vous envoie,</l>
+            <l n="1147">Madame : autre que moi n'a droit de soupirer.</l>
+            <l n="1148">Le péril dont Rodrigue a su nous retirer,</l>
+            <l n="1149">Et le salut public que vous rendent ses armes,</l>
+            <l n="1150">À moi seule aujourd'hui souffrent encor les larmes :</l>
+            <l n="1151">Il a sauvé la ville, il a servi son roi ;</l>
+            <l n="1152">Et son bras valeureux n'est funeste qu'à moi.</l>
+          </sp>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="1153">Ma Chimène, il est vrai qu'il a fait des merveilles.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="1154">Déjà ce bruit fâcheux a frappé mes oreilles ;</l>
+            <l n="1155">Et je l'entends partout publier hautement</l>
+            <l n="1156">Aussi brave guerrier que malheureux amant.</l>
+          </sp>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="1157">Qu'a de fâcheux pour toi ce discours populaire ?</l>
+            <note type="L">Mars : Sedit aussi d'un grand guerrier, d'un brave. [F]</note>
+            <l n="1158">Ce jeune Mars qu'il loue a su jadis te plaire :</l>
+            <l n="1159">Il possédait ton âme, il vivait sous tes lois ;</l>
+            <l n="1160">Et vanter sa valeur, c'est honorer ton choix.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="1161">Chacun peut la vanter avec quelque justice ;</l>
+            <l n="1162">Mais pour moi sa louange est un nouveau supplice.</l>
+            <l n="1163">On aigrit ma douleur en l'élevant si haut :</l>
+            <l n="1164">Je vois ce que je perds quand je vois ce qu'il vaut.</l>
+            <l n="1165">Ah ! Cruels déplaisirs à l'esprit d'une amante !</l>
+            <note type="L">Feu : On dit aussi d'un homme amoureux qu'il brûle d'un beau feu, qu'il nourrit un feu discret, un feu caché sous la cendre, un feu qui le dévore. [F]</note>
+            <l n="1166">Plus j'apprends son mérite, et plus mon feu s'augmente :</l>
+            <l n="1167">Cependant mon devoir est toujours le plus fort,</l>
+            <l n="1168">Et malgré mon amour, va poursuivre sa mort.</l>
+          </sp>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="1169">Hier ce devoir te mit en une haute estime ;</l>
+            <l n="1170">L'effort que tu te fis parut si magnanime,</l>
+            <l n="1171">Si digne d'un grand coeur, que chacun à la Cour</l>
+            <l n="1172">Admirait ton courage et plaignait ton amour.</l>
+            <l n="1173">Mais croirais-tu l'avis d'une amitié fidèle ?</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="1174">Ne vous obéir pas me rendrait criminelle.</l>
+          </sp>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="1175">Ce qui fut juste alors ne l'est plus aujourd'hui.</l>
+            <l n="1176">Rodrigue maintenant est notre unique appui,</l>
+            <l n="1177">L'espérance et l'amour d'un peuple qui l'adore,</l>
+            <l n="1178">Le soutien de Castille, et la terreur du More.</l>
+            <l n="1179">Le roi même est d'accord de cette vérité,</l>
+            <l n="1180">Que ton père en lui seul se voit ressuscité ;</l>
+            <l n="1181">Et si tu veux enfin qu'en deux mots je m'explique,</l>
+            <l n="1182">Tu poursuis en sa mort la ruine publique.</l>
+            <l n="1183">Quoi ! Pour venger un père est-il jamais permis</l>
+            <l n="1184">De livrer sa patrie aux mains des ennemis ?</l>
+            <l n="1185">Contre nous ta poursuite est-elle légitime,</l>
+            <l n="1186">Et pour être punis avons-nous part au crime ?</l>
+            <l n="1187">Ce n'est pas qu'après tout tu doives épouser</l>
+            <l n="1188">Celui qu'un père mort t'obligeait d'accuser :</l>
+            <l n="1189">Je te voudrais moi-même en arracher l'envie ;</l>
+            <l n="1190">Ôte-lui ton amour, mais laisse-nous sa vie.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="1191">Ah ! Ce n'est pas à moi d'avoir tant de bonté ;</l>
+            <l n="1192">Le devoir qui m'aigrit n'a rien de limité.</l>
+            <l n="1193">Quoique pour ce vainqueur mon amour s'intéresse,</l>
+            <l n="1194">Quoiqu'un peuple l'adore et qu'un roi le caresse,</l>
+            <l n="1195">Qu'il soit environné des plus vaillants guerriers,</l>
+            <note type="L">Cyprès : Nom d'un arbre assez connu. Les poètes emploient figurément le mot cyprès, pour signifier la mort, le tombeau. [F]</note>
+            <note type="L">Laurier : Arbre dont le tige est unie et sans noeud. Se dit figurément en morale, pour signifier la gloire d'un triomphe, d'une conquête. [F]</note>
+            <l n="1196">J'irai sous mes cyprès accabler ses lauriers.</l>
+          </sp>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="1197">C'est générosité quand pour venger un père</l>
+            <l n="1198">Notre devoir attaque une tête si chère ;</l>
+            <l n="1199">Mais c'en est une encor d'un plus illustre rang,</l>
+            <l n="1200">Quand on donne au public les intérêts du sang.</l>
+            <l n="1201">Non, crois-moi, c'est assez que d'éteindre ta flamme ;</l>
+            <l n="1202">Il sera trop puni s'il n'est plus dans ton âme.</l>
+            <l n="1203">Que le bien du pays t'impose cette loi :</l>
+            <l n="1204">Aussi bien, que crois-tu que t'accorde le roi ?</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="1205">Il peut me refuser, mais je ne puis me taire.</l>
+          </sp>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="1206">Pense bien, ma Chimène, à ce que tu veux faire.</l>
+            <l n="1207">Adieu : tu pourras seule y penser à loisir.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="1208">Après mon père mort, je n'ai point à choisir.</l>
+          </sp>
+        </div>
+        <div type="scene" n="3">
+          <head>SCÈNE III. Don Fernand, Don Diègue, Don Arias, Don Rodrigue, Don Sanche.</head>
+          <sp who="tc0623-DONFERNAND">
+            <speaker>DON FERNAND.</speaker>
+            <l n="1209">Généreux héritier d'une illustre famille,</l>
+            <l n="1210">Qui fut toujours la gloire et l'appui de Castille,</l>
+            <l n="1211">Race de tant d'aïeux en valeur signalés,</l>
+            <l n="1212">Que l'essai de la tienne a sitôt égalés,</l>
+            <l n="1213">Pour te récompenser ma force est trop petite ;</l>
+            <l n="1214">Et j'ai moins de pouvoir que tu n'as de mérite.</l>
+            <l n="1215">Le pays délivré d'un si rude ennemi,</l>
+            <l n="1216">Mon sceptre dans ma main par la tienne affermi,</l>
+            <l n="1217">Et les Mores défaits avant qu'en ces alarmes</l>
+            <l n="1218">J'eusse pu donner ordre à repousser leurs armes,</l>
+            <l n="1219">Ne sont point des exploits qui laissent à ton roi</l>
+            <l n="1220">Le moyen ni l'espoir de s'acquitter vers toi.</l>
+            <l n="1221">Mais deux rois tes captifs feront ta récompense.</l>
+            <l n="1222">Ils t'ont nommé tous deux leur Cid en ma présence :</l>
+            <l n="1223">Puisque Cid en leur langue est autant que seigneur,</l>
+            <l n="1224">Je ne t'envierai pas ce beau titre d'honneur.</l>
+            <l n="1225">Sois désormais le Cid : qu'à ce grand nom tout cède ;</l>
+            <l n="1226">Qu'il comble d'épouvante et Grenade et Tolède,</l>
+            <l n="1227">Et qu'il marque à tous ceux qui vivent sous mes lois</l>
+            <l n="1228">Et ce que tu me vaux, et ce que je te dois.</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="1229">Que votre majesté, Sire, épargne ma honte.</l>
+            <l n="1230">D'un si faible service elle fait trop de conte,</l>
+            <l n="1231">Et me force à rougir devant un si grand roi</l>
+            <l n="1232">De mériter si peu l'honneur que j'en reçois.</l>
+            <l n="1233">Je sais trop que je dois au bien de votre empire,</l>
+            <l n="1234">Et le sang qui m'anime, et l'air que je respire ;</l>
+            <l n="1235">Et quand je les perdrai pour un si digne objet,</l>
+            <l n="1236">Je ferai seulement le devoir d'un sujet.</l>
+          </sp>
+          <sp who="tc0623-DONFERNAND">
+            <speaker>DON FERNAND.</speaker>
+            <l n="1237">Tous ceux que ce devoir à mon service engage</l>
+            <l n="1238">Ne s'en acquittent pas avec même courage ;</l>
+            <l n="1239">Et lorsque la valeur ne va point dans l'excès,</l>
+            <l n="1240">Elle ne produit point de si rares succès.</l>
+            <l n="1241">Souffre donc qu'on te loue, et de cette victoire</l>
+            <l n="1242">Apprends-moi plus au long la véritable histoire.</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="1243">Sire, vous avez su qu'en ce danger pressant,</l>
+            <l n="1244">Qui jeta dans la ville un effroi si puissant,</l>
+            <l n="1245">Une troupe d'amis chez mon père assemblée</l>
+            <l n="1246">Sollicita mon âme encor toute troublée...</l>
+            <l n="1247">Mais, Sire, pardonnez à ma témérité,</l>
+            <l n="1248">Si j'osai l'employer sans votre autorité :</l>
+            <l n="1249">Le péril approchait ; leur brigade était prête ;</l>
+            <l n="1250">Me montrant à la Cour, je hasardais ma tête ;</l>
+            <l n="1251">Et s'il fallait la perdre, il m'était bien plus doux</l>
+            <l n="1252">De sortir de la vie en combattant pour vous.</l>
+          </sp>
+          <sp who="tc0623-DONFERNAND">
+            <speaker>DON FERNAND.</speaker>
+            <l n="1253">J'excuse ta chaleur à venger ton offense ;</l>
+            <l n="1254">Et l'État défendu me parle en ta défense :</l>
+            <l n="1255">Crois que dorénavant Chimène a beau parler,</l>
+            <l n="1256">Je ne l'écoute plus que pour la consoler.</l>
+            <l n="1257" part="I">Mais poursuis.</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="1257" part="F">Sous moi donc cette troupe s'avance,</l>
+            <l n="1258">Et porte sur le front une mâle assurance.</l>
+            <l n="1259">Nous partîmes cinq cents ; mais par un prompt renfort</l>
+            <l n="1260">Nous nous vîmes trois mille en arrivant au port,</l>
+            <l n="1261">Tant, à nous voir marcher avec un tel visage,</l>
+            <l n="1262">Les plus épouvantés reprenaient de courage !</l>
+            <l n="1263">J'en cache les deux tiers, aussitôt qu'arrivés,</l>
+            <l n="1264">Dans le fond des vaisseaux qui lors furent trouvés ;</l>
+            <l n="1265">Le reste, dont le nombre augmentait à toute heure,</l>
+            <l n="1266">Brûlant d'impatience autour de moi demeure,</l>
+            <l n="1267">Se couche contre terre, et sans faire aucun bruit,</l>
+            <l n="1268">Passe une bonne part d'une si belle nuit.</l>
+            <l n="1269">Par mon commandement la garde en fait de même,</l>
+            <l n="1270">Et se tenant cachée, aide à mon stratagème ;</l>
+            <l n="1271">Et je feins hardiment d'avoir reçu de vous</l>
+            <l n="1272">L'ordre qu'on me voit suivre et que je donne à tous.</l>
+            <l n="1273">Cette obscure clarté qui tombe des étoiles</l>
+            <l n="1274">Enfin avec le flux nous fait voir trente voiles ;</l>
+            <l n="1275">L'onde s'enfle dessous, et d'un commun effort</l>
+            <l n="1276">Les Mores et la mer montent jusques au port.</l>
+            <l n="1277">On les laisse passer ; tout leur paraît tranquille ;</l>
+            <l n="1278">Point de soldats au port, point aux murs de la ville.</l>
+            <l n="1279">Notre profond silence abusant leurs esprits,</l>
+            <l n="1280">Ils n'osent plus douter de nous avoir surpris ;</l>
+            <l n="1281">Ils abordent sans peur, ils ancrent, ils descendent,</l>
+            <l n="1282">Et courent se livrer aux mains qui les attendent.</l>
+            <l n="1283">Nous nous levons alors, et tous en même temps</l>
+            <l n="1284">Poussons jusques au ciel mille cris éclatants.</l>
+            <l n="1285">Les nôtres, à ces cris, de nos vaisseaux répondent ;</l>
+            <l n="1286">Ils paraissent armés, les Mores se confondent,</l>
+            <l n="1287">L'épouvante les prend à demi descendus ;</l>
+            <l n="1288">Avant que de combattre, ils s'estiment perdus.</l>
+            <l n="1289">Ils couraient au pillage, et rencontrent la guerre ;</l>
+            <l n="1290">Nous les pressons sur l'eau, nous les pressons sur terre,</l>
+            <l n="1291">Et nous faisons courir des ruisseaux de leur sang,</l>
+            <l n="1292">Avant qu'aucun résiste ou reprenne son rang.</l>
+            <l n="1293">Mais bientôt, malgré nous, leurs princes les rallient ;</l>
+            <l n="1294">Leur courage renaît, et leurs terreurs s'oublient :</l>
+            <l n="1295">La honte de mourir sans avoir combattu</l>
+            <l n="1296">Arrête leur désordre, et leur rend leur vertu.</l>
+            <note type="L">Alfange : sorte de cimmeterre, large sabre d'origine arabe.</note>
+            <l n="1297">Contre nous de pied ferme ils tirent leurs alfanges,</l>
+            <l n="1298">De notre sang au leur font d'horribles mélanges ;</l>
+            <l n="1299">Et la terre, et le fleuve, et leur flotte, et le port,</l>
+            <l n="1300">Sont des champs de carnage où triomphe la mort.</l>
+            <l n="1301">Ô combien d'actions, combien d'exploits célèbres</l>
+            <l n="1302">Sont demeurés sans gloire au milieu des ténèbres,</l>
+            <l n="1303">Où chacun, seul témoin des grands coups qu'il donnait,</l>
+            <l n="1304">Ne pouvait discerner où le sort inclinait !</l>
+            <l n="1305">J'allais de tous côtés encourager les nôtres,</l>
+            <l n="1306">Faire avancer les uns, et soutenir les autres,</l>
+            <l n="1307">Ranger ceux qui venaient, les pousser à leur tour,</l>
+            <l n="1308">Et ne l'ai pu savoir jusques au point du jour.</l>
+            <l n="1309">Mais enfin sa clarté montre notre avantage :</l>
+            <l n="1310">Le More voit sa perte, et perd soudain courage ;</l>
+            <l n="1311">Et voyant un renfort qui nous vient secourir,</l>
+            <l n="1312">L'ardeur de vaincre cède à la peur de mourir.</l>
+            <l n="1313">Ils gagnent leurs vaisseaux, ils en coupent les câbles,</l>
+            <l n="1314">Poussent jusques aux cieux des cris épouvantables,</l>
+            <l n="1315">Font retraite en tumulte, et sans considérer</l>
+            <l n="1316">Si leurs rois avec eux peuvent se retirer.</l>
+            <l n="1317">Pour souffrir ce devoir leur frayeur est trop forte :</l>
+            <l n="1318">Le flux les apporta ; le reflux les remporte,</l>
+            <l n="1319">Cependant que leurs rois, engagés parmi nous,</l>
+            <l n="1320">Et quelque peu des leurs, tous percés de nos coups,</l>
+            <l n="1321">Disputent vaillamment et vendent bien leur vie.</l>
+            <l n="1322">À se rendre moi-même en vain je les convie :</l>
+            <l n="1323">Le cimeterre au poing ils ne m'écoutent pas ;</l>
+            <l n="1324">Mais voyant à leurs pieds tomber tous leurs soldats,</l>
+            <l n="1325">Et que seuls désormais en vain ils se défendent,</l>
+            <l n="1326">Ils demandent le chef : je me nomme, ils se rendent.</l>
+            <l n="1327">Je vous les envoyai tous deux en même temps ;</l>
+            <l n="1328">Et le combat cessa faute de combattants.</l>
+            <l n="1329">C'est de cette façon que, pour votre service...</l>
+          </sp>
+        </div>
+        <div type="scene" n="4">
+          <head>SCÈNE IV. Don Fernand, Don Diègue, Don Rodrigue, Don Arias, Don Alonse, Don Sanche.</head>
+          <sp who="tc0623-DONALONSE">
+            <speaker>DON ALONSE.</speaker>
+            <l n="1330">Sire, Chimène vient vous demander justice.</l>
+          </sp>
+          <sp who="tc0623-DONFERNAND">
+            <speaker>DON FERNAND.</speaker>
+            <l n="1331">La fâcheuse nouvelle, et l'importun devoir !</l>
+            <l n="1332">Va, je ne la veux pas obliger à te voir.</l>
+            <l n="1333">Pour tous remerciements il faut que je te chasse ;</l>
+            <l n="1334">Mais avant que sortir, viens, que ton roi t'embrasse.</l>
+          </sp>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="1335">Chimène le poursuit, et voudrait le sauver.</l>
+          </sp>
+          <sp who="tc0623-DONFERNAND">
+            <speaker>DON FERNAND.</speaker>
+            <l n="1336">On m'a dit qu'elle l'aime, et je vais l'éprouver.</l>
+            <l n="1337" part="I">Montrez un oeil plus triste.</l>
+          </sp>
+        </div>
+        <div type="scene" n="5">
+          <head>SCÈNE V. Don Fernand, Don Diègue, Don Arias, Don Sanche, Don Alonse, Chimène, Elvire.</head>
+          <sp who="tc0623-DONFERNAND">
+            <speaker>DON FERNAND.</speaker>
+            <l n="1337" part="F">Enfin soyez contente,</l>
+            <l n="1338">Chimène, le succès répond à votre attente :</l>
+            <l n="1339">Si de nos ennemis Rodrigue a le dessus,</l>
+            <l n="1340">Il est mort à nos yeux des coups qu'il a reçus ;</l>
+            <l n="1341">Rendez grâces au ciel, qui vous en a vengée.</l>
+            <l n="1342">Voyez comme déjà sa couleur est changée.</l>
+          </sp>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="1343">Mais voyez qu'elle pâme, et d'un amour parfait,</l>
+            <note type="L">Pâmoison : état d'une personne pâmer ; défaillance. [F]</note>
+            <l n="1344">Dans cette pâmoison, Sire, admirez l'effet.</l>
+            <l n="1345">Sa douleur a trahi les secrets de son âme,</l>
+            <l n="1346">Et ne vous permet plus de douter de sa flamme.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="1347" part="I">Quoi ! Rodrigue est donc mort ?</l>
+          </sp>
+          <sp who="tc0623-DONFERNAND">
+            <speaker>DON FERNAND.</speaker>
+            <l n="1347" part="F">Non, non, il voit le jour,</l>
+            <l n="1348">Et te conserve encore un immuable amour :</l>
+            <l n="1349">Calme cette douleur qui pour lui s'intéresse.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="1350">Sire, on pâme de joie, ainsi que de tristesse :</l>
+            <l n="1351">Un excès de plaisir nous rend tous languissants,</l>
+            <l n="1352">Et quand il surprend l'âme, il accable les sens.</l>
+          </sp>
+          <sp who="tc0623-DONFERNAND">
+            <speaker>DON FERNAND.</speaker>
+            <l n="1353">Tu veux qu'en ta faveur nous croyions l'impossible ?</l>
+            <l n="1354">Chimène, ta douleur a paru trop visible.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="1355">Eh bien ! Sire, ajoutez ce comble à mon malheur,</l>
+            <l n="1356">Nommez ma pâmoison l'effet de ma douleur :</l>
+            <l n="1357">Un juste déplaisir à ce point m'a réduite.</l>
+            <l n="1358">Son trépas dérobait sa tête à ma poursuite ;</l>
+            <l n="1359">S'il meurt des coups reçus pour le bien du pays,</l>
+            <l n="1360">Ma vengeance est perdue et mes desseins trahis :</l>
+            <l n="1361">Une si belle fin m'est trop injurieuse.</l>
+            <l n="1362">Je demande sa mort, mais non pas glorieuse,</l>
+            <l n="1363">Non pas dans un éclat qui l'élève si haut,</l>
+            <l n="1364">Non pas au lit d'honneur, mais sur un échafaud ;</l>
+            <l n="1365">Qu'il meure pour mon père, et non pour la patrie ;</l>
+            <l n="1366">Que son nom soit taché, sa mémoire flétrie.</l>
+            <l n="1367">Mourir pour le pays n'est pas un triste sort ;</l>
+            <l n="1368">C'est s'immortaliser par une belle mort.</l>
+            <l n="1369">J'aime donc sa victoire, et je le puis sans crime ;</l>
+            <l n="1370">Elle assure l'État, et me rend ma victime,</l>
+            <l n="1371">Mais noble, mais fameuse entre tous les guerriers,</l>
+            <l n="1372">Le chef, au lieu de fleurs, couronné de lauriers ;</l>
+            <l n="1373">Et pour dire en un mot ce que j'en considère,</l>
+            <l n="1374">Digne d'être immolée aux mânes de mon père...</l>
+            <l n="1375">Hélas ! À quel espoir me laissé-je emporter !</l>
+            <l n="1376">Rodrigue de ma part n'a rien à redouter :</l>
+            <l n="1377">Que pourraient contre lui des larmes qu'on méprise ?</l>
+            <l n="1378">Pour lui tout votre empire est un lieu de franchise ;</l>
+            <l n="1379">Là, sous votre pouvoir, tout lui devient permis ;</l>
+            <l n="1380">Il triomphe de moi comme des ennemis.</l>
+            <l n="1381">Dans leur sang répandu la justice étouffée</l>
+            <l n="1382">Aux crimes du vainqueur sert d'un nouveau trophée :</l>
+            <l n="1383">Nous en croissons la pompe, et le mépris des lois</l>
+            <l n="1384">Nous fait suivre son char au milieu de deux rois.</l>
+          </sp>
+          <sp who="tc0623-DONFERNAND">
+            <speaker>DON FERNAND.</speaker>
+            <l n="1385">Ma fille, ces transports ont trop de violence.</l>
+            <l n="1386">Quand on rend la justice, on met tout en balance :</l>
+            <l n="1387">On a tué ton père, il était l'agresseur ;</l>
+            <l n="1388">Et la même équité m'ordonne la douceur.</l>
+            <l n="1389">Avant que d'accuser ce que j'en fais paraître,</l>
+            <l n="1390">Consulte bien ton coeur : Rodrigue en est le maître,</l>
+            <l n="1391">Et ta flamme en secret rend grâces à ton roi,</l>
+            <l n="1392">Dont la faveur conserve un tel amant pour toi.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="1393">Pour moi ! Mon ennemi ! L'objet de ma colère !</l>
+            <l n="1394">L'auteur de mes malheurs ! L'assassin de mon père !</l>
+            <l n="1395">De ma juste poursuite on fait si peu de cas</l>
+            <l n="1396">Qu'on me croit obliger en ne m'écoutant pas !</l>
+            <l n="1397">Puisque vous refusez la justice à mes larmes,</l>
+            <l n="1398">Sire, permettez-moi de recourir aux armes ;</l>
+            <l n="1399">C'est par là seulement qu'il a su m'outrager,</l>
+            <l n="1400">Et c'est aussi par là que je me dois venger.</l>
+            <l n="1401">À tous vos cavaliers je demande sa tête :</l>
+            <l n="1402">Oui, qu'un d'eux me l'apporte, et je suis sa conquête ;</l>
+            <l n="1403">Qu'ils le combattent, sire ; et le combat fini,</l>
+            <l n="1404">J'épouse le vainqueur, si Rodrigue est puni.</l>
+            <l n="1405">Sous votre autorité souffrez qu'on le publie.</l>
+          </sp>
+          <sp who="tc0623-DONFERNAND">
+            <speaker>DON FERNAND.</speaker>
+            <l n="1406">Cette vieille coutume en ces lieux établie,</l>
+            <l n="1407">Sous couleur de punir un injuste attentat,</l>
+            <l n="1408">Des meilleurs combattants affaiblit un État ;</l>
+            <l n="1409">Souvent de cet abus le succès déplorable</l>
+            <l n="1410">Opprime l'innocent, et soutient le coupable.</l>
+            <l n="1411">J'en dispense Rodrigue : il m'est trop précieux</l>
+            <l n="1412">Pour l'exposer aux coups d'un sort capricieux ;</l>
+            <l n="1413">Et quoi qu'ait pu commettre un coeur si magnanime,</l>
+            <l n="1414">Les Mores en fuyant ont emporté son crime.</l>
+          </sp>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="1415">Quoi ! Sire, pour lui seul vous renversez des lois</l>
+            <l n="1416">Qu'a vu toute la Cour observer tant de fois !</l>
+            <l n="1417">Que croira votre peuple, et que dira l'envie,</l>
+            <l n="1418">Si sous votre défense il ménage sa vie,</l>
+            <l n="1419">Et s'en fait un prétexte à ne paraître pas</l>
+            <l n="1420">Où tous les gens d'honneur cherchent un beau trépas ?</l>
+            <l n="1421">De pareilles faveurs terniraient trop sa gloire :</l>
+            <l n="1422">Qu'il goûte sans rougir les fruits de sa victoire.</l>
+            <l n="1423">Le Comte eut de l'audace ; il l'en a su punir :</l>
+            <l n="1424">Il l'a fait en brave homme, et le doit maintenir.</l>
+          </sp>
+          <sp who="tc0623-DONFERNAND">
+            <speaker>DON FERNAND.</speaker>
+            <l n="1425">Puisque vous le voulez, j'accorde qu'il le fasse ;</l>
+            <l n="1426">Mais d'un guerrier vaincu mille prendraient la place,</l>
+            <l n="1427">Et le prix que Chimène au vainqueur a promis</l>
+            <l n="1428">De tous mes cavaliers ferait ses ennemis.</l>
+            <l n="1429">L'opposer seul à tous serait trop d'injustice :</l>
+            <l n="1430">Il suffit qu'une fois il entre dans la lice.</l>
+            <l n="1431">Choisis qui tu voudras, Chimène, et choisis bien ;</l>
+            <l n="1432">Mais après ce combat ne demande plus rien.</l>
+          </sp>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="1433">N'excusez point par là ceux que son bras étonne :</l>
+            <l n="1434">Laissez un champ ouvert, où n'entrera personne.</l>
+            <l n="1435">Après ce que Rodrigue a fait voir aujourd'hui,</l>
+            <l n="1436">Quel courage assez vain s'oserait prendre à lui ?</l>
+            <l n="1437">Qui se hasarderait contre un tel adversaire ?</l>
+            <l n="1438">Qui serait ce vaillant, ou bien ce téméraire ?</l>
+          </sp>
+          <sp who="tc0623-DONSANCHE">
+            <speaker>DON SANCHE.</speaker>
+            <l n="1439">Faites ouvrir le champ : vous voyez l'assaillant ;</l>
+            <l n="1440">Je suis ce téméraire, ou plutôt ce vaillant.</l>
+            <l n="1441">Accordez cette grâce à l'ardeur qui me presse,</l>
+            <l n="1442">Madame : vous savez quelle est votre promesse.</l>
+          </sp>
+          <sp who="tc0623-DONFERNAND">
+            <speaker>DON FERNAND.</speaker>
+            <l n="1443">Chimène, remets-tu ta querelle en sa main ?</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="1444" part="I">Sire, je l'ai promis.</l>
+          </sp>
+          <sp who="tc0623-DONFERNAND">
+            <speaker>DON FERNAND.</speaker>
+            <l n="1444" part="F">Soyez prêt à demain.</l>
+          </sp>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="1445">Non, sire, il ne faut pas différer davantage :</l>
+            <l n="1446">On est toujours trop prêt quand on a du courage.</l>
+          </sp>
+          <sp who="tc0623-DONFERNAND">
+            <speaker>DON FERNAND.</speaker>
+            <l n="1447">Sortir d'une bataille, et combattre à l'instant !</l>
+          </sp>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="1448">Rodrigue a pris haleine en vous la racontant.</l>
+          </sp>
+          <sp who="tc0623-DONFERNAND">
+            <speaker>DON FERNAND.</speaker>
+            <l n="1449">Du moins une heure ou deux je veux qu'il se délasse.</l>
+            <l n="1450">Mais de peur qu'en exemple un tel combat ne passe,</l>
+            <l n="1451">Pour témoigner à tous qu'à regret je permets</l>
+            <l n="1452">Un sanglant procédé qui ne me plut jamais,</l>
+            <l n="1453">De moi ni de ma Cour il n'aura la présence.</l>
+            <l n="1454">Vous seul des combattants jugerez la vaillance :</l>
+            <l n="1455">Ayez soin que tous deux fassent en gens de Cour,</l>
+            <l n="1456">Et le combat fini, m'amenez le vainqueur.</l>
+            <l n="1457">Qui qu'il soit, même prix est acquis à sa peine :</l>
+            <l n="1458">Je le veux de ma main présenter à Chimène,</l>
+            <l n="1459">Et que pour récompense il reçoive sa foi.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="1460">Quoi ! Sire, m'imposer une si dure loi !</l>
+          </sp>
+          <sp who="tc0623-DONFERNAND">
+            <speaker>DON FERNAND.</speaker>
+            <l n="1461">Tu t'en plains ; mais ton feu, loin d'avouer ta plainte,</l>
+            <l n="1462">Si Rodrigue est vainqueur, l'accepte sans contrainte.</l>
+            <l n="1463">Cesse de murmurer contre un arrêt si doux :</l>
+            <l n="1464">Qui que ce soit des deux, j'en ferai ton époux.</l>
+          </sp>
+        </div>
+      </div>
+      <div type="act" n="5">
+        <head>ACTE V</head>
+        <div type="scene" n="1">
+          <head>SCÈNE PREMIÈRE. Don Rodrigue, Chimène.</head>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="1465">Quoi ! Rodrigue, en plein jour ! D'où te vient cette audace ?</l>
+            <l n="1466">Va, tu me perds d'honneur ; retire-toi, de grâce.</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="1467">Je vais mourir, Madame, et vous viens en ce lieu,</l>
+            <l n="1468">Avant le coup mortel, dire un dernier adieu :</l>
+            <l n="1469">Cet immuable amour qui sous vos lois m'engage</l>
+            <l n="1470">N'ose accepter ma mort sans vous en faire hommage.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="1471" part="I">Tu vas mourir !</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="1471" part="F">Je cours à ces heureux moments</l>
+            <l n="1472">Qui vont livrer ma vie à vos ressentiments.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="1473">Tu vas mourir ! Don Sanche est-il si redoutable</l>
+            <l n="1474">Qu'il donne l'épouvante à ce coeur indomptable ?</l>
+            <l n="1475">Qui t'a rendu si faible, ou qui le rend si fort ?</l>
+            <l n="1476">Rodrigue va combattre, et se croit déjà mort !</l>
+            <l n="1477">Celui qui n'a pas craint les Mores, ni mon père,</l>
+            <l n="1478">Va combattre Don Sanche, et déjà désespère !</l>
+            <l n="1479">Ainsi donc au besoin ton courage s'abat !</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="1480">Je cours à mon supplice, et non pas au combat ;</l>
+            <l n="1481">Et ma fidèle ardeur sait bien m'ôter l'envie,</l>
+            <l n="1482">Quand vous cherchez ma mort, de défendre ma vie.</l>
+            <l n="1483">J'ai toujours même coeur ; mais je n'ai point de bras</l>
+            <l n="1484">Quand il faut conserver ce qui ne vous plaît pas ;</l>
+            <l n="1485">Et déjà cette nuit m'aurait été mortelle,</l>
+            <l n="1486">Si j'eusse combattu pour ma seule querelle ;</l>
+            <l n="1487">Mais défendant mon roi, son peuple et mon pays,</l>
+            <l n="1488">À me défendre mal je les aurais trahis.</l>
+            <l n="1489">Mon esprit généreux ne hait pas tant la vie,</l>
+            <l n="1490">Qu'il en veuille sortir par une perfidie.</l>
+            <l n="1491">Maintenant qu'il s'agit de mon seul intérêt,</l>
+            <l n="1492">Vous demandez ma mort, j'en accepte l'arrêt.</l>
+            <l n="1493">Votre ressentiment choisit la main d'un autre</l>
+            <l n="1494">(Je ne méritais pas de mourir de la vôtre) :</l>
+            <l n="1495">On ne me verra point en repousser les coups ;</l>
+            <l n="1496">Je dois plus de respect à qui combat pour vous ;</l>
+            <l n="1497">Et ravi de penser que c'est de vous qu'ils viennent,</l>
+            <l n="1498">Puisque c'est votre honneur que ses armes soutiennent,</l>
+            <l n="1499">Je vais lui présenter mon estomac ouvert,</l>
+            <l n="1500">Adorant en sa main la vôtre qui me perd.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="1501">Si d'un triste devoir la juste violence,</l>
+            <l n="1502">Qui me fait malgré moi poursuivre ta vaillance,</l>
+            <l n="1503">Prescrit à ton amour une si forte loi</l>
+            <l n="1504">Qu'il te rend sans défense à qui combat pour moi,</l>
+            <l n="1505">En cet aveuglement ne perds pas la mémoire</l>
+            <l n="1506">Qu'ainsi que de ta vie il y va de ta gloire,</l>
+            <l n="1507">Et que dans quelque éclat que Rodrigue ait vécu,</l>
+            <l n="1508">Quand on le saura mort, on le croira vaincu.</l>
+            <l n="1509">Ton honneur t'est plus cher que je ne te suis chère,</l>
+            <l n="1510">Puisqu'il trempe tes mains dans le sang de mon père,</l>
+            <l n="1511">Et te fait renoncer, malgré ta passion,</l>
+            <l n="1512">À l'espoir le plus doux de ma possession :</l>
+            <l n="1513">Je t'en vois cependant faire si peu de conte,</l>
+            <l n="1514">Que sans rendre combat tu veux qu'on te surmonte.</l>
+            <l n="1515">Quelle inégalité ravale ta vertu ?</l>
+            <l n="1516">Pourquoi ne l'as-tu plus, ou pourquoi l'avais-tu ?</l>
+            <l n="1517">Quoi ? N'es-tu généreux que pour me faire outrage ?</l>
+            <l n="1518">S'il ne faut m'offenser, n'as-tu point de courage ?</l>
+            <l n="1519">Et traites-tu mon père avec tant de rigueur,</l>
+            <l n="1520">Qu'après l'avoir vaincu tu souffres un vainqueur ?</l>
+            <l n="1521">Va, sans vouloir mourir, laisse-moi te poursuivre,</l>
+            <l n="1522">Et défends ton honneur, si tu ne veux plus vivre.</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="1523">Après la mort du Comte, et les Mores défaits,</l>
+            <l n="1524">Faudrait-il à ma gloire encor d'autres effets ?</l>
+            <l n="1525">Elle peut dédaigner le soin de me défendre :</l>
+            <l n="1526">On sait que mon courage ose tout entreprendre,</l>
+            <l n="1527">Que ma valeur peut tout, et que dessous les cieux,</l>
+            <l n="1528">Auprès de mon honneur, rien ne m'est précieux.</l>
+            <l n="1529">Non, non, en ce combat, quoi que vous veuillez croire,</l>
+            <l n="1530">Rodrigue peut mourir sans hasarder sa gloire,</l>
+            <l n="1531">Sans qu'on l'ose accuser d'avoir manqué de coeur,</l>
+            <l n="1532">Sans passer pour vaincu, sans souffrir un vainqueur.</l>
+            <l n="1533">On dira seulement : « il adorait Chimène ;</l>
+            <l n="1534">Il n'a pas voulu vivre et mériter sa haine ;</l>
+            <l n="1535">Il a cédé lui-même à la rigueur du sort</l>
+            <l n="1536">Qui forçait sa maîtresse à poursuivre sa mort :</l>
+            <l n="1537">Elle voulait sa tête ; et son coeur magnanime,</l>
+            <l n="1538">S'il l'en eût refusée, eût pensé faire un crime.</l>
+            <l n="1539">Pour venger son honneur il perdit son amour,</l>
+            <l n="1540">Pour venger sa maîtresse il a quitté le jour,</l>
+            <l n="1541">Préférant, quelque espoir qu'eût son âme asservie,</l>
+            <l n="1542">Son honneur à Chimène, et Chimène à sa vie. »</l>
+            <l n="1543">Ainsi donc vous verrez ma mort en ce combat,</l>
+            <l n="1544">Loin d'obscurcir ma gloire, en rehausser l'éclat ;</l>
+            <l n="1545">Et cet honneur suivra mon trépas volontaire,</l>
+            <l n="1546">Que tout autre que moi n'eût pu vous satisfaire.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="1547">Puisque, pour t'empêcher de courir au trépas,</l>
+            <l n="1548">Ta vie et ton honneur sont de faibles appas,</l>
+            <l n="1549">Si jamais je t'aimai, cher Rodrigue, en revanche,</l>
+            <l n="1550">Défends-toi maintenant pour m'ôter à Don Sanche ;</l>
+            <l n="1551">Combats pour m'affranchir d'une condition</l>
+            <l n="1552">Qui me donne à l'objet de mon aversion.</l>
+            <l n="1553">Te dirai-je encor plus ? Va, songe à ta défense,</l>
+            <l n="1554">Pour forcer mon devoir, pour m'imposer silence ;</l>
+            <l n="1555">Et si tu sens pour moi ton coeur encore épris,</l>
+            <l n="1556">Sors vainqueur d'un combat dont Chimène est le prix.</l>
+            <l n="1557">Adieu : ce mot lâché me fait rougir de honte.</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="1558">Est-il quelque ennemi qu'à présent je ne dompte ?</l>
+            <l n="1559">Paraissez, Navarrais, Mores et Castillans,</l>
+            <l n="1560">Et tout ce que l'Espagne a nourri de vaillants ;</l>
+            <l n="1561">Unissez-vous ensemble, et faites une armée,</l>
+            <l n="1562">Pour combattre une main de la sorte animée :</l>
+            <l n="1563">Joignez tous vos efforts contre un espoir si doux ;</l>
+            <l n="1564">Pour en venir à bout, c'est trop peu que de vous.</l>
+          </sp>
+        </div>
+        <div type="scene" n="2">
+          <head>SCÈNE II.</head>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="1565">T'écouterai-je encor, respect de ma naissance,</l>
+            <l n="1566">Qui fais un crime de mes feux ?</l>
+            <l n="1567">T'écouterai-je, amour, dont la douce puissance</l>
+            <l n="1568">Contre ce fier tyran fait révolter mes voeux ?</l>
+            <l n="1569">Pauvre princesse, auquel des deux</l>
+            <l n="1570">Dois-tu prêter obéissance ?</l>
+            <l n="1571">Rodrigue, ta valeur te rend digne de moi ;</l>
+            <l n="1572">Mais pour être vaillant, tu n'es pas fils de Roi.</l>
+            <l n="1573">Impitoyable sort, dont la rigueur sépare</l>
+            <l n="1574">Ma gloire d'avec mes désirs !</l>
+            <l n="1575">Est-il dit que le choix d'une vertu si rare</l>
+            <l n="1576">Coûte à ma passion de si grands déplaisirs ?</l>
+            <l n="1577">Ô cieux ! À combien de soupirs</l>
+            <l n="1578">Faut-il que mon coeur se prépare,</l>
+            <l n="1579">Si jamais il n'obtient sur un si long tourment</l>
+            <l n="1580">Ni d'éteindre l'amour, ni d'accepter l'amant !</l>
+            <l n="1581">Mais c'est trop de scrupule, et ma raison s'étonne</l>
+            <l n="1582">Du mépris d'un si digne choix :</l>
+            <l n="1583">Bien qu'aux monarques seuls ma naissance me donne,</l>
+            <l n="1584">Rodrigue, avec honneur je vivrai sous tes lois.</l>
+            <l n="1585">Après avoir vaincu deux Rois,</l>
+            <l n="1586">Pourrais-tu manquer de couronne ?</l>
+            <l n="1587">Et ce grand nom de Cid que tu viens de gagner</l>
+            <l n="1588">Ne fait-il pas trop voir sur qui tu dois régner ?</l>
+            <l n="1589">Il est digne de moi, mais il est à Chimène ;</l>
+            <l n="1590">Le don que j'en ai fait me nuit.</l>
+            <l n="1591">Entre eux la mort d'un père a si peu mis de haine,</l>
+            <l n="1592">Que le devoir du sang à regret le poursuit :</l>
+            <l n="1593">Ainsi n'espérons aucun fruit</l>
+            <l n="1594">De son crime, ni de ma peine,</l>
+            <l n="1595">Puisque pour me punir le destin a permis</l>
+            <l n="1596">Que l'amour dure même entre deux ennemis.</l>
+          </sp>
+        </div>
+        <div type="scene" n="3">
+          <head>SCÈNE III. L'Infante, Léonor.</head>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="1597" part="I">Où viens-tu, Léonor ?</l>
+          </sp>
+          <sp who="tc0623-LEONOR">
+            <speaker>LÉONOR.</speaker>
+            <l n="1597" part="F">Vous applaudir, Madame,</l>
+            <l n="1598">Sur le repos qu'enfin a retrouvé votre âme.</l>
+          </sp>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="1599">D'où viendrait ce repos dans un comble d'ennui ?</l>
+          </sp>
+          <sp who="tc0623-LEONOR">
+            <speaker>LÉONOR.</speaker>
+            <l n="1600">Si l'amour vit d'espoir, et s'il meurt avec lui,</l>
+            <l n="1601">Rodrigue ne peut plus charmer votre courage.</l>
+            <l n="1602">Vous savez le combat où Chimène l'engage :</l>
+            <l n="1603">Puisqu'il faut qu'il y meure, ou qu'il soit son mari,</l>
+            <l n="1604">Votre espérance est morte, et votre esprit guéri.</l>
+          </sp>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="1605" part="I">Ah ! Qu'il s'en faut encor !</l>
+          </sp>
+          <sp who="tc0623-LEONOR">
+            <speaker>LÉONOR.</speaker>
+            <l n="1605" part="F">Que pouvez-vous prétendre ?</l>
+          </sp>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="1606">Mais plutôt quel espoir me pourrais-tu défendre ?</l>
+            <l n="1607">Si Rodrigue combat sous ces conditions,</l>
+            <l n="1608">Pour en rompre l'effet, j'ai trop d'inventions.</l>
+            <l n="1609">L'amour, ce doux auteur de mes cruels supplices,</l>
+            <l n="1610">Aux esprits des amants apprend trop d'artifices.</l>
+          </sp>
+          <sp who="tc0623-LEONOR">
+            <speaker>LÉONOR.</speaker>
+            <l n="1611">Pourrez-vous quelque chose, après qu'un père mort</l>
+            <l n="1612">N'a pu dans leurs esprits allumer de discord ?</l>
+            <l n="1613">Car Chimène aisément montre par sa conduite</l>
+            <l n="1614">Que la haine aujourd'hui ne fait pas sa poursuite.</l>
+            <l n="1615">Elle obtient un combat, et pour son combattant</l>
+            <l n="1616">C'est le premier offert qu'elle accepte à l'instant :</l>
+            <l n="1617">Elle n'a point recours à ces mains généreuses</l>
+            <l n="1618">Que tant d'exploits fameux rendent si glorieuses ;</l>
+            <l n="1619">Don Sanche lui suffit, et mérite son choix,</l>
+            <l n="1620">Parce qu'il va s'armer pour la première fois.</l>
+            <l n="1621">Elle aime en ce duel son peu d'expérience ;</l>
+            <l n="1622">Comme il est sans renom, elle est sans défiance ;</l>
+            <l n="1623">Et sa facilité vous doit bien faire voir</l>
+            <l n="1624">Qu'elle cherche un combat qui force son devoir,</l>
+            <l n="1625">Qui livre à son Rodrigue une victoire aisée,</l>
+            <l n="1626">Et l'autorise enfin à paraître apaisée.</l>
+          </sp>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="1627">Je le remarque assez, et toutefois mon coeur</l>
+            <l n="1628">À l'envi de Chimène adore ce vainqueur.</l>
+            <l n="1629">À quoi me résoudrai-je, amante infortunée ?</l>
+          </sp>
+          <sp who="tc0623-LEONOR">
+            <speaker>LÉONOR.</speaker>
+            <l n="1630">À vous mieux souvenir de qui vous êtes née :</l>
+            <l n="1631">Le ciel vous doit un roi, vous aimez un sujet !</l>
+          </sp>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="1632">Mon inclination a bien changé d'objet.</l>
+            <l n="1633">Je n'aime plus Rodrigue, un simple gentilhomme ;</l>
+            <l n="1634">Non, ce n'est plus ainsi que mon amour le nomme :</l>
+            <l n="1635">Si j'aime, c'est l'auteur de tant de beaux exploits,</l>
+            <l n="1636">C'est le valeureux Cid, le maître de deux rois.</l>
+            <l n="1637">Je me vaincrai pourtant, non de peur d'aucun blâme,</l>
+            <l n="1638">Mais pour ne troubler pas une si belle flamme ;</l>
+            <l n="1639">Et quand pour m'obliger on l'aurait couronné,</l>
+            <l n="1640">Je ne veux point reprendre un bien que j'ai donné.</l>
+            <l n="1641">Puisqu'en un tel combat sa victoire est certaine,</l>
+            <l n="1642">Allons encore un coup le donner à Chimène.</l>
+            <l n="1643">Et toi, qui vois les traits dont mon coeur est percé,</l>
+            <l n="1644">Viens me voir achever comme j'ai commencé.</l>
+          </sp>
+        </div>
+        <div type="scene" n="4">
+          <head>SCÈNE IV. Chimène, Elvire.</head>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="1645">Elvire, que je souffre, et que je suis à plaindre !</l>
+            <l n="1646">Je ne sais qu'espérer, et je vois tout à craindre ;</l>
+            <l n="1647">Aucun voeu ne m'échappe où j'ose consentir ;</l>
+            <l n="1648">Je ne souhaite rien sans un prompt repentir.</l>
+            <l n="1649">À deux rivaux pour moi je fais prendre les armes :</l>
+            <l n="1650">Le plus heureux succès me coûtera des larmes ;</l>
+            <l n="1651">Et quoi qu'en ma faveur en ordonne le sort,</l>
+            <l n="1652">Mon père est sans vengeance, ou mon amant est mort.</l>
+          </sp>
+          <sp who="tc0623-ELVIRE">
+            <speaker>ELVIRE.</speaker>
+            <l n="1653">D'un et d'autre côté je vous vois soulagée :</l>
+            <l n="1654">Ou vous avez Rodrigue, ou vous êtes vengée ;</l>
+            <l n="1655">Et quoi que le destin puisse ordonner de vous,</l>
+            <l n="1656">Il soutient votre gloire, et vous donne un époux.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="1657">Quoi ! L'objet de ma haine ou de tant de colère !</l>
+            <l n="1658">L'assassin de Rodrigue ou celui de mon père !</l>
+            <l n="1659">De tous les deux côtés on me donne un mari</l>
+            <l n="1660">Encor tout teint du sang que j'ai le plus chéri ;</l>
+            <l n="1661">De tous les deux côtés mon âme se rebelle :</l>
+            <l n="1662">Je crains plus que la mort la fin de ma querelle.</l>
+            <l n="1663">Allez, vengeance, amour, qui troublez mes esprits,</l>
+            <l n="1664">Vous n'avez point pour moi de douceurs à ce prix ;</l>
+            <l n="1665">Et toi, puissant moteur du destin qui m'outrage,</l>
+            <l n="1666">Termine ce combat sans aucun avantage,</l>
+            <l n="1667">Sans faire aucun des deux ni vaincu ni vainqueur.</l>
+          </sp>
+          <sp who="tc0623-ELVIRE">
+            <speaker>ELVIRE.</speaker>
+            <l n="1668">Ce serait vous traiter avec trop de rigueur.</l>
+            <l n="1669">Ce combat pour votre âme est un nouveau supplice,</l>
+            <l n="1670">S'il vous laisse obligée à demander justice,</l>
+            <l n="1671">À témoigner toujours ce haut ressentiment,</l>
+            <l n="1672">Et poursuivre toujours la mort de votre amant.</l>
+            <l n="1673">Madame, il vaut bien mieux que sa rare vaillance,</l>
+            <l n="1674">Lui couronnant le front, vous impose silence ;</l>
+            <l n="1675">Que la loi du combat étouffe vos soupirs,</l>
+            <l n="1676">Et que le roi vous force à suivre vos désirs.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="1677">Quand il sera vainqueur, crois-tu que je me rende ?</l>
+            <l n="1678">Mon devoir est trop fort, et ma perte trop grande ;</l>
+            <l n="1679">Et ce n'est pas assez, pour leur faire la loi,</l>
+            <l n="1680">Que celle du combat et le vouloir du roi.</l>
+            <l n="1681">Il peut vaincre Don Sanche avec fort peu de peine,</l>
+            <l n="1682">Mais non pas avec lui la gloire de Chimène ;</l>
+            <l n="1683">Et quoi qu'à sa victoire un monarque ait promis,</l>
+            <l n="1684">Mon honneur lui fera mille autres ennemis.</l>
+          </sp>
+          <sp who="tc0623-ELVIRE">
+            <speaker>ELVIRE.</speaker>
+            <l n="1685">Gardez, pour vous punir de cet orgueil étrange,</l>
+            <l n="1686">Que le ciel à la fin ne souffre qu'on vous venge.</l>
+            <l n="1687">Quoi ! Vous voulez encor refuser le bonheur</l>
+            <l n="1688">De pouvoir maintenant vous taire avec honneur ?</l>
+            <l n="1689">Que prétend ce devoir, et qu'est-ce qu'il espère ?</l>
+            <l n="1690">La mort de votre amant vous rendra-t-elle un père ?</l>
+            <l n="1691">Est-ce trop peu pour vous que d'un coup de malheur ?</l>
+            <l n="1692">Faut-il perte sur perte, et douleur sur douleur ?</l>
+            <l n="1693">Allez, dans le caprice où votre humeur s'obstine,</l>
+            <l n="1694">Vous ne méritez pas l'amant qu'on vous destine ;</l>
+            <l n="1695">Et nous verrons du ciel l'équitable courroux</l>
+            <l n="1696">Vous laisser, par sa mort, Don Sanche pour époux.</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="1697">Elvire, c'est assez des peines que j'endure,</l>
+            <l n="1698">Ne les redouble point de ce funeste augure.</l>
+            <l n="1699">Je veux, si je le puis, les éviter tous deux ;</l>
+            <l n="1700">Sinon, en ce combat Rodrigue a tous mes voeux :</l>
+            <l n="1701">Non qu'une folle ardeur de son côté me penche ;</l>
+            <l n="1702">Mais s'il était vaincu, je serais à Don Sanche :</l>
+            <l n="1703">Cette appréhension fait naître mon souhait.</l>
+            <l n="1704">Que vois-je, malheureuse ? Elvire, c'en est fait.</l>
+          </sp>
+        </div>
+        <div type="scene" n="5">
+          <head>SCÈNE V. Don Sanche, Chimène, Elvire.</head>
+          <sp who="tc0623-DONSANCHE">
+            <speaker>DON SANCHE.</speaker>
+            <l n="1705">Obligé d'apporter à vos pieds cette épée...</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="1706">Quoi ? Du sang de Rodrigue encor toute trempée ?</l>
+            <l n="1707">Perfide, oses-tu bien te montrer à mes yeux,</l>
+            <l n="1708">Après m'avoir ôté ce que j'aimais le mieux ?</l>
+            <l n="1709">Éclate, mon amour, tu n'as plus rien à craindre :</l>
+            <l n="1710">Mon père est satisfait, cesse de te contraindre.</l>
+            <l n="1711">Un même coup a mis ma gloire en sûreté,</l>
+            <l n="1712">Mon âme au désespoir, ma flamme en liberté.</l>
+          </sp>
+          <sp who="tc0623-DONSANCHE">
+            <speaker>DON SANCHE.</speaker>
+            <l n="1713" part="I">D'un esprit plus rassis...</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="1713" part="F">Tu me parles encore,</l>
+            <l n="1714">Exécrable assassin d'un héros que j'adore ?</l>
+            <l n="1715">Va, tu l'as pris en traître ; un guerrier si vaillant</l>
+            <l n="1716">N'eût jamais succombé sous un tel assaillant.</l>
+            <l n="1717">N'espère rien de moi, tu ne m'as point servie :</l>
+            <l n="1718">En croyant me venger, tu m'as ôté la vie.</l>
+          </sp>
+          <sp who="tc0623-DONSANCHE">
+            <speaker>DON SANCHE.</speaker>
+            <l n="1719">Étrange impression, qui loin de m'écouter...</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="1720">Veux-tu que de sa mort je t'écoute vanter,</l>
+            <l n="1721">Que j'entende à loisir avec quelle insolence</l>
+            <l n="1722">Tu peindras son malheur, mon crime et ta vaillance ?</l>
+          </sp>
+        </div>
+        <div type="scene" n="6">
+          <head>SCÈNE VI. Don Fernand, Don Diègue, Don Arias, Don Sanche, Don Alonse, Chimène, Elvire.</head>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="1723">Sire, il n'est plus besoin de vous dissimuler</l>
+            <l n="1724">Ce que tous mes efforts ne vous ont pu celer.</l>
+            <l n="1725">J'aimais, vous l'avez su ; mais pour venger mon père,</l>
+            <l n="1726">J'ai bien voulu proscrire une tête si chère :</l>
+            <l n="1727">Votre majesté, Sire, elle-même a pu voir</l>
+            <l n="1728">Comme j'ai fait céder mon amour au devoir.</l>
+            <l n="1729">Enfin Rodrigue est mort, et sa mort m'a changée</l>
+            <l n="1730">D'implacable ennemie en amante affligée.</l>
+            <l n="1731">J'ai dû cette vengeance à qui m'a mise au jour,</l>
+            <l n="1732">Et je dois maintenant ces pleurs à mon amour.</l>
+            <l n="1733">Don Sanche m'a perdue en prenant ma défense,</l>
+            <l n="1734">Et du bras qui me perd je suis la récompense !</l>
+            <l n="1735">Sire, si la pitié peut émouvoir un roi,</l>
+            <l n="1736">De grâce, révoquez une si dure loi ;</l>
+            <l n="1737">Pour prix d'une victoire où je perds ce que j'aime,</l>
+            <l n="1738">Je lui laisse mon bien ; qu'il me laisse à moi-même ;</l>
+            <l n="1739">Qu'en un cloître sacré je pleure incessamment,</l>
+            <l n="1740">Jusqu'au dernier soupir, mon père et mon amant.</l>
+          </sp>
+          <sp who="tc0623-DONDIEGUE">
+            <speaker>DON DIÈGUE.</speaker>
+            <l n="1741">Enfin elle aime, Sire, et ne croit plus un crime</l>
+            <l n="1742">D'avouer par sa bouche un amour légitime.</l>
+          </sp>
+          <sp who="tc0623-DONFERNAND">
+            <speaker>DON FERNAND.</speaker>
+            <l n="1743">Chimène, sors d'erreur, ton amant n'est pas mort,</l>
+            <l n="1744">Et Don Sanche vaincu t'a fait un faux rapport.</l>
+          </sp>
+          <sp who="tc0623-DONSANCHE">
+            <speaker>DON SANCHE.</speaker>
+            <l n="1745">Sire, un peu trop d'ardeur malgré moi l'a déçue :</l>
+            <l n="1746">Je venais du combat lui raconter l'issue.</l>
+            <l n="1747">Ce généreux guerrier, dont son coeur est charmé :</l>
+            <l n="1748">« Ne crains rien, m'a-t-il dit, quand il m'a désarmé ;</l>
+            <l n="1749">Je laisserais plutôt la victoire incertaine,</l>
+            <l n="1750">Que de répandre un sang hasardé pour Chimène ;</l>
+            <l n="1751">Mais puisque mon devoir m'appelle auprès du roi,</l>
+            <l n="1752">Va de notre combat l'entretenir pour moi,</l>
+            <l n="1753">De la part du vainqueur lui porter ton épée. »</l>
+            <l n="1754">Sire, j'y suis venu : cet objet l'a trompée ;</l>
+            <l n="1755">Elle m'a cru vainqueur, me voyant de retour,</l>
+            <l n="1756">Et soudain sa colère a trahi son amour</l>
+            <l n="1757">Avec tant de transport et tant d'impatience,</l>
+            <l n="1758">Que je n'ai pu gagner un moment d'audience.</l>
+            <l n="1759">Pour moi, bien que vaincu, je me répute heureux ;</l>
+            <l n="1760">Et malgré l'intérêt de mon coeur amoureux,</l>
+            <l n="1761">Perdant infiniment, j'aime encor ma défaite,</l>
+            <l n="1762">Qui fait le beau succès d'une amour si parfaite.</l>
+          </sp>
+          <sp who="tc0623-DONFERNAND">
+            <speaker>DON FERNAND.</speaker>
+            <l n="1763">Ma fille, il ne faut point rougir d'un si beau feu,</l>
+            <l n="1764">Ni chercher les moyens d'en faire un désaveu.</l>
+            <l n="1765">Une louable honte en vain t'en sollicite :</l>
+            <l n="1766">Ta gloire est dégagée, et ton devoir est quitte ;</l>
+            <l n="1767">Ton père est satisfait, et c'était le venger</l>
+            <l n="1768">Que mettre tant de fois ton Rodrigue en danger.</l>
+            <l n="1769">Tu vois comme le ciel autrement en dispose.</l>
+            <l n="1770">Ayant tant fait pour lui, fais pour toi quelque chose,</l>
+            <l n="1771">Et ne sois point rebelle à mon commandement,</l>
+            <l n="1772">Qui te donne un époux aimé si chèrement.</l>
+          </sp>
+        </div>
+        <div type="scene" n="7">
+          <head>SCÈNE VII. Don Fernand, Don Diègue, Don Arias, Don Rodrigue, Don ALonse, Don Sanche, L'Infante, Chimène, Léonor, Elvire.</head>
+          <sp who="tc0623-LINFANTE">
+            <speaker>L'INFANTE.</speaker>
+            <l n="1773">Sèche tes pleurs, Chimène, et reçois sans tristesse</l>
+            <l n="1774">Ce généreux vainqueur des mains de ta princesse.</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="1775">Ne vous offensez point, Sire, si devant vous</l>
+            <l n="1776">Un respect amoureux me jette à ses genoux.</l>
+            <l n="1777">Je ne viens point ici demander ma conquête :</l>
+            <l n="1778">Je viens tout de nouveau vous apporter ma tête,</l>
+            <l n="1779">Madame ; mon amour n'emploiera point pour moi</l>
+            <l n="1780">Ni la loi du combat, ni le vouloir du roi.</l>
+            <l n="1781">Si tout ce qui s'est fait est trop peu pour un père,</l>
+            <l n="1782">Dites par quels moyens il vous faut satisfaire.</l>
+            <l n="1783">Faut-il combattre encor mille et mille rivaux,</l>
+            <l n="1784">Aux deux bouts de la terre étendre mes travaux,</l>
+            <l n="1785">Forcer moi seul un camp, mettre en fuite une armée,</l>
+            <l n="1786">Des héros fabuleux passer la Renommée ?</l>
+            <l n="1787">Si mon crime par là se peut enfin laver,</l>
+            <l n="1788">J'ose tout entreprendre, et puis tout achever ;</l>
+            <l n="1789">Mais si ce fier honneur, toujours inexorable,</l>
+            <l n="1790">Ne se peut apaiser sans la mort du coupable,</l>
+            <l n="1791">N'armez plus contre moi le pouvoir des humains :</l>
+            <l n="1792">Ma tête est à vos pieds, vengez-vous par vos mains ;</l>
+            <l n="1793">Vos mains seules ont droit de vaincre un invincible ;</l>
+            <l n="1794">Prenez une vengeance à tout autre impossible.</l>
+            <l n="1795">Mais du moins que ma mort suffise à me punir :</l>
+            <l n="1796">Ne me bannissez point de votre souvenir ;</l>
+            <l n="1797">Et puisque mon trépas conserve votre gloire,</l>
+            <note type="L">Revancher : Quelques uns disent revenger ; Se défendre contre quelqu'un, lui rendre des coups. Signifie aussi rendre la pareille, s'acquitter. [F]</note>
+            <l n="1798">Pour vous en revancher conservez ma mémoire,</l>
+            <l n="1799">Et dites quelquefois, en déplorant mon sort :</l>
+            <l n="1800">« S'il ne m'avait aimée, il ne serait pas mort. »</l>
+          </sp>
+          <sp who="tc0623-CHIMENE">
+            <speaker>CHIMÈNE.</speaker>
+            <l n="1801">Relève-toi, Rodrigue. Il faut l'avouer, Sire,</l>
+            <l n="1802">Je vous en ai trop dit pour m'en pouvoir dédire.</l>
+            <l n="1803">Rodrigue a des vertus que je ne puis haïr ;</l>
+            <l n="1804">Et quand un roi commande, on lui doit obéir.</l>
+            <l n="1805">Mais à quoi que déjà vous m'ayez condamnée,</l>
+            <l n="1806">Pourrez-vous à vos yeux souffrir cet hyménée ?</l>
+            <l n="1807">Et quand de mon devoir vous voulez cet effort,</l>
+            <l n="1808">Toute votre justice en est-elle d'accord ?</l>
+            <l n="1809">Si Rodrigue à l'État devient si nécessaire,</l>
+            <l n="1810">De ce qu'il fait pour vous dois-je être le salaire,</l>
+            <l n="1811">Et me livrer moi-même au reproche éternel</l>
+            <l n="1812">D'avoir trempé mes mains dans le sang paternel ?</l>
+          </sp>
+          <sp who="tc0623-DONFERNAND">
+            <speaker>DON FERNAND.</speaker>
+            <l n="1813">Le temps assez souvent a rendu légitime</l>
+            <l n="1814">Ce qui semblait d'abord ne se pouvoir sans crime :</l>
+            <l n="1815">Rodrigue t'a gagnée, et tu dois être à lui.</l>
+            <l n="1816">Mais quoique sa valeur t'ait conquise aujourd'hui,</l>
+            <l n="1817">Il faudrait que je fusse ennemi de ta gloire,</l>
+            <l n="1818">Pour lui donner sitôt le prix de sa victoire.</l>
+            <l n="1819">Cet hymen différé ne rompt point une loi</l>
+            <l n="1820">Qui sans marquer de temps, lui destine ta foi.</l>
+            <l n="1821">Prends un an, si tu veux, pour essuyer tes larmes.</l>
+            <l n="1822">Rodrigue, cependant il faut prendre les armes.</l>
+            <l n="1823">Après avoir vaincu les Mores sur nos bords,</l>
+            <l n="1824">Renversé leurs desseins, repoussé leurs efforts,</l>
+            <l n="1825">Va jusqu'en leur pays leur reporter la guerre,</l>
+            <l n="1826">Commander mon armée, et ravager leur terre :</l>
+            <l n="1827">À ce nom seul de Cid ils trembleront d'effroi ;</l>
+            <l n="1828">Ils t'ont nommé Seigneur, et te voudront pour roi.</l>
+            <l n="1829">Mais parmi tes hauts faits sois-lui toujours fidèle :</l>
+            <l n="1830">Reviens-en, s'il se peut, encor plus digne d'elle ;</l>
+            <l n="1831">Et par tes grands exploits fais-toi si bien priser,</l>
+            <l n="1832">Qu'il lui soit glorieux alors de t'épouser.</l>
+          </sp>
+          <sp who="tc0623-DONRODRIGUE">
+            <speaker>DON RODRIGUE.</speaker>
+            <l n="1833">Pour posséder Chimène, et pour votre service,</l>
+            <l n="1834">Que peut-on m'ordonner que mon bras n'accomplisse ?</l>
+            <l n="1835">Quoiqu'absent de ses yeux il me faille endurer,</l>
+            <l n="1836">Sire, ce m'est trop d'heur de pouvoir espérer.</l>
+          </sp>
+          <sp who="tc0623-DONFERNAND">
+            <speaker>DON FERNAND.</speaker>
+            <l n="1837">Espère en ton courage, espère en ma promesse ;</l>
+            <l n="1838">Et possédant déjà le coeur de ta maîtresse,</l>
+            <l n="1839">Pour vaincre un point d'honneur qui combat contre toi,</l>
+            <l n="1840">Laisse faire le temps, ta vaillance et ton roi.</l>
+          </sp>
+        </div>
+      </div>
+    </body>
+  </text>
+</TEI>

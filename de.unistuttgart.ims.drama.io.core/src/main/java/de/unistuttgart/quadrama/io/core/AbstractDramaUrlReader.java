@@ -121,10 +121,8 @@ public abstract class AbstractDramaUrlReader extends JCasCollectionReader_ImplBa
 		getLogger().debug("Processing url " + url);
 
 		Drama drama = new Drama(jcas);
-		if (!idPrefix.isEmpty())
-			drama.setDocumentId(idPrefix + idSeparator + String.valueOf(currentUrlIndex));
-		else
-			drama.setDocumentId(String.valueOf(currentUrlIndex));
+		drama.setDocumentId(String.valueOf(currentUrlIndex));
+		drama.setCollectionId(idPrefix);
 		// drama.setDocumentBaseUri("https://textgridlab.org/1.0/tgcrud-public/rest/");
 		drama.setDocumentUri(url.toString());
 		drama.addToIndexes();
