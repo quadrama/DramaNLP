@@ -1,0 +1,5871 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI>
+<teiHeader>
+<profileDesc>
+<particDesc>
+<listPerson>
+<person xml:id="JACINTA">
+<persName>JACINTA</persName></person>
+<person xml:id="LEONOR">
+<persName>LEONOR</persName></person>
+<person xml:id="MÚSICOS">
+<persName>MÚSICOS</persName></person>
+<person xml:id="REY">
+<persName>REY</persName></person>
+<person xml:id="INÉS">
+<persName>INÉS</persName></person>
+<person xml:id="COQUÍN">
+<persName>COQUÍN</persName></person>
+<person xml:id="TEODORA">
+<persName>TEODORA</persName></person>
+<person xml:id="LUDOVICO">
+<persName>LUDOVICO</persName></person>
+<person xml:id="DIEGO">
+<persName>DIEGO</persName></person>
+<person xml:id="ENRIQUE">
+<persName>ENRIQUE</persName></person>
+<person xml:id="VIEJO">
+<persName>VIEJO</persName></person>
+<person xml:id="ARIAS">
+<persName>ARIAS</persName></person>
+<person xml:id="GUTIERRE">
+<persName>GUTIERRE</persName></person>
+<person xml:id="MENCÍA">
+<persName>MENCÍA</persName></person>
+</listPerson>
+</particDesc>
+</profileDesc>
+</teiHeader>
+<text>
+<body>
+<div type="act" n="1">
+<head>ACTO PRIMERO</head>
+
+
+<stage>Suena ruido de caja, y sale cayendo el infante don</stage>
+<stage>ENRIQUE, don ARIAS y don DIEGO, y algo detrás el REY don</stage>
+<stage>Pedro, todos de camino</stage>
+
+
+
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>¡Jesús mil veces!</l>
+</sp>
+<sp who="ARIAS">
+<speaker>ARIAS:</speaker>
+<l>¡El cielo</l>
+<l>te valga!</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>¿Qué fue?</l>
+</sp>
+<sp who="ARIAS">
+<speaker>ARIAS:</speaker>
+<l>Cayó</l>
+<l>el caballo, y arrojó</l>
+<l>desde él al infante al suelo.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Si las torres de Sevilla</l>
+<l>saluda de esa manera,</l>
+<l>¡nunca a Sevilla viniera,</l>
+<l>nunca dejara a Castilla!</l>
+<l>¿Enrique!  ¡Hermano!</l>
+</sp>
+<sp who="DIEGO">
+<speaker>DIEGO:</speaker>
+<l>¡Señor!</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>¿No vuelve?</l>
+</sp>
+<sp who="ARIAS">
+<speaker>ARIAS:</speaker>
+<l>A un tiempo ha perdido</l>
+<l>pulso, color y sentido.</l>
+<l>¡Qué desdicha!</l>
+</sp>
+<sp who="DIEGO">
+<speaker>DIEGO:</speaker>
+<l>¡Qué dolor!</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Llegad a esa quinta bella,</l>
+<l>que está del camino al paso,</l>
+<l>don Arias, a ver si acaso</l>
+<l>recogido un poco en ella,</l>
+<l>cobra salud el infante.</l>
+<l>Todos os quedad aquí,</l>
+<l>y dadme un caballo a mí,</l>
+<l>que he de pasar adelante;</l>
+<l>que aunque este horror y mancilla</l>
+<l>mi rémora pudo ser,</l>
+<l>no me quiero detener</l>
+<l>hasta llegar a Sevilla.</l>
+<l>Allá llegará la nueva</l>
+<l>del suceso.</l>
+
+
+<stage>Vase el REY</stage>
+
+
+
+
+</sp>
+<sp who="ARIAS">
+<speaker>ARIAS:</speaker>
+<l>Esta ocasión</l>
+<l>de su fiera condición</l>
+<l>ha sido bastante prueba.</l>
+<l>¿Quién a un hermano dejara,</l>
+<l>tropezando de esta suerte</l>
+<l>en los brazos de la muerte?</l>
+<l>¡Vive Dios!</l>
+</sp>
+<sp who="DIEGO">
+<speaker>DIEGO:</speaker>
+<l>Calla, y repara</l>
+<l>en que, si oyen las paredes,</l>
+<l>los troncos, don Arias, ven,</l>
+<l>y nada nos está bien.</l>
+</sp>
+<sp who="ARIAS">
+<speaker>ARIAS:</speaker>
+<l>Tú, don Diego, llegar puedes</l>
+<l>a esa quinta; y di que aquí</l>
+<l>el infante mi señor</l>
+<l>cayó.  Pero no; mejor</l>
+<l>será que los dos así</l>
+<l>le llevemos donde pueda</l>
+<l>descansar.</l>
+</sp>
+<sp who="DIEGO">
+<speaker>DIEGO:</speaker>
+<l>Has dicho bien.</l>
+</sp>
+<sp who="ARIAS">
+<speaker>ARIAS:</speaker>
+<l>Viva Enrique, y otro bien</l>
+<l>la suerte no me conceda.</l>
+
+
+<stage>Llevan al infante, y sale doña MENCÍA</stage>
+<stage>y JACINTA, esclava herrada</stage>
+
+
+
+
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Desde la torre los vi,</l>
+<l>y aunque quien son no podré</l>
+<l>distinguir, Jacinta, sé</l>
+<l>que una gran desdicha allí</l>
+<l>ha sucedido.  Venía</l>
+<l>un bizarro caballero</l>
+<l>en un bruto tan ligero,</l>
+<l>que en el viento parecía</l>
+<l>un pájaro que volaba;</l>
+<l>y es razón que lo presumas,</l>
+<l>porque un penacho de plumas</l>
+<l>matices al aire daba.</l>
+<l>El campo y el sol en ellas</l>
+<l>compitieron resplandores;</l>
+<l>que el campo le dio sus flores,</l>
+<l>y el sol le dio sus estrellas;</l>
+<l>porque cambiaban de modo,</l>
+<l>y de modo relucían,</l>
+<l>que en todo al sol parecían,</l>
+<l>y a la primavera en todo.</l>
+<l>Corrió, pues, y tropezó</l>
+<l>el caballo, de manera</l>
+<l>que lo que ave entonces era,</l>
+<l>cuando en la tierra cayó</l>
+<l>fue rosa; y así en rigor</l>
+<l>imitó su lucimiento</l>
+<l>en sol, cielo, tierra y viento,</l>
+<l>ave, bruto, estrella y flor.</l>
+</sp>
+<sp who="JACINTA">
+<speaker>JACINTA:</speaker>
+<l>¡Ay señora!  En casa ha entrado...</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>¿Quién?</l>
+</sp>
+<sp who="JACINTA">
+<speaker>JACINTA:</speaker>
+<l>...un confuso tropel</l>
+<l>de gente.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>¿Mas que con él</l>
+<l>a nuestra quinta han llegado?</l>
+
+
+<stage>Salen don ARIAS y don DIEGO, y sacan al infante don</stage>
+<stage>ENRIQUE, y siéntanle en una silla</stage>
+
+
+
+
+</sp>
+<sp who="DIEGO">
+<speaker>DIEGO:</speaker>
+<l>En las casas de los nobles</l>
+<l>tiene tan divino imperio</l>
+<l>la sangre del rey, que ha dado</l>
+<l>en la vuestra atrevimiento</l>
+<l>para entrar de esta manera.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>(¿Qué es esto que miro?  ¡Ay cielos!)   Aparte</l>
+</sp>
+<sp who="DIEGO">
+<speaker>DIEGO:</speaker>
+<l>El infante don Enrique,</l>
+<l>hermano del rey don Pedro,</l>
+<l>a vuestras puertas cayó.</l>
+<l>y llega aquí medio muerto.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>¡Válgame Dios, qué desdicha!</l>
+</sp>
+<sp who="ARIAS">
+<speaker>ARIAS:</speaker>
+<l>Decidnos a qué aposento</l>
+<l>podrá retirarse, en tanto</l>
+<l>que vuelva al primero aliento</l>
+<l>su vida.  ¿Pero qué miro?</l>
+<l>¡Señora!</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>¡Don Arias!</l>
+</sp>
+<sp who="ARIAS">
+<speaker>ARIAS:</speaker>
+<l>Creo</l>
+<l>que es sueño fingido cuanto</l>
+<l>estoy escuchando y viendo.</l>
+<l>Que el infante don Enrique,</l>
+<l>más amante que primero,</l>
+<l>vuelva a Sevilla, y te halle</l>
+<l>con tan infeliz encuentro,</l>
+<l>¿puede ser verdad?</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Sí es;</l>
+<l>¡y ojalá que fuera sueño!</l>
+</sp>
+<sp who="ARIAS">
+<speaker>ARIAS:</speaker>
+<l>Pues, ¿qué haces aquí?</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>De espacio</l>
+<l>lo sabrás; que ahora no es tiempo</l>
+<l>sino sólo de acudir</l>
+<l>a la vida de tu dueño.</l>
+</sp>
+<sp who="ARIAS">
+<speaker>ARIAS:</speaker>
+<l>¿Quién le dijera que así</l>
+<l>llegara a verte?</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Silencio,</l>
+<l>que importa mucho, don Arias.</l>
+</sp>
+<sp who="ARIAS">
+<speaker>ARIAS:</speaker>
+<l>¿Por qué?</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Va mi honor en ello.</l>
+<l>Entrad en ese retiro,</l>
+<l>donde está un catre cubierto</l>
+<l>de un cuero turco y de flores;</l>
+<l>y en él, aunque humilde lecho,</l>
+<l>podrá descansar.  Jacinta,</l>
+<l>saca tú ropa al momento,</l>
+<l>aguas y olores que sean</l>
+<l>dignos de tan alto empleo.</l>
+
+
+<stage>Vase JACINTA</stage>
+
+
+
+
+</sp>
+<sp who="ARIAS">
+<speaker>ARIAS:</speaker>
+<l>Los dos, mientras se adereza,</l>
+<l>aquí al infante dejemos,</l>
+<l>y a su remedio acudamos,</l>
+<l>si hay en desdichas remedio.</l>
+
+
+<stage>Vanse don ARIAS y don DIEGO</stage>
+
+
+
+
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Ya se fueron, ya he quedado</l>
+<l>sola.  ¡Oh quién pudiera, ah cielos,</l>
+<l>con licencia de su honor</l>
+<l>hacer aquí sentimientos!</l>
+<l>¡Oh quién pudiera dar voces,</l>
+<l>y romper con el silencio</l>
+<l>cárceles de nieve, donde</l>
+<l>está aprisionado el fuego,</l>
+<l>que ya, resuelto en cenizas,</l>
+<l>es ruina que está diciendo:</l>
+<l>"Aquí fue amor"!  Mas ¿qué digo?</l>
+<l>¿Qué es esto, cielos, qué es esto?</l>
+<l>Yo soy quien soy.  Vuelva el aire</l>
+<l>los repetidos acentos</l>
+<l>que llevó; porque aun perdidos,</l>
+<l>no es bien que publiquen ellos</l>
+<l>lo que yo debo callar,</l>
+<l>porque ya, con más acuerdo,</l>
+<l>ni para sentir soy mía;</l>
+<l>y solamente me huelgo</l>
+<l>de tener hoy que sentir,</l>
+<l>por tener en mis deseos</l>
+<l>que vencer; pues no hay virtud</l>
+<l>sin experiencia.  Perfeto</l>
+<l>está el oro en el crisol,</l>
+<l>el imán en el acero,</l>
+<l>el diamante en el diamante,</l>
+<l>los metales en el fuego;</l>
+<l>y así mi honor en sí mismo</l>
+<l>se acrisola, cuando llego</l>
+<l>a vencerme, pues no fuera</l>
+<l>sin experiencias perfecto.</l>
+<l>¡Piedad, divinos cielos!</l>
+<l>¡Viva callando, pues callando muero!</l>
+<l>¡Enrique!  ¡Señor!</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>¿Quién llama?</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>¡Albricias...</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>¡Válgame el cielo!</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>...que vive tu alteza!</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>¿Dónde</l>
+<l>estoy?</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>En parte, a lo menos</l>
+<l>donde de vuestra salud</l>
+<l>hay quien se huelgue.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Lo creo,</l>
+<l>si esta dicha, por ser mía,</l>
+<l>no se deshace en el viento,</l>
+<l>pues consultando conmigo</l>
+<l>estoy, si despierto sueño,</l>
+<l>o si dormido discurro,</l>
+<l>pues a un tiempo duermo y velo.</l>
+<l>Pero ¿para qué averiguo,</l>
+<l>poniendo a mayores riesgos</l>
+<l>la verdad?  Nunca despierte</l>
+<l>si es verdad que agora duermo;</l>
+<l>y nunca duerma en mi vida</l>
+<l>si es verdad que estoy despierto.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Vuestra alteza, gran señor,</l>
+<l>trate prevenido y cuerdo</l>
+<l>de su salud, cuya vida</l>
+<l>dilate siglos eternos,</l>
+<l>fénix de su misma fama,</l>
+<l>imitando al que en el fuego</l>
+<l>ave, llama, ascua y gusano,</l>
+<l>urna, pira, voz y incendio,</l>
+<l>nace, vive, dura y muere,</l>
+<l>hijo y padre de sí mesmo;</l>
+<l>que después sabrá de mí</l>
+<l>dónde está.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>No lo deseo;</l>
+<l>que si estoy vivo y te miro,</l>
+<l>ya mayor dicha no espero;</l>
+<l>ni mayor dicha tampoco,</l>
+<l>si te miro estando muerto;</l>
+<l>pues es fuerza que sea gloria</l>
+<l>donde vive ángel tan bello.</l>
+<l>Y así no quiero saber</l>
+<l>qué acasos ni qué sucesos</l>
+<l>aquí mi vida guiaron,</l>
+<l>ni aquí la tuya trajeron;</l>
+<l>pues con saber que estoy donde</l>
+<l>estás tú, vivo contento;</l>
+<l>y así, ni tú que decirme,</l>
+<l>ni yo que escucharte tengo.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>(Presto de tantos favores            Aparte</l>
+<l>será desengaño el tiempo).</l>
+<l>Dígame ahora, ¿cómo está</l>
+<l>vuestra alteza?</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Estoy tan bueno,</l>
+<l>que nunca estuvo mejor;</l>
+<l>sólo en esta pierna siento</l>
+<l>un dolor.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Fue gran caída;</l>
+<l>pero en descansando, pienso</l>
+<l>que cobraréis la salud;</l>
+<l>y ya os están previniendo</l>
+<l>cama donde descanséis.</l>
+<l>Que me perdonéis, os ruego,</l>
+<l>la humildad de la posada;</l>
+<l>aunque disculpada quedo...</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Muy como señora habláis,</l>
+<l>Mencía.  ¿Sois vos el dueño</l>
+<l>de esta casa?</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>No, señor;</l>
+<l>pero de quien lo es, sospecho</l>
+<l>que lo soy.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Y ¿quién lo es?</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Un ilustre caballero,</l>
+<l>Gutierre Alfonso Solís,</l>
+<l>mi esposo y esclavo vuestro.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>¡Vuestro esposo!</l>
+
+
+<stage>Levántase don ENRIQUE</stage>
+
+
+
+
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Sí, señor.</l>
+<l>No os levantéis, deteneos;</l>
+<l>ved que no podéis estar</l>
+<l>en pie.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Sí puedo, sí puedo.</l>
+
+
+<stage>Sale don ARIAS</stage>
+
+
+
+
+</sp>
+<sp who="ARIAS">
+<speaker>ARIAS:</speaker>
+<l>Dame, gran señor, las plantas,</l>
+<l>que mil veces todo y beso,</l>
+<l>agradecido a la dicha</l>
+<l>que en tu salud nos ha vuelto</l>
+<l>la vida a todos.</l>
+
+
+<stage>Sale don DIEGO</stage>
+
+
+
+
+</sp>
+<sp who="DIEGO">
+<speaker>DIEGO:</speaker>
+<l>Ya puede</l>
+<l>vuestra alteza a ese aposento</l>
+<l>retirarse, donde está</l>
+<l>prevenido todo aquello</l>
+<l>que pudo en la fantasía</l>
+<l>bosquejar el pensamiento.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Don Arias, dame un caballo;</l>
+<l>dame un caballo, don Diego.</l>
+<l>Salgamos presto de aquí.</l>
+</sp>
+<sp who="ARIAS">
+<speaker>ARIAS:</speaker>
+<l>¿Qué decís?</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Que me deis presto</l>
+<l>un caballo.</l>
+</sp>
+<sp who="DIEGO">
+<speaker>DIEGO:</speaker>
+<l>Pues, señor...</l>
+</sp>
+<sp who="ARIAS">
+<speaker>ARIAS:</speaker>
+<l>Mira...</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Estáse Troya ardiendo,</l>
+<l>y Eneas de mis sentidos,</l>
+<l>he de librarlos del fuego.</l>
+
+
+<stage>Vase don DIEGO</stage>
+
+
+
+
+<l>¡Ay, don Arias, la caída</l>
+<l>no fue acaso, sino agüero</l>
+<l>de mi muerte!  Y con razón,</l>
+<l>pues fue divino decreto</l>
+<l>que viniese a morir yo,</l>
+<l>con tan justo sentimiento,</l>
+<l>donde tú estabas casada,</l>
+<l>porque nos diesen a un tiempo</l>
+<l>pésames y parabienes</l>
+<l>de tu boda y de mi entierro.</l>
+<l>De verse el bruto a tu sombra,</l>
+<l>pensé que, altivo y soberbio,</l>
+<l>engendró con osadía</l>
+<l>bizarros atrevimientos,</l>
+<l>cuando presumiendo de ave,</l>
+<l>con relinchos cuerpo a cuerpo</l>
+<l>desafïaba los rayos,</l>
+<l>después que venció los vientos;</l>
+<l>y no fue sino que al ver</l>
+<l>tu casa, montes de celos</l>
+<l>se le pusieron delante,</l>
+<l>porque tropezase en ellos;</l>
+<l>que aun un bruto se desboca</l>
+<l>con celos; y no hay tan diestro</l>
+<l>jinete, que allí no pierda</l>
+<l>los estribos al correrlos.</l>
+<l>Milagro de tu hermosura</l>
+<l>presumí el feliz suceso</l>
+<l>de mi vida, pero ya,</l>
+<l>más desengañado, pienso</l>
+<l>que no fue sino venganza</l>
+<l>de mi muerte; pues es cierto</l>
+<l>que muero, y que no hay milagros</l>
+<l>que se examinen muriendo.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Quien oyere a vuestra alteza</l>
+<l>quejas, agravios, desprecios,</l>
+<l>podrá formar de mi honor</l>
+<l>presunciones y concetos</l>
+<l>indignos de él; y yo agora,</l>
+<l>por si acaso llevó el viento</l>
+<l>cabal alguna razón,</l>
+<l>sin que en partidos acentos</l>
+<l>la troncase, responder</l>
+<l>a tantos agravios quiero,</l>
+<l>porque donde fueron quejas,</l>
+<l>vayan con el mismo aliento</l>
+<l>desengaños.  Vuestra alteza,</l>
+<l>liberal de sus deseos,</l>
+<l>generoso de sus gustos,</l>
+<l>pródigo de sus afectos,</l>
+<l>puso los ojos en mí;</l>
+<l>es verdad, yo lo confieso.</l>
+<l>Bien sabe, de tantos años</l>
+<l>de experiencias, el respeto</l>
+<l>con que constante mi honor</l>
+<l>fue una montaña de hielo,</l>
+<l>conquistada de las flores,</l>
+<l>escuadrones que arma el tiempo.</l>
+<l>Si me casé, ¿de qué engaño</l>
+<l>se queja, siendo sujeto</l>
+<l>imposible a sus pasiones,</l>
+<l>reservado a sus intentos,</l>
+<l>pues soy para dama más,</l>
+<l>lo que para esposa menos?</l>
+<l>Y así, en esta parte ya</l>
+<l>disculpara, en la que tengo</l>
+<l>de mujer, a vuestros pies</l>
+<l>humilde, señor, os ruego</l>
+<l>no os ausentéis de esta casa,</l>
+<l>poniendo a tan claro riesgo</l>
+<l>la salud.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>¡Cuánto mayor</l>
+<l>en esta casa le tengo!</l>
+
+
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Déme los pies vuestra alteza,</l>
+<l>si puedo de tanto sol</l>
+<l>tocar, ¡oh rayo español!,</l>
+<l>la majestad y grandeza.</l>
+<l>Con alegría y tristeza</l>
+<l>hoy a vuestras plantas llego,</l>
+<l>y mi aliento, lince y ciego,</l>
+<l>entre asombros y desmayos,</l>
+<l>es águila a tantos rayos,</l>
+<l>mariposa a tanto fuego;</l>
+<l>tristeza de la caída</l>
+<l>que puso con triste efeto</l>
+<l>a Castilla en tanto aprieto;</l>
+<l>y alegría de la vida</l>
+<l>que vuelve restituída</l>
+<l>a su pompa, a su belleza,</l>
+<l>cuando en gusto vuestra alteza</l>
+<l>trueca ya la pena mía.</l>
+<l>¿Quién vio triste la alegría?</l>
+<l>¿Quién vio alegre la tristeza?</l>
+<l>Y honrad por tan breve espacio</l>
+<l>esta esfera, aunque pequeña;</l>
+<l>porque el sol no se desdeña,</l>
+<l>después que ilustró un palacio,</l>
+<l>de iluminar el topacio</l>
+<l>de algún pajizo arrebol.</l>
+<l>Y pues sois rayo español,</l>
+<l>descansad aquí; que es ley</l>
+<l>hacer el palacio el rey</l>
+<l>también, si hace esfera el sol.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>El gusto y pesar estimo</l>
+<l>del modo que le sentís,</l>
+<l>Gutierre Alfonso Solís;</l>
+<l>y así en el alma le imprimo,</l>
+<l>donde a tenerle me animo</l>
+<l>guardado.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Sabe tu alteza</l>
+<l>honrar.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Y aunque la grandeza</l>
+<l>de esta casa fuera aquí</l>
+<l>grande esfera para mí,</l>
+<l>pues lo que de otra belleza,</l>
+<l>no me puedo detener;</l>
+<l>que pienso que esta caída</l>
+<l>ha de costarme la vida;</l>
+<l>y no sólo por caer,</l>
+<l>sino también por hacer</l>
+<l>que no pasase adelante</l>
+<l>mi intento; y es importante</l>
+<l>irme; que hasta un desengaño</l>
+<l>cada minuto es un año,</l>
+<l>es un siglo cada instante.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Señor, ¿vuestra alteza tiene</l>
+<l>causa tal, que su inquietud</l>
+<l>aventure la salud</l>
+<l>de una vida que previene</l>
+<l>tantos aplausos?</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Conviene</l>
+<l>llegar a Sevilla hoy.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Necio en apurar estoy</l>
+<l>vuestro intento; pero creo</l>
+<l>que mi lealtad y deseo...</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Y si yo la causa os doy,</l>
+<l>¿qué diréis?</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Yo no os la pido;</l>
+<l>que a vos, señor, no es bien hecho</l>
+<l>examinaros el pecho.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Pues escuchad:  yo he tenido</l>
+<l>un amigo tal, que ha sido</l>
+<l>otro yo.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Dichoso fue.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>A éste en mi ausencia fïé</l>
+<l>el alma, la vida, el gusto</l>
+<l>en una mujer.  ¿Fue justo</l>
+<l>que, atropellando la fe</l>
+<l>que debió al respeto mío,</l>
+<l>faltase en ausencia?</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>No.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Pues a otro dueño le dio</l>
+<l>llaves de aquel albedrío;</l>
+<l>al pecho que yo le fío,</l>
+<l>introdujo otro señor;</l>
+<l>otro goza su favor.</l>
+<l>¿Podrá un hombre enamorado</l>
+<l>sosegar con tal cuidado,</l>
+<l>descansar con tal dolor?</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>No, señor.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Cuando los cielos</l>
+<l>tanto me fatigan hoy,</l>
+<l>que en cualquier parte que estoy,</l>
+<l>estoy mirando mis celos,</l>
+<l>tan presentes mis desvelos</l>
+<l>están delante de mí,</l>
+<l>que aquí los miro, y así</l>
+<l>de aquí ausentarme deseo;</l>
+<l>que aunque van conmigo, creo</l>
+<l>que se han de quedar aquí.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Dicen que el primer consejo</l>
+<l>ha de ser de la mujer;</l>
+<l>y así, señor, quiero ser</l>
+<l>--perdonad si os aconsejo--</l>
+<l>quien os dé consuelo.  Dejo</l>
+<l>aparte celos, y digo</l>
+<l>que aguardéis a vuestro amigo,</l>
+<l>hasta ver si se disculpa;</l>
+<l>que hay calidades de culpa</l>
+<l>que no merecen castigo.</l>
+<l>No os despeñe vuestro brío;</l>
+<l>mirad, aunque estéis celoso,</l>
+<l>que ninguno es poderoso</l>
+<l>en el ajeno albedrío.</l>
+<l>Cuanto al amigo, confío</l>
+<l>que os he respondido ya;</l>
+<l>cuanto a la dama, quizá</l>
+<l>fuerza, y no mudanza fue;</l>
+<l>oídla vos, que yo sé</l>
+<l>que ella se disculpará.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>No es posible.</l>
+
+
+<stage>Sale don DIEGO</stage>
+
+
+
+
+</sp>
+<sp who="DIEGO">
+<speaker>DIEGO:</speaker>
+<l>Ya está allí</l>
+<l>el caballo apercibido.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Si es del que hoy habéis caído,</l>
+<l>no subáis en él, y aquí</l>
+<l>recibid, señor, de mí,</l>
+<l>una pía hermosa y bella,</l>
+<l>a quien una palma sella,</l>
+<l>signo que vuestra la hace;</l>
+<l>que también un bruto nace</l>
+<l>con mala o con buena estrella.</l>
+<l>Es este prodigio, pues,</l>
+<l>proporcionado y bien hecho,</l>
+<l>dilatado de anca y pecho;</l>
+<l>de cabeza y cuello es</l>
+<l>corto, de brazos y pies</l>
+<l>fuerte, a uno y otro elemento</l>
+<l>les da en sí lugar y asiento,</l>
+<l>siendo el bruto de la palma</l>
+<l>tierra el cuerpo, fuego el alma,</l>
+<l>mar la espuma, y todo viento.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>El alma aquí no podría</l>
+<l>distinguir lo que procura,</l>
+<l>la pía de la pintura,</l>
+<l>o por mejor bizarría,</l>
+<l>la pintura de la pía.</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>Aquí entro yo.  A mí me dé</l>
+<l>vuestra alteza mano o pie,</l>
+<l>lo que está --que esto es más llano--,</l>
+<l>o más a pie, o más a mano.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Aparte, necio.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>¿Por qué?</l>
+<l>Dejalde, su humor le abona.</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>En hablando de la pía,</l>
+<l>entra la persona mía,</l>
+<l>que es su segunda persona.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Pues ¿quién sois?</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>¿No lo pregona</l>
+<l>mi estilo?  Yo soy, en fin,</l>
+<l>Coquín, hijo de Coquín,</l>
+<l>de aquesta casa escudero,</l>
+<l>de la pía despensero,</l>
+<l>pues le siso al celemín</l>
+<l>la mitad de la comida;</l>
+<l>y en efeto, señor, hoy,</l>
+<l>por ser vuestro día, os doy</l>
+<l>norabuena muy cumplida.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>¿Mi día?</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>Es cosa sabida.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Su día llama uno aquél</l>
+<l>que es a sus gustos fïel,</l>
+<l>y lo fue a la pena mía;</l>
+<l>¿cómo pudo ser mi día?</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>Cayendo, señor, en él;</l>
+<l>y para que se publique</l>
+<l>en cuantos lunarios hay,</l>
+<l>desde hoy diré:  "A tanto cay</l>
+<l>San Infante don Enrique."</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Tu alteza, señor, aplique</l>
+<l>la espuela al ijar; que el día</l>
+<l>ya en la tumba helada y fría,</l>
+<l>huésped del undoso dios,</l>
+<l>hace noche.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Guárdeos Dios,</l>
+<l>hermosísima Mencía;</l>
+<l>y porque veáis que estimo</l>
+<l>el consejo, buscaré</l>
+<l>a esta dama, y de ella oiré</l>
+<l>la disculpa.  (Mal reprimo                            Aparte</l>
+<l>el dolor, cuando me animo</l>
+<l>a no decir lo que callo.</l>
+<l>Lo que en este lance hallo,</l>
+<l>ganar y perder se llama;</l>
+<l>pues él me ganó la dama,</l>
+<l>y yo le gané el caballo).</l>
+
+
+<stage>Vanse el infante don ENRIQUE, don ARIAS,</stage>
+<stage>don DIEGO y COQUÍN</stage>
+
+
+
+
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Bellísimo dueño mío,</l>
+<l>ya que vive tan unida</l>
+<l>a dos almas una vida,</l>
+<l>dos vidas a un albedrío,</l>
+<l>de tu amor e ingenio fío</l>
+<l>hoy, que licencia me des</l>
+<l>para ir a besar los pies</l>
+<l>al rey mi señor, que viene</l>
+<l>de Castilla; y le conviene</l>
+<l>a quien caballero es</l>
+<l>irle a dar la bienvenida.</l>
+<l>Y fuera de esto, ir sirviendo</l>
+<l>al infante Enrique, entiendo</l>
+<l>que es acción justa y debida,</l>
+<l>ya que debí a su caída</l>
+<l>el honor que hoy ha ganado</l>
+<l>nuestra casa.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>¿Qué cuidado</l>
+<l>más te lleva a darme enojos?</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>No otra cosa, ¡por tus ojos!</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>¿Quién duda que haya causado</l>
+<l>algún deseo Leonor?</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>¿Eso dices?  No la nombres.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>¡Oh qué tales sois los hombres!</l>
+<l>Hoy olvido, ayer amor;</l>
+<l>ayer gusto, y hoy rigor.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Ayer, como al sol no veía,</l>
+<l>hermosa me parecía</l>
+<l>la luna; mas hoy, que adoro</l>
+<l>al sol, ni dudo ni ignoro</l>
+<l>lo que hay de la noche al día.</l>
+<l>Y escúchame un argumento.</l>
+<l>Una llama en noche oscura</l>
+<l>arde hermosa, luce pura,</l>
+<l>cuyos rayos, cuyo aliento</l>
+<l>dulce ilumina del viento</l>
+<l>la esfera.  Sale el farol</l>
+<l>del cielo, y a su arrebol</l>
+<l>toda a sombra se reduce;</l>
+<l>ni arde, ni alumbra, ni luce,</l>
+<l>que es mar de rayos el sol.</l>
+<l>Aplico agora;  yo amaba</l>
+<l>una luz, cuyo esplendor</l>
+<l>bebió planeta mayor,</l>
+<l>que sus rayos sepultaba,</l>
+<l>una llama me alumbraba;</l>
+<l>pero era una llama aquélla,</l>
+<l>que eclipsas divina y bella</l>
+<l>siendo de luces crisol;</l>
+<l>porque hasta que sale el sol,</l>
+<l>parece hermosa una estrella.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>¡Qué lisonjero os escucho!,</l>
+<l>muy parabólico estáis.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>En fin, ¿licencia me dais?</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Pienso que la deseáis mucho;</l>
+<l>por eso cobarde lucho</l>
+<l>conmigo.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>¿Puede en los dos</l>
+<l>haber engaño, si en vos</l>
+<l>quedo yo, y vos vais en mí?</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Pues, como os quedáis aquí,</l>
+<l>adiós, don Gutierre.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Adiós.</l>
+
+
+<stage>Vase don GUTIERRE.  Sale JACINTA</stage>
+
+
+
+
+</sp>
+<sp who="JACINTA">
+<speaker>JACINTA:</speaker>
+<l>Triste, señora, has quedado.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Sí, Jacinta, y con razón.</l>
+</sp>
+<sp who="JACINTA">
+<speaker>JACINTA:</speaker>
+<l>No sé qué nueva ocasión</l>
+<l>te ha suspendido y turbado;</l>
+<l>que una inquietud, un cuidado</l>
+<l>te ha divertido.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Es así.</l>
+</sp>
+<sp who="JACINTA">
+<speaker>JACINTA:</speaker>
+<l>Bien puedes fïar de mí.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>¿Quieres ver si de ti fío</l>
+<l>mi vida, y el honor mío:</l>
+<l>Pues escucha atenta.</l>
+</sp>
+<sp who="JACINTA">
+<speaker>JACINTA:</speaker>
+<l>Di.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Nací en Sevilla, y en ella</l>
+<l>me vio Enrique, festejó</l>
+<l>mis desdenes, celebró</l>
+<l>mi nombre, ¡felice estrella!</l>
+<l>Fuése, y mi padre atropella</l>
+<l>la libertad que hubo en mí.</l>
+<l>La mano a Gutierre di,</l>
+<l>volvió Enrique, y en rigor,</l>
+<l>tuve amor, y tengo honor.</l>
+<l>Esto es cuanto sé de mí.</l>
+
+
+<stage>Vanse y sale doña LEONOR</stage>
+<stage>e INÉS, con mantos</stage>
+
+
+
+
+</sp>
+<sp who="INÉS">
+<speaker>INÉS:</speaker>
+<l>Ya sale para entrar en la capilla.</l>
+<l>Aquí le espera, y a sus pies te humilla.</l>
+</sp>
+<sp who="LEONOR">
+<speaker>LEONOR:</speaker>
+<l>Lograré mi esperanza,</l>
+<l>si recibe mi agravio la venganza.</l>
+
+
+<stage>Salen el REY, un VIEJO, y SOLDADOS</stage>
+
+
+
+
+<stage>SOLDADO 1:¡Plaza!</stage>
+<stage>SOLDADO 2:         Tu majestad aquéste lea.</stage>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Yo le haré ver.</l>
+<stage>SOLDADO 3:                Tu alteza, señor, vea</stage>
+<l>éste.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Está bien.</l>
+<stage>SOLDADO 1:             (Pocas palabras gasta).  Aparte</stage>
+<stage>SOLDADO 2:Yo soy...</stage>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>El memorial aqueste basta.</l>
+<stage>SOLDADO 1:Turbado estoy; mal el temor resisto.</stage>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>¿De qué os turbáis?</l>
+<stage>SOLDADO 1:              ¿No basta haberos visto?</stage>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Sí basta.  ¿Qué pedís?</l>
+<stage>SOLDADO 1:                  Yo soy soldado;</stage>
+<l>una ventaja.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Poco habéis pedido,</l>
+<l>para haberos turbado.</l>
+<l>Una jineta os doy.</l>
+<stage>SOLDADO 1:              Felice he sido.</stage>
+</sp>
+<sp who="VIEJO">
+<speaker>VIEJO:</speaker>
+<l>Un pobre viejo soy; limosna os pido.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Tomad este diamante.</l>
+</sp>
+<sp who="VIEJO">
+<speaker>VIEJO:</speaker>
+<l>¿Para mí os le quitáis?</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Yo no os espante;</l>
+<l>que, para darle de una vez, quisiera</l>
+<l>sólo un diamante todo el mundo fuera.</l>
+</sp>
+<sp who="LEONOR">
+<speaker>LEONOR:</speaker>
+<l>Señor, a vuestras plantas</l>
+<l>mis pies turbados llegan;</l>
+<l>de parte de mi honor vengo a pediros</l>
+<l>con voces que se anegan en suspiros,</l>
+<l>con suspiros que en lágrimas se anegan,</l>
+<l>justicia.  Para vos y Dios apelo.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Sosegaos, señora, alzad del suelo.</l>
+</sp>
+<sp who="LEONOR">
+<speaker>LEONOR:</speaker>
+<l>Yo soy...</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>No prosigáis de esa manera.</l>
+<l>Salíos todos afuera.</l>
+
+
+<stage>Vanse todos</stage>
+
+
+
+
+<l>Hablad agora, porque si venisteis</l>
+<l>de parte del honor, como dijisteis</l>
+<l>indigna cosa fuera</l>
+<l>que en público el honor sus quejas diera,</l>
+<l>y que a tan bella cara</l>
+<l>vergüenza la justicia lo costara.</l>
+
+</sp>
+<sp who="LEONOR">
+<speaker>LEONOR:</speaker>
+<l>Pedro, a quien llama el mundo justiciero,</l>
+<l>planeta soberano de Castilla,</l>
+<l>a cuya luz se alumbra este hemisferio;</l>
+<l>Júpiter español, cuya cuchilla</l>
+<l>rayos esgrime de templado acero,</l>
+<l>cuando blandida al aire alumbra y brilla;</l>
+<l>sangriento giro, que entre nubes de oro,</l>
+<l>corta los cuellos de uno y otro moro;</l>
+<l>yo soy Leonor, a quien Andalucía</l>
+<l>llama --lisonja fue--, Leonor la bella;</l>
+<l>no porque fuese la hermosura mía</l>
+<l>quien el nombre adquirió, sino la estrella;</l>
+<l>que quien decía bella, ya decía</l>
+<l>infelice, que el hombre incluye y sella,</l>
+<l>a la sombra no más de la hermosura,</l>
+<l>poca dicha, señor, poca ventura.</l>
+<l>Puso los ojos, para darme enojos,</l>
+<l>un caballero en mí, que ¡ojalá fuera</l>
+<l>basilisco de amor a mis despojos,</l>
+<l>áspid de celos a mi primavera!</l>
+<l>Luego el deseo sucedió a los ojos,</l>
+<l>el amor al deseo, y de manera</l>
+<l>mi calle festejó, que en ella veía</l>
+<l>morir la noche, y espirar el día.</l>
+<l>¿Con qué razones, gran señor, herida</l>
+<l>la voz, diré que a tanto amor postrada,</l>
+<l>aunque el desdén me publicó ofendida,</l>
+<l>la voluntad me confesó obligada?</l>
+<l>De obligada pasé a agradecida,</l>
+<l>luego de agradecida a apasionada;</l>
+<l>que en la universidad de enamorados,</l>
+<l>dignidades de amor se dan por grados.</l>
+<l>Poca centella incita mucho fuego,</l>
+<l>poco viento movió mucha tormenta,</l>
+<l>poca nube al principio arroja luego</l>
+<l>mucho diluvio, poca luz alienta</l>
+<l>mucho rayo después, poco amor ciego</l>
+<l>descubre mucho engaño; y así intenta,</l>
+<l>siendo centella, viento, nube, ensayo,</l>
+<l>ser tormenta, diluvio, incendio y rayo.</l>
+<l>Dióme palabra que sería mi esposo;</l>
+<l>que éste de las mujeres es el cebo</l>
+<l>con que engaña el honor el cauteloso</l>
+<l>pescador, cuya pasta es el Erebo</l>
+<l>que aduerme los sentidos temeroso.</l>
+<l>El labio aquí fallece, y no me atrevo</l>
+<l>a decir que mintió.  No es maravilla.</l>
+<l>¿Qué palabra se dio para cumplilla?</l>
+<l>Con esta libertad entró en mi casa,</l>
+<l>si bien siempre el honor fue reservado;</l>
+<l>porque yo, liberal de amor, y escasa</l>
+<l>de honor, me atuve siempre a este sagrado.</l>
+<l>Mas la publicidad a tanto pasa,</l>
+<l>y tanto esta opinión se ha dilatado,</l>
+<l>que en secreto quisiera más perdella,</l>
+<l>que con público escándalo tenella.</l>
+<l>Pedí justicia, pero soy muy pobre;</l>
+<l>quejéme de él, pero es muy poderoso;</l>
+<l>y ya que es imposible que yo cobre,</l>
+<l>pues se casó, mi honor, Pedro famoso,</l>
+<l>si sobre tu piedad divina, sobre</l>
+<l>tu justicia, me admites generoso,</l>
+<l>que me sustente en un convento pido;</l>
+<l>Gutierre Alfonso de Solís ha sido.</l>
+
+  
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Señora, vuestros enojos</l>
+<l>siento con razón, por ser</l>
+<l>un Atlante en quien descansa</l>
+<l>todo el peso de la ley.</l>
+<l>Si Gutierre está casado,</l>
+<l>no podrá satisfacer,</l>
+<l>como decís, por entero</l>
+<l>vuestro honor; pero yo haré</l>
+<l>justicia como convenga</l>
+<l>en esta parte; si bien</l>
+<l>no os debe restituír</l>
+<l>honor, que vos os tenéis.</l>
+<l>Oigamos a la otra parte</l>
+<l>disculpas suyas; que es bien</l>
+<l>guardar el segundo oído</l>
+<l>para quien llega después;</l>
+<l>y fïad, Leonor, de mí,</l>
+<l>que vuestra causa veré</l>
+<l>de suerte que no os obligue</l>
+<l>a que digáis otra vez</l>
+<l>que sois pobre, él poderoso,</l>
+<l>siendo yo en Castilla rey.</l>
+<l>Mas Gutierre viene allí;</l>
+<l>podrá, si conmigo os ve,</l>
+<l>conocer que me informasteis</l>
+<l>primero.  Aquese cancel</l>
+<l>os encubra, aquí aguardad,</l>
+<l>hasta que salgáis después.</l>
+</sp>
+<sp who="LEONOR">
+<speaker>LEONOR:</speaker>
+<l>En todo he de obedeceros.</l>
+
+
+<stage>Escóndese, y sale COQUÍN</stage>
+
+
+
+
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>De sala en sala, pardiez,</l>
+<l>a la sombra de mi amo,</l>
+<l>que allí se quedó, llegué</l>
+<l>hasta aquí, ¡válgame Alá!</l>
+<l>¡Vive Dios, que está aquí el rey!</l>
+<l>Él me ha visto, y se mesura.</l>
+<l>¡Plegue al cielo que no esté</l>
+<l>muy alto aqueste balcón,</l>
+<l>por si me arroja por él!</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>¿Quién sois?</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>¿Yo, señor?</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Vos.</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>Yo,</l>
+<l>¡válgame el cielo!, soy quien</l>
+<l>vuestra majestad quisiere,</l>
+<l>sin quitar y sin poner,</l>
+<l>porque un hombre muy discreto</l>
+<l>me dio por consejo ayer,</l>
+<l>no fuese quien en mi vida</l>
+<l>vos no quisieseis; y fue</l>
+<l>de manera la lición,</l>
+<l>que antes, agora y después</l>
+<l>quien vos quisiéredes sólo</l>
+<l>fui, quien gustaréis seré,</l>
+<l>quien os place soy; y en esto,</l>
+<l>mirad con quién y sin quién...</l>
+<l>y así, con vuestra licencia,</l>
+<l>por donde vine me iré</l>
+<l>hoy, con mis pies de compás,</l>
+<l>si no con compás de pies.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Aunque me habéis respondido</l>
+<l>cuanto pudiera saber,</l>
+<l>quién sois os he preguntado.</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>Y yo os hubiera también</l>
+<l>al tenor de la pregunta</l>
+<l>respondido, a no temer</l>
+<l>que en diciéndoos quién soy, luego</l>
+<l>por un balcón me arrojéis,</l>
+<l>por haberme entrado aquí</l>
+<l>tan sin qué ni para qué,</l>
+<l>teniendo un oficio yo</l>
+<l>que vos no habéis menester.</l>
+</sp>
+<sp who="REY">
+<speaker>REY;</speaker>
+<l>¿Qué oficio tenéis?</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>Yo soy</l>
+<l>cierto correo de a pie,</l>
+<l>portador de todas nuevas,</l>
+<l>hurón de todo interés,</l>
+<l>sin que se me haya escapado</l>
+<l>señor, profeso o novel;</l>
+<l>y del que me ha dado más,</l>
+<l>digo mal, mas digo bien.</l>
+<l>Todas las cosas son mías;</l>
+<l>y aunque lo son, esta vez</l>
+<l>la de don Gutierre Alfonso</l>
+<l>es mi accesorio, en quien fue</l>
+<l>mi pasto meridiano,</l>
+<l>un andaluz cordobés.</l>
+<l>Soy cofrade del contento;</l>
+<l>el pesar no sé quién es,</l>
+<l>ni aun para servirle.  En fin,</l>
+<l>soy, aquí donde me veis,</l>
+<l>mayordomo de la risa,</l>
+<l>gentilhombre del placer</l>
+<l>y camarero del gusto,</l>
+<l>pues que me visto con él.</l>
+<l>Y por ser esto, he temido</l>
+<l>el darme aquí a conocer;</l>
+<l>porque un rey que no se ríe,</l>
+<l>temo que me libre cien</l>
+<l>esportillas batanadas,</l>
+<l>con pespuntes al envés,</l>
+<l>por vagamundo.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>En fin, ¿sois</l>
+<l>hombre, que a cargo tenéis</l>
+<l>la risa?</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>Sí, mi señor;</l>
+<l>y porque lo echéis de ver,</l>
+<l>esto es jugar de gracioso</l>
+<l>en palacio.</l>
+
+
+<stage>Cúbrese</stage>
+
+
+
+
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Está muy bien;</l>
+<l>y pues sé quién sois, hagamos</l>
+<l>los dos un concierto.</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>¿Y es?</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>¿Hacer reír profesáis?</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>Es verdad.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Pues cada vez</l>
+<l>que me hiciéredes reír,</l>
+<l>cien escudos os daré;</l>
+<l>y si no me hubieres hecho</l>
+<l>reír en término de un mes,</l>
+<l>os han de sacar los dientes.</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>Testigo falso me hacéis,</l>
+<l>y es ilícito contrato</l>
+<l>de inorme lesión.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>¿Por qué?</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>Porque quedaré lisiado</l>
+<l>si le aceto, ¿no se ve?</l>
+<l>Dicen, cuando uno se ríe</l>
+<l>que enseña los dientes; pues</l>
+<l>enseñarlos yo llorando,</l>
+<l>será reírme al revés.</l>
+<l>Dicen que sois tan severo,</l>
+<l>que a todos dientes hacéis;</l>
+<l>¿qué os hice yo, que a mí solo</l>
+<l>deshacérmelos queréis?</l>
+<l>Pero vengo en el partido;</l>
+<l>que porque ahora me dejéis</l>
+<l>ir libre, no le rehúso,</l>
+<l>pues por lo menos un mes</l>
+<l>me hallo aquí como en la calle</l>
+<l>de vida; y al cabo de él</l>
+<l>no es mucho que tome postas</l>
+<l>en mi boca la vejez;</l>
+<l>y así voy a examinarme</l>
+<l>de cosquillas.  ¡Voto a diez,</l>
+<l>que os habéis de reír!  Adiós,</l>
+<l>y veámonos después.</l>
+
+
+<stage>Vase COQUÍN y salen don ENRIQUE, don GUTIERRE, don DIEGO</stage>
+<stage>y don ARIAS, y toda la compañía</stage>
+
+
+
+
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Déme vuestra majestad</l>
+<l>la mano.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Vengáis con bien,</l>
+<l>Enrique.  ¿Cómo os sentís?</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Más, señor, el susto fue</l>
+<l>que el golpe.  Estoy bueno.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>A mí</l>
+<l>vuestra majestad me de</l>
+<l>la mano, si mi humildad</l>
+<l>merece tan alto bien,</l>
+<l>porque el suelo que pisáis</l>
+<l>es soberano dosel</l>
+<l>que ilumina de los vientos</l>
+<l>uno y otro rosicler;</l>
+<l>y vengáis con la salud</l>
+<l>que este reino ha menester,</l>
+<l>para que os adore España,</l>
+<l>coronado de laurel.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>De vos, don Gutierre Alfonso...</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>¿Las espaldas me volvéis?</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>...grande querellas me dan.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Injustas deben de ser.</l>
+</sp>
+<sp who="REY">
+<speaker>REY;</speaker>
+<l>¿Quién es, decidme, Leonor,</l>
+<l>una principal mujer</l>
+<l>de Sevilla?</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Una señora,</l>
+<l>bella, ilustre y noble es,</l>
+<l>de lo mejor de esta tierra.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>¿Qué obligación la tenéis,</l>
+<l>a que habéis correspondido</l>
+<l>necio, ingrato y descortés?</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>No os he de mentir en nada,</l>
+<l>que el hombre, señor, de bien</l>
+<l>no sabe mentir jamás,</l>
+<l>y más delante del rey.</l>
+<l>Servíla, y mi intento entonces</l>
+<l>casarme con ella fue,</l>
+<l>si no mudara las cosas</l>
+<l>de los tiempos el vaivén.</l>
+<l>Visitéla, entré en su casa</l>
+<l>públicamente; si bien</l>
+<l>no le debo a su opinión</l>
+<l>de una mano el interés.</l>
+<l>Viéndome desobligado,</l>
+<l>pude mudarme después;</l>
+<l>y así, libre de este amor,</l>
+<l>en Sevilla me casé</l>
+<l>con doña Mencía de Acuña,</l>
+<l>dama principal, con quien</l>
+<l>vivo, fuera de Sevilla,</l>
+<l>una casa de placer.</l>
+<l>Leonor, mal aconsejada</l>
+<l>--que no la aconseja bien</l>
+<l>quien destruye su opinión--,</l>
+<l>pleitos intentó poner</l>
+<l>a mi desposorio, donde</l>
+<l>el más riguroso juez</l>
+<l>no halló causa contra mí,</l>
+<l>aunque ella dice que fue</l>
+<l>diligencia del favor.</l>
+<l>¡Mirad vos a qué mujer</l>
+<l>hermosa favor faltara,</l>
+<l>si le hubiera menester!</l>
+<l>Con este engaño pretende,</l>
+<l>puesto que vos lo sabéis,</l>
+<l>valerse de vos; y así,</l>
+<l>yo me pongo a vuestros pies,</l>
+<l>donde a la justicia vuestra</l>
+<l>dará la espada mi fe,</l>
+<l>y mi lealtad la cabeza.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>¿Qué causa tuvisteis, pues,</l>
+<l>para tan grande mudanza?</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>¿Novedad tan grande es</l>
+<l>mudarse un hombre?  ¿No es cosa</l>
+<l>que cada día se ve?</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Sí; pero de extremo a extremo</l>
+<l>pasar el que quiso bien,</l>
+<l>no fue sin grande ocasión.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Suplícoos no me apretéis;</l>
+<l>que soy hombre que, en ausencia</l>
+<l>de las mujeres, daré</l>
+<l>la vida por no decir</l>
+<l>cosa indigna de su ser.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>¿Luego vos causa tuvisteis?</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Sí, señor; pero creed</l>
+<l>que si para mi descargo</l>
+<l>hoy hubiera menester</l>
+<l>decirlo, cuando importara</l>
+<l>vida y alma, amante fiel</l>
+<l>de su honor, no lo dijera.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Pues yo lo quiero saber.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Señor...</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Es curiosidad.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Mirad...</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>No me repliquéis;</l>
+<l>que me enojaré, por vida...</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Señor, señor, no juréis;</l>
+<l>que menos importa mucho</l>
+<l>que yo deje aquí de ser</l>
+<l>quien soy, que veros airado.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>(Que dijese le apuré                  Aparte</l>
+<l>el suceso en alta voz,</l>
+<l>porque pueda responder</l>
+<l>Leonor, si aquéste me engaña;</l>
+<l>y si habla verdad, porque,</l>
+<l>convencida con su culpa,</l>
+<l>sepa Leonor que lo sé).</l>
+<l>Decid, pues.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>A mi pesar</l>
+<l>lo digo; una noche entré</l>
+<l>en su casa, sentí ruido</l>
+<l>en una cuadra, llegué,</l>
+<l>y al mismo tiempo que ya</l>
+<l>fui a entrar, pude el bulto ver</l>
+<l>de un hombre, que se arrojó</l>
+<l>del balcón; bajé tras él,</l>
+<l>y sin conocerle, al fin</l>
+<l>pudo escaparse por pies.</l>
+</sp>
+<sp who="ARIAS">
+<speaker>ARIAS:</speaker>
+<l>(¡Válgame el cielo!  ¿Qué es esto     Aparte</l>
+<l>que miro?)</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Y aunque escuché</l>
+<l>satisfacciones, y nunca</l>
+<l>di a mi agravio entera fe,</l>
+<l>fue bastante esta aprensión</l>
+<l>a no casarme; porque</l>
+<l>si amor y honor son pasiones</l>
+<l>del ánimo, a mi entender,</l>
+<l>quien hizo al amor ofensa,</l>
+<l>se le hace al honor en él;</l>
+<l>porque el agravio del gusto</l>
+<l>al alma toca también.</l>
+
+
+<stage>Sale doña LEONOR</stage>
+
+
+
+
+</sp>
+<sp who="LEONOR">
+<speaker>LEONOR:</speaker>
+<l>Vuestra majestad perdone;</l>
+<l>que no puedo detener</l>
+<l>el golpe a tantas desdichas</l>
+<l>que han llegado de tropel...</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>(¡Vive Dios, que me engañaba!   Aparte</l>
+<l>La prueba sucedió bien).</l>
+</sp>
+<sp who="LEONOR">
+<speaker>LEONOR:</speaker>
+<l>...y oyendo contra mi honor</l>
+<l>presunciones, fuera ley</l>
+<l>injusta que yo, cobarde,</l>
+<l>dejara de responder;</l>
+<l>que menos perder importa</l>
+<l>la vida, cuando me dé</l>
+<l>este atrevimiento muerte,</l>
+<l>que vida y honor perder.</l>
+<l>Don Arias entró en mi casa...</l>
+</sp>
+<sp who="ARIAS">
+<speaker>ARIAS:</speaker>
+<l>Señora, espera, detén</l>
+<l>la voz, vuestra majestad,</l>
+<l>licencia, señor me dé,</l>
+<l>porque el honor de esta dama</l>
+<l>me toca a mí defender.</l>
+<l>Esa noche estaba en casa</l>
+<l>de Leonor una mujer</l>
+<l>con quien me hubiera casado,</l>
+<l>si de la parca el crüel</l>
+<l>golpe no cortara fiera</l>
+<l>su vida.  Yo, amante fiel</l>
+<l>de su hermosura, seguí</l>
+<l>sus pasos, y en casa entré</l>
+<l>de Leonor --atrevimiento</l>
+<l>de enamorado-- sin ser</l>
+<l>parte a estorbarlo Leonor.</l>
+<l>Llegó don Gutierre, pues;</l>
+<l>temerosa, Leonor dijo</l>
+<l>que me retirase a aquel</l>
+<l>aposento; yo lo hice.</l>
+<l>¡Mil veces mal haya, amén,</l>
+<l>quien de una mujer se rinde</l>
+<l>a admitir el parecer!</l>
+<l>Sintióme, entró, y a la voz</l>
+<l>de marido, me arrojé</l>
+<l>por el balcón; y si entonces</l>
+<l>volví el rostro a su poder</l>
+<l>porque era marido, hoy,</l>
+<l>que dice que no lo es,</l>
+<l>vuelvo a ponerme delante.</l>
+<l>Vuestra majestad me dé</l>
+<l>campo en que defienda altivo</l>
+<l>que no he faltado a quien es</l>
+<l>Leonor, pues a un caballero</l>
+<l>se le concede la ley.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE;</speaker>
+<l>Yo saldré donde...</l>
+
+
+<stage>Empuñan</stage>
+
+
+
+
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>¿Qué es esto?</l>
+<l>¿Cómo las manos tenéis</l>
+<l>en las espadas delante</l>
+<l>de mí?  ¿No tembláis de ver</l>
+<l>mi semblante:  Donde estoy,</l>
+<l>¿hay soberbia ni altivez?</l>
+<l>Presos los llevad al punto;</l>
+<l>en dos torres los tened;</l>
+<l>y agradeced que no os pongo</l>
+<l>las  cabezas a los pies.</l>
+
+
+<stage>Vase el REY</stage>
+
+
+
+
+</sp>
+<sp who="ARIAS">
+<speaker>ARIAS:</speaker>
+<l>Si perdió Leonor por mí</l>
+<l>su opinión, por mí también</l>
+<l>la tendrá; que esto se debe</l>
+<l>al honor de una mujer.</l>
+
+
+<stage>Vase don ARIAS</stage>
+
+
+
+
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>(No siento en desdicha tal              Aparte</l>
+<l>ver riguroso y crüel</l>
+<l>al rey; sólo siento que hoy</l>
+<l>Mencía, no te he de ver).</l>
+
+
+<stage>Vase don GUTIERRE</stage>
+
+
+
+
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>(Con ocasión de la caza,</l>
+<l>preso Gutierre, podré</l>
+<l>ver esta tarde a Mencía).</l>
+<l>Don Diego, conmigo ven;</l>
+<l>que tengo de porfïar</l>
+<l>hasta morir o vencer.</l>
+
+
+<stage>Vanse don ENRIQUE, don DIEGO, y acompañamiento</stage>
+
+
+
+
+</sp>
+<sp who="LEONOR">
+<speaker>LEONOR:</speaker>
+<l>¡Muerta quedo!  ¡Plegue a Dios,</l>
+<l>ingrato, aleve y crüel,</l>
+<l>falso, engañador, fingido,</l>
+<l>sin fe, sin Dios y sin ley,</l>
+<l>que como inocente pierdo</l>
+<l>mi honor, venganza me dé</l>
+<l>el cielo!  ¡El mismo dolor</l>
+<l>sientas que siento, y a ver</l>
+<l>llegues, bañado en tu sangre,</l>
+<l>deshonras tuyas, porque</l>
+<l>mueras con las mismas armas</l>
+<l>que matas, amén, amén!</l>
+<l>¡Ay de mí!, mi honor perdí.</l>
+<l>¡Ay de mí!, mi muerte hallé.</l>
+
+
+<stage>Vase</stage>
+
+</sp>
+</div>
+
+<div type="act" n="2">
+<head>ACTO SEGUNDO</head>
+<stage>Salen JACINTA y don ENRIQUE como a escuras</stage>
+
+
+<sp who="JACINTA">
+<speaker>JACINTA:</speaker>
+<l>Llega con silencio.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Apenas</l>
+<l>los pies en la tierra puse.</l>
+</sp>
+<sp who="JACINTA">
+<speaker>JACINTA:</speaker>
+<l>Ésta es el jardín, y aquí</l>
+<l>pues de la noche te encubre</l>
+<l>el manto, y pues don Gutierre</l>
+<l>está preso, no hay que dudes</l>
+<l>sino que conseguirás</l>
+<l>victorias de amor tan dulces.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Si la libertad, Jacinta,</l>
+<l>que te prometí, presumes</l>
+<l>poco premio a bien tan grande,</l>
+<l>pide más, y no te excuses</l>
+<l>por cortedad.  Vida y alma</l>
+<l>es bien que por tuyas juzgues.</l>
+</sp>
+<sp who="JACINTA">
+<speaker>JACINTA:</speaker>
+<l>Aquí mi señora siempre</l>
+<l>viene, y tiene por costumbre</l>
+<l>pasar un poco la noche.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Calla, calla, no pronuncies</l>
+<l>otra razón, porque temo</l>
+<l>que los vientos nos escuchen.</l>
+</sp>
+<sp who="JACINTA">
+<speaker>JACINTA:</speaker>
+<l>Ya, pues, porque tanta ausencia</l>
+<l>no me indicie, o no me culpe</l>
+<l>de este delito, no quiero</l>
+<l>faltar de allí.</l>
+
+
+<stage>Vase JACINTA</stage>
+
+
+
+
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Amor, ayude</l>
+<l>mi intento.  Estas verdes hojas</l>
+<l>me escondan y disimulen;</l>
+<l>que no seré yo el primero</l>
+<l>que a vuestras espaldas hurte</l>
+<l>rayos al sol.  Acteón</l>
+<l>con Dïana me disculpe.</l>
+
+
+<stage>Escóndese, y sale doña MENCÍA</stage>
+<stage>y criadas</stage>
+
+
+
+
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>¡Silvia, Jacinta, Teodora!</l>
+</sp>
+<sp who="JACINTA">
+<speaker>JACINTA:</speaker>
+<l>¿Qué mandas?</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Que traigas luces;</l>
+<l>y venid todas conmigo</l>
+<l>a divertir pesadumbres</l>
+<l>de la ausencia de Gutierre,</l>
+<l>donde el natural presume</l>
+<l>vencer hermosos países</l>
+<l>que el arte dibuja y pule.</l>
+<l>¡Teodora!</l>
+</sp>
+<sp who="TEODORA">
+<speaker>TEODORA:</speaker>
+<l>¿Señora mía?</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Divierte con voces dulces</l>
+<l>esta tristeza.</l>
+</sp>
+<sp who="TEODORA">
+<speaker>TEODORA:</speaker>
+<l>Holgaréme</l>
+<l>que de letra y tono gustes.</l>
+
+
+<stage>Canta TEODORA y duérmese</stage>
+<stage>doña MENCÍA</stage>
+
+
+
+
+</sp>
+<sp who="JACINTA">
+<speaker>JACINTA:</speaker>
+<l>No cantes más, que parece</l>
+<l>que ya el sueño al alma infunde</l>
+<l>sosiego y descanso; y pues</l>
+<l>hallaron sus inquietudes</l>
+<l>en él sagrado, nosotras</l>
+<l>no la despertemos.</l>
+</sp>
+<sp who="TEODORA">
+<speaker>TEODORA:</speaker>
+<l>Huye</l>
+<l>con silencio la ocasión.</l>
+</sp>
+<sp who="JACINTA">
+<speaker>JACINTA:</speaker>
+<l>(Yo lo haré, porque la busque              Aparte</l>
+<l>quien la deseó.  ¡Oh crïadas,</l>
+<l>y cuántas honras ilustres</l>
+<l>se han perdido por vosotras!</l>
+
+
+<stage>Vanse, y sale don ENRIQUE</stage>
+
+
+
+
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Sola se quedó.  No duden</l>
+<l>mis sentidos tanta dicha,</l>
+<l>y ya que a esto me dispuse,</l>
+<l>pues la ventura me falta,</l>
+<l>tiempo y lugar me aseguren.</l>
+<l>¡Hermosísima Mencía!</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>¡Válgame Dios!</l>
+
+
+<stage>Despierta</stage>
+
+
+
+
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>No te asustes.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>¿Qué es esto?</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Un atrevimiento,</l>
+<l>a quien es bien que disculpen</l>
+<l>tantos años de esperanza.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>¿Pues, señor, vos...</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>No te turbes.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>...de esta suerte...</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>No te alteres.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>...entrasteis...</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>No te disgustes.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>...en mi casa sin temer</l>
+<l>que así a una mujer destruye,</l>
+<l>y que así ofende un vasallo</l>
+<l>tan generoso e ilustre?</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Esto es tomar tu consejo.</l>
+<l>Tú me aconsejas que escuche</l>
+<l>disculpas de aquella dama,</l>
+<l>y vengo a que te disculpes</l>
+<l>conmigo de mis agravios.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Es verdad, la culpa tuve;</l>
+<l>pero si he de disculparme,</l>
+<l>tu alteza, señor, no dude</l>
+<l>que es en orden a mi honor.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>¿Que ignoro, acaso, presumes</l>
+<l>el respeto que les debo</l>
+<l>a tu sangre y tus costumbres?</l>
+<l>El achaque de la caza</l>
+<l>que en estos campos dispuse,</l>
+<l>no fue fatigar la caza,</l>
+<l>estorbando que saluden</l>
+<l>a la venida del día,</l>
+<l>sino a ti, garza, que subes</l>
+<l>tan remontada, que tocas</l>
+<l>por las campañas azules</l>
+<l>de los palacios del sol</l>
+<l>los dorados balaústres.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Muy bien, señor, vuestra alteza</l>
+<l>a las garzas atribuye</l>
+<l>esta lucha; pues la garza</l>
+<l>de tal instinto presume,</l>
+<l>que volando hasta los cielos,</l>
+<l>rayo de pluma sin lumbre,</l>
+<l>ave de fuego con alma,</l>
+<l>con instinto alada nube,</l>
+<l>parda cometa sin fuego,</l>
+<l>quiere que su intento burlen</l>
+<l>azores reales; y aun dicen</l>
+<l>que cuando de todos huye,</l>
+<l>conoce el que ha de matarla;</l>
+<l>y así, antes que con él luche,</l>
+<l>el temor hace que tiemble,</l>
+<l>se estremezca, y se espeluce.</l>
+<l>Así yo, viendo a tu alteza</l>
+<l>quedé muda, absorta estuve,</l>
+<l>conocí el riesgo, y temblé;</l>
+<l>tuve miedo, y horror tuve;</l>
+<l>porque mi temor no ignore,</l>
+<l>porque me espanto no dude,</l>
+<l>que es quien me ha de dar la muerte.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Ya llegué a hablarte, ya tuve</l>
+<l>ocasión; no he de perdella.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>¿Cómo esto los cielos sufren?</l>
+<l>Daré voces.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>A ti misma</l>
+<l>te infamas.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>¿Cómo no acuden</l>
+<l>a darme favor las fieras?</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Porque de enojarme huyen.</l>
+
+
+<stage>Dentro don GUTIERRE</stage>
+
+
+
+
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Ten ese estribo, Coquín,</l>
+<l>y llama a esa puerta.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>¡Cielos!</l>
+<l>No mintieron mis recelos;</l>
+<l>llegó de mi vida el fin.</l>
+<l>Don Gutierre es éste, ¡ay Dios!</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>¡Oh, qué infelice nací!</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>¿Qué ha de ser, señor, de mí,</l>
+<l>si os halla conmigo a vos?</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>¿Pues qué he de hacer?</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Retiraros.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>¿Yo me tengo de esconder?</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>El honor de una mujer</l>
+<l>a más que esto ha de obligaros.</l>
+<l>No podéis salir --¡soy muerta!--</l>
+<l>que como allá no sabían</l>
+<l>mis crïadas lo que hacían,</l>
+<l>abrieron luego la puerta.</l>
+<l>Aun salir no podéis ya.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>¿Qué haré en tanta confusión?</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Detrás de ese pabellón,</l>
+<l>que en mi misma cuadra está,</l>
+<l>os esconded.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>No he sabido,</l>
+<l>hasta la ocasión presente,</l>
+<l>qué es temor.  ¡Oh, qué valiente</l>
+<l>debe de ser un marido!</l>
+
+
+<stage>Escóndese</stage>
+
+
+
+
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Sí inocente la mujer,</l>
+<l>no hay desdicha que no aguarde,</l>
+<l>¡válgame Dios, qué cobarde</l>
+<l>culpada debe de ser!</l>
+
+
+<stage>Salen don GUTIERRE y COQUÍN</stage>
+
+
+
+
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Mi bien, mi señora, los brazos</l>
+<l>darme una y mil veces puedes.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Con envidia de estas redes,</l>
+<l>que en tan amoroso lazos</l>
+<l>están inventando abrazos.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>No dirás que no he venido</l>
+<l>a verte.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Fineza ha sido</l>
+<l>de amante firme y constante.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>No dejo de ser amante</l>
+<l>yo, mi bien, por ser marido;</l>
+<l>que por propia la hermosura</l>
+<l>no desmerece jamás</l>
+<l>las finezas; antes más</l>
+<l>las alienta y asegura;</l>
+<l>y así a su riesgo procura</l>
+<l>los medios, las ocasiones.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA;</speaker>
+<l>En obligación me pones.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>El alcaide que conmigo</l>
+<l>está, es mi deudo y amigo,</l>
+<l>y quitándome prisiones</l>
+<l>al cuerpo, más las echó</l>
+<l>al alma, porque me ha dado</l>
+<l>ocasión de haber llegado</l>
+<l>a tan grande dicha yo,</l>
+<l>como es a verte.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA;</speaker>
+<l>¿Quién vio</l>
+<l>mayor gloria...</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>...que la mía?;</l>
+<l>aunque, si bien advertía,</l>
+<l>hizo muy poco por mí</l>
+<l>en dejarme que hasta aquí</l>
+<l>viniese; pues si vivía</l>
+<l>yo sin alma en la prisión,</l>
+<l>por estar en ti, mi bien,</l>
+<l>darme libertad fue bien,</l>
+<l>para que en esta ocasión</l>
+<l>alma y vida con razón</l>
+<l>otra vez se viese unida;</l>
+<l>porque estaba dividida,</l>
+<l>teniendo en prolija calma,</l>
+<l>en una prisión el alma,</l>
+<l>y en otra prisión la vida.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Dicen que dos instrumentos</l>
+<l>conformemente templados,</l>
+<l>por los ecos dilatados</l>
+<l>comunican los acentos.</l>
+<l>Tocan el uno, y los vientos</l>
+<l>hiere el otro, sin que allí</l>
+<l>nadie le toque; y en mí</l>
+<l>esta experiencia se viera;</l>
+<l>pues si el golpe allá te hiriera,</l>
+<l>muriera yo desde aquí.</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>¿Y no le darás, señora,</l>
+<l>tu mano por un momento</l>
+<l>a un preso de cumplimiento;</l>
+<l>pues llora, siente e ignora</l>
+<l>por qué siente, y por qué llora</l>
+<l>y está su muerte esperando</l>
+<l>sin saber por qué, ni cuándo?</l>
+<l>Pero...</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Coquín, ¿qué hay en fin?</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>Fin al principio en Coquín</l>
+<l>hay, que esto te estoy contando;</l>
+<l>mucho el rey me quiere, pero</l>
+<l>si el rigor pasa adelante,</l>
+<l>mi amo será muerto andante,</l>
+<l>pues irá con escudero.</l>
+
+
+<stage>Habla doña MENCÍA</stage>
+<stage>a don GUTIERRE</stage>
+
+
+
+
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Poco regalarte espero;</l>
+<l>porque como no aguardaba</l>
+<l>huésped, descuidada estaba.</l>
+<l>Cena os quiero apercibir.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Un esclava puede ir.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>¿Ya, señor, no va una esclava?</l>
+<l>Yo lo soy, y lo he de ser,</l>
+<l>Jacinta, venme a ayudar.</l>
+<l>(En salud me he de curar.               Aparte</l>
+<l>Ved, honor, cómo ha de ser,</l>
+<l>porque me he de resolver</l>
+<l>a una temeraria acción).</l>
+
+
+<stage>Vanse las dos</stage>
+
+
+
+
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Tú, Coquín, a esta ocasión</l>
+<l>aquí te queda, y extremos</l>
+<l>olvida, y mira que habemos</l>
+<l>de volver a la prisión</l>
+<l>antes del día; ya falta</l>
+<l>poco; aquí puedes quedarte.</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>Yo quisiera aconsejarte</l>
+<l>una industria, la más alta</l>
+<l>que el ingenio humano esmalta.</l>
+<l>en ella tu vida está.</l>
+<l>¡Oh, qué industria...</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Dila ya.</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>...para salir sin lisión,</l>
+<l>sano y bueno de prisión!</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>¿Cuál es?</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>No volver allá.</l>
+<l>¿No estás bueno?  ¿No estás sano?</l>
+<l>Con no volver, claro ha sido</l>
+<l>que sano y bueno has salido.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>¡Vive Dios, necio villano,</l>
+<l>que te mate por mi mano!</l>
+<l>¿Pues tú me has de aconsejar</l>
+<l>tan vil acción, sin mirar</l>
+<l>la confïanza que aquí</l>
+<l>hizo el alcaide de mí?</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>Señor, yo llego a dudar</l>
+<l>--que soy más desconfïado--</l>
+<l>de la condición del rey;</l>
+<l>y así, el honor de esa ley</l>
+<l>no se entiende en el crïado;</l>
+<l>y hoy estoy determinado</l>
+<l>a dejarte y no volver.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>¿Dejarme tú?</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>¿Qué he de hacer?</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Y de ti, ¿qué han de decir?</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>¿Y héme de dejar morir</l>
+<l>por sólo bien parecer?</l>
+<l>Si el morir, señor, tuviera</l>
+<l>descarte o enmienda alguna,</l>
+<l>cosa que de dos la una</l>
+<l>un hombre hacerla pudiera,</l>
+<l>yo probara la primera</l>
+<l>por servirte; mas ¿no ves</l>
+<l>que rifa la vida es?</l>
+<l>Entro en ella, vengo y tomo</l>
+<l>cartas, y piérdola.  ¿Cómo</l>
+<l>me desquitaré después?</l>
+<l>Perdida se quedará,</l>
+<l>si la pierdo por tu engaño,</l>
+<l>hasta, hasta ciento y un año.</l>
+
+
+<stage>Sale doña MENCÍA sola, muy alborotada</stage>
+
+
+
+
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Señor, tu favor me da.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>¡Válgame Dios!  ¿Qué será?</l>
+<l>¿Qué puede haber sucedido?</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Un hombre...</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>¡Presto!</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>...escondido</l>
+<l>en mi aposento he topado,</l>
+<l>encubierto y rebozado.</l>
+<l>Favor, Gutierre, te pido.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>¿Qué dices?  ¡Válgame el cielo!</l>
+<l>Ya es forzoso que me asombre.</l>
+<l>¿Embozado en casa un hombre?</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Yo le vi.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE;</speaker>
+<l>Todo soy hielo.</l>
+<l>Toma esa luz.</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>¿Yo?</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>El recelo</l>
+<l>pierde, pues conmigo vas.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Villano, ¿cobarde estás?</l>
+<l>Saca tú la espada; yo</l>
+<l>iré.  La luz se cayó.</l>
+
+
+<stage>Al tomar la luz, la mata disimuladamente, y salen JACINTA y don ENRIQUE</stage>
+<stage>siguiéndola</stage>
+
+
+
+
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Esto me faltaba más;</l>
+<l>pero a escuras entraré.</l>
+</sp>
+<sp who="JACINTA">
+<speaker>JACINTA:</speaker>
+<l>Síguete, señor, por mí;</l>
+<l>seguro vas por aquí,</l>
+<l>que toda la casa sé.</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>¿Dónde iré yo?</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Ya topé</l>
+<l>el hombre.</l>
+
+
+<stage>Coge a COQUÍN</stage>
+
+
+
+
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>Señor, advierte...</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>¡Vive Dios, que de esta suerte,</l>
+<l>hasta que sepa quién es,</l>
+<l>le he de tener!; que después</l>
+<l>le darán mis manos muerte.</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>Mira, que yo...</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>(¡Qué rigor!  Aparte</l>
+<l>Si es que con él ha topado,</l>
+<l>¡ay de mí!)</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Luz han sacado.</l>
+
+
+<stage>Sale JACINTA con luz</stage>
+
+
+
+
+<l>¿Quién eres, hombre?</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>Señor,</l>
+<l>yo soy.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>¡Qué engaño!  ¡Qué error!</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>¿Pues yo no te lo decía?</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Que me hablabas presumía;</l>
+<l>pero no que eras el mismo</l>
+<l>que tenía.  ¡Oh, ciego abismo</l>
+<l>del alma y paciencia mía!</l>
+
+
+<stage>Habla doña MENCÍA</stage>
+<stage>aparte a JACINTA</stage>
+
+
+
+
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>¿Salió ya, Jacinta?</l>
+</sp>
+<sp who="JACINTA">
+<speaker>JACINTA:</speaker>
+<l>Sí.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Como esto en tu ausencia pasa,</l>
+<l>mira bien toda la casa;</l>
+<l>que como saben que aquí</l>
+<l>no estás, se atreven ansí</l>
+<l>ladrones.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>A verla voy.</l>
+<l>Suspiros al cielo doy,</l>
+<l>que mis sentimientos lleven,</l>
+<l>si es que a mi casa se atreven,</l>
+<l>por ver que en ella no estoy.</l>
+
+
+<stage>Vase don GUTIERRE</stage>
+
+
+
+
+</sp>
+<sp who="JACINTA">
+<speaker>JACINTA:</speaker>
+<l>Grande atrevimiento fue</l>
+<l>determinarte, señora,</l>
+<l>a tan grande acción agora.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>En ella mi vida hallé.</l>
+</sp>
+<sp who="JACINTA">
+<speaker>JACINTA:</speaker>
+<l>¿Por qué lo hiciste?</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Porque</l>
+<l>si yo no se lo dijera</l>
+<l>y Gutierre lo sintiera,</l>
+<l>la presunción era clara,</l>
+<l>pues no se desengañara</l>
+<l>de que yo cómplice era;</l>
+<l>y no fue dificultad</l>
+<l>en ocasión tan crüel,</l>
+<l>haciendo del ladrón fiel,</l>
+<l>engañar con la verdad.</l>
+
+
+<stage>Sale don GUTIERRE, y debajo de</stage>
+<stage>la capa ya una daga</stage>
+
+
+
+
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>¿Qué ilusión, qué vanidad</l>
+<l>de esta suerte te burló?</l>
+<l>Toda la casa vi yo;</l>
+<l>pero en ella no topé</l>
+<l>sombra de que verdad fue</l>
+<l>lo que a ti te pareció.</l>
+<l>(Mas es engaño, ¡ay de mí!,           Aparte</l>
+<l>que esta daga que hallé, cielos!,</l>
+<l>con sospechas y recelos</l>
+<l>previene mi muerte en sí;</l>
+<l>mas no es esto para aquí).</l>
+<l>Mi bien, mi esposa, Mencía;</l>
+<l>ya la noche en sombra fría</l>
+<l>su manto va recogiendo</l>
+<l>y cobardemente huyendo</l>
+<l>de la hermosa luz del día.</l>
+<l>Mucho siento, claro está,</l>
+<l>el dejarte en esta parte,</l>
+<l>por dejarte, y por dejarte</l>
+<l>con este temor; mas ya</l>
+<l>es hora.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Los brazos da</l>
+<l>a quien te adora.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>El favor</l>
+<l>estimo.</l>
+
+
+<stage>Al abrazarla don GUTIERRE,</stage>
+<stage>Doña MENCÍA ve la daga</stage>
+
+
+
+
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>¡Tente, señor!</l>
+<l>¿Tú la daga para mí?</l>
+<l>En mi vida te ofendí.</l>
+<l>Detén la mano al rigor,</l>
+<l>detén...</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>¿De qué estás turbada,</l>
+<l>mi bien, mi esposa, Mencía?</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Al verte ansí, presumía</l>
+<l>que ya en mi sangre bañada,</l>
+<l>hoy moría desangrada.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Como a ver la casa entré,</l>
+<l>así esta daga saqué.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Toda soy una ilusión.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>¡Jesús, qué imaginación!</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>En mi vida te he ofendido.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>¡Qué necia disculpa ha sido!</l>
+<l>Pero suele una aprensión</l>
+<l>tales miedos prevenir.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Mis tristezas, mis enojos,</l>
+<l>en tu ausencia estos antojos</l>
+<l>suelen, mi dueño, fingir.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Si yo pudiere venir,</l>
+<l>vendré a la noche y adiós.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Él vaya, mi bien, con vos.</l>
+<l>(¡Oh, qué asombros! ¡Oh, qué extremos!)</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>(¡Ay, honor!, mucho tenemos</l>
+<l>que hablar a solas los dos).</l>
+
+
+<stage>Vanse cada uno por su puerta.  Salen el REY y don DIEGO con rodela y</stage>
+<stage>capa de color; y como representa, se muda de negro</stage>
+
+
+
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Ten, don Diego, esa rodela.</l>
+</sp>
+<sp who="DIEGO">
+<speaker>DIEGO:</speaker>
+<l>Tarde vienes a acostarte.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Toda la noche rondé</l>
+<l>de aquesta ciudad las calles;</l>
+<l>que quiero saber ansí</l>
+<l>sucesos y novedades</l>
+<l>de Sevilla, que es lugar</l>
+<l>donde cada noche salen</l>
+<l>cuentos nuevos; y deseo</l>
+<l>de esta manera informarme</l>
+<l>de todo, para saber</l>
+<l>lo que convenga.</l>
+</sp>
+<sp who="DIEGO">
+<speaker>DIEGO:</speaker>
+<l>Bien haces,</l>
+<l>que el rey debe ser un Argos</l>
+<l>en su reino, vigilante.</l>
+<l>El emblema de aquel cetro</l>
+<l>con dos ojos lo declare.</l>
+<l>Mas ¿qué vio tu majestad?</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Vi recatados galanes,</l>
+<l>damas desveladas vi,</l>
+<l>músicas, fiestas y bailes,</l>
+<l>muchos gritos, de quien</l>
+<l>eran siempre voces grandes</l>
+<l>la tablilla que decía:</l>
+<l>"Aquí hay juego, caminante."</l>
+<l>Vi valientes infinitos;</l>
+<l>y no hay cosa que me canse</l>
+<l>tanto como ver valiente,</l>
+<l>y que por oficio pase</l>
+<l>ser uno valiente aquí.</l>
+<l>Mas porque no se me alaben</l>
+<l>que no doy examen yo</l>
+<l>a oficio tan importante,</l>
+<l>a una tropa de valientes</l>
+<l>probé solo en una calle.</l>
+</sp>
+<sp who="DIEGO">
+<speaker>DIEGO:</speaker>
+<l>Mal hizo tu majestad.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Antes bien, pues con su sangre</l>
+<l>llevaron iluminada...</l>
+</sp>
+<sp who="DIEGO">
+<speaker>DIEGO:</speaker>
+<l>¿Qué?</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>La carta del examen.</l>
+
+
+<stage>Sale COQUÍN</stage>
+
+
+
+
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>(No quise entrar en la torre            Aparte</l>
+<l>con mi amo, por quedarme</l>
+<l>a saber lo que se dice</l>
+<l>de su prisión.  Pero, ¡tate!</l>
+<l>--que es un pero muy honrado</l>
+<l>del celebrado linaje</l>
+<l>de los tates de Castilla--</l>
+<l>porque el rey está delante.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Coquín.</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>¿Señor?</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>¿Cómo va?</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>Responderé a lo estudiante.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>¿Cómo?</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>De "corpore bene,"</l>
+<l>pero de "pecunis male."</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Decid algo, pues sabéis,</l>
+<l>Coquín, que como me agrade,</l>
+<l>tenéis aquí cien escudos.</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>Fuera hacer tú aquesta tarde</l>
+<l>el papel de una comedia</l>
+<l>que se llamaba El rey ángel.</l>
+<l>Pero con todo eso traigo</l>
+<l>hoy un cuento que contarte,</l>
+<l>que remata en epigrama.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Si es vuestra, será elegante.</l>
+<l>Vaya el cuento.</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>Yo vi ayer</l>
+<l>de la cama levantarse</l>
+<l>un capón con bigotera.</l>
+<l>¿No te ríes de pensarle</l>
+<l>curándose sobre sano</l>
+<l>con tan vagamundo parche?</l>
+<l>A esto un epigrama hice:</l>
+<l>(No te pido, Pedro el grande,           Aparte</l>
+<l>casas ni viñas; que sólo</l>
+<l>risa pido en este guante.</l>
+<l>Dad vuestra bendita risa</l>
+<l>a un gracioso vergonzante).</l>
+
+
+<l>"Floro, casa muy desierta</l>
+<l>la tuya debe de ser,</l>
+<l>porque eso nos da a entender</l>
+<l>la cédula de la puerta.</l>
+<l>Donde no hay carta, ¿hay cubierta?,</l>
+<l>¿Cáscara sin fruta?  No,</l>
+<l>no pierdas tiempo, que yo</l>
+<l>esperando los provechos,</l>
+<l>he visto labrar barbechos,</l>
+<l>mas barbideshechos no".</l>
+
+
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>¡Qué frialdad!</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>Pues adiós, dientes.</l>
+
+
+<stage>Sale el infante don ENRIQUE</stage>
+
+
+
+
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Dadme vuestra mano.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Infante,</l>
+<l>¿cómo estáis?</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Tengo salud,</l>
+<l>contento de que se halle</l>
+<l>vuestra majestad con ella;</l>
+<l>y esto, señor, a una parte.</l>
+<l>Don Arias...</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Don Arias es</l>
+<l>vuestra privanza.  Sacalde</l>
+<l>de la prisión, y haced vos,</l>
+<l>Enrique, esas amistades,</l>
+<l>y agradézcanos la vida.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>La tuya los cielos guarden;</l>
+<l>y heredero de ti mismo,</l>
+<l>apuestes eternidades</l>
+<l>con el tiempo.</l>
+
+
+<stage>Vase el REY</stage>
+
+
+
+
+<l>Iréis, don Diego,</l>
+<l>a la torre, y al alcaide</l>
+<l>le diréis que traiga aquí</l>
+<l>los dos presos.</l>
+
+
+<stage>Vase don DIEGO</stage>
+
+
+
+
+<l>(¡Cielos, dadme        Aparte</l>
+<l>paciencia en tales desdichas,</l>
+<l>y prudencia en tales males).</l>
+<l>Coquín, ¿tú estabas aquí?</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>Y más me valiera en Flandes.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>¿Cómo?</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>El rey es un prodigio</l>
+<l>de todos los animales.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>¿Por qué?</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>La Naturaleza</l>
+<l>permite que el toro brame,</l>
+<l>ruja el león, muja el buey,</l>
+<l>el asno rebuzne, el ave</l>
+<l>cante, el caballo relinche,</l>
+<l>ladre el perro, el gato maye,</l>
+<l>aulle el lobo, el lechón gruña,</l>
+<l>y sólo permitió dalle</l>
+<l>risa al hombre, y Aristóteles</l>
+<l>risible animal le hace,</l>
+<l>por definición perfecta;</l>
+<l>y el rey, contra el orden y arte,</l>
+<l>no quiere reírse.  Déme</l>
+<l>el cielo, para sacarle</l>
+<l>risa, todas las tenazas</l>
+<l>del buen gusto y del donaire.</l>
+
+
+<stage>Vase COQUÍN, y salen don GUTIERRE, don ARIAS y don DIEGO</stage>
+
+
+
+
+</sp>
+<sp who="DIEGO">
+<speaker>DIEGO:</speaker>
+<l>Ya, señor, están aquí</l>
+<l>los presos.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Danos tus plantas.</l>
+</sp>
+<sp who="ARIAS">
+<speaker>ARIAS:</speaker>
+<l>Hoy al cielo nos levantas.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>El rey mi señor de mí</l>
+<l>--porque humilde le pedí</l>
+<l>vuestras vidas este día--</l>
+<l>estas amistades fía.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>El honrar es dado a vos.</l>
+
+
+<stage>Coteja la daga que se halló con la espada del infante</stage>
+
+
+
+
+<l>(¿Qué es esto que miro?  ¡Ay Dios!)     Aparte</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Las manos os dad.</l>
+</sp>
+<sp who="ARIAS">
+<speaker>ARIAS:</speaker>
+<l>La mía</l>
+<l>es ésta.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Y éstos mis brazos,</l>
+<l>cuyo nudo y lazo fuerte</l>
+<l>no desatará la muerte</l>
+<l>sin que los haga pedazos.</l>
+</sp>
+<sp who="ARIAS">
+<speaker>ARIAS:</speaker>
+<l>Confirmen estos abrazos</l>
+<l>firme amistad desde aquí.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Esto queda bien así.</l>
+<l>Entrambos sois caballeros</l>
+<l>en acudir los primeros</l>
+<l>a su obligación; y así</l>
+<l>está bien el ser amigos</l>
+<l>uno y otro; y quien pensare</l>
+<l>que no queda bien, repare</l>
+<l>en que ha de reñir conmigo.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>A cumplir, señor, me obligo</l>
+<l>las amistades que juro.</l>
+<l>Obedeceros procuro,</l>
+<l>y pienso que me honraréis</l>
+<l>tanto, que de mí creeréis</l>
+<l>lo que de mí estás seguro.</l>
+<l>Sois fuerte enemigo vos,</l>
+<l>y cuando lealtad no fuera,</l>
+<l>por temor no me atreviera</l>
+<l>a romperlas, ¡vive Dios!</l>
+<l>Vos y yo para otros dos</l>
+<l>me estuviera a mí muy bien.</l>
+<l>Mostrara entonces también</l>
+<l>que sé cumplir lo que digo;</l>
+<l>mas con vos por enemigo,</l>
+<l>¿quién ha de atreverse?  ¿Quién?</l>
+<l>Tanto enojaros temiera</l>
+<l>el alma cuerda y prudente,</l>
+<l>que a miraros solamente</l>
+<l>tal vez aun no me atreviera;</l>
+<l>y si en ocasión me viera</l>
+<l>de probar vuestros aceros,</l>
+<l>cuando yo sin conoceros</l>
+<l>a tal extremo llegara,</l>
+<l>que se muriera estimara</l>
+<l>la luz del sol por no veros.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>(De sus quejas y suspiros          Aparte</l>
+<l>grandes sospechas prevengo).</l>
+<l>Venid conmigo, que tengo</l>
+<l>muchas cosas que deciros,</l>
+<l>don Arias.</l>
+</sp>
+<sp who="ARIAS">
+<speaker>ARIAS;</speaker>
+<l>Iré a serviros.</l>
+
+
+<stage>Vanse don ENRIQUE, don DIEGO y don ARIAS</stage>
+
+
+
+
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Nada Enrique respondió;</l>
+<l>sin duda se convenció</l>
+<l>de mi razón.  ¡Ay de mí!</l>
+<l>¿Podré ya quejarme?  Sí;</l>
+<l>pero, consolarme, no.</l>
+
+
+<l>Ya estoy solo, ya bien puedo</l>
+<l>hablar.  ¡Ay Dios!, quién supiera</l>
+<l>reducir sólo a un discurso,</l>
+<l>medir con sola una idea</l>
+<l>tantos géneros de agravios,</l>
+<l>tantos linajes de penas</l>
+<l>como cobardes me asaltan,</l>
+<l>como atrevidos me cercan.</l>
+<l>Agora, agora, valor,</l>
+<l>salga repetido en quejas,</l>
+<l>salga en lágrimas envuelto</l>
+<l>el corazón a las puertas</l>
+<l>del alma, que son los ojos;</l>
+<l>y en ocasión como ésta,</l>
+<l>bien podéis, ojos, llorar.</l>
+<l>No lo dejéis de vergüenza.</l>
+<l>Agora, valor, agora</l>
+<l>es tiempo de que se vea</l>
+<l>que sabéis medir iguales</l>
+<l>el valor y la paciencia.</l>
+<l>Pero cese el sentimiento,</l>
+<l>y a fuerza de honor, y a fuerza</l>
+<l>de valor, aun no me dé</l>
+<l>para quejarme licencia:</l>
+<l>"porque adula sus penas</l>
+<l>el que pide a la voz justicia de ellas"</l>
+<l>Pero vengamos al caso;</l>
+<l>quizá hallaremos respuesta.</l>
+<l>¡Oh ruego a Dios que la haya!</l>
+<l>¡Oh plegue a Dios que la tenga!</l>
+<l>Anoche llegué a mi casa,</l>
+<l>es verdad; pero las puertas</l>
+<l>me abrieron luego, y mi esposa</l>
+<l>estaba segura y quieta.</l>
+<l>En cuanto a que me avisaron</l>
+<l>de que estaba un hombre en ella,</l>
+<l>tengo disculpa en que fue</l>
+<l>la que me avisó ella mesma;</l>
+<l>en cuanto a que se mató</l>
+<l>la luz, ¿qué testigo prueba</l>
+<l>aquí que no pudo ser</l>
+<l>un caso de contingencia?</l>
+<l>En cuanto a que hallé esta daga,</l>
+<l>hay crïados de quien pueda</l>
+<l>ser.  En cuanto, ¡ay dolor mío!,</l>
+<l>que con la espada convenga</l>
+<l>del infante, puede ser</l>
+<l>otra espada como ella;</l>
+<l>que no es labor tan extraña</l>
+<l>que no hay mil que la parezcan.</l>
+<l>Y apurando más el caso,</l>
+<l>confieso, ¡ay de mí!, que sea</l>
+<l>del infante, y más confieso</l>
+<l>que estaba allí, aunque no fuera</l>
+<l>posible dejar de verle;</l>
+<l>mas siéndolo, ¿no pudiera</l>
+<l>no estar culpada Mencía?;</l>
+<l>que el oro es llave maestra</l>
+<l>que las guardas de crïadas</l>
+<l>por instantes nos falsea.</l>
+<l>¡Oh cuánto me estimo haber</l>
+<l>hallado esta sutileza!</l>
+<l>Y así acortemos discursos,</l>
+<l>pues todos juntos se cierran</l>
+<l>en que Mencía es quien es,</l>
+<l>y soy quien soy.  No hay quien pueda</l>
+<l>borrar de tanto esplendor</l>
+<l>la hermosura y la pureza.</l>
+<l>Pero sí puede, mal digo;</l>
+<l>que al sol una nube negra,</l>
+<l>si no le mancha, le turba,</l>
+<l>si no le eclipsa, le hiela.</l>
+<l>"¿Qué injusta ley condena</l>
+<l>que muera el inocente, que padezca?"</l>
+<l>A peligro estás, honor,</l>
+<l>no hay hora en vos que no sea</l>
+<l>crítica.  En vuestro sepulcro</l>
+<l>vivís.  Puesto que os alienta</l>
+<l>la mujer, en ella estáis</l>
+<l>pisando siempre la güesa.</l>
+<l>Y os he de curar, honor,</l>
+<l>y pues al principio muestra</l>
+<l>este primero accidente</l>
+<l>tan grave peligro, sea</l>
+<l>la primera medicina</l>
+<l>cerrar al daño las puertas,</l>
+<l>atajar al mal los pasos.</l>
+<l>Y así os receta y ordena</l>
+<l>el médico de su honra</l>
+<l>primeramente la dieta</l>
+<l>del silencio, que es guardar</l>
+<l>la boca, tener paciencia.</l>
+<l>Luego dice que apliquéis</l>
+<l>a vuestra mujer finezas,</l>
+<l>agrados, gustos amores,</l>
+<l>lisonjas, que son las fuerzas</l>
+<l>defensibles, porque el mal</l>
+<l>con el despego no crezca.</l>
+<l>Que sentimientos, disgustos,</l>
+<l>celos, agravios, sospechas</l>
+<l>con la mujer, y más propia,</l>
+<l>aun más que sanan enferman.</l>
+<l>Esta noche iré a mi casa</l>
+<l>de secreto, entraré en ella,</l>
+<l>por ver qué malicia tiene</l>
+<l>el mal; y hasta apurar ésta,</l>
+<l>disimularé, si puedo,</l>
+<l>esta desdicha, esta pena,</l>
+<l>este rigor, este agravio,</l>
+<l>este dolor, esta ofensa,</l>
+<l>este asombro, este delirio,</l>
+<l>este cuidado, esta afrenta,</l>
+<l>estos celos...¿Celos dije?</l>
+<l>¡Qué mal hice!  Vuelva, vuelva</l>
+<l>al pecho la voz; mas no,</l>
+<l>que si es ponzoña que engendra</l>
+<l>mi pecho, si no me dio</l>
+<l>la muerte, ¡ay de mí!, al verterla,</l>
+<l>al volverla a mí podrá;</l>
+<l>que de la víbora cuentan</l>
+<l>que la mata su ponzoña</l>
+<l>si fuera de sí la encuentra.</l>
+<l>¿Celos dijo?  Celos dije;</l>
+<l>pues basta; que cuando llega</l>
+<l>un marido a saber que hay</l>
+<l>celos, faltará la ciencia;</l>
+<l>"y es la cura postrera</l>
+<l>que el médico de honor hacer intenta".</l>
+
+
+<stage>Vase don GUTIERRE, y salen don ARIAS y doña LEONOR</stage>
+
+
+</sp>
+<sp who="ARIAS">
+<speaker>ARIAS:</speaker>
+<l>No penséis, bella Leonor,</l>
+<l>que el no haberos visto fue</l>
+<l>porque negar intenté</l>
+<l>las deudas que a vuestro honor</l>
+<l>tengo; y acreedor a quien</l>
+<l>tanta deuda se previene,</l>
+<l>el deudor buscando viene,</l>
+<l>no a pagar, porque no es bien</l>
+<l>que necio y loco presuma</l>
+<l>que pueda jamás llegar</l>
+<l>a satisfacer y dar</l>
+<l>cantidad que fue tan suma;</l>
+<l>pero en fin, ya que no pago,</l>
+<l>que soy el deudor confieso;</l>
+<l>no os vuelvo el rostro, y con eso</l>
+<l>la obligación satisfago.</l>
+</sp>
+<sp who="LEONOR">
+<speaker>LEONOR:</speaker>
+<l>Señor don Arias, yo he sido</l>
+<l>la que obligada de vos,</l>
+<l>en las cuentas de los dos,</l>
+<l>más interés ha tenido.</l>
+<l>Confieso que me quitasteis</l>
+<l>un esposo a quien quería;</l>
+<l>mas quizá la suerte mía</l>
+<l>por ventura mejorasteis;</l>
+<l>pues es mejor que sin vida,</l>
+<l>sin opinión, sin honor</l>
+<l>viva, que no sin amor,</l>
+<l>de un marido aborrecida.</l>
+<l>Yo tuve la culpa, yo</l>
+<l>la pena siento, y así</l>
+<l>sólo me quejo de mí</l>
+<l>y de mi estrella.</l>
+</sp>
+<sp who="ARIAS">
+<speaker>ARIAS:</speaker>
+<l>Esto no;</l>
+<l>quitarme, Leonor hermosa,</l>
+<l>la culpa, es querer negar</l>
+<l>a mis deseos lugar;</l>
+<l>pues si mi pena amorosa</l>
+<l>os significo, ella diga</l>
+<l>en cifra sucinta y breve</l>
+<l>que es vuestro amor quien me mueve,</l>
+<l>mi deseo quien me obliga</l>
+<l>a deciros que pues fui</l>
+<l>causa de penas tan tristes,</l>
+<l>si esposo por mí perdistes,</l>
+<l>tengáis esposo por mí.</l>
+</sp>
+<sp who="LEONOR">
+<speaker>LEONOR:</speaker>
+<l>Señor, don Arias, estimo,</l>
+<l>como es razón, la elección;</l>
+<l>y aunque con tanta razón</l>
+<l>dentro del alma la imprimo,</l>
+<l>licencia me habéís de dar</l>
+<l>de responderos también</l>
+<l>que no puede estarme bien,</l>
+<l>no, señor, porque a ganar</l>
+<l>no llegaba yo infinito;</l>
+<l>sino porque si vos fuisteis</l>
+<l>quien a Gutierre le disteis</l>
+<l>de un mal formado delito</l>
+<l>la ocasión, y agora viera</l>
+<l>que me casaba con vos,</l>
+<l>fácilmente entre los dos</l>
+<l>de aquella sospecha hiciera</l>
+<l>evidencia; y disculpado,</l>
+<l>con demostración tan clara,</l>
+<l>con todo el mundo quedara</l>
+<l>de haberme a mí despreciado;</l>
+<l>y yo estimo de manera</l>
+<l>el quejarme con razón,</l>
+<l>que no he de darlo ocasión</l>
+<l>a la disculpa primera;</l>
+<l>porque si en un lance tal</l>
+<l>le culpa cuantos le ven,</l>
+<l>no han de pensar que hizo bien</l>
+<l>quien yo pienso que hizo mal.</l>
+</sp>
+<sp who="ARIAS">
+<speaker>ARIAS:</speaker>
+<l>Frívola respuesta ha sido</l>
+<l>la vuestra, bella Leonor;</l>
+<l>pues cuando de antiguo amor</l>
+<l>os hubiera convencido</l>
+<l>la experiencia, ella también</l>
+<l>disculpa en la enmienda os da.</l>
+<l>¿Cuántos peor os estará</l>
+<l>que tenga por cierto quien</l>
+<l>imaginó vuestro agravio,</l>
+<l>y no le constó después</l>
+<l>la satisfacción?</l>
+</sp>
+<sp who="LEONOR">
+<speaker>LEONOR:</speaker>
+<l>No es</l>
+<l>amante prudente y sabio,</l>
+<l>don Arias, quien aconseja</l>
+<l>lo que en mi daño se ve;</l>
+<l>pues si agravio entonces fue,</l>
+<l>no por eso agora deja</l>
+<l>de ser agravio también;</l>
+<l>y peor cuanto haber sido</l>
+<l>de imaginado a creído;</l>
+<l>y a vos no os estará bien</l>
+<l>tampoco.</l>
+</sp>
+<sp who="ARIAS">
+<speaker>ARIAS:</speaker>
+<l>Como yo sé</l>
+<l>la inocencia de ese pecho</l>
+<l>en la ocasión, satisfecho</l>
+<l>siempre de vos estaré.</l>
+<l>En mi vida he conocido</l>
+<l>galán necio, escrupuloso,</l>
+<l>y con extremo celoso,</l>
+<l>que en llegando a ser marido</l>
+<l>no le castiguen los cielos.</l>
+<l>Gutierre pudiera bien</l>
+<l>decirlo, Leonor; pues quien</l>
+<l>levantó tantos desvelos</l>
+<l>de un hombre en la ajena casa,</l>
+<l>extremos pudiera hacer</l>
+<l>mayores, pues llega a ver</l>
+<l>lo que en la propia le pasa.</l>
+</sp>
+<sp who="LEONOR">
+<speaker>LEONOR:</speaker>
+<l>Señor don Arias, no quiero</l>
+<l>escuchar lo que decís;</l>
+<l>que os engañáis, o mentís,</l>
+<l>don Gutierre es caballero</l>
+<l>que en todas las ocasiones,</l>
+<l>con obrar, y con decir,</l>
+<l>sabrá, vive Dios, cumplir</l>
+<l>muy bien sus obligaciones;</l>
+<l>y es hombre cuya cuchilla</l>
+<l>o cuyo consejo sabio,</l>
+<l>sabrá no sufrir su agravio</l>
+<l>ni a un infante de Castilla.</l>
+<l>Si pensáis vos que con eso</l>
+<l>mis enojos aduláis,</l>
+<l>muy mal, don Arias, pensáis;</l>
+<l>y si la verdad confieso,</l>
+<l>mucho perdisteis conmigo;</l>
+<l>pues si fuerais noble vos,</l>
+<l>no habláredes, vive Dios,</l>
+<l>así de vuestro enemigo.</l>
+<l>Y yo, aunque ofendida estoy,</l>
+<l>y aunque la muerte le diera</l>
+<l>con mis manos, si pudiera,</l>
+<l>no le murmurara hoy</l>
+<l>en el honor, desleal;</l>
+<l>sabed, don Arias, que quien</l>
+<l>una vez le quiso bien,</l>
+<l>no se vengará en su mal.</l>
+
+
+<stage>Vase doña LEONOR</stage>
+
+
+
+
+</sp>
+<sp who="ARIAS">
+<speaker>ARIAS:</speaker>
+<l>No supe qué responder.</l>
+<l>Muy grande ha sido mi error,</l>
+<l>pues en escuelas de honor</l>
+<l>arguyendo una mujer</l>
+<l>me convence.  Iré al infante,</l>
+<l>y humilde le rogaré</l>
+<l>que de estos cuidado dé</l>
+<l>parte ya de aquí adelante</l>
+<l>a otro; y porque no lo yerre,</l>
+<l>ya que el día va a morir,</l>
+<l>me ha de matar, o no ha de ir</l>
+<l>en casa de don Gutierre.</l>
+
+
+<stage>Vase don ARIAS.  Sale don GUTIERRE, como quien salta unas tapias</stage>
+
+
+
+
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>En el mudo silencio</l>
+<l>de la noche, que adoro y reverencio,</l>
+<l>por sombra aborrecida,</l>
+<l>como sepulcro de la humana vida,</l>
+<l>de secreto he venido</l>
+<l>hasta mi casa, sin haber querido</l>
+<l>avisar a Mencía</l>
+<l>de que ya libertad del rey tenía,</l>
+<l>para que descuidada</l>
+<l>estuviese, ¡ay de mí!, de esta jornada.</l>
+<l>Médico de mi honra</l>
+<l>me llamo, pues procuro mi deshonra</l>
+<l>curar; y así he venido</l>
+<l>a visitar mi enfermo, a hora que ha sido</l>
+<l>de ayer la misma, ¡cielos!,</l>
+<l>y a ver si el accidente de mis celos</l>
+<l>a su tiempo repite,</l>
+<l>el dolor mis intentos facilite.</l>
+<l>Las tapias de la huerta</l>
+<l>salté, porque no quise por la puerta</l>
+<l>entrar.  ¡Ay Dios, qué introducido engaño</l>
+<l>es en el mundo no querer su daño</l>
+<l>examinar un hombre,</l>
+<l>sin que el recelo ni el temor le asombre!</l>
+<l>Dice mal quien lo dice;</l>
+<l>que no es posible, no, que un infelice</l>
+<l>no llore sus desvelos.</l>
+<l>Mintió quien dijo que calló con celos,</l>
+<l>o confiéseme aquí que no los siente.</l>
+<l>Mas ¡sentir y callar!.  Otra vez miente.</l>
+<l>Éste es el sitio donde</l>
+<l>suele de noche estar; aun no responde</l>
+<l>el eco entre estos ramos.</l>
+<l>Vamos pasito, honor, que ya llegamos;</l>
+<l>que en estas ocasiones</l>
+<l>tienen los celos pasos de ladrones.</l>
+
+
+<stage>Descubre una cortina donde está</stage>
+<stage>durmiendo doña MENCÍA</stage>
+
+
+
+
+<l>¡Ay, hermosa Mencía,</l>
+<l>qué mal tratas mi amor, y la fe mía!</l>
+<l>Volverme otra vez quiero.</l>
+<l>Bueno he hallado mi honor, hacer no quiero</l>
+<l>por agora otra cura,</l>
+<l>pues la salud en él está segura.</l>
+<l>Pero ¿ni una crïada</l>
+<l>la acompaña?  ¿Si acaso retirada</l>
+<l>aguarda...?  ¡Oh pensamiento</l>
+<l>injusto!  ¡Oh vil temor!  ¡Oh infame aliento!</l>
+<l>Ya con esta sospecha</l>
+<l>no he de volverme; y pues que no aprovecha</l>
+<l>tan grave desengaño,</l>
+<l>apuremos de todo en todo el daño.</l>
+<l>Mato la luz, y llego</l>
+<l>sin luz y sin razón, dos veces ciego;</l>
+<l>pues bien encubrir puedo</l>
+<l>el metal de la voz, hablando quedo.</l>
+<l>¡Mencia!</l>
+
+
+<stage>Despiértala</stage>
+
+
+
+
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>¡Ay Dios!  ¿Qué es esto?</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>No des voces.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>¿Quién es?</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Yo soy, mi bien.  ¿No me conoces?</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Sí, señor; que no fuera</l>
+<l>otro tan atrevido...</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>(Ella me ha conocido).                       Aparte</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>...que así hasta aquí viniera.</l>
+<l>¿Quién hasta aquí llegara</l>
+<l>que no fuérades vos, que no dejara</l>
+<l>en mis manos la vida,</l>
+<l>con valor y con honra defendida?</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>(¡Qué dulce desengaño!                     Aparte</l>
+<l>¡Bien haya, Amor, el que apuró su daño!)</l>
+<l>Mencía, no te espantes de haber visto</l>
+<l>tal extremo.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>¡Qué mal, temor, resisto</l>
+<l>el sentimiento!</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE;</speaker>
+<l>Mucha razón tiene</l>
+<l>tu valor.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>¿Qué disculpa me previene...</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Ninguna.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>...de venir así tu alteza?</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>(¡Tu alteza!  No es conmigo, ¡ay Dios!  ¿Qué escucho?</l>
+<l>Con nuevas dudas lucho.</l>
+<l>¡Qué pesar! ¡Qué desdicha! ¡Qué tristeza!)</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>¿Segunda vez pretende ver mi muerte?</l>
+<l>¿Piensa que cada día...</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>(¡Oh trance fuerte!)</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>...puede esconderse...</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>(¡Cielos!)</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>...y matando la luz...</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>(¡Matadme, celos!)</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>...salir a riesgo mío</l>
+<l>delante de Gutierre?</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>(Desconfío</l>
+<l>de mí, pues que dilato</l>
+<l>morir, y con mi aliento no la mato.</l>
+<l>El venir no ha extrañado</l>
+<l>el infante, ni de él se ha recatado,</l>
+<l>sino sólo ha sentido</l>
+<l>que en ocasión se ponga, ¡estoy perdido!,</l>
+<l>de que otra vez se esconda.</l>
+<l>¡Mi venganza a mi agravio corresponda!</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Señor, vuélvase luego.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE;</speaker>
+<l>¡Ay, Dios!  Todo soy rabia, y todo fuego.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Tu alteza así otra vez no llegue a verse.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>¿Que por eso no más ha de volverse?</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Mirad que es hora que Gutierre venga.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>(¿Habrá en el mundo quien paciencia tenga?</l>
+<l>Sí, si prudente alcanza</l>
+<l>oportuna ocasión a su venganza).</l>
+<l>No vendrá; yo le dejo entretenido;</l>
+<l>y guárdame un amigo</l>
+<l>las espaldas el tiempo que conmigo</l>
+<l>estáis.  Él no vendrá, yo estoy seguro.</l>
+
+
+<stage>Sale JACINTA</stage>
+
+
+
+
+</sp>
+<sp who="JACINTA">
+<speaker>JACINTA:</speaker>
+<l>Temorosa procuro</l>
+<l>ver quién hablaba aquí.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Gente he sentido.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>¿Qué haré?</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>¿Qué?  Retirarte,</l>
+<l>no a mi aposento, sino a otra parte.</l>
+
+
+<stage>Vase don GUTIERRE detrás del paño</stage>
+
+
+
+
+<l>¡Hola!</l>
+</sp>
+<sp who="JACINTA">
+<speaker>JACINTA:</speaker>
+<l>¿Señora?</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>El aire que corría</l>
+<l>entre estos ramos mientras yo dormía,</l>
+<l>la luz ha muerto; luego</l>
+<l>traed luces.</l>
+
+
+<stage>Vase JACINTA</stage>
+
+
+
+
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>(Encendidas en mi fuego.           Aparte</l>
+<l>Si aquí estoy escondido,</l>
+<l>han de verme, y de todas conocido,</l>
+<l>podrá saber Mencía</l>
+<l>que he llegado a entender la pena mía;</l>
+<l>y porque no lo entienda,</l>
+<l>y dos veces me ofenda,</l>
+<l>una con tal intento,</l>
+<l>y otra pensando que lo sé y consiento,</l>
+<l>dilatando su muerte,</l>
+<l>he de hacer la deshecha de esta suerte).</l>
+
+
+<stage>Dice dentro</stage>
+
+
+
+
+<l>¡Hola!  ¿Cómo está aquí de esta manera?</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Éste es Gutierre; otra desdicha espera</l>
+<l>mi espíritu cobarde.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>¿No han encendido luces, y es tan tarde?</l>
+
+
+<stage>Sale JACINTA con luz, y don GUTIERRE por otra puerta</stage>
+<stage>de donde se escondió</stage>
+
+
+
+
+</sp>
+<sp who="JACINTA">
+<speaker>JACINTA:</speaker>
+<l>Ya la luz está aquí.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>¡Bella Mencía!</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>¡Oh mi esposo!  ¡Oh mi bien!  ¡Oh gloria mía!</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>(¡Qué fingidos extremos)                Aparte</l>
+<l>Mas, alma y corazón, disimulemos).</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Señor, ¿por dónde entrasteis?</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Por esa huerta,</l>
+<l>con la llave que tengo, abrí la puerta.</l>
+<l>Mi esposa, mi señora,</l>
+<l>¿en qué te entretenías?</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Vine agora</l>
+<l>a este jardín, y entre estas fuentes puras,</l>
+<l>dejóme el aire a escuras.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>No me espanto, bien mío;</l>
+<l>que el aire que mató la luz, tan frío</l>
+<l>corre, que es un aliento</l>
+<l>respirado del céfiro violento,</l>
+<l>y que no sólo advierte</l>
+<l>muerte a las luces, a las vidas muerte,</l>
+<l>y pudieras dormida</l>
+<l>a sus soplos también perder la vida.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Entenderte pretendo,</l>
+<l>y aunque más lo procuro, no te entiendo.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>¿No has visto ardiente llama</l>
+<l>perder la luz al aire que la hiere,</l>
+<l>y que a este tiempo de otra luz inflama</l>
+<l>la pavesa?  Una vive y otra muere</l>
+<l>a sólo un soplo.  Así, de esta manera,</l>
+<l>la lengua de los vientos lisonjera</l>
+<l>matarte la luz pudo,</l>
+<l>y darme luz a mí.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>(El sentido dudo).         Aparte</l>
+<l>Parece que celoso</l>
+<l>hablas en dos sentidos.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>(Riguroso            Aparte</l>
+<l>es el dolor de agravios;</l>
+<l>mas con celos ningunos fueron sabios).</l>
+<l>¿Celoso?  ¿Sabes tú lo que son celos?</l>
+<l>Que yo no sé qué son, ¡viven los cielos!;</l>
+<l>porque si lo supiera,</l>
+<l>y celos...</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>¡Ay de mí!</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>...llegar pudiera</l>
+<l>a tener... ¿qué son celos?</l>
+<l>átomos, ilusiones y desvelos...</l>
+<l>no más que de una esclava, una crïada,</l>
+<l>por sombra imaginada,</l>
+<l>con hechos inhumanos,</l>
+<l>a pedazos sacara con mis manos</l>
+<l>el corazón, y luego</l>
+<l>envuelto en sangre, desatado en fuego,</l>
+<l>el corazón comiera</l>
+<l>a bocados, la sangre me bebiera,</l>
+<l>el alma le sacara,</l>
+<l>y el alma, ¡vive Dios!, despedazara,</l>
+<l>si capaz de dolor el alma fuera.</l>
+<l>¿Pero cómo hablo yo de esta manera?</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Temor al alma ofreces.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>¡Jesús, Jesús mil veces!</l>
+<l>¡Mi bien, mi esposa, cielo, gloria mía!</l>
+<l>¡Ah mi dueño!  ¡Ah Mencia!</l>
+<l>Perdona, por tus ojos,</l>
+<l>esta descompostura, estos enojos;</l>
+<l>que tanto un fingimiento</l>
+<l>fuera de mí llevó mi pensamiento;</l>
+<l>y vete, por tu vida; que prometo</l>
+<l>que te miro con miedo y con respeto,</l>
+<l>corrido de este exceso.</l>
+<l>¡Jesús!  No estuve en mí, no tuve seso.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>(Miedo, espanto, temor y horror tan fuerte.</l>
+<l>parasismos han sido de mi muerte).</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>(Pues médico me llamo de mi honra,</l>
+<l>yo cubriré con tierra mi deshonra).</l>
+
+
+<stage>Vanse todos</stage>
+
+
+
+
+</sp>
+</div>
+
+
+
+<div type="act" n="3">
+<head>ACTO TERCERO</head>
+<stage>Sale todo el acompañamiento,</stage>
+<stage>y don GUTIERRE y el REY</stage>
+
+
+
+
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Pedro, a quien el indio polo</l>
+<l>coronar de luz espera,</l>
+<l>hablarte a solas quisiera.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Idos todos.</l>
+
+
+<stage>Vase el acompañamiento</stage>
+
+
+
+
+<l>Ya estoy solo.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Pues a ti, español Apolo,</l>
+<l>a ti, castellano Atlante,</l>
+<l>en cuyos hombros, constante,</l>
+<l>se ve durar y vivir</l>
+<l>todo un orbe de zafir,</l>
+<l>todo un globo de diamante;</l>
+<l>a ti, pues, rindo en despojos</l>
+<l>la vida mal defendida</l>
+<l>de tantas penas, si es vida</l>
+<l>vida con tantos enojos.</l>
+<l>No te espantes que los ojos</l>
+<l>también se quejan, señor;</l>
+<l>que dicen que amor y honor</l>
+<l>pueden, sin que a nadie asombre,</l>
+<l>permitir que llore un hombre;</l>
+<l>y yo tengo honor y amor.</l>
+<l>Honor, que siempre he guardado</l>
+<l>como noble y bien nacido,</l>
+<l>y amor que siempre he tenido</l>
+<l>como esposo enamorado;</l>
+<l>adquirido y heredado</l>
+<l>uno y otro en mí se ve,</l>
+<l>hasta que tirana fue</l>
+<l>la nube, que turbar osa</l>
+<l>tanto esplandor en mi esposa,</l>
+<l>y tanto lustre en su fe.</l>
+<l>No sé cómo signifique</l>
+<l>mi pena; turbado estoy...</l>
+<l>y más cuando a decir voy</l>
+<l>que fue vuestro hermano Enrique</l>
+<l>contra quien pido se aplique</l>
+<l>de esa justicia el rigor;</l>
+<l>no porque sepa, señor,</l>
+<l>que el poder mi honor contrasta;</l>
+<l>pero imaginarlo basta,</l>
+<l>quien sabe que tiene honor.</l>
+<l>La vida de vos espero</l>
+<l>de mi honra; así la curo</l>
+<l>con prevención, y procuro</l>
+<l>que ésta la sane primero;</l>
+<l>porque si en rigor tan fiero</l>
+<l>malicia en el mal hubiera,</l>
+<l>junta de agravios hiciera,</l>
+<l>a mi honor desahuciera,</l>
+<l>con la sangre le lavara,</l>
+<l>con la tierra le cubriera.</l>
+<l>No os turbéis; con sangre digo</l>
+<l>solamente de mi pecho.</l>
+<l>Enrique, está satisfecho</l>
+<l>que está seguro conmigo;</l>
+<l>y para esto hable un testigo;</l>
+<l>esta daga, esta brillante</l>
+<l>lengua de acero elegante,</l>
+<l>suya fue; ved este día</l>
+<l>si está seguro, pues fía</l>
+<l>de mí su daga el infante.</l>
+
+
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Don Gutierre, bien está;</l>
+<l>y quien de tan invencible</l>
+<l>honor corona las sienes,</l>
+<l>que con los rayos compiten</l>
+<l>del sol, satisfecho viva</l>
+<l>de que su honor...</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE;</speaker>
+<l>No me obligue</l>
+<l>vuestra majestad, señor,</l>
+<l>a que piense que imagine</l>
+<l>que yo he menester consuelos</l>
+<l>que mi opinión acrediten.</l>
+<l>¡Vive Dios!, que tengo esposa</l>
+<l>tan honesta, casta y firme</l>
+<l>que deja atrás las romanas</l>
+<l>Lucrecia, Porcia y Tomiris.</l>
+<l>Ésta ha sido prevención</l>
+<l>solamente.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Pues decidme;</l>
+<l>para tantas prevenciones,</l>
+<l>Gutierre, ¿qué es lo que visteis?</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Nada; que hombres como yo</l>
+<l>no ven.  Basta que imaginen,</l>
+<l>que sospechen, que prevengan,</l>
+<l>que recelen, que adivinen,</l>
+<l>que... no sé como lo diga;</l>
+<l>que no hay voz que signifique</l>
+<l>una cosa, que no sea</l>
+<l>un átomo invisible.</l>
+<l>Sólo a vuestra majestad</l>
+<l>di parte, para que evite</l>
+<l>el daño que no hay; porque</l>
+<l>si le hubiera, de mi fíe</l>
+<l>que yo le diera el remedio</l>
+<l>en vez, señor, de pedirle.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Pues ya que de vuestro honor</l>
+<l>médico os llamáis, decidme,</l>
+<l>don Gutierre, ¿qué remedios</l>
+<l>antes del último hicisteis?</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>No pedí a mi mujer celos,</l>
+<l>y desde entonces la quise</l>
+<l>más; vivía en una quinta</l>
+<l>deleitosa y apacible;</l>
+<l>y para que no estuviera</l>
+<l>en las soledades triste,</l>
+<l>truje a Sevilla mi casa,</l>
+<l>y a vivir en ella vine,</l>
+<l>adonde todo lo goza,</l>
+<l>sin que nada a nadie envidie;</l>
+<l>porque males tratamientos</l>
+<l>son para maridos viles</l>
+<l>que pierden a sus agravios</l>
+<l>el miedo, cuando los dicen.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>El infante viene allí,</l>
+<l>y si aquí os ve, no es posible</l>
+<l>que deje de conocer</l>
+<l>las quejas que de él me disteis.</l>
+<l>Mas acuérdome que un día</l>
+<l>me dieron con voces tristes</l>
+<l>quejas de vos, y yo entonces</l>
+<l>detrás de aquellos tapices</l>
+<l>escondí a quien se quejaba;</l>
+<l>y en el mismo caso pide</l>
+<l>el daño el propio remedio,</l>
+<l>pues al revés lo repite.</l>
+<l>Y así quiero hacer con vos</l>
+<l>lo mismo que entonces hice;</l>
+<l>pero con un orden más,</l>
+<l>y es que nada aquí os obligue</l>
+<l>a descubriros.  Callad</l>
+<l>a cuanto viereis.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Humilde</l>
+<l>estoy, señor, a tus pies.</l>
+<l>Seré el pájaro que fingen</l>
+<l>con una piedra en la boca.</l>
+
+
+<stage>Escóndese.  Sale el infante don ENRIQUE</stage>
+
+
+
+
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Vengáis norabuena, Enrique,</l>
+<l>aunque mala habrá de ser,</l>
+<l>pues me halláis...</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>¡Ay de mí triste!</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>...enojado.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Pues, señor,</l>
+<l>¿con quién lo estáis, que os obligue?</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Con vos, infante, con vos.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Será mi vida infelice;</l>
+<l>si enojado tengo al sol,</l>
+<l>veré mi mortal eclipse.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>¿Vos, Enrique, no sabéis</l>
+<l>que más de un acero tiñe</l>
+<l>el agravio en sangre real?</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Pues, ¿por quién, señor, lo dice</l>
+<l>vuestra majestad?</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Por vos</l>
+<l>lo digo, por vos, Enrique.</l>
+<l>El honor es reservado</l>
+<l>lugar, donde el alma asiste;</l>
+<l>yo no soy rey de las almas;</l>
+<l>harto en esto sólo os dije.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>No os entiendo.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Si a la enmienda</l>
+<l>vuestro amor no se apercibe,</l>
+<l>dejando vanos intentos</l>
+<l>de bellezas imposibles,</l>
+<l>donde el alma de un vasallo</l>
+<l>con ley soberana vive,</l>
+<l>podrá ser de mi justicia</l>
+<l>aun mi sangre no se libre.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Señor, aunque tu precepto</l>
+<l>es ley que tu lengua imprime</l>
+<l>en mi corazón, y en él</l>
+<l>como en el bronce se escribe,</l>
+<l>escucha disculpas mías;</l>
+<l>que no será bien que olvides</l>
+<l>que con iguales orejas</l>
+<l>ambas partes han de oírse.</l>
+<l>Yo, señor, quise a una dama</l>
+<l>--que ya sé por quién lo dices,</l>
+<l>si bien con poca ocasión--;</l>
+<l>en efeto, yo la quise</l>
+<l>tanto...</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>¿Qué importa, si ella</l>
+<l>es beldad tan imposible?</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Es verdad, pero...</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Callad.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Pues, señor, ¿no me permites</l>
+<l>disculparme?</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>No hay disculpa;</l>
+<l>que es belleza que no admite</l>
+<l>objección.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Es cierto, pero</l>
+<l>el tiempo todo lo rinde,</l>
+<l>el amor todo lo puede.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>(¡Válgame Dios, qué mal hice      Aparte</l>
+<l>en esconder a Gutierre!)</l>
+<l>Callad, callad.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>No te incites</l>
+<l>tanto contra mí, ignorando</l>
+<l>la causa que a esto me obligue.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Yo lo sé todo muy bien.</l>
+<l>(¡Oh qué lance tan terrible!)    Aparte</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Pues yo, señor, he de hablar.</l>
+<l>En fin, doncella la quise.</l>
+<l>¿Quién, decid, agravió a quién?</l>
+<l>¿Yo a un vasallo...</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>(¡Ay infelice!)         Aparte</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>...que antes que fuese su esposa</l>
+<l>fue...?</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>No tenéis qué decirme.</l>
+<l>Callad, callad, que ya sé</l>
+<l>que por disculpa fingisteis</l>
+<l>tal quimera.  Infante, infante,</l>
+<l>vamos mediando los fines.</l>
+<l>¿Conocéis aquesta daga?</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Sin ella a palacio vine</l>
+<l>una noche.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>¿Y no sabéis</l>
+<l>dónde la daga perdisteis?</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>No, señor.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Yo sí, pues fue</l>
+<l>adonde fuera posible</l>
+<l>mancharse con sangre vuestra,</l>
+<l>a no ser el que la rige</l>
+<l>tan noble y leal vasallo.</l>
+<l>¿No veis que venganza pide</l>
+<l>el hombre que aun ofendido,</l>
+<l>el pecho y las armas rinde?</l>
+<l>¿Veis este puñal dorado?</l>
+<l>Geroglífico es que dice</l>
+<l>vuestro delito; a quejarse</l>
+<l>viene de vos.  Yo he de oírle.</l>
+<l>Tomad su acero, y en él</l>
+<l>os mirad.  Veréis, Enrique,</l>
+<l>vuestros defetos.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE;</speaker>
+<l>Señor,</l>
+<l>considera que me riñes</l>
+<l>tan severo, que turbado...</l>
+</sp>
+<sp who="REY">
+<speaker>REY;</speaker>
+<l>Tomad la daga...</l>
+
+
+<stage>Dale la daga, y al tomarla, turbado, el infante corta</stage>
+<stage>al REY la mano</stage>
+
+
+
+
+<l>¿Qué hiciste,</l>
+<l>traidor?</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>¿Yo?</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>¿De esta manera</l>
+<l>tu acero en mi sangre tiñes?</l>
+<l>¿Tú la daga que te di</l>
+<l>hoy contra mi pecho esgrimes?</l>
+<l>¿Tú me quieres dar la muerte?</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>Mira, señor, lo que dices;</l>
+<l>que yo turbado...</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>¿Tú a mí</l>
+<l>te atreves?  ¡Enrique, Enrique!</l>
+<l>Detén el puñal, ya muero.</l>
+</sp>
+<sp who="ENRIQUE">
+<speaker>ENRIQUE:</speaker>
+<l>¿Hay confusiones más tristes?</l>
+
+
+<stage>Cáesele la daga al infante don ENRIQUE</stage>
+
+
+
+
+<l>Mejor es volver la espalda,</l>
+<l>y aun ausentarme y partirme</l>
+<l>donde en mi vida te vea,</l>
+<l>porque de mí no imagines</l>
+<l>que pudo verter tu sangre</l>
+<l>yo, mil veces infelice.</l>
+
+
+<stage>Vase</stage>
+
+
+
+
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>¡Válgame el cielo!  ¿Qué es esto?</l>
+<l>¡Ah, qué aprensión insufrible!</l>
+<l>Bañado me vi en mi sangre;</l>
+<l>muerto estuve.  ¿Qué infelice</l>
+<l>imaginación me cerca,</l>
+<l>que con espantos horribles</l>
+<l>y con helados temores</l>
+<l>el pecho y el alma oprime?</l>
+<l>Ruego a Dios que estos principios</l>
+<l>no lleguen a tales fines,</l>
+<l>que con diluvios de sangre</l>
+<l>el mundo se escandalice.</l>
+
+
+<stage>Vase por otra puerta el REY,</stage>
+<stage>y sale don GUTIERRE</stage>
+
+
+
+
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Todo es prodigios el día.</l>
+<l>Con asombros tan terribles,</l>
+<l>de que yo estaba escondido</l>
+<l>no es mucho que el rey se olvide</l>
+<l>¡Válgame Dios!  ¿Qué escuché?</l>
+<l>Mas ¿para qué lo repite</l>
+<l>la lengua, cuando mi agravio</l>
+<l>con mi desdicha se mide?</l>
+<l>Arranquemos de una vez</l>
+<l>de tanto mal las raíces.</l>
+<l>Muera Mencía; su sangre</l>
+<l>bañe el lecho donde asiste;</l>
+<l>y pues aqueste puñal</l>
+
+
+<stage>Levántale</stage>
+
+
+
+
+<l>hoy segunda vez me rinde</l>
+<l>el infante, con él muera.</l>
+<l>Mas no es bien que lo publique;</l>
+<l>porque si sé que el secreto</l>
+<l>altas victorias consigue,</l>
+<l>y que agravio que es oculto</l>
+<l>oculta venganza pide,</l>
+<l>muera Mencía de suerte</l>
+<l>que ninguno lo imagine.</l>
+<l>Pero antes que llegue a esto,</l>
+<l>la vida el cielo me quite,</l>
+<l>porque no vea tragedias</l>
+<l>de un amor tan infelice.</l>
+<l>¿Para cuándo, para cuándo</l>
+<l>esos azules viriles</l>
+<l>guardan un rayo?  ¿No es tiempo</l>
+<l>de que sus puntas se vibren,</l>
+<l>preciando de tan piadosos?</l>
+<l>¿No hay, claros cielos decidme,</l>
+<l>para un desdichado muerte?</l>
+<l>¿No hay un rayo para un triste?</l>
+
+
+<stage>Vase don GUTIERRE.  Salen doña MENCÍA y JACINTA</stage>
+
+
+</sp>
+<sp who="JACINTA">
+<speaker>JACINTA:</speaker>
+<l>Señora, ¿qué tristeza</l>
+<l>turba la admiración a tu belleza,</l>
+<l>que la noche y el día</l>
+<l>no haces sino llorar?</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>La pena mía</l>
+<l>no se rinde a razones.</l>
+<l>En una confusión de confusiones,</l>
+<l>ni medidas, ni cuerdas,</l>
+<l>desde la noche triste, si te acuerdas,</l>
+<l>que viviendo en la quinta,</l>
+<l>te dije que conmigo había, Jacinta,</l>
+<l>hablando don Enrique</l>
+<l>--no sé como mi mal te signifique--</l>
+<l>y tú después dijiste que no era</l>
+<l>posible, porque afuera,</l>
+<l>a aquella misma hora que yo digo,</l>
+<l>el infante también habló contigo,</l>
+<l>estoy triste y dudosa,</l>
+<l>confusa, divertida y temerosa,</l>
+<l>pensando que no fuese</l>
+<l>Gutierre quien conmigo habló.</l>
+</sp>
+<sp who="JACINTA">
+<speaker>JACINTA:</speaker>
+<l>¿Pues ése</l>
+<l>es engaño que pudo</l>
+<l>suceder?</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Sí, Jacinta, que no dudo</l>
+<l>que de noche, y hablando</l>
+<l>quedo, y yo tan turbada, imaginando</l>
+<l>en él mismo, venía;</l>
+<l>bien tal engaño suceder podía.</l>
+<l>Con esto el verle agora</l>
+<l>conmigo alegre, y que consigo llora</l>
+<l>--porque al fin los enojos,</l>
+<l>que son grandes amigos de los ojos,</l>
+<l>no les encubren nada--</l>
+<l>me tiene en tantas penas anegada.</l>
+
+
+<stage>Sale COQUÍN</stage>
+
+
+
+
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>Señora.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>¿Qué hay de nuevo?</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>apenas a contártelo me atrevo;</l>
+<l>don Enrique el infante...</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Tente, Coquín, no pases adelante;</l>
+<l>que su nombre, no más, me causa espanto;</l>
+<l>tanto le temo, o le aborrezco tanto.</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>No es de amor el suceso,</l>
+<l>y por eso lo digo.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA;</speaker>
+<l>Y yo por eso</l>
+<l>lo escucharé.</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>El infante,</l>
+<l>que fue, señora, tu imposible amante,</l>
+<l>con don Pedro su hermano</l>
+<l>hoy un lance ha tenido --pero en vano</l>
+<l>contártele pretendo,</l>
+<l>por no saberle bien, o porque entiendo</l>
+<l>que no son justas leyes</l>
+<l>que hombres de burlas hablen de lo reyes--</l>
+<l>esto aparte, en efeto,</l>
+<l>Enrique me llamó, y con gran secreto</l>
+<l>dijo:  "A doña Mencía</l>
+<l>este recado da de parte mía;</l>
+<l>que su desdén tirano</l>
+<l>me ha quitado la gracia de mi hermano,</l>
+<l>y huyendo de esta tierra,</l>
+<l>hoy a la ajena patria me destierra,</l>
+<l>donde vivir no espero</l>
+<l>pues de Mencía aborrecido muero."</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>¿Por mí el infante ausente,</l>
+<l>sin la gracia del rey?  ¡Cosa que intente</l>
+<l>con novedad tan grande,</l>
+<l>que mi opinión en voz del vulgo ande!</l>
+<l>¿Qué haré, cielos?</l>
+</sp>
+<sp who="JACINTA">
+<speaker>JACINTA:</speaker>
+<l>Agora</l>
+<l>el remedio mejor será, señora,</l>
+<l>prevenir este daño.</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>¿Como puede?</l>
+</sp>
+<sp who="JACINTA">
+<speaker>JACINTA:</speaker>
+<l>Rogándole al infante que se quede;</l>
+<l>pues si una vez se ausenta,</l>
+<l>como dicen, por ti, será tu afrenta</l>
+<l>pública, que no es cosa</l>
+<l>la ausencia de un infante tan dudosa</l>
+<l>que no se diga luego</l>
+<l>cómo, y por qué.</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>¿Pues cuándo oirá ese ruego,</l>
+<l>si, calzada la espuela,</l>
+<l>ya en su imaginación Enrique vuela?</l>
+</sp>
+<sp who="JACINTA">
+<speaker>JACINTA:</speaker>
+<l>Escribiéndole agora</l>
+<l>un papel, en que diga mi señora</l>
+<l>que a su opinión conviene</l>
+<l>que no se ausente; pues para eso tiene</l>
+<l>lugar, si tú le llevas.</l>
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Pruebas de honor son peligrosas pruebas;</l>
+<l>pero con todo quiero</l>
+<l>escribir el papel, pues considero,</l>
+<l>y no con necio engaño,</l>
+<l>que es de dos daños éste el menor daño,</l>
+<l>si hay menor en los daños que recibo.</l>
+<l>Quedaos aquí los dos mientras yo escribo.</l>
+
+
+<stage>Vase MENCÍA</stage>
+
+
+
+
+</sp>
+<sp who="JACINTA">
+<speaker>JACINTA:</speaker>
+<l>¿Qué tienes estos días,</l>
+<l>Coquín, que andas tan triste?  ¿No solías</l>
+<l>ser alegre?  ¿Qué efeto</l>
+<l>te tiene así?</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>Metíme a ser discreto</l>
+<l>por mi mal, y hame dado</l>
+<l>tan grande hipocondría en este lado</l>
+<l>que me muero.</l>
+</sp>
+<sp who="JACINTA">
+<speaker>JACINTA;</speaker>
+<l>¿Y qué es hipocondría?</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>Es una enfermedad que no la había</l>
+<l>habrá dos años, ni en el mundo era.</l>
+<l>Usóse poco ha, y de manera</l>
+<l>lo que se usa, amiga, no se excusa,</l>
+<l>que una dama, sabiendo que se usa</l>
+<l>le dijo a su galán muy triste un día;</l>
+<l>"Tráigame un poco uced de hipocondría."</l>
+<l>Mas señor entra agora.</l>
+</sp>
+<sp who="JACINTA">
+<speaker>JACINTA:</speaker>
+<l>¡Ay Dios!  Voy a avisar a mi señora.</l>
+
+
+<stage>Sale don GUTIERRE</stage>
+
+
+
+
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Tente, Jacinta, espera.</l>
+<l>¿Dónde corriendo vas de esa manera?</l>
+</sp>
+<sp who="JACINTA">
+<speaker>JACINTA:</speaker>
+<l>Avisar pretendía</l>
+<l>a mi señora de que venía</l>
+<l>tu persona.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>(¡Oh crïados!              Aparte</l>
+<l>En efeto, enemigos no excusados;</l>
+<l>turbados de temor los dos se han puesto).</l>
+<l>Ven acá, dime tú lo que hay en esto;</l>
+<l>dime, ¿Por qué corrías?</l>
+</sp>
+<sp who="JACINTA">
+<speaker>JACINTA:</speaker>
+<l>Sólo por avisar de que venías,</l>
+<l>señor, a mi señora.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>(Los labios sella.   Aparte</l>
+<l>Mas de éste lo sabré mejor que de ella).</l>
+<l>Coquín, tú me has servido</l>
+<l>noble siempre, en mi casa te has crïado.</l>
+<l>A ti vuelvo rendido.</l>
+<l>Dime, dime por Dios, lo que ha pasado.</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>Señor, si algo supiera,</l>
+<l>de lástima no más te lo dijera.</l>
+<l>¡Plegue a Dios, mi señor...!</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>¡No, no des voces!</l>
+<l>Di ¿a qué aquí te turbaste?</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>Somos de buen turbar; mas esto baste.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>(Señas los dos se han hecho.            Aparte</l>
+<l>Ya no son cobardías de provecho).</l>
+<l>Idos de aquí los dos.</l>
+
+
+<stage>Vanse COQUÍN y JACINTA</stage>
+
+
+
+
+<l>Solos estamos,</l>
+<l>honor, lleguemos ya;  desdicha, vamos.</l>
+<l>¿Quién vio en tantos enojos</l>
+<l>matar las manos, y llorar los ojos?</l>
+
+
+<stage>Descubre a doña MENCÍA escribiendo</stage>
+
+
+
+
+<l>Escribiendo Mencía</l>
+<l>está; ya es fuerza ver lo que escribía.</l>
+
+
+<l>Quítale el papel</l>
+
+
+
+
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>¡Ay Dios!  ¡Válgame el cielo!</l>
+
+
+<stage>Ella se desmaya</stage>
+
+
+
+
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Estatua viva se quedó de hielo.</l>
+
+
+<stage>Lee</stage>
+
+
+
+
+<l>"Vuestra alteza, señor...--¡Que por alteza</l>
+<l>vino mi honor a dar a tal bajeza!--</l>
+<l>no se ausente..."  Detente,</l>
+<l>voz; pues le ruega aquí que no se ausente,</l>
+<l>a tanto mal me ofrezco,</l>
+<l>que casi las desdichas me agradezco.</l>
+<l>¿Si aquí le doy la muerte?</l>
+<l>Mas esto ha de pensarse de otra suerte.</l>
+<l>Despediré crïadas y crïados;</l>
+<l>solos han de quedarse mis cuidados</l>
+<l>conmigo; y ya que ha sido</l>
+<l>Mencía la mujer que yo he querido</l>
+
+
+<stage>Escribe don GUTIERRE</stage>
+
+
+
+
+<l>más en mi vida, quiero</l>
+<l>que en el último vale, en el postrero</l>
+<l>parasismo, me deba</l>
+<l>la más nueva piedad, la acción más nueva;</l>
+<l>ya que la cura he de aplicar postrera,</l>
+<l>no muera el alma, aunque la vida muera.</l>
+
+
+<stage>Vase don GUTIERRE.  Va volviendo en sí</stage>
+<stage>doña MENCÍA</stage>
+
+
+
+
+</sp>
+<sp who="MENCÍA">
+<speaker>MENCÍA:</speaker>
+<l>Señor, detén la espada,</l>
+<l>no me juzgues culpada.</l>
+<l>El cielo sabe que inocente muero.</l>
+<l>¿qué fiera mano, qué sangriento acero</l>
+<l>en mi pecho ejecutas?  ¡Tente, tente!</l>
+<l>Una mujer no mates inocente.</l>
+<l>Mas, ¿qué es esto? ¡Ay de mí! ¿No estaba agora</l>
+<l>Gutierre aquí?  ¿No veía--¿quién lo ignora?--</l>
+<l>que en mi sangre bañada</l>
+<l>moría, en rubias ondas anegada?</l>
+<l>¡Ay Dios, este desmayo</l>
+<l>fue de mi vida aquí mortal ensayo!</l>
+<l>¡Qué ilusión!  Por verdad lo dudo y creo.</l>
+<l>El papel romperé...  ¿Pero qué veo?</l>
+<l>De mi esposo es la letra, y  de esta suerte</l>
+<l>la sentencia me intima de mi muerte.</l>
+
+
+<stage>Lee</stage>
+
+
+
+
+<l>"El amor te adora, el honor te aborrece; y</l>
+<l>así el uno te mata, y el otro te avisa.</l>
+<l>Dos horas tienes de vida; cristiana eres,</l>
+<l>salva el alma, que la vida es imposible."</l>
+
+
+<l>¡Válgame Dios! ¡Jacinta, hola! ¿Qué es esto?</l>
+<l>¿Nadie responde?  ¡Otro temor funesto!</l>
+<l>¿No hay ninguna crïada?</l>
+<l>Mas, ¡ay de mí!, la puerta está cerrada.</l>
+<l>Nadie en casa me escucha.</l>
+<l>Mucha es mi turbación, mi pena es mucha.</l>
+<l>De estas ventanas son los hierros rejas,</l>
+<l>y en vano a nadie le diré mis quejas,</l>
+<l>que caen a unos jardines, donde apenas</l>
+<l>habrá quien oiga repetidas penas.</l>
+<l>¿Dónde iré de esta suerte,</l>
+<l>tropezando en la sombra de mi muerte?</l>
+
+
+<stage>Vase doña MENCÍA.  Salen el REY,</stage>
+<stage>y don DIEGO</stage>
+
+
+
+
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>En fin, ¿Enrique se fue?</l>
+</sp>
+<sp who="DIEGO">
+<speaker>DIEGO:</speaker>
+<l>Sí, señor; aquesta tarde</l>
+<l>salió de Sevilla.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Creo</l>
+<l>que ha presumido arrogante</l>
+<l>que él solamente de mí</l>
+<l>podrá en el mundo librarse.</l>
+<l>¿Y dónde va?</l>
+</sp>
+<sp who="DIEGO">
+<speaker>DIEGO:</speaker>
+<l>Yo presumo</l>
+<l>que a Consuegra.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Está el infante</l>
+<l>maestre allí, y querrán los dos</l>
+<l>a mis espaldas vengarse</l>
+<l>de mí.</l>
+</sp>
+<sp who="DIEGO">
+<speaker>DIEGO:</speaker>
+<l>Tus hermanos son,</l>
+<l>y es forzoso que te amen</l>
+<l>como a hermano, y como a rey</l>
+<l>te adoren.  Dos naturales</l>
+<l>obediencias son.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Y Enrique,</l>
+<l>¿quién lleva que le acompañe?</l>
+</sp>
+<sp who="DIEGO">
+<speaker>DIEGO:</speaker>
+<l>Don Arias.</l>
+</sp>
+<sp who="REY">
+<speaker>REY;</speaker>
+<l>Es su privanza.</l>
+</sp>
+<sp who="DIEGO">
+<speaker>DIEGO:</speaker>
+<l>Música hay en esta calle.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Vámonos llegando a ellos;</l>
+<l>quizá con lo que cantaren</l>
+<l>me divertiré.</l>
+</sp>
+<sp who="DIEGO">
+<speaker>DIEGO:</speaker>
+<l>La música</l>
+<l>es antídoto a los males.</l>
+
+
+<stage>Cantan</stage>
+
+
+
+
+</sp>
+<sp who="MÚSICOS">
+<speaker>MÚSICOS:</speaker>
+<l>"El infante don Enrique</l>
+<l>hoy se despidió del rey;</l>
+<l>su pesadumbre y su ausencia</l>
+<l>quiera Dios que pare en bien."</l>
+
+
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>¡Qué triste voz!  Vos, don Diego,</l>
+<l>echad por aquesa calle,</l>
+<l>no se nos escape quien</l>
+<l>canta desatinos tales.</l>
+
+
+<stage>Vase cada uno por su puerta, y salen don GUTIERRE y LUDOVICO,</stage>
+<stage>cubierto el rostro</stage>
+
+
+
+
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Entra, no tengas temor;</l>
+<l>que ya es tiempo que destape</l>
+<l>tu rostro, y encubra el mío.</l>
+</sp>
+<sp who="LUDOVICO">
+<speaker>LUDOVICO:</speaker>
+<l>¡Válgame Dios!</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE;</speaker>
+<l>No te espante</l>
+<l>nada que vieres.</l>
+</sp>
+<sp who="LUDOVICO">
+<speaker>LUDOVICO:</speaker>
+<l>Señor,</l>
+<l>de mi casa me sacasteis</l>
+<l>esta noche; pero apenas</l>
+<l>me tuvisteis en la calle</l>
+<l>cuando un puñal me pusisteis</l>
+<l>al pecho, sin que cobarde</l>
+<l>vuestro intento resistiese,</l>
+<l>que fue cubrirme y taparme</l>
+<l>el rostro, y darme mil vueltas</l>
+<l>luego a mis propios umbrales.</l>
+<l>Dijisteis más, que mi vida</l>
+<l>estaba en no destaparme;</l>
+<l>un hora he andado con vos,</l>
+<l>sin saber por dónde ande.</l>
+<l>Y con ser la admiración</l>
+<l>de aqueste caso tan grave,</l>
+<l>más me turba y me suspende</l>
+<l>impensadamente hallarme</l>
+<l>en una casa tan rica,</l>
+<l>sin ver que la habite nadie</l>
+<l>sino vos, habiéndoos visto</l>
+<l>siempre ese embozo delante.</l>
+<l>¿Qué me queréis?</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Que te esperes</l>
+<l>aquí sólo un breve instante.</l>
+
+
+<stage>Vase don GUTIERRE</stage>
+
+
+
+
+</sp>
+<sp who="LUDOVICO">
+<speaker>LUDOVICO:</speaker>
+<l>¿Qué confusiones son éstas,</l>
+<l>que a tal extremo me traen?</l>
+<l>¡Válgame Dios!</l>
+
+
+<stage>Vuelve don GUTIERRE</stage>
+
+
+
+
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Tiempo es ya</l>
+<l>de que entres aquí; mas antes</l>
+<l>escúchame.  Aqueste acero</l>
+<l>será de tu pecho esmalte,</l>
+<l>si resistes lo que yo</l>
+<l>tengo agora de mandarte.</l>
+<l>Asómate a ese aposento.</l>
+<l>¿Qué ves en él?</l>
+</sp>
+<sp who="LUDOVICO">
+<speaker>LUDOVICO:</speaker>
+<l>Una imagen</l>
+<l>de la muerte, un bulto veo,</l>
+<l>que sobre una cama yace;</l>
+<l>del velas tiene a los lados,</l>
+<l>y un crucifijo delante.</l>
+<l>Quién es no puedo decir,</l>
+<l>que con unos tafetanes</l>
+<l>el rostro tiene cubierto.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Pues a ese vivo cadáver</l>
+<l>que ves, has de dar la muerte.</l>
+</sp>
+<sp who="LUDOVICO">
+<speaker>LUDOVICO:</speaker>
+<l>Pues ¿qué quieres?</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Que la sangres,</l>
+<l>y la dejes, que rendida</l>
+<l>a su violencia desmaye</l>
+<l>la fuerza, y que en tanto horror</l>
+<l>tú atrevido la acompañes,</l>
+<l>hasta que por breve herida</l>
+<l>ella expire y se desangre.</l>
+<l>No tienes a qué apelar,</l>
+<l>si buscas en mí piedades,</l>
+<l>sino obedecer, si quieres</l>
+<l>vivir.</l>
+</sp>
+<sp who="LUDOVICO">
+<speaker>LUDOVICO:</speaker>
+<l>Señor, tan cobarde</l>
+<l>te escucho, que no podré</l>
+<l>obedecerte.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Quien hace</l>
+<l>por consejos rigurosos</l>
+<l>mayores temeridades,</l>
+<l>darte la muerte sabrá.</l>
+</sp>
+<sp who="LUDOVICO">
+<speaker>LUDOVICO:</speaker>
+<l>Fuerza es que mi vida guarde.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Y haces bien, porque en el mundo</l>
+<l>ya hay quien viva porque mate.</l>
+<l>Desde aquí te estoy mirando,</l>
+<l>Ludovico.  Entra delante.</l>
+
+
+<stage>Vase LUDOVICO</stage>
+
+
+
+
+<l>Éste fue el más fuerte medio</l>
+<l>para que mi afrenta acabe</l>
+<l>disimulada, supuesto</l>
+<l>que el veneno fuera fácil</l>
+<l>de averiguar, las heridas</l>
+<l>imposibles de ocultarse.</l>
+<l>Y así, constando la muerte,</l>
+<l>y diciendo que fue lance</l>
+<l>forzoso hacer la sangría,</l>
+<l>ninguno podrá probarme</l>
+<l>lo contrario, si es posible</l>
+<l>que una venda se desate.</l>
+<l>Haber traído a este hombre</l>
+<l>con recato semejante</l>
+<l>fue bien; pues si descubierto</l>
+<l>viniera, y viera sangrarse</l>
+<l>una mujer, y por fuerza,</l>
+<l>fuera presunción notable.</l>
+<l>Éste no podrá decir,</l>
+<l>cuando cuente aqueste trance,</l>
+<l>quién fue la mujer; demás</l>
+<l>que, cuando de aquí le saque,</l>
+<l>muy lejos ya de mi casa,</l>
+<l>estoy dispuesto a matarle.</l>
+<l>Médico soy de mi honor,</l>
+<l>la vida pretendo darle</l>
+<l>con una sangría; que todos</l>
+<l>curan a cosa de sangre.</l>
+
+
+<stage>Vase don GUTIERRE.  Salen el REY y don DIEGO,</stage>
+<stage>cada uno por su puerta; y cantan dentro</stage>
+
+
+
+</sp>
+<sp who="MÚSICOS">
+<speaker>MÚSICOS:</speaker>
+<l>"Para Consuegra camina,</l>
+<l>donde piensa que han de ser</l>
+<l>teatro de mil tragedias</l>
+<l>las montañas de Montiel."</l>
+
+
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Don Diego.</l>
+</sp>
+<sp who="DIEGO">
+<speaker>DIEGO:</speaker>
+<l>¿Señor?</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Supuesto</l>
+<l>que cantan en esta calle,</l>
+<l>¿no hemos de saber quién es?</l>
+<l>¿Habla por ventura el aire?</l>
+</sp>
+<sp who="DIEGO">
+<speaker>DIEGO:</speaker>
+<l>No te desvele, señor,</l>
+<l>oír esta necedades,</l>
+<l>porque a vuestro enojo ya</l>
+<l>versos en Sevilla se hacen.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Dos hombres vienen aquí.</l>
+</sp>
+<sp who="DIEGO">
+<speaker>DIEGO;</speaker>
+<l>Es verdad; no hay que esperarles</l>
+<l>respuesta.  Hoy el conocerles</l>
+<l>me importa.</l>
+
+
+<stage>Saca don GUTIERRE a LUDOVICO, tapado el rostro</stage>
+
+
+
+
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>(¡Qué así me ataje    Aparte</l>
+<l>el cielo, que con la muerte</l>
+<l>de este hombre eche otra llave</l>
+<l>al secreto!  Ya me es fuerza</l>
+<l>de aquestos dos retirarme;</l>
+<l>que nada me está peor</l>
+<l>que conocerme en tal parte.</l>
+<l>Dejaréle en este puesto.</l>
+
+
+<stage>Vase don GUTIERRE</stage>
+
+
+
+
+</sp>
+<sp who="DIEGO">
+<speaker>DIEGO:</speaker>
+<l>De los dos, señor, que antes</l>
+<l>venían, se volvió el uno</l>
+<l>y el otro se quedó.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>A darme</l>
+<l>confusión; que si le veo</l>
+<l>a la poca luz que esparce</l>
+<l>la luna, no tiene forma</l>
+<l>su rostro; confusa imagen</l>
+<l>el bulto mal acabado</l>
+<l>parece de un blanco jaspe.</l>
+</sp>
+<sp who="DIEGO">
+<speaker>DIEGO:</speaker>
+<l>Téngase su majestad</l>
+<l>que yo llegaré.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Dejadme,</l>
+<l>don Diego.  ¿Quién eres, hombre?</l>
+</sp>
+<sp who="LUDOVICO">
+<speaker>LUDOVICO:</speaker>
+<l>Dos confusiones son parte,</l>
+<l>señor, a no responderos;</l>
+<l>la una, la humildad que trae</l>
+<l>consigo un pobre oficial,</l>
+
+
+<stage>Descúbrese</stage>
+
+
+
+
+<l>para que con reyes hable</l>
+<l>--que ya os conocí en la voz,</l>
+<l>luz que tan notorio os hace--</l>
+<l>la otra, la novedad</l>
+<l>del suceso más notable</l>
+<l>que el vulgo, archivo confuso,</l>
+<l>califica en sus anales.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>¿Qué os ha sucedido?</l>
+</sp>
+<sp who="LUDOVICO">
+<speaker>LUDOVICO:</speaker>
+<l>A vos</l>
+<l>lo diré; escuchadme aparte.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Retiraos allí, don Diego.</l>
+</sp>
+<sp who="DIEGO">
+<speaker>DIEGO:</speaker>
+<l>(Sucesos son admirables                 Aparte</l>
+<l>cuantos esta noche veo;</l>
+<l>Dios con bien de ella me saque).</l>
+</sp>
+<sp who="LUDOVICO">
+<speaker>LUDOVICO:</speaker>
+<l>No la vi el rostro, mas sólo</l>
+<l>entre repetidos ayes</l>
+<l>escuché:  "Inocente muero;</l>
+<l>el cielo no te demande</l>
+<l>mi muerte."  Esto dijo, y luego</l>
+<l>expiró; y en este instante,</l>
+<l>el hombre mató la luz,</l>
+<l>y por los pasos que antes</l>
+<l>entré salí.  Sintió ruido</l>
+<l>al llegar a aquesta calle,</l>
+<l>y dejóme en ella solo.</l>
+<l>Fáltame ahora de avisarte,</l>
+<l>señor, que saqué bañadas</l>
+<l>las manos en roja sangre,</l>
+<l>y que fui por las paredes</l>
+<l>como que quise arrimarme,</l>
+<l>manchando todas las puertas,</l>
+<l>por si pueden las señales</l>
+<l>descubrir la casa.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Bien</l>
+<l>hicisteis.  Venid a hablarme</l>
+<l>con lo que hubiereis sabido,</l>
+<l>y tomad este diamante,</l>
+<l>y decid que por las señas</l>
+<l>de él os permitan hablarme</l>
+<l>a cualquier hora que vais.</l>
+</sp>
+<sp who="LUDOVICO">
+<speaker>LUDOVICO:</speaker>
+<l>El cielo, señor, os guarde.</l>
+
+
+<stage>Vase LUDOVICO</stage>
+
+
+
+
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Vamos don Diego.</l>
+</sp>
+<sp who="DIEGO">
+<speaker>DIEGO:</speaker>
+<l>¿Qué es eso?</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>El suceso más notable</l>
+<l>del mundo.</l>
+</sp>
+<sp who="DIEGO">
+<speaker>DIEGO:</speaker>
+<l>Triste has quedado.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Forzoso ha sido asombrarme.</l>
+</sp>
+<sp who="DIEGO">
+<speaker>DIEGO:</speaker>
+<l>Vente a acostar, que ya el día</l>
+<l>entre dorados celajes</l>
+<l>asoma.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>No he de poder</l>
+<l>sosegar, hasta que halle</l>
+<l>una casa que deseo.</l>
+</sp>
+<sp who="DIEGO">
+<speaker>DIEGO:</speaker>
+<l>¿No miras que ya el sol sale,</l>
+<l>y que podrán conocerte</l>
+<l>de esta suerte?</l>
+
+
+<stage>Sale COQUÍN</stage>
+
+
+
+
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>Aunque me mates,</l>
+<l>habiéndote conocido,</l>
+<l>o señor, tengo de hablarte.</l>
+
+        
+<l>Escúchame.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Pues Coquín,</l>
+<l>¿de qué los extremos son?</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>Ésta es una honrada acción</l>
+<l>de hombre bien nacido, en fin;</l>
+<l>que aunque hombre me consideras</l>
+<l>de burlas, con loco humor,</l>
+<l>llegando a veras, señor,</l>
+<l>soy hombre de muchas veras.</l>
+<l>Oye lo que he de decir,</l>
+<l>pues de veras vengo a hablar;</l>
+<l>que quiero hacerte llorar,</l>
+<l>ya que no puedo reír.</l>
+<l>Gutierre, mal informado</l>
+<l>por aparentes recelos,</l>
+<l>llegó a tener viles celos</l>
+<l>de su honor; y hoy, obligado</l>
+<l>a tal sospecha, que halló</l>
+<l>escribiendo --¡error crüel!--</l>
+<l>para el infante un papel</l>
+<l>a su esposa, que intentó</l>
+<l>con él que no se ausentase,</l>
+<l>porque ella causa no fuese</l>
+<l>de que en Sevilla se viese</l>
+<l>la novedad que causase</l>
+<l>pensar que ella le ausentaba...</l>
+<l>con esta inocencia pues</l>
+<l>--que a mí me consta-- con pies</l>
+<l>cobardes, adonde estaba</l>
+<l>llegó, y el papel tomó,</l>
+<l>y, sus celos declarados,</l>
+<l>despidiendo a los crïados,</l>
+<l>todas las puertas cerró,</l>
+<l>solo que quedó con ella.</l>
+<l>Yo, enternecido de ver</l>
+<l>una infelice mujer,</l>
+<l>perseguida de su estrella,</l>
+<l>vengo, señor, a avisarte</l>
+<l>que tu brazo altivo y fuerte</l>
+<l>hoy la libre de la muerte.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>¿Con qué he de poder pagarte</l>
+<l>tal piedad?</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>Con darme aprisa</l>
+<l>libre, sin más accidentes,</l>
+<l>de la acción contra mis dientes.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>No es ahora tiempo de risa.</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>¿Cuándo lo fue?</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Y pues el día</l>
+<l>aun no se muestra, lleguemos,</l>
+<l>don Diego.  Así, pues, daremos</l>
+<l>color a una industria mía,</l>
+<l>de entrar en casa mejor,</l>
+<l>diciendo que me ha cogido</l>
+<l>el día cerca, y he querido</l>
+<l>disimular el color</l>
+<l>del vestido; y una vez</l>
+<l>allá, el estado veremos</l>
+<l>del suceso; y así haremos</l>
+<l>como rey, supremo juez.</l>
+</sp>
+<sp who="DIEGO">
+<speaker>DIEGO:</speaker>
+<l>No hubiera industria mejor.</l>
+</sp>
+<sp who="COQUÍN">
+<speaker>COQUÍN:</speaker>
+<l>De su casa lo has tratado</l>
+<l>tan cerca, que ya has llegado;</l>
+<l>que ésta es su casa, señor.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Don Diego, espera.</l>
+</sp>
+<sp who="DIEGO">
+<speaker>DIEGO:</speaker>
+<l>¿Qué ves?</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>¿No ves sangrienta una mano</l>
+<l>impresa en la puerta?</l>
+</sp>
+<sp who="DIEGO">
+<speaker>DIEGO:</speaker>
+<l>Es llano.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>(Gutierre sin duda es                       Aparte</l>
+<l>el crüel que anoche hizo</l>
+<l>una acción tan inclemente.</l>
+<l>No sé qué hacer; cuerdamente</l>
+<l>sus agravios satisfizo.</l>
+
+
+<stage>Salen doña LEONOR e INÉS criada.</stage>
+
+  
+
+</sp>
+<sp who="LEONOR">
+<speaker>LEONOR:</speaker>
+<l>Salgo a misa antes del día,</l>
+<l>porque ninguno me vea</l>
+<l>en Sevilla, donde crea</l>
+<l>que olvido la pena mía.</l>
+<l>Mas gente hay aquí.  ¡Ay Inés!</l>
+<l>El rey, ¡qué hará en esta casa?</l>
+</sp>
+<sp who="INÉS">
+<speaker>INÉS:</speaker>
+<l>Tápate en tanto que pasa.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Acción excusada es,</l>
+<l>porque ya estáis conocida.</l>
+</sp>
+<sp who="LEONOR">
+<speaker>LEONOR:</speaker>
+<l>No fue encubrirme, señor,</l>
+<l>por excusar el honor</l>
+<l>de dar a tus pies la vida.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Esa acción es para mí,</l>
+<l>de recatarme de vos,</l>
+<l>pues sois acreedor, por Dios,</l>
+<l>de mis honras; que yo os di</l>
+<l>palabra, y con gran razón,</l>
+<l>de que he de satisfacer</l>
+<l>vuestro honor; y lo he de hacer</l>
+<l>en la primera ocasión.</l>
+
+
+<stage>Don GUTIERRE dentro</stage>
+
+
+
+
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Hoy me he de desesperar,</l>
+<l>cielo crüel, si no baja</l>
+<l>un rayo de esas esferas</l>
+<l>y en cenizas me desata.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>¿Qué es eso?</l>
+</sp>
+<sp who="DIEGO">
+<speaker>DIEGO:</speaker>
+<l>Loco furioso</l>
+<l>don Gutierre de su casa</l>
+<l>sale.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>¿Dónde vais, Gutierre?</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>A besar, señor, tus plantas;</l>
+<l>y de la mayor desdicha</l>
+<l>de la tragedia más rara,</l>
+<l>escucha la admiración</l>
+<l>que eleva, admira y espanta.</l>
+<l>Mencía, mi amada esposa,</l>
+<l>tan hermosa como casta</l>
+<l>virtüosa como bella</l>
+<l>--dígalo a voces la Fama--</l>
+<l>Mencía, a quien adoré</l>
+<l>con la vida y con el alma,</l>
+<l>anoche a un grave accidente</l>
+<l>vio su perfección postrada,</l>
+<l>por desmentirla divina</l>
+<l>este accidente de humana.</l>
+<l>Un médico, que lo es</l>
+<l>el de mayor nombre y fama,</l>
+<l>y el que en el mundo merece</l>
+<l>inmortales alabanzas,</l>
+<l>la recetó una sangría,</l>
+<l>porque con ella esperaba</l>
+<l>restituír la salud</l>
+<l>a un mal de tanta importancia,</l>
+<l>Sangróse en fin; que yo mismo,</l>
+<l>por estar sola la casa,</l>
+<l>llamé el barbero, no habiendo</l>
+<l>ni crïados ni crïadas.</l>
+<l>A verla en su cuarto, pues,</l>
+<l>quise entrar esta mañana</l>
+<l>--aquí la lengua enmudece,</l>
+<l>aquí el aliento me falta--</l>
+<l>veo de funesta sangre</l>
+<l>teñida toda la cama,</l>
+<l>toda la ropa cubierta,</l>
+<l>y que en ella, ¡ay Dios!, estaba</l>
+<l>Mencía, que se había muerto</l>
+<l>esta noche desangrada.</l>
+<l>Ya se ve cuán fácilmente</l>
+<l>una venda se desata.</l>
+<l>¿Pero para qué presumo</l>
+<l>reducir hoy a palabras</l>
+<l>tan lastimosas desdichas?</l>
+<l>Vuelve a esta parte la cara,</l>
+<l>y verás sangriento el sol,</l>
+<l>verás la luna eclipsada,</l>
+<l>deslucidas las estrellas,</l>
+<l>y las esferas borradas;</l>
+<l>y verás a la hermosura</l>
+<l>más triste y más desdichada,</l>
+<l>que por darme mayor muerte,</l>
+<l>no me ha dejado sin alma.</l>
+
+
+<stage>Descubre a doña MENCÍA, en una cama, desangrada</stage>
+
+
+
+
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>¡Notable sujeto!  (Aquí           Aparte</l>
+<l>la prudencia es de importancia;</l>
+<l>mucho en reportarme haré.</l>
+<l>Tomó notable venganza).</l>
+<l>Cubrid ese horror que asombra,</l>
+<l>ese prodigio que espanta,</l>
+<l>espectáculo que admira,</l>
+<l>símbolo de la desgracia.</l>
+<l>Gutierre, menester es</l>
+<l>consuelo; y porque le haya</l>
+<l>en pérdida que es tan grande</l>
+<l>con otra tanta ganancia,</l>
+<l>dadle la mano a Leonor;</l>
+<l>que es tiempo que satisfaga</l>
+<l>vuestro valor lo que debe,</l>
+<l>y yo cumpla la palabra</l>
+<l>de volver en la ocasión</l>
+<l>por su valor y su fama.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Señor, si de tanto fuego</l>
+<l>aún las cenizas se hallan</l>
+<l>calientes, dadme lugar</l>
+<l>para que llore mis ansias.</l>
+<l>¿No queréis que escarmentado</l>
+<l>quede?</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Esto ha de ser, y basta.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Señor, ¿queréis que otra vez,</l>
+<l>no libre de la borrasca,</l>
+<l>vuelva al mar?  ¿Con qué disculpa?</l>
+</sp>
+<sp who="REY">
+<speaker>REY;</speaker>
+<l>Con que vuestro rey lo manda.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Señor, escuchad aparte</l>
+<l>disculpas.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Son excusadas.</l>
+<l>¿Cuáles son?</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>¿Si vuelvo a verme</l>
+<l>en desdichas tan extrañas,</l>
+<l>que de noche halle embozado</l>
+<l>a vuestro hermano en mi casa?</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>No dar crédito a sospechas.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE;</speaker>
+<l>¿Y si detrás de mi cama</l>
+<l>hallase tal vez, señor,</l>
+<l>de don Enrique la daga?</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Presumir que hay en el mundo</l>
+<l>mil sobornadas crïadas,</l>
+<l>y apelar a la cordura.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>A veces, señor, no basta.</l>
+<l>¿Si veo rondar después</l>
+<l>de noche y de día mi casa?</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Quejárseme a mí.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>¿Y si cuándo</l>
+<l>llego a quejarme, me aguarda</l>
+<l>mayor desdicha escuchando?</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>¿Qué importa si él desengaña;</l>
+<l>que fue siempre su hermosura</l>
+<l>una constante muralla</l>
+<l>de los vientos defendida?</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>¿Y volviendo a mi casa</l>
+<l>hallo algún papel que pide</l>
+<l>que el infante no se vaya?</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Para todo habrá remedio.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE;</speaker>
+<l>¿Posible es que a esto le haya?</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Sí, Gutierre.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE;</speaker>
+<l>¿Cuál, señor?</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Uno vuestro.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE;</speaker>
+<l>¿Qué es?</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Sangralla.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>¿Qué decís?</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Que hagáis borrar</l>
+<l>las puertas de vuestra casa;</l>
+<l>que hay mano sangrienta en ella.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Los que de un oficio tratan,</l>
+<l>ponen, señor, a las puertas</l>
+<l>un escudo de sus armas;</l>
+<l>trato en honor, y así pongo</l>
+<l>mi mano en sangre bañada</l>
+<l>a la puerta; que el honor</l>
+<l>con sangre, señor, se lava.</l>
+</sp>
+<sp who="REY">
+<speaker>REY:</speaker>
+<l>Dádsela, pues a Leonor,</l>
+<l>que yo sé que su alabanza</l>
+<l>la merece.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Sí la doy.</l>
+<l>Mas mira, que va bañada</l>
+<l>en sangre, Leonor.</l>
+</sp>
+<sp who="LEONOR">
+<speaker>LEONOR:</speaker>
+<l>No importa;</l>
+<l>que no me admira ni espanta.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Mira que médico he sido</l>
+<l>de mi honra.  No está olvidada</l>
+<l>la ciencia.</l>
+</sp>
+<sp who="LEONOR">
+<speaker>LEONOR:</speaker>
+<l>Cura con ella</l>
+<l>mi vida, en estando mala.</l>
+</sp>
+<sp who="GUTIERRE">
+<speaker>GUTIERRE:</speaker>
+<l>Pues con esa condición</l>
+<l>te la doy.  Con esto acaba</l>
+<l>el médico de su honra.</l>
+<l>Perdonan sus muchas faltas.</l>
+
+
+
+
+</sp>
+</div>
+
+
+</body></text></TEI>

@@ -33,6 +33,7 @@ import de.unistuttgart.ims.drama.util.AnnotationComparator;
  */
 @TypeCapability(inputs = { "de.unistuttgart.quadrama.api.Figure", "de.unistuttgart.quadrama.api.Speaker" }, outputs = {
 		"de.unistuttgart.quadrama.api.Speaker:Figure", "de.unistuttgart.quadrama.api.SpeakerFigure" })
+@Deprecated
 public class SpeakerIdentifier extends JCasAnnotator_ImplBase {
 
 	public static final String PARAM_CREATE_SPEAKER_FIGURE = "Create speaker figure";

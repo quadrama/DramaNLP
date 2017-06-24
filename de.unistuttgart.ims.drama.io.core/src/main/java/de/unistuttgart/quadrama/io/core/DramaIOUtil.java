@@ -21,14 +21,25 @@ public class DramaIOUtil {
 	public static <T extends Annotation> Collection<T> select2Annotation(JCas jcas, Element rootElement,
 			Map<String, HTMLAnnotation> annoMap, String cssSelector, Class<T> annoClass,
 			Annotation coveringAnnotation) {
+		return select2Annotation(jcas, rootElement, annoMap, cssSelector, annoClass, coveringAnnotation, null);
+	}
+
+	public static <T extends Annotation> Collection<T> select2Annotation(JCas jcas, Element rootElement,
+			Map<String, HTMLAnnotation> annoMap, String cssSelector, Class<T> annoClass, Annotation coveringAnnotation,
+			Select2AnnotationCallback<T> callback) {
 		HashSet<T> set = new HashSet<T>();
 		Elements elms = rootElement.select(cssSelector);
 		for (Element elm : elms) {
 			HTMLAnnotation hAnno = annoMap.get(elm.cssSelector());
 			if (elm.hasText() || elm.childNodeSize() > 0) {
 				if (coveringAnnotation == null || (coveringAnnotation.getBegin() <= hAnno.getBegin()
-						&& coveringAnnotation.getEnd() >= hAnno.getEnd()))
-					set.add(AnnotationFactory.createAnnotation(jcas, hAnno.getBegin(), hAnno.getEnd(), annoClass));
+						&& coveringAnnotation.getEnd() >= hAnno.getEnd())) {
+					T annotation = AnnotationFactory.createAnnotation(jcas, hAnno.getBegin(), hAnno.getEnd(),
+							annoClass);
+					if (callback != null)
+						callback.call(annotation, elm);
+					set.add(annotation);
+				}
 			}
 		}
 		return set;
