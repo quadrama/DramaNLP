@@ -5,7 +5,11 @@
   <parent>
     <groupId>de.unistuttgart.ims</groupId>
     <artifactId>de.unistuttgart.ims.drama</artifactId>
+<<<<<<< HEAD
     <version>0.5.2-SNAPSHOT</version>
+=======
+    <version>0.6-SNAPSHOT</version>
+>>>>>>> 09ba86c... 0.6-SNAPSHOT
   </parent>
   <artifactId>de.unistuttgart.ims.drama.core</artifactId>
   <properties>
@@ -51,7 +55,11 @@
     <dependency>
     	<groupId>de.unistuttgart.ims</groupId>
     	<artifactId>de.unistuttgart.ims.drama.api</artifactId>
+<<<<<<< HEAD
     	<version>0.5.2-SNAPSHOT</version>
+=======
+    	<version>0.6-SNAPSHOT</version>
+>>>>>>> 09ba86c... 0.6-SNAPSHOT
     </dependency>
     <dependency>
     	<groupId>org.apache.commons</groupId>
@@ -63,7 +71,11 @@
     	<artifactId>
     		de.unistuttgart.ims.drama.io.tei.textgrid
     	</artifactId>
+<<<<<<< HEAD
     	<version>0.5.2-SNAPSHOT</version>
+=======
+    	<version>0.6-SNAPSHOT</version>
+>>>>>>> 09ba86c... 0.6-SNAPSHOT
     	<scope>test</scope>
     </dependency>
     <dependency>
@@ -79,7 +91,11 @@
     <dependency>
     	<groupId>de.unistuttgart.ims</groupId>
     	<artifactId>de.unistuttgart.ims.drama.util</artifactId>
+<<<<<<< HEAD
     	<version>0.5.2-SNAPSHOT</version>
+=======
+    	<version>0.6-SNAPSHOT</version>
+>>>>>>> 09ba86c... 0.6-SNAPSHOT
     </dependency>
     <dependency>
     	<groupId>xom</groupId>
