@@ -3,7 +3,7 @@
   <parent>
     <groupId>de.unistuttgart.ims</groupId>
     <artifactId>de.unistuttgart.ims.drama</artifactId>
-    <version>0.5.1-SNAPSHOT</version>
+    <version>0.6-SNAPSHOT</version>
   </parent>
   <artifactId>de.unistuttgart.ims.drama.graph</artifactId>
   <build>
@@ -41,7 +41,7 @@
   	<dependency>
   		<groupId>de.unistuttgart.ims</groupId>
   		<artifactId>de.unistuttgart.ims.drama.api</artifactId>
-  		<version>0.5.1-SNAPSHOT</version>
+  		<version>0.6-SNAPSHOT</version>
   	</dependency>
   	<dependency>
   		<groupId>org.apache.uima</groupId>
@@ -72,7 +72,7 @@
   	<dependency>
   		<groupId>de.unistuttgart.ims</groupId>
   		<artifactId>de.unistuttgart.ims.drama.core</artifactId>
-  		<version>0.5.1-SNAPSHOT</version>
+  		<version>0.6-SNAPSHOT</version>
   	</dependency>
   </dependencies>
 </project>

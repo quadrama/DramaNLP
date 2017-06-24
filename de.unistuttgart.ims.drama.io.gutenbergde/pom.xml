@@ -5,7 +5,7 @@
   <parent>
     <groupId>de.unistuttgart.ims</groupId>
     <artifactId>de.unistuttgart.ims.drama</artifactId>
-    <version>0.5.1-SNAPSHOT</version>
+    <version>0.6-SNAPSHOT</version>
   </parent>
   <artifactId>de.unistuttgart.ims.drama.io.gutenbergde</artifactId>
   <properties>
@@ -44,12 +44,12 @@
     <dependency>
     	<groupId>de.unistuttgart.ims</groupId>
     	<artifactId>de.unistuttgart.ims.drama.io.core</artifactId>
-    	<version>0.5.1-SNAPSHOT</version>
+    	<version>0.6-SNAPSHOT</version>
     </dependency>
     <dependency>
     	<groupId>de.unistuttgart.ims</groupId>
     	<artifactId>de.unistuttgart.ims.drama.api</artifactId>
-    	<version>0.5.1-SNAPSHOT</version>
+    	<version>0.6-SNAPSHOT</version>
     </dependency>
     <dependency>
     	<groupId>de.unistuttgart.ims</groupId>
