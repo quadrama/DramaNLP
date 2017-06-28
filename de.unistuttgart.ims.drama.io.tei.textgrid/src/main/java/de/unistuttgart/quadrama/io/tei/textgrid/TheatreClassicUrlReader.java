@@ -130,6 +130,7 @@ public class TheatreClassicUrlReader extends AbstractDramaUrlReader {
 			CastFigure figure = new CastFigure(jcas);
 			figure.setXmlId(id);
 			figure.setNames(arr);
+			figure.addToIndexes();
 			idFigureMap.put(id, figure);
 			castListArray.set(i, figure);
 		}
