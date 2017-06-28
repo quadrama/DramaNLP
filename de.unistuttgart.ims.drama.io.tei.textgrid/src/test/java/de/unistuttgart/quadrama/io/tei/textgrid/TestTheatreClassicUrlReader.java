@@ -1,6 +1,7 @@
 package de.unistuttgart.quadrama.io.tei.textgrid;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.apache.uima.collection.CollectionReaderDescription;
 import org.apache.uima.fit.factory.AggregateBuilder;
@@ -14,6 +15,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
+import de.unistuttgart.ims.drama.api.CastFigure;
 import de.unistuttgart.ims.drama.api.Drama;
 
 public class TestTheatreClassicUrlReader {
@@ -35,5 +37,7 @@ public class TestTheatreClassicUrlReader {
 	@Test
 	public void testGeneral() {
 		assertEquals("tc0623", JCasUtil.selectSingle(jcas, Drama.class).getDocumentId());
+		assertTrue(JCasUtil.exists(jcas, CastFigure.class));
+		assertEquals(12, JCasUtil.select(jcas, CastFigure.class).size());
 	}
 }
