@@ -40,12 +40,9 @@ public class MapFiguresToCastFigures extends JCasAnnotator_ImplBase {
 			if (speaker.getFigure() != null) {
 				speaker.setCastFigure(new FSArray(jcas, 1));
 				speaker.setCastFigure(0, figureMap.get(speaker.getFigure()));
-				speaker.setFigure(null);
 			}
 		}
 
-		for (Figure figure : figures)
-			figure.removeFromIndexes();
 	}
 
 }
