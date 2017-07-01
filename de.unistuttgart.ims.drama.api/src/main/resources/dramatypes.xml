@@ -123,7 +123,27 @@
 					<elementType>de.unistuttgart.ims.drama.api.CastFigure</elementType>
 					<multipleReferencesAllowed>false</multipleReferencesAllowed>
 				</featureDescription>
-			</features>
+			<featureDescription>
+          <name>DatePrinted</name>
+          <description/>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>DateWritten</name>
+          <description/>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>DatePremiere</name>
+          <description/>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+      <featureDescription>
+          <name>Date</name>
+          <description/>
+          <rangeTypeName>uima.cas.Integer</rangeTypeName>
+        </featureDescription>
+      </features>
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.SpeechVerse</name>

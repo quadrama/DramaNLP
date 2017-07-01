@@ -30,8 +30,6 @@ import de.unistuttgart.ims.drama.api.Act;
 import de.unistuttgart.ims.drama.api.ActHeading;
 import de.unistuttgart.ims.drama.api.Author;
 import de.unistuttgart.ims.drama.api.CastFigure;
-import de.unistuttgart.ims.drama.api.DatePremiere;
-import de.unistuttgart.ims.drama.api.DatePrint;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Figure;
 import de.unistuttgart.ims.drama.api.FrontMatter;
@@ -69,8 +67,10 @@ public class TheatreClassicUrlReader extends AbstractDramaUrlReader {
 		if (!doc.select("publicationStmt > idno[type=\"cligs\"]").isEmpty())
 			drama.setDocumentId(doc.select("publicationStmt > idno[type=\"cligs\"]").first().text());
 
-		select2Feature(jcas, doc, "sourceDesc > bibl[type=\"print-source\"] > date", DatePrint.class, "Year");
-		select2Feature(jcas, doc, "sourceDesc > bibl[type=\"performance-first\"] > date", DatePremiere.class, "Year");
+		drama.setDatePremiere(
+				Integer.valueOf(doc.select("sourceDesc > bibl[type=\"performance-first\"] > date").first().text()));
+		drama.setDatePrinted(
+				Integer.valueOf(doc.select("sourceDesc > bibl[type=\"print-source\"] > date").first().text()));
 
 		// Author
 		Elements authorElements = doc.select("author");
