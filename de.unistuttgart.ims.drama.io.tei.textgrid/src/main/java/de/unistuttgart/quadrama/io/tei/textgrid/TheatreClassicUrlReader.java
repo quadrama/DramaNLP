@@ -10,12 +10,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.uima.UimaContext;
+import org.apache.uima.cas.Feature;
+import org.apache.uima.cas.Type;
 import org.apache.uima.collection.CollectionException;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSArray;
 import org.apache.uima.jcas.cas.StringArray;
+import org.apache.uima.jcas.cas.TOP;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -27,6 +30,8 @@ import de.unistuttgart.ims.drama.api.Act;
 import de.unistuttgart.ims.drama.api.ActHeading;
 import de.unistuttgart.ims.drama.api.Author;
 import de.unistuttgart.ims.drama.api.CastFigure;
+import de.unistuttgart.ims.drama.api.DatePremiere;
+import de.unistuttgart.ims.drama.api.DatePrint;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Figure;
 import de.unistuttgart.ims.drama.api.FrontMatter;
@@ -63,6 +68,9 @@ public class TheatreClassicUrlReader extends AbstractDramaUrlReader {
 		drama.setDocumentTitle(doc.select("titleStmt > title[type=\"main\"]").first().text());
 		if (!doc.select("publicationStmt > idno[type=\"cligs\"]").isEmpty())
 			drama.setDocumentId(doc.select("publicationStmt > idno[type=\"cligs\"]").first().text());
+
+		select2Feature(jcas, doc, "sourceDesc > bibl[type=\"print-source\"] > date", DatePrint.class, "Year");
+		select2Feature(jcas, doc, "sourceDesc > bibl[type=\"performance-first\"] > date", DatePremiere.class, "Year");
 
 		// Author
 		Elements authorElements = doc.select("author");
@@ -181,6 +189,21 @@ public class TheatreClassicUrlReader extends AbstractDramaUrlReader {
 	public static void readActsAndScenes(JCas jcas, Element root, Map<String, HTMLAnnotation> map, boolean strict) {
 		readActs(jcas, root, map, strict);
 		readScenes(jcas, root, map, strict);
+	}
+
+	public static <T extends TOP> T select2Feature(JCas jcas, Document doc, String cssQuery, Class<T> type,
+			String featureName) {
+		if (!doc.select(cssQuery).isEmpty()) {
+			Type t = JCasUtil.getType(jcas, type);
+			T fs = jcas.getCas().createFS(t);
+			Feature f = t.getFeatureByBaseName(featureName);
+			if (f.getRange().getName().equalsIgnoreCase("uima.cas.Integer")) {
+				fs.setIntValue(f, Integer.valueOf(doc.select(cssQuery).first().text()));
+			}
+			fs.addToIndexes();
+			return fs;
+		}
+		return null;
 	}
 
 }
