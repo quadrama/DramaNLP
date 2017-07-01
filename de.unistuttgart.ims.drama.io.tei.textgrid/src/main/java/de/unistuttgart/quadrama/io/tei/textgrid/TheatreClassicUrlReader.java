@@ -67,11 +67,18 @@ public class TheatreClassicUrlReader extends AbstractDramaUrlReader {
 		if (!doc.select("publicationStmt > idno[type=\"cligs\"]").isEmpty())
 			drama.setDocumentId(doc.select("publicationStmt > idno[type=\"cligs\"]").first().text());
 
-		drama.setDatePremiere(
-				Integer.valueOf(doc.select("sourceDesc > bibl[type=\"performance-first\"] > date").first().text()));
-		drama.setDatePrinted(
-				Integer.valueOf(doc.select("sourceDesc > bibl[type=\"print-source\"] > date").first().text()));
-
+		try {
+			drama.setDatePremiere(
+					Integer.valueOf(doc.select("sourceDesc > bibl[type=\"performance-first\"] > date").first().text()));
+		} catch (NumberFormatException e) {
+			// do nothing
+		}
+		try {
+			drama.setDatePrinted(
+					Integer.valueOf(doc.select("sourceDesc > bibl[type=\"print-source\"] > date").first().text()));
+		} catch (NumberFormatException e) {
+			// do nothing
+		}
 		// Author
 		Elements authorElements = doc.select("author");
 		for (int i = 0; i < authorElements.size(); i++) {
