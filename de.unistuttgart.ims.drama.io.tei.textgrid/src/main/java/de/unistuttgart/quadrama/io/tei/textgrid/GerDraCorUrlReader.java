@@ -34,6 +34,7 @@ import de.unistuttgart.ims.drama.api.Scene;
 import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.StageDirection;
+import de.unistuttgart.ims.drama.api.Translator;
 import de.unistuttgart.ims.drama.api.Utterance;
 import de.unistuttgart.ims.uimautil.AnnotationUtil;
 import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
@@ -72,7 +73,32 @@ public class GerDraCorUrlReader extends AbstractDramaUrlReader {
 			}
 			author.addToIndexes();
 		}
+		// translator
+		Elements editorElements = doc.select("editor[@role='translator']");
+		for (int i = 0; i < editorElements.size(); i++) {
+			Element editorElement = editorElements.get(i);
+			Translator transl = new Translator(jcas);
+			transl.setName(editorElement.text());
+			if (editorElement.hasAttr("key"))
+				transl.setPnd(editorElement.attr("key").replace("pnd:", ""));
+		}
 
+		// dates
+		try {
+			drama.setDatePrinted(Integer.valueOf(doc.select("date[type=\"print\"]").text()));
+		} catch (Exception e) {
+			// fail silently
+		}
+		try {
+			drama.setDateWritten(Integer.valueOf(doc.select("date[type=\"written\"]").text()));
+		} catch (Exception e) {
+			// fail silently
+		}
+		try {
+			drama.setDatePremiere(Integer.valueOf(doc.select("date[type=\"premiere\"]").text()));
+		} catch (Exception e) {
+			// fail silently
+		}
 		Visitor vis = new Visitor(jcas);
 
 		Element root = doc.select("TEI > text").first();
