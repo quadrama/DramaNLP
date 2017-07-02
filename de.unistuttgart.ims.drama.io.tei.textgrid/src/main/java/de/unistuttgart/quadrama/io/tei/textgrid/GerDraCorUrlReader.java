@@ -149,17 +149,9 @@ public class GerDraCorUrlReader extends AbstractDramaUrlReader {
 		FSArray castListArray = new FSArray(jcas, castEntries.size());
 		for (int i = 0; i < castEntries.size(); i++) {
 			Element castEntry = castEntries.get(i);
-			String id = castEntry.attr("xml:id");
-			Elements nameElements = castEntry.select("persName");
-			StringArray arr = new StringArray(jcas, nameElements.size());
-			for (int j = 0; j < nameElements.size(); j++) {
-				arr.set(j, nameElements.get(j).text());
-			}
-			CastFigure figure = new CastFigure(jcas);
-			figure.setXmlId(id);
-			figure.setNames(arr);
-			figure.addToIndexes();
-			idFigureMap.put(id, figure);
+			CastFigure figure = TEIUtil.parsePersonElement(jcas, castEntry);
+
+			idFigureMap.put(figure.getXmlId(), figure);
 			castListArray.set(i, figure);
 		}
 		drama.setCastList(castListArray);

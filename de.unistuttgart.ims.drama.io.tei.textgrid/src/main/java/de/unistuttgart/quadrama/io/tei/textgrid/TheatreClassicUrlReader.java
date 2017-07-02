@@ -140,19 +140,11 @@ public class TheatreClassicUrlReader extends AbstractDramaUrlReader {
 	private static void readCast(JCas jcas, Drama drama, Document doc) {
 		Map<String, CastFigure> idFigureMap = new HashMap<String, CastFigure>();
 		Elements castEntries = doc.select("castList > castItem > role");
-		// castEntries.addAll(doc.select("profileDesc > particDesc > listPerson
-		// > personGrp"));
 		FSArray castListArray = new FSArray(jcas, castEntries.size());
 		for (int i = 0; i < castEntries.size(); i++) {
 			Element castEntry = castEntries.get(i);
-			String id = castEntry.attr("xml:id");
-			StringArray arr = new StringArray(jcas, 1);
-			arr.set(0, castEntry.text());
-			CastFigure figure = new CastFigure(jcas);
-			figure.setXmlId(id);
-			figure.setNames(arr);
-			figure.addToIndexes();
-			idFigureMap.put(id, figure);
+			CastFigure figure = TEIUtil.parsePersonElement(jcas, castEntry);
+			idFigureMap.put(figure.getXmlId(), figure);
 			castListArray.set(i, figure);
 		}
 		drama.setCastList(castListArray);
