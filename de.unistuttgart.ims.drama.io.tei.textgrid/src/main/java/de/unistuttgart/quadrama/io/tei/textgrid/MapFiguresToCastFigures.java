@@ -29,7 +29,8 @@ public class MapFiguresToCastFigures extends JCasAnnotator_ImplBase {
 		for (Figure figure : figures) {
 			CastFigure cFigure = new CastFigure(jcas);
 			cFigure.setNames(new StringArray(jcas, 1));
-			cFigure.setXmlId(String.valueOf(figure.getId()));
+			cFigure.setXmlId(new StringArray(jcas, 1));
+			cFigure.setXmlId(0, String.valueOf(figure.getId()));
 			cFigure.setNames(0, figure.getCoveredText());
 			cFigure.addToIndexes();
 			drama.setCastList(i++, cFigure);

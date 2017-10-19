@@ -103,7 +103,8 @@ public class CoreTEIUrlReader extends AbstractDramaUrlReader {
 			StringArray arr = new StringArray(jcas, 1);
 			arr.set(0, castEntry.text());
 			CastFigure figure = new CastFigure(jcas);
-			figure.setXmlId(id);
+			figure.setXmlId(new StringArray(jcas, 1));
+			figure.setXmlId(0, id);
 			figure.setNames(arr);
 			figure.addToIndexes();
 			idFigureMap.put(id, figure);

@@ -144,7 +144,9 @@ public class TheatreClassicUrlReader extends AbstractDramaUrlReader {
 		for (int i = 0; i < castEntries.size(); i++) {
 			Element castEntry = castEntries.get(i);
 			CastFigure figure = TEIUtil.parsePersonElement(jcas, castEntry);
-			idFigureMap.put(figure.getXmlId(), figure);
+			for (int j = 0; j < figure.getXmlId().size(); j++) {
+				idFigureMap.put(figure.getXmlId(j), figure);
+			}
 			castListArray.set(i, figure);
 		}
 		drama.setCastList(castListArray);

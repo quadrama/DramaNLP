@@ -380,8 +380,9 @@ This type can be used to add figures on the fly, that are not declared in the dr
 				<featureDescription>
 					<name>XmlId</name>
 					<description/>
-					<rangeTypeName>uima.cas.String</rangeTypeName>
-				</featureDescription>
+					<rangeTypeName>uima.cas.StringArray</rangeTypeName>
+				<multipleReferencesAllowed>false</multipleReferencesAllowed>
+        </featureDescription>
 				<featureDescription>
 					<name>Names</name>
 					<description/>
