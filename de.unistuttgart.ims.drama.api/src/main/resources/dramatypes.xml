@@ -224,11 +224,11 @@
 			<supertypeName>uima.tcas.Annotation</supertypeName>
 			<features>
 				<featureDescription>
-					<name>Figure</name>
-					<description/>
-					<rangeTypeName>de.unistuttgart.ims.drama.api.Figure</rangeTypeName>
-				</featureDescription>
-			</features>
+          <name>CastFigure</name>
+          <description/>
+          <rangeTypeName>de.unistuttgart.ims.drama.api.CastFigure</rangeTypeName>
+        </featureDescription>
+      </features>
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.SpeakerFigure</name>

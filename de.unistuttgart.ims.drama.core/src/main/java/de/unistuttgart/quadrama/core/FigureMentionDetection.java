@@ -20,7 +20,7 @@ import org.apache.uima.resource.ResourceInitializationException;
 
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.PR;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
-import de.unistuttgart.ims.drama.api.Figure;
+import de.unistuttgart.ims.drama.api.CastFigure;
 import de.unistuttgart.ims.drama.api.FigureMention;
 import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.Utterance;
@@ -52,10 +52,10 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 
 		// we create indices with figure names, figure reference strings and
 		// pronouns
-		Map<String, Figure> figureMap = new HashMap<String, Figure>();
-		for (Figure figure : JCasUtil.select(jcas, Figure.class)) {
-			figureMap.put(figure.getCoveredText(), figure);
-			figureMap.put(figure.getReference(), figure);
+		Map<String, CastFigure> figureMap = new HashMap<String, CastFigure>();
+		for (CastFigure figure : JCasUtil.select(jcas, CastFigure.class)) {
+			for (int i = 0; i < figure.getNames().size(); i++)
+				figureMap.put(figure.getNames(i).toLowerCase(), figure);
 		}
 		List<String> pronouns = firstPersonPronouns.get(jcas.getDocumentLanguage());
 		if (pronouns == null) {
@@ -63,22 +63,22 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 		}
 
 		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
-			Collection<Figure> figures = DramaUtil.getFigures(utterance);
-			for (Figure currentFigure : figures) {
+			Collection<CastFigure> figures = DramaUtil.getCastFigures(utterance);
+			for (CastFigure currentFigure : figures) {
 				for (Speech speech : JCasUtil.selectCovered(jcas, Speech.class, utterance)) {
 					for (Token token : JCasUtil.selectCovered(Token.class, speech)) {
 						String surface = token.getCoveredText();
-						if (figureMap.containsKey(surface)) {
+						if (figureMap.containsKey(surface.toLowerCase())) {
 							FigureMention fm = AnnotationFactory.createAnnotation(jcas, token.getBegin(),
 									token.getEnd(), FigureMention.class);
-							fm.setFigure(figureMap.get(surface));
+							fm.setCastFigure(figureMap.get(surface.toLowerCase()));
 						}
 					}
 					if (figures.size() <= 1)
 						for (PR pronoun : JCasUtil.selectCovered(jcas, PR.class, speech)) {
 							if (pronouns.contains(pronoun.getCoveredText())) {
 								AnnotationFactory.createAnnotation(jcas, pronoun.getBegin(), pronoun.getEnd(),
-										FigureMention.class).setFigure(currentFigure);
+										FigureMention.class).setCastFigure(currentFigure);
 							}
 						}
 				}
