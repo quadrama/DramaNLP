@@ -68,6 +68,7 @@ public class TestGDCReaderV3mx0 {
 
 		assertNotNull(JCasUtil.selectSingle(jcas, FrontMatter.class));
 		assertNotNull(JCasUtil.selectSingle(jcas, MainMatter.class));
+		assertEquals(1743, JCasUtil.selectSingle(jcas, Drama.class).getDatePrinted());
 
 	}
 

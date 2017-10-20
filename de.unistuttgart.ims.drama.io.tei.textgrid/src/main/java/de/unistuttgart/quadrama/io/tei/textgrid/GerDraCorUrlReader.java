@@ -85,17 +85,17 @@ public class GerDraCorUrlReader extends AbstractDramaUrlReader {
 
 		// dates
 		try {
-			drama.setDatePrinted(Integer.valueOf(doc.select("date[type=\"print\"]").text()));
+			drama.setDatePrinted(Integer.valueOf(doc.select("date[type=\"print\"]").attr("when")));
 		} catch (Exception e) {
 			// fail silently
 		}
 		try {
-			drama.setDateWritten(Integer.valueOf(doc.select("date[type=\"written\"]").text()));
+			drama.setDateWritten(Integer.valueOf(doc.select("date[type=\"written\"]").attr("when")));
 		} catch (Exception e) {
 			// fail silently
 		}
 		try {
-			drama.setDatePremiere(Integer.valueOf(doc.select("date[type=\"premiere\"]").text()));
+			drama.setDatePremiere(Integer.valueOf(doc.select("date[type=\"premiere\"]").attr("when")));
 		} catch (Exception e) {
 			// fail silently
 		}
