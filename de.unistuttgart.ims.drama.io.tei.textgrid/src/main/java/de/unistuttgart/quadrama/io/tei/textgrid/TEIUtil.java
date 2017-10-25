@@ -35,8 +35,8 @@ public class TEIUtil {
 				xmlIdList.add(nameElements.get(j).attr("xml:id"));
 		}
 		for (TextNode tn : personElement.textNodes()) {
-			if (tn.text().length() > 0)
-				nameList.add(tn.text());
+			if (tn.text().trim().length() > 0)
+				nameList.add(tn.text().trim());
 		}
 		figure.setXmlId(toStringArray(jcas, xmlIdList));
 		figure.setNames(toStringArray(jcas, nameList));
