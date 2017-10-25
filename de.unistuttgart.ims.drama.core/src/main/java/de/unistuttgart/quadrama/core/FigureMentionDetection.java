@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.uima.UimaContext;
@@ -19,8 +21,8 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.PR;
-import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.unistuttgart.ims.drama.api.CastFigure;
+import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.FigureMention;
 import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.Utterance;
@@ -62,18 +64,37 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 			pronouns = new LinkedList<String>();
 		}
 
+		Drama d = JCasUtil.selectSingle(jcas, Drama.class);
+		Pattern p;
+		Matcher m;
+		for (int i = 0; i < d.getCastList().size(); i++) {
+			CastFigure cf = d.getCastList(i);
+			for (int j = 0; j < cf.getNames().size(); j++) {
+				String name = cf.getNames(j);
+				p = Pattern.compile("\\b" + name + "\\b", Pattern.CASE_INSENSITIVE);
+				m = p.matcher(jcas.getDocumentText());
+				while (m.find()) {
+					FigureMention fm = AnnotationFactory.createAnnotation(jcas, m.start(), m.end(),
+							FigureMention.class);
+					fm.setCastFigure(cf);
+				}
+			}
+		}
+
 		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
 			Collection<CastFigure> figures = DramaUtil.getCastFigures(utterance);
 			for (CastFigure currentFigure : figures) {
 				for (Speech speech : JCasUtil.selectCovered(jcas, Speech.class, utterance)) {
-					for (Token token : JCasUtil.selectCovered(Token.class, speech)) {
-						String surface = token.getCoveredText();
-						if (figureMap.containsKey(surface.toLowerCase())) {
-							FigureMention fm = AnnotationFactory.createAnnotation(jcas, token.getBegin(),
-									token.getEnd(), FigureMention.class);
-							fm.setCastFigure(figureMap.get(surface.toLowerCase()));
-						}
-					}
+					/*
+					 * for (Token token : JCasUtil.selectCovered(Token.class,
+					 * speech)) { String surface = token.getCoveredText(); if
+					 * (figureMap.containsKey(surface.toLowerCase())) {
+					 * FigureMention fm =
+					 * AnnotationFactory.createAnnotation(jcas,
+					 * token.getBegin(), token.getEnd(), FigureMention.class);
+					 * fm.setCastFigure(figureMap.get(surface.toLowerCase())); }
+					 * }
+					 */
 					if (figures.size() <= 1)
 						for (PR pronoun : JCasUtil.selectCovered(jcas, PR.class, speech)) {
 							if (pronouns.contains(pronoun.getCoveredText())) {
