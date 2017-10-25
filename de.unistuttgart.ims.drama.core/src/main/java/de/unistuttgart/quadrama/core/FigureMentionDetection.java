@@ -71,7 +71,8 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 			CastFigure cf = d.getCastList(i);
 			for (int j = 0; j < cf.getNames().size(); j++) {
 				String name = cf.getNames(j);
-				p = Pattern.compile("\\b" + name + "\\b", Pattern.CASE_INSENSITIVE);
+
+				p = Pattern.compile("\\b" + Pattern.quote(name) + "\\b", Pattern.CASE_INSENSITIVE);
 				m = p.matcher(jcas.getDocumentText());
 				while (m.find()) {
 					FigureMention fm = AnnotationFactory.createAnnotation(jcas, m.start(), m.end(),
