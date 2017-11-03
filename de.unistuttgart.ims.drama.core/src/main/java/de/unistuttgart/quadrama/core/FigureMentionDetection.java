@@ -11,6 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
@@ -20,6 +21,7 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 
+import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS;
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.PR;
 import de.unistuttgart.ims.drama.api.CastFigure;
 import de.unistuttgart.ims.drama.api.Drama;
@@ -35,6 +37,7 @@ import de.unistuttgart.ims.drama.util.DramaUtil;
 public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 
 	Map<String, List<String>> firstPersonPronouns = new HashMap<String, List<String>>();
+	String[] posExceptions = new String[] { "ART" };
 
 	@Override
 	public void initialize(final UimaContext context) throws ResourceInitializationException {
@@ -75,9 +78,11 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 				p = Pattern.compile("\\b" + Pattern.quote(name) + "\\b", Pattern.CASE_INSENSITIVE);
 				m = p.matcher(jcas.getDocumentText());
 				while (m.find()) {
-					FigureMention fm = AnnotationFactory.createAnnotation(jcas, m.start(), m.end(),
-							FigureMention.class);
-					fm.setCastFigure(cf);
+					if (!matches(jcas, m.start(), m.end())) {
+						FigureMention fm = AnnotationFactory.createAnnotation(jcas, m.start(), m.end(),
+								FigureMention.class);
+						fm.setCastFigure(cf);
+					}
 				}
 			}
 		}
@@ -107,6 +112,16 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 			}
 		}
 
+	}
+
+	boolean matches(JCas jcas, int begin, int end) {
+		Collection<POS> poss = JCasUtil.selectCovered(jcas, POS.class, begin, end);
+		StringBuilder b = new StringBuilder();
+		for (POS pos : poss) {
+			b.append(pos.getPosValue()).append(' ');
+		}
+		String profile = b.toString().trim();
+		return ArrayUtils.contains(posExceptions, profile);
 	}
 
 }
