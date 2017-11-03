@@ -55,18 +55,20 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
 
-		// we create indices with figure names, figure reference strings and
-		// pronouns
+		// we create indices with all available figure names
 		Map<String, CastFigure> figureMap = new HashMap<String, CastFigure>();
 		for (CastFigure figure : JCasUtil.select(jcas, CastFigure.class)) {
 			for (int i = 0; i < figure.getNames().size(); i++)
 				figureMap.put(figure.getNames(i).toLowerCase(), figure);
 		}
+		// we create a list of first person pronouns
 		List<String> pronouns = firstPersonPronouns.get(jcas.getDocumentLanguage());
 		if (pronouns == null) {
 			pronouns = new LinkedList<String>();
 		}
 
+		// Step 1: We search for each name in the full text (ignoring token
+		// boundaries etc.)
 		Drama d = JCasUtil.selectSingle(jcas, Drama.class);
 		Pattern p;
 		Matcher m;
@@ -78,6 +80,9 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 				p = Pattern.compile("\\b" + Pattern.quote(name) + "\\b", Pattern.CASE_INSENSITIVE);
 				m = p.matcher(jcas.getDocumentText());
 				while (m.find()) {
+					// If the found token (or multi-token) looks ok given their
+					// part of speech tags,
+					// we consider it a mention
 					if (!matches(jcas, m.start(), m.end())) {
 						FigureMention fm = AnnotationFactory.createAnnotation(jcas, m.start(), m.end(),
 								FigureMention.class);
@@ -87,20 +92,11 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 			}
 		}
 
+		// 2. We connect first person pronouns to their speakers
 		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
 			Collection<CastFigure> figures = DramaUtil.getCastFigures(utterance);
 			for (CastFigure currentFigure : figures) {
 				for (Speech speech : JCasUtil.selectCovered(jcas, Speech.class, utterance)) {
-					/*
-					 * for (Token token : JCasUtil.selectCovered(Token.class,
-					 * speech)) { String surface = token.getCoveredText(); if
-					 * (figureMap.containsKey(surface.toLowerCase())) {
-					 * FigureMention fm =
-					 * AnnotationFactory.createAnnotation(jcas,
-					 * token.getBegin(), token.getEnd(), FigureMention.class);
-					 * fm.setCastFigure(figureMap.get(surface.toLowerCase())); }
-					 * }
-					 */
 					if (figures.size() <= 1)
 						for (PR pronoun : JCasUtil.selectCovered(jcas, PR.class, speech)) {
 							if (pronouns.contains(pronoun.getCoveredText())) {
