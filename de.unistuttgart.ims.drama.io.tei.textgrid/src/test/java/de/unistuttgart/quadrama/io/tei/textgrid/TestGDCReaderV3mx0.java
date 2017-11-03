@@ -20,6 +20,7 @@ import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.unistuttgart.ims.drama.api.Act;
 import de.unistuttgart.ims.drama.api.ActHeading;
 import de.unistuttgart.ims.drama.api.Author;
+import de.unistuttgart.ims.drama.api.CastFigure;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.DramatisPersonae;
 import de.unistuttgart.ims.drama.api.Figure;
@@ -68,6 +69,7 @@ public class TestGDCReaderV3mx0 {
 
 		assertNotNull(JCasUtil.selectSingle(jcas, FrontMatter.class));
 		assertNotNull(JCasUtil.selectSingle(jcas, MainMatter.class));
+		assertEquals(1743, JCasUtil.selectSingle(jcas, Drama.class).getDatePrinted());
 
 	}
 
@@ -85,6 +87,16 @@ public class TestGDCReaderV3mx0 {
 		assertTrue(JCasUtil.exists(jcas, Figure.class));
 		assertTrue(JCasUtil.exists(jcas, Speaker.class));
 		assertEquals(15, JCasUtil.select(jcas, Figure.class).size());
+
+		Drama d = JCasUtil.selectSingle(jcas, Drama.class);
+		for (int i = 0; i < d.getCastList().size(); i++) {
+			CastFigure f = d.getCastList(i);
+			assertNotNull(f);
+			for (int j = 0; j < f.getNames().size(); j++) {
+				assertNotEquals(" ", f.getNames(j));
+			}
+		}
+
 	}
 
 }

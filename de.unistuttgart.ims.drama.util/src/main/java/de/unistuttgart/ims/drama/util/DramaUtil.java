@@ -14,6 +14,7 @@ import org.apache.uima.jcas.cas.TOP;
 import org.apache.uima.jcas.tcas.Annotation;
 
 import de.unistuttgart.ims.drama.api.Author;
+import de.unistuttgart.ims.drama.api.CastFigure;
 import de.unistuttgart.ims.drama.api.DateReference;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Figure;
@@ -66,6 +67,16 @@ public class DramaUtil {
 		Collection<Figure> f = new LinkedList<Figure>();
 		for (Speaker speaker : s) {
 			f.add(speaker.getFigure());
+		}
+		return f;
+	}
+
+	public static Collection<CastFigure> getCastFigures(Utterance u) {
+		Collection<Speaker> s = getSpeakers(u);
+		Collection<CastFigure> f = new LinkedList<CastFigure>();
+		for (Speaker speaker : s) {
+			for (int i = 0; i < speaker.getCastFigure().size(); i++)
+				f.add(speaker.getCastFigure(i));
 		}
 		return f;
 	}

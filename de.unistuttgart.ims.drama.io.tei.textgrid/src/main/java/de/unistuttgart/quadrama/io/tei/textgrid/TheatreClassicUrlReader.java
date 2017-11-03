@@ -10,12 +10,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.uima.UimaContext;
+import org.apache.uima.cas.Feature;
+import org.apache.uima.cas.Type;
 import org.apache.uima.collection.CollectionException;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSArray;
 import org.apache.uima.jcas.cas.StringArray;
+import org.apache.uima.jcas.cas.TOP;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -64,6 +67,18 @@ public class TheatreClassicUrlReader extends AbstractDramaUrlReader {
 		if (!doc.select("publicationStmt > idno[type=\"cligs\"]").isEmpty())
 			drama.setDocumentId(doc.select("publicationStmt > idno[type=\"cligs\"]").first().text());
 
+		try {
+			drama.setDatePremiere(
+					Integer.valueOf(doc.select("sourceDesc > bibl[type=\"performance-first\"] > date").first().text()));
+		} catch (NumberFormatException e) {
+			// do nothing
+		}
+		try {
+			drama.setDatePrinted(
+					Integer.valueOf(doc.select("sourceDesc > bibl[type=\"print-source\"] > date").first().text()));
+		} catch (NumberFormatException e) {
+			// do nothing
+		}
 		// Author
 		Elements authorElements = doc.select("author");
 		for (int i = 0; i < authorElements.size(); i++) {
@@ -125,19 +140,13 @@ public class TheatreClassicUrlReader extends AbstractDramaUrlReader {
 	private static void readCast(JCas jcas, Drama drama, Document doc) {
 		Map<String, CastFigure> idFigureMap = new HashMap<String, CastFigure>();
 		Elements castEntries = doc.select("castList > castItem > role");
-		// castEntries.addAll(doc.select("profileDesc > particDesc > listPerson
-		// > personGrp"));
 		FSArray castListArray = new FSArray(jcas, castEntries.size());
 		for (int i = 0; i < castEntries.size(); i++) {
 			Element castEntry = castEntries.get(i);
-			String id = castEntry.attr("xml:id");
-			StringArray arr = new StringArray(jcas, 1);
-			arr.set(0, castEntry.text());
-			CastFigure figure = new CastFigure(jcas);
-			figure.setXmlId(id);
-			figure.setNames(arr);
-			figure.addToIndexes();
-			idFigureMap.put(id, figure);
+			CastFigure figure = TEIUtil.parsePersonElement(jcas, castEntry);
+			for (int j = 0; j < figure.getXmlId().size(); j++) {
+				idFigureMap.put(figure.getXmlId(j), figure);
+			}
 			castListArray.set(i, figure);
 		}
 		drama.setCastList(castListArray);
@@ -181,6 +190,21 @@ public class TheatreClassicUrlReader extends AbstractDramaUrlReader {
 	public static void readActsAndScenes(JCas jcas, Element root, Map<String, HTMLAnnotation> map, boolean strict) {
 		readActs(jcas, root, map, strict);
 		readScenes(jcas, root, map, strict);
+	}
+
+	public static <T extends TOP> T select2Feature(JCas jcas, Document doc, String cssQuery, Class<T> type,
+			String featureName) {
+		if (!doc.select(cssQuery).isEmpty()) {
+			Type t = JCasUtil.getType(jcas, type);
+			T fs = jcas.getCas().createFS(t);
+			Feature f = t.getFeatureByBaseName(featureName);
+			if (f.getRange().getName().equalsIgnoreCase("uima.cas.Integer")) {
+				fs.setIntValue(f, Integer.valueOf(doc.select(cssQuery).first().text()));
+			}
+			fs.addToIndexes();
+			return fs;
+		}
+		return null;
 	}
 
 }

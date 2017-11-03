@@ -34,6 +34,7 @@ import de.unistuttgart.ims.drama.api.Scene;
 import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.StageDirection;
+import de.unistuttgart.ims.drama.api.Translator;
 import de.unistuttgart.ims.drama.api.Utterance;
 import de.unistuttgart.ims.uimautil.AnnotationUtil;
 import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
@@ -72,7 +73,32 @@ public class GerDraCorUrlReader extends AbstractDramaUrlReader {
 			}
 			author.addToIndexes();
 		}
+		// translator
+		Elements editorElements = doc.select("editor[@role='translator']");
+		for (int i = 0; i < editorElements.size(); i++) {
+			Element editorElement = editorElements.get(i);
+			Translator transl = new Translator(jcas);
+			transl.setName(editorElement.text());
+			if (editorElement.hasAttr("key"))
+				transl.setPnd(editorElement.attr("key").replace("pnd:", ""));
+		}
 
+		// dates
+		try {
+			drama.setDatePrinted(Integer.valueOf(doc.select("date[type=\"print\"]").attr("when")));
+		} catch (Exception e) {
+			// fail silently
+		}
+		try {
+			drama.setDateWritten(Integer.valueOf(doc.select("date[type=\"written\"]").attr("when")));
+		} catch (Exception e) {
+			// fail silently
+		}
+		try {
+			drama.setDatePremiere(Integer.valueOf(doc.select("date[type=\"premiere\"]").attr("when")));
+		} catch (Exception e) {
+			// fail silently
+		}
 		Visitor vis = new Visitor(jcas);
 
 		Element root = doc.select("TEI > text").first();
@@ -123,17 +149,11 @@ public class GerDraCorUrlReader extends AbstractDramaUrlReader {
 		FSArray castListArray = new FSArray(jcas, castEntries.size());
 		for (int i = 0; i < castEntries.size(); i++) {
 			Element castEntry = castEntries.get(i);
-			String id = castEntry.attr("xml:id");
-			Elements nameElements = castEntry.select("persName");
-			StringArray arr = new StringArray(jcas, nameElements.size());
-			for (int j = 0; j < nameElements.size(); j++) {
-				arr.set(j, nameElements.get(j).text());
+			CastFigure figure = TEIUtil.parsePersonElement(jcas, castEntry);
+
+			for (int j = 0; j < figure.getXmlId().size(); j++) {
+				idFigureMap.put(figure.getXmlId(j), figure);
 			}
-			CastFigure figure = new CastFigure(jcas);
-			figure.setXmlId(id);
-			figure.setNames(arr);
-			figure.addToIndexes();
-			idFigureMap.put(id, figure);
 			castListArray.set(i, figure);
 		}
 		drama.setCastList(castListArray);
