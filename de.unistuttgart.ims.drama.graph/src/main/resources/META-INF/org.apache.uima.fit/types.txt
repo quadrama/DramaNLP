@@ -1,1 +1,0 @@
-classpath*:de/unistuttgart/ims/drama/graph/Types.xml
