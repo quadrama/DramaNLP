@@ -43,6 +43,7 @@ public class ExportAsCSV extends JCasFileWriter_ImplBase {
 			OutputStreamWriter os = new OutputStreamWriter(
 					getOutputStream(dmd.getDocumentId(), "." + csvVariantName + ".csv"));
 			CSVPrinter p = new CSVPrinter(os, csvFormat);
+			csvVariant.header(p);
 			csvVariant.convert(jcas, p);
 			p.flush();
 			os.flush();
