@@ -29,6 +29,7 @@ import de.unistuttgart.quadrama.core.SceneActAnnotator;
 import de.unistuttgart.quadrama.core.SetReferenceDate;
 import de.unistuttgart.quadrama.core.SpeakerIdentifier;
 import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
+import de.unistuttgart.quadrama.io.core.ExportAsCSV;
 import de.unistuttgart.quadrama.io.tei.textgrid.MapFiguresToCastFigures;
 import de.unistuttgart.quadrama.io.tei.textgrid.TextgridTEIUrlReader;
 
@@ -79,12 +80,17 @@ public class TEI2XMI {
 		builder.add(SceneActAnnotator.getDescription());
 
 		builder.add(createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION, options.getOutput()));
+		builder.add(createEngineDescription(ExportAsCSV.class, ExportAsCSV.PARAM_TARGET_LOCATION, options.getOutput(),
+				ExportAsCSV.PARAM_CSV_VARIANT_NAME, "UtterancesWithTokens"));
+		builder.add(createEngineDescription(ExportAsCSV.class, ExportAsCSV.PARAM_TARGET_LOCATION, options.getOutput(),
+				ExportAsCSV.PARAM_CSV_VARIANT_NAME, "Segments"));
 
 		SimplePipeline.runPipeline(reader, builder.createAggregateDescription());
 
 		if (options.isDoCleanup())
 			for (File f : options.getOutput().listFiles(new FilenameFilter() {
 
+				@Override
 				public boolean accept(File dir, String name) {
 					return name.endsWith("xmi");
 				}
