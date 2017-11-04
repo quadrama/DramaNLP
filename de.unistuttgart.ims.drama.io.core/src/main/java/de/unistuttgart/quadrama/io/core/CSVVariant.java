@@ -115,21 +115,14 @@ public enum CSVVariant {
 						p.print(drama.getDocumentId());
 						p.print(utterance.getBegin());
 						p.print(utterance.getEnd());
-						if (speaker.getCastFigure(i) != null) {
-							if (speaker.getCastFigure(i).getNames() != null
-									&& speaker.getCastFigure(i).getNames().size() > 0) {
-								p.print(speaker.getCastFigure(i).getNames(0));
-							} else {
-								p.print(null);
-							}
-							if (speaker.getCastFigure(i).getXmlId() != null
-									&& speaker.getCastFigure(i).getXmlId().size() > 0) {
-								p.print(speaker.getCastFigure(i).getXmlId(0));
-							} else {
-								p.print(null);
-							}
-						} else {
+						try {
+							p.print(speaker.getCastFigure(i).getNames(0));
+						} catch (Exception e) {
 							p.print(null);
+						}
+						try {
+							p.print(speaker.getCastFigure(i).getXmlId(0));
+						} catch (Exception e) {
 							p.print(null);
 						}
 						p.print(token.getCoveredText());
@@ -142,8 +135,16 @@ public enum CSVVariant {
 								p.print(null);
 								p.print(null);
 							} else {
-								p.print(fm.getCastFigure().getNames(0));
-								p.print(fm.getCastFigure().getXmlId(0));
+								try {
+									p.print(fm.getCastFigure().getNames(0));
+								} catch (Exception e) {
+									p.print(null);
+								}
+								try {
+									p.print(fm.getCastFigure().getXmlId(0));
+								} catch (Exception e) {
+									p.print(null);
+								}
 								used.add(fm);
 							}
 						} else {
