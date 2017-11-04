@@ -217,5 +217,8 @@
 		<module>de.unistuttgart.ims.drama.core.cr</module>
 		<module>de.unistuttgart.ims.drama.core.ml</module>
 		<module>de.unistuttgart.ims.drama.meta</module>
+		<module>
+			de.unistuttgart.ims.de.unistuttgart.ims.drama.main
+		</module>
 	</modules>
 </project>
