@@ -138,7 +138,7 @@ public enum CSVVariant {
 						p.print(length);
 						if (mentionMap.containsKey(token)) {
 							FigureMention fm = selectLongest(mentionMap.get(token));
-							if (used.contains(fm)) {
+							if (used.contains(fm) || fm.getCastFigure() == null) {
 								p.print(null);
 								p.print(null);
 							} else {
