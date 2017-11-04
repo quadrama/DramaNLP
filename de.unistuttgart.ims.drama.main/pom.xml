@@ -1,9 +1,138 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>de.unistuttgart.ims</groupId>
-    <artifactId>de.unistuttgart.ims.drama</artifactId>
-    <version>0.5-SNAPSHOT</version>
-  </parent>
-  <artifactId>de.unistuttgart.ims.drama.main</artifactId>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>de.unistuttgart.ims</groupId>
+		<artifactId>de.unistuttgart.ims.drama</artifactId>
+		<version>0.5-SNAPSHOT</version>
+	</parent>
+	<artifactId>de.unistuttgart.ims.drama.main</artifactId>
+	<dependencies>
+		<dependency>
+			<groupId>com.lexicalscope.jewelcli</groupId>
+			<artifactId>jewelcli</artifactId>
+			<version>0.8.9</version>
+		</dependency>
+		<dependency>
+			<groupId>de.unistuttgart.ims</groupId>
+			<artifactId>uimautil</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+			<artifactId>
+  			de.tudarmstadt.ukp.dkpro.core.io.xmi-asl
+  		</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+			<artifactId>
+  			de.tudarmstadt.ukp.dkpro.core.tokit-asl
+  		</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+			<artifactId>
+  			de.tudarmstadt.ukp.dkpro.core.stanfordnlp-gpl
+  		</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+			<artifactId>
+  			de.tudarmstadt.ukp.dkpro.core.api.coref-asl
+  		</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+			<artifactId>
+  			de.tudarmstadt.ukp.dkpro.core.matetools-gpl
+  		</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.unistuttgart.ims</groupId>
+			<artifactId>
+  			de.unistuttgart.ims.drama.io.tei.textgrid
+  		</artifactId>
+			<version>${parent.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>de.unistuttgart.ims</groupId>
+			<artifactId>de.unistuttgart.ims.drama.core</artifactId>
+			<version>${parent.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>de.unistuttgart.ims</groupId>
+			<artifactId>de.unistuttgart.ims.drama.core.ml</artifactId>
+			<version>${parent.version}</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<id>jar-with-version</id>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<outputFile>target/assembly/drama.Main-${project.version}.jar</outputFile>
+							<transformers>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/org.apache.uima.fit/types.txt</resource>
+								</transformer>
+							</transformers>
+						</configuration>
+					</execution>
+					<execution>
+						<id>jar-without-version</id>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<outputFile>target/assembly/drama.Main.jar</outputFile>
+							<transformers>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/org.apache.uima.fit/types.txt</resource>
+								</transformer>
+							</transformers>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.uima</groupId>
+				<artifactId>jcasgen-maven-plugin</artifactId>
+				<version>2.8.1</version>  <!-- change this to the latest version -->
+				<executions>
+					<execution>
+						<goals>
+							<goal>generate</goal>
+						</goals>  <!-- this is the only goal -->
+						<!-- runs in phase process-resources by default -->
+						<configuration>
+							<!-- REQUIRED -->
+							<typeSystemIncludes>
+								<!-- one or more ant-like file patterns identifying top level descriptors -->
+								<typeSystemInclude>src/main/resources/webannotypes.xml</typeSystemInclude>
+							</typeSystemIncludes>
+							<!-- true or false, default = false -->
+							<!-- if true, then although the complete merged type system will be 
+								created internally, only those types whose definition is contained within 
+								this maven project will be generated. The others will be presumed to be available 
+								via other projects. -->
+							<!-- OPTIONAL -->
+							<limitToProject>true</limitToProject>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
