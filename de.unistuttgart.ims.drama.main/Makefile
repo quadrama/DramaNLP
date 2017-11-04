@@ -1,4 +1,4 @@
-DATADIR=../Data
+DATADIR=../../Data
 DLINADIR=../dlina-project-fork
 TEI2XMI="de.unistuttgart.ims.drama.main.TEI2XMI"
 ZIPDIR=/mount/www2/htdocs/gcl/reiterns/quadrama/res
@@ -12,13 +12,13 @@ run-es:
 	java -cp target/assembly/drama.Main.jar ${TEI2XMI} --input ${DATADIR}/tei2/es/ --output ${DATADIR}/xmi/es/ --doCleanup --collectionId "es" --language "es" --skipNER  --readerClassname "de.unistuttgart.quadrama.io.tei.textgrid.CoreTEIUrlReader"
 
 run-tc:
-	java -cp target/assembly/drama.Main.jar ${TEI2XMI} --input ../theatreclassique/tei/ --output ${DATADIR}/xmi/tc/ --doCleanup --collectionId "tc" --language "fr" --skipNER --skipSpeakerIdentifier --readerClassname "de.unistuttgart.quadrama.io.tei.textgrid.TheatreClassicUrlReader"
+	java -cp target/assembly/drama.Main.jar ${TEI2XMI} --input ../../theatreclassique/tei/ --output ${DATADIR}/xmi/tc/ --doCleanup --collectionId "tc" --language "fr" --skipNER --skipSpeakerIdentifier --readerClassname "de.unistuttgart.quadrama.io.tei.textgrid.TheatreClassicUrlReader"
 
 run-tg: 
 	java -cp target/assembly/drama.Main.jar ${TEI2XMI} --input ${DATADIR}/tei2/tg/ --output ${DATADIR}/xmi/tg/ --dlinaDirectory ${DLINADIR}/data/zwischenformat/ --genderModel src/main/resources/gender-v2.jar  --collectionId "tg" --doCleanup
 
 run-gdc: 
-	java -cp target/assembly/drama.Main.jar ${TEI2XMI} --input ../gerdracor/data --output ${DATADIR}/xmi/gdc/ --skipSpeakerIdentifier  --collectionId "gdc" --doCleanup --readerClassname "de.unistuttgart.quadrama.io.tei.textgrid.GerDraCorUrlReader"
+	java -cp target/assembly/drama.Main.jar ${TEI2XMI} --input ../../gerdracor/data --output ${DATADIR}/xmi/gdc/ --skipSpeakerIdentifier  --collectionId "gdc" --doCleanup --readerClassname "de.unistuttgart.quadrama.io.tei.textgrid.GerDraCorUrlReader"
 
 %.zip:
 	cd ${DATADIR}/xmi; zip -r ${ZIPDIR}/$@ . -i $*/*.xmi
