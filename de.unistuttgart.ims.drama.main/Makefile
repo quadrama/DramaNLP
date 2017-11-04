@@ -1,6 +1,6 @@
 DATADIR=../Data
 DLINADIR=../dlina-project-fork
-TEI2XMI="de.unistuttgart.ims.drama.Main.TEI2XMI"
+TEI2XMI="de.unistuttgart.ims.drama.main.TEI2XMI"
 ZIPDIR=/mount/www2/htdocs/gcl/reiterns/quadrama/res
 
 MAIN.VERSION=$(xpath -e '/project/version/text()' pom.xml 2>/dev/null)
