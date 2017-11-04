@@ -31,13 +31,11 @@ public class XmlCleanup {
 			for (int i = 0; i < nodes_sofa.size(); i++) {
 				Element node_sofa = (Element) nodes_sofa.get(i);
 				String sofaName = node_sofa.getAttributeValue("sofaID");
-				System.err.println(sofaName);
 				if (sofaName.startsWith("tmp:")) {
 					String sofaId = node_sofa.getAttributeValue("id", "http://www.omg.org/XMI");
 					toRemove.add(sofaId);
 				}
 			}
-			System.err.println(toRemove);
 			for (String id : toRemove) {
 				Nodes nodes_toRemove = doc.query("//*[@sofa=" + id + "]|//*[@xmi:id=" + id + "]", xpc);
 				for (int i = 0; i < nodes_toRemove.size(); i++) {
