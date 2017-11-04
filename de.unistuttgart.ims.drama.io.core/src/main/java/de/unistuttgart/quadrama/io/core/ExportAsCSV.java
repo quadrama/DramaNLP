@@ -23,8 +23,8 @@ public class ExportAsCSV extends JCasFileWriter_ImplBase {
 	@ConfigurationParameter(name = PARAM_CSV_VARIANT_NAME, defaultValue = "UtterancesWithTokens")
 	String csvVariantName = "UtterancesWithTokens";
 
-	@ConfigurationParameter(name = PARAM_CSV_FORMAT_NAME, defaultValue = "DEFAULT")
-	String csvFormatName = "DEFAULT";
+	@ConfigurationParameter(name = PARAM_CSV_FORMAT_NAME, defaultValue = "Default")
+	String csvFormatName = "Default";
 
 	CSVVariant csvVariant;
 	CSVFormat csvFormat;
