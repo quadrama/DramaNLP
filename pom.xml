@@ -185,6 +185,13 @@
 				<version>${dkpro.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+				<artifactId>
+					de.tudarmstadt.ukp.dkpro.core.matetools-gpl
+				</artifactId>
+				<version>${dkpro.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>org.apache.jena</groupId>
 				<artifactId>jena-tdb</artifactId>
 				<version>3.1.0</version>
@@ -217,5 +224,6 @@
 		<module>de.unistuttgart.ims.drama.core.cr</module>
 		<module>de.unistuttgart.ims.drama.core.ml</module>
 		<module>de.unistuttgart.ims.drama.meta</module>
+		<module>de.unistuttgart.ims.drama.main</module>
 	</modules>
 </project>
