@@ -115,8 +115,13 @@ public enum CSVVariant {
 						p.print(drama.getDocumentId());
 						p.print(utterance.getBegin());
 						p.print(utterance.getEnd());
-						p.print(speaker.getCastFigure(i).getNames(0));
-						p.print(speaker.getCastFigure(i).getXmlId(0));
+						if (speaker.getCastFigure() != null && speaker.getCastFigure().size() > 0) {
+							p.print(speaker.getCastFigure(i).getNames(0));
+							p.print(speaker.getCastFigure(i).getXmlId(0));
+						} else {
+							p.print(null);
+							p.print(null);
+						}
 						p.print(token.getCoveredText());
 						p.print(token.getPos().getPosValue());
 						p.print(token.getLemma().getValue());
