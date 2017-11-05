@@ -1,5 +1,5 @@
 DATADIR=../../Data
-DLINADIR=../dlina-project-fork
+DLINADIR=../../dlina-project-fork
 TEI2XMI="de.unistuttgart.ims.drama.main.TEI2XMI"
 ZIPDIR=/mount/www2/htdocs/gcl/reiterns/quadrama/res
 
@@ -21,7 +21,7 @@ run-gdc:
 	java -cp target/assembly/drama.Main.jar ${TEI2XMI} --input ../../gerdracor/data --output ${DATADIR}/xmi/gdc/ --skipSpeakerIdentifier  --collectionId "gdc" --doCleanup --readerClassname "de.unistuttgart.quadrama.io.tei.textgrid.GerDraCorUrlReader"
 
 %.zip:
-	cd ${DATADIR}/xmi; zip -r ${ZIPDIR}/$@ . -i $*/*.xmi
+	cd ${DATADIR}/xmi; zip -r ${ZIPDIR}/$@ . -i $*/*.xmi $*/*.csv
 
 
 commitpush:
