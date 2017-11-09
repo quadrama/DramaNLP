@@ -80,12 +80,12 @@ public class TEI2XMI {
 		builder.add(SceneActAnnotator.getDescription());
 
 		builder.add(createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION, options.getOutput()));
-		builder.add(createEngineDescription(ExportAsCSV.class, ExportAsCSV.PARAM_TARGET_LOCATION, options.getOutput(),
-				ExportAsCSV.PARAM_CSV_VARIANT_NAME, "UtterancesWithTokens"));
-		builder.add(createEngineDescription(ExportAsCSV.class, ExportAsCSV.PARAM_TARGET_LOCATION, options.getOutput(),
-				ExportAsCSV.PARAM_CSV_VARIANT_NAME, "Segments"));
-		builder.add(createEngineDescription(ExportAsCSV.class, ExportAsCSV.PARAM_TARGET_LOCATION, options.getOutput(),
-				ExportAsCSV.PARAM_CSV_VARIANT_NAME, "Metadata"));
+		builder.add(createEngineDescription(ExportAsCSV.class, ExportAsCSV.PARAM_TARGET_LOCATION,
+				options.getCSVOutput(), ExportAsCSV.PARAM_CSV_VARIANT_NAME, "UtterancesWithTokens"));
+		builder.add(createEngineDescription(ExportAsCSV.class, ExportAsCSV.PARAM_TARGET_LOCATION,
+				options.getCSVOutput(), ExportAsCSV.PARAM_CSV_VARIANT_NAME, "Segments"));
+		builder.add(createEngineDescription(ExportAsCSV.class, ExportAsCSV.PARAM_TARGET_LOCATION,
+				options.getCSVOutput(), ExportAsCSV.PARAM_CSV_VARIANT_NAME, "Metadata"));
 
 		SimplePipeline.runPipeline(reader, builder.createAggregateDescription());
 

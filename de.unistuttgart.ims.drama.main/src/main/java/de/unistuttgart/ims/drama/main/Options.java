@@ -10,4 +10,12 @@ public interface Options {
 
 	@Option
 	File getOutput();
+
+	/**
+	 * Storage of the CSV files. Should be a directory.
+	 * 
+	 * @return A directory
+	 */
+	@Option(longName = "csvOutput")
+	File getCSVOutput();
 }
