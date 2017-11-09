@@ -8,7 +8,7 @@ public interface Options {
 	@Option
 	File getInput();
 
-	@Option
+	@Option(defaultToNull = true)
 	File getOutput();
 
 	/**
@@ -16,6 +16,6 @@ public interface Options {
 	 * 
 	 * @return A directory
 	 */
-	@Option(longName = "csvOutput")
+	@Option(longName = "csvOutput", defaultToNull = true)
 	File getCSVOutput();
 }
