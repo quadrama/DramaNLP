@@ -20,8 +20,12 @@ run-tg:
 run-gdc: 
 	java -cp target/assembly/drama.Main.jar ${TEI2XMI} --input ../../gerdracor/data --output ${DATADIR}/xmi/gdc/ --skipSpeakerIdentifier  --collectionId "gdc" --doCleanup --readerClassname "de.unistuttgart.quadrama.io.tei.textgrid.GerDraCorUrlReader"
 
+%.csv.zip:
+	cd ${DATADIR}/xmi; zip -r ${ZIPDIR}/$@ . -i $*/*.csv
+
 %.zip:
-	cd ${DATADIR}/xmi; zip -r ${ZIPDIR}/$@ . -i $*/*.xmi $*/*.csv
+	cd ${DATADIR}/xmi; zip -r ${ZIPDIR}/$@ . -i $*/*.xmi
+
 
 
 commitpush:
