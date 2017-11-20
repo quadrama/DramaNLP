@@ -38,6 +38,7 @@ public enum CSVVariant {
 			break;
 		case Characters:
 			p.printRecord("corpus", "drama", "figure_surface", "figure_id", "Gender", "Age");
+			break;
 		default:
 			p.printRecord("corpus", "drama", "begin", "end", "Speaker.figure_surface", "Speaker.figure_id",
 					"Token.surface", "Token.pos", "Token.lemma", "length", "Mentioned.figure_surface",
