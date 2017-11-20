@@ -9,10 +9,12 @@ import java.util.Set;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.cas.FSArray;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.unistuttgart.ims.drama.api.Act;
 import de.unistuttgart.ims.drama.api.Author;
+import de.unistuttgart.ims.drama.api.CastFigure;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.FigureMention;
 import de.unistuttgart.ims.drama.api.Scene;
@@ -22,7 +24,7 @@ import de.unistuttgart.ims.drama.api.Utterance;
 import de.unistuttgart.ims.drama.util.DramaUtil;
 
 public enum CSVVariant {
-	UtterancesWithTokens, Segments, Metadata;
+	UtterancesWithTokens, Segments, Metadata, Characters;
 
 	public void header(CSVPrinter p) throws IOException {
 		switch (this) {
@@ -34,6 +36,8 @@ public enum CSVVariant {
 			p.printRecord("corpus", "drama", "documentTitle", "language", "Name", "Pnd", "Translator.Name",
 					"Translator.Pnd", "Date.Written", "Date.Printed", "Date.Premiere", "Date.Translation");
 			break;
+		case Characters:
+			p.printRecord("corpus", "drama", "figure_surface", "figure_id", "Gender", "Age");
 		default:
 			p.printRecord("corpus", "drama", "begin", "end", "Speaker.figure_surface", "Speaker.figure_id",
 					"Token.surface", "Token.pos", "Token.lemma", "length", "Mentioned.figure_surface",
@@ -43,6 +47,8 @@ public enum CSVVariant {
 
 	public void convert(JCas jcas, CSVPrinter p) throws IOException {
 		switch (this) {
+		case Characters:
+			this.convertCharacters(jcas, p);
 		case Metadata:
 			this.convertMeta(jcas, p);
 			break;
@@ -53,6 +59,16 @@ public enum CSVVariant {
 			this.convertUtterancesWithTokens(jcas, p);
 		}
 
+	}
+
+	private void convertCharacters(JCas jcas, CSVPrinter p) throws IOException {
+		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
+		FSArray cFigures = drama.getCastList();
+		for (int i = 0; i < cFigures.size(); i++) {
+			CastFigure cf = (CastFigure) cFigures.get(i);
+			p.printRecord(drama.getCollectionId(), drama.getDocumentId(), cf.getNames(0), cf.getXmlId(0),
+					cf.getGender(), cf.getAge());
+		}
 	}
 
 	private void convertMeta(JCas jcas, CSVPrinter p) throws IOException {
