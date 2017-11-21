@@ -22,7 +22,7 @@ public class TEIUtil {
 		if (personElement.hasAttr("xml:id"))
 			xmlIdList.add(personElement.attr("xml:id"));
 		if (personElement.hasAttr("sex"))
-			figure.setGender(personElement.attr("sex"));
+			figure.setGender(personElement.attr("sex").toLowerCase());
 		if (personElement.hasAttr("age"))
 			figure.setAge(personElement.attr("age"));
 
