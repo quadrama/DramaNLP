@@ -50,6 +50,7 @@ public enum CSVVariant {
 		switch (this) {
 		case Characters:
 			this.convertCharacters(jcas, p);
+			break;
 		case Metadata:
 			this.convertMeta(jcas, p);
 			break;
