@@ -11,11 +11,4 @@ public interface Options {
 	@Option(defaultToNull = true)
 	File getOutput();
 
-	/**
-	 * Storage of the CSV files. Should be a directory.
-	 * 
-	 * @return A directory
-	 */
-	@Option(longName = "csvOutput", defaultToNull = true)
-	File getCSVOutput();
 }
