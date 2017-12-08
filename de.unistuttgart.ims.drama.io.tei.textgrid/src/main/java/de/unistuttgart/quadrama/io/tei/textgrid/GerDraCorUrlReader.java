@@ -45,13 +45,13 @@ public class GerDraCorUrlReader extends AbstractDramaUrlReader {
 
 	public static final String PARAM_STRICT = "strict";
 
-	public static final String PARAM_INCLUDE_TEIHEADER = "include TEI header";
+	public static final String PARAM_TEI_COMPAT = "TEI compatibility";
 
 	@ConfigurationParameter(name = PARAM_STRICT, mandatory = false, defaultValue = "false")
 	boolean strict = false;
 
-	@ConfigurationParameter(name = PARAM_INCLUDE_TEIHEADER, mandatory = false, defaultValue = "false")
-	boolean includeTeiHeader = false;
+	@ConfigurationParameter(name = PARAM_TEI_COMPAT, mandatory = false, defaultValue = "false")
+	boolean teiCompatibility = false;
 
 	@Override
 	public void initialize(UimaContext context) throws ResourceInitializationException {
@@ -104,10 +104,10 @@ public class GerDraCorUrlReader extends AbstractDramaUrlReader {
 		} catch (Exception e) {
 			// fail silently
 		}
-		Visitor vis = new Visitor(jcas);
+		Visitor vis = new Visitor(jcas, this.teiCompatibility);
 
 		Element root;
-		if (includeTeiHeader)
+		if (teiCompatibility)
 			root = doc;
 		else
 			root = doc.select("TEI > text").first();
