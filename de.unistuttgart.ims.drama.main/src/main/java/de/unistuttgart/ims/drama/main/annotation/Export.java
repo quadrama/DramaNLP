@@ -16,7 +16,6 @@ import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
 import de.unistuttgart.ims.drama.main.Options;
 import de.unistuttgart.quadrama.io.tei.textgrid.GerDraCorUrlReader;
-import de.unistuttgart.quadrama.io.tei.textgrid.TEIWriter;
 
 public class Export {
 
@@ -31,8 +30,6 @@ public class Export {
 				BreakIteratorSegmenter.PARAM_WRITE_SENTENCE, false));
 		builder.add(AnalysisEngineFactory.createEngineDescription(WebAnnoPreparation.class));
 		builder.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
-				options.getOutput()));
-		builder.add(AnalysisEngineFactory.createEngineDescription(TEIWriter.class, TEIWriter.PARAM_TARGET_LOCATION,
 				options.getOutput()));
 
 		SimplePipeline.runPipeline(reader, builder.createAggregateDescription());
