@@ -59,6 +59,8 @@ public class TEIWriter extends JCasFileWriter_ImplBase {
 			}
 		}
 
+		b.insert(1, "<?xml-stylesheet type=\"text/css\" href=\"../schema/tei.css\"?>");
+		b.insert(0, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 		try {
 			OutputStreamWriter fos = new OutputStreamWriter(getOutputStream(jcas, ".xml"));
 			fos.write(b.toString());
