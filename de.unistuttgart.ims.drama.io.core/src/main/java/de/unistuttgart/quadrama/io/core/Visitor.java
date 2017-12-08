@@ -43,6 +43,7 @@ public class Visitor implements NodeVisitor {
 			anno.setTag(elm.tagName());
 			anno.setId(elm.id());
 			anno.setSelector(elm.cssSelector());
+			anno.setAttributes(elm.attributes().html());
 			if (elm.className().isEmpty())
 				anno.setCls(elm.attr("type"));
 			else
