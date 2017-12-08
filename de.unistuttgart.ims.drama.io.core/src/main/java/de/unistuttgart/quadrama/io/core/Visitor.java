@@ -23,13 +23,23 @@ public class Visitor implements NodeVisitor {
 
 	protected String[] blockElements = new String[] { "l", "p", "sp" };
 
+	protected boolean preserveWhitespace = false;
+
 	public Visitor(JCas jcas) {
 		builder = new JCasBuilder(jcas);
 	}
 
+	public Visitor(JCas jcas, boolean preserveWhitespace) {
+		builder = new JCasBuilder(jcas);
+		this.preserveWhitespace = preserveWhitespace;
+	}
+
 	public void head(Node node, int depth) {
 		if (node.getClass().equals(TextNode.class)) {
-			builder.add(((TextNode) node).text());
+			if (this.preserveWhitespace)
+				builder.add(((TextNode) node).getWholeText());
+			else
+				builder.add(((TextNode) node).text());
 		} else {
 			beginMap.put(node, builder.getPosition());
 		}
@@ -49,9 +59,9 @@ public class Visitor implements NodeVisitor {
 			else
 				anno.setCls(elm.className());
 			annotationMap.put(elm.cssSelector(), anno);
-			if (elm.isBlock()
-					|| ArrayUtils.contains(blockElements, elm.tagName()))
-				builder.add("\n");
+			if (!this.preserveWhitespace)
+				if (elm.isBlock() || ArrayUtils.contains(blockElements, elm.tagName()))
+					builder.add("\n");
 		}
 	}
 
