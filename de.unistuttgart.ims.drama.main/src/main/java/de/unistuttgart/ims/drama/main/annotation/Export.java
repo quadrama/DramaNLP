@@ -18,7 +18,7 @@ import de.unistuttgart.ims.drama.main.Options;
 import de.unistuttgart.quadrama.io.tei.textgrid.GerDraCorUrlReader;
 import de.unistuttgart.quadrama.io.tei.textgrid.TEIWriter;
 
-public class WAExportCoreference {
+public class Export {
 
 	public static void main(String[] args) throws ResourceInitializationException, UIMAException, IOException {
 		Options options = CliFactory.parseArguments(Options.class, args);
