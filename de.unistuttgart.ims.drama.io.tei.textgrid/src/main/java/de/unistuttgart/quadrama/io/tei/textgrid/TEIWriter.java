@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeSet;
 
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.util.JCasUtil;
@@ -40,14 +41,19 @@ public class TEIWriter extends JCasFileWriter_ImplBase {
 		}
 
 		for (int i = b.length() + 10; i >= 0; i--) {
+			final int currentPos = i;
 			if (positions.containsKey(i)) {
-				for (HTMLAnnotation h : positions.get(i)) {
+				TreeSet<HTMLAnnotation> ts = new TreeSet<HTMLAnnotation>(new AnnotationChooser(currentPos));
+				ts.addAll(positions.get(i));
+				for (HTMLAnnotation h : ts) {
 					if (h.getEnd() == h.getBegin()) {
 						b.insert(i, "<" + h.getTag() + h.getAttributes() + "/>");
-					} else if (h.getEnd() == i) {
-						b.insert(i, "</" + h.getTag() + ">");
-					} else if (h.getBegin() == i) {
-						b.insert(i, "<" + h.getTag() + h.getAttributes() + ">");
+					} else {
+						if (h.getEnd() == i) {
+							b.insert(i, "</" + h.getTag() + ">");
+						} else if (h.getBegin() == i) {
+							b.insert(i, "<" + h.getTag() + h.getAttributes() + ">");
+						}
 					}
 				}
 			}
