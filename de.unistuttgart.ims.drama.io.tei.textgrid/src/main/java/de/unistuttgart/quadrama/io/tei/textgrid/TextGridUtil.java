@@ -58,7 +58,7 @@ public class TextGridUtil {
 			Author author = new Author(jcas);
 			author.setName(authorElement.text());
 			if (authorElement.hasAttr("key")) {
-				author.setPnd(authorElement.attr("key").replace("pnd:", ""));
+				author.setPnd(authorElement.attr("key").replace("pnd:", "http://d-nb.info/gnd/"));
 			}
 			author.addToIndexes();
 		}
