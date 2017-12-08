@@ -14,7 +14,7 @@ import com.lexicalscope.jewel.cli.CliFactory;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
-import de.unistuttgart.ims.drama.main.webanno.WebAnnoPreparation;
+import de.unistuttgart.ims.drama.main.annotation.WebAnnoPreparation;
 import de.unistuttgart.quadrama.io.tei.textgrid.GerDraCorUrlReader;
 import de.unistuttgart.quadrama.io.tei.textgrid.TEIWriter;
 

@@ -1,4 +1,4 @@
-package de.unistuttgart.ims.drama.main.webanno;
+package de.unistuttgart.ims.drama.main.annotation;
 
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
