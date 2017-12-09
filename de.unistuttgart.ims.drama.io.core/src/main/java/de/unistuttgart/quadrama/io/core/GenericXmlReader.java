@@ -25,10 +25,12 @@ public class GenericXmlReader {
 	/**
 	 * An XPath expression to specify the root for the documentText
 	 */
-	String rootXPath = null;
+	String textRootSelector = null;
 
 	@SuppressWarnings("rawtypes")
 	List<XmlElementMapping> elementMapping = new LinkedList<XmlElementMapping>();
+
+	List<XmlElementAction> elementActions = new LinkedList<XmlElementAction>();
 
 	public JCas read(JCas jcas, InputStream xmlStream) throws IOException {
 		Document doc = Jsoup.parse(xmlStream, "UTF-8", "", Parser.xmlParser());
@@ -36,19 +38,30 @@ public class GenericXmlReader {
 		Visitor vis = new Visitor(jcas, true);
 
 		Element root;
-		if (rootXPath == null)
+		if (textRootSelector == null)
 			root = doc;
 		else
-			root = doc.select(rootXPath).first();
+			root = doc.select(textRootSelector).first();
 		root.traverse(vis);
 		// closes the CAS
 		vis.getJCas();
+
+		for (XmlElementAction action : elementActions) {
+			Elements elms = doc.select(action.getSelector());
+			for (Element elm : elms) {
+				action.getCallback().accept(jcas, elm);
+			}
+		}
 
 		for (XmlElementMapping<?> mapping : elementMapping) {
 			select2Annotation(jcas, root, vis.getAnnotationMap(), mapping);
 		}
 
 		return jcas;
+	}
+
+	public void addAction(String selector, BiConsumer<JCas, Element> action) {
+		elementActions.add(new XmlElementAction(selector, action));
 	}
 
 	public <T extends Annotation> void addMapping(String selector, Class<T> target) {
@@ -75,6 +88,25 @@ public class GenericXmlReader {
 			}
 		}
 		return set;
+	}
+
+	public class XmlElementAction {
+		final String selector;
+		final BiConsumer<JCas, Element> callback;
+
+		public XmlElementAction(String selector, BiConsumer<JCas, Element> callback) {
+			this.selector = selector;
+			this.callback = callback;
+		}
+
+		public String getSelector() {
+			return selector;
+		}
+
+		public BiConsumer<JCas, Element> getCallback() {
+			return callback;
+		}
+
 	}
 
 	public class XmlElementMapping<T extends Annotation> {
@@ -109,4 +141,13 @@ public class GenericXmlReader {
 			return callback;
 		}
 	}
+
+	public String getTextRootSelector() {
+		return textRootSelector;
+	}
+
+	public void setTextRootSelector(String textRootSelector) {
+		this.textRootSelector = textRootSelector;
+	}
+
 }
