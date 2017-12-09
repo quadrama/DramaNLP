@@ -158,4 +158,14 @@ public class DramaUtil {
 		fs.addToIndexes();
 		return fs;
 	}
+
+	public static Drama getDrama(JCas jcas) {
+		if (JCasUtil.exists(jcas, Drama.class)) {
+			return JCasUtil.selectSingle(jcas, Drama.class);
+		} else {
+			Drama d = new Drama(jcas);
+			d.addToIndexes();
+			return d;
+		}
+	}
 }
