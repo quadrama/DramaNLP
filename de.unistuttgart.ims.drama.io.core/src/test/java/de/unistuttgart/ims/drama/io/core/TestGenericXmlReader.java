@@ -80,9 +80,9 @@ public class TestGenericXmlReader {
 	@Test
 	public void test3() throws UIMAException, IOException {
 
-		String xmlString = "<text><head><title>The Dog Story</title></head><body><s><pos pos=\"det\">the</pos> <pos pos=\"nn\">dog</pos> <pos pos=\"v\">barks</pos></s> <s><pos>The</pos> <pos>cat</pos> <pos>too</pos></s></body></text>";
+		String xmlString = "<text><head><title>The Dog Story</title><title>bla</title></head><body><s><pos pos=\"det\">the</pos> <pos pos=\"nn\">dog</pos> <pos pos=\"v\">barks</pos></s> <s><pos>The</pos> <pos>cat</pos> <pos>too</pos></s></body></text>";
 		gxr.setTextRootSelector("text > body");
-		gxr.addAction("text > head > title", (jc, e) -> {
+		gxr.addAction("text > head > title:first-child", (jc, e) -> {
 			DramaUtil.getDrama(jcas).setDocumentTitle(e.text());
 		});
 		gxr.addMapping("s", Sentence.class);
