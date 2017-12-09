@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import org.apache.uima.UimaContext;
 import org.apache.uima.collection.CollectionException;
@@ -19,6 +21,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import de.tudarmstadt.ukp.dkpro.core.api.coref.type.CoreferenceChain;
+import de.tudarmstadt.ukp.dkpro.core.api.coref.type.CoreferenceLink;
 import de.unistuttgart.ims.drama.api.Act;
 import de.unistuttgart.ims.drama.api.ActHeading;
 import de.unistuttgart.ims.drama.api.Author;
@@ -35,6 +39,7 @@ import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.StageDirection;
 import de.unistuttgart.ims.drama.api.Translator;
 import de.unistuttgart.ims.drama.api.Utterance;
+import de.unistuttgart.ims.drama.util.AnnotationComparator;
 import de.unistuttgart.ims.uimautil.AnnotationUtil;
 import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
 import de.unistuttgart.quadrama.io.core.GenericXmlReader;
@@ -131,10 +136,35 @@ public class GerDraCorUrlReader extends AbstractDramaUrlReader {
 		gxr.addMapping("body castList castItem", Figure.class);
 		gxr.addMapping("div[type=Dramatis_Personae]", DramatisPersonae.class);
 
+		final Map<String, SortedSet<CoreferenceLink>> id2link = new HashMap<String, SortedSet<CoreferenceLink>>();
+		gxr.addMapping("*[ref]", CoreferenceLink.class, (cl, e) -> {
+			String xmlId = e.attr("ref");
+			if (!id2link.containsKey(xmlId)) {
+				id2link.put(xmlId, new TreeSet<CoreferenceLink>(new AnnotationComparator()));
+			}
+			id2link.get(xmlId).add(cl);
+		});
+
 		gxr.read(jcas, file);
 
 		// Cast
 		readCast(jcas, drama, gxr.getDocument());
+
+		// Coreference chains
+		for (String xmlId : id2link.keySet()) {
+			CoreferenceChain cc = new CoreferenceChain(jcas);
+			cc.addToIndexes();
+			CoreferenceLink last = null;
+			for (CoreferenceLink cl : id2link.get(xmlId)) {
+				if (cc.getFirst() == null) {
+					cc.setFirst(cl);
+					last = cl;
+				} else if (last != null) {
+					last.setNext(cl);
+					last = cl;
+				}
+			}
+		}
 
 		AnnotationUtil.trim(new ArrayList<Figure>(JCasUtil.select(jcas, Figure.class)));
 		AnnotationUtil.trim(new ArrayList<Speech>(JCasUtil.select(jcas, Speech.class)));
