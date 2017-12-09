@@ -94,7 +94,7 @@ public class TestGenericXmlReader {
 		jcas = gxr.read(jcas, IOUtils.toInputStream(xmlString, "UTF-8"));
 
 		assertNotNull(jcas);
-		assertEquals("the dog barks The cat too", jcas.getDocumentText());
+		assertEquals("the dog barks The cat too\n", jcas.getDocumentText());
 
 		assertTrue(JCasUtil.exists(jcas, Sentence.class));
 		assertEquals(2, JCasUtil.select(jcas, Sentence.class).size());
