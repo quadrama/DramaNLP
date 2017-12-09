@@ -18,9 +18,13 @@ import org.jsoup.nodes.Element;
 import org.jsoup.parser.Parser;
 import org.jsoup.select.Elements;
 
+import de.unistuttgart.ims.drama.api.Drama;
+import de.unistuttgart.ims.drama.util.DramaUtil;
 import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
 
 public class GenericXmlReader {
+
+	Document doc;
 
 	/**
 	 * An XPath expression to specify the root for the documentText
@@ -30,10 +34,11 @@ public class GenericXmlReader {
 	@SuppressWarnings("rawtypes")
 	List<XmlElementMapping> elementMapping = new LinkedList<XmlElementMapping>();
 
+	@SuppressWarnings("rawtypes")
 	List<XmlElementAction> elementActions = new LinkedList<XmlElementAction>();
 
 	public JCas read(JCas jcas, InputStream xmlStream) throws IOException {
-		Document doc = Jsoup.parse(xmlStream, "UTF-8", "", Parser.xmlParser());
+		doc = Jsoup.parse(xmlStream, "UTF-8", "", Parser.xmlParser());
 
 		Visitor vis = new Visitor(jcas, true);
 
@@ -46,10 +51,18 @@ public class GenericXmlReader {
 		// closes the CAS
 		vis.getJCas();
 
-		for (XmlElementAction action : elementActions) {
+		for (XmlElementAction<?> action : elementActions) {
 			Elements elms = doc.select(action.getSelector());
 			for (Element elm : elms) {
-				action.getCallback().accept(jcas, elm);
+				if (action.getTarget() == Drama.class) {
+					@SuppressWarnings("unchecked")
+					XmlElementAction<Drama> rAction = (XmlElementAction<Drama>) action;
+					rAction.getCallback().accept(DramaUtil.getDrama(jcas), elm);
+				} else {
+					@SuppressWarnings("unchecked")
+					XmlElementAction<JCas> rAction = (XmlElementAction<JCas>) action;
+					rAction.getCallback().accept(jcas, elm);
+				}
 			}
 		}
 
@@ -60,8 +73,12 @@ public class GenericXmlReader {
 		return jcas;
 	}
 
+	public <T> void addAction(String selector, Class<T> target, BiConsumer<T, Element> action) {
+		elementActions.add(new XmlElementAction<T>(selector, target, action));
+	}
+
 	public void addAction(String selector, BiConsumer<JCas, Element> action) {
-		elementActions.add(new XmlElementAction(selector, action));
+		elementActions.add(new XmlElementAction<JCas>(selector, JCas.class, action));
 	}
 
 	public <T extends Annotation> void addMapping(String selector, Class<T> target) {
@@ -90,21 +107,27 @@ public class GenericXmlReader {
 		return set;
 	}
 
-	public class XmlElementAction {
+	public class XmlElementAction<T> {
 		final String selector;
-		final BiConsumer<JCas, Element> callback;
+		final Class<T> target;
+		final BiConsumer<T, Element> callback;
 
-		public XmlElementAction(String selector, BiConsumer<JCas, Element> callback) {
+		public XmlElementAction(String selector, Class<T> target, BiConsumer<T, Element> callback) {
 			this.selector = selector;
 			this.callback = callback;
+			this.target = target;
 		}
 
 		public String getSelector() {
 			return selector;
 		}
 
-		public BiConsumer<JCas, Element> getCallback() {
+		public BiConsumer<T, Element> getCallback() {
 			return callback;
+		}
+
+		public Class<T> getTarget() {
+			return target;
 		}
 
 	}
@@ -148,6 +171,10 @@ public class GenericXmlReader {
 
 	public void setTextRootSelector(String textRootSelector) {
 		this.textRootSelector = textRootSelector;
+	}
+
+	public Document getDocument() {
+		return doc;
 	}
 
 }
