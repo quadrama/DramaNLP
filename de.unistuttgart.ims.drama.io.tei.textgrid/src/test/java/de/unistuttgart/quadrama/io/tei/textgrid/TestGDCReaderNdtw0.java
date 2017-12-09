@@ -29,6 +29,7 @@ import de.unistuttgart.ims.drama.api.MainMatter;
 import de.unistuttgart.ims.drama.api.Scene;
 import de.unistuttgart.ims.drama.api.SceneHeading;
 import de.unistuttgart.ims.drama.api.Speaker;
+import de.unistuttgart.ims.drama.util.DramaUtil;
 
 public class TestGDCReaderNdtw0 {
 	CollectionReaderDescription description;
@@ -70,6 +71,9 @@ public class TestGDCReaderNdtw0 {
 
 		assertNotNull(JCasUtil.selectSingle(jcas, FrontMatter.class));
 		assertNotNull(JCasUtil.selectSingle(jcas, MainMatter.class));
+
+		assertEquals(1762, DramaUtil.getDrama(jcas).getDatePrinted());
+		assertEquals(1762, DramaUtil.getDrama(jcas).getDateWritten());
 
 	}
 
