@@ -61,6 +61,7 @@ public class GerDraCorUrlReader extends AbstractDramaUrlReader {
 
 		GenericXmlReader gxr = new GenericXmlReader();
 		gxr.setTextRootSelector(teiCompatibility ? null : "TEI > text");
+		gxr.setPreserveWhitespace(teiCompatibility);
 
 		// title
 		gxr.addAction("titleStmt > title:first-child", Drama.class, (d, e) -> d.setDocumentTitle(e.text()));
@@ -140,6 +141,7 @@ public class GerDraCorUrlReader extends AbstractDramaUrlReader {
 		AnnotationUtil.trim(new ArrayList<Utterance>(JCasUtil.select(jcas, Utterance.class)));
 		AnnotationUtil.trim(new ArrayList<Scene>(JCasUtil.select(jcas, Scene.class)));
 		AnnotationUtil.trim(new ArrayList<Act>(JCasUtil.select(jcas, Act.class)));
+		AnnotationUtil.trim(new ArrayList<StageDirection>(JCasUtil.select(jcas, StageDirection.class)));
 
 	}
 

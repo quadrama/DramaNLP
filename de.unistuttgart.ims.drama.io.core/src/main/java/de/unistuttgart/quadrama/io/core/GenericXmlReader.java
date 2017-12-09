@@ -31,6 +31,8 @@ public class GenericXmlReader {
 	 */
 	String textRootSelector = null;
 
+	boolean preserveWhitespace = false;
+
 	@SuppressWarnings("rawtypes")
 	List<XmlElementMapping> elementMapping = new LinkedList<XmlElementMapping>();
 
@@ -40,7 +42,7 @@ public class GenericXmlReader {
 	public JCas read(JCas jcas, InputStream xmlStream) throws IOException {
 		doc = Jsoup.parse(xmlStream, "UTF-8", "", Parser.xmlParser());
 
-		Visitor vis = new Visitor(jcas, true);
+		Visitor vis = new Visitor(jcas, isPreserveWhitespace());
 
 		Element root;
 		if (textRootSelector == null)
@@ -175,6 +177,14 @@ public class GenericXmlReader {
 
 	public Document getDocument() {
 		return doc;
+	}
+
+	public boolean isPreserveWhitespace() {
+		return preserveWhitespace;
+	}
+
+	public void setPreserveWhitespace(boolean preserveWhitespace) {
+		this.preserveWhitespace = preserveWhitespace;
 	}
 
 }
