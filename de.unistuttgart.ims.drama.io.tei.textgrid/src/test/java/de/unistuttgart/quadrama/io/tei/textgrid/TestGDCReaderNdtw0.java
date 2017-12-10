@@ -14,7 +14,6 @@ import org.apache.uima.fit.pipeline.SimplePipeline;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
-import org.junit.Before;
 import org.junit.Test;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
@@ -36,8 +35,8 @@ public class TestGDCReaderNdtw0 {
 	CollectionReaderDescription description;
 	JCas jcas;
 
-	@Before
-	public void setUp() throws ResourceInitializationException {
+	@Test
+	public void testNdtw0() throws ResourceInitializationException {
 		description = CollectionReaderFactory.createReaderDescription(GerDraCorUrlReader.class,
 				GerDraCorUrlReader.PARAM_INPUT, "src/test/resources/gerdracor/ndtw.0.xml");
 		AggregateBuilder b = new AggregateBuilder();
@@ -45,17 +44,23 @@ public class TestGDCReaderNdtw0 {
 			b.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
 					"target/doc"));
 		jcas = SimplePipeline.iteratePipeline(description, b.createAggregateDescription()).iterator().next();
-	}
 
-	@Test
-	public void testGeneral() {
+		TestGenerics.checkMinimalStructure(jcas);
+		TestGenerics.checkMetadata(jcas);
+
 		assertEquals("ndtw.0", JCasUtil.selectSingle(jcas, Drama.class).getDocumentId());
+		assertEquals(54991, jcas.getDocumentText().length());
+		assertEquals("de", jcas.getDocumentLanguage());
+
+		assertEquals(1, JCasUtil.select(jcas, Author.class).size());
+		Author a = JCasUtil.select(jcas, Author.class).iterator().next();
+		assertEquals("Gessner, Salomon", a.getName());
+		assertEquals("118538969", a.getPnd());
 
 		assertTrue(JCasUtil.exists(jcas, Drama.class));
 		assertFalse(JCasUtil.exists(jcas, Figure.class));
 		assertTrue(JCasUtil.exists(jcas, Act.class));
 		assertTrue(JCasUtil.exists(jcas, Scene.class));
-		assertTrue(JCasUtil.exists(jcas, Speaker.class));
 		// no dramatis personae in ndtw.0
 		assertFalse(JCasUtil.exists(jcas, DramatisPersonae.class));
 		assertTrue(JCasUtil.exists(jcas, Author.class));
@@ -65,6 +70,11 @@ public class TestGDCReaderNdtw0 {
 				assertEquals(1, JCasUtil.selectCovered(ActHeading.class, act).size());
 			}
 		}
+
+		for (Scene segment : JCasUtil.select(jcas, Scene.class)) {
+			assertEquals(1, JCasUtil.selectCovered(SceneHeading.class, segment).size());
+		}
+
 		// check that speaker annotations are not empty
 		for (Speaker speaker : JCasUtil.select(jcas, Speaker.class)) {
 			assertNotEquals(speaker.getBegin(), speaker.getEnd());
@@ -76,22 +86,69 @@ public class TestGDCReaderNdtw0 {
 		assertEquals(1762, DramaUtil.getDrama(jcas).getDatePrinted());
 		assertEquals(1762, DramaUtil.getDrama(jcas).getDateWritten());
 
-	}
-
-	@Test
-	public void testActsAndScenes() {
 		assertEquals(3, JCasUtil.select(jcas, Act.class).size());
 		assertEquals(19, JCasUtil.select(jcas, Scene.class).size());
 		assertEquals(3, JCasUtil.select(jcas, ActHeading.class).size());
 		assertEquals(19, JCasUtil.select(jcas, SceneHeading.class).size());
-	}
 
-	@Test
-	public void testFigures() {
 		assertFalse(JCasUtil.exists(jcas, DramatisPersonae.class));
 		assertFalse(JCasUtil.exists(jcas, Figure.class));
 		assertTrue(JCasUtil.exists(jcas, Speaker.class));
 		assertTrue(JCasUtil.exists(jcas, CastFigure.class));
+
+		assertEquals(14, JCasUtil.select(jcas, CastFigure.class).size());
+	}
+
+	@Test
+	public void testQfxf0() throws ResourceInitializationException {
+		description = CollectionReaderFactory.createReaderDescription(GerDraCorUrlReader.class,
+				GerDraCorUrlReader.PARAM_INPUT, "src/test/resources/gerdracor/qfxf.0.xml");
+		AggregateBuilder b = new AggregateBuilder();
+		if (TestGenerics.debug)
+			b.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
+					"target/doc"));
+		jcas = SimplePipeline.iteratePipeline(description, b.createAggregateDescription()).iterator().next();
+
+		TestGenerics.checkMinimalStructure(jcas);
+		TestGenerics.checkMetadata(jcas);
+		TestGenerics.checkSanity(jcas);
+
+		assertEquals("qfxf.0", JCasUtil.selectSingle(jcas, Drama.class).getDocumentId());
+		assertEquals(122999, jcas.getDocumentText().length());
+		assertEquals("de", jcas.getDocumentLanguage());
+
+		assertEquals(1, JCasUtil.select(jcas, Author.class).size());
+		Author a = JCasUtil.select(jcas, Author.class).iterator().next();
+		assertEquals("Holtei, Karl von", a.getName());
+		assertEquals("118706640", a.getPnd());
+
+		if (JCasUtil.exists(jcas, ActHeading.class)) {
+			for (Act act : JCasUtil.select(jcas, Act.class)) {
+				assertEquals(1, JCasUtil.selectCovered(ActHeading.class, act).size());
+			}
+		}
+
+		for (Scene segment : JCasUtil.select(jcas, Scene.class)) {
+			assertEquals(1, JCasUtil.selectCovered(SceneHeading.class, segment).size());
+		}
+
+		// check that speaker annotations are not empty
+		for (Speaker speaker : JCasUtil.select(jcas, Speaker.class)) {
+			assertNotEquals(speaker.getBegin(), speaker.getEnd());
+		}
+
+		assertNotNull(JCasUtil.selectSingle(jcas, FrontMatter.class));
+		assertNotNull(JCasUtil.selectSingle(jcas, MainMatter.class));
+
+		assertEquals(1838, DramaUtil.getDrama(jcas).getDatePrinted());
+		assertEquals(1832, DramaUtil.getDrama(jcas).getDatePremiere());
+
+		assertEquals(3, JCasUtil.select(jcas, Act.class).size());
+		assertEquals(40, JCasUtil.select(jcas, Scene.class).size());
+		assertEquals(3, JCasUtil.select(jcas, ActHeading.class).size());
+		assertEquals(40, JCasUtil.select(jcas, SceneHeading.class).size());
+
+		assertEquals(19, JCasUtil.select(jcas, CastFigure.class).size());
 	}
 
 }
