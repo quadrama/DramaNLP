@@ -164,8 +164,10 @@ public class GerDraCorUrlReader extends AbstractDramaUrlReader {
 				sp.setXmlId(new StringArray(jcas, whos.length));
 				sp.setCastFigure(new FSArray(jcas, whos.length));
 				for (int i = 0; i < whos.length; i++) {
-					sp.setXmlId(i, whos[i].substring(1));
-					sp.setCastFigure(i, (CastFigure) gxr.getAnnotation(whos[i].substring(1)).getValue());
+					String xmlid = whos[i].substring(1);
+					sp.setXmlId(i, xmlid);
+					if (gxr.exists(xmlid))
+						sp.setCastFigure(i, (CastFigure) gxr.getAnnotation(whos[i].substring(1)).getValue());
 				}
 			}
 		});
