@@ -32,7 +32,7 @@ public class TestGenerics {
 		for (Speaker speaker : JCasUtil.select(jcas, Speaker.class)) {
 			assertNotNull(speaker.getCastFigure());
 			assertFalse(speaker.getCastFigure().size() == 0);
-			assertNotNull(speaker.getCastFigure(0));
+			assertNotNull(speaker.getCoveredText(), speaker.getCastFigure(0));
 		}
 
 	}
