@@ -22,7 +22,7 @@ import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.Utterance;
 
 public class TestGenerics {
-	public static boolean debug = true;
+	public static boolean debug = false;
 
 	public static void checkMinimalStructure(JCas jcas) {
 		assertTrue(JCasUtil.exists(jcas, Speaker.class));
