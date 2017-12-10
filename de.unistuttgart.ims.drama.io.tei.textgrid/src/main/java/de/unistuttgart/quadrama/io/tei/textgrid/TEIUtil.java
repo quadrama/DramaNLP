@@ -14,6 +14,8 @@ import org.jsoup.select.Elements;
 import de.unistuttgart.ims.drama.api.CastFigure;
 
 public class TEIUtil {
+
+	@Deprecated
 	public static CastFigure parsePersonElement(JCas jcas, Element personElement) {
 		List<String> nameList = new LinkedList<String>();
 		List<String> xmlIdList = new LinkedList<String>();
@@ -45,7 +47,7 @@ public class TEIUtil {
 
 	}
 
-	static StringArray toStringArray(JCas jcas, Collection<String> coll) {
+	public static StringArray toStringArray(JCas jcas, Collection<String> coll) {
 		StringArray arr = new StringArray(jcas, coll.size());
 		Iterator<String> collIter = coll.iterator();
 		int i = 0;
