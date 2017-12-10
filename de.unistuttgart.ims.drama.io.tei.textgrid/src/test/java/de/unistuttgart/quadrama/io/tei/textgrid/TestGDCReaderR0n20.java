@@ -2,6 +2,7 @@ package de.unistuttgart.quadrama.io.tei.textgrid;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.apache.uima.collection.CollectionReaderDescription;
 import org.apache.uima.fit.factory.AggregateBuilder;
@@ -35,7 +36,7 @@ public class TestGDCReaderR0n20 {
 
 		TestGenerics.checkMetadata(jcas);
 		TestGenerics.checkMinimalStructure(jcas);
-		TestGenerics.checkSanity(jcas);
+		assertTrue(JCasUtil.exists(jcas, Scene.class));
 
 		assertFalse(JCasUtil.exists(jcas, Act.class));
 		assertEquals(0, JCasUtil.select(jcas, Act.class).size());
