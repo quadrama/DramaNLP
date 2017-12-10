@@ -88,9 +88,7 @@ public class TestGDCReaderV3mx0 {
 		assertTrue(JCasUtil.exists(jcas, Speaker.class));
 		assertEquals(15, JCasUtil.select(jcas, Figure.class).size());
 
-		Drama d = JCasUtil.selectSingle(jcas, Drama.class);
-		for (int i = 0; i < d.getCastList().size(); i++) {
-			CastFigure f = d.getCastList(i);
+		for (CastFigure f : JCasUtil.select(jcas, CastFigure.class)) {
 			assertNotNull(f);
 			for (int j = 0; j < f.getNames().size(); j++) {
 				assertNotEquals(" ", f.getNames(j));
