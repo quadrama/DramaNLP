@@ -21,6 +21,7 @@ import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.unistuttgart.ims.drama.api.Act;
 import de.unistuttgart.ims.drama.api.ActHeading;
 import de.unistuttgart.ims.drama.api.Author;
+import de.unistuttgart.ims.drama.api.CastFigure;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.DramatisPersonae;
 import de.unistuttgart.ims.drama.api.Figure;
@@ -90,6 +91,7 @@ public class TestGDCReaderNdtw0 {
 		assertFalse(JCasUtil.exists(jcas, DramatisPersonae.class));
 		assertFalse(JCasUtil.exists(jcas, Figure.class));
 		assertTrue(JCasUtil.exists(jcas, Speaker.class));
+		assertTrue(JCasUtil.exists(jcas, CastFigure.class));
 	}
 
 }
