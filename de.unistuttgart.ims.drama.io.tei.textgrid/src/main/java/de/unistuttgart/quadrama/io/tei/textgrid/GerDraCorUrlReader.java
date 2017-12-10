@@ -14,6 +14,7 @@ import java.util.TreeSet;
 import org.apache.uima.UimaContext;
 import org.apache.uima.collection.CollectionException;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
+import org.apache.uima.fit.factory.AnnotationFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSArray;
@@ -154,6 +155,7 @@ public class GerDraCorUrlReader extends AbstractDramaUrlReader {
 			cf.setNames(TEIUtil.toStringArray(jcas, nameList));
 
 		});
+		final Map<String, SortedSet<CoreferenceLink>> id2link = new HashMap<String, SortedSet<CoreferenceLink>>();
 
 		gxr.addMapping("speaker", Speaker.class);
 		gxr.addMapping("stage", StageDirection.class);
@@ -174,14 +176,19 @@ public class GerDraCorUrlReader extends AbstractDramaUrlReader {
 					if (gxr.exists(xmlid))
 						sp.setCastFigure(i, (CastFigure) gxr.getAnnotation(xmlid).getValue());
 
+					CoreferenceLink cl = AnnotationFactory.createAnnotation(jcas, sp.getBegin(), sp.getEnd(),
+							CoreferenceLink.class);
+					if (!id2link.containsKey(xmlid)) {
+						id2link.put(xmlid, new TreeSet<CoreferenceLink>(new AnnotationComparator()));
+					}
+					id2link.get(xmlid).add(cl);
 				}
 			}
 		});
 
 		// mentions
-		final Map<String, SortedSet<CoreferenceLink>> id2link = new HashMap<String, SortedSet<CoreferenceLink>>();
 		gxr.addMapping("sp *[ref]", CoreferenceLink.class, (cl, e) -> {
-			String xmlId = e.attr("ref");
+			String xmlId = e.attr("ref").substring(1);
 			if (!id2link.containsKey(xmlId)) {
 				id2link.put(xmlId, new TreeSet<CoreferenceLink>(new AnnotationComparator()));
 			}
