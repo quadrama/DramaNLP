@@ -1,4 +1,4 @@
-package de.unistuttgart.ims.drama.main.annotation;
+package de.unistuttgart.quadrama.io.tei.textgrid;
 
 import java.util.Collection;
 import java.util.Map;
