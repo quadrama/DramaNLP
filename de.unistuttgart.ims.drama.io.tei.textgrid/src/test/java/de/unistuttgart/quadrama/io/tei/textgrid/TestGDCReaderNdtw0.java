@@ -151,4 +151,61 @@ public class TestGDCReaderNdtw0 {
 		assertEquals(19, JCasUtil.select(jcas, CastFigure.class).size());
 	}
 
+	@Test
+	public void testRjmw0() throws ResourceInitializationException {
+		description = CollectionReaderFactory.createReaderDescription(GerDraCorUrlReader.class,
+				GerDraCorUrlReader.PARAM_INPUT, "src/test/resources/gerdracor/rjmw.0.xml");
+		AggregateBuilder b = new AggregateBuilder();
+		if (TestGenerics.debug)
+			b.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
+					"target/doc"));
+		jcas = SimplePipeline.iteratePipeline(description, b.createAggregateDescription()).iterator().next();
+
+		TestGenerics.checkMinimalStructure(jcas);
+		TestGenerics.checkMetadata(jcas);
+		TestGenerics.checkSanity(jcas);
+
+		assertEquals("rjmw.0", JCasUtil.selectSingle(jcas, Drama.class).getDocumentId());
+		assertEquals(170841, jcas.getDocumentText().length());
+		assertEquals("de", jcas.getDocumentLanguage());
+
+		assertEquals(1, JCasUtil.select(jcas, Author.class).size());
+		Author a = JCasUtil.select(jcas, Author.class).iterator().next();
+		assertEquals("Lessing, Gotthold Ephraim", a.getName());
+		assertEquals("118572121", a.getPnd());
+
+		if (JCasUtil.exists(jcas, ActHeading.class)) {
+			for (Act act : JCasUtil.select(jcas, Act.class)) {
+				assertEquals(1, JCasUtil.selectCovered(ActHeading.class, act).size());
+			}
+		}
+
+		for (Scene segment : JCasUtil.select(jcas, Scene.class)) {
+			assertEquals(1, JCasUtil.selectCovered(SceneHeading.class, segment).size());
+		}
+
+		// check that speaker annotations are not empty
+		for (Speaker speaker : JCasUtil.select(jcas, Speaker.class)) {
+			assertNotEquals(speaker.getBegin(), speaker.getEnd());
+		}
+
+		assertNotNull(JCasUtil.selectSingle(jcas, FrontMatter.class));
+		assertNotNull(JCasUtil.selectSingle(jcas, MainMatter.class));
+
+		assertEquals(1755, DramaUtil.getDrama(jcas).getDatePrinted());
+		assertEquals(1755, DramaUtil.getDrama(jcas).getDatePremiere());
+
+		assertEquals(5, JCasUtil.select(jcas, Act.class).size());
+		assertEquals(44, JCasUtil.select(jcas, Scene.class).size());
+		assertEquals(5, JCasUtil.select(jcas, ActHeading.class).size());
+		assertEquals(44, JCasUtil.select(jcas, SceneHeading.class).size());
+
+		assertEquals(11, JCasUtil.select(jcas, CastFigure.class).size());
+		for (CastFigure cf : JCasUtil.select(jcas, CastFigure.class)) {
+			assertNotNull(cf.getNames());
+			assertFalse(cf.getNames().size() == 0);
+			assertNotNull(cf.getNames(0), cf.getChain());
+		}
+	}
+
 }
