@@ -1,7 +1,9 @@
 package de.unistuttgart.quadrama.io.tei.textgrid;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import org.apache.uima.fit.util.JCasUtil;
@@ -13,11 +15,39 @@ import de.unistuttgart.ims.drama.api.Author;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.DramatisPersonae;
 import de.unistuttgart.ims.drama.api.Figure;
+import de.unistuttgart.ims.drama.api.Person;
 import de.unistuttgart.ims.drama.api.Scene;
 import de.unistuttgart.ims.drama.api.Speaker;
+import de.unistuttgart.ims.drama.api.Speech;
+import de.unistuttgart.ims.drama.api.Utterance;
 
 public class TestGenerics {
-	public static boolean debug = false;
+	public static boolean debug = true;
+
+	public static void checkMinimalStructure(JCas jcas) {
+		assertTrue(JCasUtil.exists(jcas, Speaker.class));
+		assertTrue(JCasUtil.exists(jcas, Utterance.class));
+		assertTrue(JCasUtil.exists(jcas, Speech.class));
+
+		for (Speaker speaker : JCasUtil.select(jcas, Speaker.class)) {
+			assertNotNull(speaker.getCastFigure());
+			assertFalse(speaker.getCastFigure().size() == 0);
+			assertNotNull(speaker.getCastFigure(0));
+		}
+
+	}
+
+	public static void checkMetadata(JCas jcas) {
+		assertTrue(JCasUtil.exists(jcas, Drama.class));
+		Drama d = JCasUtil.selectSingle(jcas, Drama.class);
+		assertNotNull(d.getDocumentId());
+		assertNotNull(d.getDocumentTitle());
+
+		assertTrue(JCasUtil.exists(jcas, Author.class));
+		for (Person a : JCasUtil.select(jcas, Person.class)) {
+			assertNotNull(a.getName());
+		}
+	}
 
 	public static void checkSanity(JCas jcas) {
 		assertTrue(JCasUtil.exists(jcas, Drama.class));
