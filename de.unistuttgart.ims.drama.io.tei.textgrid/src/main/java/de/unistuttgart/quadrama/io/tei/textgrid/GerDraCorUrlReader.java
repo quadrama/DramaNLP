@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -19,6 +21,7 @@ import org.apache.uima.jcas.cas.StringArray;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.nodes.TextNode;
 import org.jsoup.select.Elements;
 
 import de.tudarmstadt.ukp.dkpro.core.api.coref.type.CoreferenceChain;
@@ -107,20 +110,6 @@ public class GerDraCorUrlReader extends AbstractDramaUrlReader {
 
 		gxr.addMapping("front", FrontMatter.class);
 		gxr.addMapping("body", MainMatter.class);
-		gxr.addMapping("speaker", Speaker.class);
-		gxr.addMapping("stage", StageDirection.class);
-		gxr.addMapping("l", Speech.class);
-		gxr.addMapping("p", Speech.class);
-		gxr.addMapping("ab", Speech.class);
-		gxr.addMapping("sp", Utterance.class, (u, e) -> {
-			Collection<Speaker> speakers = JCasUtil.selectCovered(Speaker.class, u);
-			for (Speaker sp : speakers) {
-				String[] whos = e.attr("who").split(" ");
-				sp.setXmlId(new StringArray(jcas, whos.length));
-				for (int i = 0; i < whos.length; i++)
-					sp.setXmlId(i, whos[i].substring(1));
-			}
-		});
 
 		// Segmentation
 		gxr.addMapping("div[type=prologue]", Act.class, (a, e) -> a.setRegular(false));
@@ -135,9 +124,54 @@ public class GerDraCorUrlReader extends AbstractDramaUrlReader {
 		// Dramatis Personae
 		gxr.addMapping("body castList castItem", Figure.class);
 		gxr.addMapping("div[type=Dramatis_Personae]", DramatisPersonae.class);
+		gxr.addDocumentMapping("particDesc > listPerson > person", CastFigure.class, (cf, e) -> {
+			List<String> nameList = new LinkedList<String>();
+			List<String> xmlIdList = new LinkedList<String>();
+
+			if (e.hasAttr("xml:id"))
+				xmlIdList.add(e.attr("xml:id"));
+			if (e.hasAttr("sex"))
+				cf.setGender(e.attr("sex"));
+			if (e.hasAttr("age"))
+				cf.setAge(e.attr("age"));
+
+			// gather names
+			Elements nameElements = e.select("persName");
+
+			for (int j = 0; j < nameElements.size(); j++) {
+				nameList.add(nameElements.get(j).text());
+				if (nameElements.get(j).hasAttr("xml:id"))
+					xmlIdList.add(nameElements.get(j).attr("xml:id"));
+			}
+			for (TextNode tn : e.textNodes()) {
+				if (tn.text().trim().length() > 0)
+					nameList.add(tn.text().trim());
+			}
+			cf.setXmlId(TEIUtil.toStringArray(jcas, xmlIdList));
+			cf.setNames(TEIUtil.toStringArray(jcas, nameList));
+
+		});
+
+		gxr.addMapping("speaker", Speaker.class);
+		gxr.addMapping("stage", StageDirection.class);
+		gxr.addMapping("l", Speech.class);
+		gxr.addMapping("p", Speech.class);
+		gxr.addMapping("ab", Speech.class);
+		gxr.addMapping("sp", Utterance.class, (u, e) -> {
+			Collection<Speaker> speakers = JCasUtil.selectCovered(Speaker.class, u);
+			for (Speaker sp : speakers) {
+				String[] whos = e.attr("who").split(" ");
+				sp.setXmlId(new StringArray(jcas, whos.length));
+				sp.setCastFigure(new FSArray(jcas, whos.length));
+				for (int i = 0; i < whos.length; i++) {
+					sp.setXmlId(i, whos[i].substring(1));
+					sp.setCastFigure(i, (CastFigure) gxr.getAnnotation(whos[i].substring(1)).getValue());
+				}
+			}
+		});
 
 		final Map<String, SortedSet<CoreferenceLink>> id2link = new HashMap<String, SortedSet<CoreferenceLink>>();
-		gxr.addMapping("*[ref]", CoreferenceLink.class, (cl, e) -> {
+		gxr.addMapping("sp *[ref]", CoreferenceLink.class, (cl, e) -> {
 			String xmlId = e.attr("ref");
 			if (!id2link.containsKey(xmlId)) {
 				id2link.put(xmlId, new TreeSet<CoreferenceLink>(new AnnotationComparator()));
@@ -146,9 +180,6 @@ public class GerDraCorUrlReader extends AbstractDramaUrlReader {
 		});
 
 		gxr.read(jcas, file);
-
-		// Cast
-		readCast(jcas, drama, gxr.getDocument());
 
 		// Coreference chains
 		for (String xmlId : id2link.keySet()) {
@@ -175,6 +206,7 @@ public class GerDraCorUrlReader extends AbstractDramaUrlReader {
 
 	}
 
+	@Deprecated
 	private static void readCast(JCas jcas, Drama drama, Document doc) {
 		Map<String, CastFigure> idFigureMap = new HashMap<String, CastFigure>();
 		Elements castEntries = doc.select("profileDesc > particDesc > listPerson > person");
