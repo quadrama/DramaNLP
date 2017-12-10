@@ -172,6 +172,7 @@ public class GerDraCorUrlReader extends AbstractDramaUrlReader {
 			}
 		});
 
+		// mentions
 		final Map<String, SortedSet<CoreferenceLink>> id2link = new HashMap<String, SortedSet<CoreferenceLink>>();
 		gxr.addMapping("sp *[ref]", CoreferenceLink.class, (cl, e) -> {
 			String xmlId = e.attr("ref");
@@ -183,10 +184,13 @@ public class GerDraCorUrlReader extends AbstractDramaUrlReader {
 
 		gxr.read(jcas, file);
 
-		// Coreference chains
+		// Connect coreference chains, add some of them to CastFigures
 		for (String xmlId : id2link.keySet()) {
 			CoreferenceChain cc = new CoreferenceChain(jcas);
 			cc.addToIndexes();
+			// attach to cast figure if possible
+			if (gxr.exists(xmlId))
+				((CastFigure) gxr.getAnnotation(xmlId).getValue()).setChain(cc);
 			CoreferenceLink last = null;
 			for (CoreferenceLink cl : id2link.get(xmlId)) {
 				if (cc.getFirst() == null) {
