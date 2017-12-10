@@ -11,7 +11,6 @@ import org.apache.uima.fit.pipeline.SimplePipeline;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
-import org.junit.Before;
 import org.junit.Test;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
@@ -24,8 +23,8 @@ public class TestGDCReaderR0n20 {
 	CollectionReaderDescription description;
 	JCas jcas;
 
-	@Before
-	public void setUp() throws ResourceInitializationException {
+	@Test
+	public void testR0n20() throws ResourceInitializationException {
 		description = CollectionReaderFactory.createReaderDescription(GerDraCorUrlReader.class,
 				GerDraCorUrlReader.PARAM_INPUT, "src/test/resources/gerdracor/r0n2.0.xml");
 		AggregateBuilder b = new AggregateBuilder();
@@ -33,10 +32,11 @@ public class TestGDCReaderR0n20 {
 			b.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
 					"target/doc"));
 		jcas = SimplePipeline.iteratePipeline(description, b.createAggregateDescription()).iterator().next();
-	}
 
-	@Test
-	public void testActsAndScenes() {
+		TestGenerics.checkMetadata(jcas);
+		TestGenerics.checkMinimalStructure(jcas);
+		TestGenerics.checkSanity(jcas);
+
 		assertFalse(JCasUtil.exists(jcas, Act.class));
 		assertEquals(0, JCasUtil.select(jcas, Act.class).size());
 		assertEquals(24, JCasUtil.select(jcas, Scene.class).size());
