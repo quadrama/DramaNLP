@@ -106,6 +106,10 @@ public class GenericXmlReader {
 		return idRegistry.get(id);
 	}
 
+	public boolean exists(String id) {
+		return idRegistry.containsKey(id);
+	}
+
 	public <T extends FeatureStructure> Collection<T> select2Annotation(JCas jcas, Element rootElement,
 			Map<String, HTMLAnnotation> annoMap, XmlElementMapping<T> mapping) {
 		HashSet<T> set = new HashSet<T>();
