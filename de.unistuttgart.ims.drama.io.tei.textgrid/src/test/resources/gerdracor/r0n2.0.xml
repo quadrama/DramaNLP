@@ -2457,7 +2457,7 @@
                 <l>Mit eigner Hand dir liebend dargebracht?</l>
               </lg>
             </sp>
-            <sp who="#die_drei_amazonen">
+            <sp who="#die_erste_amazone #die_zweite #die_dritte">
               <speaker>DIE DREI AMAZONEN.</speaker>
               <l>Sprecht! Redet! Womit dient man euch?</l>
             </sp>
@@ -7714,7 +7714,7 @@
               <l>Entsetzen! o Entsetzen!</l>
               <pb n="102"/>
             </sp>
-            <sp who="#alle">
+            <sp who="#die_amazone #die_oberpriesterin #eine_amazone #die_erste_priesterin">
               <speaker>ALLE.</speaker>
               <l>Fürchterlich!</l>
             </sp>
