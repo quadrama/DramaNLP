@@ -124,6 +124,7 @@ public class GerDraCorUrlReader extends AbstractDramaUrlReader {
 		// Dramatis Personae
 		gxr.addMapping("body castList castItem", Figure.class);
 		gxr.addMapping("div[type=Dramatis_Personae]", DramatisPersonae.class);
+		Map<String, String> xmlAlias = new HashMap<String, String>();
 		gxr.addDocumentMapping("particDesc > listPerson > person", CastFigure.class, (cf, e) -> {
 			List<String> nameList = new LinkedList<String>();
 			List<String> xmlIdList = new LinkedList<String>();
@@ -140,8 +141,10 @@ public class GerDraCorUrlReader extends AbstractDramaUrlReader {
 
 			for (int j = 0; j < nameElements.size(); j++) {
 				nameList.add(nameElements.get(j).text());
-				if (nameElements.get(j).hasAttr("xml:id"))
+				if (nameElements.get(j).hasAttr("xml:id")) {
 					xmlIdList.add(nameElements.get(j).attr("xml:id"));
+					xmlAlias.put(nameElements.get(j).attr("xml:id"), e.attr("xml:id"));
+				}
 			}
 			for (TextNode tn : e.textNodes()) {
 				if (tn.text().trim().length() > 0)
@@ -166,8 +169,11 @@ public class GerDraCorUrlReader extends AbstractDramaUrlReader {
 				for (int i = 0; i < whos.length; i++) {
 					String xmlid = whos[i].substring(1);
 					sp.setXmlId(i, xmlid);
+					if (xmlAlias.containsKey(xmlid))
+						xmlid = xmlAlias.get(xmlid);
 					if (gxr.exists(xmlid))
-						sp.setCastFigure(i, (CastFigure) gxr.getAnnotation(whos[i].substring(1)).getValue());
+						sp.setCastFigure(i, (CastFigure) gxr.getAnnotation(xmlid).getValue());
+
 				}
 			}
 		});
