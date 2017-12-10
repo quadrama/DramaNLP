@@ -9,7 +9,6 @@ import java.util.Set;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
-import org.apache.uima.jcas.cas.FSArray;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.unistuttgart.ims.drama.api.Act;
@@ -65,9 +64,7 @@ public enum CSVVariant {
 
 	private void convertCharacters(JCas jcas, CSVPrinter p) throws IOException {
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
-		FSArray cFigures = drama.getCastList();
-		for (int i = 0; i < cFigures.size(); i++) {
-			CastFigure cf = (CastFigure) cFigures.get(i);
+		for (CastFigure cf : JCasUtil.select(jcas, CastFigure.class)) {
 			p.printRecord(drama.getCollectionId(), drama.getDocumentId(), cf.getNames(0), cf.getXmlId(0),
 					cf.getGender(), cf.getAge());
 		}
