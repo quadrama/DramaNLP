@@ -39,7 +39,6 @@ import de.unistuttgart.ims.uimautil.AnnotationUtil;
 import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
 import de.unistuttgart.quadrama.io.core.DramaIOUtil;
 import de.unistuttgart.quadrama.io.core.Visitor;
-import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
 import de.unistuttgart.quadrama.io.core.type.XMLElement;
 
 public class GutenbergDEReader extends AbstractDramaUrlReader {
@@ -85,7 +84,7 @@ public class GutenbergDEReader extends AbstractDramaUrlReader {
 		// TODO: convert to range function
 		int currentSceneBegin = -1;
 		int currentActBegin = -1;
-		for (HTMLAnnotation anno : JCasUtil.select(jcas, HTMLAnnotation.class)) {
+		for (XMLElement anno : JCasUtil.select(jcas, XMLElement.class)) {
 			if (anno.getTag().equals("h2") && !anno.getCls().contains("author")) {
 				AnnotationFactory.createAnnotation(jcas, anno.getBegin(), anno.getEnd(), SceneHeading.class);
 				if (currentSceneBegin >= 0) {
