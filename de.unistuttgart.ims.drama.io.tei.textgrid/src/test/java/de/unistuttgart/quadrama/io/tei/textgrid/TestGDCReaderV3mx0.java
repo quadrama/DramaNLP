@@ -34,7 +34,7 @@ public class TestGDCReaderV3mx0 {
 	JCas jcas;
 
 	@Test
-	public void testGeneral() throws ResourceInitializationException {
+	public void testV3mx0() throws ResourceInitializationException {
 		description = CollectionReaderFactory.createReaderDescription(GerDraCorUrlReader.class,
 				GerDraCorUrlReader.PARAM_INPUT, "src/test/resources/gerdracor/v3mx.0.xml");
 		AggregateBuilder b = new AggregateBuilder();
