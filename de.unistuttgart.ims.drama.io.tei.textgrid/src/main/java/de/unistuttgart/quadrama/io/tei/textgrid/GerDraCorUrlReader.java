@@ -8,13 +8,12 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.SortedSet;
-import java.util.TreeSet;
 
 import org.apache.uima.UimaContext;
+import org.apache.uima.cas.FeatureStructure;
 import org.apache.uima.collection.CollectionException;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
-import org.apache.uima.fit.factory.AnnotationFactory;
+import org.apache.uima.fit.util.CasUtil;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSArray;
@@ -23,17 +22,17 @@ import org.apache.uima.resource.ResourceInitializationException;
 import org.jsoup.nodes.TextNode;
 import org.jsoup.select.Elements;
 
-import de.tudarmstadt.ukp.dkpro.core.api.coref.type.CoreferenceChain;
-import de.tudarmstadt.ukp.dkpro.core.api.coref.type.CoreferenceLink;
 import de.unistuttgart.ims.drama.api.Act;
 import de.unistuttgart.ims.drama.api.ActHeading;
 import de.unistuttgart.ims.drama.api.Author;
 import de.unistuttgart.ims.drama.api.CastFigure;
+import de.unistuttgart.ims.drama.api.DiscourseEntity;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.DramatisPersonae;
 import de.unistuttgart.ims.drama.api.Figure;
 import de.unistuttgart.ims.drama.api.FrontMatter;
 import de.unistuttgart.ims.drama.api.MainMatter;
+import de.unistuttgart.ims.drama.api.Mention;
 import de.unistuttgart.ims.drama.api.Scene;
 import de.unistuttgart.ims.drama.api.SceneHeading;
 import de.unistuttgart.ims.drama.api.Speaker;
@@ -41,7 +40,6 @@ import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.StageDirection;
 import de.unistuttgart.ims.drama.api.Translator;
 import de.unistuttgart.ims.drama.api.Utterance;
-import de.unistuttgart.ims.drama.util.AnnotationComparator;
 import de.unistuttgart.ims.drama.util.UimaUtil;
 import de.unistuttgart.ims.uimautil.AnnotationUtil;
 import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
@@ -154,7 +152,6 @@ public class GerDraCorUrlReader extends AbstractDramaUrlReader {
 			cf.setNames(UimaUtil.toStringArray(jcas, nameList));
 
 		});
-		final Map<String, SortedSet<CoreferenceLink>> id2link = new HashMap<String, SortedSet<CoreferenceLink>>();
 
 		gxr.addMapping("speaker", Speaker.class);
 		gxr.addMapping("stage", StageDirection.class);
@@ -176,45 +173,35 @@ public class GerDraCorUrlReader extends AbstractDramaUrlReader {
 						sp.setCastFigure(i, (CastFigure) gxr.getAnnotation(xmlid).getValue());
 						u.setCastFigure((CastFigure) gxr.getAnnotation(xmlid).getValue());
 					}
-					CoreferenceLink cl = AnnotationFactory.createAnnotation(jcas, sp.getBegin(), sp.getEnd(),
-							CoreferenceLink.class);
-					if (!id2link.containsKey(xmlid)) {
-						id2link.put(xmlid, new TreeSet<CoreferenceLink>(new AnnotationComparator()));
-					}
-					id2link.get(xmlid).add(cl);
 				}
 			}
 		});
 
+		gxr.addMapping("text *[xml:id]", DiscourseEntity.class, (de, e) -> de.setDisplayName(e.attr("xml:id")));
+
+		Map<String, DiscourseEntity> fallbackEntities = new HashMap<String, DiscourseEntity>();
 		// mentions
-		gxr.addMapping("sp *[ref]", CoreferenceLink.class, (cl, e) -> {
+		gxr.addMapping("sp *[ref]", Mention.class, (cl, e) -> {
 			String xmlId = e.attr("ref").substring(1);
-			if (!id2link.containsKey(xmlId)) {
-				id2link.put(xmlId, new TreeSet<CoreferenceLink>(new AnnotationComparator()));
+
+			DiscourseEntity de = null;
+			if (gxr.exists(xmlId)) {
+				FeatureStructure fs = gxr.getAnnotation(xmlId).getValue();
+				if (fs instanceof DiscourseEntity)
+					de = (DiscourseEntity) fs;
 			}
-			id2link.get(xmlId).add(cl);
+			if (fallbackEntities.containsKey(xmlId))
+				de = fallbackEntities.get(xmlId);
+			if (de == null) {
+				de = cl.getCAS().createFS(CasUtil.getType(cl.getCAS(), DiscourseEntity.class));
+				de.addToIndexes();
+				de.setDisplayName(cl.getCoveredText());
+				fallbackEntities.put(xmlId, de);
+			}
+			cl.setEntity(de);
 		});
 
 		gxr.read(jcas, file);
-
-		// Connect coreference chains, add some of them to CastFigures
-		for (String xmlId : id2link.keySet()) {
-			CoreferenceChain cc = new CoreferenceChain(jcas);
-			cc.addToIndexes();
-			// attach to cast figure if possible
-			if (gxr.exists(xmlId))
-				((CastFigure) gxr.getAnnotation(xmlId).getValue()).setChain(cc);
-			CoreferenceLink last = null;
-			for (CoreferenceLink cl : id2link.get(xmlId)) {
-				if (cc.getFirst() == null) {
-					cc.setFirst(cl);
-					last = cl;
-				} else if (last != null) {
-					last.setNext(cl);
-					last = cl;
-				}
-			}
-		}
 
 		AnnotationUtil.trim(new ArrayList<Figure>(JCasUtil.select(jcas, Figure.class)));
 		AnnotationUtil.trim(new ArrayList<Speech>(JCasUtil.select(jcas, Speech.class)));

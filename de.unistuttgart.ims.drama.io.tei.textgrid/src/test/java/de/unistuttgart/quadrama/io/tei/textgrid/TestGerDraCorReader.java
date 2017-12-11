@@ -204,7 +204,6 @@ public class TestGerDraCorReader {
 		for (CastFigure cf : JCasUtil.select(jcas, CastFigure.class)) {
 			assertNotNull(cf.getNames());
 			assertFalse(cf.getNames().size() == 0);
-			assertNotNull(cf.getNames(0), cf.getChain());
 		}
 	}
 

@@ -392,11 +392,6 @@ This type can be used to add figures on the fly, that are not declared in the dr
           <description/>
           <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>
-      <featureDescription>
-          <name>Chain</name>
-          <description/>
-          <rangeTypeName>de.tudarmstadt.ukp.dkpro.core.api.coref.type.CoreferenceChain</rangeTypeName>
-        </featureDescription>
       </features>
 		</typeDescription>
 	<typeDescription>
