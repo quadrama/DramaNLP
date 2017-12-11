@@ -31,7 +31,7 @@ import de.unistuttgart.ims.drama.api.SceneHeading;
 import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.util.DramaUtil;
 
-public class TestGDCReaderNdtw0 {
+public class TestGerDraCorReader {
 	CollectionReaderDescription description;
 	JCas jcas;
 
