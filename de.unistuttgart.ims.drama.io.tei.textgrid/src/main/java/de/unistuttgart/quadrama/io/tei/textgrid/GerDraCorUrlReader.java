@@ -20,8 +20,6 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSArray;
 import org.apache.uima.jcas.cas.StringArray;
 import org.apache.uima.resource.ResourceInitializationException;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.nodes.TextNode;
 import org.jsoup.select.Elements;
 
@@ -224,29 +222,4 @@ public class GerDraCorUrlReader extends AbstractDramaUrlReader {
 		AnnotationUtil.trim(new ArrayList<StageDirection>(JCasUtil.select(jcas, StageDirection.class)));
 
 	}
-
-	@Deprecated
-	private static void readCast(JCas jcas, Drama drama, Document doc) {
-		Map<String, CastFigure> idFigureMap = new HashMap<String, CastFigure>();
-		Elements castEntries = doc.select("profileDesc > particDesc > listPerson > person");
-		castEntries.addAll(doc.select("profileDesc > particDesc > listPerson > personGrp"));
-		FSArray castListArray = new FSArray(jcas, castEntries.size());
-		for (int i = 0; i < castEntries.size(); i++) {
-			Element castEntry = castEntries.get(i);
-			CastFigure figure = TEIUtil.parsePersonElement(jcas, castEntry);
-
-			for (int j = 0; j < figure.getXmlId().size(); j++) {
-				idFigureMap.put(figure.getXmlId(j), figure);
-			}
-			castListArray.set(i, figure);
-		}
-		drama.setCastList(castListArray);
-
-		for (Speaker speaker : JCasUtil.select(jcas, Speaker.class)) {
-			speaker.setCastFigure(new FSArray(jcas, speaker.getXmlId().size()));
-			for (int i = 0; i < speaker.getXmlId().size(); i++)
-				speaker.setCastFigure(i, idFigureMap.get(speaker.getXmlId(i)));
-		}
-	}
-
 }
