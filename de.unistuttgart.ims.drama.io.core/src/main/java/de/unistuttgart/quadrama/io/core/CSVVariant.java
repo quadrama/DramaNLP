@@ -151,7 +151,7 @@ public enum CSVVariant {
 								p.print(null);
 								p.print(null);
 							} else {
-								DiscourseEntity de = fm.getEntity();
+								DiscourseEntity de = fm.getEntity(0);
 								CastFigure cf = null;
 								if (de instanceof CastFigure) {
 									cf = (CastFigure) de;

@@ -414,7 +414,9 @@ This type can be used to add figures on the fly, that are not declared in the dr
         <featureDescription>
           <name>Entity</name>
           <description/>
-          <rangeTypeName>de.unistuttgart.ims.drama.api.DiscourseEntity</rangeTypeName>
+          <rangeTypeName>uima.cas.FSArray</rangeTypeName>
+        <elementType>de.unistuttgart.ims.drama.api.DiscourseEntity</elementType>
+          <multipleReferencesAllowed>false</multipleReferencesAllowed>
         </featureDescription>
       </features>
     </typeDescription>

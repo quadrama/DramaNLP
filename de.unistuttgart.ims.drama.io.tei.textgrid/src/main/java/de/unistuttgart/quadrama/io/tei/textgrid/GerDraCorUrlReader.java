@@ -182,23 +182,28 @@ public class GerDraCorUrlReader extends AbstractDramaUrlReader {
 		Map<String, DiscourseEntity> fallbackEntities = new HashMap<String, DiscourseEntity>();
 		// mentions
 		gxr.addMapping("sp *[ref]", Mention.class, (cl, e) -> {
-			String xmlId = e.attr("ref").substring(1);
+			String[] splitted = e.attr("ref").split(" ");
+			FSArray arr = new FSArray(jcas, splitted.length);
+			for (int i = 0; i < splitted.length; i++) {
+				String xmlId = splitted[i].substring(1);
 
-			DiscourseEntity de = null;
-			if (gxr.exists(xmlId)) {
-				FeatureStructure fs = gxr.getAnnotation(xmlId).getValue();
-				if (fs instanceof DiscourseEntity)
-					de = (DiscourseEntity) fs;
+				DiscourseEntity de = null;
+				if (gxr.exists(xmlId)) {
+					FeatureStructure fs = gxr.getAnnotation(xmlId).getValue();
+					if (fs instanceof DiscourseEntity)
+						de = (DiscourseEntity) fs;
+				}
+				if (fallbackEntities.containsKey(xmlId))
+					de = fallbackEntities.get(xmlId);
+				if (de == null) {
+					de = cl.getCAS().createFS(CasUtil.getType(cl.getCAS(), DiscourseEntity.class));
+					de.addToIndexes();
+					de.setDisplayName(cl.getCoveredText());
+					fallbackEntities.put(xmlId, de);
+				}
+				arr.set(i, de);
 			}
-			if (fallbackEntities.containsKey(xmlId))
-				de = fallbackEntities.get(xmlId);
-			if (de == null) {
-				de = cl.getCAS().createFS(CasUtil.getType(cl.getCAS(), DiscourseEntity.class));
-				de.addToIndexes();
-				de.setDisplayName(cl.getCoveredText());
-				fallbackEntities.put(xmlId, de);
-			}
-			cl.setEntity(de);
+			cl.setEntity(arr);
 		});
 
 		gxr.read(jcas, file);
