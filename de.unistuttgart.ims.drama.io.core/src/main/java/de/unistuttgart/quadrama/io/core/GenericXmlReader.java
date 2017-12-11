@@ -23,7 +23,7 @@ import org.jsoup.select.Elements;
 
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.util.DramaUtil;
-import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
+import de.unistuttgart.quadrama.io.core.type.XMLElement;
 
 public class GenericXmlReader {
 
@@ -111,11 +111,11 @@ public class GenericXmlReader {
 	}
 
 	public <T extends FeatureStructure> Collection<T> select2Annotation(JCas jcas, Element rootElement,
-			Map<String, HTMLAnnotation> annoMap, XmlElementMapping<T> mapping) {
+			Map<String, XMLElement> annoMap, XmlElementMapping<T> mapping) {
 		HashSet<T> set = new HashSet<T>();
 		Elements elms = rootElement.select(mapping.getSelector());
 		for (Element elm : elms) {
-			HTMLAnnotation hAnno = annoMap.get(elm.cssSelector());
+			XMLElement hAnno = annoMap.get(elm.cssSelector());
 			if (elm.hasText() || elm.childNodeSize() > 0) {
 				T annotation = jcas.getCas().createFS(JCasUtil.getType(jcas, mapping.getTargetClass()));
 				jcas.getCas().addFsToIndexes(annotation);

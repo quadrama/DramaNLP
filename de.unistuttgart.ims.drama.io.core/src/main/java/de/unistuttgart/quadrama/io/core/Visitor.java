@@ -11,15 +11,14 @@ import org.jsoup.nodes.Node;
 import org.jsoup.nodes.TextNode;
 import org.jsoup.select.NodeVisitor;
 
-import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
+import de.unistuttgart.quadrama.io.core.type.XMLElement;
 
 public class Visitor implements NodeVisitor {
 
 	protected JCasBuilder builder;
 	protected Map<Node, Integer> beginMap = new HashMap<Node, Integer>();
 
-	protected Map<String, HTMLAnnotation> annotationMap =
-			new HashMap<String, HTMLAnnotation>();
+	protected Map<String, XMLElement> annotationMap = new HashMap<String, XMLElement>();
 
 	protected String[] blockElements = new String[] { "l", "p", "sp" };
 
@@ -34,6 +33,7 @@ public class Visitor implements NodeVisitor {
 		this.preserveWhitespace = preserveWhitespace;
 	}
 
+	@Override
 	public void head(Node node, int depth) {
 		if (node.getClass().equals(TextNode.class)) {
 			if (this.preserveWhitespace)
@@ -45,11 +45,11 @@ public class Visitor implements NodeVisitor {
 		}
 	}
 
+	@Override
 	public void tail(Node node, int depth) {
 		if (node.getClass().equals(Element.class)) {
 			Element elm = (Element) node;
-			HTMLAnnotation anno =
-					builder.add(beginMap.get(node), HTMLAnnotation.class);
+			XMLElement anno = builder.add(beginMap.get(node), XMLElement.class);
 			anno.setTag(elm.tagName());
 			anno.setId(elm.id());
 			anno.setSelector(elm.cssSelector());
@@ -70,7 +70,7 @@ public class Visitor implements NodeVisitor {
 		return builder.getJCas();
 	}
 
-	public Map<String, HTMLAnnotation> getAnnotationMap() {
+	public Map<String, XMLElement> getAnnotationMap() {
 		return annotationMap;
 	}
 }
