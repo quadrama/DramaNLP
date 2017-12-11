@@ -13,7 +13,6 @@ import org.apache.uima.fit.pipeline.SimplePipeline;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
-import org.junit.Before;
 import org.junit.Test;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
@@ -34,8 +33,8 @@ public class TestGDCReaderV3mx0 {
 	CollectionReaderDescription description;
 	JCas jcas;
 
-	@Before
-	public void setUp() throws ResourceInitializationException {
+	@Test
+	public void testGeneral() throws ResourceInitializationException {
 		description = CollectionReaderFactory.createReaderDescription(GerDraCorUrlReader.class,
 				GerDraCorUrlReader.PARAM_INPUT, "src/test/resources/gerdracor/v3mx.0.xml");
 		AggregateBuilder b = new AggregateBuilder();
@@ -43,10 +42,6 @@ public class TestGDCReaderV3mx0 {
 			b.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
 					"target/doc"));
 		jcas = SimplePipeline.iteratePipeline(description, b.createAggregateDescription()).iterator().next();
-	}
-
-	@Test
-	public void testGeneral() {
 		assertEquals("v3mx.0", JCasUtil.selectSingle(jcas, Drama.class).getDocumentId());
 
 		assertTrue(JCasUtil.exists(jcas, Drama.class));
@@ -71,18 +66,10 @@ public class TestGDCReaderV3mx0 {
 		assertNotNull(JCasUtil.selectSingle(jcas, MainMatter.class));
 		assertEquals(1743, JCasUtil.selectSingle(jcas, Drama.class).getDatePrinted());
 
-	}
-
-	@Test
-	public void testActsAndScenes() {
 		assertEquals(5, JCasUtil.select(jcas, Act.class).size());
 		assertEquals(44, JCasUtil.select(jcas, Scene.class).size());
 		assertEquals(5, JCasUtil.select(jcas, ActHeading.class).size());
 		assertEquals(44, JCasUtil.select(jcas, SceneHeading.class).size());
-	}
-
-	@Test
-	public void testFigures() {
 		assertTrue(JCasUtil.exists(jcas, DramatisPersonae.class));
 		assertTrue(JCasUtil.exists(jcas, Figure.class));
 		assertTrue(JCasUtil.exists(jcas, Speaker.class));
