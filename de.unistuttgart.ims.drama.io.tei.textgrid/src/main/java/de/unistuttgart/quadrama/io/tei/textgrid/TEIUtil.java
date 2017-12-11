@@ -1,17 +1,15 @@
 package de.unistuttgart.quadrama.io.tei.textgrid;
 
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.uima.jcas.JCas;
-import org.apache.uima.jcas.cas.StringArray;
 import org.jsoup.nodes.Element;
 import org.jsoup.nodes.TextNode;
 import org.jsoup.select.Elements;
 
 import de.unistuttgart.ims.drama.api.CastFigure;
+import de.unistuttgart.ims.drama.util.UimaUtil;
 
 public class TEIUtil {
 
@@ -40,20 +38,10 @@ public class TEIUtil {
 			if (tn.text().trim().length() > 0)
 				nameList.add(tn.text().trim());
 		}
-		figure.setXmlId(toStringArray(jcas, xmlIdList));
-		figure.setNames(toStringArray(jcas, nameList));
+		figure.setXmlId(UimaUtil.toStringArray(jcas, xmlIdList));
+		figure.setNames(UimaUtil.toStringArray(jcas, nameList));
 		figure.addToIndexes();
 		return figure;
 
-	}
-
-	public static StringArray toStringArray(JCas jcas, Collection<String> coll) {
-		StringArray arr = new StringArray(jcas, coll.size());
-		Iterator<String> collIter = coll.iterator();
-		int i = 0;
-		while (collIter.hasNext()) {
-			arr.set(i++, collIter.next());
-		}
-		return arr;
 	}
 }

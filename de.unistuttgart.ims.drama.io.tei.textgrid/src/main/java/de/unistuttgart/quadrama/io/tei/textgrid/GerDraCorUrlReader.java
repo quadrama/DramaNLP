@@ -42,6 +42,7 @@ import de.unistuttgart.ims.drama.api.StageDirection;
 import de.unistuttgart.ims.drama.api.Translator;
 import de.unistuttgart.ims.drama.api.Utterance;
 import de.unistuttgart.ims.drama.util.AnnotationComparator;
+import de.unistuttgart.ims.drama.util.UimaUtil;
 import de.unistuttgart.ims.uimautil.AnnotationUtil;
 import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
 import de.unistuttgart.quadrama.io.core.GenericXmlReader;
@@ -149,8 +150,8 @@ public class GerDraCorUrlReader extends AbstractDramaUrlReader {
 				if (tn.text().trim().length() > 0)
 					nameList.add(tn.text().trim());
 			}
-			cf.setXmlId(TEIUtil.toStringArray(jcas, xmlIdList));
-			cf.setNames(TEIUtil.toStringArray(jcas, nameList));
+			cf.setXmlId(UimaUtil.toStringArray(jcas, xmlIdList));
+			cf.setNames(UimaUtil.toStringArray(jcas, nameList));
 
 		});
 		final Map<String, SortedSet<CoreferenceLink>> id2link = new HashMap<String, SortedSet<CoreferenceLink>>();
