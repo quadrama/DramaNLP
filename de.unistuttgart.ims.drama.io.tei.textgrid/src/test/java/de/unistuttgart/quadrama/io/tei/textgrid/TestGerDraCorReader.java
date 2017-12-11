@@ -208,4 +208,76 @@ public class TestGerDraCorReader {
 		}
 	}
 
+	@Test
+	public void testR0n20() throws ResourceInitializationException {
+		description = CollectionReaderFactory.createReaderDescription(GerDraCorUrlReader.class,
+				GerDraCorUrlReader.PARAM_INPUT, "src/test/resources/gerdracor/r0n2.0.xml");
+		AggregateBuilder b = new AggregateBuilder();
+		if (TestGenerics.debug)
+			b.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
+					"target/doc"));
+		jcas = SimplePipeline.iteratePipeline(description, b.createAggregateDescription()).iterator().next();
+
+		TestGenerics.checkMetadata(jcas);
+		TestGenerics.checkMinimalStructure(jcas);
+		assertTrue(JCasUtil.exists(jcas, Scene.class));
+
+		assertFalse(JCasUtil.exists(jcas, Act.class));
+		assertEquals(0, JCasUtil.select(jcas, Act.class).size());
+		assertEquals(24, JCasUtil.select(jcas, Scene.class).size());
+		assertFalse(JCasUtil.exists(jcas, ActHeading.class));
+		assertEquals(24, JCasUtil.select(jcas, SceneHeading.class).size());
+	}
+
+	@Test
+	public void testV3mx0() throws ResourceInitializationException {
+		description = CollectionReaderFactory.createReaderDescription(GerDraCorUrlReader.class,
+				GerDraCorUrlReader.PARAM_INPUT, "src/test/resources/gerdracor/v3mx.0.xml");
+		AggregateBuilder b = new AggregateBuilder();
+		if (TestGenerics.debug)
+			b.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
+					"target/doc"));
+		jcas = SimplePipeline.iteratePipeline(description, b.createAggregateDescription()).iterator().next();
+		assertEquals("v3mx.0", JCasUtil.selectSingle(jcas, Drama.class).getDocumentId());
+
+		assertTrue(JCasUtil.exists(jcas, Drama.class));
+		assertTrue(JCasUtil.exists(jcas, Figure.class));
+		assertTrue(JCasUtil.exists(jcas, Act.class));
+		assertTrue(JCasUtil.exists(jcas, Scene.class));
+		assertTrue(JCasUtil.exists(jcas, Speaker.class));
+		assertTrue(JCasUtil.exists(jcas, DramatisPersonae.class));
+		assertTrue(JCasUtil.exists(jcas, Author.class));
+
+		if (JCasUtil.exists(jcas, ActHeading.class)) {
+			for (Act act : JCasUtil.select(jcas, Act.class)) {
+				assertEquals(1, JCasUtil.selectCovered(ActHeading.class, act).size());
+			}
+		}
+		// check that speaker annotations are not empty
+		for (Speaker speaker : JCasUtil.select(jcas, Speaker.class)) {
+			assertNotEquals(speaker.getBegin(), speaker.getEnd());
+		}
+
+		assertNotNull(JCasUtil.selectSingle(jcas, FrontMatter.class));
+		assertNotNull(JCasUtil.selectSingle(jcas, MainMatter.class));
+		assertEquals(1743, JCasUtil.selectSingle(jcas, Drama.class).getDatePrinted());
+
+		assertEquals(5, JCasUtil.select(jcas, Act.class).size());
+		assertEquals(44, JCasUtil.select(jcas, Scene.class).size());
+		assertEquals(5, JCasUtil.select(jcas, ActHeading.class).size());
+		assertEquals(44, JCasUtil.select(jcas, SceneHeading.class).size());
+		assertTrue(JCasUtil.exists(jcas, DramatisPersonae.class));
+		assertTrue(JCasUtil.exists(jcas, Figure.class));
+		assertTrue(JCasUtil.exists(jcas, Speaker.class));
+		assertEquals(15, JCasUtil.select(jcas, Figure.class).size());
+
+		for (CastFigure f : JCasUtil.select(jcas, CastFigure.class)) {
+			assertNotNull(f);
+			for (int j = 0; j < f.getNames().size(); j++) {
+				assertNotEquals(" ", f.getNames(j));
+			}
+		}
+
+	}
+
 }
