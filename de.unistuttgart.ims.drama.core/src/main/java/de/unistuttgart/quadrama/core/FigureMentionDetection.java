@@ -86,7 +86,7 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 					if (!matches(jcas, m.start(), m.end())) {
 						FigureMention fm = AnnotationFactory.createAnnotation(jcas, m.start(), m.end(),
 								FigureMention.class);
-						fm.setCastFigure(cf);
+						fm.setEntity(cf);
 					}
 				}
 			}
@@ -101,7 +101,7 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 						for (PR pronoun : JCasUtil.selectCovered(jcas, PR.class, speech)) {
 							if (pronouns.contains(pronoun.getCoveredText())) {
 								AnnotationFactory.createAnnotation(jcas, pronoun.getBegin(), pronoun.getEnd(),
-										FigureMention.class).setCastFigure(currentFigure);
+										FigureMention.class).setEntity(currentFigure);
 							}
 						}
 				}

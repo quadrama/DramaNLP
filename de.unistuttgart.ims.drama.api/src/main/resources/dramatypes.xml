@@ -222,15 +222,8 @@
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.FigureMention</name>
 			<description/>
-			<supertypeName>uima.tcas.Annotation</supertypeName>
-			<features>
-				<featureDescription>
-          <name>CastFigure</name>
-          <description/>
-          <rangeTypeName>de.unistuttgart.ims.drama.api.CastFigure</rangeTypeName>
-        </featureDescription>
-      </features>
-		</typeDescription>
+			<supertypeName>de.unistuttgart.ims.drama.api.Mention</supertypeName>
+			</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.SpeakerFigure</name>
 			<description>@Deprecated
@@ -376,7 +369,7 @@ This type can be used to add figures on the fly, that are not declared in the dr
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.CastFigure</name>
 			<description/>
-			<supertypeName>uima.cas.TOP</supertypeName>
+			<supertypeName>de.unistuttgart.ims.drama.api.DiscourseEntity</supertypeName>
 			<features>
 				<featureDescription>
 					<name>XmlId</name>
@@ -406,5 +399,29 @@ This type can be used to add figures on the fly, that are not declared in the dr
         </featureDescription>
       </features>
 		</typeDescription>
-	</types>
+	<typeDescription>
+      <name>de.unistuttgart.ims.drama.api.DiscourseEntity</name>
+      <description/>
+      <supertypeName>uima.cas.TOP</supertypeName>
+      <features>
+        <featureDescription>
+          <name>DisplayName</name>
+          <description/>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>de.unistuttgart.ims.drama.api.Mention</name>
+      <description/>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>Entity</name>
+          <description/>
+          <rangeTypeName>de.unistuttgart.ims.drama.api.DiscourseEntity</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+  </types>
 </typeSystemDescription>

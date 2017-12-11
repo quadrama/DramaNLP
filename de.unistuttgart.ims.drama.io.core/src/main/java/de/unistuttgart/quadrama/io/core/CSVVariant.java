@@ -14,6 +14,7 @@ import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.unistuttgart.ims.drama.api.Act;
 import de.unistuttgart.ims.drama.api.Author;
 import de.unistuttgart.ims.drama.api.CastFigure;
+import de.unistuttgart.ims.drama.api.DiscourseEntity;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.FigureMention;
 import de.unistuttgart.ims.drama.api.Scene;
@@ -146,17 +147,22 @@ public enum CSVVariant {
 						p.print(length);
 						if (mentionMap.containsKey(token)) {
 							FigureMention fm = selectLongest(mentionMap.get(token));
-							if (used.contains(fm) || fm.getCastFigure() == null) {
+							if (used.contains(fm) || fm.getEntity() == null) {
 								p.print(null);
 								p.print(null);
 							} else {
+								DiscourseEntity de = fm.getEntity();
+								CastFigure cf = null;
+								if (de instanceof CastFigure) {
+									cf = (CastFigure) de;
+								}
 								try {
-									p.print(fm.getCastFigure().getNames(0));
+									p.print(cf == null ? null : cf.getNames(0));
 								} catch (Exception e) {
 									p.print(null);
 								}
 								try {
-									p.print(fm.getCastFigure().getXmlId(0));
+									p.print(cf == null ? null : cf.getXmlId(0));
 								} catch (Exception e) {
 									p.print(null);
 								}
