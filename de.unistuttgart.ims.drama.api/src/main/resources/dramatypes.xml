@@ -68,7 +68,7 @@
 				<featureDescription>
 					<name>CastFigure</name>
 					<description/>
-					<rangeTypeName>de.unistuttgart.ims.drama.api.CastFigure</rangeTypeName>
+					<rangeTypeName>de.unistuttgart.ims.drama.api.DiscourseEntity</rangeTypeName>
 				</featureDescription>
 			</features>
 		</typeDescription>
