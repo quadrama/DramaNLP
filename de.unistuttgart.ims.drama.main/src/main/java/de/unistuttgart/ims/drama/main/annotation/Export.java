@@ -15,6 +15,7 @@ import com.lexicalscope.jewel.cli.CliFactory;
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
 import de.unistuttgart.ims.drama.main.Options;
+import de.unistuttgart.quadrama.core.CreateDkproCoreference;
 import de.unistuttgart.quadrama.io.tei.textgrid.GerDraCorUrlReader;
 
 public class Export {
@@ -23,12 +24,14 @@ public class Export {
 		Options options = CliFactory.parseArguments(Options.class, args);
 
 		CollectionReaderDescription reader = CollectionReaderFactory.createReaderDescription(GerDraCorUrlReader.class,
-				GerDraCorUrlReader.PARAM_INPUT, options.getInput(), GerDraCorUrlReader.PARAM_TEI_COMPAT, true);
+				GerDraCorUrlReader.PARAM_INPUT, options.getInput(), GerDraCorUrlReader.PARAM_TEI_COMPAT, true,
+				GerDraCorUrlReader.PARAM_CLEANUP, true);
 
 		AggregateBuilder builder = new AggregateBuilder();
 		builder.add(AnalysisEngineFactory.createEngineDescription(BreakIteratorSegmenter.class,
 				BreakIteratorSegmenter.PARAM_WRITE_SENTENCE, false));
-		builder.add(AnalysisEngineFactory.createEngineDescription(WebAnnoPreparation.class));
+		builder.add(AnalysisEngineFactory.createEngineDescription(CreateDkproCoreference.class,
+				CreateDkproCoreference.PARAM_INCLUDE_SPEAKERS, true));
 		builder.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
 				options.getOutput()));
 
