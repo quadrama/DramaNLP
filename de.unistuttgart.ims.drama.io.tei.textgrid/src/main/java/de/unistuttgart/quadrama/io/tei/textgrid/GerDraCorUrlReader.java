@@ -172,9 +172,10 @@ public class GerDraCorUrlReader extends AbstractDramaUrlReader {
 					sp.setXmlId(i, xmlid);
 					if (xmlAlias.containsKey(xmlid))
 						xmlid = xmlAlias.get(xmlid);
-					if (gxr.exists(xmlid))
+					if (gxr.exists(xmlid)) {
 						sp.setCastFigure(i, (CastFigure) gxr.getAnnotation(xmlid).getValue());
-
+						u.setCastFigure((CastFigure) gxr.getAnnotation(xmlid).getValue());
+					}
 					CoreferenceLink cl = AnnotationFactory.createAnnotation(jcas, sp.getBegin(), sp.getEnd(),
 							CoreferenceLink.class);
 					if (!id2link.containsKey(xmlid)) {
