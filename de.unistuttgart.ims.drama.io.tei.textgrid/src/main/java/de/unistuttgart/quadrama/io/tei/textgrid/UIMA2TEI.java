@@ -13,6 +13,7 @@ import de.tudarmstadt.ukp.dkpro.core.api.coref.type.CoreferenceChain;
 import de.tudarmstadt.ukp.dkpro.core.api.coref.type.CoreferenceLink;
 import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
+import de.unistuttgart.quadrama.io.core.type.XMLElement;
 
 public class UIMA2TEI extends JCasAnnotator_ImplBase {
 
@@ -23,7 +24,7 @@ public class UIMA2TEI extends JCasAnnotator_ImplBase {
 				Speaker.class);
 
 		int id = 0;
-		HTMLAnnotation h;
+		XMLElement h;
 		for (CoreferenceChain cc : JCasUtil.select(jcas, CoreferenceChain.class)) {
 			CoreferenceLink link = cc.getFirst();
 
