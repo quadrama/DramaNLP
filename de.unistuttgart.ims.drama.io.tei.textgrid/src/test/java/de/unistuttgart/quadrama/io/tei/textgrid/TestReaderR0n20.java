@@ -19,6 +19,7 @@ import de.unistuttgart.ims.drama.api.Act;
 import de.unistuttgart.ims.drama.api.ActHeading;
 import de.unistuttgart.ims.drama.api.Scene;
 import de.unistuttgart.ims.drama.api.SceneHeading;
+import de.unistuttgart.ims.drama.io.tei.TestGenerics;
 
 public class TestReaderR0n20 {
 	static CollectionReaderDescription description;

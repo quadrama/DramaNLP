@@ -1,4 +1,4 @@
-package de.unistuttgart.quadrama.io.tei.textgrid;
+package de.unistuttgart.quadrama.io.tei;
 
 import java.io.IOException;
 import java.io.InputStream;

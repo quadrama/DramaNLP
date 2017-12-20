@@ -16,7 +16,7 @@ import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
 import de.unistuttgart.ims.drama.main.Options;
 import de.unistuttgart.quadrama.core.CreateDkproCoreference;
-import de.unistuttgart.quadrama.io.tei.textgrid.GerDraCorUrlReader;
+import de.unistuttgart.quadrama.io.tei.GerDraCorUrlReader;
 
 public class Export {
 

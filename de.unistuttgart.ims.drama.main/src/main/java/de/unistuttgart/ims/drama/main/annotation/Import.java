@@ -16,7 +16,7 @@ import com.lexicalscope.jewel.cli.Option;
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiReader;
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.unistuttgart.ims.drama.main.Options;
-import de.unistuttgart.quadrama.io.tei.textgrid.TEIWriter;
+import de.unistuttgart.quadrama.io.tei.TEIWriter;
 import de.unistuttgart.quadrama.io.tei.textgrid.UIMA2TEI;
 
 public class Import {

@@ -9,6 +9,8 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.junit.Test;
 
+import de.unistuttgart.quadrama.io.tei.AnnotationChooser;
+
 public class TestAnnotationChooser {
 
 	@Test

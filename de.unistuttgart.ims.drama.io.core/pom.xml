@@ -49,6 +49,10 @@
   		</artifactId>
   		<version>${dkpro.version}</version>
   	</dependency>
+  	<dependency>
+  		<groupId>de.unistuttgart.ims</groupId>
+  		<artifactId>uimautil</artifactId>
+  	</dependency>
   </dependencies>
   <build>
 		<plugins>

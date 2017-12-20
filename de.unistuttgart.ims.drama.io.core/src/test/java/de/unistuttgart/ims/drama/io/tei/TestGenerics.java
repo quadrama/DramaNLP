@@ -1,4 +1,4 @@
-package de.unistuttgart.quadrama.io.tei.textgrid;
+package de.unistuttgart.ims.drama.io.tei;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -23,7 +23,7 @@ import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.Utterance;
 
 public class TestGenerics {
-	public static boolean debug = false;
+	public static boolean debug = true;
 
 	public static void checkMinimalStructure(JCas jcas) {
 		assertTrue(JCasUtil.exists(jcas, Speaker.class));
