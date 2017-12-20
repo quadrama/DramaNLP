@@ -126,7 +126,7 @@ public class GenericXmlReader {
 
 				set.add(annotation);
 
-				if (elm.hasAttr("xml:id")) {
+				if (elm.hasAttr("xml:id") && !exists(elm.attr("xml:id"))) {
 					String id = elm.attr("xml:id");
 					idRegistry.put(id, new AbstractMap.SimpleEntry<Element, FeatureStructure>(elm, annotation));
 				}
