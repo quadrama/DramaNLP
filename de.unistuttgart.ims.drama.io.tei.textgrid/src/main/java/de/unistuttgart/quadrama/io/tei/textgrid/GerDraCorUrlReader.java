@@ -181,7 +181,7 @@ public class GerDraCorUrlReader extends AbstractDramaUrlReader {
 
 		Map<String, DiscourseEntity> fallbackEntities = new HashMap<String, DiscourseEntity>();
 		// mentions
-		gxr.addMapping("sp *[ref]", Mention.class, (cl, e) -> {
+		gxr.addMapping("text *[ref]", Mention.class, (cl, e) -> {
 			String[] splitted = e.attr("ref").split(" ");
 			FSArray arr = new FSArray(jcas, splitted.length);
 			for (int i = 0; i < splitted.length; i++) {
