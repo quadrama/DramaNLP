@@ -143,6 +143,7 @@ public class GerDraCorUrlReader extends AbstractDramaUrlReader {
 			}
 			cf.setXmlId(UimaUtil.toStringArray(jcas, xmlIdList));
 			cf.setNames(UimaUtil.toStringArray(jcas, nameList));
+			cf.setDisplayName(cf.getNames(0));
 
 		});
 
