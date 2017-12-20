@@ -18,7 +18,7 @@ import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.io.TestGenerics;
 import de.unistuttgart.quadrama.io.tei.CoreTeiReader;
 
-public class TestCoreTEIUrlReader {
+public class TestCoreTeiReader {
 	static CollectionReaderDescription description;
 	static JCas jcas;
 
