@@ -179,6 +179,14 @@ public class GerDraCorUrlReader extends AbstractDramaUrlReader {
 
 		gxr.addMapping("text *[xml:id]", DiscourseEntity.class, (de, e) -> de.setDisplayName(e.attr("xml:id")));
 
+		gxr.addMapping("text *[xml:id]", Mention.class, (m, e) -> {
+			String id = e.attr("xml:id");
+			FSArray arr = new FSArray(jcas, 1);
+			arr.addToIndexes();
+			m.setEntity(arr);
+			m.setEntity(0, (DiscourseEntity) gxr.getAnnotation(id).getValue());
+		});
+
 		Map<String, DiscourseEntity> fallbackEntities = new HashMap<String, DiscourseEntity>();
 		// mentions
 		gxr.addMapping("text *[ref]", Mention.class, (cl, e) -> {
