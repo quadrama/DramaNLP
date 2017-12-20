@@ -15,7 +15,7 @@ import org.junit.Test;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.unistuttgart.ims.drama.api.Drama;
-import de.unistuttgart.ims.drama.io.tei.TestGenerics;
+import de.unistuttgart.ims.drama.io.TestGenerics;
 
 public class TestCoreTEIUrlReader {
 	static CollectionReaderDescription description;

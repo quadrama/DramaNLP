@@ -1,4 +1,4 @@
-package de.unistuttgart.ims.drama.io.tei;
+package de.unistuttgart.ims.drama.io;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

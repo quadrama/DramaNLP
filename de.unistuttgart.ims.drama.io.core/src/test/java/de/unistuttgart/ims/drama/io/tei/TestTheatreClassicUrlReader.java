@@ -21,6 +21,7 @@ import de.unistuttgart.ims.drama.api.CastFigure;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Scene;
 import de.unistuttgart.ims.drama.api.Speaker;
+import de.unistuttgart.ims.drama.io.TestGenerics;
 import de.unistuttgart.quadrama.io.tei.TheatreClassicUrlReader;
 
 public class TestTheatreClassicUrlReader {

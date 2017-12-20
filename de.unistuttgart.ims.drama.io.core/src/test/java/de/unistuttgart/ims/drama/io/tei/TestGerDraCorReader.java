@@ -29,6 +29,7 @@ import de.unistuttgart.ims.drama.api.MainMatter;
 import de.unistuttgart.ims.drama.api.Scene;
 import de.unistuttgart.ims.drama.api.SceneHeading;
 import de.unistuttgart.ims.drama.api.Speaker;
+import de.unistuttgart.ims.drama.io.TestGenerics;
 import de.unistuttgart.ims.drama.util.DramaUtil;
 import de.unistuttgart.quadrama.io.tei.GerDraCorUrlReader;
 

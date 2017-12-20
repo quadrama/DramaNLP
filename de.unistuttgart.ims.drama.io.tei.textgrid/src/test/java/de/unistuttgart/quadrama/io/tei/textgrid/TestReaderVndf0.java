@@ -25,7 +25,7 @@ import de.unistuttgart.ims.drama.api.MainMatter;
 import de.unistuttgart.ims.drama.api.Scene;
 import de.unistuttgart.ims.drama.api.SceneHeading;
 import de.unistuttgart.ims.drama.api.Speaker;
-import de.unistuttgart.ims.drama.io.tei.TestGenerics;
+import de.unistuttgart.ims.drama.io.TestGenerics;
 
 public class TestReaderVndf0 {
 	static CollectionReaderDescription description;
