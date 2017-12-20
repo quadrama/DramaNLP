@@ -1,4 +1,4 @@
-package de.unistuttgart.quadrama.io.tei.textgrid;
+package de.unistuttgart.quadrama.io.tei;
 
 import static de.unistuttgart.quadrama.io.core.DramaIOUtil.select2Annotation;
 

@@ -17,7 +17,7 @@ import de.unistuttgart.ims.drama.api.DatePremiere;
 import de.unistuttgart.ims.drama.api.DatePrint;
 import de.unistuttgart.ims.drama.api.DateWritten;
 import de.unistuttgart.ims.drama.api.Drama;
-import de.unistuttgart.quadrama.io.tei.textgrid.TextgridTEIUrlReader;
+import de.unistuttgart.quadrama.io.tei.TextgridTEIUrlReader;
 
 public class TestReadDlinaMetadata {
 

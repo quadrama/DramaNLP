@@ -18,7 +18,7 @@ import org.junit.Test;
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiReader;
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.unistuttgart.ims.drama.api.Speaker;
-import de.unistuttgart.quadrama.io.tei.textgrid.TextgridTEIUrlReader;
+import de.unistuttgart.quadrama.io.tei.TextgridTEIUrlReader;
 
 public class TestSpeakerAssignmentRules {
 	@Test
