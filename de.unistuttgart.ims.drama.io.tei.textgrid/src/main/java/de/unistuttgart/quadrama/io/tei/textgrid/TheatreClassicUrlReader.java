@@ -7,6 +7,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.uima.cas.Feature;
@@ -18,10 +20,8 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSArray;
 import org.apache.uima.jcas.cas.StringArray;
 import org.apache.uima.jcas.cas.TOP;
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.parser.Parser;
 import org.jsoup.select.Elements;
 
 import de.unistuttgart.ims.drama.api.Act;
@@ -38,10 +38,10 @@ import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.StageDirection;
 import de.unistuttgart.ims.drama.api.Utterance;
+import de.unistuttgart.ims.drama.util.UimaUtil;
 import de.unistuttgart.ims.uimautil.AnnotationUtil;
 import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
-import de.unistuttgart.quadrama.io.core.Select2AnnotationCallback;
-import de.unistuttgart.quadrama.io.core.Visitor;
+import de.unistuttgart.quadrama.io.core.GenericXmlReader;
 import de.unistuttgart.quadrama.io.core.type.XMLElement;
 
 public class TheatreClassicUrlReader extends AbstractDramaUrlReader {
@@ -58,68 +58,86 @@ public class TheatreClassicUrlReader extends AbstractDramaUrlReader {
 
 	@Override
 	public void getNext(final JCas jcas, InputStream file, Drama drama) throws IOException, CollectionException {
-		Document doc = Jsoup.parse(file, "UTF-8", "", Parser.xmlParser());
 
-		// meta data
-		drama.setDocumentTitle(doc.select("titleStmt > title[type=\"main\"]").first().text());
-		if (!doc.select("publicationStmt > idno[type=\"cligs\"]").isEmpty())
-			drama.setDocumentId(doc.select("publicationStmt > idno[type=\"cligs\"]").first().text());
+		GenericXmlReader gxr = new GenericXmlReader();
+		gxr.setTextRootSelector(teiCompatibility ? null : "TEI > text");
+		gxr.setPreserveWhitespace(teiCompatibility);
 
-		try {
-			drama.setDatePremiere(
-					Integer.valueOf(doc.select("sourceDesc > bibl[type=\"performance-first\"] > date").first().text()));
-		} catch (NumberFormatException e) {
-			// do nothing
-		}
-		try {
-			drama.setDatePrinted(
-					Integer.valueOf(doc.select("sourceDesc > bibl[type=\"print-source\"] > date").first().text()));
-		} catch (NumberFormatException e) {
-			// do nothing
-		}
-		// Author
-		Elements authorElements = doc.select("author");
-		for (int i = 0; i < authorElements.size(); i++) {
-			Element authorElement = authorElements.get(i);
+		// title
+		gxr.addAction("titleStmt > title[type=main]", Drama.class, (d, e) -> d.setDocumentTitle(e.text()));
+
+		// id
+		gxr.addAction("publicationStmt > idno[type=cligs]", Drama.class, (d, e) -> d.setDocumentId(e.text()));
+
+		// author
+		gxr.addAction("author", (jc, e) -> {
 			Author author = new Author(jcas);
-			author.setName(authorElement.select("name[type=\"full\"]").text());
+			author.setName(e.select("name[type=full]").text());
 			author.addToIndexes();
-		}
+		});
 
-		Visitor vis = new Visitor(jcas);
+		// date printed
+		gxr.addAction("sourceDesc > bibl[type=print-source] > date", Drama.class,
+				(d, e) -> d.setDatePrinted(Integer.valueOf(e.text())));
 
-		Element root = doc.select("TEI > text").first();
-		root.traverse(vis);
-		vis.getJCas();
+		// data premiere
+		gxr.addAction("sourceDesc > bibl[type=performance-first] > date", Drama.class,
+				(d, e) -> d.setDatePrinted(Integer.valueOf(e.text())));
 
-		select2Annotation(jcas, root, vis.getAnnotationMap(), "front", FrontMatter.class, null);
-		select2Annotation(jcas, root, vis.getAnnotationMap(), "body", MainMatter.class, null);
+		gxr.addMapping("front", FrontMatter.class);
+		gxr.addMapping("body", MainMatter.class);
 
-		MainMatter mainMatter = JCasUtil.selectSingle(jcas, MainMatter.class);
+		// segmentation
+		gxr.addMapping("div[type=act]", Act.class, (a, e) -> a.setRegular(true));
+		gxr.addMapping("div[type=act] > head", ActHeading.class);
 
-		select2Annotation(jcas, root, vis.getAnnotationMap(), "speaker", Speaker.class, null);
-		select2Annotation(jcas, root, vis.getAnnotationMap(), "stage", StageDirection.class, mainMatter);
-		select2Annotation(jcas, root, vis.getAnnotationMap(), "sp", Utterance.class, null,
-				new Select2AnnotationCallback<Utterance>() {
-					@Override
-					public void call(Utterance annotation, Element xmlElement) {
-						Collection<Speaker> speakers = JCasUtil.selectCovered(Speaker.class, annotation);
-						for (Speaker sp : speakers) {
-							String[] whos = xmlElement.attr("who").split(" ");
-							sp.setXmlId(new StringArray(jcas, whos.length));
-							for (int i = 0; i < whos.length; i++)
-								sp.setXmlId(i, whos[i]);
-						}
+		gxr.addMapping("div[type=scene]", Scene.class, (a, e) -> a.setRegular(true));
+		gxr.addMapping("div[type=scene] > head", SceneHeading.class);
+
+		gxr.addMapping("castList > castItem > role", CastFigure.class, (cf, e) -> {
+			List<String> nameList = new LinkedList<String>();
+			List<String> xmlIdList = new LinkedList<String>();
+
+			if (e.hasAttr("xml:id"))
+				xmlIdList.add(e.attr("xml:id"));
+			if (e.hasAttr("sex"))
+				cf.setGender(e.attr("sex"));
+			if (e.hasAttr("age"))
+				cf.setAge(e.attr("age"));
+
+			// gather names
+			nameList.add(e.text());
+			cf.setXmlId(UimaUtil.toStringArray(jcas, xmlIdList));
+			cf.setNames(UimaUtil.toStringArray(jcas, nameList));
+			cf.setDisplayName(cf.getNames(0));
+
+		});
+
+		gxr.addMapping("speaker", Speaker.class);
+		gxr.addMapping("stage", StageDirection.class);
+		gxr.addMapping("l", Speech.class);
+		gxr.addMapping("p", Speech.class);
+		gxr.addMapping("ab", Speech.class);
+
+		gxr.addMapping("sp", Utterance.class, (u, e) -> {
+			Collection<Speaker> speakers = JCasUtil.selectCovered(Speaker.class, u);
+			for (Speaker sp : speakers) {
+				String[] whos = e.attr("who").split(" ");
+				sp.setXmlId(new StringArray(jcas, whos.length));
+				sp.setCastFigure(new FSArray(jcas, whos.length));
+				for (int i = 0; i < whos.length; i++) {
+					// theatreclassique does not use # before ids
+					String xmlid = whos[i];
+					sp.setXmlId(i, xmlid);
+					if (gxr.exists(xmlid)) {
+						sp.setCastFigure(i, (CastFigure) gxr.getAnnotation(xmlid).getValue());
+						u.setCastFigure((CastFigure) gxr.getAnnotation(xmlid).getValue());
 					}
-				});
-		select2Annotation(jcas, root, vis.getAnnotationMap(), "l", Speech.class, mainMatter);
-		select2Annotation(jcas, root, vis.getAnnotationMap(), "ab", Speech.class, mainMatter);
-		select2Annotation(jcas, root, vis.getAnnotationMap(), "p", Speech.class, mainMatter);
+				}
+			}
+		});
 
-		readActsAndScenes(jcas, root, vis.getAnnotationMap(), true);
-		TextGridUtil.readDramatisPersonae(jcas, root, vis.getAnnotationMap());
-
-		readCast(jcas, drama, doc);
+		gxr.read(jcas, file);
 
 		AnnotationUtil.trim(new ArrayList<Figure>(JCasUtil.select(jcas, Figure.class)));
 		try {
@@ -135,6 +153,7 @@ public class TheatreClassicUrlReader extends AbstractDramaUrlReader {
 
 	}
 
+	@Deprecated
 	private static void readCast(JCas jcas, Drama drama, Document doc) {
 		Map<String, CastFigure> idFigureMap = new HashMap<String, CastFigure>();
 		Elements castEntries = doc.select("castList > castItem > role");
@@ -156,6 +175,7 @@ public class TheatreClassicUrlReader extends AbstractDramaUrlReader {
 		}
 	}
 
+	@Deprecated
 	public static void readActs(JCas jcas, Element root, Map<String, XMLElement> map, boolean strict) {
 		for (Act a : select2Annotation(jcas, root, map, "div[type=act]", Act.class, null)) {
 			a.setRegular(true);
@@ -177,6 +197,7 @@ public class TheatreClassicUrlReader extends AbstractDramaUrlReader {
 	 * @param root
 	 * @param map
 	 */
+	@Deprecated
 	public static void readScenes(JCas jcas, Element root, Map<String, XMLElement> map, boolean strict) {
 		select2Annotation(jcas, root, map, "div[type=scene]", Scene.class, null);
 		select2Annotation(jcas, root, map, "div[type=scene] > head", SceneHeading.class, null);
@@ -190,6 +211,7 @@ public class TheatreClassicUrlReader extends AbstractDramaUrlReader {
 		readScenes(jcas, root, map, strict);
 	}
 
+	@Deprecated
 	public static <T extends TOP> T select2Feature(JCas jcas, Document doc, String cssQuery, Class<T> type,
 			String featureName) {
 		if (!doc.select(cssQuery).isEmpty()) {
