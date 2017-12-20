@@ -33,7 +33,7 @@ import de.unistuttgart.ims.uimautil.AnnotationUtil;
 import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
 import de.unistuttgart.quadrama.io.core.GenericXmlReader;
 
-public class TheatreClassicUrlReader extends AbstractDramaUrlReader {
+public class TheatreClassiqueReader extends AbstractDramaUrlReader {
 
 	public static final String PARAM_TEI_COMPAT = "TEI compatibility";
 

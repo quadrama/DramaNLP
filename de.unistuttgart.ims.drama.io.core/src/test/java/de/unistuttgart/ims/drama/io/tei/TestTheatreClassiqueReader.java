@@ -22,17 +22,17 @@ import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Scene;
 import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.io.TestGenerics;
-import de.unistuttgart.quadrama.io.tei.TheatreClassicUrlReader;
+import de.unistuttgart.quadrama.io.tei.TheatreClassiqueReader;
 
-public class TestTheatreClassicUrlReader {
+public class TestTheatreClassiqueReader {
 	CollectionReaderDescription description;
 	JCas jcas;
 
 	@Test
 	public void testTc0623() throws ResourceInitializationException {
-		description = CollectionReaderFactory.createReaderDescription(TheatreClassicUrlReader.class,
-				TheatreClassicUrlReader.PARAM_INPUT, "src/test/resources/tc/tc0623.tei.xml",
-				TheatreClassicUrlReader.PARAM_LANGUAGE, "fr");
+		description = CollectionReaderFactory.createReaderDescription(TheatreClassiqueReader.class,
+				TheatreClassiqueReader.PARAM_INPUT, "src/test/resources/tc/tc0623.tei.xml",
+				TheatreClassiqueReader.PARAM_LANGUAGE, "fr");
 		AggregateBuilder b = new AggregateBuilder();
 		if (TestGenerics.debug)
 			b.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
