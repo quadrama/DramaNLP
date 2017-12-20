@@ -1,4 +1,4 @@
-package de.unistuttgart.quadrama.io.tei.textgrid;
+package de.unistuttgart.quadrama.io.tei;
 
 import static de.unistuttgart.quadrama.io.core.DramaIOUtil.select2Annotation;
 
@@ -17,10 +17,8 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSArray;
 import org.apache.uima.jcas.cas.StringArray;
 import org.apache.uima.resource.ResourceInitializationException;
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.parser.Parser;
 import org.jsoup.select.Elements;
 
 import de.unistuttgart.ims.drama.api.Act;
@@ -34,10 +32,10 @@ import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.StageDirection;
 import de.unistuttgart.ims.drama.api.Utterance;
+import de.unistuttgart.ims.drama.util.UimaUtil;
 import de.unistuttgart.ims.uimautil.AnnotationUtil;
 import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
-import de.unistuttgart.quadrama.io.core.Select2AnnotationCallback;
-import de.unistuttgart.quadrama.io.core.Visitor;
+import de.unistuttgart.quadrama.io.core.GenericXmlReader;
 import de.unistuttgart.quadrama.io.core.type.XMLElement;
 
 public class CoreTEIUrlReader extends AbstractDramaUrlReader {
@@ -54,34 +52,44 @@ public class CoreTEIUrlReader extends AbstractDramaUrlReader {
 
 	@Override
 	public void getNext(final JCas jcas, InputStream file, Drama drama) throws IOException, CollectionException {
-		Document doc = Jsoup.parse(file, "UTF-8", "", Parser.xmlParser());
 
-		Visitor vis = new Visitor(jcas);
+		GenericXmlReader gxr = new GenericXmlReader();
+		gxr.setTextRootSelector("TEI > text");
+		gxr.setPreserveWhitespace(false);
 
-		Element root = doc.select("TEI > text").first();
-		root.traverse(vis);
-		vis.getJCas();
+		gxr.addDocumentMapping("profileDesc > particDesc > listPerson > person", CastFigure.class, (cf, e) -> {
+			cf.setNames(UimaUtil.toStringArray(jcas, e.text()));
+			cf.setXmlId(UimaUtil.toStringArray(jcas, e.attr("xml:id")));
+			cf.setDisplayName(cf.getNames(0));
+		});
 
-		select2Annotation(jcas, root, vis.getAnnotationMap(), "speaker", Speaker.class, null);
-		select2Annotation(jcas, root, vis.getAnnotationMap(), "stage", StageDirection.class, null);
-		select2Annotation(jcas, root, vis.getAnnotationMap(), "sp", Utterance.class, null,
-				new Select2AnnotationCallback<Utterance>() {
-					@Override
-					public void call(Utterance annotation, Element xmlElement) {
-						Collection<Speaker> speakers = JCasUtil.selectCovered(Speaker.class, annotation);
-						for (Speaker sp : speakers) {
-							String[] whos = xmlElement.attr("who").split(" ");
-							sp.setXmlId(new StringArray(jcas, whos.length));
-							for (int i = 0; i < whos.length; i++)
-								sp.setXmlId(i, whos[i]);
-						}
+		// segmentation
+		gxr.addMapping("div[type=act]", Act.class, (a, e) -> a.setRegular(true));
+		gxr.addMapping("div[type=act] > head", ActHeading.class);
+
+		gxr.addMapping("div[type=scene]", Scene.class, (a, e) -> a.setRegular(true));
+		gxr.addMapping("div[type=scene] > head", SceneHeading.class);
+
+		gxr.addMapping("speaker", Speaker.class);
+		gxr.addMapping("stage", StageDirection.class);
+		gxr.addMapping("l", Speech.class);
+
+		gxr.addMapping("sp", Utterance.class, (u, e) -> {
+			Collection<Speaker> speakers = JCasUtil.selectCovered(Speaker.class, u);
+			for (Speaker sp : speakers) {
+				String[] whos = e.attr("who").split(" ");
+				sp.setXmlId(new StringArray(jcas, whos.length));
+				sp.setCastFigure(new FSArray(jcas, whos.length));
+				for (int i = 0; i < whos.length; i++) {
+					String xmlid = whos[i].substring(1);
+					sp.setXmlId(i, xmlid);
+					if (gxr.exists(xmlid)) {
+						sp.setCastFigure(i, (CastFigure) gxr.getAnnotation(xmlid).getValue());
+						u.setCastFigure((CastFigure) gxr.getAnnotation(xmlid).getValue());
 					}
-				});
-		select2Annotation(jcas, root, vis.getAnnotationMap(), "l", Speech.class, null);
-
-		readActsAndScenes(jcas, root, vis.getAnnotationMap(), true);
-
-		readCast(jcas, drama, doc);
+				}
+			}
+		});
 
 		AnnotationUtil.trim(new ArrayList<Figure>(JCasUtil.select(jcas, Figure.class)));
 		AnnotationUtil.trim(new ArrayList<Speech>(JCasUtil.select(jcas, Speech.class)));
@@ -91,6 +99,7 @@ public class CoreTEIUrlReader extends AbstractDramaUrlReader {
 
 	}
 
+	@Deprecated
 	public static void readCast(JCas jcas, Drama drama, Document doc) {
 		Map<String, CastFigure> idFigureMap = new HashMap<String, CastFigure>();
 		Elements castEntries = doc.select("profileDesc > particDesc > listPerson > person");
@@ -119,6 +128,8 @@ public class CoreTEIUrlReader extends AbstractDramaUrlReader {
 		}
 	}
 
+	@Deprecated
+
 	public static void readActs(JCas jcas, Element root, Map<String, XMLElement> map, boolean strict) {
 		for (Act a : select2Annotation(jcas, root, map, "div[type=act]", Act.class, null)) {
 			a.setRegular(true);
@@ -140,6 +151,8 @@ public class CoreTEIUrlReader extends AbstractDramaUrlReader {
 	 * @param root
 	 * @param map
 	 */
+	@Deprecated
+
 	public static void readScenes(JCas jcas, Element root, Map<String, XMLElement> map, boolean strict) {
 		select2Annotation(jcas, root, map, "div[type=scene]", Scene.class, null);
 		select2Annotation(jcas, root, map, "div[type=scene] > head", SceneHeading.class, null);
@@ -148,6 +161,7 @@ public class CoreTEIUrlReader extends AbstractDramaUrlReader {
 			scene.setRegular(true);
 	}
 
+	@Deprecated
 	public static void readActsAndScenes(JCas jcas, Element root, Map<String, XMLElement> map, boolean strict) {
 		readActs(jcas, root, map, strict);
 		readScenes(jcas, root, map, strict);

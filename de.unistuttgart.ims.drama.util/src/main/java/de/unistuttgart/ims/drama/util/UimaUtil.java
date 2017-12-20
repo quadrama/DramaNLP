@@ -17,6 +17,16 @@ public class UimaUtil {
 		while (collIter.hasNext()) {
 			arr.set(i++, collIter.next());
 		}
+		arr.addToIndexes();
+		return arr;
+	}
+
+	public static StringArray toStringArray(JCas jcas, String... coll) {
+		StringArray arr = new StringArray(jcas, coll.length);
+		for (int i = 0; i < coll.length; i++) {
+			arr.set(i, coll[i]);
+		}
+		arr.addToIndexes();
 		return arr;
 	}
 
@@ -25,6 +35,7 @@ public class UimaUtil {
 		for (int i = 0; i < fs.length; i++) {
 			arr.set(i, fs[i]);
 		}
+		arr.addToIndexes();
 		return arr;
 	}
 

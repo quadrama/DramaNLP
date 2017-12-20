@@ -1,4 +1,4 @@
-package de.unistuttgart.quadrama.io.tei.textgrid;
+package de.unistuttgart.ims.drama.io.tei;
 
 import static org.junit.Assert.assertTrue;
 
@@ -16,6 +16,7 @@ import org.junit.Test;
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.io.TestGenerics;
+import de.unistuttgart.quadrama.io.tei.CoreTEIUrlReader;
 
 public class TestCoreTEIUrlReader {
 	static CollectionReaderDescription description;
