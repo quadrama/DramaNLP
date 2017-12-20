@@ -1,28 +1,18 @@
 package de.unistuttgart.quadrama.io.tei.textgrid;
 
-import static de.unistuttgart.quadrama.io.core.DramaIOUtil.select2Annotation;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
-import org.apache.uima.cas.Feature;
-import org.apache.uima.cas.Type;
 import org.apache.uima.collection.CollectionException;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSArray;
 import org.apache.uima.jcas.cas.StringArray;
-import org.apache.uima.jcas.cas.TOP;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import de.unistuttgart.ims.drama.api.Act;
 import de.unistuttgart.ims.drama.api.ActHeading;
@@ -42,7 +32,6 @@ import de.unistuttgart.ims.drama.util.UimaUtil;
 import de.unistuttgart.ims.uimautil.AnnotationUtil;
 import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
 import de.unistuttgart.quadrama.io.core.GenericXmlReader;
-import de.unistuttgart.quadrama.io.core.type.XMLElement;
 
 public class TheatreClassicUrlReader extends AbstractDramaUrlReader {
 
@@ -151,80 +140,6 @@ public class TheatreClassicUrlReader extends AbstractDramaUrlReader {
 		AnnotationUtil.trim(new ArrayList<Scene>(JCasUtil.select(jcas, Scene.class)));
 		AnnotationUtil.trim(new ArrayList<Act>(JCasUtil.select(jcas, Act.class)));
 
-	}
-
-	@Deprecated
-	private static void readCast(JCas jcas, Drama drama, Document doc) {
-		Map<String, CastFigure> idFigureMap = new HashMap<String, CastFigure>();
-		Elements castEntries = doc.select("castList > castItem > role");
-		FSArray castListArray = new FSArray(jcas, castEntries.size());
-		for (int i = 0; i < castEntries.size(); i++) {
-			Element castEntry = castEntries.get(i);
-			CastFigure figure = TEIUtil.parsePersonElement(jcas, castEntry);
-			for (int j = 0; j < figure.getXmlId().size(); j++) {
-				idFigureMap.put(figure.getXmlId(j), figure);
-			}
-			castListArray.set(i, figure);
-		}
-		drama.setCastList(castListArray);
-
-		for (Speaker speaker : JCasUtil.select(jcas, Speaker.class)) {
-			speaker.setCastFigure(new FSArray(jcas, speaker.getXmlId().size()));
-			for (int i = 0; i < speaker.getXmlId().size(); i++)
-				speaker.setCastFigure(i, idFigureMap.get(speaker.getXmlId(i)));
-		}
-	}
-
-	@Deprecated
-	public static void readActs(JCas jcas, Element root, Map<String, XMLElement> map, boolean strict) {
-		for (Act a : select2Annotation(jcas, root, map, "div[type=act]", Act.class, null)) {
-			a.setRegular(true);
-		}
-
-		select2Annotation(jcas, root, map, "div[type=act] > head", ActHeading.class, null);
-	}
-
-	/**
-	 * Detect scenes. The following things are checked:
-	 * <ol>
-	 * <li>if they are explicitly marked with <code>type=scnee</code>, we take
-	 * them and return.</li>
-	 * <li>if Act annotations do exist in the JCas, we search for divs that have
-	 * head annotations.</li>
-	 * </ol>
-	 * 
-	 * @param jcas
-	 * @param root
-	 * @param map
-	 */
-	@Deprecated
-	public static void readScenes(JCas jcas, Element root, Map<String, XMLElement> map, boolean strict) {
-		select2Annotation(jcas, root, map, "div[type=scene]", Scene.class, null);
-		select2Annotation(jcas, root, map, "div[type=scene] > head", SceneHeading.class, null);
-
-		for (Scene scene : JCasUtil.select(jcas, Scene.class))
-			scene.setRegular(true);
-	}
-
-	public static void readActsAndScenes(JCas jcas, Element root, Map<String, XMLElement> map, boolean strict) {
-		readActs(jcas, root, map, strict);
-		readScenes(jcas, root, map, strict);
-	}
-
-	@Deprecated
-	public static <T extends TOP> T select2Feature(JCas jcas, Document doc, String cssQuery, Class<T> type,
-			String featureName) {
-		if (!doc.select(cssQuery).isEmpty()) {
-			Type t = JCasUtil.getType(jcas, type);
-			T fs = jcas.getCas().createFS(t);
-			Feature f = t.getFeatureByBaseName(featureName);
-			if (f.getRange().getName().equalsIgnoreCase("uima.cas.Integer")) {
-				fs.setIntValue(f, Integer.valueOf(doc.select(cssQuery).first().text()));
-			}
-			fs.addToIndexes();
-			return fs;
-		}
-		return null;
 	}
 
 }
