@@ -12,6 +12,7 @@ import org.apache.uima.jcas.JCas;
 import de.unistuttgart.ims.drama.api.Act;
 import de.unistuttgart.ims.drama.api.ActHeading;
 import de.unistuttgart.ims.drama.api.Author;
+import de.unistuttgart.ims.drama.api.CastFigure;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.DramatisPersonae;
 import de.unistuttgart.ims.drama.api.Figure;
@@ -33,6 +34,12 @@ public class TestGenerics {
 			assertNotNull(speaker.getCastFigure());
 			assertFalse(speaker.getCastFigure().size() == 0);
 			assertNotNull(speaker.getCoveredText(), speaker.getCastFigure(0));
+		}
+
+		for (CastFigure cf : JCasUtil.select(jcas, CastFigure.class)) {
+			assertNotNull(cf.getXmlId());
+			assertNotNull(cf.getNames());
+			assertNotNull(cf.getDisplayName());
 		}
 
 	}
