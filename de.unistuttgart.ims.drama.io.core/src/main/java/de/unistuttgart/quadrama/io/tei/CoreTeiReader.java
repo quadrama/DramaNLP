@@ -38,7 +38,7 @@ import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
 import de.unistuttgart.quadrama.io.core.GenericXmlReader;
 import de.unistuttgart.quadrama.io.core.type.XMLElement;
 
-public class CoreTEIUrlReader extends AbstractDramaUrlReader {
+public class CoreTeiReader extends AbstractDramaUrlReader {
 
 	public static final String PARAM_STRICT = "strict";
 

@@ -16,7 +16,7 @@ import org.junit.Test;
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.io.TestGenerics;
-import de.unistuttgart.quadrama.io.tei.CoreTEIUrlReader;
+import de.unistuttgart.quadrama.io.tei.CoreTeiReader;
 
 public class TestCoreTEIUrlReader {
 	static CollectionReaderDescription description;
@@ -24,8 +24,8 @@ public class TestCoreTEIUrlReader {
 
 	@BeforeClass
 	public static void setUp() throws ResourceInitializationException {
-		description = CollectionReaderFactory.createReaderDescription(CoreTEIUrlReader.class,
-				CoreTEIUrlReader.PARAM_INPUT, "src/test/resources/es/Calderon.xml", CoreTEIUrlReader.PARAM_LANGUAGE,
+		description = CollectionReaderFactory.createReaderDescription(CoreTeiReader.class,
+				CoreTeiReader.PARAM_INPUT, "src/test/resources/es/Calderon.xml", CoreTeiReader.PARAM_LANGUAGE,
 				"es");
 		AggregateBuilder b = new AggregateBuilder();
 		if (TestGenerics.debug)
