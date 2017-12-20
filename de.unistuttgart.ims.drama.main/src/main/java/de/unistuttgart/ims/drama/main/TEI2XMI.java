@@ -30,7 +30,7 @@ import de.unistuttgart.quadrama.core.SetReferenceDate;
 import de.unistuttgart.quadrama.core.SpeakerIdentifier;
 import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
 import de.unistuttgart.quadrama.io.core.ExportAsCSV;
-import de.unistuttgart.quadrama.io.tei.textgrid.MapFiguresToCastFigures;
+import de.unistuttgart.quadrama.io.tei.MapFiguresToCastFigures;
 import de.unistuttgart.quadrama.io.tei.textgrid.TextgridTEIUrlReader;
 
 public class TEI2XMI {

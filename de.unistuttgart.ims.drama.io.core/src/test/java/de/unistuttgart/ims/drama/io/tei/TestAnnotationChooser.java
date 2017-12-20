@@ -1,4 +1,4 @@
-package de.unistuttgart.quadrama.io.tei.textgrid;
+package de.unistuttgart.ims.drama.io.tei;
 
 import java.util.TreeSet;
 
