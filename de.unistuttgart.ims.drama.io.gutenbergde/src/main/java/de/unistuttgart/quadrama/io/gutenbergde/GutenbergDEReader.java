@@ -39,7 +39,7 @@ import de.unistuttgart.ims.uimautil.AnnotationUtil;
 import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
 import de.unistuttgart.quadrama.io.core.DramaIOUtil;
 import de.unistuttgart.quadrama.io.core.Visitor;
-import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
+import de.unistuttgart.quadrama.io.core.type.XMLElement;
 
 public class GutenbergDEReader extends AbstractDramaUrlReader {
 
@@ -51,7 +51,7 @@ public class GutenbergDEReader extends AbstractDramaUrlReader {
 		Visitor vis = new Visitor(jcas);
 		doc.traverse(vis);
 		jcas = vis.getJCas();
-		Map<String, HTMLAnnotation> annoMap = vis.getAnnotationMap();
+		Map<String, XMLElement> annoMap = vis.getAnnotationMap();
 
 		// identify front and main matter
 		select2Annotation(jcas, doc, annoMap, "div.gutenb:eq(0)", FrontMatter.class, null);
@@ -73,7 +73,7 @@ public class GutenbergDEReader extends AbstractDramaUrlReader {
 		// they are (in RuJ) marked with class leftmarg
 		Elements elms = doc.select("p.leftmarg");
 		for (Element elm : elms) {
-			HTMLAnnotation hAnno = annoMap.get(elm.cssSelector());
+			XMLElement hAnno = annoMap.get(elm.cssSelector());
 			Utterance utterance = JCasUtil.selectPreceding(Utterance.class, hAnno, 1).get(0);
 			utterance.setEnd(hAnno.getEnd());
 		}
@@ -84,7 +84,7 @@ public class GutenbergDEReader extends AbstractDramaUrlReader {
 		// TODO: convert to range function
 		int currentSceneBegin = -1;
 		int currentActBegin = -1;
-		for (HTMLAnnotation anno : JCasUtil.select(jcas, HTMLAnnotation.class)) {
+		for (XMLElement anno : JCasUtil.select(jcas, XMLElement.class)) {
 			if (anno.getTag().equals("h2") && !anno.getCls().contains("author")) {
 				AnnotationFactory.createAnnotation(jcas, anno.getBegin(), anno.getEnd(), SceneHeading.class);
 				if (currentSceneBegin >= 0) {

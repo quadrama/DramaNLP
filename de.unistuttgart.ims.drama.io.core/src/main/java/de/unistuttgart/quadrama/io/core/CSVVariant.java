@@ -9,12 +9,12 @@ import java.util.Set;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
-import org.apache.uima.jcas.cas.FSArray;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.unistuttgart.ims.drama.api.Act;
 import de.unistuttgart.ims.drama.api.Author;
 import de.unistuttgart.ims.drama.api.CastFigure;
+import de.unistuttgart.ims.drama.api.DiscourseEntity;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.FigureMention;
 import de.unistuttgart.ims.drama.api.Scene;
@@ -65,9 +65,7 @@ public enum CSVVariant {
 
 	private void convertCharacters(JCas jcas, CSVPrinter p) throws IOException {
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
-		FSArray cFigures = drama.getCastList();
-		for (int i = 0; i < cFigures.size(); i++) {
-			CastFigure cf = (CastFigure) cFigures.get(i);
+		for (CastFigure cf : JCasUtil.select(jcas, CastFigure.class)) {
 			p.printRecord(drama.getCollectionId(), drama.getDocumentId(), cf.getNames(0), cf.getXmlId(0),
 					cf.getGender(), cf.getAge());
 		}
@@ -149,17 +147,22 @@ public enum CSVVariant {
 						p.print(length);
 						if (mentionMap.containsKey(token)) {
 							FigureMention fm = selectLongest(mentionMap.get(token));
-							if (used.contains(fm) || fm.getCastFigure() == null) {
+							if (used.contains(fm) || fm.getEntity() == null) {
 								p.print(null);
 								p.print(null);
 							} else {
+								DiscourseEntity de = fm.getEntity(0);
+								CastFigure cf = null;
+								if (de instanceof CastFigure) {
+									cf = (CastFigure) de;
+								}
 								try {
-									p.print(fm.getCastFigure().getNames(0));
+									p.print(cf == null ? null : cf.getNames(0));
 								} catch (Exception e) {
 									p.print(null);
 								}
 								try {
-									p.print(fm.getCastFigure().getXmlId(0));
+									p.print(cf == null ? null : cf.getXmlId(0));
 								} catch (Exception e) {
 									p.print(null);
 								}

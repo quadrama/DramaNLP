@@ -8,6 +8,11 @@
 		<typeDescription>
 			<name>de.unistuttgart.quadrama.io.core.type.HTMLAnnotation</name>
 			<description />
+			<supertypeName>de.unistuttgart.quadrama.io.core.type.XMLElement</supertypeName>
+		</typeDescription>
+		<typeDescription>
+			<name>de.unistuttgart.quadrama.io.core.type.XMLElement</name>
+			<description />
 			<supertypeName>uima.tcas.Annotation</supertypeName>
 			<features>
 				<featureDescription>

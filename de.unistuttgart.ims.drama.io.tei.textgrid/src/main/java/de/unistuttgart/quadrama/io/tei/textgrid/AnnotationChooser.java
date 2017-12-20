@@ -14,9 +14,7 @@ public class AnnotationChooser implements Comparator<Annotation> {
 
 	@Override
 	public int compare(Annotation o1, Annotation o2) {
-		boolean o1Begin = o1.getBegin() == currentPosition, o2Begin = o2.getBegin() == currentPosition,
-				o1End = o1.getEnd() == currentPosition, o2End = o2.getEnd() == currentPosition,
-				o1Empty = o1.getBegin() == o1.getEnd(), o2Empty = o2.getBegin() == o2.getEnd();
+		boolean o1Begin = o1.getBegin() == currentPosition, o2Begin = o2.getBegin() == currentPosition;
 
 		int o1Length = o1.getEnd() - o1.getBegin();
 		int o2Length = o2.getEnd() - o2.getBegin();

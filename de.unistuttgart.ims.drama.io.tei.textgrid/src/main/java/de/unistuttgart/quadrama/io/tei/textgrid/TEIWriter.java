@@ -14,7 +14,7 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
 import de.tudarmstadt.ukp.dkpro.core.api.io.JCasFileWriter_ImplBase;
-import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
+import de.unistuttgart.quadrama.io.core.type.XMLElement;
 
 public class TEIWriter extends JCasFileWriter_ImplBase {
 
@@ -22,18 +22,18 @@ public class TEIWriter extends JCasFileWriter_ImplBase {
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
 		StringBuilder b = new StringBuilder(jcas.getDocumentText());
 
-		Collection<HTMLAnnotation> htmls = JCasUtil.select(jcas, HTMLAnnotation.class);
-		Map<Integer, List<HTMLAnnotation>> positions = new HashMap<Integer, List<HTMLAnnotation>>();
+		Collection<XMLElement> htmls = JCasUtil.select(jcas, XMLElement.class);
+		Map<Integer, List<XMLElement>> positions = new HashMap<Integer, List<XMLElement>>();
 
-		for (HTMLAnnotation h : htmls) {
+		for (XMLElement h : htmls) {
 			if (!positions.containsKey(h.getBegin())) {
-				positions.put(h.getBegin(), new LinkedList<HTMLAnnotation>());
+				positions.put(h.getBegin(), new LinkedList<XMLElement>());
 			}
 			positions.get(h.getBegin()).add(h);
 			if (h.getBegin() != h.getEnd()) {
 
 				if (!positions.containsKey(h.getEnd())) {
-					positions.put(h.getEnd(), new LinkedList<HTMLAnnotation>());
+					positions.put(h.getEnd(), new LinkedList<XMLElement>());
 				}
 				positions.get(h.getEnd()).add(h);
 			}
@@ -43,9 +43,9 @@ public class TEIWriter extends JCasFileWriter_ImplBase {
 		for (int i = b.length() + 10; i >= 0; i--) {
 			final int currentPos = i;
 			if (positions.containsKey(i)) {
-				TreeSet<HTMLAnnotation> ts = new TreeSet<HTMLAnnotation>(new AnnotationChooser(currentPos));
+				TreeSet<XMLElement> ts = new TreeSet<XMLElement>(new AnnotationChooser(currentPos));
 				ts.addAll(positions.get(i));
-				for (HTMLAnnotation h : ts) {
+				for (XMLElement h : ts) {
 					if (h.getEnd() == h.getBegin()) {
 						b.insert(i, "<" + h.getTag() + h.getAttributes() + "/>");
 					} else {

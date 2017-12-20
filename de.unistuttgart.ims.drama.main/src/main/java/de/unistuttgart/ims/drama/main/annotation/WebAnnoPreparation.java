@@ -27,10 +27,10 @@ public class WebAnnoPreparation extends JCasAnnotator_ImplBase {
 		Drama d = JCasUtil.selectSingle(jcas, Drama.class);
 		Map<CastFigure, CoreferenceChain> chains = new HashMap<CastFigure, CoreferenceChain>();
 		Map<CastFigure, CoreferenceLink> lastLink = new HashMap<CastFigure, CoreferenceLink>();
-		for (int i = 0; i < d.getCastList().size(); i++) {
+		for (CastFigure cf : JCasUtil.select(jcas, CastFigure.class)) {
 			CoreferenceChain cc = new CoreferenceChain(jcas);
 			cc.addToIndexes();
-			chains.put(d.getCastList(i), cc);
+			chains.put(cf, cc);
 		}
 
 		for (Speaker speaker : JCasUtil.select(jcas, Speaker.class)) {

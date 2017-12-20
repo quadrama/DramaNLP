@@ -44,7 +44,7 @@ import de.unistuttgart.ims.uimautil.AnnotationUtil;
 import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
 import de.unistuttgart.quadrama.io.core.Select2AnnotationCallback;
 import de.unistuttgart.quadrama.io.core.Visitor;
-import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
+import de.unistuttgart.quadrama.io.core.type.XMLElement;
 
 public class TheatreClassicUrlReader extends AbstractDramaUrlReader {
 
@@ -158,7 +158,7 @@ public class TheatreClassicUrlReader extends AbstractDramaUrlReader {
 		}
 	}
 
-	public static void readActs(JCas jcas, Element root, Map<String, HTMLAnnotation> map, boolean strict) {
+	public static void readActs(JCas jcas, Element root, Map<String, XMLElement> map, boolean strict) {
 		for (Act a : select2Annotation(jcas, root, map, "div[type=act]", Act.class, null)) {
 			a.setRegular(true);
 		}
@@ -179,7 +179,7 @@ public class TheatreClassicUrlReader extends AbstractDramaUrlReader {
 	 * @param root
 	 * @param map
 	 */
-	public static void readScenes(JCas jcas, Element root, Map<String, HTMLAnnotation> map, boolean strict) {
+	public static void readScenes(JCas jcas, Element root, Map<String, XMLElement> map, boolean strict) {
 		select2Annotation(jcas, root, map, "div[type=scene]", Scene.class, null);
 		select2Annotation(jcas, root, map, "div[type=scene] > head", SceneHeading.class, null);
 
@@ -187,7 +187,7 @@ public class TheatreClassicUrlReader extends AbstractDramaUrlReader {
 			scene.setRegular(true);
 	}
 
-	public static void readActsAndScenes(JCas jcas, Element root, Map<String, HTMLAnnotation> map, boolean strict) {
+	public static void readActsAndScenes(JCas jcas, Element root, Map<String, XMLElement> map, boolean strict) {
 		readActs(jcas, root, map, strict);
 		readScenes(jcas, root, map, strict);
 	}
