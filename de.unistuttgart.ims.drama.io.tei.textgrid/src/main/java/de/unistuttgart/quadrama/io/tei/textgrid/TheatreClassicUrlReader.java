@@ -46,11 +46,15 @@ import de.unistuttgart.quadrama.io.core.type.XMLElement;
 
 public class TheatreClassicUrlReader extends AbstractDramaUrlReader {
 
+	public static final String PARAM_TEI_COMPAT = "TEI compatibility";
+
 	public static final String PARAM_STRICT = "strict";
 
 	@ConfigurationParameter(name = PARAM_STRICT, mandatory = false, defaultValue = "false")
 	boolean strict = false;
 
+	@ConfigurationParameter(name = PARAM_TEI_COMPAT, mandatory = false, defaultValue = "false")
+	boolean teiCompatibility = false;
 
 	@Override
 	public void getNext(final JCas jcas, InputStream file, Drama drama) throws IOException, CollectionException {
