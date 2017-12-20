@@ -16,7 +16,7 @@ import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
 import de.unistuttgart.ims.drama.main.Options;
 import de.unistuttgart.quadrama.core.CreateDkproCoreference;
-import de.unistuttgart.quadrama.io.tei.GerDraCorUrlReader;
+import de.unistuttgart.quadrama.io.tei.GerDraCorReader;
 
 public class Export {
 
@@ -39,9 +39,9 @@ public class Export {
 	public static void runMain(String documentId, String[] args) throws UIMAException, IOException {
 		Options options = CliFactory.parseArguments(Options.class, args);
 
-		CollectionReaderDescription reader = CollectionReaderFactory.createReaderDescription(GerDraCorUrlReader.class,
-				GerDraCorUrlReader.PARAM_INPUT, options.getInput(), GerDraCorUrlReader.PARAM_TEI_COMPAT, true,
-				GerDraCorUrlReader.PARAM_CLEANUP, true);
+		CollectionReaderDescription reader = CollectionReaderFactory.createReaderDescription(GerDraCorReader.class,
+				GerDraCorReader.PARAM_INPUT, options.getInput(), GerDraCorReader.PARAM_TEI_COMPAT, true,
+				GerDraCorReader.PARAM_CLEANUP, true);
 
 		AggregateBuilder builder = new AggregateBuilder();
 		builder.add(AnalysisEngineFactory.createEngineDescription(BreakIteratorSegmenter.class,

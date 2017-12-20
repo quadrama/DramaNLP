@@ -31,7 +31,7 @@ import de.unistuttgart.ims.drama.api.SceneHeading;
 import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.io.TestGenerics;
 import de.unistuttgart.ims.drama.util.DramaUtil;
-import de.unistuttgart.quadrama.io.tei.GerDraCorUrlReader;
+import de.unistuttgart.quadrama.io.tei.GerDraCorReader;
 
 public class TestGerDraCorReader {
 	CollectionReaderDescription description;
@@ -39,8 +39,8 @@ public class TestGerDraCorReader {
 
 	@Test
 	public void testNdtw0() throws ResourceInitializationException {
-		description = CollectionReaderFactory.createReaderDescription(GerDraCorUrlReader.class,
-				GerDraCorUrlReader.PARAM_INPUT, "src/test/resources/gerdracor/ndtw.0.xml");
+		description = CollectionReaderFactory.createReaderDescription(GerDraCorReader.class,
+				GerDraCorReader.PARAM_INPUT, "src/test/resources/gerdracor/ndtw.0.xml");
 		AggregateBuilder b = new AggregateBuilder();
 		if (TestGenerics.debug)
 			b.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
@@ -103,8 +103,8 @@ public class TestGerDraCorReader {
 
 	@Test
 	public void testQfxf0() throws ResourceInitializationException {
-		description = CollectionReaderFactory.createReaderDescription(GerDraCorUrlReader.class,
-				GerDraCorUrlReader.PARAM_INPUT, "src/test/resources/gerdracor/qfxf.0.xml");
+		description = CollectionReaderFactory.createReaderDescription(GerDraCorReader.class,
+				GerDraCorReader.PARAM_INPUT, "src/test/resources/gerdracor/qfxf.0.xml");
 		AggregateBuilder b = new AggregateBuilder();
 		if (TestGenerics.debug)
 			b.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
@@ -155,8 +155,8 @@ public class TestGerDraCorReader {
 
 	@Test
 	public void testRjmw0() throws ResourceInitializationException {
-		description = CollectionReaderFactory.createReaderDescription(GerDraCorUrlReader.class,
-				GerDraCorUrlReader.PARAM_INPUT, "src/test/resources/gerdracor/rjmw.0.xml");
+		description = CollectionReaderFactory.createReaderDescription(GerDraCorReader.class,
+				GerDraCorReader.PARAM_INPUT, "src/test/resources/gerdracor/rjmw.0.xml");
 		AggregateBuilder b = new AggregateBuilder();
 		if (TestGenerics.debug)
 			b.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
@@ -211,8 +211,8 @@ public class TestGerDraCorReader {
 
 	@Test
 	public void testR0n20() throws ResourceInitializationException {
-		description = CollectionReaderFactory.createReaderDescription(GerDraCorUrlReader.class,
-				GerDraCorUrlReader.PARAM_INPUT, "src/test/resources/gerdracor/r0n2.0.xml");
+		description = CollectionReaderFactory.createReaderDescription(GerDraCorReader.class,
+				GerDraCorReader.PARAM_INPUT, "src/test/resources/gerdracor/r0n2.0.xml");
 		AggregateBuilder b = new AggregateBuilder();
 		if (TestGenerics.debug)
 			b.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
@@ -232,8 +232,8 @@ public class TestGerDraCorReader {
 
 	@Test
 	public void testV3mx0() throws ResourceInitializationException {
-		description = CollectionReaderFactory.createReaderDescription(GerDraCorUrlReader.class,
-				GerDraCorUrlReader.PARAM_INPUT, "src/test/resources/gerdracor/v3mx.0.xml");
+		description = CollectionReaderFactory.createReaderDescription(GerDraCorReader.class,
+				GerDraCorReader.PARAM_INPUT, "src/test/resources/gerdracor/v3mx.0.xml");
 		AggregateBuilder b = new AggregateBuilder();
 		if (TestGenerics.debug)
 			b.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
