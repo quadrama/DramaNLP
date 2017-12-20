@@ -21,6 +21,22 @@ import de.unistuttgart.quadrama.io.tei.textgrid.GerDraCorUrlReader;
 public class Export {
 
 	public static void main(String[] args) throws ResourceInitializationException, UIMAException, IOException {
+
+		runMain("AnnikaHaag",
+				new String[] { "--input",
+						"/Users/reiterns/Documents/QuaDramA/Coreference Annotations/annotations_last_tei/AH.xml",
+						"--output", "/Users/reiterns/Documents/QuaDramA/Coreference Annotations/WebAnno-Start/AH" });
+		runMain("AnjaSchmelzle",
+				new String[] { "--input",
+						"/Users/reiterns/Documents/QuaDramA/Coreference Annotations/annotations_last_tei/AS.xml",
+						"--output", "/Users/reiterns/Documents/QuaDramA/Coreference Annotations/WebAnno-Start/AS" });
+		runMain("SonjaEberhardt",
+				new String[] { "--input",
+						"/Users/reiterns/Documents/QuaDramA/Coreference Annotations/annotations_last_tei/SE.xml",
+						"--output", "/Users/reiterns/Documents/QuaDramA/Coreference Annotations/WebAnno-Start/SE" });
+	}
+
+	public static void runMain(String documentId, String[] args) throws UIMAException, IOException {
 		Options options = CliFactory.parseArguments(Options.class, args);
 
 		CollectionReaderDescription reader = CollectionReaderFactory.createReaderDescription(GerDraCorUrlReader.class,
