@@ -16,7 +16,7 @@ import com.lexicalscope.jewel.cli.Option;
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiReader;
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.unistuttgart.ims.drama.main.Options;
-import de.unistuttgart.quadrama.io.convert.UIMA2TEI;
+import de.unistuttgart.quadrama.io.convert.Coreference2XmlElement;
 import de.unistuttgart.quadrama.io.tei.TEIWriter;
 
 public class Import {
@@ -31,7 +31,7 @@ public class Import {
 
 		builder.add(AnalysisEngineFactory.createEngineDescription(MergeAnnotations.class,
 				MergeAnnotations.PARAM_SOURCE_LOCATION, options.getInput()));
-		builder.add(AnalysisEngineFactory.createEngineDescription(UIMA2TEI.class));
+		builder.add(AnalysisEngineFactory.createEngineDescription(Coreference2XmlElement.class));
 		builder.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
 				options.getOutput()));
 		builder.add(AnalysisEngineFactory.createEngineDescription(TEIWriter.class, TEIWriter.PARAM_TARGET_LOCATION,

@@ -15,7 +15,7 @@ import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
 import de.unistuttgart.quadrama.io.core.type.XMLElement;
 
-public class UIMA2TEI extends JCasAnnotator_ImplBase {
+public class Coreference2XmlElement extends JCasAnnotator_ImplBase {
 
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
