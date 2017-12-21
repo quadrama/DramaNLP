@@ -5,42 +5,6 @@
 	<version>1</version>
 	<vendor>Nils Reiter</vendor>
 	<types>
-		<typeDescription>
-			<name>de.unistuttgart.quadrama.io.core.type.HTMLAnnotation</name>
-			<description />
-			<supertypeName>de.unistuttgart.quadrama.io.core.type.XMLElement</supertypeName>
-		</typeDescription>
-		<typeDescription>
-			<name>de.unistuttgart.quadrama.io.core.type.XMLElement</name>
-			<description />
-			<supertypeName>uima.tcas.Annotation</supertypeName>
-			<features>
-				<featureDescription>
-					<name>Tag</name>
-					<description />
-					<rangeTypeName>uima.cas.String</rangeTypeName>
-				</featureDescription>
-				<featureDescription>
-					<name>Id</name>
-					<description />
-					<rangeTypeName>uima.cas.String</rangeTypeName>
-				</featureDescription>
-				<featureDescription>
-					<name>Cls</name>
-					<description />
-					<rangeTypeName>uima.cas.String</rangeTypeName>
-				</featureDescription>
-				<featureDescription>
-					<name>Selector</name>
-					<description />
-					<rangeTypeName>uima.cas.String</rangeTypeName>
-				</featureDescription>
-				<featureDescription>
-					<name>Attributes</name>
-					<description />
-					<rangeTypeName>uima.cas.String</rangeTypeName>
-				</featureDescription>
-			</features>
-		</typeDescription>
+		
 	</types>
 </typeSystemDescription>
