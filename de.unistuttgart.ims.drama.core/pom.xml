@@ -60,14 +60,6 @@
     </dependency>
     <dependency>
     	<groupId>de.unistuttgart.ims</groupId>
-    	<artifactId>
-    		de.unistuttgart.ims.drama.io.tei.textgrid
-    	</artifactId>
-    	<version>1.0.0-SNAPSHOT</version>
-    	<scope>test</scope>
-    </dependency>
-    <dependency>
-    	<groupId>de.unistuttgart.ims</groupId>
     	<artifactId>commons</artifactId>
     	<version>0.1</version>
     </dependency>
@@ -89,6 +81,12 @@
     <dependency>
     	<groupId>de.unistuttgart.ims</groupId>
     	<artifactId>uimautil</artifactId>
+    </dependency>
+    <dependency>
+    	<groupId>de.unistuttgart.ims</groupId>
+    	<artifactId>de.unistuttgart.ims.drama.io.core</artifactId>
+    	<scope>test</scope>
+    	<version>1.0.0-SNAPSHOT</version>
     </dependency>
   </dependencies>
   <build>
