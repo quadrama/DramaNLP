@@ -1,4 +1,4 @@
-package de.unistuttgart.quadrama.io.tei.textgrid;
+package de.unistuttgart.quadrama.io.convert;
 
 import java.util.Collection;
 import java.util.Map;
