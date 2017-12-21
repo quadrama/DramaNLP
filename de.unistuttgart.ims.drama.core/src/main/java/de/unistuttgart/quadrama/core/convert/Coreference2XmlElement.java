@@ -1,4 +1,4 @@
-package de.unistuttgart.quadrama.io.convert;
+package de.unistuttgart.quadrama.core.convert;
 
 import java.util.Collection;
 import java.util.Map;
