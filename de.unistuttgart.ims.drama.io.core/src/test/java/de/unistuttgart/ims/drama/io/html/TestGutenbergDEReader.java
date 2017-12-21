@@ -92,7 +92,6 @@ public class TestGutenbergDEReader {
 		JCasIterator iter = SimplePipeline.iteratePipeline(description, AnalysisEngineFactory
 				.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION, "target/doc")).iterator();
 		JCas jcas;
-		Scene scene;
 
 		jcas = iter.next();
 
