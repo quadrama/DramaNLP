@@ -1,4 +1,4 @@
-package de.unistuttgart.quadrama.io.gutenbergde;
+package de.unistuttgart.ims.drama.io.html;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -30,6 +30,7 @@ import de.unistuttgart.ims.drama.api.MainMatter;
 import de.unistuttgart.ims.drama.api.Scene;
 import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.api.Utterance;
+import de.unistuttgart.quadrama.io.html.GutenbergDEReader;
 
 public class TestGutenbergDEReader {
 

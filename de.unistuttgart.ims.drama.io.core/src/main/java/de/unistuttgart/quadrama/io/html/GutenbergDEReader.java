@@ -1,4 +1,4 @@
-package de.unistuttgart.quadrama.io.gutenbergde;
+package de.unistuttgart.quadrama.io.html;
 
 import static de.unistuttgart.quadrama.io.core.DramaIOUtil.select2Annotation;
 import static de.unistuttgart.quadrama.io.core.DramaIOUtil.selectRange2Annotation;
