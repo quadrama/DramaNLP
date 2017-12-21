@@ -15,7 +15,7 @@ import com.lexicalscope.jewel.cli.CliFactory;
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
 import de.unistuttgart.ims.drama.main.Options;
-import de.unistuttgart.quadrama.core.QdCoref2DkproCoref;
+import de.unistuttgart.quadrama.core.convert.QdCoref2DkproCoref;
 import de.unistuttgart.quadrama.io.tei.GerDraCorReader;
 
 public class Export {
