@@ -10,6 +10,7 @@ import java.util.TreeSet;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
+import org.apache.uima.fit.descriptor.TypeCapability;
 import org.apache.uima.fit.factory.AnnotationFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
@@ -22,7 +23,11 @@ import de.unistuttgart.ims.drama.api.DiscourseEntity;
 import de.unistuttgart.ims.drama.api.Mention;
 import de.unistuttgart.ims.drama.api.Speaker;
 
-public class CreateDkproCoreference extends JCasAnnotator_ImplBase {
+@TypeCapability(inputs = { "de.unistuttgart.ims.drama.api.Mention", "de.unistuttgart.ims.drama.api.DiscourseEntity",
+		"de.unistuttgart.ims.drama.api.Speaker" }, outputs = {
+				"de.tudarmstadt.ukp.dkpro.core.api.coref.type.CoreferenceChain",
+				"de.tudarmstadt.ukp.dkpro.core.api.coref.type.CoreferenceLink" })
+public class QdCoref2DkproCoref extends JCasAnnotator_ImplBase {
 
 	public static final String PARAM_INCLUDE_SPEAKERS = "Include Speakers";
 	public static final String PARAM_CLEAN_BEFORE = "Clean";
