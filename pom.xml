@@ -213,7 +213,7 @@
 	</build>
 	<modules>
 		<module>de.unistuttgart.ims.drama.api</module>
-		<module>de.unistuttgart.ims.drama.io.gutenbergde</module>
+		
 		<module>de.unistuttgart.ims.drama.core</module>
 		<module>de.unistuttgart.ims.drama.io.core</module>
 		
