@@ -18,7 +18,7 @@ import de.unistuttgart.quadrama.io.core.type.XMLElement;
 @TypeCapability(inputs = { "de.tudarmstadt.ukp.dkpro.core.api.coref.type.CoreferenceChain",
 		"de.tudarmstadt.ukp.dkpro.core.api.coref.type.CoreferenceLink" }, outputs = {
 				"de.unistuttgart.quadrama.io.core.type.XMLElement" })
-public class Coreference2XmlElement extends JCasAnnotator_ImplBase {
+public class DkproCoreference2XmlElement extends JCasAnnotator_ImplBase {
 
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
