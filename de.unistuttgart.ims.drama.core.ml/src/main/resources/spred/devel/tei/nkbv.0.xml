@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="../schema/tei.css"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Der Widerspenstigen Zähmung</title>
+        <author key="pnd:118696025">Goetz, Hermann Gustav</author>
+      </titleStmt>
+      <publicationStmt>
+        <publisher xml:id="dlina">DLINA</publisher>
+        <idno type="URL">https://dlina.github.io</idno>
+        <idno type="DLINA-ID">333</idno>
+        <availability>
+          <licence>
+            <ab>CC-BY-4.0</ab>
+            <ref target="https://creativecommons.org/licenses/by/4.0/legalcode">Lizenzvertrag</ref>
+          </licence>
+        </availability>
+      </publicationStmt>
+      <sourceDesc>
+        <bibl type="digitalSource">
+          <name>TextGrid Repository</name>
+          <idno type="URL">http://www.textgridrep.org/textgrid:nkbv.0</idno>
+          <availability>
+            <licence>
+              <ab>CC-BY-3.0</ab>
+              <ref target="http://creativecommons.org/licenses/by/3.0/de/legalcode">Lizenzvertrag</ref>
+            </licence>
+          </availability>
+          <bibl type="originalSource">
+            <title>Hermann Goetz: Der Widerspenstigen Zähmung. Komische Oper in vier Akten, nach Shakespeares gleichnamigen Lustspiel frei bearbeitet von Joseph Viktor Widmann, Musik von Hermann Goetz, Zürich, Wien, München: Apollo-Verlag, [ca. 1925].</title>
+            <date type="print"/>
+            <date type="premiere" when="1874"/>
+            <date type="written"/>
+          </bibl>
+        </bibl>
+      </sourceDesc>
+    </fileDesc>
+    <profileDesc>
+      <particDesc>
+        <listPerson>
+          <person xml:id="lucentio">
+            <persName>LUCENTIO</persName>
+          </person>
+          <person xml:id="chor">
+            <persName>CHOR</persName>
+          </person>
+          <person xml:id="baptista">
+            <persName>BAPTISTA</persName>
+          </person>
+          <person xml:id="katharine">
+            <persName>KATHARINE</persName>
+          </person>
+          <person xml:id="nachbarinnen">
+            <persName>NACHBARINNEN</persName>
+          </person>
+          <person xml:id="bianca">
+            <persName>BIANCA</persName>
+          </person>
+          <person xml:id="hortensio">
+            <persName>HORTENSIO</persName>
+          </person>
+          <person xml:id="petruchio">
+            <persName>PETRUCHIO</persName>
+          </person>
+          <person xml:id="grumio">
+            <persName>GRUMIO</persName>
+          </person>
+          <person xml:id="haushofmeister">
+            <persName>HAUSHOFMEISTER</persName>
+          </person>
+          <person xml:id="haushälterin">
+            <persName>HAUSHÄLTERIN</persName>
+          </person>
+          <person xml:id="diener">
+            <persName>DIENER</persName>
+            <persName xml:id="chor_der_diener">CHOR DER DIENER</persName>
+          </person>
+          <person xml:id="schneider">
+            <persName>SCHNEIDER</persName>
+          </person>
+        </listPerson>
+      </particDesc>
+      <textClass>
+        <keywords>
+          <term type="genreTitle">Oper</term>
+        </keywords>
+      </textClass>
+    </profileDesc>
+    <revisionDesc>
+      <listChange>
+        <change who="#dlina" when="2017-01-06T17:46:09.786+01:00">file conversion from source</change>
+      </listChange>
+    </revisionDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div type="text">
+        <head>Joseph Viktor Widmann und Hermann Goetz</head>
+        <head>
+          <ref>[Der Widerspenstigen Zähmung]</ref>
+        </head>
+        <head>Komische Oper in vier Akten</head>
+      </div>
+    </body>
+  </text>
+</TEI>
