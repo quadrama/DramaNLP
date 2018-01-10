@@ -11,6 +11,7 @@ import org.apache.uima.fit.pipeline.SimplePipeline;
 import org.apache.uima.resource.ResourceInitializationException;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
+import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
 import de.unistuttgart.quadrama.io.tei.GerDraCorReader;
 
 public class CreateDevelopmentSet {
@@ -21,6 +22,8 @@ public class CreateDevelopmentSet {
 
 		AggregateBuilder b = new AggregateBuilder();
 		b.add(ConvertToTextLayer.getDescription());
+		b.add(AnalysisEngineFactory.createEngineDescription(BreakIteratorSegmenter.class,
+				BreakIteratorSegmenter.PARAM_WRITE_SENTENCE, false));
 		b.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
 				"src/main/resources/spred/devel/xmi"));
 
