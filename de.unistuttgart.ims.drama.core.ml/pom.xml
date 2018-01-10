@@ -1,94 +1,126 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>de.unistuttgart.ims</groupId>
-    <artifactId>de.unistuttgart.ims.drama</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-  </parent>
-  <artifactId>de.unistuttgart.ims.drama.core.ml</artifactId>
-  <name>de.unistuttgart.ims.drama.core.ml</name>
-  <dependencies>
-  	<dependency>
-  		<groupId>org.cleartk</groupId>
-  		<artifactId>cleartk-ml</artifactId>
-  		<version>2.0.0</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.cleartk</groupId>
-  		<artifactId>cleartk-eval</artifactId>
-  		<version>2.0.0</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.cleartk</groupId>
-  		<artifactId>cleartk-ml-weka</artifactId>
-  		<version>2.0.0</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>de.unistuttgart.ims</groupId>
-  		<artifactId>uimautil</artifactId>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.cleartk</groupId>
-  		<artifactId>cleartk-ml-mallet</artifactId>
-  		<version>2.0.0</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>de.unistuttgart.ims</groupId>
-  		<artifactId>de.unistuttgart.ims.drama.api</artifactId>
-  		<version>1.0.0-SNAPSHOT</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
-  		<artifactId>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>de.unistuttgart.ims</groupId>
+		<artifactId>de.unistuttgart.ims.drama</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>de.unistuttgart.ims.drama.core.ml</artifactId>
+	<name>de.unistuttgart.ims.drama.core.ml</name>
+	<dependencies>
+		<dependency>
+			<groupId>org.cleartk</groupId>
+			<artifactId>cleartk-ml</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.cleartk</groupId>
+			<artifactId>cleartk-eval</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.cleartk</groupId>
+			<artifactId>cleartk-ml-weka</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>de.unistuttgart.ims</groupId>
+			<artifactId>uimautil</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.cleartk</groupId>
+			<artifactId>cleartk-ml-mallet</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>de.unistuttgart.ims</groupId>
+			<artifactId>de.unistuttgart.ims.drama.api</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+			<artifactId>
   			de.tudarmstadt.ukp.dkpro.core.io.xmi-asl
   		</artifactId>
-  	</dependency>
-  	<dependency>
-  		<groupId>de.unistuttgart.ims</groupId>
-  		<artifactId>de.unistuttgart.ims.drama.io.core</artifactId>
-  		<version>1.0.0-SNAPSHOT</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.cleartk</groupId>
-  		<artifactId>cleartk-ml-libsvm</artifactId>
-  		<version>2.0.0</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>com.lexicalscope.jewelcli</groupId>
-  		<artifactId>jewelcli</artifactId>
-  		<version>0.8.9</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>de.unistuttgart.ims</groupId>
-  		<artifactId>de.unistuttgart.ims.drama.core</artifactId>
-  		<version>1.0.0-SNAPSHOT</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>junit</groupId>
-  		<artifactId>junit</artifactId>
-  	</dependency>
-  	<dependency>
-  		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
-  		<artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.unistuttgart.ims</groupId>
+			<artifactId>de.unistuttgart.ims.drama.io.core</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.cleartk</groupId>
+			<artifactId>cleartk-ml-libsvm</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.lexicalscope.jewelcli</groupId>
+			<artifactId>jewelcli</artifactId>
+			<version>0.8.9</version>
+		</dependency>
+		<dependency>
+			<groupId>de.unistuttgart.ims</groupId>
+			<artifactId>de.unistuttgart.ims.drama.core</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+			<artifactId>
   			de.tudarmstadt.ukp.dkpro.core.tokit-asl
   		</artifactId>
-  	</dependency>
-  	<dependency>
-  		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
-  		<artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+			<artifactId>
   			de.tudarmstadt.ukp.dkpro.core.api.ner-asl
   		</artifactId>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.apache.commons</groupId>
-  		<artifactId>commons-collections4</artifactId>
-  		<version>4.0</version>
-  		<scope>test</scope>
-  	</dependency>
-  	<dependency>
-  		<groupId>de.unistuttgart.ims</groupId>
-  		<artifactId>cleartk-util</artifactId>
-  		<version>0.1.0</version>
-  	</dependency>
-  </dependencies>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+			<version>4.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>de.unistuttgart.ims</groupId>
+			<artifactId>cleartk-util</artifactId>
+			<version>0.1.0</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.uima</groupId>
+				<artifactId>jcasgen-maven-plugin</artifactId>
+				<version>2.8.1</version>  <!-- change this to the latest version -->
+				<executions>
+					<execution>
+						<goals>
+							<goal>generate</goal>
+						</goals>  <!-- this is the only goal -->
+						<!-- runs in phase process-resources by default -->
+						<configuration>
+							<!-- REQUIRED -->
+							<typeSystemIncludes>
+								<!-- one or more ant-like file patterns identifying top level descriptors -->
+								<typeSystemInclude>src/main/resources/Types.xml</typeSystemInclude>
+							</typeSystemIncludes>
+							<!-- true or false, default = false -->
+							<!-- if true, then although the complete merged type system will be 
+								created internally, only those types whose definition is contained within 
+								this maven project will be generated. The others will be presumed to be available 
+								via other projects. -->
+							<!-- OPTIONAL -->
+							<limitToProject>true</limitToProject>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
