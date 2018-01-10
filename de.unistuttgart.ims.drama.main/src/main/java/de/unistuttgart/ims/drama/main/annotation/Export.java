@@ -15,7 +15,7 @@ import com.lexicalscope.jewel.cli.CliFactory;
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
 import de.unistuttgart.ims.drama.main.Options;
-import de.unistuttgart.quadrama.core.convert.QdCoref2DkproCoref;
+import de.unistuttgart.quadrama.core.convert.QdCoreference2DkproCoreference;
 import de.unistuttgart.quadrama.io.tei.GerDraCorReader;
 
 public class Export {
@@ -46,8 +46,8 @@ public class Export {
 		AggregateBuilder builder = new AggregateBuilder();
 		builder.add(AnalysisEngineFactory.createEngineDescription(BreakIteratorSegmenter.class,
 				BreakIteratorSegmenter.PARAM_WRITE_SENTENCE, false));
-		builder.add(AnalysisEngineFactory.createEngineDescription(QdCoref2DkproCoref.class,
-				QdCoref2DkproCoref.PARAM_INCLUDE_SPEAKERS, true));
+		builder.add(AnalysisEngineFactory.createEngineDescription(QdCoreference2DkproCoreference.class,
+				QdCoreference2DkproCoreference.PARAM_INCLUDE_SPEAKERS, true));
 		builder.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
 				options.getOutput()));
 

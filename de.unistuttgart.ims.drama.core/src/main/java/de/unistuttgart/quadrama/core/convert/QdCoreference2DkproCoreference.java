@@ -27,7 +27,7 @@ import de.unistuttgart.ims.drama.api.Speaker;
 		"de.unistuttgart.ims.drama.api.Speaker" }, outputs = {
 				"de.tudarmstadt.ukp.dkpro.core.api.coref.type.CoreferenceChain",
 				"de.tudarmstadt.ukp.dkpro.core.api.coref.type.CoreferenceLink" })
-public class QdCoref2DkproCoref extends JCasAnnotator_ImplBase {
+public class QdCoreference2DkproCoreference extends JCasAnnotator_ImplBase {
 
 	public static final String PARAM_INCLUDE_SPEAKERS = "Include Speakers";
 	public static final String PARAM_CLEAN_BEFORE = "Clean";
