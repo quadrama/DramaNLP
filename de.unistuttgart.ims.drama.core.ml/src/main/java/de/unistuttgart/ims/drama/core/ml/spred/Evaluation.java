@@ -10,7 +10,6 @@ import java.util.logging.Logger;
 
 import org.apache.uima.cas.CAS;
 import org.apache.uima.collection.CollectionReader;
-import org.apache.uima.fit.component.ViewCreatorAnnotator;
 import org.apache.uima.fit.factory.AggregateBuilder;
 import org.apache.uima.fit.factory.AnalysisEngineFactory;
 import org.apache.uima.fit.factory.CollectionReaderFactory;
@@ -27,13 +26,14 @@ import org.cleartk.ml.jar.GenericJarClassifierFactory;
 import org.cleartk.ml.jar.JarClassifierBuilder;
 import org.cleartk.ml.jar.Train;
 import org.cleartk.ml.mallet.MalletCrfStringOutcomeDataWriter;
-import org.cleartk.util.ae.UriToDocumentTextAnnotator;
 import org.cleartk.util.ae.UriToXmiCasAnnotator;
 import org.cleartk.util.cr.UriCollectionReader;
 
 import com.google.common.base.Function;
 
+import de.unistuttgart.ims.drama.core.ml.CopyView;
 import de.unistuttgart.ims.drama.core.ml.api.TextLayer;
+import de.unistuttgart.ims.uimautil.ClearAnnotation;
 
 public class Evaluation extends Evaluation_ImplBase<File, AnnotationStatistics<String>> {
 
@@ -56,7 +56,7 @@ public class Evaluation extends Evaluation_ImplBase<File, AnnotationStatistics<S
 
 		// run cross validation
 		Evaluation evaluator = new Evaluation(new File("target"));
-		List<AnnotationStatistics<String>> foldStats = evaluator.crossValidation(trainFiles, 2);
+		List<AnnotationStatistics<String>> foldStats = evaluator.crossValidation(trainFiles, 5);
 		AnnotationStatistics<String> crossValidationStats = AnnotationStatistics.addAll(foldStats);
 
 		System.err.println("Cross Validation Results:");
@@ -120,14 +120,15 @@ public class Evaluation extends Evaluation_ImplBase<File, AnnotationStatistics<S
 		// * create the gold view
 		// * load the text
 		// * load the MASC annotations
-		aggregate.add(AnalysisEngineFactory.createEngineDescription(ViewCreatorAnnotator.class,
-				ViewCreatorAnnotator.PARAM_VIEW_NAME, goldViewName));
+		aggregate.add(AnalysisEngineFactory.createEngineDescription(CopyView.class,
+				CopyView.PARAM_DESTINATION_VIEW_NAME, goldViewName, CopyView.PARAM_SOURCE_VIEW_NAME, defaultViewName));
 
 		// Annotators processing the default (system) view:
 		// * load the text
 		// * parse sentences, tokens, part-of-speech tags
 		// * run the named entity chunker
-		aggregate.add(UriToDocumentTextAnnotator.getDescription());
+		aggregate.add(AnalysisEngineFactory.createEngineDescription(ClearAnnotation.class, ClearAnnotation.PARAM_TYPE,
+				TextLayer.class));
 		aggregate.add(AnalysisEngineFactory.createEngineDescription(ClearTkStructureAnnotator.class,
 				CleartkSequenceAnnotator.PARAM_IS_TRAINING, false,
 				GenericJarClassifierFactory.PARAM_CLASSIFIER_JAR_PATH,
@@ -136,7 +137,7 @@ public class Evaluation extends Evaluation_ImplBase<File, AnnotationStatistics<S
 		// prepare the evaluation statistics
 		AnnotationStatistics<String> stats = new AnnotationStatistics<String>();
 		Function<TextLayer, ?> getSpan = AnnotationStatistics.annotationToSpan();
-		Function<TextLayer, String> getCategory = AnnotationStatistics.annotationToFeatureValue("mentionType");
+		Function<TextLayer, String> getCategory = AnnotationStatistics.annotationToFeatureValue("Name");
 
 		// iterate over each JCas to be evaluated
 		JCasIterator iter = new JCasIterator(collectionReader, aggregate.createAggregate());
