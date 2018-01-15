@@ -22,8 +22,6 @@ import org.cleartk.ml.feature.extractor.FeatureExtractor1;
 import org.cleartk.ml.feature.function.CapitalTypeFeatureFunction;
 import org.cleartk.ml.feature.function.CharacterCategoryPatternFunction;
 import org.cleartk.ml.feature.function.CharacterCategoryPatternFunction.PatternType;
-import org.cleartk.ml.feature.function.CharacterNgramFeatureFunction;
-import org.cleartk.ml.feature.function.CharacterNgramFeatureFunction.Orientation;
 import org.cleartk.ml.feature.function.FeatureFunctionExtractor;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
@@ -47,8 +45,7 @@ public class ClearTkStructureAnnotator extends CleartkSequenceAnnotator<String> 
 		this.extractor = new CombinedExtractor1<Token>(
 				new FeatureFunctionExtractor<Token>(new CoveredTextExtractor<Token>(),
 						new CharacterCategoryPatternFunction<Token>(PatternType.REPEATS_MERGED),
-						new CapitalTypeFeatureFunction(),
-						new CharacterNgramFeatureFunction(Orientation.RIGHT_TO_LEFT, 0, 3, 6, true)),
+						new CapitalTypeFeatureFunction()),
 				new RelativeAnnotationPositionExtractor<Token>());
 		// the context feature extractor: the features above for the 3 preceding
 		// and 3 following tokens
