@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema elementFormDefault="qualified"
-	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:schema elementFormDefault="qualified" targetNamespace='http://www.tei-c.org/ns/1.0' xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.tei-c.org/ns/1.0">
 
 
 
@@ -13,10 +12,10 @@
 		<xsd:complexType mixed="false">
 			<xsd:sequence>
 				<xsd:element name="teiHeader" maxOccurs="1"
-					minOccurs="0" type="teiHeaderType">
+					minOccurs="0" type="tns:teiHeaderType">
 				</xsd:element>
 				<xsd:element name="text" maxOccurs="1" minOccurs="1"
-					type="textType">
+					type="tns:textType">
 
 				</xsd:element>
 			</xsd:sequence>
@@ -26,7 +25,7 @@
 	<xsd:complexType name="textType" mixed="false">
 		<xsd:sequence>
 			<xsd:element name="div" maxOccurs="unbounded" minOccurs="0"
-				type="divType">
+				type="tns:divType">
 
 			</xsd:element>
 		</xsd:sequence>
@@ -37,7 +36,7 @@
 			<xsd:element name="head" type="xsd:string" maxOccurs="1"
 				minOccurs="0">
 			</xsd:element>
-			<xsd:choice maxOccurs="unbounded" minOccurs="0"><xsd:element name="div" type="divType"></xsd:element><xsd:element name="sp" type="spType"></xsd:element></xsd:choice>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0"><xsd:element name="div" type="tns:divType"></xsd:element><xsd:element name="sp" type="tns:spType"></xsd:element></xsd:choice>
 		</xsd:sequence>
 		<xsd:attribute name="type" type="xsd:string"></xsd:attribute>
 	</xsd:complexType>
@@ -64,14 +63,14 @@
 
 	<xsd:complexType name="teiHeaderType">
 		<xsd:sequence>
-			<xsd:element name="fileDesc" type="fileDescType" maxOccurs="1" minOccurs="0"></xsd:element>
+			<xsd:element name="fileDesc" type="tns:fileDescType" maxOccurs="1" minOccurs="0"></xsd:element>
 		</xsd:sequence>
 	</xsd:complexType>
 
 	<xsd:complexType name="fileDescType">
 		<xsd:sequence>
 			<xsd:element name="titleStmt" type="xsd:string" maxOccurs="1" minOccurs="0"></xsd:element>
-			<xsd:element name="publicationStmt" type="publicationStmtType" maxOccurs="1" minOccurs="0">
+			<xsd:element name="publicationStmt" type="tns:publicationStmtType" maxOccurs="1" minOccurs="0">
 			</xsd:element>
 		</xsd:sequence>
 	</xsd:complexType>
@@ -81,7 +80,7 @@
 				<xsd:complexType>
 					<xsd:simpleContent>
 						<xsd:extension base="xsd:string">
-							<xsd:attribute ref="type"></xsd:attribute>
+							<xsd:attribute ref="tns:type"></xsd:attribute>
 						</xsd:extension>
 					</xsd:simpleContent>
 				</xsd:complexType>
