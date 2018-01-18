@@ -76,13 +76,10 @@
 	</xsd:complexType>
 	<xsd:complexType name="publicationStmtType">
 		<xsd:sequence>
-			<xsd:element name="idno" maxOccurs="unbounded" minOccurs="0">
+			<xsd:element name="idno" maxOccurs="unbounded"
+				minOccurs="0">
 				<xsd:complexType>
-					<xsd:simpleContent>
-						<xsd:extension base="xsd:string">
-							<xsd:attribute ref="tns:type"></xsd:attribute>
-						</xsd:extension>
-					</xsd:simpleContent>
+					<xsd:attribute ref="tns:type"></xsd:attribute>
 				</xsd:complexType>
 			</xsd:element>
 		</xsd:sequence>
