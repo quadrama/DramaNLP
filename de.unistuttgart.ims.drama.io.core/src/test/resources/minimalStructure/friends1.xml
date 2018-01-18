@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI>
+	<teiHeader>
+		<fileDesc>
+			<publicationStmt>
+				<idno type="quadramaX">1</idno>
+			</publicationStmt>
+		</fileDesc>
+	</teiHeader>
+	<text>
+		<div type="scene">
+			<sp who="#monica">
+				<speaker>monica</speaker>
+				<p> There's nothing to tell! He's just some guy I work with!</p>
+			</sp>
+			<sp who="#joey">
+				<speaker>joey</speaker>
+				<p> C'mon, you're going out with the guy! There's gotta be something
+					wrong with him!
+				</p>
+			</sp>
+			<sp who="#chandler">
+				<speaker>chandler</speaker>
+				<p> All right Joey, be nice. So does he have a hump? A hump and a
+					hairpiece?
+				</p>
+			</sp>
+			<sp who="#phoebe">
+				<speaker>phoebe</speaker>
+				<p>
+					Wait, does he eat chalk?
+					<stage>They all stare, bemused.</stage>
+				</p>
+			</sp>
+		</div>
+	</text>
+</TEI>
