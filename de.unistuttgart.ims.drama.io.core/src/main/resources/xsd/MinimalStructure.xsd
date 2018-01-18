@@ -79,7 +79,11 @@
 			<xsd:element name="idno" maxOccurs="unbounded"
 				minOccurs="0">
 				<xsd:complexType>
-					<xsd:attribute ref="tns:type"></xsd:attribute>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:string">
+							<xsd:attribute ref="tns:type"></xsd:attribute>
+						</xsd:extension>
+					</xsd:simpleContent>
 				</xsd:complexType>
 			</xsd:element>
 		</xsd:sequence>
