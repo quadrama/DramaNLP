@@ -179,10 +179,10 @@ public enum CSVVariant {
 		}
 	}
 
-	private FigureMention selectLongest(Collection<FigureMention> coll) {
+	private <T extends Annotation> T selectLongest(Collection<T> coll) {
 		int l = -1;
-		FigureMention fm = null;
-		for (FigureMention ment : coll) {
+		T fm = null;
+		for (T ment : coll) {
 			int cl = ment.getEnd() - ment.getBegin();
 			if (cl > l) {
 				l = cl;
