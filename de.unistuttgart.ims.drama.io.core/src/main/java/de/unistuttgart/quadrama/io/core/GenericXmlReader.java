@@ -142,7 +142,7 @@ public class GenericXmlReader {
 	 *            The type to be created. If it is a sup type of
 	 *            {@link Annotation}, begin and end are set.
 	 */
-	public <T extends FeatureStructure> void addMapping(String selector, Class<T> target) {
+	public <T extends TOP> void addMapping(String selector, Class<T> target) {
 		elementMapping.add(new XmlElementMapping<T>(selector, target));
 	}
 
@@ -157,13 +157,11 @@ public class GenericXmlReader {
 	 * @param callback
 	 *            A function that is called for each created annotation.
 	 */
-	public <T extends FeatureStructure> void addMapping(String selector, Class<T> target,
-			BiConsumer<T, Element> callback) {
+	public <T extends TOP> void addMapping(String selector, Class<T> target, BiConsumer<T, Element> callback) {
 		elementMapping.add(new XmlElementMapping<T>(selector, target, callback));
 	}
 
-	public <T extends FeatureStructure> void addDocumentMapping(String selector, Class<T> target,
-			BiConsumer<T, Element> callback) {
+	public <T extends TOP> void addDocumentMapping(String selector, Class<T> target, BiConsumer<T, Element> callback) {
 		elementMapping.add(new XmlElementMapping<T>(selector, target, callback, true));
 	}
 
@@ -247,7 +245,7 @@ public class GenericXmlReader {
 
 	}
 
-	public class XmlElementMapping<T extends FeatureStructure> {
+	public class XmlElementMapping<T extends TOP> {
 
 		final String selector;
 		final Class<T> targetClass;
