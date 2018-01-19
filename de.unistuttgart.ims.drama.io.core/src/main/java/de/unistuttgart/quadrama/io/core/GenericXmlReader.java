@@ -240,16 +240,16 @@ public class GenericXmlReader {
 			this.createFeatureStructures = createFeatureStructures;
 		}
 
-		public Class<T> getTargetClass() {
-			return this.targetClass;
-		}
-
 		public Rule(String selector, Class<T> targetClass, BiConsumer<T, Element> callback) {
 			this.selector = selector;
 			this.callback = callback;
 			this.targetClass = targetClass;
 			this.global = false;
 			this.createFeatureStructures = true;
+		}
+
+		public Class<T> getTargetClass() {
+			return this.targetClass;
 		}
 
 		public String getSelector() {
@@ -266,7 +266,7 @@ public class GenericXmlReader {
 
 		@Override
 		public String toString() {
-			return getSelector();
+			return getSelector() + " -> " + getTargetClass().getName();
 		}
 
 		public BiConsumer<T, Element> getCallback() {
