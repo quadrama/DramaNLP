@@ -168,4 +168,14 @@ public class DramaUtil {
 			return d;
 		}
 	}
+
+	public static <T extends TOP> T getOrCreate(JCas jcas, Class<T> targetClass) {
+		if (JCasUtil.exists(jcas, targetClass)) {
+			return JCasUtil.selectSingle(jcas, targetClass);
+		} else {
+			T annotation = jcas.getCas().createFS(JCasUtil.getType(jcas, targetClass));
+			jcas.getCas().addFsToIndexes(annotation);
+			return annotation;
+		}
+	}
 }

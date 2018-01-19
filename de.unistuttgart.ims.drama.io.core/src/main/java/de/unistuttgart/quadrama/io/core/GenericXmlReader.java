@@ -14,6 +14,7 @@ import java.util.function.BiConsumer;
 import org.apache.uima.cas.FeatureStructure;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.cas.TOP;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -178,31 +179,44 @@ public class GenericXmlReader {
 		return idRegistry.containsKey(id);
 	}
 
-	public <T extends FeatureStructure> Collection<T> select2Annotation(JCas jcas, Element rootElement,
-			Map<String, XMLElement> annoMap, XmlElementMapping<T> mapping) {
-		HashSet<T> set = new HashSet<T>();
-		Elements elms = rootElement.select(mapping.getSelector());
-		for (Element elm : elms) {
-			XMLElement hAnno = annoMap.get(elm.cssSelector());
-			if (elm.hasText() || elm.childNodeSize() > 0) {
-				T annotation = jcas.getCas().createFS(JCasUtil.getType(jcas, mapping.getTargetClass()));
+	private <T extends TOP> T getFeatureStructure(JCas jcas, XMLElement hAnno, Element elm,
+			XmlElementMapping<T> mapping) {
+		T annotation = null;
+		if (mapping.isCreateFeatureStructures()) {
+			annotation = jcas.getCas().createFS(JCasUtil.getType(jcas, mapping.getTargetClass()));
 				jcas.getCas().addFsToIndexes(annotation);
 				if (Annotation.class.isAssignableFrom(mapping.getTargetClass())) {
 					((Annotation) annotation).setBegin(hAnno.getBegin());
 					((Annotation) annotation).setEnd(hAnno.getEnd());
 				}
 
-				set.add(annotation);
-
 				if (elm.hasAttr("xml:id") && !exists(elm.attr("xml:id"))) {
 					String id = elm.attr("xml:id");
 					idRegistry.put(id, new AbstractMap.SimpleEntry<Element, FeatureStructure>(elm, annotation));
 				}
 
-				if (mapping.getCallback() != null)
-					mapping.getCallback().accept(annotation, elm);
+		} else if (mapping.getTargetClass() == Drama.class) {
+			annotation = DramaUtil.getOrCreate(jcas, mapping.getTargetClass());
+		}
+		return annotation;
+	}
 
+	public <T extends TOP> Collection<T> select2Annotation(JCas jcas, Element rootElement,
+			Map<String, XMLElement> annoMap, XmlElementMapping<T> mapping) {
+		HashSet<T> set = new HashSet<T>();
+		Elements elms = rootElement.select(mapping.getSelector());
+		for (Element elm : elms) {
+			XMLElement hAnno = annoMap.get(elm.cssSelector());
+
+			T annotation = getFeatureStructure(jcas, hAnno, elm, mapping);
+
+			set.add(annotation);
+			if (mapping.getCallback() != null && annotation != null)
+				mapping.getCallback().accept(annotation, elm);
+			else if (mapping.getCallback() != null && mapping.getTargetClass() == JCas.class) {
 			}
+			// mapping.getCallback().accept(jcas, elm);
+
 		}
 		return set;
 	}
