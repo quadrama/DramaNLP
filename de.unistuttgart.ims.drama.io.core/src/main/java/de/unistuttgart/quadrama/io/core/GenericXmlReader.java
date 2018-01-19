@@ -92,7 +92,7 @@ public class GenericXmlReader {
 
 		// process rules
 		for (Rule<?> mapping : elementMapping) {
-			select2Annotation(jcas, (mapping.isGlobal() ? doc : root), vis.getAnnotationMap(), mapping);
+			applyRule(jcas, (mapping.isGlobal() ? doc : root), vis.getAnnotationMap(), mapping);
 		}
 
 		return jcas;
@@ -189,7 +189,7 @@ public class GenericXmlReader {
 		return annotation;
 	}
 
-	protected <T extends TOP> void select2Annotation(JCas jcas, Element rootElement, Map<String, XMLElement> annoMap,
+	protected <T extends TOP> void applyRule(JCas jcas, Element rootElement, Map<String, XMLElement> annoMap,
 			Rule<T> mapping) {
 		Elements elms = rootElement.select(mapping.getSelector());
 		for (Element elm : elms) {
