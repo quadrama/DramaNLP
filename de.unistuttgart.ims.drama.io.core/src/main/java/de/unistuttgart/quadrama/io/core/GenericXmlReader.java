@@ -17,11 +17,15 @@ import org.apache.uima.jcas.tcas.Annotation;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.nodes.Node;
+import org.jsoup.nodes.XmlDeclaration;
 import org.jsoup.parser.Parser;
 import org.jsoup.select.Elements;
 
 import de.unistuttgart.ims.drama.util.DramaUtil;
+import de.unistuttgart.ims.drama.util.UimaUtil;
 import de.unistuttgart.quadrama.io.core.type.XMLElement;
+import de.unistuttgart.quadrama.io.core.type.XMLParsingDescription;
 
 /**
  * This class is used to generate a UIMA document from arbitrary XML. The core
@@ -99,6 +103,19 @@ public class GenericXmlReader<D extends TOP> {
 		for (Rule<?> mapping : elementMapping) {
 			applyRule(jcas, (mapping.isGlobal() ? doc : root), vis.getAnnotationMap(), mapping);
 		}
+
+		// store xml declarations
+		XMLParsingDescription parsingDescription = new XMLParsingDescription(jcas);
+		parsingDescription.setEncoding(doc.charset().name());
+		Node rootNode = doc.root();
+		List<String> declarations = new LinkedList<String>();
+		for (Node topNode : rootNode.childNodes()) {
+			if (topNode instanceof XmlDeclaration) {
+				XmlDeclaration xmlDecl = (XmlDeclaration) topNode;
+				declarations.add(xmlDecl.getWholeDeclaration());
+			}
+		}
+		parsingDescription.setXmlDeclarations(UimaUtil.toStringArray(jcas, declarations));
 
 		return jcas;
 	}
