@@ -98,46 +98,6 @@ public class GenericXmlReader {
 		return jcas;
 	}
 
-	/**
-	 * Creates a mapping from XML elements to UIMA annotations.
-	 * 
-	 * @param selector
-	 *            The CSS selector specifying the XML elements
-	 * @param target
-	 *            The type to be created. If it is a sup type of
-	 *            {@link Annotation}, begin and end are set.
-	 */
-	@Deprecated
-	public <T extends TOP> void addMapping(String selector, Class<T> target) {
-		elementMapping.add(new Rule<T>(selector, target, null));
-	}
-
-	/**
-	 * Creates a mapping from XML elements to UIMA annotations
-	 * 
-	 * @param selector
-	 *            The CSS selector specifying the XML elements
-	 * @param target
-	 *            The type to be created. If it is a sup type of
-	 *            {@link Annotation}, begin and end are set.
-	 * @param callback
-	 *            A function that is called for each created annotation.
-	 */
-	@Deprecated
-	public <T extends TOP> void addMapping(String selector, Class<T> target, BiConsumer<T, Element> callback) {
-		elementMapping.add(new Rule<T>(selector, target, callback));
-	}
-
-	@Deprecated
-	public <T extends TOP> void addDocumentMapping(String selector, Class<T> target, BiConsumer<T, Element> callback) {
-		elementMapping.add(new Rule<T>(selector, target, callback, true));
-	}
-
-	@Deprecated
-	public <T extends TOP> void addMappingAction(String selector, Class<T> target, BiConsumer<T, Element> callback) {
-		elementMapping.add(new Rule<T>(selector, target, callback, true));
-	}
-
 	public void addRule(Rule<?> rule) {
 		elementMapping.add(rule);
 	}
