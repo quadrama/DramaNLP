@@ -179,6 +179,14 @@ public enum CSVVariant {
 		}
 	}
 
+	/**
+	 * This function returns the longest from a given collection of annotations.
+	 * Length measured as <code>end - begin</code>.
+	 * 
+	 * @param coll
+	 *            The annotation collection
+	 * @return The longest of the annotation.
+	 */
 	private <T extends Annotation> T selectLongest(Collection<T> coll) {
 		int l = -1;
 		T fm = null;
