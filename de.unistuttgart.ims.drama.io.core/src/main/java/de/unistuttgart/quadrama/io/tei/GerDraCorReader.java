@@ -63,40 +63,40 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 		gxr.setPreserveWhitespace(teiCompatibility);
 
 		// title
-		gxr.addAction("titleStmt > title:first-child", Drama.class, (d, e) -> d.setDocumentTitle(e.text()));
+		// gxr.addAction("titleStmt > title:first-child", Drama.class, (d, e) ->
+		// d.setDocumentTitle(e.text()));
+
+		gxr.addMappingAction("titleStmt > title:first-child", Drama.class, (d, e) -> d.setDocumentTitle(e.text()));
 
 		// id
-		gxr.addAction("sourceDesc > bibl > idno[type=URL]", Drama.class,
+		gxr.addMappingAction("sourceDesc > bibl > idno[type=URL]", Drama.class,
 				(d, e) -> d.setDocumentId(e.text().substring(36)));
 
 		// author
-		gxr.addAction("author", (jc, e) -> {
-			Author author = new Author(jcas);
+		gxr.addDocumentMapping("author", Author.class, (author, e) -> {
 			author.setName(e.text());
-			if (e.hasAttr("key")) {
+			if (e.hasAttr("key"))
 				author.setPnd(e.attr("key").replace("pnd:", ""));
-			}
-			author.addToIndexes();
+
 		});
 
 		// translator
-		gxr.addAction("editor[role=translator]", (j, e) -> {
-			Translator transl = new Translator(jcas);
+		gxr.addDocumentMapping("editor[role=translator]", Translator.class, (transl, e) -> {
 			transl.setName(e.text());
 			if (e.hasAttr("key"))
 				transl.setPnd(e.attr("key").replace("pnd:", ""));
 		});
 
 		// date printed
-		gxr.addAction("date[type=print][when]", Drama.class,
+		gxr.addMappingAction("date[type=print][when]", Drama.class,
 				(d, e) -> d.setDatePrinted(Integer.valueOf(e.attr("when"))));
 
 		// date written
-		gxr.addAction("date[type=written][when]", Drama.class,
+		gxr.addMappingAction("date[type=written][when]", Drama.class,
 				(d, e) -> d.setDateWritten(Integer.valueOf(e.attr("when"))));
 
 		// date premiere
-		gxr.addAction("date[type=premiere][when]", Drama.class,
+		gxr.addMappingAction("date[type=premiere][when]", Drama.class,
 				(d, e) -> d.setDatePremiere(Integer.valueOf(e.attr("when"))));
 
 		gxr.addMapping("front", FrontMatter.class);
