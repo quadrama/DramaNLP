@@ -25,8 +25,32 @@ import de.unistuttgart.ims.drama.api.Utterance;
 import de.unistuttgart.ims.drama.util.DramaUtil;
 
 public enum CSVVariant {
-	UtterancesWithTokens, Segments, Metadata, Characters;
+	/**
+	 * The default format. Table contains utterances (with begin/end) and their
+	 * tokens.
+	 */
+	UtterancesWithTokens,
+	/**
+	 * Table with act and scene boundaries (character positions)
+	 */
+	Segments,
+	/**
+	 * Drama meta data, as it is defined in the play
+	 */
+	Metadata,
+	/**
+	 * The list of characters defined in the play
+	 */
+	Characters;
 
+	/**
+	 * Prints a record representing the header onto p
+	 * 
+	 * @param p
+	 *            The target
+	 * @throws IOException
+	 *             If an I/O error occurs
+	 */
 	public void header(CSVPrinter p) throws IOException {
 		switch (this) {
 		case Segments:
