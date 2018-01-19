@@ -25,8 +25,42 @@ import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.util.DramaUtil;
 import de.unistuttgart.quadrama.io.core.type.XMLElement;
 
+/**
+ * This class is used to generate a UIMA document from arbitrary XML. The core
+ * idea is to put all text content of the XML document in the document text of
+ * the JCas, and to create annotations for each XML element, covering the exact
+ * string the element contains. Consider, as an example, the XML fragment
+ * <code>&lt;s&gt;&lt;det&gt;the&lt;/det&gt; &lt;n&gt;dog&lt;/n&gt;&lt;/s&gt;</code>.
+ * In the JCas, this will be represented as the document text "the dog", with
+ * three annotations of the type {@link XMLElement}: One annotation covers the
+ * entire string (and has the tag name <code>s</code> as a feature), one
+ * annotation covers "the" (tag name: <code>det</code>), and one annotation
+ * covers "dog" (tag name: <code>n</code>). In addition, we store a CSS selector
+ * for each annotation, which allows finding the element in the DOM tree. After
+ * the initial conversion, rules are applied to convert some XML elements to
+ * other UIMA annotations. Rules are expressed in CSS-like syntax.
+ * 
+ * <h2>Rule syntax</h2> The CSS selectors are interpreted by the JSoup library.
+ * See {@link org.jsoup.select.Selector} for a detailed description. Classes
+ * implementing {@link de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader}
+ * contain usage examples.
+ * 
+ * <h2>Mapping vs. Action</h2> Two different kinds of rules can be specified.
+ * <b>Mappings</b> are direct "translations" of XML elements into UIMA
+ * annotations (as in the example above). <b>Actions</b> can be used, when some
+ * XML Elements should not be directly mapped to UIMA annotations, but to other
+ * kinds of data structures -- e.g., meta data is likely not directly
+ * represented as an annotation, but as other feature stuctures.
+ * 
+ * <h2>CSS vs. XPath</h2> TODO: Why CSS and not XPath?
+ * 
+ * @since 1.0.0
+ */
 public class GenericXmlReader {
 
+	/**
+	 * The DOM
+	 */
 	Document doc;
 
 	/**
@@ -45,19 +79,27 @@ public class GenericXmlReader {
 	Map<String, Map.Entry<Element, FeatureStructure>> idRegistry = new HashMap<String, Map.Entry<Element, FeatureStructure>>();
 
 	public JCas read(JCas jcas, InputStream xmlStream) throws IOException {
+
+		// parse the input
 		doc = Jsoup.parse(xmlStream, "UTF-8", "", Parser.xmlParser());
 
+		// prepare traversing the DOM
 		Visitor vis = new Visitor(jcas, isPreserveWhitespace());
 
+		// select the root element
 		Element root;
 		if (textRootSelector == null)
 			root = doc;
 		else
 			root = doc.select(textRootSelector).first();
+
+		// this populates the JCas, and creates XML annotations
 		root.traverse(vis);
+
 		// closes the CAS
 		vis.getJCas();
 
+		// process actions
 		for (XmlElementAction<?> action : elementActions) {
 			Elements elms = doc.select(action.getSelector());
 			for (Element elm : elms) {
@@ -72,7 +114,7 @@ public class GenericXmlReader {
 				}
 			}
 		}
-
+		// process mappings
 		for (XmlElementMapping<?> mapping : elementMapping) {
 			select2Annotation(jcas, (mapping.isDocumentRoot() ? doc : root), vis.getAnnotationMap(), mapping);
 		}
@@ -88,10 +130,30 @@ public class GenericXmlReader {
 		elementActions.add(new XmlElementAction<JCas>(selector, JCas.class, action));
 	}
 
+	/**
+	 * Creates a mapping from XML elements to UIMA annotations.
+	 * 
+	 * @param selector
+	 *            The CSS selector specifying the XML elements
+	 * @param target
+	 *            The type to be created. If it is a sup type of
+	 *            {@link Annotation}, begin and end are set.
+	 */
 	public <T extends FeatureStructure> void addMapping(String selector, Class<T> target) {
 		elementMapping.add(new XmlElementMapping<T>(selector, target));
 	}
 
+	/**
+	 * Creates a mapping from XML elements to UIMA annotations
+	 * 
+	 * @param selector
+	 *            The CSS selector specifying the XML elements
+	 * @param target
+	 *            The type to be created. If it is a sup type of
+	 *            {@link Annotation}, begin and end are set.
+	 * @param callback
+	 *            A function that is called for each created annotation.
+	 */
 	public <T extends FeatureStructure> void addMapping(String selector, Class<T> target,
 			BiConsumer<T, Element> callback) {
 		elementMapping.add(new XmlElementMapping<T>(selector, target, callback));
