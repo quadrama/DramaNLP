@@ -122,10 +122,12 @@ public class GenericXmlReader {
 		return jcas;
 	}
 
+	@Deprecated
 	public <T> void addAction(String selector, Class<T> target, BiConsumer<T, Element> action) {
 		elementActions.add(new XmlElementAction<T>(selector, target, action));
 	}
 
+	@Deprecated
 	public void addAction(String selector, BiConsumer<JCas, Element> action) {
 		elementActions.add(new XmlElementAction<JCas>(selector, JCas.class, action));
 	}
@@ -201,6 +203,7 @@ public class GenericXmlReader {
 		return set;
 	}
 
+	@Deprecated
 	public class XmlElementAction<T> {
 		final String selector;
 		final Class<T> target;
