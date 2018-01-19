@@ -9,6 +9,7 @@ import java.util.Set;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.tcas.Annotation;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.unistuttgart.ims.drama.api.Act;
@@ -24,8 +25,32 @@ import de.unistuttgart.ims.drama.api.Utterance;
 import de.unistuttgart.ims.drama.util.DramaUtil;
 
 public enum CSVVariant {
-	UtterancesWithTokens, Segments, Metadata, Characters;
+	/**
+	 * The default format. Table contains utterances (with begin/end) and their
+	 * tokens.
+	 */
+	UtterancesWithTokens,
+	/**
+	 * Table with act and scene boundaries (character positions)
+	 */
+	Segments,
+	/**
+	 * Drama meta data, as it is defined in the play
+	 */
+	Metadata,
+	/**
+	 * The list of characters defined in the play
+	 */
+	Characters;
 
+	/**
+	 * Prints a record representing the header onto p
+	 * 
+	 * @param p
+	 *            The target
+	 * @throws IOException
+	 *             If an I/O error occurs
+	 */
 	public void header(CSVPrinter p) throws IOException {
 		switch (this) {
 		case Segments:
@@ -179,10 +204,18 @@ public enum CSVVariant {
 		}
 	}
 
-	private FigureMention selectLongest(Collection<FigureMention> coll) {
+	/**
+	 * This function returns the longest from a given collection of annotations.
+	 * Length measured as <code>end - begin</code>.
+	 * 
+	 * @param coll
+	 *            The annotation collection
+	 * @return The longest of the annotation.
+	 */
+	private <T extends Annotation> T selectLongest(Collection<T> coll) {
 		int l = -1;
-		FigureMention fm = null;
-		for (FigureMention ment : coll) {
+		T fm = null;
+		for (T ment : coll) {
 			int cl = ment.getEnd() - ment.getBegin();
 			if (cl > l) {
 				l = cl;

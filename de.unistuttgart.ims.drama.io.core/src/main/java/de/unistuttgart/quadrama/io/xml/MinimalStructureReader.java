@@ -66,16 +66,16 @@ public class MinimalStructureReader extends AbstractDramaUrlReader {
 			}
 		}
 
-		GenericXmlReader gxr = new GenericXmlReader();
+		GenericXmlReader<Drama> gxr = new GenericXmlReader<Drama>(Drama.class);
 		gxr.setTextRootSelector("TEI > text");
 		gxr.setPreserveWhitespace(false);
 
-		gxr.addMapping("speaker", Speaker.class);
-		gxr.addMapping("stage", StageDirection.class);
-		gxr.addMapping("p", Speech.class);
-		gxr.addMapping("div[type=scene]", Scene.class);
+		gxr.addRule("speaker", Speaker.class);
+		gxr.addRule("stage", StageDirection.class);
+		gxr.addRule("p", Speech.class);
+		gxr.addRule("div[type=scene]", Scene.class);
 
-		gxr.addMapping("sp", Utterance.class, (u, e) -> {
+		gxr.addRule("sp", Utterance.class, (u, e) -> {
 			Collection<Speaker> speakers = JCasUtil.selectCovered(Speaker.class, u);
 			for (Speaker sp : speakers) {
 				String[] whos = e.attr("who").split(" ");

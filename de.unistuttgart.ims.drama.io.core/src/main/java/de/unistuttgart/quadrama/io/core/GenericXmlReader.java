@@ -3,9 +3,7 @@ package de.unistuttgart.quadrama.io.core;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.AbstractMap;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +12,7 @@ import java.util.function.BiConsumer;
 import org.apache.uima.cas.FeatureStructure;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.cas.TOP;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -21,12 +20,40 @@ import org.jsoup.nodes.Element;
 import org.jsoup.parser.Parser;
 import org.jsoup.select.Elements;
 
-import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.util.DramaUtil;
 import de.unistuttgart.quadrama.io.core.type.XMLElement;
 
-public class GenericXmlReader {
+/**
+ * This class is used to generate a UIMA document from arbitrary XML. The core
+ * idea is to put all text content of the XML document in the document text of
+ * the JCas, and to create annotations for each XML element, covering the exact
+ * string the element contains. Consider, as an example, the XML fragment
+ * <code>&lt;s&gt;&lt;det&gt;the&lt;/det&gt; &lt;n&gt;dog&lt;/n&gt;&lt;/s&gt;</code>.
+ * In the JCas, this will be represented as the document text "the dog", with
+ * three annotations of the type {@link XMLElement}: One annotation covers the
+ * entire string (and has the tag name <code>s</code> as a feature), one
+ * annotation covers "the" (tag name: <code>det</code>), and one annotation
+ * covers "dog" (tag name: <code>n</code>). In addition, we store a CSS selector
+ * for each annotation, which allows finding the element in the DOM tree. After
+ * the initial conversion, rules are applied to convert some XML elements to
+ * other UIMA annotations. Rules are expressed in CSS-like syntax.
+ * 
+ * <h2>Rule syntax</h2> The CSS selectors are interpreted by the JSoup library.
+ * See {@link org.jsoup.select.Selector} for a detailed description. Classes
+ * implementing {@link de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader}
+ * contain usage examples.
+ * 
+ * 
+ * 
+ * <h2>CSS vs. XPath</h2> TODO: Why CSS and not XPath?
+ * 
+ * @since 1.0.0
+ */
+public class GenericXmlReader<D extends TOP> {
 
+	/**
+	 * The DOM
+	 */
 	Document doc;
 
 	/**
@@ -37,69 +64,65 @@ public class GenericXmlReader {
 	boolean preserveWhitespace = false;
 
 	@SuppressWarnings("rawtypes")
-	List<XmlElementMapping> elementMapping = new LinkedList<XmlElementMapping>();
-
-	@SuppressWarnings("rawtypes")
-	List<XmlElementAction> elementActions = new LinkedList<XmlElementAction>();
+	List<Rule> elementMapping = new LinkedList<Rule>();
 
 	Map<String, Map.Entry<Element, FeatureStructure>> idRegistry = new HashMap<String, Map.Entry<Element, FeatureStructure>>();
 
+	Class<D> documentClass;
+
+	public GenericXmlReader(Class<D> documentClass) {
+		this.documentClass = documentClass;
+	}
+
 	public JCas read(JCas jcas, InputStream xmlStream) throws IOException {
+
+		// parse the input
 		doc = Jsoup.parse(xmlStream, "UTF-8", "", Parser.xmlParser());
 
+		// prepare traversing the DOM
 		Visitor vis = new Visitor(jcas, isPreserveWhitespace());
 
+		// select the root element
 		Element root;
 		if (textRootSelector == null)
 			root = doc;
 		else
 			root = doc.select(textRootSelector).first();
+
+		// this populates the JCas, and creates XML annotations
 		root.traverse(vis);
+
 		// closes the CAS
 		vis.getJCas();
 
-		for (XmlElementAction<?> action : elementActions) {
-			Elements elms = doc.select(action.getSelector());
-			for (Element elm : elms) {
-				if (action.getTarget() == Drama.class) {
-					@SuppressWarnings("unchecked")
-					XmlElementAction<Drama> rAction = (XmlElementAction<Drama>) action;
-					rAction.getCallback().accept(DramaUtil.getDrama(jcas), elm);
-				} else {
-					@SuppressWarnings("unchecked")
-					XmlElementAction<JCas> rAction = (XmlElementAction<JCas>) action;
-					rAction.getCallback().accept(jcas, elm);
-				}
-			}
-		}
-
-		for (XmlElementMapping<?> mapping : elementMapping) {
-			select2Annotation(jcas, (mapping.isDocumentRoot() ? doc : root), vis.getAnnotationMap(), mapping);
+		// process rules
+		for (Rule<?> mapping : elementMapping) {
+			applyRule(jcas, (mapping.isGlobal() ? doc : root), vis.getAnnotationMap(), mapping);
 		}
 
 		return jcas;
 	}
 
-	public <T> void addAction(String selector, Class<T> target, BiConsumer<T, Element> action) {
-		elementActions.add(new XmlElementAction<T>(selector, target, action));
+	public void addRule(Rule<?> rule) {
+		elementMapping.add(rule);
 	}
 
-	public void addAction(String selector, BiConsumer<JCas, Element> action) {
-		elementActions.add(new XmlElementAction<JCas>(selector, JCas.class, action));
+	public <T extends TOP> void addRule(String selector, Class<T> targetClass) {
+		elementMapping.add(new Rule<T>(selector, targetClass, null));
 	}
 
-	public <T extends FeatureStructure> void addMapping(String selector, Class<T> target) {
-		elementMapping.add(new XmlElementMapping<T>(selector, target));
+	public <T extends TOP> void addRule(String selector, Class<T> targetClass, BiConsumer<T, Element> callback) {
+		elementMapping.add(new Rule<T>(selector, targetClass, callback));
 	}
 
-	public <T extends FeatureStructure> void addMapping(String selector, Class<T> target,
-			BiConsumer<T, Element> callback) {
-		elementMapping.add(new XmlElementMapping<T>(selector, target, callback));
+	public void addGlobalRule(String selector, BiConsumer<D, Element> callback) {
+		Rule<D> r = new Rule<D>(selector, documentClass, callback, true);
+		r.setUnique(true);
+		elementMapping.add(r);
 	}
 
-	public <T extends FeatureStructure> void addDocumentMapping(String selector, Class<T> target,
-			BiConsumer<T, Element> callback) {
-		elementMapping.add(new XmlElementMapping<T>(selector, target, callback, true));
+	public <T extends TOP> void addGlobalRule(String selector, Class<T> targetClass, BiConsumer<T, Element> callback) {
+		elementMapping.add(new Rule<T>(selector, targetClass, callback, true));
 	}
 
 	public Map.Entry<Element, FeatureStructure> getAnnotation(String id) {
@@ -110,107 +133,111 @@ public class GenericXmlReader {
 		return idRegistry.containsKey(id);
 	}
 
-	public <T extends FeatureStructure> Collection<T> select2Annotation(JCas jcas, Element rootElement,
-			Map<String, XMLElement> annoMap, XmlElementMapping<T> mapping) {
-		HashSet<T> set = new HashSet<T>();
+	protected <T extends TOP> T getFeatureStructure(JCas jcas, XMLElement hAnno, Element elm, Rule<T> mapping) {
+		T annotation = null;
+		if (mapping.isUnique()) {
+			annotation = DramaUtil.getOrCreate(jcas, mapping.getTargetClass());
+		} else {
+			annotation = jcas.getCas().createFS(JCasUtil.getType(jcas, mapping.getTargetClass()));
+			jcas.getCas().addFsToIndexes(annotation);
+			if (Annotation.class.isAssignableFrom(mapping.getTargetClass())) {
+				((Annotation) annotation).setBegin(hAnno.getBegin());
+				((Annotation) annotation).setEnd(hAnno.getEnd());
+			}
+
+			if (elm.hasAttr("xml:id") && !exists(elm.attr("xml:id"))) {
+				String id = elm.attr("xml:id");
+				idRegistry.put(id, new AbstractMap.SimpleEntry<Element, FeatureStructure>(elm, annotation));
+			}
+
+		}
+		return annotation;
+	}
+
+	protected <T extends TOP> void applyRule(JCas jcas, Element rootElement, Map<String, XMLElement> annoMap,
+			Rule<T> mapping) {
 		Elements elms = rootElement.select(mapping.getSelector());
 		for (Element elm : elms) {
 			XMLElement hAnno = annoMap.get(elm.cssSelector());
 			if (elm.hasText() || elm.childNodeSize() > 0) {
-				T annotation = jcas.getCas().createFS(JCasUtil.getType(jcas, mapping.getTargetClass()));
-				jcas.getCas().addFsToIndexes(annotation);
-				if (Annotation.class.isAssignableFrom(mapping.getTargetClass())) {
-					((Annotation) annotation).setBegin(hAnno.getBegin());
-					((Annotation) annotation).setEnd(hAnno.getEnd());
-				}
-
-				set.add(annotation);
-
-				if (elm.hasAttr("xml:id") && !exists(elm.attr("xml:id"))) {
-					String id = elm.attr("xml:id");
-					idRegistry.put(id, new AbstractMap.SimpleEntry<Element, FeatureStructure>(elm, annotation));
-				}
-
-				if (mapping.getCallback() != null)
+				T annotation = getFeatureStructure(jcas, hAnno, elm, mapping);
+				if (mapping.getCallback() != null && annotation != null)
 					mapping.getCallback().accept(annotation, elm);
-
 			}
 		}
-		return set;
 	}
 
-	public class XmlElementAction<T> {
-		final String selector;
-		final Class<T> target;
-		final BiConsumer<T, Element> callback;
+	/**
+	 * This class represents the rules we apply
+	 * 
+	 *
+	 * @param <T>
+	 *            Rules are specific for a UIMA type
+	 */
+	public static class Rule<T extends TOP> {
+		String selector;
+		BiConsumer<T, Element> callback;
+		Class<T> targetClass;
+		boolean global;
+		boolean unique = false;
 
-		public XmlElementAction(String selector, Class<T> target, BiConsumer<T, Element> callback) {
+		/**
+		 * 
+		 * @param selector
+		 *            The CSS selector
+		 * @param targetClass
+		 *            The target class
+		 * @param callback
+		 *            A function to be called for every instance. Can be null.
+		 * @param global
+		 *            Whether to apply the rule globally or just for the text
+		 *            part
+		 * @param createFeatureStructures
+		 *            Whether to create new feature structures
+		 */
+		public Rule(String selector, Class<T> targetClass, BiConsumer<T, Element> callback, boolean global) {
 			this.selector = selector;
 			this.callback = callback;
-			this.target = target;
-		}
-
-		public String getSelector() {
-			return selector;
-		}
-
-		public BiConsumer<T, Element> getCallback() {
-			return callback;
-		}
-
-		public Class<T> getTarget() {
-			return target;
-		}
-
-	}
-
-	public class XmlElementMapping<T extends FeatureStructure> {
-
-		final String selector;
-		final Class<T> targetClass;
-		final BiConsumer<T, Element> callback;
-		final boolean documentRoot;
-
-		public XmlElementMapping(String selector, Class<T> targetClass) {
-			super();
-			this.selector = selector;
 			this.targetClass = targetClass;
-			this.callback = null;
-			this.documentRoot = false;
+			this.global = global;
 		}
 
-		public XmlElementMapping(String selector, Class<T> targetClass, BiConsumer<T, Element> cb) {
-			super();
+		public Rule(String selector, Class<T> targetClass, BiConsumer<T, Element> callback) {
 			this.selector = selector;
+			this.callback = callback;
 			this.targetClass = targetClass;
-			this.callback = cb;
-			this.documentRoot = false;
-		}
-
-		public XmlElementMapping(String selector, Class<T> targetClass, BiConsumer<T, Element> cb,
-				boolean documentRoot) {
-			super();
-			this.selector = selector;
-			this.targetClass = targetClass;
-			this.callback = cb;
-			this.documentRoot = documentRoot;
-		}
-
-		public String getSelector() {
-			return selector;
+			this.global = false;
 		}
 
 		public Class<T> getTargetClass() {
-			return targetClass;
+			return this.targetClass;
+		}
+
+		public String getSelector() {
+			return selector;
+		}
+
+		boolean isGlobal() {
+			return this.global;
+		};
+
+		@Override
+		public String toString() {
+			return getSelector() + " -> " + getTargetClass().getName();
 		}
 
 		public BiConsumer<T, Element> getCallback() {
 			return callback;
 		}
 
-		public boolean isDocumentRoot() {
-			return documentRoot;
+		public boolean isUnique() {
+			return unique;
 		}
+
+		public void setUnique(boolean singleton) {
+			this.unique = singleton;
+		}
+
 	}
 
 	public String getTextRootSelector() {

@@ -46,7 +46,7 @@ public class GutenbergDEReader extends AbstractDramaUrlReader {
 	@Override
 	public void getNext(JCas jcas, InputStream file, Drama drama) throws IOException, CollectionException {
 
-		String str = IOUtils.toString(file);
+		String str = IOUtils.toString(file, "UTF-8");
 		org.jsoup.nodes.Document doc = Jsoup.parseBodyFragment(str);
 		Visitor vis = new Visitor(jcas);
 		doc.traverse(vis);

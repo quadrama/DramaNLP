@@ -18,6 +18,7 @@ import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.Utterance;
 import de.unistuttgart.ims.drama.util.DramaUtil;
 
+@Deprecated
 public class ExtractSpeechByFigure extends AbstractExtractSpeechConsumer {
 
 	@Override

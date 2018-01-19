@@ -43,11 +43,11 @@ public class TEI2XMI {
 		CollectionReaderDescription reader;
 		if (rcl == TextgridTEIUrlReader.class) {
 			reader = CollectionReaderFactory.createReaderDescription(rcl, TextgridTEIUrlReader.PARAM_INPUT,
-					options.getInput(), TextgridTEIUrlReader.PARAM_CLEANUP, true, TextgridTEIUrlReader.PARAM_STRICT,
+					options.getInput(), TextgridTEIUrlReader.PARAM_REMOVE_XML_ANNOTATIONS, true, TextgridTEIUrlReader.PARAM_STRICT,
 					true, TextgridTEIUrlReader.PARAM_LANGUAGE, options.getLanguage());
 		} else {
 			reader = CollectionReaderFactory.createReaderDescription(rcl, AbstractDramaUrlReader.PARAM_INPUT,
-					options.getInput(), AbstractDramaUrlReader.PARAM_CLEANUP, true,
+					options.getInput(), AbstractDramaUrlReader.PARAM_REMOVE_XML_ANNOTATIONS, true,
 					AbstractDramaUrlReader.PARAM_LANGUAGE, options.getLanguage());
 		}
 

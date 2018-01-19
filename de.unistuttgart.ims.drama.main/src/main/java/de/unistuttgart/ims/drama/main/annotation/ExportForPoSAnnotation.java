@@ -30,7 +30,7 @@ public class ExportForPoSAnnotation {
 
 		CollectionReaderDescription reader = CollectionReaderFactory.createReaderDescription(GerDraCorReader.class,
 				GerDraCorReader.PARAM_INPUT, options.getInput(), GerDraCorReader.PARAM_TEI_COMPAT, true,
-				GerDraCorReader.PARAM_CLEANUP, true);
+				GerDraCorReader.PARAM_REMOVE_XML_ANNOTATIONS, true);
 
 		AggregateBuilder builder = new AggregateBuilder();
 		builder.add(AnalysisEngineFactory.createEngineDescription(BreakIteratorSegmenter.class,
