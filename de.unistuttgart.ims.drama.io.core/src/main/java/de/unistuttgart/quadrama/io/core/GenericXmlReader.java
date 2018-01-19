@@ -44,12 +44,7 @@ import de.unistuttgart.quadrama.io.core.type.XMLElement;
  * implementing {@link de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader}
  * contain usage examples.
  * 
- * <h2>Mapping vs. Action</h2> Two different kinds of rules can be specified.
- * <b>Mappings</b> are direct "translations" of XML elements into UIMA
- * annotations (as in the example above). <b>Actions</b> can be used, when some
- * XML Elements should not be directly mapped to UIMA annotations, but to other
- * kinds of data structures -- e.g., meta data is likely not directly
- * represented as an annotation, but as other feature stuctures.
+ * 
  * 
  * <h2>CSS vs. XPath</h2> TODO: Why CSS and not XPath?
  * 
@@ -207,6 +202,13 @@ public class GenericXmlReader {
 		}
 	}
 
+	/**
+	 * This class represents the rules we apply
+	 * 
+	 *
+	 * @param <T>
+	 *            Rules are specific for a UIMA type
+	 */
 	public class Rule<T extends TOP> {
 		String selector;
 		BiConsumer<T, Element> callback;
@@ -218,10 +220,16 @@ public class GenericXmlReader {
 		/**
 		 * 
 		 * @param selector
+		 *            The CSS selector
 		 * @param targetClass
+		 *            The target class
 		 * @param callback
+		 *            A function to be called for every instance. Can be null.
 		 * @param global
+		 *            Whether to apply the rule globally or just for the text
+		 *            part
 		 * @param createFeatureStructures
+		 *            Whether to create new feature structures
 		 */
 		public Rule(String selector, Class<T> targetClass, BiConsumer<T, Element> callback, boolean global,
 				boolean createFeatureStructures) {
