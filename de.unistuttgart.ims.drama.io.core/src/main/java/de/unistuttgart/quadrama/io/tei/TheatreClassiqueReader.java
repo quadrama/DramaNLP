@@ -53,35 +53,35 @@ public class TheatreClassiqueReader extends AbstractDramaUrlReader {
 		gxr.setPreserveWhitespace(teiCompatibility);
 
 		// title
-		gxr.addMappingAction("titleStmt > title[type=main]", Drama.class, (d, e) -> d.setDocumentTitle(e.text()));
+		gxr.addGlobalRule("titleStmt > title[type=main]", (d, e) -> d.setDocumentTitle(e.text()));
 
 		// id
-		gxr.addMappingAction("publicationStmt > idno[type=cligs]", Drama.class, (d, e) -> d.setDocumentId(e.text()));
+		gxr.addGlobalRule("publicationStmt > idno[type=cligs]", (d, e) -> d.setDocumentId(e.text()));
 
 		// author
-		gxr.addDocumentMapping("author", Author.class, (author, e) -> {
+		gxr.addGlobalRule("author", Author.class, (author, e) -> {
 			author.setName(e.select("name[type=full]").text());
 		});
 
 		// date printed
-		gxr.addMappingAction("sourceDesc > bibl[type=print-source] > date", Drama.class,
+		gxr.addGlobalRule("sourceDesc > bibl[type=print-source] > date",
 				(d, e) -> d.setDatePrinted(Integer.valueOf(e.text())));
 
 		// data premiere
-		gxr.addMappingAction("sourceDesc > bibl[type=performance-first] > date", Drama.class,
+		gxr.addGlobalRule("sourceDesc > bibl[type=performance-first] > date",
 				(d, e) -> d.setDatePrinted(Integer.valueOf(e.text())));
 
-		gxr.addMapping("front", FrontMatter.class);
-		gxr.addMapping("body", MainMatter.class);
+		gxr.addRule("front", FrontMatter.class);
+		gxr.addRule("body", MainMatter.class);
 
 		// segmentation
-		gxr.addMapping("div[type=act]", Act.class, (a, e) -> a.setRegular(true));
-		gxr.addMapping("div[type=act] > head", ActHeading.class);
+		gxr.addRule("div[type=act]", Act.class, (a, e) -> a.setRegular(true));
+		gxr.addRule("div[type=act] > head", ActHeading.class);
 
-		gxr.addMapping("div[type=scene]", Scene.class, (a, e) -> a.setRegular(true));
-		gxr.addMapping("div[type=scene] > head", SceneHeading.class);
+		gxr.addRule("div[type=scene]", Scene.class, (a, e) -> a.setRegular(true));
+		gxr.addRule("div[type=scene] > head", SceneHeading.class);
 
-		gxr.addMapping("castList > castItem > role", CastFigure.class, (cf, e) -> {
+		gxr.addGlobalRule("castList > castItem > role", CastFigure.class, (cf, e) -> {
 			List<String> nameList = new LinkedList<String>();
 			List<String> xmlIdList = new LinkedList<String>();
 
@@ -100,13 +100,13 @@ public class TheatreClassiqueReader extends AbstractDramaUrlReader {
 
 		});
 
-		gxr.addMapping("speaker", Speaker.class);
-		gxr.addMapping("stage", StageDirection.class);
-		gxr.addMapping("l", Speech.class);
-		gxr.addMapping("p", Speech.class);
-		gxr.addMapping("ab", Speech.class);
+		gxr.addRule("speaker", Speaker.class);
+		gxr.addRule("stage", StageDirection.class);
+		gxr.addRule("l", Speech.class);
+		gxr.addRule("p", Speech.class);
+		gxr.addRule("ab", Speech.class);
 
-		gxr.addMapping("sp", Utterance.class, (u, e) -> {
+		gxr.addRule("sp", Utterance.class, (u, e) -> {
 			Collection<Speaker> speakers = JCasUtil.selectCovered(Speaker.class, u);
 			for (Speaker sp : speakers) {
 				String[] whos = e.attr("who").split(" ");

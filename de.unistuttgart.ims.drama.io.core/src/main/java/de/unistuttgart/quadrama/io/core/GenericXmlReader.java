@@ -3,9 +3,7 @@ package de.unistuttgart.quadrama.io.core;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.AbstractMap;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -72,7 +70,7 @@ public class GenericXmlReader {
 	boolean preserveWhitespace = false;
 
 	@SuppressWarnings("rawtypes")
-	List<XmlElementMapping> elementMapping = new LinkedList<XmlElementMapping>();
+	List<Rule> elementMapping = new LinkedList<Rule>();
 
 	Map<String, Map.Entry<Element, FeatureStructure>> idRegistry = new HashMap<String, Map.Entry<Element, FeatureStructure>>();
 
@@ -98,8 +96,8 @@ public class GenericXmlReader {
 		vis.getJCas();
 
 		// process rules
-		for (XmlElementMapping<?> mapping : elementMapping) {
-			select2Annotation(jcas, (mapping.isDocumentRoot() ? doc : root), vis.getAnnotationMap(), mapping);
+		for (Rule<?> mapping : elementMapping) {
+			select2Annotation(jcas, (mapping.isGlobal() ? doc : root), vis.getAnnotationMap(), mapping);
 		}
 
 		return jcas;
@@ -114,8 +112,9 @@ public class GenericXmlReader {
 	 *            The type to be created. If it is a sup type of
 	 *            {@link Annotation}, begin and end are set.
 	 */
+	@Deprecated
 	public <T extends TOP> void addMapping(String selector, Class<T> target) {
-		elementMapping.add(new XmlElementMapping<T>(selector, target));
+		elementMapping.add(new Rule<T>(selector, target, null));
 	}
 
 	/**
@@ -129,16 +128,41 @@ public class GenericXmlReader {
 	 * @param callback
 	 *            A function that is called for each created annotation.
 	 */
+	@Deprecated
 	public <T extends TOP> void addMapping(String selector, Class<T> target, BiConsumer<T, Element> callback) {
-		elementMapping.add(new XmlElementMapping<T>(selector, target, callback));
+		elementMapping.add(new Rule<T>(selector, target, callback));
 	}
 
+	@Deprecated
 	public <T extends TOP> void addDocumentMapping(String selector, Class<T> target, BiConsumer<T, Element> callback) {
-		elementMapping.add(new XmlElementMapping<T>(selector, target, callback, true));
+		elementMapping.add(new Rule<T>(selector, target, callback, true, true));
 	}
 
+	@Deprecated
 	public <T extends TOP> void addMappingAction(String selector, Class<T> target, BiConsumer<T, Element> callback) {
-		elementMapping.add(new XmlElementMapping<T>(selector, target, callback, true, false));
+		elementMapping.add(new Rule<T>(selector, target, callback, true, false));
+	}
+
+	public void addRule(Rule<?> rule) {
+		elementMapping.add(rule);
+	}
+
+	public <T extends TOP> void addRule(String selector, Class<T> targetClass) {
+		elementMapping.add(new Rule<T>(selector, targetClass, null));
+	}
+
+	public <T extends TOP> void addRule(String selector, Class<T> targetClass, BiConsumer<T, Element> callback) {
+		elementMapping.add(new Rule<T>(selector, targetClass, callback));
+	}
+
+	public void addGlobalRule(String selector, BiConsumer<Drama, Element> callback) {
+		Rule<Drama> r = new Rule<Drama>(selector, Drama.class, callback, true, false);
+		r.setSingleton(true);
+		elementMapping.add(r);
+	}
+
+	public <T extends TOP> void addGlobalRule(String selector, Class<T> targetClass, BiConsumer<T, Element> callback) {
+		elementMapping.add(new Rule<T>(selector, targetClass, callback, true, true));
 	}
 
 	public Map.Entry<Element, FeatureStructure> getAnnotation(String id) {
@@ -149,8 +173,7 @@ public class GenericXmlReader {
 		return idRegistry.containsKey(id);
 	}
 
-	private <T extends TOP> T getFeatureStructure(JCas jcas, XMLElement hAnno, Element elm,
-			XmlElementMapping<T> mapping) {
+	private <T extends TOP> T getFeatureStructure(JCas jcas, XMLElement hAnno, Element elm, Rule<T> mapping) {
 		T annotation = null;
 		if (mapping.isCreateFeatureStructures()) {
 			annotation = jcas.getCas().createFS(JCasUtil.getType(jcas, mapping.getTargetClass()));
@@ -165,94 +188,91 @@ public class GenericXmlReader {
 				idRegistry.put(id, new AbstractMap.SimpleEntry<Element, FeatureStructure>(elm, annotation));
 			}
 
-		} else if (mapping.getTargetClass() == Drama.class) {
+		} else if (mapping.isSingleton()) {
 			annotation = DramaUtil.getOrCreate(jcas, mapping.getTargetClass());
 		}
 		return annotation;
 	}
 
-	public <T extends TOP> Collection<T> select2Annotation(JCas jcas, Element rootElement,
-			Map<String, XMLElement> annoMap, XmlElementMapping<T> mapping) {
-		HashSet<T> set = new HashSet<T>();
+	public <T extends TOP> void select2Annotation(JCas jcas, Element rootElement, Map<String, XMLElement> annoMap,
+			Rule<T> mapping) {
 		Elements elms = rootElement.select(mapping.getSelector());
 		for (Element elm : elms) {
 			XMLElement hAnno = annoMap.get(elm.cssSelector());
-
-			T annotation = getFeatureStructure(jcas, hAnno, elm, mapping);
-
-			set.add(annotation);
-			if (mapping.getCallback() != null && annotation != null)
-				mapping.getCallback().accept(annotation, elm);
-
+			if (elm.hasText() || elm.childNodeSize() > 0) {
+				T annotation = getFeatureStructure(jcas, hAnno, elm, mapping);
+				if (mapping.getCallback() != null && annotation != null)
+					mapping.getCallback().accept(annotation, elm);
+			}
 		}
-		return set;
 	}
 
-	public class XmlElementMapping<T extends TOP> {
+	public class Rule<T extends TOP> {
+		String selector;
+		BiConsumer<T, Element> callback;
+		Class<T> targetClass;
+		boolean global;
+		boolean createFeatureStructures;
+		boolean singleton = false;
 
-		final String selector;
-		final Class<T> targetClass;
-		final BiConsumer<T, Element> callback;
-		final boolean documentRoot;
-		final boolean createFeatureStructures;
-
-		public XmlElementMapping(String selector, Class<T> targetClass) {
-			super();
+		/**
+		 * 
+		 * @param selector
+		 * @param targetClass
+		 * @param callback
+		 * @param global
+		 * @param createFeatureStructures
+		 */
+		public Rule(String selector, Class<T> targetClass, BiConsumer<T, Element> callback, boolean global,
+				boolean createFeatureStructures) {
 			this.selector = selector;
+			this.callback = callback;
 			this.targetClass = targetClass;
-			this.callback = null;
-			this.documentRoot = false;
-			this.createFeatureStructures = true;
+			this.global = global;
+			this.createFeatureStructures = createFeatureStructures;
 		}
 
-		public XmlElementMapping(String selector, Class<T> targetClass, BiConsumer<T, Element> cb) {
-			super();
-			this.selector = selector;
-			this.targetClass = targetClass;
-			this.callback = cb;
-			this.documentRoot = false;
-			this.createFeatureStructures = true;
+		public Class<T> getTargetClass() {
+			return this.targetClass;
 		}
 
-		public XmlElementMapping(String selector, Class<T> targetClass, BiConsumer<T, Element> cb,
-				boolean documentRoot) {
-			super();
+		public Rule(String selector, Class<T> targetClass, BiConsumer<T, Element> callback) {
 			this.selector = selector;
+			this.callback = callback;
 			this.targetClass = targetClass;
-			this.callback = cb;
-			this.documentRoot = documentRoot;
+			this.global = false;
 			this.createFeatureStructures = true;
-		}
-
-		public XmlElementMapping(String selector, Class<T> targetClass, BiConsumer<T, Element> cb, boolean documentRoot,
-				boolean create) {
-			super();
-			this.selector = selector;
-			this.targetClass = targetClass;
-			this.callback = cb;
-			this.documentRoot = documentRoot;
-			this.createFeatureStructures = create;
 		}
 
 		public String getSelector() {
 			return selector;
 		}
 
-		public Class<T> getTargetClass() {
-			return targetClass;
+		boolean isCreateFeatureStructures() {
+			return this.createFeatureStructures;
+		};
+
+		boolean isGlobal() {
+			return this.global;
+		};
+
+		@Override
+		public String toString() {
+			return getSelector();
 		}
 
 		public BiConsumer<T, Element> getCallback() {
 			return callback;
 		}
 
-		public boolean isDocumentRoot() {
-			return documentRoot;
+		public boolean isSingleton() {
+			return singleton;
 		}
 
-		public boolean isCreateFeatureStructures() {
-			return createFeatureStructures;
+		public void setSingleton(boolean singleton) {
+			this.singleton = singleton;
 		}
+
 	}
 
 	public String getTextRootSelector() {
