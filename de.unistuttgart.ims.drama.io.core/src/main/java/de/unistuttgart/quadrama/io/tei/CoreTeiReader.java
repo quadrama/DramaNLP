@@ -57,24 +57,24 @@ public class CoreTeiReader extends AbstractDramaUrlReader {
 		gxr.setTextRootSelector("TEI > text");
 		gxr.setPreserveWhitespace(false);
 
-		gxr.addDocumentMapping("profileDesc > particDesc > listPerson > person", CastFigure.class, (cf, e) -> {
+		gxr.addGlobalRule("profileDesc > particDesc > listPerson > person", CastFigure.class, (cf, e) -> {
 			cf.setNames(UimaUtil.toStringArray(jcas, e.text()));
 			cf.setXmlId(UimaUtil.toStringArray(jcas, e.attr("xml:id")));
 			cf.setDisplayName(cf.getNames(0));
 		});
 
 		// segmentation
-		gxr.addMapping("div[type=act]", Act.class, (a, e) -> a.setRegular(true));
-		gxr.addMapping("div[type=act] > head", ActHeading.class);
+		gxr.addRule("div[type=act]", Act.class, (a, e) -> a.setRegular(true));
+		gxr.addRule("div[type=act] > head", ActHeading.class);
 
-		gxr.addMapping("div[type=scene]", Scene.class, (a, e) -> a.setRegular(true));
-		gxr.addMapping("div[type=scene] > head", SceneHeading.class);
+		gxr.addRule("div[type=scene]", Scene.class, (a, e) -> a.setRegular(true));
+		gxr.addRule("div[type=scene] > head", SceneHeading.class);
 
-		gxr.addMapping("speaker", Speaker.class);
-		gxr.addMapping("stage", StageDirection.class);
-		gxr.addMapping("l", Speech.class);
+		gxr.addRule("speaker", Speaker.class);
+		gxr.addRule("stage", StageDirection.class);
+		gxr.addRule("l", Speech.class);
 
-		gxr.addMapping("sp", Utterance.class, (u, e) -> {
+		gxr.addRule("sp", Utterance.class, (u, e) -> {
 			Collection<Speaker> speakers = JCasUtil.selectCovered(Speaker.class, u);
 			for (Speaker sp : speakers) {
 				String[] whos = e.attr("who").split(" ");

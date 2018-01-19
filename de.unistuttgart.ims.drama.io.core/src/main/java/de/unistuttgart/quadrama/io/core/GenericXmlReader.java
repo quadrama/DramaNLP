@@ -130,12 +130,12 @@ public class GenericXmlReader {
 
 	@Deprecated
 	public <T extends TOP> void addDocumentMapping(String selector, Class<T> target, BiConsumer<T, Element> callback) {
-		elementMapping.add(new Rule<T>(selector, target, callback, true, true));
+		elementMapping.add(new Rule<T>(selector, target, callback, true));
 	}
 
 	@Deprecated
 	public <T extends TOP> void addMappingAction(String selector, Class<T> target, BiConsumer<T, Element> callback) {
-		elementMapping.add(new Rule<T>(selector, target, callback, true, false));
+		elementMapping.add(new Rule<T>(selector, target, callback, true));
 	}
 
 	public void addRule(Rule<?> rule) {
@@ -151,13 +151,13 @@ public class GenericXmlReader {
 	}
 
 	public void addGlobalRule(String selector, BiConsumer<Drama, Element> callback) {
-		Rule<Drama> r = new Rule<Drama>(selector, Drama.class, callback, true, false);
-		r.setSingleton(true);
+		Rule<Drama> r = new Rule<Drama>(selector, Drama.class, callback, true);
+		r.setUnique(true);
 		elementMapping.add(r);
 	}
 
 	public <T extends TOP> void addGlobalRule(String selector, Class<T> targetClass, BiConsumer<T, Element> callback) {
-		elementMapping.add(new Rule<T>(selector, targetClass, callback, true, true));
+		elementMapping.add(new Rule<T>(selector, targetClass, callback, true));
 	}
 
 	public Map.Entry<Element, FeatureStructure> getAnnotation(String id) {
@@ -170,7 +170,9 @@ public class GenericXmlReader {
 
 	private <T extends TOP> T getFeatureStructure(JCas jcas, XMLElement hAnno, Element elm, Rule<T> mapping) {
 		T annotation = null;
-		if (mapping.isCreateFeatureStructures()) {
+		if (mapping.isUnique()) {
+			annotation = DramaUtil.getOrCreate(jcas, mapping.getTargetClass());
+		} else {
 			annotation = jcas.getCas().createFS(JCasUtil.getType(jcas, mapping.getTargetClass()));
 			jcas.getCas().addFsToIndexes(annotation);
 			if (Annotation.class.isAssignableFrom(mapping.getTargetClass())) {
@@ -183,8 +185,6 @@ public class GenericXmlReader {
 				idRegistry.put(id, new AbstractMap.SimpleEntry<Element, FeatureStructure>(elm, annotation));
 			}
 
-		} else if (mapping.isSingleton()) {
-			annotation = DramaUtil.getOrCreate(jcas, mapping.getTargetClass());
 		}
 		return annotation;
 	}
@@ -214,8 +214,7 @@ public class GenericXmlReader {
 		BiConsumer<T, Element> callback;
 		Class<T> targetClass;
 		boolean global;
-		boolean createFeatureStructures;
-		boolean singleton = false;
+		boolean unique = false;
 
 		/**
 		 * 
@@ -231,13 +230,11 @@ public class GenericXmlReader {
 		 * @param createFeatureStructures
 		 *            Whether to create new feature structures
 		 */
-		public Rule(String selector, Class<T> targetClass, BiConsumer<T, Element> callback, boolean global,
-				boolean createFeatureStructures) {
+		public Rule(String selector, Class<T> targetClass, BiConsumer<T, Element> callback, boolean global) {
 			this.selector = selector;
 			this.callback = callback;
 			this.targetClass = targetClass;
 			this.global = global;
-			this.createFeatureStructures = createFeatureStructures;
 		}
 
 		public Rule(String selector, Class<T> targetClass, BiConsumer<T, Element> callback) {
@@ -245,7 +242,6 @@ public class GenericXmlReader {
 			this.callback = callback;
 			this.targetClass = targetClass;
 			this.global = false;
-			this.createFeatureStructures = true;
 		}
 
 		public Class<T> getTargetClass() {
@@ -255,10 +251,6 @@ public class GenericXmlReader {
 		public String getSelector() {
 			return selector;
 		}
-
-		boolean isCreateFeatureStructures() {
-			return this.createFeatureStructures;
-		};
 
 		boolean isGlobal() {
 			return this.global;
@@ -273,12 +265,12 @@ public class GenericXmlReader {
 			return callback;
 		}
 
-		public boolean isSingleton() {
-			return singleton;
+		public boolean isUnique() {
+			return unique;
 		}
 
-		public void setSingleton(boolean singleton) {
-			this.singleton = singleton;
+		public void setUnique(boolean singleton) {
+			this.unique = singleton;
 		}
 
 	}
