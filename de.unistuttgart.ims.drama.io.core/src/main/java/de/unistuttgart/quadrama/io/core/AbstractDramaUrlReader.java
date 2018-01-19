@@ -27,6 +27,18 @@ import org.apache.uima.util.Progress;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.quadrama.io.core.type.XMLElement;
 
+/**
+ * This abstract reader automatically reads from different sources, based on the
+ * supplied input parameter:
+ * <ul>
+ * <li>Directory</li>
+ * <li>XML File</li>
+ * <li>TSV File</li>
+ * </ul>
+ * 
+ * @author reiterns
+ * @since 1.0
+ */
 public abstract class AbstractDramaUrlReader extends JCasCollectionReader_ImplBase {
 	/**
 	 * The input source
