@@ -62,7 +62,6 @@ public abstract class AbstractDramaUrlReader extends JCasCollectionReader_ImplBa
 
 	List<URL> urls = new LinkedList<URL>();
 	int currentUrlIndex = 0;
-	static final String idSeparator = ":";
 
 	@Override
 	public void initialize(UimaContext context) throws ResourceInitializationException {
