@@ -74,9 +74,6 @@ public class GenericXmlReader {
 	@SuppressWarnings("rawtypes")
 	List<XmlElementMapping> elementMapping = new LinkedList<XmlElementMapping>();
 
-	@SuppressWarnings("rawtypes")
-	List<XmlElementAction> elementActions = new LinkedList<XmlElementAction>();
-
 	Map<String, Map.Entry<Element, FeatureStructure>> idRegistry = new HashMap<String, Map.Entry<Element, FeatureStructure>>();
 
 	public JCas read(JCas jcas, InputStream xmlStream) throws IOException {
@@ -100,37 +97,12 @@ public class GenericXmlReader {
 		// closes the CAS
 		vis.getJCas();
 
-		// process actions
-		for (XmlElementAction<?> action : elementActions) {
-			Elements elms = doc.select(action.getSelector());
-			for (Element elm : elms) {
-				if (action.getTarget() == Drama.class) {
-					@SuppressWarnings("unchecked")
-					XmlElementAction<Drama> rAction = (XmlElementAction<Drama>) action;
-					rAction.getCallback().accept(DramaUtil.getDrama(jcas), elm);
-				} else {
-					@SuppressWarnings("unchecked")
-					XmlElementAction<JCas> rAction = (XmlElementAction<JCas>) action;
-					rAction.getCallback().accept(jcas, elm);
-				}
-			}
-		}
-		// process mappings
+		// process rules
 		for (XmlElementMapping<?> mapping : elementMapping) {
 			select2Annotation(jcas, (mapping.isDocumentRoot() ? doc : root), vis.getAnnotationMap(), mapping);
 		}
 
 		return jcas;
-	}
-
-	@Deprecated
-	public <T> void addAction(String selector, Class<T> target, BiConsumer<T, Element> action) {
-		elementActions.add(new XmlElementAction<T>(selector, target, action));
-	}
-
-	@Deprecated
-	public void addAction(String selector, BiConsumer<JCas, Element> action) {
-		elementActions.add(new XmlElementAction<JCas>(selector, JCas.class, action));
 	}
 
 	/**
