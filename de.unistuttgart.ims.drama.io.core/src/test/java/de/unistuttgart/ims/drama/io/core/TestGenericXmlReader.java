@@ -18,28 +18,28 @@ import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ART;
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.NN;
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS;
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.V;
+import de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
-import de.unistuttgart.ims.drama.util.DramaUtil;
 import de.unistuttgart.quadrama.io.core.GenericXmlReader;
 
 public class TestGenericXmlReader {
 
 	JCas jcas;
-	GenericXmlReader gxr;
+	GenericXmlReader<DocumentMetaData> gxr;
 
 	@Before
 	public void setUp() throws UIMAException {
 		jcas = JCasFactory.createJCas();
-		gxr = new GenericXmlReader();
+		gxr = new GenericXmlReader<DocumentMetaData>(DocumentMetaData.class);
 	}
 
 	@Test
 	public void test1() throws UIMAException, IOException {
 		String xmlString = "<s><det>the</det> <noun>dog</noun> <verb>barks</verb></s>";
-		gxr.addMapping("det", ART.class);
-		gxr.addMapping("s", Sentence.class);
-		gxr.addMapping("noun", NN.class);
-		gxr.addMapping("verb", V.class);
+		gxr.addRule("det", ART.class);
+		gxr.addRule("s", Sentence.class);
+		gxr.addRule("noun", NN.class);
+		gxr.addRule("verb", V.class);
 
 		jcas = gxr.read(jcas, IOUtils.toInputStream(xmlString, "UTF-8"));
 
@@ -56,8 +56,8 @@ public class TestGenericXmlReader {
 	public void test2() throws UIMAException, IOException {
 
 		String xmlString = "<text><s><pos pos=\"det\">the</pos> <pos pos=\"nn\">dog</pos> <pos pos=\"v\">barks</pos></s> <s><pos>The</pos> <pos>cat</pos> <pos>too</pos></s></text>";
-		gxr.addMapping("s", Sentence.class);
-		gxr.addMapping("pos", POS.class, (anno, xmlElement) -> {
+		gxr.addRule("s", Sentence.class);
+		gxr.addRule("pos", POS.class, (anno, xmlElement) -> {
 			if (xmlElement.hasAttr("pos"))
 				anno.setPosValue(xmlElement.attr("pos"));
 		});
@@ -82,11 +82,11 @@ public class TestGenericXmlReader {
 
 		String xmlString = "<text><head><title>The Dog Story</title><title>bla</title></head><body><s><pos pos=\"det\">the</pos> <pos pos=\"nn\">dog</pos> <pos pos=\"v\">barks</pos></s> <s><pos>The</pos> <pos>cat</pos> <pos>too</pos></s></body></text>";
 		gxr.setTextRootSelector("text > body");
-		gxr.addAction("text > head > title:first-child", (jc, e) -> {
-			DramaUtil.getDrama(jcas).setDocumentTitle(e.text());
+		gxr.addGlobalRule("text > head > title:first-child", (d, e) -> {
+			d.setDocumentTitle(e.text());
 		});
-		gxr.addMapping("s", Sentence.class);
-		gxr.addMapping("pos", POS.class, (anno, xmlElement) -> {
+		gxr.addRule("s", Sentence.class);
+		gxr.addRule("pos", POS.class, (anno, xmlElement) -> {
 			if (xmlElement.hasAttr("pos"))
 				anno.setPosValue(xmlElement.attr("pos"));
 		});
@@ -104,6 +104,6 @@ public class TestGenericXmlReader {
 		assertEquals("det", JCasUtil.selectByIndex(jcas, POS.class, 0).getPosValue());
 		assertEquals("nn", JCasUtil.selectByIndex(jcas, POS.class, 1).getPosValue());
 
-		assertEquals("The Dog Story", DramaUtil.getDrama(jcas).getDocumentTitle());
+		assertEquals("The Dog Story", DocumentMetaData.get(jcas).getDocumentTitle());
 	}
 }

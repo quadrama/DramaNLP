@@ -58,65 +58,61 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 	@Override
 	public void getNext(final JCas jcas, InputStream file, Drama drama) throws IOException, CollectionException {
 
-		GenericXmlReader gxr = new GenericXmlReader();
+		GenericXmlReader<Drama> gxr = new GenericXmlReader<Drama>(Drama.class);
 		gxr.setTextRootSelector(teiCompatibility ? null : "TEI > text");
 		gxr.setPreserveWhitespace(teiCompatibility);
 
 		// title
-		gxr.addAction("titleStmt > title:first-child", Drama.class, (d, e) -> d.setDocumentTitle(e.text()));
+		// gxr.addAction("titleStmt > title:first-child", Drama.class, (d, e) ->
+		// d.setDocumentTitle(e.text()));
+
+		gxr.addGlobalRule("titleStmt > title:first-child", (d, e) -> d.setDocumentTitle(e.text()));
 
 		// id
-		gxr.addAction("sourceDesc > bibl > idno[type=URL]", Drama.class,
-				(d, e) -> d.setDocumentId(e.text().substring(36)));
+		gxr.addGlobalRule("sourceDesc > bibl > idno[type=URL]", (d, e) -> d.setDocumentId(e.text().substring(36)));
 
 		// author
-		gxr.addAction("author", (jc, e) -> {
-			Author author = new Author(jcas);
+		gxr.addGlobalRule("author", Author.class, (author, e) -> {
 			author.setName(e.text());
-			if (e.hasAttr("key")) {
+			if (e.hasAttr("key"))
 				author.setPnd(e.attr("key").replace("pnd:", ""));
-			}
-			author.addToIndexes();
+
 		});
 
 		// translator
-		gxr.addAction("editor[role=translator]", (j, e) -> {
-			Translator transl = new Translator(jcas);
+		gxr.addGlobalRule("editor[role=translator]", Translator.class, (transl, e) -> {
 			transl.setName(e.text());
 			if (e.hasAttr("key"))
 				transl.setPnd(e.attr("key").replace("pnd:", ""));
 		});
 
 		// date printed
-		gxr.addAction("date[type=print][when]", Drama.class,
-				(d, e) -> d.setDatePrinted(Integer.valueOf(e.attr("when"))));
+		gxr.addGlobalRule("date[type=print][when]", (d, e) -> d.setDatePrinted(Integer.valueOf(e.attr("when"))));
 
 		// date written
-		gxr.addAction("date[type=written][when]", Drama.class,
-				(d, e) -> d.setDateWritten(Integer.valueOf(e.attr("when"))));
+		gxr.addGlobalRule("date[type=written][when]", (d, e) -> d.setDateWritten(Integer.valueOf(e.attr("when"))));
 
 		// date premiere
-		gxr.addAction("date[type=premiere][when]", Drama.class,
-				(d, e) -> d.setDatePremiere(Integer.valueOf(e.attr("when"))));
+		gxr.addGlobalRule("date[type=premiere][when]", (d, e) -> d.setDatePremiere(Integer.valueOf(e.attr("when"))));
 
-		gxr.addMapping("front", FrontMatter.class);
-		gxr.addMapping("body", MainMatter.class);
+		gxr.addRule("front", FrontMatter.class);
+		gxr.addRule("body", MainMatter.class);
 
 		// Segmentation
-		gxr.addMapping("div[type=prologue]", Act.class, (a, e) -> a.setRegular(false));
+		gxr.addRule("div[type=prologue]", Act.class, (a, e) -> a.setRegular(false));
 
-		gxr.addMapping("div[type=act]", Act.class, (a, e) -> a.setRegular(true));
-		gxr.addMapping("div[type=act] > div > desc > title", ActHeading.class);
-		gxr.addMapping("div[type=act] > div > head", ActHeading.class);
+		gxr.addRule("div[type=act]", Act.class, (a, e) -> a.setRegular(true));
+		gxr.addRule("div[type=act] > div > desc > title", ActHeading.class);
+		gxr.addRule("div[type=act] > div > head", ActHeading.class);
 
-		gxr.addMapping("div[type=scene]", Scene.class, (a, e) -> a.setRegular(true));
-		gxr.addMapping("div[type=scene] > div > desc > title", SceneHeading.class);
+		gxr.addRule("div[type=scene]", Scene.class, (a, e) -> a.setRegular(true));
+		gxr.addRule("div[type=scene] > div > desc > title", SceneHeading.class);
 
 		// Dramatis Personae
-		gxr.addMapping("body castList castItem", Figure.class);
-		gxr.addMapping("div[type=Dramatis_Personae]", DramatisPersonae.class);
+		gxr.addRule("body castList castItem", Figure.class);
+		gxr.addRule("div[type=Dramatis_Personae]", DramatisPersonae.class);
 		Map<String, String> xmlAlias = new HashMap<String, String>();
-		gxr.addDocumentMapping("particDesc > listPerson > person", CastFigure.class, (cf, e) -> {
+		gxr.addGlobalRule("particDesc > listPerson > person", CastFigure.class, (cf, e) -> {
 			List<String> nameList = new LinkedList<String>();
 			List<String> xmlIdList = new LinkedList<String>();
 
@@ -147,12 +143,12 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 
 		});
 
-		gxr.addMapping("speaker", Speaker.class);
-		gxr.addMapping("stage", StageDirection.class);
-		gxr.addMapping("l", Speech.class);
-		gxr.addMapping("p", Speech.class);
-		gxr.addMapping("ab", Speech.class);
-		gxr.addMapping("sp", Utterance.class, (u, e) -> {
+		gxr.addRule("speaker", Speaker.class);
+		gxr.addRule("stage", StageDirection.class);
+		gxr.addRule("l", Speech.class);
+		gxr.addRule("p", Speech.class);
+		gxr.addRule("ab", Speech.class);
+		gxr.addRule("sp", Utterance.class, (u, e) -> {
 			Collection<Speaker> speakers = JCasUtil.selectCovered(Speaker.class, u);
 			for (Speaker sp : speakers) {
 				String[] whos = e.attr("who").split(" ");
@@ -171,9 +167,9 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 			}
 		});
 
-		gxr.addMapping("text *[xml:id]", DiscourseEntity.class, (de, e) -> de.setDisplayName(e.attr("xml:id")));
+		gxr.addRule("text *[xml:id]", DiscourseEntity.class, (de, e) -> de.setDisplayName(e.attr("xml:id")));
 
-		gxr.addMapping("text *[xml:id]", Mention.class, (m, e) -> {
+		gxr.addRule("text *[xml:id]", Mention.class, (m, e) -> {
 			String id = e.attr("xml:id");
 			FSArray arr = new FSArray(jcas, 1);
 			arr.addToIndexes();
@@ -183,7 +179,7 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 
 		Map<String, DiscourseEntity> fallbackEntities = new HashMap<String, DiscourseEntity>();
 		// mentions
-		gxr.addMapping("text *[ref]", Mention.class, (cl, e) -> {
+		gxr.addRule("text *[ref]", Mention.class, (cl, e) -> {
 			String[] splitted = e.attr("ref").split(" ");
 			FSArray arr = new FSArray(jcas, splitted.length);
 			for (int i = 0; i < splitted.length; i++) {
