@@ -168,7 +168,7 @@ public class GenericXmlReader {
 		return idRegistry.containsKey(id);
 	}
 
-	private <T extends TOP> T getFeatureStructure(JCas jcas, XMLElement hAnno, Element elm, Rule<T> mapping) {
+	protected <T extends TOP> T getFeatureStructure(JCas jcas, XMLElement hAnno, Element elm, Rule<T> mapping) {
 		T annotation = null;
 		if (mapping.isUnique()) {
 			annotation = DramaUtil.getOrCreate(jcas, mapping.getTargetClass());
@@ -189,7 +189,7 @@ public class GenericXmlReader {
 		return annotation;
 	}
 
-	public <T extends TOP> void select2Annotation(JCas jcas, Element rootElement, Map<String, XMLElement> annoMap,
+	protected <T extends TOP> void select2Annotation(JCas jcas, Element rootElement, Map<String, XMLElement> annoMap,
 			Rule<T> mapping) {
 		Elements elms = rootElement.select(mapping.getSelector());
 		for (Element elm : elms) {
