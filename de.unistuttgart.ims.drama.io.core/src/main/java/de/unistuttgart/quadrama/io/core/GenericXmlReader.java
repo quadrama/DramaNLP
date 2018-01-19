@@ -191,32 +191,6 @@ public class GenericXmlReader {
 		return set;
 	}
 
-	@Deprecated
-	public class XmlElementAction<T> {
-		final String selector;
-		final Class<T> target;
-		final BiConsumer<T, Element> callback;
-
-		public XmlElementAction(String selector, Class<T> target, BiConsumer<T, Element> callback) {
-			this.selector = selector;
-			this.callback = callback;
-			this.target = target;
-		}
-
-		public String getSelector() {
-			return selector;
-		}
-
-		public BiConsumer<T, Element> getCallback() {
-			return callback;
-		}
-
-		public Class<T> getTarget() {
-			return target;
-		}
-
-	}
-
 	public class XmlElementMapping<T extends TOP> {
 
 		final String selector;
