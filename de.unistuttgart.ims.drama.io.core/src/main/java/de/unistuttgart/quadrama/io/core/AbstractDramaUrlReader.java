@@ -25,12 +25,28 @@ import org.apache.uima.util.Level;
 import org.apache.uima.util.Progress;
 
 import de.unistuttgart.ims.drama.api.Drama;
+import de.unistuttgart.quadrama.io.core.type.XMLElement;
 
 public abstract class AbstractDramaUrlReader extends JCasCollectionReader_ImplBase {
+	/**
+	 * The input source
+	 */
 	public static final String PARAM_INPUT = "Input";
+
+	/**
+	 * The text language
+	 */
 	public static final String PARAM_LANGUAGE = "Language";
-	public static final String PARAM_CLEANUP = "Cleanup";
-	public static final String PARAM_ID_PREFIX = "Id Prefix";
+
+	/**
+	 * Whether to remove annotations representing the XML elements
+	 */
+	public static final String PARAM_REMOVE_XML_ANNOTATIONS = "Remove XML Annotations";
+
+	/**
+	 * The collection id to store in the documents
+	 */
+	public static final String PARAM_COLLECTION_ID = "Collection Id";
 
 	@ConfigurationParameter(name = PARAM_INPUT, mandatory = false)
 	String input = null;
@@ -38,11 +54,11 @@ public abstract class AbstractDramaUrlReader extends JCasCollectionReader_ImplBa
 	@ConfigurationParameter(name = PARAM_LANGUAGE, mandatory = false, defaultValue = "de")
 	String language = "de";
 
-	@ConfigurationParameter(name = PARAM_CLEANUP, mandatory = false)
-	boolean cleanUp = false;
+	@ConfigurationParameter(name = PARAM_REMOVE_XML_ANNOTATIONS, mandatory = false)
+	boolean removeXmlAnnotations = false;
 
-	@ConfigurationParameter(name = PARAM_ID_PREFIX, mandatory = false, defaultValue = "")
-	String idPrefix;
+	@ConfigurationParameter(name = PARAM_COLLECTION_ID, mandatory = false, defaultValue = "")
+	String collectionId;
 
 	List<URL> urls = new LinkedList<URL>();
 	int currentUrlIndex = 0;
@@ -122,7 +138,7 @@ public abstract class AbstractDramaUrlReader extends JCasCollectionReader_ImplBa
 
 		Drama drama = new Drama(jcas);
 		drama.setDocumentId(String.valueOf(currentUrlIndex));
-		drama.setCollectionId(idPrefix);
+		drama.setCollectionId(collectionId);
 		// drama.setDocumentBaseUri("https://textgridlab.org/1.0/tgcrud-public/rest/");
 		drama.setDocumentUri(url.toString());
 		drama.addToIndexes();
@@ -137,8 +153,8 @@ public abstract class AbstractDramaUrlReader extends JCasCollectionReader_ImplBa
 
 		}
 
-		if (cleanUp) {
-			DramaIOUtil.cleanUp(jcas);
+		if (removeXmlAnnotations) {
+			jcas.removeAllIncludingSubtypes(XMLElement.type);
 		}
 	}
 
