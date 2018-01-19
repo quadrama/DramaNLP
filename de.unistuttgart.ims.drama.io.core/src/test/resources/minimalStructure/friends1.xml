@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<TEI>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
 	<teiHeader>
 		<fileDesc>
 			<publicationStmt>
@@ -29,8 +29,8 @@
 				<speaker>phoebe</speaker>
 				<p>
 					Wait, does he eat chalk?
-					<stage>They all stare, bemused.</stage>
 				</p>
+				<stage>They all stare, bemused.</stage>
 			</sp>
 		</div>
 	</text>
