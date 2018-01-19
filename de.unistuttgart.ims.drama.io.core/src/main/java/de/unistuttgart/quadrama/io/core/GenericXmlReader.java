@@ -183,9 +183,6 @@ public class GenericXmlReader {
 			set.add(annotation);
 			if (mapping.getCallback() != null && annotation != null)
 				mapping.getCallback().accept(annotation, elm);
-			else if (mapping.getCallback() != null && mapping.getTargetClass() == JCas.class) {
-			}
-			// mapping.getCallback().accept(jcas, elm);
 
 		}
 		return set;
