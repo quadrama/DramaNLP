@@ -184,16 +184,16 @@ public class GenericXmlReader {
 		T annotation = null;
 		if (mapping.isCreateFeatureStructures()) {
 			annotation = jcas.getCas().createFS(JCasUtil.getType(jcas, mapping.getTargetClass()));
-				jcas.getCas().addFsToIndexes(annotation);
-				if (Annotation.class.isAssignableFrom(mapping.getTargetClass())) {
-					((Annotation) annotation).setBegin(hAnno.getBegin());
-					((Annotation) annotation).setEnd(hAnno.getEnd());
-				}
+			jcas.getCas().addFsToIndexes(annotation);
+			if (Annotation.class.isAssignableFrom(mapping.getTargetClass())) {
+				((Annotation) annotation).setBegin(hAnno.getBegin());
+				((Annotation) annotation).setEnd(hAnno.getEnd());
+			}
 
-				if (elm.hasAttr("xml:id") && !exists(elm.attr("xml:id"))) {
-					String id = elm.attr("xml:id");
-					idRegistry.put(id, new AbstractMap.SimpleEntry<Element, FeatureStructure>(elm, annotation));
-				}
+			if (elm.hasAttr("xml:id") && !exists(elm.attr("xml:id"))) {
+				String id = elm.attr("xml:id");
+				idRegistry.put(id, new AbstractMap.SimpleEntry<Element, FeatureStructure>(elm, annotation));
+			}
 
 		} else if (mapping.getTargetClass() == Drama.class) {
 			annotation = DramaUtil.getOrCreate(jcas, mapping.getTargetClass());

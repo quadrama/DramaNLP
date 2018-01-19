@@ -19,6 +19,7 @@ import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.NN;
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS;
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.V;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
+import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.util.DramaUtil;
 import de.unistuttgart.quadrama.io.core.GenericXmlReader;
 
@@ -82,8 +83,8 @@ public class TestGenericXmlReader {
 
 		String xmlString = "<text><head><title>The Dog Story</title><title>bla</title></head><body><s><pos pos=\"det\">the</pos> <pos pos=\"nn\">dog</pos> <pos pos=\"v\">barks</pos></s> <s><pos>The</pos> <pos>cat</pos> <pos>too</pos></s></body></text>";
 		gxr.setTextRootSelector("text > body");
-		gxr.addAction("text > head > title:first-child", (jc, e) -> {
-			DramaUtil.getDrama(jcas).setDocumentTitle(e.text());
+		gxr.addMappingAction("text > head > title:first-child", Drama.class, (d, e) -> {
+			d.setDocumentTitle(e.text());
 		});
 		gxr.addMapping("s", Sentence.class);
 		gxr.addMapping("pos", POS.class, (anno, xmlElement) -> {
