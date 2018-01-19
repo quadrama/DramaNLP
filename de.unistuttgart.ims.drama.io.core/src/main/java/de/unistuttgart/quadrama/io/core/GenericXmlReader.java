@@ -166,6 +166,10 @@ public class GenericXmlReader {
 		elementMapping.add(new XmlElementMapping<T>(selector, target, callback, true));
 	}
 
+	public <T extends TOP> void addMappingAction(String selector, Class<T> target, BiConsumer<T, Element> callback) {
+		elementMapping.add(new XmlElementMapping<T>(selector, target, callback, true, false));
+	}
+
 	public Map.Entry<Element, FeatureStructure> getAnnotation(String id) {
 		return idRegistry.get(id);
 	}
@@ -235,6 +239,7 @@ public class GenericXmlReader {
 		final Class<T> targetClass;
 		final BiConsumer<T, Element> callback;
 		final boolean documentRoot;
+		final boolean createFeatureStructures;
 
 		public XmlElementMapping(String selector, Class<T> targetClass) {
 			super();
@@ -242,6 +247,7 @@ public class GenericXmlReader {
 			this.targetClass = targetClass;
 			this.callback = null;
 			this.documentRoot = false;
+			this.createFeatureStructures = true;
 		}
 
 		public XmlElementMapping(String selector, Class<T> targetClass, BiConsumer<T, Element> cb) {
@@ -250,6 +256,7 @@ public class GenericXmlReader {
 			this.targetClass = targetClass;
 			this.callback = cb;
 			this.documentRoot = false;
+			this.createFeatureStructures = true;
 		}
 
 		public XmlElementMapping(String selector, Class<T> targetClass, BiConsumer<T, Element> cb,
@@ -259,6 +266,17 @@ public class GenericXmlReader {
 			this.targetClass = targetClass;
 			this.callback = cb;
 			this.documentRoot = documentRoot;
+			this.createFeatureStructures = true;
+		}
+
+		public XmlElementMapping(String selector, Class<T> targetClass, BiConsumer<T, Element> cb, boolean documentRoot,
+				boolean create) {
+			super();
+			this.selector = selector;
+			this.targetClass = targetClass;
+			this.callback = cb;
+			this.documentRoot = documentRoot;
+			this.createFeatureStructures = create;
 		}
 
 		public String getSelector() {
@@ -275,6 +293,10 @@ public class GenericXmlReader {
 
 		public boolean isDocumentRoot() {
 			return documentRoot;
+		}
+
+		public boolean isCreateFeatureStructures() {
+			return createFeatureStructures;
 		}
 	}
 
