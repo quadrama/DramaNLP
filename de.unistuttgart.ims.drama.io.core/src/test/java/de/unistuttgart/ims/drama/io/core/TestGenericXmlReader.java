@@ -18,19 +18,19 @@ import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ART;
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.NN;
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS;
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.V;
+import de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
-import de.unistuttgart.ims.drama.util.DramaUtil;
 import de.unistuttgart.quadrama.io.core.GenericXmlReader;
 
 public class TestGenericXmlReader {
 
 	JCas jcas;
-	GenericXmlReader gxr;
+	GenericXmlReader<DocumentMetaData> gxr;
 
 	@Before
 	public void setUp() throws UIMAException {
 		jcas = JCasFactory.createJCas();
-		gxr = new GenericXmlReader();
+		gxr = new GenericXmlReader<DocumentMetaData>(DocumentMetaData.class);
 	}
 
 	@Test
@@ -104,6 +104,6 @@ public class TestGenericXmlReader {
 		assertEquals("det", JCasUtil.selectByIndex(jcas, POS.class, 0).getPosValue());
 		assertEquals("nn", JCasUtil.selectByIndex(jcas, POS.class, 1).getPosValue());
 
-		assertEquals("The Dog Story", DramaUtil.getDrama(jcas).getDocumentTitle());
+		assertEquals("The Dog Story", DocumentMetaData.get(jcas).getDocumentTitle());
 	}
 }

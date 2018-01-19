@@ -20,7 +20,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.parser.Parser;
 import org.jsoup.select.Elements;
 
-import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.util.DramaUtil;
 import de.unistuttgart.quadrama.io.core.type.XMLElement;
 
@@ -50,7 +49,7 @@ import de.unistuttgart.quadrama.io.core.type.XMLElement;
  * 
  * @since 1.0.0
  */
-public class GenericXmlReader {
+public class GenericXmlReader<D extends TOP> {
 
 	/**
 	 * The DOM
@@ -68,6 +67,12 @@ public class GenericXmlReader {
 	List<Rule> elementMapping = new LinkedList<Rule>();
 
 	Map<String, Map.Entry<Element, FeatureStructure>> idRegistry = new HashMap<String, Map.Entry<Element, FeatureStructure>>();
+
+	Class<D> documentClass;
+
+	public GenericXmlReader(Class<D> documentClass) {
+		this.documentClass = documentClass;
+	}
 
 	public JCas read(JCas jcas, InputStream xmlStream) throws IOException {
 
@@ -110,8 +115,8 @@ public class GenericXmlReader {
 		elementMapping.add(new Rule<T>(selector, targetClass, callback));
 	}
 
-	public void addGlobalRule(String selector, BiConsumer<Drama, Element> callback) {
-		Rule<Drama> r = new Rule<Drama>(selector, Drama.class, callback, true);
+	public void addGlobalRule(String selector, BiConsumer<D, Element> callback) {
+		Rule<D> r = new Rule<D>(selector, documentClass, callback, true);
 		r.setUnique(true);
 		elementMapping.add(r);
 	}
@@ -169,7 +174,7 @@ public class GenericXmlReader {
 	 * @param <T>
 	 *            Rules are specific for a UIMA type
 	 */
-	public class Rule<T extends TOP> {
+	public static class Rule<T extends TOP> {
 		String selector;
 		BiConsumer<T, Element> callback;
 		Class<T> targetClass;

@@ -58,7 +58,7 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 	@Override
 	public void getNext(final JCas jcas, InputStream file, Drama drama) throws IOException, CollectionException {
 
-		GenericXmlReader gxr = new GenericXmlReader();
+		GenericXmlReader<Drama> gxr = new GenericXmlReader<Drama>(Drama.class);
 		gxr.setTextRootSelector(teiCompatibility ? null : "TEI > text");
 		gxr.setPreserveWhitespace(teiCompatibility);
 
