@@ -53,24 +53,22 @@ public class TheatreClassiqueReader extends AbstractDramaUrlReader {
 		gxr.setPreserveWhitespace(teiCompatibility);
 
 		// title
-		gxr.addAction("titleStmt > title[type=main]", Drama.class, (d, e) -> d.setDocumentTitle(e.text()));
+		gxr.addMappingAction("titleStmt > title[type=main]", Drama.class, (d, e) -> d.setDocumentTitle(e.text()));
 
 		// id
-		gxr.addAction("publicationStmt > idno[type=cligs]", Drama.class, (d, e) -> d.setDocumentId(e.text()));
+		gxr.addMappingAction("publicationStmt > idno[type=cligs]", Drama.class, (d, e) -> d.setDocumentId(e.text()));
 
 		// author
-		gxr.addAction("author", (jc, e) -> {
-			Author author = new Author(jcas);
+		gxr.addDocumentMapping("author", Author.class, (author, e) -> {
 			author.setName(e.select("name[type=full]").text());
-			author.addToIndexes();
 		});
 
 		// date printed
-		gxr.addAction("sourceDesc > bibl[type=print-source] > date", Drama.class,
+		gxr.addMappingAction("sourceDesc > bibl[type=print-source] > date", Drama.class,
 				(d, e) -> d.setDatePrinted(Integer.valueOf(e.text())));
 
 		// data premiere
-		gxr.addAction("sourceDesc > bibl[type=performance-first] > date", Drama.class,
+		gxr.addMappingAction("sourceDesc > bibl[type=performance-first] > date", Drama.class,
 				(d, e) -> d.setDatePrinted(Integer.valueOf(e.text())));
 
 		gxr.addMapping("front", FrontMatter.class);
