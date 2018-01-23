@@ -23,6 +23,7 @@ import org.cleartk.ml.feature.function.CapitalTypeFeatureFunction;
 import org.cleartk.ml.feature.function.CharacterCategoryPatternFunction;
 import org.cleartk.ml.feature.function.CharacterCategoryPatternFunction.PatternType;
 import org.cleartk.ml.feature.function.FeatureFunctionExtractor;
+import org.cleartk.ml.feature.function.FeatureFunctionExtractor.BaseFeatures;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.unistuttgart.ims.drama.core.ml.RelativeAnnotationPositionExtractor;
@@ -43,7 +44,7 @@ public class ClearTkStructureAnnotator extends CleartkSequenceAnnotator<String> 
 		// the token feature extractor: text, char pattern (uppercase, digits,
 		// etc.), and part-of-speech
 		this.extractor = new CombinedExtractor1<Token>(
-				new FeatureFunctionExtractor<Token>(new CoveredTextExtractor<Token>(),
+				new FeatureFunctionExtractor<Token>(new CoveredTextExtractor<Token>(), BaseFeatures.EXCLUDE,
 						new CharacterCategoryPatternFunction<Token>(PatternType.REPEATS_MERGED),
 						new CapitalTypeFeatureFunction()),
 				new RelativeAnnotationPositionExtractor<Token>());
