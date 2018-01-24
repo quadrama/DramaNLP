@@ -12,7 +12,7 @@ import org.apache.uima.resource.ResourceInitializationException;
 import org.cleartk.ml.CleartkSequenceAnnotator;
 import org.cleartk.ml.Feature;
 import org.cleartk.ml.Instances;
-import org.cleartk.ml.chunking.BioChunking;
+import org.cleartk.ml.chunking.BiesoChunking;
 import org.cleartk.ml.feature.extractor.CleartkExtractor;
 import org.cleartk.ml.feature.extractor.CleartkExtractor.Following;
 import org.cleartk.ml.feature.extractor.CleartkExtractor.Preceding;
@@ -35,7 +35,7 @@ public class ClearTkStructureAnnotator extends CleartkSequenceAnnotator<String> 
 
 	CleartkExtractor<Token, Token> contextExtractor;
 
-	BioChunking<Token, TextLayer> chunking;
+	BiesoChunking<Token, TextLayer> chunking;
 
 	@Override
 	public void initialize(UimaContext context) throws ResourceInitializationException {
@@ -57,7 +57,7 @@ public class ClearTkStructureAnnotator extends CleartkSequenceAnnotator<String> 
 		// NamedEntityMentions, with labels
 		// from the "mentionType" attribute so that we get B-location, I-person,
 		// etc.
-		this.chunking = new BioChunking<Token, TextLayer>(Token.class, TextLayer.class, "Name");
+		this.chunking = new BiesoChunking<Token, TextLayer>(Token.class, TextLayer.class, "Name");
 	}
 
 	@Override
