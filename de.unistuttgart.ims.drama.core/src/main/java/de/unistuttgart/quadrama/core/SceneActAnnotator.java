@@ -17,7 +17,7 @@ import de.unistuttgart.ims.drama.api.Act;
 import de.unistuttgart.ims.drama.api.Scene;
 import de.unistuttgart.ims.drama.api.StageDirection;
 import de.unistuttgart.ims.drama.api.Utterance;
-import de.unistuttgart.ims.drama.util.AnnotationComparator;
+import de.unistuttgart.ims.uimautil.AnnotationComparator;
 
 public class SceneActAnnotator extends JCasAnnotator_ImplBase {
 
