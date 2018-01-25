@@ -34,6 +34,7 @@ import com.google.common.base.Function;
 import de.unistuttgart.ims.drama.core.ml.CopyView;
 import de.unistuttgart.ims.drama.core.ml.api.TextLayer;
 import de.unistuttgart.ims.uimautil.ClearAnnotation;
+import de.unistuttgart.quadrama.core.MergeSpeechAnnotations;
 
 public class Evaluation extends Evaluation_ImplBase<File, AnnotationStatistics<String>> {
 
@@ -82,6 +83,8 @@ public class Evaluation extends Evaluation_ImplBase<File, AnnotationStatistics<S
 
 		aggregate.add(UriToXmiCasAnnotator.getDescription());
 
+		aggregate.add(AnalysisEngineFactory.createEngineDescription(MergeSpeechAnnotations.class));
+
 		// our NamedEntityChunker annotator, configured to write Mallet CRF
 		// training data
 		aggregate.add(AnalysisEngineFactory.createEngineDescription(ClearTkStructureAnnotator.class,
@@ -115,6 +118,7 @@ public class Evaluation extends Evaluation_ImplBase<File, AnnotationStatistics<S
 		AggregateBuilder aggregate = new AggregateBuilder();
 
 		aggregate.add(UriToXmiCasAnnotator.getDescription());
+		aggregate.add(AnalysisEngineFactory.createEngineDescription(MergeSpeechAnnotations.class));
 
 		// Annotators processing the gold view:
 		// * create the gold view
