@@ -22,18 +22,24 @@ public class Export {
 
 	public static void main(String[] args) throws ResourceInitializationException, UIMAException, IOException {
 
-		runMain("AnnikaHaag",
-				new String[] { "--input",
-						"/Users/reiterns/Documents/QuaDramA/Coreference Annotations/annotations_last_tei/AH.xml",
-						"--output", "/Users/reiterns/Documents/QuaDramA/Coreference Annotations/WebAnno-Start/AH" });
+		// runMain("AnnikaHaag",
+		// new String[] { "--input",
+		// "/Users/reiterns/Documents/QuaDramA/Coreference
+		// Annotations/annotations_last_tei/AH.xml",
+		// "--output", "/Users/reiterns/Documents/QuaDramA/Coreference
+		// Annotations/WebAnno-Start/AH" });
 		runMain("AnjaSchmelzle",
 				new String[] { "--input",
 						"/Users/reiterns/Documents/QuaDramA/Coreference Annotations/annotations_last_tei/AS.xml",
-						"--output", "/Users/reiterns/Documents/QuaDramA/Coreference Annotations/WebAnno-Start/AS" });
+						"--output", "/Users/reiterns/Documents/QuaDramA/Coreference Annotations/WebAnno-S2/AS" });
 		runMain("SonjaEberhardt",
 				new String[] { "--input",
 						"/Users/reiterns/Documents/QuaDramA/Coreference Annotations/annotations_last_tei/SE.xml",
-						"--output", "/Users/reiterns/Documents/QuaDramA/Coreference Annotations/WebAnno-Start/SE" });
+						"--output", "/Users/reiterns/Documents/QuaDramA/Coreference Annotations/WebAnno-S2/SE" });
+		runMain("rjmw.0",
+				new String[] { "--input", "/Users/reiterns/Documents/QuaDramA/gerdracor/data-tgids/rjmw.0.xml",
+						"--output", "/Users/reiterns/Documents/QuaDramA/Coreference Annotations/WebAnno-S2" });
+
 	}
 
 	public static void runMain(String documentId, String[] args) throws UIMAException, IOException {
