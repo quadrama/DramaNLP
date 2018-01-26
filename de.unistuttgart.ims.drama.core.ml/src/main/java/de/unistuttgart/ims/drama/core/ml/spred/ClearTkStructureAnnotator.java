@@ -44,7 +44,7 @@ public class ClearTkStructureAnnotator extends CleartkSequenceAnnotator<String> 
 		// the token feature extractor: text, char pattern (uppercase, digits,
 		// etc.), and part-of-speech
 		this.extractor = new CombinedExtractor1<Token>(
-				new FeatureFunctionExtractor<Token>(new CoveredTextExtractor<Token>(), BaseFeatures.EXCLUDE,
+				new FeatureFunctionExtractor<Token>(new CoveredTextExtractor<Token>(), BaseFeatures.INCLUDE,
 						new CharacterCategoryPatternFunction<Token>(PatternType.REPEATS_MERGED),
 						new CapitalTypeFeatureFunction()),
 				new RelativeAnnotationPositionExtractor<Token>());
