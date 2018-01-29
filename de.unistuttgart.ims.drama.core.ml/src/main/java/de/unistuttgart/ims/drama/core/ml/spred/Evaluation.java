@@ -31,6 +31,7 @@ import org.cleartk.util.cr.UriCollectionReader;
 
 import com.google.common.base.Function;
 
+import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.unistuttgart.ims.drama.core.ml.CopyView;
 import de.unistuttgart.ims.drama.core.ml.api.TextLayer;
 import de.unistuttgart.ims.uimautil.ClearAnnotation;
@@ -137,6 +138,8 @@ public class Evaluation extends Evaluation_ImplBase<File, AnnotationStatistics<S
 				CleartkSequenceAnnotator.PARAM_IS_TRAINING, false,
 				GenericJarClassifierFactory.PARAM_CLASSIFIER_JAR_PATH,
 				JarClassifierBuilder.getModelJarFile(modelDirectory)));
+		aggregate.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
+				"target/"));
 
 		// prepare the evaluation statistics
 		AnnotationStatistics<String> stats = new AnnotationStatistics<String>();
