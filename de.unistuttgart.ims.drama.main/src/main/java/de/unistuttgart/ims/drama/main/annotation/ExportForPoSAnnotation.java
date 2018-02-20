@@ -52,6 +52,8 @@ public class ExportForPoSAnnotation {
 		builder.add(AnalysisEngineFactory.createEngineDescription(BreakIteratorSegmenter.class,
 				BreakIteratorSegmenter.PARAM_WRITE_SENTENCE, false));
 		builder.add(AnalysisEngineFactory.createEngineDescription(PreparePosAnnotation.class));
+		builder.add(AnalysisEngineFactory.createEngineDescription(PreparePosAnnotation.class,
+				PreparePosAnnotation.PARAM_SCENE_BEGIN, 18, PreparePosAnnotation.PARAM_SCENE_END, 21));
 
 		builder.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
 				options.getOutput()));
