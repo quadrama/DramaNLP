@@ -18,16 +18,15 @@ public class PreparePosAnnotation extends JCasAnnotator_ImplBase {
 	public static final String PARAM_SCENE_END = "Scene End";
 
 	@ConfigurationParameter(name = PARAM_SCENE_BEGIN, defaultValue = "8")
-	int sceneBegin;
-
+	int sceneBegin = 8;
 	@ConfigurationParameter(name = PARAM_SCENE_END, defaultValue = "11")
-	int sceneEnd;
+	int sceneEnd = 11;
 
 	@Override
 	public void process(JCas aJCas) throws AnalysisEngineProcessException {
 		String did = DramaUtil.getDrama(aJCas).getDocumentId();
-		if (did.equalsIgnoreCase("rksp.0"))
-			prepareRksp0(aJCas);
+		// if (did.equalsIgnoreCase("rksp.0"))
+		prepareRksp0(aJCas);
 	}
 
 	public void prepareRksp0(JCas jcas) {
