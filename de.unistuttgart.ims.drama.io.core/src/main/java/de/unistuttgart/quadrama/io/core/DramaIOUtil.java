@@ -15,15 +15,18 @@ import de.unistuttgart.quadrama.io.core.type.XMLElement;
 
 public class DramaIOUtil {
 
+	@Deprecated
 	public static void cleanUp(JCas jcas) {
 		jcas.removeAllIncludingSubtypes(HTMLAnnotation.type);
 	}
 
+	@Deprecated
 	public static <T extends Annotation> Collection<T> select2Annotation(JCas jcas, Element rootElement,
 			Map<String, XMLElement> annoMap, String cssSelector, Class<T> annoClass, Annotation coveringAnnotation) {
 		return select2Annotation(jcas, rootElement, annoMap, cssSelector, annoClass, coveringAnnotation, null);
 	}
 
+	@Deprecated
 	public static <T extends Annotation> Collection<T> select2Annotation(JCas jcas, Element rootElement,
 			Map<String, XMLElement> annoMap, String cssSelector, Class<T> annoClass, Annotation coveringAnnotation,
 			Select2AnnotationCallback<T> callback) {
@@ -45,6 +48,7 @@ public class DramaIOUtil {
 		return set;
 	}
 
+	@Deprecated
 	public static <T extends Annotation> T selectRange2Annotation(JCas jcas, Element rootElement,
 			Map<String, XMLElement> annoMap, String beginCssSelector, String endCssSelector, Class<T> annoClass) {
 		Elements elms = rootElement.select(beginCssSelector);

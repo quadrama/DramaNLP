@@ -73,4 +73,12 @@ public class Visitor implements NodeVisitor {
 	public Map<String, XMLElement> getAnnotationMap() {
 		return annotationMap;
 	}
+
+	public String[] getBlockElements() {
+		return blockElements;
+	}
+
+	public void setBlockElements(String[] blockElements) {
+		this.blockElements = blockElements;
+	}
 }

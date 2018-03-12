@@ -65,14 +65,14 @@ public class TestFigureReferenceAnnotator {
 		SimplePipeline.runPipeline(
 				CollectionReaderFactory.createReaderDescription(TextgridTEIUrlReader.class,
 						TextgridTEIUrlReader.PARAM_INPUT, "http://www.textgridrep.org/textgrid:rfxf.0",
-						TextgridTEIUrlReader.PARAM_CLEANUP, true),
+						TextgridTEIUrlReader.PARAM_REMOVE_XML_ANNOTATIONS, true),
 				AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_USE_DOCUMENT_ID, true,
 						XmiWriter.PARAM_TARGET_LOCATION, "src/test/resources/FigureReferenceAnnotator/"));
 
 		SimplePipeline.runPipeline(
 				CollectionReaderFactory.createReaderDescription(TextgridTEIUrlReader.class,
 						TextgridTEIUrlReader.PARAM_INPUT, "http://www.textgridrep.org/textgrid:w3zd.0",
-						TextgridTEIUrlReader.PARAM_CLEANUP, true),
+						TextgridTEIUrlReader.PARAM_REMOVE_XML_ANNOTATIONS, true),
 				AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_USE_DOCUMENT_ID, true,
 						XmiWriter.PARAM_TARGET_LOCATION, "src/test/resources/FigureReferenceAnnotator/"));
 

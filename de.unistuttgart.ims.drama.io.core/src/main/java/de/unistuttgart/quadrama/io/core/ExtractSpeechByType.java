@@ -19,6 +19,7 @@ import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.Utterance;
 import de.unistuttgart.ims.drama.util.DramaUtil;
 
+@Deprecated
 public class ExtractSpeechByType extends AbstractExtractSpeechConsumer {
 
 	public static final String PARAM_TYPE = "Sorting Type";

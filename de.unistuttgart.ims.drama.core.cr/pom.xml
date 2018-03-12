@@ -73,7 +73,6 @@
 								via other projects. -->
 							<!-- OPTIONAL -->
 							<limitToProject>true</limitToProject>
-							<outputDirectory>${project.build.directory}/main/java</outputDirectory>
 						</configuration>
 					</execution>
 				</executions>

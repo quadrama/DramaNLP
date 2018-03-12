@@ -39,6 +39,7 @@ public class TestTheatreClassiqueReader {
 					"target/doc"));
 		jcas = SimplePipeline.iteratePipeline(description, b.createAggregateDescription()).iterator().next();
 
+		assertEquals("Le cid", JCasUtil.selectSingle(jcas, Drama.class).getDocumentTitle());
 		assertEquals("tc0623", JCasUtil.selectSingle(jcas, Drama.class).getDocumentId());
 		assertTrue(JCasUtil.exists(jcas, CastFigure.class));
 		assertEquals(12, JCasUtil.select(jcas, CastFigure.class).size());
