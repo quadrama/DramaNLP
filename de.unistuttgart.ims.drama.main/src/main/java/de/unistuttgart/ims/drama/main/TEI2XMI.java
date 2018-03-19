@@ -31,6 +31,7 @@ import de.unistuttgart.quadrama.core.SetReferenceDate;
 import de.unistuttgart.quadrama.core.SpeakerIdentifier;
 import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
 import de.unistuttgart.quadrama.io.core.ExportAsCSV;
+import de.unistuttgart.quadrama.io.tei.CoreTeiReader;
 import de.unistuttgart.quadrama.io.tei.GerDraCorReader;
 import de.unistuttgart.quadrama.io.tei.MapFiguresToCastFigures;
 import de.unistuttgart.quadrama.io.tei.TextgridTEIUrlReader;
@@ -171,6 +172,10 @@ public class TEI2XMI {
 			return CollectionReaderFactory.createReaderDescription(TheatreClassiqueReader.class,
 					TheatreClassiqueReader.PARAM_INPUT, options.getInput(),
 					TheatreClassiqueReader.PARAM_REMOVE_XML_ANNOTATIONS, true, TheatreClassiqueReader.PARAM_LANGUAGE,
+					options.getLanguage());
+		case CORETEI:
+			return CollectionReaderFactory.createReaderDescription(CoreTeiReader.class, CoreTeiReader.PARAM_INPUT,
+					options.getInput(), CoreTeiReader.PARAM_REMOVE_XML_ANNOTATIONS, true, CoreTeiReader.PARAM_LANGUAGE,
 					options.getLanguage());
 		case TURM:
 			return CollectionReaderFactory.createReaderDescription(TurmReader.class, AbstractDramaUrlReader.PARAM_INPUT,
