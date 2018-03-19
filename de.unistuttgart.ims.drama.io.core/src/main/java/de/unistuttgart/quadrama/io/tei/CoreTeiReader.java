@@ -73,6 +73,7 @@ public class CoreTeiReader extends AbstractDramaUrlReader {
 		gxr.addRule("speaker", Speaker.class);
 		gxr.addRule("stage", StageDirection.class);
 		gxr.addRule("l", Speech.class);
+		gxr.addRule("p", Speech.class);
 
 		gxr.addRule("sp", Utterance.class, (u, e) -> {
 			Collection<Speaker> speakers = JCasUtil.selectCovered(Speaker.class, u);
