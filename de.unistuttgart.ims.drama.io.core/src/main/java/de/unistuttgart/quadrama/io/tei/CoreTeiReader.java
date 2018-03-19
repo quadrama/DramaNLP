@@ -57,6 +57,8 @@ public class CoreTeiReader extends AbstractDramaUrlReader {
 		gxr.setTextRootSelector("TEI > text");
 		gxr.setPreserveWhitespace(false);
 
+		gxr.addGlobalRule("fileDesc > publicationStmt > idno[type=quadramaX]", (d, e) -> d.setDocumentId(e.text()));
+
 		gxr.addGlobalRule("profileDesc > particDesc > listPerson > person", CastFigure.class, (cf, e) -> {
 			cf.setNames(UimaUtil.toStringArray(jcas, e.text()));
 			cf.setXmlId(UimaUtil.toStringArray(jcas, e.attr("xml:id")));
