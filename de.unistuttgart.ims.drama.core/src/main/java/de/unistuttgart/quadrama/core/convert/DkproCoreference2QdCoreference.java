@@ -10,7 +10,7 @@ import de.tudarmstadt.ukp.dkpro.core.api.coref.type.CoreferenceChain;
 import de.tudarmstadt.ukp.dkpro.core.api.coref.type.CoreferenceLink;
 import de.unistuttgart.ims.drama.api.DiscourseEntity;
 import de.unistuttgart.ims.drama.api.Mention;
-import de.unistuttgart.ims.drama.util.ArrayUtil;
+import de.unistuttgart.ims.uimautil.ArrayUtil;
 
 // TODO: Optionally remove dkprocoref
 // TODO: Distinguish DiscourseEntity and CastFigure
