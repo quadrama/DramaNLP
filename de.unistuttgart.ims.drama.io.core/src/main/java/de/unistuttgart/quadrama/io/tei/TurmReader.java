@@ -22,10 +22,10 @@ import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.StageDirection;
 import de.unistuttgart.ims.drama.api.Utterance;
-import de.unistuttgart.ims.drama.util.UimaUtil;
+import de.unistuttgart.ims.drama.util.ArrayUtil;
 import de.unistuttgart.ims.uimautil.AnnotationUtil;
+import de.unistuttgart.ims.uimautil.GenericXmlReader;
 import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
-import de.unistuttgart.quadrama.io.core.GenericXmlReader;
 
 public class TurmReader extends AbstractDramaUrlReader {
 
@@ -47,9 +47,9 @@ public class TurmReader extends AbstractDramaUrlReader {
 		gxr.setPreserveWhitespace(false);
 
 		gxr.addGlobalRule("castItem", CastFigure.class, (cf, e) -> {
-			cf.setNames(UimaUtil.toStringArray(jcas, e.text()));
+			cf.setNames(ArrayUtil.toStringArray(jcas, e.text()));
 			cf.setDisplayName(cf.getNames(0));
-			cf.setXmlId(UimaUtil.toStringArray(jcas, e.text()));
+			cf.setXmlId(ArrayUtil.toStringArray(jcas, e.text()));
 		});
 
 		// segmentation

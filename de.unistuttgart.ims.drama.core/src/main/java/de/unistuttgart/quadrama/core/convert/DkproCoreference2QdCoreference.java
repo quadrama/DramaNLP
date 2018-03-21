@@ -10,7 +10,7 @@ import de.tudarmstadt.ukp.dkpro.core.api.coref.type.CoreferenceChain;
 import de.tudarmstadt.ukp.dkpro.core.api.coref.type.CoreferenceLink;
 import de.unistuttgart.ims.drama.api.DiscourseEntity;
 import de.unistuttgart.ims.drama.api.Mention;
-import de.unistuttgart.ims.drama.util.UimaUtil;
+import de.unistuttgart.ims.drama.util.ArrayUtil;
 
 // TODO: Optionally remove dkprocoref
 // TODO: Distinguish DiscourseEntity and CastFigure
@@ -25,7 +25,7 @@ public class DkproCoreference2QdCoreference extends JCasAnnotator_ImplBase {
 			CoreferenceLink next = chain.getFirst();
 			while (next != null) {
 				Mention m = AnnotationFactory.createAnnotation(jcas, next.getBegin(), next.getEnd(), Mention.class);
-				m.setEntity(UimaUtil.toFSArray(jcas, entity));
+				m.setEntity(ArrayUtil.toFSArray(jcas, entity));
 			}
 		}
 	}

@@ -38,10 +38,10 @@ import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.StageDirection;
 import de.unistuttgart.ims.drama.api.Translator;
 import de.unistuttgart.ims.drama.api.Utterance;
-import de.unistuttgart.ims.drama.util.UimaUtil;
+import de.unistuttgart.ims.drama.util.ArrayUtil;
 import de.unistuttgart.ims.uimautil.AnnotationUtil;
+import de.unistuttgart.ims.uimautil.GenericXmlReader;
 import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
-import de.unistuttgart.quadrama.io.core.GenericXmlReader;
 
 public class GerDraCorReader extends AbstractDramaUrlReader {
 
@@ -137,8 +137,8 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 				if (tn.text().trim().length() > 0)
 					nameList.add(tn.text().trim());
 			}
-			cf.setXmlId(UimaUtil.toStringArray(jcas, xmlIdList));
-			cf.setNames(UimaUtil.toStringArray(jcas, nameList));
+			cf.setXmlId(ArrayUtil.toStringArray(jcas, xmlIdList));
+			cf.setNames(ArrayUtil.toStringArray(jcas, nameList));
 			cf.setDisplayName(cf.getNames(0));
 
 		});

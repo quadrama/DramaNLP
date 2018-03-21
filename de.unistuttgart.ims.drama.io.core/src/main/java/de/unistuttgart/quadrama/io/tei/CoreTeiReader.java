@@ -32,10 +32,10 @@ import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.StageDirection;
 import de.unistuttgart.ims.drama.api.Utterance;
-import de.unistuttgart.ims.drama.util.UimaUtil;
+import de.unistuttgart.ims.drama.util.ArrayUtil;
 import de.unistuttgart.ims.uimautil.AnnotationUtil;
+import de.unistuttgart.ims.uimautil.GenericXmlReader;
 import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
-import de.unistuttgart.quadrama.io.core.GenericXmlReader;
 import de.unistuttgart.quadrama.io.core.type.XMLElement;
 
 public class CoreTeiReader extends AbstractDramaUrlReader {
@@ -60,8 +60,8 @@ public class CoreTeiReader extends AbstractDramaUrlReader {
 		gxr.addGlobalRule("fileDesc > publicationStmt > idno[type=quadramaX]", (d, e) -> d.setDocumentId(e.text()));
 
 		gxr.addGlobalRule("profileDesc > particDesc > listPerson > person", CastFigure.class, (cf, e) -> {
-			cf.setNames(UimaUtil.toStringArray(jcas, e.text()));
-			cf.setXmlId(UimaUtil.toStringArray(jcas, e.attr("xml:id")));
+			cf.setNames(ArrayUtil.toStringArray(jcas, e.text()));
+			cf.setXmlId(ArrayUtil.toStringArray(jcas, e.attr("xml:id")));
 			cf.setDisplayName(cf.getNames(0));
 		});
 

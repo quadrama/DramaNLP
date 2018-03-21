@@ -8,7 +8,7 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSArray;
 import org.apache.uima.jcas.cas.StringArray;
 
-public class UimaUtil {
+public class ArrayUtil {
 
 	public static StringArray toStringArray(JCas jcas, Collection<String> coll) {
 		StringArray arr = new StringArray(jcas, coll.size());
