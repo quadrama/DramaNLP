@@ -29,7 +29,7 @@ import de.unistuttgart.ims.drama.api.FigureMention;
 import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.Utterance;
 import de.unistuttgart.ims.drama.util.DramaUtil;
-import de.unistuttgart.ims.drama.util.UimaUtil;
+import de.unistuttgart.ims.uimautil.ArrayUtil;
 
 @TypeCapability(inputs = { "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
 		"de.unistuttgart.ims.drama.api.Figure", "de.unistuttgart.ims.drama.api.Speech",
@@ -87,7 +87,7 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 					if (!matches(jcas, m.start(), m.end())) {
 						FigureMention fm = AnnotationFactory.createAnnotation(jcas, m.start(), m.end(),
 								FigureMention.class);
-						fm.setEntity(UimaUtil.toFSArray(jcas, cf));
+						fm.setEntity(ArrayUtil.toFSArray(jcas, cf));
 					}
 				}
 			}
@@ -102,7 +102,7 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 						for (PR pronoun : JCasUtil.selectCovered(jcas, PR.class, speech)) {
 							if (pronouns.contains(pronoun.getCoveredText())) {
 								AnnotationFactory.createAnnotation(jcas, pronoun.getBegin(), pronoun.getEnd(),
-										FigureMention.class).setEntity(UimaUtil.toFSArray(jcas, currentFigure));
+										FigureMention.class).setEntity(ArrayUtil.toFSArray(jcas, currentFigure));
 							}
 						}
 				}

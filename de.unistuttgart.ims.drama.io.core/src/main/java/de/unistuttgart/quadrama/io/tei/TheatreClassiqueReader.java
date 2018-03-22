@@ -28,10 +28,10 @@ import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.StageDirection;
 import de.unistuttgart.ims.drama.api.Utterance;
-import de.unistuttgart.ims.drama.util.UimaUtil;
 import de.unistuttgart.ims.uimautil.AnnotationUtil;
+import de.unistuttgart.ims.uimautil.ArrayUtil;
+import de.unistuttgart.ims.uimautil.GenericXmlReader;
 import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
-import de.unistuttgart.quadrama.io.core.GenericXmlReader;
 
 public class TheatreClassiqueReader extends AbstractDramaUrlReader {
 
@@ -94,8 +94,8 @@ public class TheatreClassiqueReader extends AbstractDramaUrlReader {
 
 			// gather names
 			nameList.add(e.text());
-			cf.setXmlId(UimaUtil.toStringArray(jcas, xmlIdList));
-			cf.setNames(UimaUtil.toStringArray(jcas, nameList));
+			cf.setXmlId(ArrayUtil.toStringArray(jcas, xmlIdList));
+			cf.setNames(ArrayUtil.toStringArray(jcas, nameList));
 			cf.setDisplayName(cf.getNames(0));
 
 		});

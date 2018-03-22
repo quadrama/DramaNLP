@@ -121,7 +121,7 @@
 			<dependency>
 				<groupId>de.unistuttgart.ims</groupId>
 				<artifactId>uimautil</artifactId>
-				<version>0.7.2</version>
+				<version>1.1.0</version>
 			</dependency>
 			<dependency>
 				<groupId>commons-io</groupId>

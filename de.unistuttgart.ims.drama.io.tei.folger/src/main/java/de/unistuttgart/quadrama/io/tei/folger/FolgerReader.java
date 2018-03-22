@@ -15,8 +15,8 @@ import org.jsoup.nodes.TextNode;
 import org.jsoup.parser.Parser;
 
 import de.unistuttgart.ims.drama.api.Drama;
+import de.unistuttgart.ims.uimautil.Visitor;
 import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
-import de.unistuttgart.quadrama.io.core.Visitor;
 import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
 
 public class FolgerReader extends AbstractDramaUrlReader {
