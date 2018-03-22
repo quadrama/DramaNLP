@@ -1,5 +1,6 @@
 package de.unistuttgart.quadrama.core;
 
+import java.util.Collection;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -17,7 +18,7 @@ import de.unistuttgart.ims.drama.api.Act;
 import de.unistuttgart.ims.drama.api.Scene;
 import de.unistuttgart.ims.drama.api.StageDirection;
 import de.unistuttgart.ims.drama.api.Utterance;
-import de.unistuttgart.ims.drama.util.AnnotationComparator;
+import de.unistuttgart.ims.uimautil.AnnotationComparator;
 
 public class SceneActAnnotator extends JCasAnnotator_ImplBase {
 
@@ -40,10 +41,10 @@ public class SceneActAnnotator extends JCasAnnotator_ImplBase {
 		}
 
 		// Scenes
-		if (!JCasUtil.exists(jcas, Scene.class)) {
-			for (Act act : JCasUtil.select(jcas, Act.class)) {
+		for (Act act : JCasUtil.select(jcas, Act.class)) {
+			Collection<Scene> scenes = JCasUtil.selectCovered(Scene.class, act);
+			if (scenes.isEmpty())
 				AnnotationFactory.createAnnotation(jcas, act.getBegin(), act.getEnd(), Scene.class).setRegular(false);
-			}
 		}
 	}
 

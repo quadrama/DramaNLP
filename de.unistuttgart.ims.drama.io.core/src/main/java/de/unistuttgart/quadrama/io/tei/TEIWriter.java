@@ -15,6 +15,7 @@ import org.apache.uima.jcas.JCas;
 
 import de.tudarmstadt.ukp.dkpro.core.api.io.JCasFileWriter_ImplBase;
 import de.unistuttgart.quadrama.io.core.type.XMLElement;
+import de.unistuttgart.quadrama.io.core.type.XMLParsingDescription;
 
 public class TEIWriter extends JCasFileWriter_ImplBase {
 
@@ -59,8 +60,14 @@ public class TEIWriter extends JCasFileWriter_ImplBase {
 			}
 		}
 
-		b.insert(1, "<?xml-stylesheet type=\"text/css\" href=\"../schema/tei.css\"?>");
-		b.insert(0, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+		if (JCasUtil.exists(jcas, XMLParsingDescription.class)) {
+			XMLParsingDescription xpd = JCasUtil.selectSingle(jcas, XMLParsingDescription.class);
+			for (int i = xpd.getXmlDeclarations().size() - 1; i >= 0; i--) {
+				b.insert(0, xpd.getXmlDeclarations(i));
+			}
+		} else {
+			b.insert(0, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+		}
 		try {
 			OutputStreamWriter fos = new OutputStreamWriter(getOutputStream(jcas, ".xml"));
 			fos.write(b.toString());

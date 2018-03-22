@@ -9,6 +9,7 @@ import org.apache.uima.collection.CollectionReaderDescription;
 import org.apache.uima.fit.factory.AggregateBuilder;
 import org.apache.uima.fit.factory.CollectionReaderFactory;
 import org.apache.uima.fit.pipeline.SimplePipeline;
+import org.apache.uima.resource.ResourceInitializationException;
 
 import com.lexicalscope.jewel.cli.CliFactory;
 import com.lexicalscope.jewel.cli.Option;
@@ -30,30 +31,30 @@ import de.unistuttgart.quadrama.core.SetReferenceDate;
 import de.unistuttgart.quadrama.core.SpeakerIdentifier;
 import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
 import de.unistuttgart.quadrama.io.core.ExportAsCSV;
+import de.unistuttgart.quadrama.io.tei.CoreTeiReader;
+import de.unistuttgart.quadrama.io.tei.GerDraCorReader;
 import de.unistuttgart.quadrama.io.tei.MapFiguresToCastFigures;
 import de.unistuttgart.quadrama.io.tei.TextgridTEIUrlReader;
+import de.unistuttgart.quadrama.io.tei.TheatreClassiqueReader;
+import de.unistuttgart.quadrama.io.tei.TurmReader;
 
 public class TEI2XMI {
+
+	enum Corpus {
+		GERDRACOR, TEXTGRID, TURM, THEATRECLASSIQUE, CORETEI
+	}
 
 	public static void main(String[] args) throws Exception {
 		MyOptions options = CliFactory.parseArguments(MyOptions.class, args);
 
-		Class<? extends AbstractDramaUrlReader> rcl = getReaderClass(options.getReaderClassname());
-
-		CollectionReaderDescription reader;
-		if (rcl == TextgridTEIUrlReader.class) {
-			reader = CollectionReaderFactory.createReaderDescription(rcl, TextgridTEIUrlReader.PARAM_INPUT,
-					options.getInput(), TextgridTEIUrlReader.PARAM_REMOVE_XML_ANNOTATIONS, true, TextgridTEIUrlReader.PARAM_STRICT,
-					true, TextgridTEIUrlReader.PARAM_LANGUAGE, options.getLanguage());
-		} else {
-			reader = CollectionReaderFactory.createReaderDescription(rcl, AbstractDramaUrlReader.PARAM_INPUT,
-					options.getInput(), AbstractDramaUrlReader.PARAM_REMOVE_XML_ANNOTATIONS, true,
-					AbstractDramaUrlReader.PARAM_LANGUAGE, options.getLanguage());
-		}
+		CollectionReaderDescription reader = getReader(options);
 
 		AggregateBuilder builder = new AggregateBuilder();
 
 		builder.add(D.getWrappedSegmenterDescription(BreakIteratorSegmenter.class));
+		if (options.getCorpus() == Corpus.TURM) {
+			builder.add(createEngineDescription(SceneActAnnotator.class));
+		}
 		builder.add(createEngineDescription(FigureReferenceAnnotator.class));
 		if (options.getCollectionId() != null)
 			builder.add(createEngineDescription(SetCollectionId.class, SetCollectionId.PARAM_COLLECTION_ID,
@@ -134,6 +135,7 @@ public class TEI2XMI {
 		@Option(defaultValue = "true")
 		boolean isDoCleanup();
 
+		@Deprecated
 		@Option(defaultValue = "de.unistuttgart.quadrama.io.tei.textgrid.TextgridTEIUrlReader")
 		String getReaderClassname();
 
@@ -146,6 +148,9 @@ public class TEI2XMI {
 		@Option()
 		boolean isSkipSpeakerIdentifier();
 
+		@Option
+		Corpus getCorpus();
+
 		/**
 		 * Storage of the CSV files. Should be a directory.
 		 * 
@@ -155,4 +160,34 @@ public class TEI2XMI {
 		File getCSVOutput();
 
 	}
+
+	protected static CollectionReaderDescription getReader(MyOptions options) throws ResourceInitializationException {
+		switch (options.getCorpus()) {
+		case GERDRACOR:
+			return CollectionReaderFactory.createReaderDescription(GerDraCorReader.class,
+					AbstractDramaUrlReader.PARAM_INPUT, options.getInput(),
+					AbstractDramaUrlReader.PARAM_REMOVE_XML_ANNOTATIONS, true, AbstractDramaUrlReader.PARAM_LANGUAGE,
+					options.getLanguage());
+		case THEATRECLASSIQUE:
+			return CollectionReaderFactory.createReaderDescription(TheatreClassiqueReader.class,
+					TheatreClassiqueReader.PARAM_INPUT, options.getInput(),
+					TheatreClassiqueReader.PARAM_REMOVE_XML_ANNOTATIONS, true, TheatreClassiqueReader.PARAM_LANGUAGE,
+					options.getLanguage());
+		case CORETEI:
+			return CollectionReaderFactory.createReaderDescription(CoreTeiReader.class, CoreTeiReader.PARAM_INPUT,
+					options.getInput(), CoreTeiReader.PARAM_REMOVE_XML_ANNOTATIONS, true, CoreTeiReader.PARAM_LANGUAGE,
+					options.getLanguage());
+		case TURM:
+			return CollectionReaderFactory.createReaderDescription(TurmReader.class, AbstractDramaUrlReader.PARAM_INPUT,
+					options.getInput(), TurmReader.PARAM_REMOVE_XML_ANNOTATIONS, true, TurmReader.PARAM_LANGUAGE, "de");
+		case TEXTGRID:
+		default:
+			return CollectionReaderFactory.createReaderDescription(TextgridTEIUrlReader.class,
+					TextgridTEIUrlReader.PARAM_INPUT, options.getInput(),
+					TextgridTEIUrlReader.PARAM_REMOVE_XML_ANNOTATIONS, true, TextgridTEIUrlReader.PARAM_STRICT, true,
+					TextgridTEIUrlReader.PARAM_LANGUAGE, options.getLanguage());
+
+		}
+	}
+
 }

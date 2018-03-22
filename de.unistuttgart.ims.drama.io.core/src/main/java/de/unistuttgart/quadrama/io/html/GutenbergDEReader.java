@@ -36,9 +36,9 @@ import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.StageDirection;
 import de.unistuttgart.ims.drama.api.Utterance;
 import de.unistuttgart.ims.uimautil.AnnotationUtil;
+import de.unistuttgart.ims.uimautil.Visitor;
 import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
 import de.unistuttgart.quadrama.io.core.DramaIOUtil;
-import de.unistuttgart.quadrama.io.core.Visitor;
 import de.unistuttgart.quadrama.io.core.type.XMLElement;
 
 public class GutenbergDEReader extends AbstractDramaUrlReader {

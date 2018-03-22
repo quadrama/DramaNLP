@@ -462,5 +462,23 @@ This type can be used to add figures on the fly, that are not declared in the dr
 				</featureDescription>
 			</features>
 		</typeDescription>
+  <typeDescription>
+      <name>de.unistuttgart.quadrama.io.core.type.XMLParsingDescription</name>
+      <description/>
+      <supertypeName>uima.cas.TOP</supertypeName>
+      <features>
+        <featureDescription>
+          <name>Encoding</name>
+          <description/>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>XmlDeclarations</name>
+          <description/>
+          <rangeTypeName>uima.cas.StringArray</rangeTypeName>
+          <multipleReferencesAllowed>false</multipleReferencesAllowed>
+        </featureDescription>
+      </features>
+    </typeDescription>
   </types>
 </typeSystemDescription>
