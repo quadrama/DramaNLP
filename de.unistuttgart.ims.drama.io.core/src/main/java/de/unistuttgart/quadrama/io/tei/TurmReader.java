@@ -62,6 +62,7 @@ public class TurmReader extends AbstractDramaUrlReader {
 		gxr.addRule("speaker", Speaker.class);
 		gxr.addRule("stage", StageDirection.class);
 		gxr.addRule("p", Speech.class);
+		gxr.addRule("l", Speech.class);
 
 		gxr.addRule("sp", Utterance.class);
 
