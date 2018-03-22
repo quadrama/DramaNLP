@@ -46,7 +46,7 @@ public class TestMapBackFeature {
 		try {
 			SimplePipeline.runPipeline(view,
 					AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
-							"target/test", XmiWriter.PARAM_USE_DOCUMENT_ID, true),
+							"target/test", XmiWriter.PARAM_USE_DOCUMENT_ID, true, XmiWriter.PARAM_OVERWRITE, true),
 					AnalysisEngineFactory.createEngineDescription(MapBackFeature.class,
 							MapBackFeature.PARAM_ANNOTATION_TYPE, POS.class, MapBackFeature.PARAM_FEATURE_NAME,
 							"PosValue", MapBackFeature.PARAM_VIEW_NAME, viewName));

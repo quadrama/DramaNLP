@@ -26,6 +26,6 @@ public class TestPrepareClearTk {
 						PrepareClearTk.PARAM_SUBANNOTATIONS, Arrays.asList(Figure.class.getName()),
 						PrepareClearTk.PARAM_VIEW_NAME, "DP"),
 				AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
-						"target/"));
+						"target/", XmiWriter.PARAM_OVERWRITE, true));
 	}
 }
