@@ -44,7 +44,7 @@ public class TestGerDraCorReader {
 		AggregateBuilder b = new AggregateBuilder();
 		if (TestGenerics.debug)
 			b.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
-					"target/doc"));
+					"target/doc", XmiWriter.PARAM_OVERWRITE, true));
 		jcas = SimplePipeline.iteratePipeline(description, b.createAggregateDescription()).iterator().next();
 
 		TestGenerics.checkMinimalStructure(jcas);
@@ -108,7 +108,7 @@ public class TestGerDraCorReader {
 		AggregateBuilder b = new AggregateBuilder();
 		if (TestGenerics.debug)
 			b.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
-					"target/doc"));
+					"target/doc", XmiWriter.PARAM_OVERWRITE, true));
 		jcas = SimplePipeline.iteratePipeline(description, b.createAggregateDescription()).iterator().next();
 
 		TestGenerics.checkMinimalStructure(jcas);
@@ -160,7 +160,7 @@ public class TestGerDraCorReader {
 		AggregateBuilder b = new AggregateBuilder();
 		if (TestGenerics.debug)
 			b.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
-					"target/doc"));
+					"target/doc", XmiWriter.PARAM_OVERWRITE, true));
 		jcas = SimplePipeline.iteratePipeline(description, b.createAggregateDescription()).iterator().next();
 
 		TestGenerics.checkMinimalStructure(jcas);
@@ -216,7 +216,7 @@ public class TestGerDraCorReader {
 		AggregateBuilder b = new AggregateBuilder();
 		if (TestGenerics.debug)
 			b.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
-					"target/doc"));
+					"target/doc", XmiWriter.PARAM_OVERWRITE));
 		jcas = SimplePipeline.iteratePipeline(description, b.createAggregateDescription()).iterator().next();
 
 		TestGenerics.checkMetadata(jcas);
@@ -237,7 +237,7 @@ public class TestGerDraCorReader {
 		AggregateBuilder b = new AggregateBuilder();
 		if (TestGenerics.debug)
 			b.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
-					"target/doc"));
+					"target/doc", XmiWriter.PARAM_OVERWRITE));
 		jcas = SimplePipeline.iteratePipeline(description, b.createAggregateDescription()).iterator().next();
 		assertEquals("v3mx.0", JCasUtil.selectSingle(jcas, Drama.class).getDocumentId());
 
