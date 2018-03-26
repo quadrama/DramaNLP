@@ -15,9 +15,9 @@ import org.jsoup.nodes.TextNode;
 import org.jsoup.parser.Parser;
 
 import de.unistuttgart.ims.drama.api.Drama;
+import de.unistuttgart.ims.uima.io.xml.Visitor;
+import de.unistuttgart.ims.uima.io.xml.type.XMLElement;
 import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
-import de.unistuttgart.quadrama.io.core.Visitor;
-import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
 
 public class FolgerReader extends AbstractDramaUrlReader {
 
@@ -57,7 +57,7 @@ public class FolgerReader extends AbstractDramaUrlReader {
 		public void tail(Node node, int depth) {
 			if (node.getClass().equals(Element.class)) {
 				Element elm = (Element) node;
-				HTMLAnnotation anno = builder.add(beginMap.get(node), HTMLAnnotation.class);
+				XMLElement anno = builder.add(beginMap.get(node), XMLElement.class);
 				anno.setTag(elm.tagName());
 				anno.setId(elm.id());
 				if (elm.className().isEmpty())

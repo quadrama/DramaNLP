@@ -10,8 +10,10 @@ import org.apache.uima.jcas.tcas.Annotation;
  * @author Nils Reiter
  *
  */
+@Deprecated
 public class AnnotationComparator implements Comparator<Annotation> {
 
+	@Override
 	public int compare(Annotation o1, Annotation o2) {
 		return Integer.compare(o1.getBegin(), o2.getBegin());
 	}

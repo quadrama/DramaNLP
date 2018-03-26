@@ -14,6 +14,7 @@ import org.junit.Test;
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiReader;
 import de.unistuttgart.quadrama.io.core.ExtractSpeechByType;
 
+@Deprecated
 public class TestExtractSpeechByType {
 
 	@Test

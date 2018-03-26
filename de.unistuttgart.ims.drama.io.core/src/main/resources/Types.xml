@@ -1,36 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
-  <name>Drama</name>
-  <description/>
-  <version>1</version>
-  <vendor>Nils Reiter</vendor>
-  <types>
-  	<typeDescription>
-      <name>de.unistuttgart.quadrama.io.core.type.HTMLAnnotation</name>
-      <description/>
-      <supertypeName>uima.tcas.Annotation</supertypeName>
-      <features>
-        <featureDescription>
-          <name>Tag</name>
-          <description/>
-          <rangeTypeName>uima.cas.String</rangeTypeName>
-        </featureDescription>
-      <featureDescription>
-          <name>Id</name>
-          <description/>
-          <rangeTypeName>uima.cas.String</rangeTypeName>
-        </featureDescription>
-        <featureDescription>
-          <name>Cls</name>
-          <description/>
-          <rangeTypeName>uima.cas.String</rangeTypeName>
-        </featureDescription>
-      <featureDescription>
-          <name>Selector</name>
-          <description/>
-          <rangeTypeName>uima.cas.String</rangeTypeName>
-        </featureDescription>
-      </features>
-    </typeDescription>
-  </types>
+	<name>Drama</name>
+	<description />
+	<version>1</version>
+	<vendor>Nils Reiter</vendor>
+	<types>
+		
+	</types>
 </typeSystemDescription>

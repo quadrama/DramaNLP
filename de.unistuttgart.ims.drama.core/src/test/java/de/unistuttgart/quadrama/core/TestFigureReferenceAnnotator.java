@@ -22,7 +22,7 @@ import org.junit.Test;
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiReader;
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.unistuttgart.ims.drama.api.Figure;
-import de.unistuttgart.quadrama.io.tei.textgrid.TextgridTEIUrlReader;
+import de.unistuttgart.quadrama.io.tei.TextgridTEIUrlReader;
 
 public class TestFigureReferenceAnnotator {
 	@Test
@@ -56,7 +56,6 @@ public class TestFigureReferenceAnnotator {
 			assertTrue(JCasUtil.exists(jcas, Figure.class));
 			for (Figure figure : JCasUtil.select(jcas, Figure.class)) {
 				assertNotNull(figure.getReference());
-				// assertFalse(figure.getReference().contains(","));
 			}
 		}
 	}
@@ -65,14 +64,14 @@ public class TestFigureReferenceAnnotator {
 		SimplePipeline.runPipeline(
 				CollectionReaderFactory.createReaderDescription(TextgridTEIUrlReader.class,
 						TextgridTEIUrlReader.PARAM_INPUT, "http://www.textgridrep.org/textgrid:rfxf.0",
-						TextgridTEIUrlReader.PARAM_CLEANUP, true),
+						TextgridTEIUrlReader.PARAM_REMOVE_XML_ANNOTATIONS, true),
 				AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_USE_DOCUMENT_ID, true,
 						XmiWriter.PARAM_TARGET_LOCATION, "src/test/resources/FigureReferenceAnnotator/"));
 
 		SimplePipeline.runPipeline(
 				CollectionReaderFactory.createReaderDescription(TextgridTEIUrlReader.class,
 						TextgridTEIUrlReader.PARAM_INPUT, "http://www.textgridrep.org/textgrid:w3zd.0",
-						TextgridTEIUrlReader.PARAM_CLEANUP, true),
+						TextgridTEIUrlReader.PARAM_REMOVE_XML_ANNOTATIONS, true),
 				AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_USE_DOCUMENT_ID, true,
 						XmiWriter.PARAM_TARGET_LOCATION, "src/test/resources/FigureReferenceAnnotator/"));
 

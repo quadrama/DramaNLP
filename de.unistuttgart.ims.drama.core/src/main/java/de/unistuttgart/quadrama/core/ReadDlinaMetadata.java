@@ -100,10 +100,13 @@ public class ReadDlinaMetadata extends JCasAnnotator_ImplBase {
 				String whenAttVal = dateElement.getAttributeValue("when");
 				Date date = null;
 				if (dateElement.getAttributeValue("type").equals("print")) {
+					d.setDatePrinted(Integer.valueOf(whenAttVal));
 					date = DramaUtil.createFeatureStructure(jcas, DatePrint.class);
 				} else if (dateElement.getAttributeValue("type").equals("written")) {
+					d.setDateWritten(Integer.valueOf(whenAttVal));
 					date = DramaUtil.createFeatureStructure(jcas, DateWritten.class);
 				} else if (dateElement.getAttributeValue("type").equals("premiere")) {
+					d.setDatePremiere(Integer.valueOf(whenAttVal));
 					date = DramaUtil.createFeatureStructure(jcas, DatePremiere.class);
 				}
 				if (date != null) {

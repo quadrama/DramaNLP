@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>de.unistuttgart.ims</groupId>
 		<artifactId>de.unistuttgart.ims.drama</artifactId>
-		<version>0.5.1</version>
+		<version>1.0.0</version>
 	</parent>
 	<artifactId>de.unistuttgart.ims.drama.api</artifactId>
 	<properties>
@@ -82,6 +82,18 @@
 			<artifactId>
     		de.tudarmstadt.ukp.dkpro.core.api.metadata-asl
     	</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+			<artifactId>
+    		de.tudarmstadt.ukp.dkpro.core.api.segmentation-asl
+    	</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+			<artifactId>
+				de.tudarmstadt.ukp.dkpro.core.api.coref-asl
+			</artifactId>
 		</dependency>
 	</dependencies>
 </project>

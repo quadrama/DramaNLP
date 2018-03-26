@@ -10,27 +10,30 @@ import org.apache.uima.jcas.tcas.Annotation;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import de.unistuttgart.ims.uima.io.xml.type.XMLElement;
 import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
 
 public class DramaIOUtil {
 
+	@Deprecated
 	public static void cleanUp(JCas jcas) {
 		jcas.removeAllIncludingSubtypes(HTMLAnnotation.type);
 	}
 
+	@Deprecated
 	public static <T extends Annotation> Collection<T> select2Annotation(JCas jcas, Element rootElement,
-			Map<String, HTMLAnnotation> annoMap, String cssSelector, Class<T> annoClass,
-			Annotation coveringAnnotation) {
+			Map<String, XMLElement> annoMap, String cssSelector, Class<T> annoClass, Annotation coveringAnnotation) {
 		return select2Annotation(jcas, rootElement, annoMap, cssSelector, annoClass, coveringAnnotation, null);
 	}
 
+	@Deprecated
 	public static <T extends Annotation> Collection<T> select2Annotation(JCas jcas, Element rootElement,
-			Map<String, HTMLAnnotation> annoMap, String cssSelector, Class<T> annoClass, Annotation coveringAnnotation,
+			Map<String, XMLElement> annoMap, String cssSelector, Class<T> annoClass, Annotation coveringAnnotation,
 			Select2AnnotationCallback<T> callback) {
 		HashSet<T> set = new HashSet<T>();
 		Elements elms = rootElement.select(cssSelector);
 		for (Element elm : elms) {
-			HTMLAnnotation hAnno = annoMap.get(elm.cssSelector());
+			XMLElement hAnno = annoMap.get(elm.cssSelector());
 			if (elm.hasText() || elm.childNodeSize() > 0) {
 				if (coveringAnnotation == null || (coveringAnnotation.getBegin() <= hAnno.getBegin()
 						&& coveringAnnotation.getEnd() >= hAnno.getEnd())) {
@@ -45,12 +48,13 @@ public class DramaIOUtil {
 		return set;
 	}
 
+	@Deprecated
 	public static <T extends Annotation> T selectRange2Annotation(JCas jcas, Element rootElement,
-			Map<String, HTMLAnnotation> annoMap, String beginCssSelector, String endCssSelector, Class<T> annoClass) {
+			Map<String, XMLElement> annoMap, String beginCssSelector, String endCssSelector, Class<T> annoClass) {
 		Elements elms = rootElement.select(beginCssSelector);
 		int begin = jcas.size();
 		for (Element elm : elms) {
-			HTMLAnnotation hAnno = annoMap.get(elm.cssSelector());
+			XMLElement hAnno = annoMap.get(elm.cssSelector());
 			if (hAnno.getBegin() < begin)
 				begin = hAnno.getBegin();
 		}
@@ -58,7 +62,7 @@ public class DramaIOUtil {
 		elms = rootElement.select(endCssSelector);
 		int end = 0;
 		for (Element elm : elms) {
-			HTMLAnnotation hAnno = annoMap.get(elm.cssSelector());
+			XMLElement hAnno = annoMap.get(elm.cssSelector());
 			if (hAnno.getEnd() > end)
 				end = hAnno.getEnd();
 		}

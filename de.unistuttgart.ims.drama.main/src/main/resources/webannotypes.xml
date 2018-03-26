@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
+	<name>QuaDramA Annotation Support</name>
+	<description/>
+	<version>1</version>
+	<vendor>Nils Reiter</vendor>
+	<types>
+		<typeDescription>
+			<name>webanno.custom.RA</name>
+			<description/>
+			<supertypeName>uima.tcas.Annotation</supertypeName>
+		</typeDescription>
+		<typeDescription>
+			<name>webanno.custom.Link</name>
+			<description/>
+			<supertypeName>uima.tcas.Annotation</supertypeName>
+		</typeDescription>
+	</types>
+</typeSystemDescription>

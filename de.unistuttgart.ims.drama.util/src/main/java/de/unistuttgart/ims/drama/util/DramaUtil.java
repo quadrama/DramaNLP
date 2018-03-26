@@ -14,6 +14,7 @@ import org.apache.uima.jcas.cas.TOP;
 import org.apache.uima.jcas.tcas.Annotation;
 
 import de.unistuttgart.ims.drama.api.Author;
+import de.unistuttgart.ims.drama.api.CastFigure;
 import de.unistuttgart.ims.drama.api.DateReference;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Figure;
@@ -66,6 +67,16 @@ public class DramaUtil {
 		Collection<Figure> f = new LinkedList<Figure>();
 		for (Speaker speaker : s) {
 			f.add(speaker.getFigure());
+		}
+		return f;
+	}
+
+	public static Collection<CastFigure> getCastFigures(Utterance u) {
+		Collection<Speaker> s = getSpeakers(u);
+		Collection<CastFigure> f = new LinkedList<CastFigure>();
+		for (Speaker speaker : s) {
+			for (int i = 0; i < speaker.getCastFigure().size(); i++)
+				f.add(speaker.getCastFigure(i));
 		}
 		return f;
 	}
@@ -146,5 +157,25 @@ public class DramaUtil {
 		T fs = jcas.getCas().createFS(JCasUtil.getType(jcas, cls));
 		fs.addToIndexes();
 		return fs;
+	}
+
+	public static Drama getDrama(JCas jcas) {
+		if (JCasUtil.exists(jcas, Drama.class)) {
+			return JCasUtil.selectSingle(jcas, Drama.class);
+		} else {
+			Drama d = new Drama(jcas);
+			d.addToIndexes();
+			return d;
+		}
+	}
+
+	public static <T extends TOP> T getOrCreate(JCas jcas, Class<T> targetClass) {
+		if (JCasUtil.exists(jcas, targetClass)) {
+			return JCasUtil.selectSingle(jcas, targetClass);
+		} else {
+			T annotation = jcas.getCas().createFS(JCasUtil.getType(jcas, targetClass));
+			jcas.getCas().addFsToIndexes(annotation);
+			return annotation;
+		}
 	}
 }

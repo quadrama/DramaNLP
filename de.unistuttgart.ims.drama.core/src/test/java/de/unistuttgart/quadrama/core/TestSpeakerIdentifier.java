@@ -18,6 +18,7 @@ import de.unistuttgart.ims.commons.Counter;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Speaker;
 
+@Deprecated
 public class TestSpeakerIdentifier {
 
 	@Test
