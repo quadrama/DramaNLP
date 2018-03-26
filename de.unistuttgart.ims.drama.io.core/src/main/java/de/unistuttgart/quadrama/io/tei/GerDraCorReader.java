@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.uima.cas.FeatureStructure;
 import org.apache.uima.collection.CollectionException;
@@ -87,13 +89,13 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 		});
 
 		// date printed
-		gxr.addGlobalRule("date[type=print][when]", (d, e) -> d.setDatePrinted(Integer.valueOf(e.attr("when"))));
+		gxr.addGlobalRule("date[type=print][when]", (d, e) -> d.setDatePrinted(getYear(e.attr("when"))));
 
 		// date written
-		gxr.addGlobalRule("date[type=written][when]", (d, e) -> d.setDateWritten(Integer.valueOf(e.attr("when"))));
+		gxr.addGlobalRule("date[type=written][when]", (d, e) -> d.setDateWritten(getYear(e.attr("when"))));
 
 		// date premiere
-		gxr.addGlobalRule("date[type=premiere][when]", (d, e) -> d.setDatePremiere(Integer.valueOf(e.attr("when"))));
+		gxr.addGlobalRule("date[type=premiere][when]", (d, e) -> d.setDatePremiere(getYear(e.attr("when"))));
 
 		gxr.addRule("front", FrontMatter.class);
 		gxr.addRule("body", MainMatter.class);
@@ -213,5 +215,14 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 		AnnotationUtil.trim(new ArrayList<Act>(JCasUtil.select(jcas, Act.class)));
 		AnnotationUtil.trim(new ArrayList<StageDirection>(JCasUtil.select(jcas, StageDirection.class)));
 
+	}
+
+	int getYear(String s) {
+		Pattern p = Pattern.compile("\\d\\d\\d\\d");
+		Matcher m = p.matcher(s);
+		if (m.find()) {
+			return Integer.valueOf(m.group());
+		} else
+			return 0;
 	}
 }
