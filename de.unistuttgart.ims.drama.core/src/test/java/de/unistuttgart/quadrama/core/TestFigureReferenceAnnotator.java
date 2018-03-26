@@ -56,7 +56,6 @@ public class TestFigureReferenceAnnotator {
 			assertTrue(JCasUtil.exists(jcas, Figure.class));
 			for (Figure figure : JCasUtil.select(jcas, Figure.class)) {
 				assertNotNull(figure.getReference());
-				// assertFalse(figure.getReference().contains(","));
 			}
 		}
 	}
