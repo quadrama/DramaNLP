@@ -32,11 +32,11 @@ import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.StageDirection;
 import de.unistuttgart.ims.drama.api.Utterance;
+import de.unistuttgart.ims.uima.io.xml.ArrayUtil;
+import de.unistuttgart.ims.uima.io.xml.GenericXmlReader;
+import de.unistuttgart.ims.uima.io.xml.type.XMLElement;
 import de.unistuttgart.ims.uimautil.AnnotationUtil;
-import de.unistuttgart.ims.uimautil.ArrayUtil;
-import de.unistuttgart.ims.uimautil.GenericXmlReader;
 import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
-import de.unistuttgart.quadrama.io.core.type.XMLElement;
 
 public class CoreTeiReader extends AbstractDramaUrlReader {
 
@@ -146,8 +146,8 @@ public class CoreTeiReader extends AbstractDramaUrlReader {
 	/**
 	 * Detect scenes. The following things are checked:
 	 * <ol>
-	 * <li>if they are explicitly marked with <code>type=scnee</code>, we take
-	 * them and return.</li>
+	 * <li>if they are explicitly marked with <code>type=scnee</code>, we take them
+	 * and return.</li>
 	 * <li>if Act annotations do exist in the JCas, we search for divs that have
 	 * head annotations.</li>
 	 * </ol>

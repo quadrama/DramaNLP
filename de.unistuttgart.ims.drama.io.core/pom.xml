@@ -53,6 +53,11 @@
   		<groupId>de.unistuttgart.ims</groupId>
   		<artifactId>uimautil</artifactId>
   	</dependency>
+  	<dependency>
+  		<groupId>de.unistuttgart.ims.uima.io</groupId>
+  		<artifactId>generic-xml-reader</artifactId>
+  		<version>1.0.0</version>
+  	</dependency>
   </dependencies>
   <build>
 		<plugins>
