@@ -41,7 +41,7 @@ import de.unistuttgart.quadrama.io.tei.TurmReader;
 public class TEI2XMI {
 
 	enum Corpus {
-		GERDRACOR, TEXTGRID, TURM, THEATRECLASSIQUE, CORETEI
+		GERDRACOR, TEXTGRID, TURM, THEATRECLASSIQUE, CORETEI, QUADRAMA
 	}
 
 	public static void main(String[] args) throws Exception {
@@ -163,6 +163,7 @@ public class TEI2XMI {
 
 	protected static CollectionReaderDescription getReader(MyOptions options) throws ResourceInitializationException {
 		switch (options.getCorpus()) {
+		case QUADRAMA:
 		case GERDRACOR:
 			return CollectionReaderFactory.createReaderDescription(GerDraCorReader.class,
 					AbstractDramaUrlReader.PARAM_INPUT, options.getInput(),

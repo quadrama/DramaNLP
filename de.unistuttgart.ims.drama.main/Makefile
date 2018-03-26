@@ -24,6 +24,9 @@ run-gdc:
 run-turm:
 	java -cp target/assembly/drama.Main.jar ${TEI2XMI} --input ../../Data/turm/ --output ${DATADIR}/xmi/turm/ --csvOutput ${CDATADIR}turm/csv  --collectionId "turm" --doCleanup --corpus TURM
 
+run-qd:
+	java -cp target/assembly/drama.Main.jar ${TEI2XMI} --input ../../QuaDramACorpus/tei --output ${DATADIR}/xmi/qd/ --csvOutput ${CDATADIR}qd/csv --skipSpeakerIdentifier  --collectionId "qd" --doCleanup --corpus QUADRAMA
+
 %.csv.zip:
 	cd ${DATADIR}/xmi; zip -r ${ZIPDIR}/$@ . -i $*/*.csv
 
