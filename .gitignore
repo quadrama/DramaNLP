@@ -3,3 +3,4 @@
 **/.project
 **/target/
 **/pom.xml.versionsBackup
+**/src/test/resources/**/typesystem.xml
