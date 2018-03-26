@@ -73,8 +73,7 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 		Drama d = JCasUtil.selectSingle(jcas, Drama.class);
 		Pattern p;
 		Matcher m;
-		for (int i = 0; i < d.getCastList().size(); i++) {
-			CastFigure cf = d.getCastList(i);
+		for (CastFigure cf : JCasUtil.select(jcas, CastFigure.class)) {
 			for (int j = 0; j < cf.getNames().size(); j++) {
 				String name = cf.getNames(j);
 
