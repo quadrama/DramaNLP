@@ -45,10 +45,8 @@ public class TestGutenbergDEReader {
 	public void testReader1() throws UIMAException, IOException {
 		description = CollectionReaderFactory.createReaderDescription(GutenbergDEReader.class,
 				GutenbergDEReader.PARAM_INPUT, "src/test/resources/test1");
-		JCasIterator iter = SimplePipeline
-				.iteratePipeline(description, AnalysisEngineFactory.createEngineDescription(XmiWriter.class,
-						XmiWriter.PARAM_TARGET_LOCATION, "target/doc", XmiWriter.PARAM_OVERWRITE, true))
-				.iterator();
+		JCasIterator iter = SimplePipeline.iteratePipeline(description, AnalysisEngineFactory
+				.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION, "target/doc")).iterator();
 		JCas jcas;
 		Scene scene;
 
