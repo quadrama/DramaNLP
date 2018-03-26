@@ -5,9 +5,9 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.uima.cas.FeatureStructure;
 import org.apache.uima.collection.CollectionException;
@@ -113,8 +113,8 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 		gxr.addRule("div[type=Dramatis_Personae]", DramatisPersonae.class);
 		Map<String, String> xmlAlias = new HashMap<String, String>();
 		gxr.addGlobalRule("particDesc > listPerson > person", CastFigure.class, (cf, e) -> {
-			List<String> nameList = new LinkedList<String>();
-			List<String> xmlIdList = new LinkedList<String>();
+			Set<String> nameList = new HashSet<String>();
+			Set<String> xmlIdList = new HashSet<String>();
 
 			if (e.hasAttr("xml:id"))
 				xmlIdList.add(e.attr("xml:id"));
