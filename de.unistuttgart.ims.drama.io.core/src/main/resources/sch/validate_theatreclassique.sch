@@ -6,7 +6,7 @@
   <!-- global cast_ids xslt-key -->
   <xsl:key name="cast_ids" match="tei:role" use="@xml:id"/>
 
-  <!-- tests for basic structure of teiHeader -->
+  <!-- TODO: add more general tests for basic structure and mandatory elements -->
   <pattern id="teiHeader">
     <rule context="tei:TEI/tei:teiHeader">
       <assert test=".">
