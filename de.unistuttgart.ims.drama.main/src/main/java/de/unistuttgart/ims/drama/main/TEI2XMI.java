@@ -132,7 +132,7 @@ public class TEI2XMI {
 		@Option(defaultToNull = true)
 		File getGenderModel();
 
-		@Option(defaultValue = "true")
+		@Option()
 		boolean isDoCleanup();
 
 		@Deprecated
