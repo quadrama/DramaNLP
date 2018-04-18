@@ -59,6 +59,34 @@ public class TEI2XMI {
 		if (options.getCollectionId() != null)
 			builder.add(createEngineDescription(SetCollectionId.class, SetCollectionId.PARAM_COLLECTION_ID,
 					options.getCollectionId()));
+		else {
+			switch (options.getCorpus()) {
+			case GERDRACOR: 
+				builder.add(createEngineDescription(SetCollectionId.class, SetCollectionId.PARAM_COLLECTION_ID,
+				"gdc"));
+				break;
+			case TEXTGRID:
+				builder.add(createEngineDescription(SetCollectionId.class, SetCollectionId.PARAM_COLLECTION_ID,
+				"tg"));
+				break;
+			case TURM:
+				builder.add(createEngineDescription(SetCollectionId.class, SetCollectionId.PARAM_COLLECTION_ID,
+				"turm"));
+				break;
+			case THEATRECLASSIQUE:
+				builder.add(createEngineDescription(SetCollectionId.class, SetCollectionId.PARAM_COLLECTION_ID,
+				"tc"));
+				break;
+			case CORETEI:
+				builder.add(createEngineDescription(SetCollectionId.class, SetCollectionId.PARAM_COLLECTION_ID,
+				"ctei"));
+				break;
+			case QUADRAMA:
+				builder.add(createEngineDescription(SetCollectionId.class, SetCollectionId.PARAM_COLLECTION_ID,
+				"qd"));
+				break;
+			}
+		}
 		builder.add(createEngineDescription(FigureDetailsAnnotator.class));
 		if (!options.isSkipSpeakerIdentifier()) {
 			builder.add(createEngineDescription(SpeakerIdentifier.class, SpeakerIdentifier.PARAM_CREATE_SPEAKER_FIGURE,
