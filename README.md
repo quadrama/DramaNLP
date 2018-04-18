@@ -19,7 +19,7 @@ This repository contains a number of UIMA components to process dramatic texts, 
 As an example, we'll work on the data from the GerDraCor collection (which is based on TextGrid). Download the files from [GitHub](https://github.com/quadrama/gerdracor) and store the XML files in a directory. We will call the directory `$TEIDIR` in the following examples. The directory `$OUTDIR` is used to store the output of the pipeline. You'll need the file `drama.Main.jar`.
 
 Enter the following command in the command line interface:
-`java -cp target/assembly/drama.Main.jar de.unistuttgart.ims.drama.main.TEI2XMI --input $TEIDIR --output $OUTDIR/xmi --csvOutput $OUTDIR/csv --skipSpeakerIdentifier --collectionId "gdc" --doCleanup --readerClassname "de.unistuttgart.quadrama.io.tei.textgrid.GerDraCorUrlReader"`
+`java -cp target/assembly/drama.Main.jar de.unistuttgart.ims.drama.main.TEI2XMI --input $TEIDIR --output $OUTDIR/xmi --csvOutput $OUTDIR/csv --skipSpeakerIdentifier --corpus GERDRACOR --collectionId "gdc" --doCleanup`
 
 After running, the directory `$OUTDIR` contains two sub directories, `xmi` and `csv`, which are different file formats for the plays.
 
