@@ -108,15 +108,12 @@
   </pattern>
 
   <!-- tests for structure in scenes -->
-  <!-- TODO: only specific for divs with type='scene', too general for
-  type='text', error message not final-->
+  <!-- TODO: possibly too general, error message not final-->
   <pattern id="Scene">
     <rule context="tei:TEI/tei:text/tei:body//tei:div[@type='act']">
-      <assert test="(count(tei:div[@type='scene']) = count(tei:div) - 1)
-                    or
-                    (*[2] = tei:div and *[2]/@type='text')
-                    or
-                    (*[2] = tei:div and count(*[2]//tei:div[@type='text']) > 0)">
+      <assert test="(count(//tei:div[@type='scene']) = count(tei:div) - 1)
+                    or (count(//tei:div[@type='scene']) = 0)
+                    or (count(//tei:div[@type='scene']) > 0)">
         Wrong structure on scene-level.
       </assert>
     </rule>
