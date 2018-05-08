@@ -5,11 +5,13 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import org.apache.uima.collection.CollectionReaderDescription;
 import org.apache.uima.fit.factory.AggregateBuilder;
 import org.apache.uima.fit.factory.AnalysisEngineFactory;
 import org.apache.uima.fit.factory.CollectionReaderFactory;
+import org.apache.uima.fit.pipeline.JCasIterator;
 import org.apache.uima.fit.pipeline.SimplePipeline;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
@@ -34,18 +36,36 @@ import de.unistuttgart.ims.drama.util.DramaUtil;
 import de.unistuttgart.quadrama.io.tei.GerDraCorReader;
 
 public class TestGerDraCorReader {
-	CollectionReaderDescription description;
-	JCas jcas;
 
 	@Test
-	public void testNdtw0() throws ResourceInitializationException {
-		description = CollectionReaderFactory.createReaderDescription(GerDraCorReader.class,
-				GerDraCorReader.PARAM_INPUT, "src/test/resources/gerdracor/ndtw.0.xml");
+	public void testAll() throws Exception {
+		CollectionReaderDescription description = CollectionReaderFactory.createReaderDescription(GerDraCorReader.class,
+				GerDraCorReader.PARAM_INPUT, "src/test/resources/gerdracor/");
 		AggregateBuilder b = new AggregateBuilder();
 		if (TestGenerics.debug)
 			b.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
 					"target/doc"));
-		jcas = SimplePipeline.iteratePipeline(description, b.createAggregateDescription()).iterator().next();
+		JCasIterator iterator = SimplePipeline.iteratePipeline(description, b.createAggregateDescription()).iterator();
+		while (iterator.hasNext()) {
+			JCas jcas = iterator.next();
+			String id = DramaUtil.getDisplayId(jcas);
+			if (id.equalsIgnoreCase("ndtw.0"))
+				testNdtw0(jcas);
+			else if (id.equalsIgnoreCase("qfxf.0"))
+				testQfxf0(jcas);
+			else if (id.equalsIgnoreCase("r0n2.0"))
+				testR0n20(jcas);
+			else if (id.equalsIgnoreCase("rjmw.0"))
+				testRjmw0(jcas);
+			else if (id.equalsIgnoreCase("v3mx.0"))
+				testV3mx0(jcas);
+			else
+				fail("File without id / unknwon file");
+		}
+
+	}
+
+	public void testNdtw0(JCas jcas) throws ResourceInitializationException {
 
 		TestGenerics.checkMinimalStructure(jcas);
 		TestGenerics.checkMetadata(jcas);
@@ -101,15 +121,7 @@ public class TestGerDraCorReader {
 		assertEquals(14, JCasUtil.select(jcas, CastFigure.class).size());
 	}
 
-	@Test
-	public void testQfxf0() throws ResourceInitializationException {
-		description = CollectionReaderFactory.createReaderDescription(GerDraCorReader.class,
-				GerDraCorReader.PARAM_INPUT, "src/test/resources/gerdracor/qfxf.0.xml");
-		AggregateBuilder b = new AggregateBuilder();
-		if (TestGenerics.debug)
-			b.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
-					"target/doc"));
-		jcas = SimplePipeline.iteratePipeline(description, b.createAggregateDescription()).iterator().next();
+	public void testQfxf0(JCas jcas) throws ResourceInitializationException {
 
 		TestGenerics.checkMinimalStructure(jcas);
 		TestGenerics.checkMetadata(jcas);
@@ -153,15 +165,7 @@ public class TestGerDraCorReader {
 		assertEquals(19, JCasUtil.select(jcas, CastFigure.class).size());
 	}
 
-	@Test
-	public void testRjmw0() throws ResourceInitializationException {
-		description = CollectionReaderFactory.createReaderDescription(GerDraCorReader.class,
-				GerDraCorReader.PARAM_INPUT, "src/test/resources/gerdracor/rjmw.0.xml");
-		AggregateBuilder b = new AggregateBuilder();
-		if (TestGenerics.debug)
-			b.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
-					"target/doc"));
-		jcas = SimplePipeline.iteratePipeline(description, b.createAggregateDescription()).iterator().next();
+	public void testRjmw0(JCas jcas) throws ResourceInitializationException {
 
 		TestGenerics.checkMinimalStructure(jcas);
 		TestGenerics.checkMetadata(jcas);
@@ -209,15 +213,7 @@ public class TestGerDraCorReader {
 		}
 	}
 
-	@Test
-	public void testR0n20() throws ResourceInitializationException {
-		description = CollectionReaderFactory.createReaderDescription(GerDraCorReader.class,
-				GerDraCorReader.PARAM_INPUT, "src/test/resources/gerdracor/r0n2.0.xml");
-		AggregateBuilder b = new AggregateBuilder();
-		if (TestGenerics.debug)
-			b.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
-					"target/doc"));
-		jcas = SimplePipeline.iteratePipeline(description, b.createAggregateDescription()).iterator().next();
+	public void testR0n20(JCas jcas) throws ResourceInitializationException {
 
 		TestGenerics.checkMetadata(jcas);
 		TestGenerics.checkMinimalStructure(jcas);
@@ -230,15 +226,7 @@ public class TestGerDraCorReader {
 		assertEquals(24, JCasUtil.select(jcas, SceneHeading.class).size());
 	}
 
-	@Test
-	public void testV3mx0() throws ResourceInitializationException {
-		description = CollectionReaderFactory.createReaderDescription(GerDraCorReader.class,
-				GerDraCorReader.PARAM_INPUT, "src/test/resources/gerdracor/v3mx.0.xml");
-		AggregateBuilder b = new AggregateBuilder();
-		if (TestGenerics.debug)
-			b.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
-					"target/doc"));
-		jcas = SimplePipeline.iteratePipeline(description, b.createAggregateDescription()).iterator().next();
+	public void testV3mx0(JCas jcas) throws ResourceInitializationException {
 		assertEquals("v3mx.0", JCasUtil.selectSingle(jcas, Drama.class).getDocumentId());
 
 		assertTrue(JCasUtil.exists(jcas, Drama.class));
