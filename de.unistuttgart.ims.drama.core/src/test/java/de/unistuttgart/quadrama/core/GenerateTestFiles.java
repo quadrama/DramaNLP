@@ -17,7 +17,8 @@ public class GenerateTestFiles {
 	public static void main(String[] args) throws ResourceInitializationException, UIMAException, IOException {
 		SimplePipeline.runPipeline(
 				CollectionReaderFactory.createReaderDescription(GerDraCorReader.class, GerDraCorReader.PARAM_INPUT,
-						"src/test/resources/tei/", GerDraCorReader.PARAM_REMOVE_XML_ANNOTATIONS, true),
+						new File(GenerateTestFiles.class.getResource("/tei").getFile()),
+						GerDraCorReader.PARAM_REMOVE_XML_ANNOTATIONS, true),
 				AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_USE_DOCUMENT_ID, true,
 						XmiWriter.PARAM_TARGET_LOCATION, "src/test/resources/level-1/"));
 
