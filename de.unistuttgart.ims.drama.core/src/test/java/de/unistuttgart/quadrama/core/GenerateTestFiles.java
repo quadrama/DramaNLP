@@ -14,6 +14,7 @@ import de.unistuttgart.quadrama.io.tei.GerDraCorReader;
 
 public class GenerateTestFiles {
 
+	// TODO: maybe specifying the target directory is not the best in this way
 	public static void main(String[] args) throws ResourceInitializationException, UIMAException, IOException {
 		SimplePipeline.runPipeline(
 				CollectionReaderFactory.createReaderDescription(GerDraCorReader.class, GerDraCorReader.PARAM_INPUT,
