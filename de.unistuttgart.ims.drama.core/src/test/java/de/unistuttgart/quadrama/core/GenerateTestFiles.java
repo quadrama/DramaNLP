@@ -16,14 +16,13 @@ public class GenerateTestFiles {
 
 	// TODO: maybe specifying the target directory is not the best in this way
 	public static void main(String[] args) throws ResourceInitializationException, UIMAException, IOException {
+		// System.err.println(GenerateTestFiles.class.getResource(args[1]).getFile());
 		SimplePipeline.runPipeline(
 				CollectionReaderFactory.createReaderDescription(GerDraCorReader.class, GerDraCorReader.PARAM_INPUT,
-						new File(GenerateTestFiles.class.getResource("/tei").getFile()),
+						new File(GenerateTestFiles.class.getResource(args[0]).getFile()),
 						GerDraCorReader.PARAM_REMOVE_XML_ANNOTATIONS, true),
 				AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_USE_DOCUMENT_ID, true,
-						XmiWriter.PARAM_TARGET_LOCATION, "src/test/resources/level-1/"));
-
-		new File("src/test/resources/level-1/typesystem.xml").delete();
+						XmiWriter.PARAM_TARGET_LOCATION, args[1]));
 	}
 
 }

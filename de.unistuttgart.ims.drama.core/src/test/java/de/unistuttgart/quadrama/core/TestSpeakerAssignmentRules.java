@@ -10,6 +10,7 @@ import org.apache.uima.fit.factory.CollectionReaderFactory;
 import org.apache.uima.fit.pipeline.SimplePipeline;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
+import org.junit.Before;
 import org.junit.Test;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiReader;
@@ -17,11 +18,19 @@ import de.unistuttgart.ims.drama.api.Speaker;
 
 public class TestSpeakerAssignmentRules {
 
+	File directory;
+
+	@Before
+	public void setUp() {
+		directory = new File(getClass().getResource("/level-1").getFile());
+	}
+
 	@Test
 	public void testRules1() throws Exception {
+
 		org.apache.uima.fit.pipeline.JCasIterator iter = SimplePipeline.iteratePipeline(
 				CollectionReaderFactory.createReaderDescription(XmiReader.class, XmiReader.PARAM_SOURCE_LOCATION,
-						"src/test/resources/level-1/tx4z.0.xmi", XmiReader.PARAM_LENIENT, true),
+						new File(directory, "tx4z.0.xmi").getAbsolutePath(), XmiReader.PARAM_LENIENT, true),
 				AnalysisEngineFactory.createEngineDescription(FigureReferenceAnnotator.class),
 				AnalysisEngineFactory.createEngineDescription(SpeakerAssignmentRules.class,
 						SpeakerAssignmentRules.PARAM_RULE_FILE_URL,
@@ -41,7 +50,7 @@ public class TestSpeakerAssignmentRules {
 	public void testRules2() throws Exception {
 		org.apache.uima.fit.pipeline.JCasIterator iter = SimplePipeline.iteratePipeline(
 				CollectionReaderFactory.createReaderDescription(XmiReader.class, XmiReader.PARAM_SOURCE_LOCATION,
-						"src/test/resources/level-1/w3zd.0.xmi", XmiReader.PARAM_LENIENT, true),
+						new File(directory, "w3zd.0.xmi").getAbsolutePath(), XmiReader.PARAM_LENIENT, true),
 				AnalysisEngineFactory.createEngineDescription(FigureReferenceAnnotator.class),
 				AnalysisEngineFactory.createEngineDescription(SpeakerAssignmentRules.class,
 						SpeakerAssignmentRules.PARAM_RULE_FILE_URL,

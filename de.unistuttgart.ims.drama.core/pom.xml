@@ -163,6 +163,10 @@
 							<classpathScope>test</classpathScope>
 							<executable>java</executable>
 							<mainClass>de.unistuttgart.quadrama.core.GenerateTestFiles</mainClass>
+							<arguments>
+								<argument>/tei</argument>
+								<argument>${project.build.testOutputDirectory}/level-1</argument>
+							</arguments>
 						</configuration>
 					</execution>
 				</executions>
