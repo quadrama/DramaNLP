@@ -10,6 +10,7 @@ import org.apache.uima.jcas.JCas;
 
 import de.unistuttgart.ims.drama.api.Figure;
 
+@Deprecated
 @TypeCapability(inputs = { "de.unistuttgart.ims.drama.api.Figure" }, outputs = {
 		"de.unistuttgart.ims.drama.api.Figure:Reference" })
 public class FigureReferenceAnnotator extends JCasAnnotator_ImplBase {
