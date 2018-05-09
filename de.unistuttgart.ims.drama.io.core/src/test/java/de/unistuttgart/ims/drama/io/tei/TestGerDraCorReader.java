@@ -60,7 +60,7 @@ public class TestGerDraCorReader {
 			else if (id.equalsIgnoreCase("v3mx.0"))
 				testV3mx0(jcas);
 			else
-				fail("File without id / unknwon file");
+				fail("File without id / unknwon file" + id);
 		}
 
 	}
