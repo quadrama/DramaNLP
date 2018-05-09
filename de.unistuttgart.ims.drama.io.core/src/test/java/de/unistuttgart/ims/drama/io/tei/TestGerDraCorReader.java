@@ -5,7 +5,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import org.apache.uima.collection.CollectionReaderDescription;
 import org.apache.uima.fit.factory.AggregateBuilder;
@@ -59,8 +58,6 @@ public class TestGerDraCorReader {
 				testRjmw0(jcas);
 			else if (id.equalsIgnoreCase("v3mx.0"))
 				testV3mx0(jcas);
-			else
-				fail("File without id / unknwon file" + id);
 		}
 
 	}
