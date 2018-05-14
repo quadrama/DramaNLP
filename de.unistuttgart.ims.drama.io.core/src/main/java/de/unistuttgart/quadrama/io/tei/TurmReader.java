@@ -46,6 +46,10 @@ public class TurmReader extends AbstractDramaUrlReader {
 		gxr.setTextRootSelector("TEI > text");
 		gxr.setPreserveWhitespace(false);
 
+		gxr.addGlobalRule("text docTitle", (d, e) -> {
+			d.setDocumentTitle(e.text());
+		});
+
 		gxr.addGlobalRule("castItem", CastFigure.class, (cf, e) -> {
 			cf.setNames(ArrayUtil.toStringArray(jcas, e.text()));
 			cf.setDisplayName(cf.getNames(0));
