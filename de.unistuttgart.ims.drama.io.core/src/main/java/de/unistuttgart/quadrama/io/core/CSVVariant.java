@@ -98,20 +98,25 @@ public enum CSVVariant {
 
 	private void convertMeta(JCas jcas, CSVPrinter p) throws IOException {
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
-		for (Author author : JCasUtil.select(jcas, Author.class)) {
-			if (JCasUtil.exists(jcas, Translator.class))
-				for (Translator transl : JCasUtil.select(jcas, Translator.class)) {
+		if (JCasUtil.exists(jcas, Author.class))
+			for (Author author : JCasUtil.select(jcas, Author.class)) {
+				if (JCasUtil.exists(jcas, Translator.class))
+					for (Translator transl : JCasUtil.select(jcas, Translator.class)) {
+						p.printRecord(drama.getCollectionId(), drama.getDocumentId(), drama.getDocumentTitle(),
+								drama.getLanguage(), author.getName(), author.getPnd(), transl.getName(),
+								transl.getPnd(), drama.getDateWritten(), drama.getDatePrinted(),
+								drama.getDatePremiere(), drama.getDateTranslation());
+					}
+				else {
 					p.printRecord(drama.getCollectionId(), drama.getDocumentId(), drama.getDocumentTitle(),
-							drama.getLanguage(), author.getName(), author.getPnd(), transl.getName(), transl.getPnd(),
-							drama.getDateWritten(), drama.getDatePrinted(), drama.getDatePremiere(),
-							drama.getDateTranslation());
+							drama.getLanguage(), author.getName(), author.getPnd(), null, null, drama.getDateWritten(),
+							drama.getDatePrinted(), drama.getDatePremiere(), drama.getDateTranslation());
 				}
-			else {
-				p.printRecord(drama.getCollectionId(), drama.getDocumentId(), drama.getDocumentTitle(),
-						drama.getLanguage(), author.getName(), author.getPnd(), null, null, drama.getDateWritten(),
-						drama.getDatePrinted(), drama.getDatePremiere(), drama.getDateTranslation());
 			}
-		}
+		else
+			p.printRecord(drama.getCollectionId(), drama.getDocumentId(), drama.getDocumentTitle(), drama.getLanguage(),
+					"", "", null, null, drama.getDateWritten(), drama.getDatePrinted(), drama.getDatePremiere(),
+					drama.getDateTranslation());
 	}
 
 	private void convertSegments(JCas jcas, CSVPrinter p) throws IOException {
