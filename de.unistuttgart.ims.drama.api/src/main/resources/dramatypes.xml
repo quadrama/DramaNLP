@@ -126,6 +126,7 @@
 					<description />
 					<rangeTypeName>uima.cas.FSArray</rangeTypeName>
 					<elementType>de.unistuttgart.ims.drama.api.CastFigure</elementType>
+					<multipleReferencesAllowed>true</multipleReferencesAllowed>
 				</featureDescription>
 				<featureDescription>
 					<name>DatePrinted</name>
@@ -429,6 +430,7 @@
 					<rangeTypeName>uima.cas.FSArray</rangeTypeName>
 					<elementType>de.unistuttgart.ims.drama.api.DiscourseEntity
 					</elementType>
+					<multipleReferencesAllowed>true</multipleReferencesAllowed>
 				</featureDescription>
 			</features>
 		</typeDescription>
