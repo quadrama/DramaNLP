@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
 	<name>Drama</name>
-	<description />
+	<description/>
 	<version>1.2</version>
 	<vendor>Nils Reiter</vendor>
 	<imports>
-		<import name="desc.type.metadata_customized" />
-		<import name="desc.type.coref" />
+		<import name="desc.type.metadata_customized"/>
+		<import name="desc.type.coref"/>
 	</imports>
 	<types>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.Speaker</name>
-			<description />
+			<description/>
 			<supertypeName>uima.tcas.Annotation</supertypeName>
 			<features>
 				<featureDescription>
 					<name>Id</name>
-					<description />
+					<description/>
 					<rangeTypeName>uima.cas.Integer</rangeTypeName>
 				</featureDescription>
 				<featureDescription>
 					<name>XmlId</name>
-					<description />
+					<description/>
 					<rangeTypeName>uima.cas.StringArray</rangeTypeName>
 				</featureDescription>
 				<featureDescription>
@@ -31,7 +31,7 @@
 				</featureDescription>
 				<featureDescription>
 					<name>CastFigure</name>
-					<description />
+					<description/>
 					<rangeTypeName>uima.cas.FSArray</rangeTypeName>
 					<elementType>de.unistuttgart.ims.drama.api.CastFigure</elementType>
 				</featureDescription>
@@ -39,77 +39,72 @@
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.Act</name>
-			<description />
-			<supertypeName>de.unistuttgart.ims.drama.api.DramaSegment
-			</supertypeName>
+			<description/>
+			<supertypeName>de.unistuttgart.ims.drama.api.DramaSegment</supertypeName>
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.Scene</name>
-			<description />
-			<supertypeName>de.unistuttgart.ims.drama.api.DramaSegment
-			</supertypeName>
+			<description/>
+			<supertypeName>de.unistuttgart.ims.drama.api.DramaSegment</supertypeName>
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.LevelSegment</name>
-			<description />
-			<supertypeName>de.unistuttgart.ims.drama.api.DramaSegment
-			</supertypeName>
+			<description/>
+			<supertypeName>de.unistuttgart.ims.drama.api.DramaSegment</supertypeName>
 			<features>
 				<featureDescription>
 					<name>Level</name>
-					<description />
+					<description/>
 					<rangeTypeName>uima.cas.Integer</rangeTypeName>
 				</featureDescription>
 			</features>
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.Utterance</name>
-			<description />
+			<description/>
 			<supertypeName>uima.tcas.Annotation</supertypeName>
 			<features>
 				<featureDescription>
 					<name>CastFigure</name>
-					<description />
-					<rangeTypeName>de.unistuttgart.ims.drama.api.DiscourseEntity
-					</rangeTypeName>
+					<description/>
+					<rangeTypeName>de.unistuttgart.ims.drama.api.DiscourseEntity</rangeTypeName>
 				</featureDescription>
 			</features>
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.StageDirection</name>
-			<description />
+			<description/>
 			<supertypeName>uima.tcas.Annotation</supertypeName>
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.Speech</name>
-			<description />
+			<description/>
 			<supertypeName>uima.tcas.Annotation</supertypeName>
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.Footnote</name>
-			<description />
+			<description/>
 			<supertypeName>uima.tcas.Annotation</supertypeName>
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.DramatisPersonae</name>
-			<description />
+			<description/>
 			<supertypeName>uima.tcas.Annotation</supertypeName>
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.FrontMatter</name>
-			<description />
+			<description/>
 			<supertypeName>uima.tcas.Annotation</supertypeName>
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.MainMatter</name>
-			<description />
+			<description/>
 			<supertypeName>uima.tcas.Annotation</supertypeName>
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.Drama</name>
-			<description />
-			<supertypeName>de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData
-			</supertypeName>
+			<description/>
+			<supertypeName>de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData</supertypeName>
 			<features>
 				<featureDescription>
 					<name>DramaId</name>
@@ -123,87 +118,83 @@
 				</featureDescription>
 				<featureDescription>
 					<name>CastList</name>
-					<description />
+					<description/>
 					<rangeTypeName>uima.cas.FSArray</rangeTypeName>
 					<elementType>de.unistuttgart.ims.drama.api.CastFigure</elementType>
 					<multipleReferencesAllowed>true</multipleReferencesAllowed>
 				</featureDescription>
 				<featureDescription>
 					<name>DatePrinted</name>
-					<description />
+					<description/>
 					<rangeTypeName>uima.cas.Integer</rangeTypeName>
 				</featureDescription>
 				<featureDescription>
 					<name>DateWritten</name>
-					<description />
+					<description/>
 					<rangeTypeName>uima.cas.Integer</rangeTypeName>
 				</featureDescription>
 				<featureDescription>
 					<name>DatePremiere</name>
-					<description />
+					<description/>
 					<rangeTypeName>uima.cas.Integer</rangeTypeName>
 				</featureDescription>
 				<featureDescription>
 					<name>Date</name>
-					<description />
+					<description/>
 					<rangeTypeName>uima.cas.Integer</rangeTypeName>
 				</featureDescription>
 				<featureDescription>
 					<name>DateTranslation</name>
-					<description />
+					<description/>
 					<rangeTypeName>uima.cas.Integer</rangeTypeName>
 				</featureDescription>
 			</features>
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.SpeechVerse</name>
-			<description />
+			<description/>
 			<supertypeName>de.unistuttgart.ims.drama.api.Speech</supertypeName>
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.SpeechProse</name>
-			<description />
+			<description/>
 			<supertypeName>de.unistuttgart.ims.drama.api.Speech</supertypeName>
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.Figure</name>
 			<description>Represents one figure in the play. Each figure should
-				only have one Figure annotation (and multiple Speaker annotations)
-			</description>
+				only have one Figure annotation (and multiple Speaker annotations)</description>
 			<supertypeName>uima.tcas.Annotation</supertypeName>
 			<features>
 				<featureDescription>
 					<name>Id</name>
-					<description />
+					<description/>
 					<rangeTypeName>uima.cas.Integer</rangeTypeName>
 				</featureDescription>
 				<featureDescription>
 					<name>XmlId</name>
-					<description />
+					<description/>
 					<rangeTypeName>uima.cas.String</rangeTypeName>
 				</featureDescription>
 				<featureDescription>
 					<name>Description</name>
-					<description />
-					<rangeTypeName>de.unistuttgart.ims.drama.api.FigureDescription
-					</rangeTypeName>
+					<description/>
+					<rangeTypeName>de.unistuttgart.ims.drama.api.FigureDescription</rangeTypeName>
 				</featureDescription>
 				<featureDescription>
 					<name>Name</name>
-					<description />
-					<rangeTypeName>de.unistuttgart.ims.drama.api.FigureName
-					</rangeTypeName>
+					<description/>
+					<rangeTypeName>de.unistuttgart.ims.drama.api.FigureName</rangeTypeName>
 				</featureDescription>
 				<featureDescription>
 					<name>Gender</name>
-					<description />
+					<description/>
 					<rangeTypeName>uima.cas.String</rangeTypeName>
 				</featureDescription>
 				<featureDescription>
 					<name>Reference</name>
 					<description>The reference string for a figure is the string in the
-						Dramatis Personae, up to and excluding the first punctuation sign.
-					</description>
+						Dramatis Personae, up to and excluding the first punctuation sign.</description>
 					<rangeTypeName>uima.cas.String</rangeTypeName>
 				</featureDescription>
 			</features>
@@ -212,8 +203,7 @@
 			<name>de.unistuttgart.ims.drama.api.FigureType</name>
 			<description>This annotations represents the assignment of a figure
 				to a type. A figure can be assigned to multiple types, we add
-				multiple annotations then.
-			</description>
+				multiple annotations then.</description>
 			<supertypeName>uima.tcas.Annotation</supertypeName>
 			<features>
 				<featureDescription>
@@ -230,7 +220,7 @@
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.FigureMention</name>
-			<description />
+			<description/>
 			<supertypeName>de.unistuttgart.ims.drama.api.Mention</supertypeName>
 		</typeDescription>
 		<typeDescription>
@@ -238,28 +228,27 @@
 			<description>@Deprecated
 
 				This type can be used to add figures on the fly, that are not declared
-				in the dramatis personae.
-			</description>
+				in the dramatis personae.</description>
 			<supertypeName>de.unistuttgart.ims.drama.api.Figure</supertypeName>
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.FigureDescription</name>
-			<description />
+			<description/>
 			<supertypeName>uima.tcas.Annotation</supertypeName>
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.FigureName</name>
-			<description />
+			<description/>
 			<supertypeName>uima.tcas.Annotation</supertypeName>
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.DramaSegment</name>
-			<description />
+			<description/>
 			<supertypeName>uima.tcas.Annotation</supertypeName>
 			<features>
 				<featureDescription>
 					<name>Number</name>
-					<description />
+					<description/>
 					<rangeTypeName>uima.cas.Integer</rangeTypeName>
 				</featureDescription>
 				<featureDescription>
@@ -271,17 +260,17 @@
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.Heading</name>
-			<description />
+			<description/>
 			<supertypeName>uima.tcas.Annotation</supertypeName>
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.SceneHeading</name>
-			<description />
+			<description/>
 			<supertypeName>de.unistuttgart.ims.drama.api.Heading</supertypeName>
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.ActHeading</name>
-			<description />
+			<description/>
 			<supertypeName>de.unistuttgart.ims.drama.api.Heading</supertypeName>
 		</typeDescription>
 		<typeDescription>
@@ -291,12 +280,12 @@
 			<features>
 				<featureDescription>
 					<name>Name</name>
-					<description />
+					<description/>
 					<rangeTypeName>uima.cas.String</rangeTypeName>
 				</featureDescription>
 				<featureDescription>
 					<name>Amount</name>
-					<description />
+					<description/>
 					<rangeTypeName>uima.cas.Double</rangeTypeName>
 				</featureDescription>
 			</features>
@@ -304,8 +293,7 @@
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.Person</name>
 			<description>Represents a (real) person</description>
-			<supertypeName>de.unistuttgart.ims.drama.api.Metadatum
-			</supertypeName>
+			<supertypeName>de.unistuttgart.ims.drama.api.Metadatum</supertypeName>
 			<features>
 				<featureDescription>
 					<name>Name</name>
@@ -344,8 +332,7 @@
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.Date</name>
 			<description>Describes a calendar date</description>
-			<supertypeName>de.unistuttgart.ims.drama.api.Metadatum
-			</supertypeName>
+			<supertypeName>de.unistuttgart.ims.drama.api.Metadatum</supertypeName>
 			<features>
 				<featureDescription>
 					<name>Year</name>
@@ -376,116 +363,122 @@
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.LevelSegmentHeading</name>
-			<description />
+			<description/>
 			<supertypeName>de.unistuttgart.ims.drama.api.Heading</supertypeName>
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.CastFigure</name>
-			<description />
-			<supertypeName>de.unistuttgart.ims.drama.api.DiscourseEntity
-			</supertypeName>
+			<description/>
+			<supertypeName>de.unistuttgart.ims.drama.api.DiscourseEntity</supertypeName>
 			<features>
 				<featureDescription>
 					<name>XmlId</name>
-					<description />
+					<description/>
 					<rangeTypeName>uima.cas.StringArray</rangeTypeName>
 				</featureDescription>
 				<featureDescription>
 					<name>Names</name>
-					<description />
+					<description/>
 					<rangeTypeName>uima.cas.StringArray</rangeTypeName>
 				</featureDescription>
 				<featureDescription>
 					<name>Gender</name>
-					<description />
+					<description/>
 					<rangeTypeName>uima.cas.String</rangeTypeName>
 				</featureDescription>
 				<featureDescription>
 					<name>Age</name>
-					<description />
+					<description/>
 					<rangeTypeName>uima.cas.String</rangeTypeName>
 				</featureDescription>
 			</features>
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.DiscourseEntity</name>
-			<description />
+			<description/>
 			<supertypeName>uima.cas.TOP</supertypeName>
 			<features>
 				<featureDescription>
 					<name>DisplayName</name>
-					<description />
+					<description/>
 					<rangeTypeName>uima.cas.String</rangeTypeName>
 				</featureDescription>
 			</features>
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.Mention</name>
-			<description />
+			<description/>
 			<supertypeName>uima.tcas.Annotation</supertypeName>
 			<features>
 				<featureDescription>
 					<name>Entity</name>
-					<description />
+					<description/>
 					<rangeTypeName>uima.cas.FSArray</rangeTypeName>
-					<elementType>de.unistuttgart.ims.drama.api.DiscourseEntity
-					</elementType>
+					<elementType>de.unistuttgart.ims.drama.api.DiscourseEntity</elementType>
 					<multipleReferencesAllowed>true</multipleReferencesAllowed>
 				</featureDescription>
-			</features>
+			<featureDescription>
+          <name>Names</name>
+          <description/>
+          <rangeTypeName>uima.cas.StringArray</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>XmlId</name>
+          <description/>
+          <rangeTypeName>uima.cas.StringArray</rangeTypeName>
+        </featureDescription>
+      </features>
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.quadrama.io.core.type.HTMLAnnotation</name>
-			<description />
-			<supertypeName>de.unistuttgart.quadrama.io.core.type.XMLElement
-			</supertypeName>
+			<description/>
+			<supertypeName>de.unistuttgart.quadrama.io.core.type.XMLElement</supertypeName>
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.quadrama.io.core.type.XMLElement</name>
-			<description />
+			<description/>
 			<supertypeName>uima.tcas.Annotation</supertypeName>
 			<features>
 				<featureDescription>
 					<name>Tag</name>
-					<description />
+					<description/>
 					<rangeTypeName>uima.cas.String</rangeTypeName>
 				</featureDescription>
 				<featureDescription>
 					<name>Id</name>
-					<description />
+					<description/>
 					<rangeTypeName>uima.cas.String</rangeTypeName>
 				</featureDescription>
 				<featureDescription>
 					<name>Cls</name>
-					<description />
+					<description/>
 					<rangeTypeName>uima.cas.String</rangeTypeName>
 				</featureDescription>
 				<featureDescription>
 					<name>Selector</name>
-					<description />
+					<description/>
 					<rangeTypeName>uima.cas.String</rangeTypeName>
 				</featureDescription>
 				<featureDescription>
 					<name>Attributes</name>
-					<description />
+					<description/>
 					<rangeTypeName>uima.cas.String</rangeTypeName>
 				</featureDescription>
 			</features>
 		</typeDescription>
 		<typeDescription>
-			<name>de.unistuttgart.quadrama.io.core.type.XMLParsingDescription
-			</name>
-			<description />
+			<name>de.unistuttgart.quadrama.io.core.type.XMLParsingDescription</name>
+			<description/>
 			<supertypeName>uima.cas.TOP</supertypeName>
 			<features>
 				<featureDescription>
 					<name>Encoding</name>
-					<description />
+					<description/>
 					<rangeTypeName>uima.cas.String</rangeTypeName>
 				</featureDescription>
 				<featureDescription>
 					<name>XmlDeclarations</name>
-					<description />
+					<description/>
 					<rangeTypeName>uima.cas.StringArray</rangeTypeName>
 				</featureDescription>
 			</features>

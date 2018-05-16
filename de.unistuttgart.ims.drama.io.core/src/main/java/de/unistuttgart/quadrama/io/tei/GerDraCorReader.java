@@ -184,8 +184,17 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 		gxr.addRule("text *[ref]", Mention.class, (cl, e) -> {
 			String[] splitted = e.attr("ref").split(" ");
 			FSArray arr = new FSArray(jcas, splitted.length);
+			// gather names
+			Set<String> nameList = new HashSet<String>();
+			for (TextNode tn : e.textNodes()) {
+				if (tn.text().trim().length() > 0)
+					nameList.add(tn.text().trim());
+			}
+			cl.setNames(ArrayUtil.toStringArray(jcas, nameList));
+			Set<String> xmlIdList = new HashSet<String>();
 			for (int i = 0; i < splitted.length; i++) {
 				String xmlId = splitted[i].substring(1);
+				xmlIdList.add(xmlId);
 
 				DiscourseEntity de = null;
 				if (gxr.exists(xmlId)) {
@@ -203,6 +212,7 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 				}
 				arr.set(i, de);
 			}
+			cl.setXmlId(ArrayUtil.toStringArray(jcas, xmlIdList));
 			cl.setEntity(arr);
 		});
 
