@@ -176,38 +176,38 @@ public enum CSVVariant {
 						p.print(length);
 						if (mentionMap.containsKey(token)) {
 							Mention m = selectLongest(mentionMap.get(token));
-								if (m.getEntity() == null) {
-									p.print(null);
-									p.print(null);
+							if (m.getEntity() == null) {
+								p.print(null);
+								p.print(null);
+							} else {
+								DiscourseEntity de = m.getEntity(0);
+								CastFigure cf = null;
+								if (de instanceof CastFigure) {
+									cf = (CastFigure) de;
+								}
+								if (cf != null) {
+									try {
+										p.print(cf == null ? null : cf.getNames(0));
+									} catch (Exception e) {
+										p.print(null);
+									}
+									try {
+										p.print(cf == null ? null : cf.getXmlId(0));
+									} catch (Exception e) {
+										p.print(null);
+									}
 								} else {
-									DiscourseEntity de = m.getEntity(0);
-									CastFigure cf = null;
-									if (de instanceof CastFigure) {
-										cf = (CastFigure) de;
+									try {
+										p.print(m == null ? null : m.getNames(0));
+									} catch (Exception e) {
+										p.print(null);
 									}
-									if (cf != null) {
-										try {
-											p.print(cf == null ? null : cf.getNames(0));
-										} catch (Exception e) {
-											p.print(null);
-										}
-										try {
-											p.print(cf == null ? null : cf.getXmlId(0));
-										} catch (Exception e) {
-											p.print(null);
-										}
-									} else {
-										try {
-											p.print(m == null ? null : m.getNames(0));
-										} catch (Exception e) {
-											p.print(null);
-										}
-										try {
-											p.print(m == null ? null : m.getXmlId(0));
-										} catch (Exception e) {
-											p.print(null);
-										}
+									try {
+										p.print(m == null ? null : m.getXmlId(0));
+									} catch (Exception e) {
+										p.print(null);
 									}
+								}
 							}
 						} else {
 							p.print(null);
