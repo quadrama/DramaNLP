@@ -152,7 +152,6 @@ public enum CSVVariant {
 		Map<Token, Collection<Mention>> mentionMap = JCasUtil.indexCovering(jcas, Token.class, Mention.class);
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
 		int length = JCasUtil.select(jcas, Token.class).size();
-		Set<Mention> used = new HashSet<Mention>();
 		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
 			for (Speaker speaker : DramaUtil.getSpeakers(utterance)) {
 				for (int i = 0; i < speaker.getCastFigure().size(); i++) {
@@ -177,39 +176,38 @@ public enum CSVVariant {
 						p.print(length);
 						if (mentionMap.containsKey(token)) {
 							Mention m = selectLongest(mentionMap.get(token));
-							if (used.contains(m) || m.getEntity() == null) {
-								p.print(null);
-								p.print(null);
-							} else {
-								DiscourseEntity de = m.getEntity(0);
-								CastFigure cf = null;
-								if (de instanceof CastFigure) {
-									cf = (CastFigure) de;
-								}
-								if (cf != null) {
-									try {
-										p.print(cf == null ? null : cf.getNames(0));
-									} catch (Exception e) {
-										p.print(null);
-									}
-									try {
-										p.print(cf == null ? null : cf.getXmlId(0));
-									} catch (Exception e) {
-										p.print(null);
-									}
+								if (m.getEntity() == null) {
+									p.print(null);
+									p.print(null);
 								} else {
-									try {
-										p.print(m == null ? null : m.getNames(0));
-									} catch (Exception e) {
-										p.print(null);
+									DiscourseEntity de = m.getEntity(0);
+									CastFigure cf = null;
+									if (de instanceof CastFigure) {
+										cf = (CastFigure) de;
 									}
-									try {
-										p.print(m == null ? null : m.getXmlId(0));
-									} catch (Exception e) {
-										p.print(null);
+									if (cf != null) {
+										try {
+											p.print(cf == null ? null : cf.getNames(0));
+										} catch (Exception e) {
+											p.print(null);
+										}
+										try {
+											p.print(cf == null ? null : cf.getXmlId(0));
+										} catch (Exception e) {
+											p.print(null);
+										}
+									} else {
+										try {
+											p.print(m == null ? null : m.getNames(0));
+										} catch (Exception e) {
+											p.print(null);
+										}
+										try {
+											p.print(m == null ? null : m.getXmlId(0));
+										} catch (Exception e) {
+											p.print(null);
+										}
 									}
-								}
-								used.add(m);
 							}
 						} else {
 							p.print(null);
