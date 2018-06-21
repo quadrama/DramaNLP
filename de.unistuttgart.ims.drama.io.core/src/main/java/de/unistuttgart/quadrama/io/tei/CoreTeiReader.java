@@ -97,8 +97,16 @@ public class CoreTeiReader extends AbstractDramaUrlReader {
 		gxr.read(jcas, file);
 
 		AnnotationUtil.trim(new ArrayList<Figure>(JCasUtil.select(jcas, Figure.class)));
-		AnnotationUtil.trim(new ArrayList<Speech>(JCasUtil.select(jcas, Speech.class)));
-		AnnotationUtil.trim(new ArrayList<Utterance>(JCasUtil.select(jcas, Utterance.class)));
+		try {
+			AnnotationUtil.trim(new ArrayList<Speech>(JCasUtil.select(jcas, Speech.class)));
+		} catch (java.lang.ArrayIndexOutOfBoundsException e) {
+			e.printStackTrace();
+		}
+		try {
+			AnnotationUtil.trim(new ArrayList<Utterance>(JCasUtil.select(jcas, Utterance.class)));
+		} catch (java.lang.ArrayIndexOutOfBoundsException e) {
+			e.printStackTrace();
+		}
 		AnnotationUtil.trim(new ArrayList<Scene>(JCasUtil.select(jcas, Scene.class)));
 		AnnotationUtil.trim(new ArrayList<Act>(JCasUtil.select(jcas, Act.class)));
 
