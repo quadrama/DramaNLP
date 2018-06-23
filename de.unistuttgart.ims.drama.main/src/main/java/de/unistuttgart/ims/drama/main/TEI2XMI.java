@@ -34,6 +34,7 @@ import de.unistuttgart.quadrama.io.core.ExportAsCSV;
 import de.unistuttgart.quadrama.io.tei.CoreTeiReader;
 import de.unistuttgart.quadrama.io.tei.GerDraCorReader;
 import de.unistuttgart.quadrama.io.tei.MapFiguresToCastFigures;
+import de.unistuttgart.quadrama.io.tei.QuaDramAReader;
 import de.unistuttgart.quadrama.io.tei.TextgridTEIUrlReader;
 import de.unistuttgart.quadrama.io.tei.TheatreClassiqueReader;
 import de.unistuttgart.quadrama.io.tei.TurmReader;
@@ -61,29 +62,25 @@ public class TEI2XMI {
 					options.getCollectionId()));
 		else {
 			switch (options.getCorpus()) {
-			case GERDRACOR: 
-				builder.add(createEngineDescription(SetCollectionId.class, SetCollectionId.PARAM_COLLECTION_ID,
-				"gdc"));
+			case GERDRACOR:
+				builder.add(createEngineDescription(SetCollectionId.class, SetCollectionId.PARAM_COLLECTION_ID, "gdc"));
 				break;
 			case TEXTGRID:
-				builder.add(createEngineDescription(SetCollectionId.class, SetCollectionId.PARAM_COLLECTION_ID,
-				"tg"));
+				builder.add(createEngineDescription(SetCollectionId.class, SetCollectionId.PARAM_COLLECTION_ID, "tg"));
 				break;
 			case TURM:
-				builder.add(createEngineDescription(SetCollectionId.class, SetCollectionId.PARAM_COLLECTION_ID,
-				"turm"));
+				builder.add(
+						createEngineDescription(SetCollectionId.class, SetCollectionId.PARAM_COLLECTION_ID, "turm"));
 				break;
 			case THEATRECLASSIQUE:
-				builder.add(createEngineDescription(SetCollectionId.class, SetCollectionId.PARAM_COLLECTION_ID,
-				"tc"));
+				builder.add(createEngineDescription(SetCollectionId.class, SetCollectionId.PARAM_COLLECTION_ID, "tc"));
 				break;
 			case CORETEI:
-				builder.add(createEngineDescription(SetCollectionId.class, SetCollectionId.PARAM_COLLECTION_ID,
-				"ctei"));
+				builder.add(
+						createEngineDescription(SetCollectionId.class, SetCollectionId.PARAM_COLLECTION_ID, "ctei"));
 				break;
 			case QUADRAMA:
-				builder.add(createEngineDescription(SetCollectionId.class, SetCollectionId.PARAM_COLLECTION_ID,
-				"qd"));
+				builder.add(createEngineDescription(SetCollectionId.class, SetCollectionId.PARAM_COLLECTION_ID, "qd"));
 				break;
 			}
 		}
@@ -192,6 +189,10 @@ public class TEI2XMI {
 	protected static CollectionReaderDescription getReader(MyOptions options) throws ResourceInitializationException {
 		switch (options.getCorpus()) {
 		case QUADRAMA:
+			return CollectionReaderFactory.createReaderDescription(QuaDramAReader.class,
+					AbstractDramaUrlReader.PARAM_INPUT, options.getInput(),
+					AbstractDramaUrlReader.PARAM_REMOVE_XML_ANNOTATIONS, true, AbstractDramaUrlReader.PARAM_LANGUAGE,
+					options.getLanguage());
 		case GERDRACOR:
 			return CollectionReaderFactory.createReaderDescription(GerDraCorReader.class,
 					AbstractDramaUrlReader.PARAM_INPUT, options.getInput(),
