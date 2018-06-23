@@ -189,6 +189,8 @@ public class QuaDramAReader extends AbstractDramaUrlReader {
 				String xmlId = splitted[i].substring(1);
 
 				DiscourseEntity de = null;
+
+				// we first check whether something with an xml id has been created
 				if (gxr.exists(xmlId)) {
 					FeatureStructure fs = gxr.getAnnotation(xmlId).getValue();
 					if (fs instanceof DiscourseEntity)
@@ -196,6 +198,7 @@ public class QuaDramAReader extends AbstractDramaUrlReader {
 				}
 				if (fallbackEntities.containsKey(xmlId))
 					de = fallbackEntities.get(xmlId);
+				// if that's not the case, we create a new discourse entity on the fly
 				if (de == null) {
 					de = cl.getCAS().createFS(CasUtil.getType(cl.getCAS(), DiscourseEntity.class));
 					de.addToIndexes();
