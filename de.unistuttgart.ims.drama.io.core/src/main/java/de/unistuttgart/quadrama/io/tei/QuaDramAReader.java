@@ -71,8 +71,7 @@ public class QuaDramAReader extends AbstractDramaUrlReader {
 		gxr.addGlobalRule("titleStmt > title:first-child", (d, e) -> d.setDocumentTitle(e.text()));
 
 		// id
-		gxr.addGlobalRule("sourceDesc > bibl > idno[type=QUADRAMA-ID]",
-				(d, e) -> d.setDocumentId(e.text().substring(36)));
+		gxr.addGlobalRule("idno[type=QUADRAMA-ID]", (d, e) -> d.setDocumentId(e.text().substring(36)));
 
 		// author
 		gxr.addGlobalRule("author", Author.class, (author, e) -> {
