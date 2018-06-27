@@ -175,6 +175,8 @@ public enum CSVVariant {
 						p.print(token.getLemma().getValue());
 						p.print(length);
 						if (mentionMap.containsKey(token)) {
+							String printName = "";
+							String printId = "";
 							Mention m = selectLongest(mentionMap.get(token));
 							if (m.getEntity() == null) {
 								p.print(null);
@@ -187,27 +189,24 @@ public enum CSVVariant {
 								}
 								if (cf != null) {
 									try {
-										p.print(cf == null ? null : cf.getNames(0));
+										printName = cf.getNames(0);
+										printId = cf.getXmlId(0);
 									} catch (Exception e) {
-										p.print(null);
-									}
-									try {
-										p.print(cf == null ? null : cf.getXmlId(0));
-									} catch (Exception e) {
-										p.print(null);
+										printName = null;
+										printId = null;
 									}
 								} else {
 									try {
-										p.print(m == null ? null : m.getNames(0));
+										printName = m.getNames(0);
+										printId = m.getXmlId(0);
 									} catch (Exception e) {
-										p.print(null);
-									}
-									try {
-										p.print(m == null ? null : m.getXmlId(0));
-									} catch (Exception e) {
-										p.print(null);
+										printName = null;
+										printId = null;
 									}
 								}
+								p.print(printName);
+								p.print(printId);
+
 							}
 						} else {
 							p.print(null);
