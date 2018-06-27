@@ -239,6 +239,7 @@ public enum CSVVariant {
 	 *            The annotation collection
 	 * @return The longest of the annotation.
 	 */
+	@Deprecated
 	private <T extends Annotation> T selectLongest(Collection<T> coll) {
 		int l = -1;
 		T fm = null;
