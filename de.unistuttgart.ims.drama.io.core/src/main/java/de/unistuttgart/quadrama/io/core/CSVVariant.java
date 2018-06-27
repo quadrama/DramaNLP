@@ -174,13 +174,13 @@ public enum CSVVariant {
 						p.print(token.getPos().getPosValue());
 						p.print(token.getLemma().getValue());
 						p.print(length);
+						String printName = null;
+						String printId = null;
 						if (mentionMap.containsKey(token)) {
-							String printName = "";
-							String printId = "";
 							Mention m = selectLongest(mentionMap.get(token));
 							if (m.getEntity() == null) {
-								p.print(null);
-								p.print(null);
+								printName = null;
+								printId = null;
 							} else {
 								DiscourseEntity de = m.getEntity(0);
 								CastFigure cf = null;
@@ -204,14 +204,13 @@ public enum CSVVariant {
 										printId = null;
 									}
 								}
-								p.print(printName);
-								p.print(printId);
-
 							}
 						} else {
-							p.print(null);
-							p.print(null);
+							printName = null;
+							printId = null;
 						}
+						p.print(printName);
+						p.print(printId);
 						p.println();
 					}
 				}
