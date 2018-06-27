@@ -27,6 +27,9 @@ run-turm:
 run-qd:
 	java -cp target/assembly/drama.Main.jar ${TEI2XMI} --input ../../QuaDramACorpus/tei --csvOutput ${CDATADIR}qd/csv --skipSpeakerIdentifier  --collectionId "qd" --corpus QUADRAMA
 
+run-mar:
+	java -cp target/assembly/drama.Main.jar ${TEI2XMI} --input ../../Marcorpus --csvOutput ${DATADIR}marcorpus/csv  --collectionId "marcorpus" --doCleanup --corpus CORETEI --language "de"
+
 %.csv.zip:
 	cd ${DATADIR}/xmi; zip -r ${ZIPDIR}/$@ . -i $*/*.csv
 
