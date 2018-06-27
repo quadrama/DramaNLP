@@ -177,31 +177,43 @@ public enum CSVVariant {
 						String printName = null;
 						String printId = null;
 						if (mentionMap.containsKey(token)) {
-							Mention m = selectLongest(mentionMap.get(token));
-							if (m.getEntity() == null) {
-								printName = null;
-								printId = null;
-							} else {
-								DiscourseEntity de = m.getEntity(0);
-								CastFigure cf = null;
-								if (de instanceof CastFigure) {
-									cf = (CastFigure) de;
-								}
-								if (cf != null) {
-									try {
-										printName = cf.getNames(0);
-										printId = cf.getXmlId(0);
-									} catch (Exception e) {
-										printName = null;
-										printId = null;
-									}
+							Collection<Mention> mList = mentionMap.get(token);
+							for (Mention m : mList) {
+								if (m.getEntity() == null) {
+									printName = null;
+									printId = null;
 								} else {
-									try {
-										printName = m.getNames(0);
-										printId = m.getXmlId(0);
-									} catch (Exception e) {
-										printName = null;
-										printId = null;
+									DiscourseEntity de = m.getEntity(0);
+									CastFigure cf = null;
+									if (de instanceof CastFigure) {
+										cf = (CastFigure) de;
+									}
+									if (cf != null) {
+										try {
+											if (printName == null | printId == null) {
+												printName = cf.getNames(0);
+												printId = cf.getXmlId(0);
+											} else {
+												printName = printName + "|" + cf.getNames(0);
+												printId = printId + "|" + cf.getXmlId(0);
+											}
+										} catch (Exception e) {
+											printName = null;
+											printId = null;
+										}
+									} else {
+										try {
+											if (printName == null | printId == null) {
+												printName = m.getNames(0);
+												printId = m.getXmlId(0);
+											} else {
+												printName = printName + "|" + m.getNames(0);
+												printId = printId + "|" + m.getXmlId(0);
+											}
+										} catch (Exception e) {
+											printName = null;
+											printId = null;
+										}
 									}
 								}
 							}
@@ -209,6 +221,7 @@ public enum CSVVariant {
 							printName = null;
 							printId = null;
 						}
+
 						p.print(printName);
 						p.print(printId);
 						p.println();
