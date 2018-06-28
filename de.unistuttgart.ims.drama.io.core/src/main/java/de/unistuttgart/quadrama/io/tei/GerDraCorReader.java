@@ -181,29 +181,41 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 
 		Map<String, DiscourseEntity> fallbackEntities = new HashMap<String, DiscourseEntity>();
 		// mentions
-		gxr.addRule("text *[ref]", Mention.class, (cl, e) -> {
-			String[] splitted = e.attr("ref").split(" ");
-			FSArray arr = new FSArray(jcas, splitted.length);
-			for (int i = 0; i < splitted.length; i++) {
-				String xmlId = splitted[i].substring(1);
+		gxr.addRule("rs", Mention.class, (cl, e) -> {
+			if (e.hasAttr("ref")) {
+				String[] splitted = e.attr("ref").split(" ");
+				FSArray arr = new FSArray(jcas, splitted.length);
+				// gather names
+				Set<String> nameList = new HashSet<String>();
+				for (TextNode tn : e.textNodes()) {
+					if (tn.text().trim().length() > 0)
+						nameList.add(tn.text().trim());
+				}
+				cl.setNames(ArrayUtil.toStringArray(jcas, nameList));
+				Set<String> xmlIdList = new HashSet<String>();
+				for (int i = 0; i < splitted.length; i++) {
+					String xmlId = splitted[i].substring(1);
+					xmlIdList.add(xmlId);
 
-				DiscourseEntity de = null;
-				if (gxr.exists(xmlId)) {
-					FeatureStructure fs = gxr.getAnnotation(xmlId).getValue();
-					if (fs instanceof DiscourseEntity)
-						de = (DiscourseEntity) fs;
+					DiscourseEntity de = null;
+					if (gxr.exists(xmlId)) {
+						FeatureStructure fs = gxr.getAnnotation(xmlId).getValue();
+						if (fs instanceof DiscourseEntity)
+							de = (DiscourseEntity) fs;
+					}
+					if (fallbackEntities.containsKey(xmlId))
+						de = fallbackEntities.get(xmlId);
+					if (de == null) {
+						de = cl.getCAS().createFS(CasUtil.getType(cl.getCAS(), DiscourseEntity.class));
+						de.addToIndexes();
+						de.setDisplayName(cl.getCoveredText());
+						fallbackEntities.put(xmlId, de);
+					}
+					arr.set(i, de);
 				}
-				if (fallbackEntities.containsKey(xmlId))
-					de = fallbackEntities.get(xmlId);
-				if (de == null) {
-					de = cl.getCAS().createFS(CasUtil.getType(cl.getCAS(), DiscourseEntity.class));
-					de.addToIndexes();
-					de.setDisplayName(cl.getCoveredText());
-					fallbackEntities.put(xmlId, de);
-				}
-				arr.set(i, de);
+				cl.setXmlId(ArrayUtil.toStringArray(jcas, xmlIdList));
+				cl.setEntity(arr);
 			}
-			cl.setEntity(arr);
 		});
 
 		gxr.read(jcas, file);

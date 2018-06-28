@@ -17,6 +17,7 @@ import de.unistuttgart.ims.drama.api.Author;
 import de.unistuttgart.ims.drama.api.CastFigure;
 import de.unistuttgart.ims.drama.api.DiscourseEntity;
 import de.unistuttgart.ims.drama.api.Drama;
+import de.unistuttgart.ims.drama.api.Mention;
 import de.unistuttgart.ims.drama.api.FigureMention;
 import de.unistuttgart.ims.drama.api.Scene;
 import de.unistuttgart.ims.drama.api.Speaker;
@@ -148,11 +149,9 @@ public enum CSVVariant {
 	}
 
 	private void convertUtterancesWithTokens(JCas jcas, CSVPrinter p) throws IOException {
-		Map<Token, Collection<FigureMention>> mentionMap = JCasUtil.indexCovering(jcas, Token.class,
-				FigureMention.class);
+		Map<Token, Collection<Mention>> mentionMap = JCasUtil.indexCovering(jcas, Token.class, Mention.class);
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
 		int length = JCasUtil.select(jcas, Token.class).size();
-		Set<FigureMention> used = new HashSet<FigureMention>();
 		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
 			for (Speaker speaker : DramaUtil.getSpeakers(utterance)) {
 				for (int i = 0; i < speaker.getCastFigure().size(); i++) {
@@ -175,33 +174,56 @@ public enum CSVVariant {
 						p.print(token.getPos().getPosValue());
 						p.print(token.getLemma().getValue());
 						p.print(length);
+						String printName = null;
+						String printId = null;
 						if (mentionMap.containsKey(token)) {
-							FigureMention fm = selectLongest(mentionMap.get(token));
-							if (used.contains(fm) || fm.getEntity() == null) {
-								p.print(null);
-								p.print(null);
-							} else {
-								DiscourseEntity de = fm.getEntity(0);
-								CastFigure cf = null;
-								if (de instanceof CastFigure) {
-									cf = (CastFigure) de;
+							Collection<Mention> mList = mentionMap.get(token);
+							for (Mention m : mList) {
+								if (m.getEntity() == null) {
+									printName = null;
+									printId = null;
+								} else {
+									DiscourseEntity de = m.getEntity(0);
+									CastFigure cf = null;
+									if (de instanceof CastFigure) {
+										cf = (CastFigure) de;
+									}
+									if (cf != null) {
+										try {
+											if (printName == null | printId == null) {
+												printName = cf.getNames(0);
+												printId = cf.getXmlId(0);
+											} else {
+												printName = printName + "|" + cf.getNames(0);
+												printId = printId + "|" + cf.getXmlId(0);
+											}
+										} catch (Exception e) {
+											printName = null;
+											printId = null;
+										}
+									} else {
+										try {
+											if (printName == null | printId == null) {
+												printName = m.getNames(0);
+												printId = m.getXmlId(0);
+											} else {
+												printName = printName + "|" + m.getNames(0);
+												printId = printId + "|" + m.getXmlId(0);
+											}
+										} catch (Exception e) {
+											printName = null;
+											printId = null;
+										}
+									}
 								}
-								try {
-									p.print(cf == null ? null : cf.getNames(0));
-								} catch (Exception e) {
-									p.print(null);
-								}
-								try {
-									p.print(cf == null ? null : cf.getXmlId(0));
-								} catch (Exception e) {
-									p.print(null);
-								}
-								used.add(fm);
 							}
 						} else {
-							p.print(null);
-							p.print(null);
+							printName = null;
+							printId = null;
 						}
+
+						p.print(printName);
+						p.print(printId);
 						p.println();
 					}
 				}
@@ -217,6 +239,7 @@ public enum CSVVariant {
 	 *            The annotation collection
 	 * @return The longest of the annotation.
 	 */
+	@Deprecated
 	private <T extends Annotation> T selectLongest(Collection<T> coll) {
 		int l = -1;
 		T fm = null;
