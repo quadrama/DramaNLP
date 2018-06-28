@@ -124,6 +124,13 @@
     <rule context="tei:TEI/tei:text//tei:sp">
       <let name="who" value="@who"/>
       <let name="spid" value="substring($who, 2, string-length($who))"/>
+
+      <assert test=".">
+        There must be speaker-elements.
+      </assert>
+      <assert test="count(@who) = 1">
+        All 'sp'-elememts must have one 'who'-attribute.
+      </assert>
       <assert test="count(tei:speaker) = 1">
         All 'sp'-elements must have one 'speaker' element.
       </assert>
@@ -137,15 +144,31 @@
     TODO:
     This tests if every id that appears in a sp-element matches one in
     the listPerson.
+    TODO: how to allow more than two IDs as who-values?
     PROBLEM WITH GERDRACOR-DATA: there are ids in the 'who'-attributes that do
     not completely match the 'xml:id'-attributes (eg. 'erster_reiter_bamberg'
     in 'listPerson' vs. 'erster_reiter' in 'sp'-elements)
-      <assert test="key('cast_ids', $spid)">
+
+      <assert test="key('cast_ids', $spid)
+                    or (key('cast_ids', substring-before($spid, ' '))
+                    and key('cast_ids', substring-after($spid, '#')))">
         All '@who'-attributes of 'sp' elements must correspond to a
         'xml:id'-attribute of a 'person'- or 'persName'-element in the
         'listPerson' (without '#' at the beginning).
       </assert>
-    -->
+      -->
+
+
+      <!-- TODO: same with regex, does not work with lxml because it needs
+      XSLT 2.0 processing.
+
+      <assert test="key('cast_ids', tokenize($spid, '\s#'))">
+        All '@who'-attributes of 'sp' elements must correspond to a
+        'xml:id'-attribute of a 'person'- or 'persName'-element in the
+        'listPerson' (without '#' at the beginning).
+      </assert>
+      -->
+
     </rule>
   </pattern>
 </schema>

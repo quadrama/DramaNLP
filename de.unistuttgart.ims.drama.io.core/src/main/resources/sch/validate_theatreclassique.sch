@@ -6,14 +6,27 @@
   <!-- global cast_ids xslt-key -->
   <xsl:key name="cast_ids" match="tei:role" use="@xml:id"/>
 
-  <!-- TODO: add more general tests for basic structure and mandatory elements -->
-  <pattern id="teiHeader">
-    <rule context="tei:TEI/tei:teiHeader">
-      <assert test=".">
+
+  <!-- TODO: tests for basic structure and mandatory elements -->
+  <pattern id="basic_structure">
+    <rule context="tei:TEI">
+      <assert test="tei:text">
+        The file must contain a 'text'-element.
+      </assert>
+      <assert test="tei:text/tei:front">
+        The 'text'-element must contain a 'front'-element.
+      </assert>
+      <assert test="tei:text/tei:body">
+        The 'text'-element must contain a 'body'-element.
+      </assert>
+      <assert test="tei:teiHeader">
         The file must contain a 'teiHeader'-element.
       </assert>
-      <assert test="tei:fileDesc">
+      <assert test="tei:teiHeader/tei:fileDesc">
         The 'teiHeader'-element must contain a 'fileDesc'-element.
+      </assert>
+      <assert test="tei:teiHeader/tei:fileDesc/tei:publicationStmt">
+        The 'fileDesc'-element must contain a 'publicationStmt'-element.
       </assert>
     </rule>
   </pattern>
@@ -21,6 +34,9 @@
   <!-- tests for title and author of drama -->
   <pattern id="titleStmt">
     <rule context="tei:TEI/tei:teiHeader/tei:fileDesc/tei:titleStmt">
+      <assert test=".">
+        The 'fileDesc'-element must contain a 'titleStmt'-element.
+      </assert>
       <assert test="count(tei:title[@type = 'main']) = 1">
         The 'titleStmt'-element must contain one 'title'-element of type 'main'.
       </assert>
@@ -41,8 +57,11 @@
   <!-- test for drama-id -->
   <pattern id="drama-id">
     <rule context="tei:TEI/tei:teiHeader/tei:fileDesc/tei:publicationStmt/tei:idno">
+      <assert test=".">
+        The 'publicationStmt'-element must contain an 'idno'-element.
+      </assert>
       <assert test="@type = 'cligs'">
-        The 'publicationStmt'-element must contain an 'idno'-element of type 'cligs'.
+        The 'idno'-element in the 'publicationStmt'-element must have a 'type'-attribute with the value 'cligs'.
       </assert>
       <assert test="text()">
         The 'idno'-element in the 'publicationStmt' can not be empty.
@@ -94,6 +113,9 @@
   <!-- tests for structure of 'sp'-elements -->
   <pattern id="Speaker">
     <rule context="tei:TEI/tei:text/tei:body/child::tei:div/child::tei:div/child::tei:sp">
+      <assert test=".">
+        There must be 'sp'-elements in the scenes.
+      </assert>
       <assert test="count(./tei:speaker) = 1">
         All 'sp'-elements must have one 'speaker' element.
       </assert>
