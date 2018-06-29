@@ -191,10 +191,10 @@ public enum CSVVariant {
 									if (cf != null) {
 										try {
 											if (printName == null | printId == null) {
-												printName = cf.getNames(0);
+												printName = String.join("+", cf.getNames(0));
 												printId = createCONLLFormat(m, cf, token);
 											} else {
-												printName = printName + "|" + cf.getNames(0);
+												printName = printName + "|" + String.join("+", cf.getNames(0));
 												printId = printId + "|" + createCONLLFormat(m, cf, token);
 											}
 										} catch (Exception e) {
@@ -263,23 +263,23 @@ public enum CSVVariant {
 		String printId = null;
 		if (cf != null) {
 			if (m.getCoveredText().equals(token.getCoveredText())) {
-				printId = "(" + cf.getXmlId(0) + ")";
+				printId = "(" + String.join("+", cf.getXmlId(0)) + ")";
 			} else if (m.getCoveredText().startsWith(token.getCoveredText())) {
-				printId = "(" + cf.getXmlId(0);
+				printId = "(" + String.join("+", cf.getXmlId(0));
 			} else if (m.getCoveredText().endsWith(token.getCoveredText())) {
-				printId = cf.getXmlId(0) + ")";
+				printId = String.join("+", cf.getXmlId(0)) + ")";
 			} else {
-				printId = cf.getXmlId(0);
+				printId = String.join("+", cf.getXmlId(0));
 			}
 		} else {
 			if (m.getCoveredText().equals(token.getCoveredText())) {
-				printId = "(" + m.getXmlId(0) + ")";
+				printId = "(" + String.join("+", m.getXmlId()) + ")";
 			} else if (m.getCoveredText().startsWith(token.getCoveredText())) {
-				printId = "(" + m.getXmlId(0);
+				printId = "(" + String.join("+", m.getXmlId());
 			} else if (m.getCoveredText().endsWith(token.getCoveredText())) {
-				printId = m.getXmlId(0) + ")";
+				printId = String.join("+", m.getXmlId()) + ")";
 			} else {
-				printId = m.getXmlId(0);
+				printId = String.join("+", m.getXmlId());
 			}
 		}
 		return printId;
