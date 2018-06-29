@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -184,6 +185,15 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 		gxr.addRule("rs", Mention.class, (cl, e) -> {
 			if (e.hasAttr("ref")) {
 				String[] splitted = e.attr("ref").split(" ");
+				if (e.hasAttr("func")) {
+					if (e.attr("func").equals("and")) {
+						// default
+					} else if (e.attr("func").equals("or")) {
+						splitted = getRandom(splitted);
+					} else {
+						// Should be handled by XMLSchema
+					}
+				}
 				FSArray arr = new FSArray(jcas, splitted.length);
 				// gather names
 				Set<String> nameList = new HashSet<String>();
@@ -236,5 +246,13 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 			return Integer.valueOf(m.group());
 		} else
 			return 0;
+	}
+	
+	public static String[] getRandom(String[] array) {
+		int seed = 42;
+		String[] newArray = new String[1];
+	    int rnd = new Random(seed).nextInt(array.length);
+	    newArray[0] = array[rnd];
+	    return newArray;
 	}
 }
