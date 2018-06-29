@@ -192,10 +192,10 @@ public enum CSVVariant {
 										try {
 											if (printName == null | printId == null) {
 												printName = cf.getNames(0);
-												printId = cf.getXmlId(0);
+												printId = createCONLLFormat(m, cf, token);
 											} else {
 												printName = printName + "|" + cf.getNames(0);
-												printId = printId + "|" + cf.getXmlId(0);
+												printId = printId + "|" + createCONLLFormat(m, cf, token);
 											}
 										} catch (Exception e) {
 											printName = null;
@@ -205,10 +205,10 @@ public enum CSVVariant {
 										try {
 											if (printName == null | printId == null) {
 												printName = m.getNames(0);
-												printId = m.getXmlId(0);
+												printId = createCONLLFormat(m, cf, token);
 											} else {
 												printName = printName + "|" + m.getNames(0);
-												printId = printId + "|" + m.getXmlId(0);
+												printId = printId + "|" + createCONLLFormat(m, cf, token);
 											}
 										} catch (Exception e) {
 											printName = null;
@@ -221,7 +221,6 @@ public enum CSVVariant {
 							printName = null;
 							printId = null;
 						}
-
 						p.print(printName);
 						p.print(printId);
 						p.println();
@@ -254,5 +253,35 @@ public enum CSVVariant {
 			return coll.iterator().next();
 		else
 			return fm;
+	}
+
+	/**
+	 * This function checks if a mention's surface form is identical to a token, if
+	 * it starts with the token or ends with it and attaches corresponding markers.
+	 */
+	private String createCONLLFormat(Mention m, CastFigure cf, Token token) {
+		String printId = null;
+		if (cf != null) {
+			if (m.getCoveredText().equals(token.getCoveredText())) {
+				printId = "(" + cf.getXmlId(0) + ")";
+			} else if (m.getCoveredText().startsWith(token.getCoveredText())) {
+				printId = "(" + cf.getXmlId(0);
+			} else if (m.getCoveredText().endsWith(token.getCoveredText())) {
+				printId = cf.getXmlId(0) + ")";
+			} else {
+				printId = cf.getXmlId(0);
+			}
+		} else {
+			if (m.getCoveredText().equals(token.getCoveredText())) {
+				printId = "(" + m.getXmlId(0) + ")";
+			} else if (m.getCoveredText().startsWith(token.getCoveredText())) {
+				printId = "(" + m.getXmlId(0);
+			} else if (m.getCoveredText().endsWith(token.getCoveredText())) {
+				printId = m.getXmlId(0) + ")";
+			} else {
+				printId = m.getXmlId(0);
+			}
+		}
+		return printId;
 	}
 }
