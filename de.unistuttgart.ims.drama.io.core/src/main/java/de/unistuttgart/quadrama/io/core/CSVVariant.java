@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.csv.CSVPrinter;
+import org.apache.uima.cas.FeatureStructure;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
@@ -183,36 +184,39 @@ public enum CSVVariant {
 									printName = null;
 									printId = null;
 								} else {
-									DiscourseEntity de = m.getEntity(0);
-									CastFigure cf = null;
-									if (de instanceof CastFigure) {
-										cf = (CastFigure) de;
-									}
-									if (cf != null) {
-										try {
-											if (printName == null | printId == null) {
-												printName = String.join("+", cf.getNames(0));
-												printId = createCONLLFormat(m, cf, token);
-											} else {
-												printName = printName + "|" + String.join("+", cf.getNames(0));
-												printId = printId + "|" + createCONLLFormat(m, cf, token);
-											}
-										} catch (Exception e) {
-											printName = null;
-											printId = null;
+									int index = -1;
+									for (FeatureStructure de : m.getEntity()) {
+										index++;
+										CastFigure cf = null;
+										if (de instanceof CastFigure) {
+											cf = (CastFigure) de;
 										}
-									} else {
-										try {
-											if (printName == null | printId == null) {
-												printName = m.getNames(0);
-												printId = createCONLLFormat(m, cf, token);
-											} else {
-												printName = printName + "|" + m.getNames(0);
-												printId = printId + "|" + createCONLLFormat(m, cf, token);
+										if (cf != null) {
+											try {
+												if (printName == null | printId == null) {
+													printName = cf.getNames(0);
+													printId = createCONLLFormat(m, cf, token, index);
+												} else {
+													printName = printName + "|" + cf.getNames(0);
+													printId = printId + "|" + createCONLLFormat(m, cf, token, index);
+												}
+											} catch (Exception e) {
+												printName = null;
+												printId = null;
 											}
-										} catch (Exception e) {
-											printName = null;
-											printId = null;
+										} else {
+											try {
+												if (printName == null | printId == null) {
+													printName = m.getNames(0);
+													printId = createCONLLFormat(m, cf, token, index);
+												} else {
+													printName = printName + "|" + m.getNames(0);
+													printId = printId + "|" + createCONLLFormat(m, cf, token, index);
+												}
+											} catch (Exception e) {
+												printName = null;
+												printId = null;
+											}
 										}
 									}
 								}
@@ -259,27 +263,27 @@ public enum CSVVariant {
 	 * This function checks if a mention's surface form is identical to a token, if
 	 * it starts with the token or ends with it and attaches corresponding markers.
 	 */
-	private String createCONLLFormat(Mention m, CastFigure cf, Token token) {
+	private String createCONLLFormat(Mention m, CastFigure cf, Token token, int index) {
 		String printId = null;
 		if (cf != null) {
 			if (m.getCoveredText().equals(token.getCoveredText())) {
-				printId = "(" + String.join("+", cf.getXmlId(0)) + ")";
+				printId = "(" + cf.getXmlId(0) + ")";
 			} else if (m.getCoveredText().startsWith(token.getCoveredText())) {
-				printId = "(" + String.join("+", cf.getXmlId(0));
+				printId = "(" + cf.getXmlId(0);
 			} else if (m.getCoveredText().endsWith(token.getCoveredText())) {
-				printId = String.join("+", cf.getXmlId(0)) + ")";
+				printId = cf.getXmlId(0) + ")";
 			} else {
-				printId = String.join("+", cf.getXmlId(0));
+				printId = cf.getXmlId(0);
 			}
 		} else {
 			if (m.getCoveredText().equals(token.getCoveredText())) {
-				printId = "(" + String.join("+", m.getXmlId()) + ")";
+				printId = "(" + m.getXmlId(index) + ")";
 			} else if (m.getCoveredText().startsWith(token.getCoveredText())) {
-				printId = "(" + String.join("+", m.getXmlId());
+				printId = "(" + m.getXmlId(index);
 			} else if (m.getCoveredText().endsWith(token.getCoveredText())) {
-				printId = String.join("+", m.getXmlId()) + ")";
+				printId = m.getXmlId(index) + ")";
 			} else {
-				printId = String.join("+", m.getXmlId());
+				printId = m.getXmlId(index);
 			}
 		}
 		return printId;
