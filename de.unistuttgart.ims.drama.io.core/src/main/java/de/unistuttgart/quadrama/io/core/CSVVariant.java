@@ -153,10 +153,12 @@ public enum CSVVariant {
 		Map<Token, Collection<Mention>> mentionMap = JCasUtil.indexCovering(jcas, Token.class, Mention.class);
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
 		int length = JCasUtil.select(jcas, Token.class).size();
+		Set<CastFigure> used = new HashSet<CastFigure>();
 		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
 			for (Speaker speaker : DramaUtil.getSpeakers(utterance)) {
 				for (int i = 0; i < speaker.getCastFigure().size(); i++) {
 					for (Token token : JCasUtil.selectCovered(Token.class, utterance)) {
+						used.clear();
 						p.print(drama.getCollectionId());
 						p.print(drama.getDocumentId());
 						p.print(utterance.getBegin());
@@ -191,7 +193,7 @@ public enum CSVVariant {
 										if (de instanceof CastFigure) {
 											cf = (CastFigure) de;
 										}
-										if (cf != null) {
+										if (cf != null && !used.contains(cf)) {
 											try {
 												if (printName == null | printId == null) {
 													printName = cf.getNames(0);
@@ -200,9 +202,9 @@ public enum CSVVariant {
 													printName = printName + "|" + cf.getNames(0);
 													printId = printId + "|" + createCONLLFormat(m, cf, token, index);
 												}
+												used.add(cf);
 											} catch (Exception e) {
-												printName = null;
-												printId = null;
+												//
 											}
 										} else {
 											try {
@@ -214,16 +216,14 @@ public enum CSVVariant {
 													printId = printId + "|" + createCONLLFormat(m, cf, token, index);
 												}
 											} catch (Exception e) {
-												printName = null;
-												printId = null;
+												//
 											}
 										}
 									}
 								}
 							}
 						} else {
-							printName = null;
-							printId = null;
+							//
 						}
 						p.print(printName);
 						p.print(printId);
