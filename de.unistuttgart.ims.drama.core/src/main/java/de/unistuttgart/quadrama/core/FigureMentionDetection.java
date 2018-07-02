@@ -97,19 +97,20 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 			Collection<CastFigure> figures = DramaUtil.getCastFigures(utterance);
 			for (CastFigure currentFigure : figures) {
 				for (Speech speech : JCasUtil.selectCovered(jcas, Speech.class, utterance)) {
-					if (figures.size() <= 1)
+					if (figures.size() <= 1) {
 						for (PR pronoun : JCasUtil.selectCovered(jcas, PR.class, speech)) {
-							if (pronouns.contains(pronoun.getCoveredText())) {
+							if (pronouns.contains(pronoun.getCoveredText().toLowerCase())) {
 								AnnotationFactory
 										.createAnnotation(jcas, pronoun.getBegin(), pronoun.getEnd(),
 												FigureMention.class)
 										.setEntity(ArrayUtil.toFSArray(jcas, currentFigure));
 							}
 						}
+					}
 				}
 			}
 		}
-
+		
 	}
 
 	boolean matches(JCas jcas, int begin, int end) {
