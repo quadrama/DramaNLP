@@ -27,7 +27,7 @@ import org.cleartk.ml.feature.function.FeatureFunctionExtractor;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
-import de.unistuttgart.ims.drama.api.FigureMention;
+import de.unistuttgart.ims.drama.api.Mention;
 import de.unistuttgart.ims.entitydetection.api.TrainingArea;
 
 public class ClearTkMentionAnnotator extends CleartkSequenceAnnotator<String> {
@@ -35,7 +35,7 @@ public class ClearTkMentionAnnotator extends CleartkSequenceAnnotator<String> {
 
 	CleartkExtractor<Token, Token> contextExtractor;
 
-	BioChunking<Token, FigureMention> chunking;
+	BioChunking<Token, Mention> chunking;
 
 	@Override
 	public void initialize(UimaContext context) throws ResourceInitializationException {
@@ -58,7 +58,7 @@ public class ClearTkMentionAnnotator extends CleartkSequenceAnnotator<String> {
 		// NamedEntityMentions, with labels
 		// from the "mentionType" attribute so that we get B-location, I-person,
 		// etc.
-		this.chunking = new BioChunking<Token, FigureMention>(Token.class, FigureMention.class);
+		this.chunking = new BioChunking<Token, Mention>(Token.class, Mention.class);
 	}
 
 	@Override
@@ -86,7 +86,7 @@ public class ClearTkMentionAnnotator extends CleartkSequenceAnnotator<String> {
 
 				// extract the gold (human annotated) NamedEntityMention
 				// annotations
-				List<FigureMention> namedEntityMentions = JCasUtil.selectCovered(jCas, FigureMention.class, sentence);
+				List<Mention> namedEntityMentions = JCasUtil.selectCovered(jCas, Mention.class, sentence);
 
 				// convert the NamedEntityMention annotations into token-level
 				// BIO outcome labels

@@ -189,7 +189,7 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 					if (e.attr("func").equals("and")) {
 						// default
 					} else if (e.attr("func").equals("or")) {
-						splitted = getRandom(splitted);
+						splitted = getRandomEntity(splitted);
 					} else {
 						// Should be handled by XMLSchema
 					}
@@ -248,7 +248,7 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 			return 0;
 	}
 	
-	public static String[] getRandom(String[] array) {
+	public static String[] getRandomEntity(String[] array) {
 		int seed = 42;
 		String[] newArray = new String[1];
 	    int rnd = new Random(seed).nextInt(array.length);

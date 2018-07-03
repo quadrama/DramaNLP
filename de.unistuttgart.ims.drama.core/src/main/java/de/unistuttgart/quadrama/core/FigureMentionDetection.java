@@ -25,7 +25,7 @@ import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS;
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.PR;
 import de.unistuttgart.ims.drama.api.CastFigure;
 import de.unistuttgart.ims.drama.api.Drama;
-import de.unistuttgart.ims.drama.api.FigureMention;
+import de.unistuttgart.ims.drama.api.Mention;
 import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.Utterance;
 import de.unistuttgart.ims.drama.util.DramaUtil;
@@ -84,8 +84,7 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 					// part of speech tags,
 					// we consider it a mention
 					if (!matches(jcas, m.start(), m.end())) {
-						FigureMention fm = AnnotationFactory.createAnnotation(jcas, m.start(), m.end(),
-								FigureMention.class);
+						Mention fm = AnnotationFactory.createAnnotation(jcas, m.start(), m.end(), Mention.class);
 						fm.setEntity(ArrayUtil.toFSArray(jcas, cf));
 					}
 				}
@@ -101,8 +100,7 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 						for (PR pronoun : JCasUtil.selectCovered(jcas, PR.class, speech)) {
 							if (pronouns.contains(pronoun.getCoveredText().toLowerCase())) {
 								AnnotationFactory
-										.createAnnotation(jcas, pronoun.getBegin(), pronoun.getEnd(),
-												FigureMention.class)
+										.createAnnotation(jcas, pronoun.getBegin(), pronoun.getEnd(), Mention.class)
 										.setEntity(ArrayUtil.toFSArray(jcas, currentFigure));
 							}
 						}
@@ -110,7 +108,7 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 				}
 			}
 		}
-		
+
 	}
 
 	boolean matches(JCas jcas, int begin, int end) {
