@@ -185,46 +185,21 @@ public enum CSVVariant {
 									printName = null;
 									printId = null;
 								} else {
-									int index = -1;
-									for (FeatureStructure de : m.getEntity()) {
-										index++;
-										CastFigure cf = null;
-										if (de instanceof CastFigure) {
-											cf = (CastFigure) de;
-										}
-										if (cf != null && !used.contains(cf)) {
-											try {
-												if (printName == null | printId == null) {
-													if (m.getCoveredText().startsWith(token.getCoveredText())) {
-														printName = cf.getNames(0);
-													}
-													printId = createCONLLFormat(m, cf, token, index);
-												} else {
-													if (m.getCoveredText().startsWith(token.getCoveredText())) {
-														printName = printName + "|" + cf.getNames(0);
-													}
-													printId = printId + "|" + createCONLLFormat(m, cf, token, index);
+									for (int index = -1; index < m.getEntity().size(); index++) {
+										try {
+											if (printName == null | printId == null) {
+												if (m.getCoveredText().startsWith(token.getCoveredText())) {
+													printName = m.getNames(0);
 												}
-												used.add(cf);
-											} catch (Exception e) {
-												//
-											}
-										} else {
-											try {
-												if (printName == null | printId == null) {
-													if (m.getCoveredText().startsWith(token.getCoveredText())) {
-														printName = m.getNames(0);
-													}
-													printId = createCONLLFormat(m, cf, token, index);
-												} else {
-													if (m.getCoveredText().startsWith(token.getCoveredText())) {
-														printName = printName + "|" + m.getNames(0);
-													}
-													printId = printId + "|" + createCONLLFormat(m, cf, token, index);
+												printId = createCONLLFormat(m, token, index);
+											} else {
+												if (m.getCoveredText().startsWith(token.getCoveredText())) {
+													printName = printName + "|" + m.getNames(0);
 												}
-											} catch (Exception e) {
-												//
+												printId = printId + "|" + createCONLLFormat(m, token, index);
 											}
+										} catch (Exception e) {
+											//
 										}
 									}
 								}
@@ -270,26 +245,15 @@ public enum CSVVariant {
 	 * This function checks if a mention's surface form is identical to a token, if
 	 * it starts with the token or ends with it and attaches corresponding markers.
 	 */
-	private String createCONLLFormat(Mention m, CastFigure cf, Token token, int index) {
+	private String createCONLLFormat(Mention m, Token token, int index) {
 		String printId = null;
-		if (cf != null) {
-			if (m.getCoveredText().equals(token.getCoveredText())) {
-				printId = "(" + cf.getXmlId(0) + ")";
-			} else if (m.getCoveredText().startsWith(token.getCoveredText())) {
-				printId = "(" + cf.getXmlId(0);
-			} else if (m.getCoveredText().endsWith(token.getCoveredText())) {
-				printId = cf.getXmlId(0) + ")";
-			} else {
-			}
+		if (m.getCoveredText().equals(token.getCoveredText())) {
+			printId = "(" + m.getXmlId(index) + ")";
+		} else if (m.getCoveredText().startsWith(token.getCoveredText())) {
+			printId = "(" + m.getXmlId(index);
+		} else if (m.getCoveredText().endsWith(token.getCoveredText())) {
+			printId = m.getXmlId(index) + ")";
 		} else {
-			if (m.getCoveredText().equals(token.getCoveredText())) {
-				printId = "(" + m.getXmlId(index) + ")";
-			} else if (m.getCoveredText().startsWith(token.getCoveredText())) {
-				printId = "(" + m.getXmlId(index);
-			} else if (m.getCoveredText().endsWith(token.getCoveredText())) {
-				printId = m.getXmlId(index) + ")";
-			} else {
-			}
 		}
 		return printId;
 	}
