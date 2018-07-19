@@ -183,8 +183,14 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 		Map<String, DiscourseEntity> fallbackEntities = new HashMap<String, DiscourseEntity>();
 		// mentions
 		gxr.addRule("rs", Mention.class, (cl, e) -> {
-			if (e.hasAttr("ref")) {
-				String[] splitted = e.attr("ref").split(" ");
+			if (e.hasAttr("ref") || e.hasAttr("xml:id")) {
+				String[] splitted = null;
+				if (e.hasAttr("ref")) {
+				    splitted = e.attr("ref").split(" ");
+				}
+				else if (e.hasAttr("xml:id")) {
+					splitted = e.attr("xml:id").split(" ");
+				}
 				if (e.hasAttr("func")) {
 					if (e.attr("func").equals("and")) {
 						// default
