@@ -85,6 +85,8 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 					// we consider it a mention
 					if (!matches(jcas, m.start(), m.end())) {
 						Mention fm = AnnotationFactory.createAnnotation(jcas, m.start(), m.end(), Mention.class);
+						fm.setNames(ArrayUtil.toStringArray(jcas, cf.getDisplayName()));
+						fm.setXmlId(cf.getXmlId());
 						fm.setEntity(ArrayUtil.toFSArray(jcas, cf));
 					}
 				}
@@ -99,9 +101,15 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 					if (figures.size() <= 1) {
 						for (PR pronoun : JCasUtil.selectCovered(jcas, PR.class, speech)) {
 							if (pronouns.contains(pronoun.getCoveredText().toLowerCase())) {
-								AnnotationFactory
-										.createAnnotation(jcas, pronoun.getBegin(), pronoun.getEnd(), Mention.class)
-										.setEntity(ArrayUtil.toFSArray(jcas, currentFigure));
+								try {
+									Mention fm = AnnotationFactory.createAnnotation(jcas, pronoun.getBegin(),
+											pronoun.getEnd(), Mention.class);
+									fm.setNames(ArrayUtil.toStringArray(jcas, pronoun.getCoveredText()));
+									fm.setXmlId(currentFigure.getXmlId());
+									fm.setEntity(ArrayUtil.toFSArray(jcas, currentFigure));
+								} catch (Exception e) {
+									// currentFigure is null
+								}
 							}
 						}
 					}

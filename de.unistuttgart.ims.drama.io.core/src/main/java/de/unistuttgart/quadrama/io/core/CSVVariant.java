@@ -152,7 +152,7 @@ public enum CSVVariant {
 		Map<Token, Collection<Mention>> mentionMap = JCasUtil.indexCovering(jcas, Token.class, Mention.class);
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
 		int length = JCasUtil.select(jcas, Token.class).size();
-		Set<CastFigure> used = new HashSet<CastFigure>();
+		Set<Mention> used = new HashSet<Mention>();
 		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
 			for (Speaker speaker : DramaUtil.getSpeakers(utterance)) {
 				for (int i = 0; i < speaker.getCastFigure().size(); i++) {
@@ -185,21 +185,24 @@ public enum CSVVariant {
 									printName = null;
 									printId = null;
 								} else {
-									for (int index = -1; index < m.getEntity().size(); index++) {
-										try {
-											if (printName == null | printId == null) {
-												if (m.getCoveredText().startsWith(token.getCoveredText())) {
-													printName = m.getNames(0);
+									if (!used.contains(m)) {
+										for (int index = 0; index < m.getEntity().size(); index++) {
+											try {
+												if (printName == null | printId == null) {
+													if (m.getCoveredText().startsWith(token.getCoveredText())) {
+														printName = m.getNames(0);
+													}
+													printId = createCONLLFormat(m, token, index);
+												} else {
+													if (m.getCoveredText().startsWith(token.getCoveredText())) {
+														printName = printName + "|" + m.getNames(0);
+													}
+													printId = printId + "|" + createCONLLFormat(m, token, index);
 												}
-												printId = createCONLLFormat(m, token, index);
-											} else {
-												if (m.getCoveredText().startsWith(token.getCoveredText())) {
-													printName = printName + "|" + m.getNames(0);
-												}
-												printId = printId + "|" + createCONLLFormat(m, token, index);
+												used.add(m);
+											} catch (Exception e) {
+												//
 											}
-										} catch (Exception e) {
-											//
 										}
 									}
 								}
