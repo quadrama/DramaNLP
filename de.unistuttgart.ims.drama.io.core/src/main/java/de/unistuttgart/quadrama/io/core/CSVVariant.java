@@ -19,7 +19,6 @@ import de.unistuttgart.ims.drama.api.CastFigure;
 import de.unistuttgart.ims.drama.api.DiscourseEntity;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Mention;
-import de.unistuttgart.ims.drama.api.FigureMention;
 import de.unistuttgart.ims.drama.api.Scene;
 import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.api.Translator;
@@ -153,7 +152,7 @@ public enum CSVVariant {
 		Map<Token, Collection<Mention>> mentionMap = JCasUtil.indexCovering(jcas, Token.class, Mention.class);
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
 		int length = JCasUtil.select(jcas, Token.class).size();
-		Set<CastFigure> used = new HashSet<CastFigure>();
+		Set<Mention> used = new HashSet<Mention>();
 		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
 			for (Speaker speaker : DramaUtil.getSpeakers(utterance)) {
 				for (int i = 0; i < speaker.getCastFigure().size(); i++) {
@@ -186,35 +185,21 @@ public enum CSVVariant {
 									printName = null;
 									printId = null;
 								} else {
-									int index = -1;
-									for (FeatureStructure de : m.getEntity()) {
-										index++;
-										CastFigure cf = null;
-										if (de instanceof CastFigure) {
-											cf = (CastFigure) de;
-										}
-										if (cf != null && !used.contains(cf)) {
+									if (!used.contains(m)) {
+										for (int index = 0; index < m.getEntity().size(); index++) {
 											try {
 												if (printName == null | printId == null) {
-													printName = cf.getNames(0);
-													printId = createCONLLFormat(m, cf, token, index);
+													if (m.getCoveredText().startsWith(token.getCoveredText())) {
+														printName = m.getNames(0);
+													}
+													printId = createCONLLFormat(m, token, index);
 												} else {
-													printName = printName + "|" + cf.getNames(0);
-													printId = printId + "|" + createCONLLFormat(m, cf, token, index);
+													if (m.getCoveredText().startsWith(token.getCoveredText())) {
+														printName = printName + "|" + m.getNames(0);
+													}
+													printId = printId + "|" + createCONLLFormat(m, token, index);
 												}
-												used.add(cf);
-											} catch (Exception e) {
-												//
-											}
-										} else {
-											try {
-												if (printName == null | printId == null) {
-													printName = m.getNames(0);
-													printId = createCONLLFormat(m, cf, token, index);
-												} else {
-													printName = printName + "|" + m.getNames(0);
-													printId = printId + "|" + createCONLLFormat(m, cf, token, index);
-												}
+												used.add(m);
 											} catch (Exception e) {
 												//
 											}
@@ -263,28 +248,15 @@ public enum CSVVariant {
 	 * This function checks if a mention's surface form is identical to a token, if
 	 * it starts with the token or ends with it and attaches corresponding markers.
 	 */
-	private String createCONLLFormat(Mention m, CastFigure cf, Token token, int index) {
+	private String createCONLLFormat(Mention m, Token token, int index) {
 		String printId = null;
-		if (cf != null) {
-			if (m.getCoveredText().equals(token.getCoveredText())) {
-				printId = "(" + cf.getXmlId(0) + ")";
-			} else if (m.getCoveredText().startsWith(token.getCoveredText())) {
-				printId = "(" + cf.getXmlId(0);
-			} else if (m.getCoveredText().endsWith(token.getCoveredText())) {
-				printId = cf.getXmlId(0) + ")";
-			} else {
-				printId = cf.getXmlId(0);
-			}
+		if (m.getCoveredText().equals(token.getCoveredText())) {
+			printId = "(" + m.getXmlId(index) + ")";
+		} else if (m.getCoveredText().startsWith(token.getCoveredText())) {
+			printId = "(" + m.getXmlId(index);
+		} else if (m.getCoveredText().endsWith(token.getCoveredText())) {
+			printId = m.getXmlId(index) + ")";
 		} else {
-			if (m.getCoveredText().equals(token.getCoveredText())) {
-				printId = "(" + m.getXmlId(index) + ")";
-			} else if (m.getCoveredText().startsWith(token.getCoveredText())) {
-				printId = "(" + m.getXmlId(index);
-			} else if (m.getCoveredText().endsWith(token.getCoveredText())) {
-				printId = m.getXmlId(index) + ")";
-			} else {
-				printId = m.getXmlId(index);
-			}
 		}
 		return printId;
 	}

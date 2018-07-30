@@ -33,7 +33,7 @@ import com.lexicalscope.jewel.cli.Option;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiReader;
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
-import de.unistuttgart.ims.drama.api.FigureMention;
+import de.unistuttgart.ims.drama.api.Mention;
 import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.entitydetection.api.TrainingArea;
 import de.unistuttgart.ims.uimautil.ClearAnnotation;
@@ -85,7 +85,7 @@ public class MentionDetectionEvaluation extends Evaluation_ImplBase<File, Annota
 
 		aggregate
 				.add(createEngineDescription(ContextWindowAnnotator.class, ContextWindowAnnotator.PARAM_BASE_ANNOTATION,
-						FigureMention.class, ContextWindowAnnotator.PARAM_CONTEXT_CLASS, Speech.class,
+						Mention.class, ContextWindowAnnotator.PARAM_CONTEXT_CLASS, Speech.class,
 						ContextWindowAnnotator.PARAM_TARGET_ANNOTATION, TrainingArea.class));
 		// our NamedEntityChunker annotator, configured to write Mallet CRF
 		// training data
@@ -152,9 +152,9 @@ public class MentionDetectionEvaluation extends Evaluation_ImplBase<File, Annota
 			JCas systemView = jCas.getView(defaultViewName);
 
 			// extract the named entity mentions from both gold and system views
-			Collection<FigureMention> goldMentions, systemMentions;
-			goldMentions = JCasUtil.select(goldView, FigureMention.class);
-			systemMentions = JCasUtil.select(systemView, FigureMention.class);
+			Collection<Mention> goldMentions, systemMentions;
+			goldMentions = JCasUtil.select(goldView, Mention.class);
+			systemMentions = JCasUtil.select(systemView, Mention.class);
 
 			// compare the system mentions to the gold mentions
 			stats.add(goldMentions, systemMentions);

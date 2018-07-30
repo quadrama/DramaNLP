@@ -219,11 +219,6 @@
 			</features>
 		</typeDescription>
 		<typeDescription>
-			<name>de.unistuttgart.ims.drama.api.FigureMention</name>
-			<description/>
-			<supertypeName>de.unistuttgart.ims.drama.api.Mention</supertypeName>
-		</typeDescription>
-		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.SpeakerFigure</name>
 			<description>@Deprecated
 

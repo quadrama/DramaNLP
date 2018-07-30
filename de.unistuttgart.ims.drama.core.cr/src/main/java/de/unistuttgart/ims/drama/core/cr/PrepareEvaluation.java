@@ -12,7 +12,7 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 
-import de.unistuttgart.ims.drama.api.FigureMention;
+import de.unistuttgart.ims.drama.api.Mention;
 
 public class PrepareEvaluation extends JCasAnnotator_ImplBase {
 
@@ -32,12 +32,12 @@ public class PrepareEvaluation extends JCasAnnotator_ImplBase {
 			}
 			newView.setDocumentText(jcas.getDocumentText());
 			newView.setDocumentLanguage(jcas.getDocumentLanguage());
-			for (FigureMention entity : JCasUtil.select(jcas, FigureMention.class)) {
-				AnnotationFactory.createAnnotation(newView, entity.getBegin(), entity.getEnd(), FigureMention.class);
+			for (Mention entity : JCasUtil.select(jcas, Mention.class)) {
+				AnnotationFactory.createAnnotation(newView, entity.getBegin(), entity.getEnd(), Mention.class);
 
 			}
 
-			Annotation a = FigureMention.class.getConstructor(JCas.class).newInstance(jcas);
+			Annotation a = Mention.class.getConstructor(JCas.class).newInstance(jcas);
 			jcas.removeAllIncludingSubtypes(a.getTypeIndexID());
 			// newView.removeAllIncludingSubtypes(a.getTypeIndexID());
 		} catch (CASException e) {
