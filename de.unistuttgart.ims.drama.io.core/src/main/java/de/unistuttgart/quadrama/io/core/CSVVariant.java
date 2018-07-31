@@ -21,6 +21,7 @@ import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Mention;
 import de.unistuttgart.ims.drama.api.Scene;
 import de.unistuttgart.ims.drama.api.Speaker;
+import de.unistuttgart.ims.drama.api.StageDirection;
 import de.unistuttgart.ims.drama.api.Translator;
 import de.unistuttgart.ims.drama.api.Utterance;
 import de.unistuttgart.ims.drama.util.DramaUtil;
@@ -31,6 +32,10 @@ public enum CSVVariant {
 	 * tokens.
 	 */
 	UtterancesWithTokens,
+	/**
+	 * Table with the stage directions.
+	 */
+	StageDirections,
 	/**
 	 * Table with act and scene boundaries (character positions)
 	 */
@@ -47,10 +52,8 @@ public enum CSVVariant {
 	/**
 	 * Prints a record representing the header onto p
 	 * 
-	 * @param p
-	 *            The target
-	 * @throws IOException
-	 *             If an I/O error occurs
+	 * @param p The target
+	 * @throws IOException If an I/O error occurs
 	 */
 	public void header(CSVPrinter p) throws IOException {
 		switch (this) {
@@ -64,6 +67,10 @@ public enum CSVVariant {
 			break;
 		case Characters:
 			p.printRecord("corpus", "drama", "figure_surface", "figure_id", "Gender", "Age");
+			break;
+		case StageDirections:
+			p.printRecord("corpus", "drama", "begin", "end", "Token.surface", "Token.pos", "Token.lemma", "length",
+					"Mentioned.figure_surface", "Mentioned.figure_id");
 			break;
 		default:
 			p.printRecord("corpus", "drama", "begin", "end", "Speaker.figure_surface", "Speaker.figure_id",
@@ -82,6 +89,9 @@ public enum CSVVariant {
 			break;
 		case Segments:
 			this.convertSegments(jcas, p);
+			break;
+		case StageDirections:
+			this.convertStageDirections(jcas, p);
 			break;
 		default:
 			this.convertUtterancesWithTokens(jcas, p);
@@ -192,12 +202,12 @@ public enum CSVVariant {
 													if (m.getCoveredText().startsWith(token.getCoveredText())) {
 														printName = m.getNames(0);
 													}
-													printId = createCONLLFormat(m, token, index);
+													printId = createBrackets(m, token, index);
 												} else {
 													if (m.getCoveredText().startsWith(token.getCoveredText())) {
 														printName = printName + "|" + m.getNames(0);
 													}
-													printId = printId + "|" + createCONLLFormat(m, token, index);
+													printId = printId + "|" + createBrackets(m, token, index);
 												}
 												used.add(m);
 											} catch (Exception e) {
@@ -219,12 +229,68 @@ public enum CSVVariant {
 		}
 	}
 
+	private void convertStageDirections(JCas jcas, CSVPrinter p) throws IOException {
+		Map<Token, Collection<Mention>> mentionMap = JCasUtil.indexCovering(jcas, Token.class, Mention.class);
+		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
+		int length = JCasUtil.select(jcas, Token.class).size();
+		Set<Mention> used = new HashSet<Mention>();
+		for (StageDirection sd : JCasUtil.select(jcas, StageDirection.class)) {
+			for (Token token : JCasUtil.selectCovered(Token.class, sd)) {
+				used.clear();
+				p.print(drama.getCollectionId());
+				p.print(drama.getDocumentId());
+				p.print(sd.getBegin());
+				p.print(sd.getEnd());
+				p.print(token.getCoveredText());
+				p.print(token.getPos().getPosValue());
+				p.print(token.getLemma().getValue());
+				p.print(length);
+				String printName = null;
+				String printId = null;
+				if (mentionMap.containsKey(token)) {
+					Collection<Mention> mList = mentionMap.get(token);
+					for (Mention m : mList) {
+						if (m.getEntity() == null) {
+							printName = null;
+							printId = null;
+						} else {
+							if (!used.contains(m)) {
+								for (int index = 0; index < m.getEntity().size(); index++) {
+									try {
+										if (printName == null | printId == null) {
+											if (m.getCoveredText().startsWith(token.getCoveredText())) {
+												printName = m.getNames(0);
+											}
+											printId = createBrackets(m, token, index);
+										} else {
+											if (m.getCoveredText().startsWith(token.getCoveredText())) {
+												printName = printName + "|" + m.getNames(0);
+											}
+											printId = printId + "|" + createBrackets(m, token, index);
+										}
+										used.add(m);
+									} catch (Exception e) {
+										//
+									}
+								}
+							}
+						}
+					}
+				} else {
+					//
+				}
+				p.print(printName);
+				p.print(printId);
+				p.println();
+			}
+		}
+	}
+
 	/**
 	 * This function returns the longest from a given collection of annotations.
 	 * Length measured as <code>end - begin</code>.
 	 * 
-	 * @param coll
-	 *            The annotation collection
+	 * @param coll The annotation collection
 	 * @return The longest of the annotation.
 	 */
 	@Deprecated
@@ -248,7 +314,7 @@ public enum CSVVariant {
 	 * This function checks if a mention's surface form is identical to a token, if
 	 * it starts with the token or ends with it and attaches corresponding markers.
 	 */
-	private String createCONLLFormat(Mention m, Token token, int index) {
+	private String createBrackets(Mention m, Token token, int index) {
 		String printId = null;
 		if (m.getCoveredText().equals(token.getCoveredText())) {
 			printId = "(" + m.getXmlId(index) + ")";

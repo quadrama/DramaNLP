@@ -22,6 +22,7 @@ import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
 import de.unistuttgart.ims.drama.core.ml.gender.ClearTkGenderAnnotator;
 import de.unistuttgart.ims.uimautil.SetCollectionId;
 import de.unistuttgart.quadrama.core.D;
+import de.unistuttgart.quadrama.core.SD;
 import de.unistuttgart.quadrama.core.FigureDetailsAnnotator;
 import de.unistuttgart.quadrama.core.FigureMentionDetection;
 import de.unistuttgart.quadrama.core.FigureReferenceAnnotator;
@@ -53,6 +54,7 @@ public class TEI2XMI {
 		AggregateBuilder builder = new AggregateBuilder();
 
 		builder.add(D.getWrappedSegmenterDescription(BreakIteratorSegmenter.class));
+		builder.add(SD.getWrappedSegmenterDescription(BreakIteratorSegmenter.class));
 		if (options.getCorpus() == Corpus.TURM) {
 			builder.add(createEngineDescription(SceneActAnnotator.class));
 		}
@@ -111,6 +113,8 @@ public class TEI2XMI {
 		if (options.getCSVOutput() != null) {
 			builder.add(createEngineDescription(ExportAsCSV.class, ExportAsCSV.PARAM_TARGET_LOCATION,
 					options.getCSVOutput(), ExportAsCSV.PARAM_CSV_VARIANT_NAME, "UtterancesWithTokens"));
+			builder.add(createEngineDescription(ExportAsCSV.class, ExportAsCSV.PARAM_TARGET_LOCATION,
+					options.getCSVOutput(), ExportAsCSV.PARAM_CSV_VARIANT_NAME, "StageDirections"));
 			builder.add(createEngineDescription(ExportAsCSV.class, ExportAsCSV.PARAM_TARGET_LOCATION,
 					options.getCSVOutput(), ExportAsCSV.PARAM_CSV_VARIANT_NAME, "Segments"));
 			builder.add(createEngineDescription(ExportAsCSV.class, ExportAsCSV.PARAM_TARGET_LOCATION,

@@ -75,6 +75,11 @@
 			<name>de.unistuttgart.ims.drama.api.StageDirection</name>
 			<description/>
 			<supertypeName>uima.tcas.Annotation</supertypeName>
+			<features>
+				<featureDescription>
+					<name>CastFigure</name>
+					<description></description>
+					<rangeTypeName>de.unistuttgart.ims.drama.api.DiscourseEntity</rangeTypeName></featureDescription></features>
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.Speech</name>
