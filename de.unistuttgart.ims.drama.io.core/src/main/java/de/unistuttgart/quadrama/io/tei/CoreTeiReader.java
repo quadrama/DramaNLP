@@ -96,11 +96,36 @@ public class CoreTeiReader extends AbstractDramaUrlReader {
 
 		gxr.read(jcas, file);
 
-		AnnotationUtil.trim(new ArrayList<Figure>(JCasUtil.select(jcas, Figure.class)));
-		AnnotationUtil.trim(new ArrayList<Speech>(JCasUtil.select(jcas, Speech.class)));
-		AnnotationUtil.trim(new ArrayList<Utterance>(JCasUtil.select(jcas, Utterance.class)));
-		AnnotationUtil.trim(new ArrayList<Scene>(JCasUtil.select(jcas, Scene.class)));
-		AnnotationUtil.trim(new ArrayList<Act>(JCasUtil.select(jcas, Act.class)));
+		try {
+			AnnotationUtil.trim(new ArrayList<Figure>(JCasUtil.select(jcas, Figure.class)));
+		} catch (ArrayIndexOutOfBoundsException e) {
+			// catch silently
+			// TODO: fix https://github.com/nilsreiter/uima-util/issues/13
+		}
+		try {
+			AnnotationUtil.trim(new ArrayList<Speech>(JCasUtil.select(jcas, Speech.class)));
+		} catch (ArrayIndexOutOfBoundsException e) {
+			// catch silently
+			// TODO: fix https://github.com/nilsreiter/uima-util/issues/13
+		}
+		try {
+			AnnotationUtil.trim(new ArrayList<Utterance>(JCasUtil.select(jcas, Utterance.class)));
+		} catch (ArrayIndexOutOfBoundsException e) {
+			// catch silently
+			// TODO: fix https://github.com/nilsreiter/uima-util/issues/13
+		}
+		try {
+			AnnotationUtil.trim(new ArrayList<Scene>(JCasUtil.select(jcas, Scene.class)));
+		} catch (ArrayIndexOutOfBoundsException e) {
+			// catch silently
+			// TODO: fix https://github.com/nilsreiter/uima-util/issues/13
+		}
+		try {
+			AnnotationUtil.trim(new ArrayList<Act>(JCasUtil.select(jcas, Act.class)));
+		} catch (ArrayIndexOutOfBoundsException e) {
+			// catch silently
+			// TODO: fix https://github.com/nilsreiter/uima-util/issues/13
+		}
 
 	}
 
