@@ -42,8 +42,11 @@ public enum CSVVariant {
 	/**
 	 * The list of characters defined in the play
 	 */
-	Characters;
-
+	Characters,
+	/**
+	 * List of all entity IDs and mapping to their surface representation
+	 */
+	Entities;
 	/**
 	 * Prints a record representing the header onto p
 	 * 
@@ -65,6 +68,9 @@ public enum CSVVariant {
 		case Characters:
 			p.printRecord("corpus", "drama", "figure_surface", "figure_id", "Gender", "Age");
 			break;
+		case Entities:
+			p.printRecord("corpus", "drama", "Entity.surface", "Entity.id", "Entity.group_members");
+			break;
 		default:
 			p.printRecord("corpus", "drama", "begin", "end", "Speaker.figure_surface", "Speaker.figure_id",
 					"Token.surface", "Token.pos", "Token.lemma", "length", "Mentioned.figure_surface",
@@ -82,6 +88,9 @@ public enum CSVVariant {
 			break;
 		case Segments:
 			this.convertSegments(jcas, p);
+			break;
+		case Entities:
+			this.convertEntities(jcas, p);
 			break;
 		default:
 			this.convertUtterancesWithTokens(jcas, p);
@@ -216,6 +225,18 @@ public enum CSVVariant {
 					}
 				}
 			}
+		}
+	}
+
+	private void convertEntities(JCas jcas, CSVPrinter p) throws IOException {
+		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
+		for (DiscourseEntity de : JCasUtil.select(jcas, DiscourseEntity.class)) {
+			p.print(drama.getCollectionId());
+			p.print(drama.getDocumentId());
+			p.print(de.getDisplayName());
+			p.print(de.getDisplayName());
+			p.print(null);
+			p.println();
 		}
 	}
 
