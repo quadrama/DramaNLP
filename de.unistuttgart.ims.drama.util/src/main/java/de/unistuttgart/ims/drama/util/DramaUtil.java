@@ -22,6 +22,7 @@ import de.unistuttgart.ims.drama.api.FigureType;
 import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.Utterance;
+import de.unistuttgart.ims.drama.api.StageDirection;
 
 public class DramaUtil {
 	public static Collection<Speech> getSpeeches(JCas jcas, Figure figure) {
@@ -46,9 +47,17 @@ public class DramaUtil {
 		return ret;
 	}
 
-	public static Collection<Speaker> getSpeakers(Utterance utterance) {
+	public static Collection<Speaker> getSpeakersUtt(Utterance utterance) {
 		try {
 			return JCasUtil.selectCovered(Speaker.class, utterance);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	public static Collection<Speaker> getSpeakersSD(StageDirection sd) {
+		try {
+			return JCasUtil.selectCovered(Speaker.class, sd);
 		} catch (Exception e) {
 			return null;
 		}
@@ -63,7 +72,7 @@ public class DramaUtil {
 	}
 
 	public static Collection<Figure> getFigures(Utterance u) {
-		Collection<Speaker> s = getSpeakers(u);
+		Collection<Speaker> s = getSpeakersUtt(u);
 		Collection<Figure> f = new LinkedList<Figure>();
 		for (Speaker speaker : s) {
 			f.add(speaker.getFigure());
@@ -72,7 +81,7 @@ public class DramaUtil {
 	}
 
 	public static Collection<CastFigure> getCastFigures(Utterance u) {
-		Collection<Speaker> s = getSpeakers(u);
+		Collection<Speaker> s = getSpeakersUtt(u);
 		Collection<CastFigure> f = new LinkedList<CastFigure>();
 		for (Speaker speaker : s) {
 			for (int i = 0; i < speaker.getCastFigure().size(); i++)

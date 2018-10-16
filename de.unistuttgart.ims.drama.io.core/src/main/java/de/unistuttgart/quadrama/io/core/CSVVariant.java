@@ -69,7 +69,8 @@ public enum CSVVariant {
 			p.printRecord("corpus", "drama", "figure_surface", "figure_id", "Gender", "Age");
 			break;
 		case StageDirections:
-			p.printRecord("corpus", "drama", "begin", "end", "Token.surface", "Token.pos", "Token.lemma", "length",
+			p.printRecord("corpus", "drama", "begin", "end", "Speaker.figure_surface", "Speaker.figure_id",
+					"Token.surface", "Token.pos", "Token.lemma", "length",
 					"Mentioned.figure_surface", "Mentioned.figure_id");
 			break;
 		default:
@@ -164,7 +165,7 @@ public enum CSVVariant {
 		int length = JCasUtil.select(jcas, Token.class).size();
 		Set<Mention> used = new HashSet<Mention>();
 		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
-			for (Speaker speaker : DramaUtil.getSpeakers(utterance)) {
+			for (Speaker speaker : DramaUtil.getSpeakersUtt(utterance)) {
 				for (int i = 0; i < speaker.getCastFigure().size(); i++) {
 					for (Token token : JCasUtil.selectCovered(Token.class, utterance)) {
 						used.clear();
@@ -241,6 +242,26 @@ public enum CSVVariant {
 				p.print(drama.getDocumentId());
 				p.print(sd.getBegin());
 				p.print(sd.getEnd());
+				if (!DramaUtil.getSpeakersSD(sd).isEmpty()) {
+					for (Speaker speaker : DramaUtil.getSpeakersSD(sd)) {
+						for (int i = 0; i <= speaker.getCastFigure().size(); i++) {
+							try {
+								p.print(speaker.getCastFigure(i).getNames(0));
+							} catch (Exception e) {
+								p.print(null);
+							}
+							try {
+								p.print(speaker.getCastFigure(i).getXmlId(0));
+							} catch (Exception e) {
+								p.print(null);
+							}
+						}
+					}
+				}
+				else {
+					p.print("_Stage");
+					p.print("_Stage");
+				}
 				p.print(token.getCoveredText());
 				p.print(token.getPos().getPosValue());
 				p.print(token.getLemma().getValue());
