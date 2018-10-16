@@ -190,12 +190,12 @@ public enum CSVVariant {
 											try {
 												if (printName == null | printId == null) {
 													if (m.getCoveredText().startsWith(token.getCoveredText())) {
-														printName = m.getNames(0);
+														printName = null;
 													}
 													printId = createCONLLFormat(m, token, index);
 												} else {
 													if (m.getCoveredText().startsWith(token.getCoveredText())) {
-														printName = printName + "|" + m.getNames(0);
+														printName = null;
 													}
 													printId = printId + "|" + createCONLLFormat(m, token, index);
 												}
