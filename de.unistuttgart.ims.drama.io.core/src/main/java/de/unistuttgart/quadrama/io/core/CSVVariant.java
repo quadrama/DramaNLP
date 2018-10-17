@@ -266,27 +266,19 @@ public enum CSVVariant {
 				p.print(token.getPos().getPosValue());
 				p.print(token.getLemma().getValue());
 				p.print(length);
-				String printName = null;
 				String printId = null;
 				if (mentionMap.containsKey(token)) {
 					Collection<Mention> mList = mentionMap.get(token);
 					for (Mention m : mList) {
 						if (m.getEntity() == null) {
-							printName = null;
 							printId = null;
 						} else {
 							if (!used.contains(m)) {
 								for (int index = 0; index < m.getEntity().size(); index++) {
 									try {
-										if (printName == null | printId == null) {
-											if (m.getCoveredText().startsWith(token.getCoveredText())) {
-												printName = m.getNames(0);
-											}
+										if (printId == null) {
 											printId = createBrackets(m, token, index);
 										} else {
-											if (m.getCoveredText().startsWith(token.getCoveredText())) {
-												printName = printName + "|" + m.getNames(0);
-											}
 											printId = printId + "|" + createBrackets(m, token, index);
 										}
 										used.add(m);
@@ -300,7 +292,7 @@ public enum CSVVariant {
 				} else {
 					//
 				}
-				p.print(printName);
+				p.print(null);
 				p.print(printId);
 				p.println();
 			}
