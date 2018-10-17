@@ -165,7 +165,7 @@ public enum CSVVariant {
 		int length = JCasUtil.select(jcas, Token.class).size();
 		Set<Mention> used = new HashSet<Mention>();
 		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
-			for (Speaker speaker : DramaUtil.getSpeakersUtt(utterance)) {
+			for (Speaker speaker : DramaUtil.getSpeakers(utterance)) {
 				for (int i = 0; i < speaker.getCastFigure().size(); i++) {
 					for (Token token : JCasUtil.selectCovered(Token.class, utterance)) {
 						used.clear();
@@ -242,8 +242,8 @@ public enum CSVVariant {
 				p.print(drama.getDocumentId());
 				p.print(sd.getBegin());
 				p.print(sd.getEnd());
-				if (!DramaUtil.getSpeakersSD(sd).isEmpty()) {
-					for (Speaker speaker : DramaUtil.getSpeakersSD(sd)) {
+				if (!DramaUtil.getSpeakers(sd).isEmpty()) {
+					for (Speaker speaker : DramaUtil.getSpeakers(sd)) {
 						for (int i = 0; i <= speaker.getCastFigure().size(); i++) {
 							try {
 								p.print(speaker.getCastFigure(i).getNames(0));

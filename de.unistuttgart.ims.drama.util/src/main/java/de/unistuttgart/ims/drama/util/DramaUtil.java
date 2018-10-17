@@ -47,17 +47,9 @@ public class DramaUtil {
 		return ret;
 	}
 
-	public static Collection<Speaker> getSpeakersUtt(Utterance utterance) {
+	public static <T extends Annotation> Collection<Speaker> getSpeakers(T text) {
 		try {
-			return JCasUtil.selectCovered(Speaker.class, utterance);
-		} catch (Exception e) {
-			return null;
-		}
-	}
-	
-	public static Collection<Speaker> getSpeakersSD(StageDirection sd) {
-		try {
-			return JCasUtil.selectCovered(Speaker.class, sd);
+			return JCasUtil.selectCovered(Speaker.class, text);
 		} catch (Exception e) {
 			return null;
 		}
@@ -72,7 +64,7 @@ public class DramaUtil {
 	}
 
 	public static Collection<Figure> getFigures(Utterance u) {
-		Collection<Speaker> s = getSpeakersUtt(u);
+		Collection<Speaker> s = getSpeakers(u);
 		Collection<Figure> f = new LinkedList<Figure>();
 		for (Speaker speaker : s) {
 			f.add(speaker.getFigure());
@@ -81,7 +73,7 @@ public class DramaUtil {
 	}
 
 	public static Collection<CastFigure> getCastFigures(Utterance u) {
-		Collection<Speaker> s = getSpeakersUtt(u);
+		Collection<Speaker> s = getSpeakers(u);
 		Collection<CastFigure> f = new LinkedList<CastFigure>();
 		for (Speaker speaker : s) {
 			for (int i = 0; i < speaker.getCastFigure().size(); i++)
