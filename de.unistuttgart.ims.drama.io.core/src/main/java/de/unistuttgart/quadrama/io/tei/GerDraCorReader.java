@@ -199,7 +199,7 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 
 		Map<String, DiscourseEntity> fallbackEntities = new HashMap<String, DiscourseEntity>();
 		// mentions
-		gxr.addRule("rs", Mention.class, (cl, e) -> {
+		gxr.addRule("rs", Mention.class, (m, e) -> {
 			if (e.hasAttr("ref") || e.hasAttr("xml:id")) {
 				String[] splitted = null;
 				if (e.hasAttr("ref")) {
@@ -224,7 +224,7 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 					if (tn.text().trim().length() > 0)
 						nameList.add(tn.text().trim());
 				}
-				cl.setNames(ArrayUtil.toStringArray(jcas, nameList));
+				m.setNames(ArrayUtil.toStringArray(jcas, nameList));
 				Set<String> xmlIdList = new HashSet<String>();
 				for (int i = 0; i < splitted.length; i++) {
 					String xmlId = splitted[i].substring(1);
@@ -239,15 +239,15 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 					if (fallbackEntities.containsKey(xmlId))
 						de = fallbackEntities.get(xmlId);
 					if (de == null) {
-						de = cl.getCAS().createFS(CasUtil.getType(cl.getCAS(), DiscourseEntity.class));
+						de = m.getCAS().createFS(CasUtil.getType(m.getCAS(), DiscourseEntity.class));
 						de.addToIndexes();
-						de.setDisplayName(cl.getCoveredText());
+						de.setDisplayName(m.getCoveredText());
 						fallbackEntities.put(xmlId, de);
 					}
 					arr.set(i, de);
 				}
-				cl.setXmlId(ArrayUtil.toStringArray(jcas, xmlIdList));
-				cl.setEntity(arr);
+				m.setXmlId(ArrayUtil.toStringArray(jcas, xmlIdList));
+				m.setEntity(arr);
 			}
 		});
 

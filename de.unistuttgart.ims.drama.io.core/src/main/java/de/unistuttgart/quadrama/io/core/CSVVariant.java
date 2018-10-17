@@ -47,8 +47,11 @@ public enum CSVVariant {
 	/**
 	 * The list of characters defined in the play
 	 */
-	Characters;
-
+	Characters,
+	/**
+	 * List of all entity IDs and mapping to their surface representation
+	 */
+	Entities;
 	/**
 	 * Prints a record representing the header onto p
 	 * 
@@ -72,6 +75,8 @@ public enum CSVVariant {
 			p.printRecord("corpus", "drama", "begin", "end", "Speaker.figure_surface", "Speaker.figure_id",
 					"Token.surface", "Token.pos", "Token.lemma", "length",
 					"Mentioned.figure_surface", "Mentioned.figure_id");
+		case Entities:
+			p.printRecord("corpus", "drama", "Entity.surface", "Entity.id", "Entity.group_members");
 			break;
 		default:
 			p.printRecord("corpus", "drama", "begin", "end", "Speaker.figure_surface", "Speaker.figure_id",
@@ -93,6 +98,8 @@ public enum CSVVariant {
 			break;
 		case StageDirections:
 			this.convertStageDirections(jcas, p);
+		case Entities:
+			this.convertEntities(jcas, p);
 			break;
 		default:
 			this.convertUtterancesWithTokens(jcas, p);
@@ -187,27 +194,19 @@ public enum CSVVariant {
 						p.print(token.getPos().getPosValue());
 						p.print(token.getLemma().getValue());
 						p.print(length);
-						String printName = null;
 						String printId = null;
 						if (mentionMap.containsKey(token)) {
 							Collection<Mention> mList = mentionMap.get(token);
 							for (Mention m : mList) {
 								if (m.getEntity() == null) {
-									printName = null;
 									printId = null;
 								} else {
 									if (!used.contains(m)) {
 										for (int index = 0; index < m.getEntity().size(); index++) {
 											try {
-												if (printName == null | printId == null) {
-													if (m.getCoveredText().startsWith(token.getCoveredText())) {
-														printName = m.getNames(0);
-													}
+												if (printId == null) {
 													printId = createBrackets(m, token, index);
 												} else {
-													if (m.getCoveredText().startsWith(token.getCoveredText())) {
-														printName = printName + "|" + m.getNames(0);
-													}
 													printId = printId + "|" + createBrackets(m, token, index);
 												}
 												used.add(m);
@@ -221,7 +220,7 @@ public enum CSVVariant {
 						} else {
 							//
 						}
-						p.print(printName);
+						p.print(null); /* Mentioned.figure_surface column is kept for compatibility reasons */
 						p.print(printId);
 						p.println();
 					}
@@ -296,6 +295,16 @@ public enum CSVVariant {
 				p.print(printId);
 				p.println();
 			}
+
+	private void convertEntities(JCas jcas, CSVPrinter p) throws IOException {
+		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
+		for (DiscourseEntity de : JCasUtil.select(jcas, DiscourseEntity.class)) {
+			p.print(drama.getCollectionId());
+			p.print(drama.getDocumentId());
+			p.print(de.getDisplayName());
+			p.print(de.getDisplayName());
+			p.print(null);
+			p.println();
 		}
 	}
 

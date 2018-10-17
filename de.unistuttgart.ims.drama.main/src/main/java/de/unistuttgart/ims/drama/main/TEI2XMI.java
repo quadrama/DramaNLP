@@ -121,6 +121,8 @@ public class TEI2XMI {
 					options.getCSVOutput(), ExportAsCSV.PARAM_CSV_VARIANT_NAME, "Metadata"));
 			builder.add(createEngineDescription(ExportAsCSV.class, ExportAsCSV.PARAM_TARGET_LOCATION,
 					options.getCSVOutput(), ExportAsCSV.PARAM_CSV_VARIANT_NAME, "Characters"));
+			builder.add(createEngineDescription(ExportAsCSV.class, ExportAsCSV.PARAM_TARGET_LOCATION,
+					options.getCSVOutput(), ExportAsCSV.PARAM_CSV_VARIANT_NAME, "Entities"));
 		}
 		SimplePipeline.runPipeline(reader, builder.createAggregateDescription());
 
