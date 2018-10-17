@@ -185,27 +185,19 @@ public enum CSVVariant {
 						p.print(token.getPos().getPosValue());
 						p.print(token.getLemma().getValue());
 						p.print(length);
-						String printName = null;
 						String printId = null;
 						if (mentionMap.containsKey(token)) {
 							Collection<Mention> mList = mentionMap.get(token);
 							for (Mention m : mList) {
 								if (m.getEntity() == null) {
-									printName = null;
 									printId = null;
 								} else {
 									if (!used.contains(m)) {
 										for (int index = 0; index < m.getEntity().size(); index++) {
 											try {
-												if (printName == null | printId == null) {
-													if (m.getCoveredText().startsWith(token.getCoveredText())) {
-														printName = null;
-													}
+												if (printId == null) {
 													printId = createCONLLFormat(m, token, index);
 												} else {
-													if (m.getCoveredText().startsWith(token.getCoveredText())) {
-														printName = null;
-													}
 													printId = printId + "|" + createCONLLFormat(m, token, index);
 												}
 												used.add(m);
@@ -219,7 +211,7 @@ public enum CSVVariant {
 						} else {
 							//
 						}
-						p.print(printName);
+						p.print(null); /* Mentioned.figure_surface column is kept for compatibility reasons */
 						p.print(printId);
 						p.println();
 					}
