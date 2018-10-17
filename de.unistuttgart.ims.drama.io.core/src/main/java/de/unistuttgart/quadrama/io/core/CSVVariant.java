@@ -73,8 +73,8 @@ public enum CSVVariant {
 			break;
 		case StageDirections:
 			p.printRecord("corpus", "drama", "begin", "end", "Speaker.figure_surface", "Speaker.figure_id",
-					"Token.surface", "Token.pos", "Token.lemma", "length",
-					"Mentioned.figure_surface", "Mentioned.figure_id");
+					"Token.surface", "Token.pos", "Token.lemma", "length", "Mentioned.figure_surface",
+					"Mentioned.figure_id");
 		case Entities:
 			p.printRecord("corpus", "drama", "Entity.surface", "Entity.id", "Entity.group_members");
 			break;
@@ -256,8 +256,7 @@ public enum CSVVariant {
 							}
 						}
 					}
-				}
-				else {
+				} else {
 					p.print("_Stage");
 					p.print("_Stage");
 				}
@@ -295,6 +294,8 @@ public enum CSVVariant {
 				p.print(printId);
 				p.println();
 			}
+		}
+	}
 
 	private void convertEntities(JCas jcas, CSVPrinter p) throws IOException {
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
