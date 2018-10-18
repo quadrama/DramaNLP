@@ -25,7 +25,7 @@ public class DkproCoreference2QdCoreference extends JCasAnnotator_ImplBase {
 			CoreferenceLink next = chain.getFirst();
 			while (next != null) {
 				Mention m = AnnotationFactory.createAnnotation(jcas, next.getBegin(), next.getEnd(), Mention.class);
-				m.setEntity(ArrayUtil.toFSArray(jcas, entity));
+				m.setEntity(entity);
 			}
 		}
 	}
