@@ -75,6 +75,7 @@ public enum CSVVariant {
 			p.printRecord("corpus", "drama", "begin", "end", "Speaker.figure_surface", "Speaker.figure_id",
 					"Token.surface", "Token.pos", "Token.lemma", "length", "Mentioned.figure_surface",
 					"Mentioned.figure_id");
+			break;
 		case Entities:
 			p.printRecord("corpus", "drama", "Entity.surface", "Entity.id", "Entity.group_members");
 			break;
@@ -98,6 +99,7 @@ public enum CSVVariant {
 			break;
 		case StageDirections:
 			this.convertStageDirections(jcas, p);
+			break;
 		case Entities:
 			this.convertEntities(jcas, p);
 			break;
@@ -202,17 +204,15 @@ public enum CSVVariant {
 									printId = null;
 								} else {
 									if (!used.contains(m)) {
-										for (int index = 0; index < m.getEntity().size(); index++) {
-											try {
-												if (printId == null) {
-													printId = createBrackets(m, token, index);
-												} else {
-													printId = printId + "|" + createBrackets(m, token, index);
-												}
-												used.add(m);
-											} catch (Exception e) {
-												//
+										try {
+											if (printId == null) {
+												printId = createBrackets(m, token);
+											} else {
+												printId = printId + "|" + createBrackets(m, token);
 											}
+											used.add(m);
+										} catch (Exception e) {
+											//
 										}
 									}
 								}
@@ -272,17 +272,15 @@ public enum CSVVariant {
 							printId = null;
 						} else {
 							if (!used.contains(m)) {
-								for (int index = 0; index < m.getEntity().size(); index++) {
-									try {
-										if (printId == null) {
-											printId = createBrackets(m, token, index);
-										} else {
-											printId = printId + "|" + createBrackets(m, token, index);
-										}
-										used.add(m);
-									} catch (Exception e) {
-										//
+								try {
+									if (printId == null) {
+										printId = createBrackets(m, token);
+									} else {
+										printId = printId + "|" + createBrackets(m, token);
 									}
+									used.add(m);
+								} catch (Exception e) {
+									//
 								}
 							}
 						}
@@ -303,7 +301,7 @@ public enum CSVVariant {
 			p.print(drama.getCollectionId());
 			p.print(drama.getDocumentId());
 			p.print(de.getDisplayName());
-			p.print(de.getDisplayName());
+			p.print(de.getId());
 			p.print(null);
 			p.println();
 		}
@@ -337,14 +335,14 @@ public enum CSVVariant {
 	 * This function checks if a mention's surface form is identical to a token, if
 	 * it starts with the token or ends with it and attaches corresponding markers.
 	 */
-	private String createBrackets(Mention m, Token token, int index) {
+	private String createBrackets(Mention m, Token token) {
 		String printId = null;
 		if (m.getCoveredText().equals(token.getCoveredText())) {
-			printId = "(" + m.getXmlId(index) + ")";
+			printId = "(" + m.getEntity().getId() + ")";
 		} else if (m.getCoveredText().startsWith(token.getCoveredText())) {
-			printId = "(" + m.getXmlId(index);
+			printId = "(" + m.getEntity().getId();
 		} else if (m.getCoveredText().endsWith(token.getCoveredText())) {
-			printId = m.getXmlId(index) + ")";
+			printId = m.getEntity().getId() + ")";
 		} else {
 		}
 		return printId;
