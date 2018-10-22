@@ -5,9 +5,9 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.ArrayList;
 
 import org.apache.commons.csv.CSVPrinter;
-import org.apache.uima.cas.FeatureStructure;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
@@ -302,7 +302,17 @@ public enum CSVVariant {
 			p.print(drama.getDocumentId());
 			p.print(de.getDisplayName());
 			p.print(de.getId());
-			p.print(null);
+			if (de.getEntityGroup() != null) {
+				ArrayList<String> memberIds = new ArrayList<String>();
+				int id;
+				for (DiscourseEntity member : JCasUtil.select(de.getEntityGroup(), DiscourseEntity.class)) {
+					id = member.getId();
+					memberIds.add(Integer.toString(id));
+				}
+				p.print(String.join(",", memberIds));
+			} else {
+				p.print(null);
+			}
 			p.println();
 		}
 	}

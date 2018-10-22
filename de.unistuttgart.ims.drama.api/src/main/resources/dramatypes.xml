@@ -408,6 +408,11 @@
 					<rangeTypeName>uima.cas.StringArray</rangeTypeName>
 					<multipleReferencesAllowed>true</multipleReferencesAllowed>
 				</featureDescription>
+				<featureDescription>
+					<name>EntityGroup</name>
+					<description></description>
+					<rangeTypeName>uima.cas.FSArray</rangeTypeName>
+					<elementType>de.unistuttgart.ims.drama.api.DiscourseEntity</elementType></featureDescription>
 			</features>
 		</typeDescription>
 		<typeDescription>

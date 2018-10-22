@@ -199,10 +199,12 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 			String[] splitted = null;
 			splitted = e.attr("xml:id").split(" ");
 			de.setXmlId(ArrayUtil.toStringArray(jcas, splitted));
-			if (!entityIds.containsKey(splitted[0])) {
-				entityIds.put(splitted[0], Collections.max(entityIds.values()) + 1);
+			for (int i = 0; i < splitted.length; i++) {
+				if (!entityIds.containsKey(splitted[i])) {
+					entityIds.put(splitted[i], Collections.max(entityIds.values()) + 1);
+				}
+				de.setId(entityIds.get(splitted[i]));
 			}
-			de.setId(entityIds.get(splitted[0]));
 		});
 
 		Map<String, DiscourseEntity> fallbackEntities = new HashMap<String, DiscourseEntity>();
@@ -235,26 +237,68 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 						nameList.add(tn.text().trim());
 				}
 				DiscourseEntity de = null;
-				if (gxr.exists(splitted[0])) {
-					FeatureStructure fs = gxr.getAnnotation(splitted[0]).getValue();
-					if (fs instanceof DiscourseEntity)
-						de = (DiscourseEntity) fs;
-				}
-				if (fallbackEntities.containsKey(splitted[0]))
-					de = fallbackEntities.get(splitted[0]);
-				if (de == null) {
-					de = m.getCAS().createFS(CasUtil.getType(m.getCAS(), DiscourseEntity.class));
-					de.addToIndexes();
-					de.setDisplayName(splitted[0]);
-					de.setXmlId(ArrayUtil.toStringArray(jcas, splitted));
-					if (!entityIds.containsKey(splitted[0])) {
-						entityIds.put(splitted[0], Collections.max(entityIds.values()) + 1);
+				if (splitted.length > 1) {
+					if (fallbackEntities.containsKey(String.join("_", splitted))) {
+						de = fallbackEntities.get(String.join("_", splitted));
+					} else {
+						de = m.getCAS().createFS(CasUtil.getType(m.getCAS(), DiscourseEntity.class));
+						de.addToIndexes();
+						String displayName = String.join("_", splitted);
+						de.setDisplayName(displayName);
+						de.setXmlId(ArrayUtil.toStringArray(jcas, splitted));
+						if (!entityIds.containsKey(displayName)) {
+							entityIds.put(displayName, Collections.max(entityIds.values()) + 1);
+						}
+						de.setId(entityIds.get(displayName));
+						FSArray arr = new FSArray(jcas, splitted.length);
+						DiscourseEntity deMember = null;
+						for (int i = 0; i < splitted.length; i++) {
+							if (gxr.exists(splitted[i])) {
+								FeatureStructure fs = gxr.getAnnotation(splitted[i]).getValue();
+								if (fs instanceof DiscourseEntity) {
+									deMember = (DiscourseEntity) fs;
+									arr.set(i, deMember);
+								}
+							} else {
+								deMember = m.getCAS().createFS(CasUtil.getType(m.getCAS(), DiscourseEntity.class));
+								deMember.addToIndexes();
+								String displayNameMember = splitted[i];
+								deMember.setDisplayName(displayNameMember);
+								deMember.setXmlId(ArrayUtil.toStringArray(jcas, splitted[i]));
+								if (!entityIds.containsKey(displayNameMember)) {
+									entityIds.put(displayNameMember, Collections.max(entityIds.values()) + 1);
+								}
+								deMember.setId(entityIds.get(displayNameMember));
+								arr.set(i, deMember);
+							}
+						}
+						de.setEntityGroup(arr);
+						fallbackEntities.put(displayName, de);
 					}
-					de.setId(entityIds.get(splitted[0]));
-					fallbackEntities.put(splitted[0], de);
+					m.setSurfaceString(ArrayUtil.toStringArray(jcas, m.getCoveredText().split(" ")));
+					m.setEntity(de);
+				} else {
+					if (gxr.exists(splitted[0])) {
+						FeatureStructure fs = gxr.getAnnotation(splitted[0]).getValue();
+						if (fs instanceof DiscourseEntity)
+							de = (DiscourseEntity) fs;
+					}
+					if (fallbackEntities.containsKey(splitted[0]))
+						de = fallbackEntities.get(splitted[0]);
+					if (de == null) {
+						de = m.getCAS().createFS(CasUtil.getType(m.getCAS(), DiscourseEntity.class));
+						de.addToIndexes();
+						de.setDisplayName(splitted[0]);
+						de.setXmlId(ArrayUtil.toStringArray(jcas, splitted));
+						if (!entityIds.containsKey(splitted[0])) {
+							entityIds.put(splitted[0], Collections.max(entityIds.values()) + 1);
+						}
+						de.setId(entityIds.get(splitted[0]));
+						fallbackEntities.put(splitted[0], de);
+					}
+					m.setSurfaceString(ArrayUtil.toStringArray(jcas, m.getCoveredText().split(" ")));
+					m.setEntity(de);
 				}
-				m.setSurfaceString(ArrayUtil.toStringArray(jcas, m.getCoveredText().split(" ")));
-				m.setEntity(de);
 			}
 		});
 
