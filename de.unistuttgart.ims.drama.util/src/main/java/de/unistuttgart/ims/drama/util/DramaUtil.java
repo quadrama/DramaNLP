@@ -47,9 +47,9 @@ public class DramaUtil {
 		return ret;
 	}
 
-	public static <T extends Annotation> Collection<Speaker> getSpeakers(T text) {
+	public static Collection<Speaker> getSpeakers(Utterance utterance) {
 		try {
-			return JCasUtil.selectCovered(Speaker.class, text);
+			return JCasUtil.selectCovered(Speaker.class, utterance);
 		} catch (Exception e) {
 			return null;
 		}

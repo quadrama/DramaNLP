@@ -3,6 +3,7 @@ package de.unistuttgart.quadrama.io.core;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.ArrayList;
@@ -241,18 +242,19 @@ public enum CSVVariant {
 				p.print(drama.getDocumentId());
 				p.print(sd.getBegin());
 				p.print(sd.getEnd());
-				if (!DramaUtil.getSpeakers(sd).isEmpty()) {
-					for (Speaker speaker : DramaUtil.getSpeakers(sd)) {
-						for (int i = 0; i <= speaker.getCastFigure().size(); i++) {
-							try {
-								p.print(speaker.getCastFigure(i).getNames(0));
-							} catch (Exception e) {
-								p.print(null);
-							}
-							try {
-								p.print(speaker.getCastFigure(i).getXmlId(0));
-							} catch (Exception e) {
-								p.print(null);
+				List<Utterance> utterances = JCasUtil.selectCovering(Utterance.class, sd);
+				if (!utterances.isEmpty()) {
+					for (Utterance utterance : utterances) {
+						for (Speaker speaker : DramaUtil.getSpeakers(utterance)) {
+							for (int i = 0; i <= speaker.getCastFigure().size(); i++) {
+								try {
+									p.print(speaker.getCastFigure(i).getNames(0));
+								} catch (Exception e) {
+								}
+								try {
+									p.print(speaker.getCastFigure(i).getXmlId(0));
+								} catch (Exception e) {
+								}
 							}
 						}
 					}

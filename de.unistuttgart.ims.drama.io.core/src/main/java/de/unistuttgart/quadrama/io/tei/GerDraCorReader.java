@@ -154,24 +154,7 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 		});
 
 		gxr.addRule("speaker", Speaker.class);
-		gxr.addRule("stage", StageDirection.class, (sd, e) -> {
-			Collection<Speaker> speakers = JCasUtil.selectCovered(Speaker.class, sd);
-			for (Speaker sp : speakers) {
-				String[] whos = e.attr("who").split(" ");
-				sp.setXmlId(new StringArray(jcas, whos.length));
-				sp.setCastFigure(new FSArray(jcas, whos.length));
-				for (int i = 0; i < whos.length; i++) {
-					String xmlid = whos[i].substring(1);
-					sp.setXmlId(i, xmlid);
-					if (xmlAlias.containsKey(xmlid))
-						xmlid = xmlAlias.get(xmlid);
-					if (gxr.exists(xmlid)) {
-						sp.setCastFigure(i, (CastFigure) gxr.getAnnotation(xmlid).getValue());
-						sd.setCastFigure((CastFigure) gxr.getAnnotation(xmlid).getValue());
-					}
-				}
-			}
-		});
+		gxr.addRule("stage", StageDirection.class);
 		gxr.addRule("l", Speech.class);
 		gxr.addRule("p", Speech.class);
 		gxr.addRule("ab", Speech.class);
