@@ -84,9 +84,24 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 					// part of speech tags,
 					// we consider it a mention
 					if (!matches(jcas, m.start(), m.end())) {
-						Mention fm = AnnotationFactory.createAnnotation(jcas, m.start(), m.end(), Mention.class);
-						fm.setSurfaceString(ArrayUtil.toStringArray(jcas, cf.getDisplayName()));
-						fm.setEntity(cf);
+						try {
+							// If there is an existing mention annotation on this span, check if the entity
+							// is the same as the cast figure
+							Mention existingMention = JCasUtil.selectSingleAt(jcas, Mention.class, m.start(), m.end());
+							if (!(existingMention.getEntity().getId() == cf.getId())) {
+								// If it is not the same entity, create the mention
+								Mention fm = AnnotationFactory.createAnnotation(jcas, m.start(), m.end(),
+										Mention.class);
+								fm.setSurfaceString(ArrayUtil.toStringArray(jcas, cf.getDisplayName()));
+								fm.setEntity(cf);
+							}
+						} catch (Exception e) {
+							// If there is no existing mention annotation on the same span, simply create
+							// the mention with the cast figure as entity
+							Mention fm = AnnotationFactory.createAnnotation(jcas, m.start(), m.end(), Mention.class);
+							fm.setSurfaceString(ArrayUtil.toStringArray(jcas, cf.getDisplayName()));
+							fm.setEntity(cf);
+						}
 					}
 				}
 			}
@@ -101,12 +116,24 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 						for (PR pronoun : JCasUtil.selectCovered(jcas, PR.class, speech)) {
 							if (pronouns.contains(pronoun.getCoveredText().toLowerCase())) {
 								try {
+									// If there is an existing mention annotation on this span, check if the entity
+									// is the same as the cast figure
+									Mention existingMention = JCasUtil.selectSingleAt(jcas, Mention.class,
+											pronoun.getBegin(), pronoun.getEnd());
+									if (!(existingMention.getEntity().getId() == currentFigure.getId())) {
+										// If it is not the same entity, create the mention
+										Mention fm = AnnotationFactory.createAnnotation(jcas, pronoun.getBegin(),
+												pronoun.getEnd(), Mention.class);
+										fm.setSurfaceString(ArrayUtil.toStringArray(jcas, pronoun.getCoveredText()));
+										fm.setEntity(currentFigure);
+									}
+								} catch (Exception e) {
+									// If there is no existing mention annotation on the same span, simply create
+									// the mention with the cast figure as entity
 									Mention fm = AnnotationFactory.createAnnotation(jcas, pronoun.getBegin(),
 											pronoun.getEnd(), Mention.class);
-									fm.setSurfaceString(ArrayUtil.toStringArray(jcas, pronoun.getCoveredText()));
+									fm.setSurfaceString(ArrayUtil.toStringArray(jcas, currentFigure.getDisplayName()));
 									fm.setEntity(currentFigure);
-								} catch (Exception e) {
-									// currentFigure is null
 								}
 							}
 						}
