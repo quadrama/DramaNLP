@@ -3,7 +3,6 @@ package de.unistuttgart.quadrama.io.core;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.ArrayList;
@@ -232,6 +231,8 @@ public enum CSVVariant {
 
 	private void convertStageDirections(JCas jcas, CSVPrinter p) throws IOException {
 		Map<Token, Collection<Mention>> mentionMap = JCasUtil.indexCovering(jcas, Token.class, Mention.class);
+		Map<StageDirection, Collection<Utterance>> utteranceStageMap = JCasUtil.indexCovering(jcas,
+				StageDirection.class, Utterance.class);
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
 		int length = JCasUtil.select(jcas, Token.class).size();
 		Set<Mention> used = new HashSet<Mention>();
@@ -242,7 +243,7 @@ public enum CSVVariant {
 				p.print(drama.getDocumentId());
 				p.print(sd.getBegin());
 				p.print(sd.getEnd());
-				List<Utterance> utterances = JCasUtil.selectCovering(Utterance.class, sd);
+				Collection<Utterance> utterances = utteranceStageMap.get(sd);
 				if (!utterances.isEmpty()) {
 					for (Utterance utterance : utterances) {
 						for (Speaker speaker : DramaUtil.getSpeakers(utterance)) {
