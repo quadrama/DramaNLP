@@ -170,6 +170,7 @@ public enum CSVVariant {
 
 	private void convertUtterancesWithTokens(JCas jcas, CSVPrinter p) throws IOException {
 		Map<Token, Collection<Mention>> mentionMap = JCasUtil.indexCovering(jcas, Token.class, Mention.class);
+		Map<Token, Collection<StageDirection>> stageMap = JCasUtil.indexCovering(jcas, Token.class, StageDirection.class);
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
 		int length = JCasUtil.select(jcas, Token.class).size();
 		Set<Mention> used = new HashSet<Mention>();
@@ -177,6 +178,9 @@ public enum CSVVariant {
 			for (Speaker speaker : DramaUtil.getSpeakers(utterance)) {
 				for (int i = 0; i < speaker.getCastFigure().size(); i++) {
 					for (Token token : JCasUtil.selectCovered(Token.class, utterance)) {
+						if (stageMap.containsKey(token)) {
+							continue;
+						}
 						used.clear();
 						p.print(drama.getCollectionId());
 						p.print(drama.getDocumentId());

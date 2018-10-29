@@ -12,11 +12,9 @@ import org.apache.uima.fit.factory.AnnotationFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.util.Level;
-
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.unistuttgart.quadrama.core.api.Origin;
-import de.unistuttgart.ims.drama.api.StageDirection;
 
 /**
  * This component re-adds the annotations done on another view back into the
@@ -29,7 +27,6 @@ public class DramaSpeechPostProcessing extends JCasAnnotator_ImplBase {
 
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
-
 		try {
 			// map tokens
 			JCas utteranceCas = jcas.getView(D.SOFA_UTTERANCES);
@@ -37,9 +34,7 @@ public class DramaSpeechPostProcessing extends JCasAnnotator_ImplBase {
 				for (Token token : JCasUtil.selectCovered(Token.class, origin)) {
 					int begin = token.getBegin() + origin.getOffset() - origin.getBegin();
 					int end = token.getEnd() + origin.getOffset() - origin.getBegin();
-					if (JCasUtil.selectCovering(jcas, StageDirection.class, begin, end).isEmpty()) {
-						AnnotationFactory.createAnnotation(jcas, begin, end, Token.class);
-					}
+					AnnotationFactory.createAnnotation(jcas, begin, end, Token.class);
 				}
 			}
 
