@@ -58,10 +58,6 @@ public enum CONLLVariant {
 
 	private void convertCONLL(JCas jcas, CSVPrinter p) throws IOException {
 		Map<Token, Collection<Mention>> mentionMap = JCasUtil.indexCovering(jcas, Token.class, Mention.class);
-		/* Remove once the new type system is in use */
-		Map<String, Integer> xmlId2Digit = new HashMap<String, Integer>();
-		xmlId2Digit.put("__Dummy__", 0);
-		/* ###### */
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
 		Set<Mention> used = new HashSet<Mention>();
 		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
@@ -88,17 +84,15 @@ public enum CONLLVariant {
 								printId = null;
 							} else {
 								if (!used.contains(m)) {
-									for (int index = 0; index < m.getEntity().size(); index++) {
-										try {
-											if (printId == null) {
-												printId = createBrackets(m, token, index, xmlId2Digit);
-											} else {
-												printId = printId + "|" + createBrackets(m, token, index, xmlId2Digit);
-											}
-											used.add(m);
-										} catch (Exception e) {
-											//
+									try {
+										if (printId == null) {
+											printId = createBrackets(m, token);
+										} else {
+											printId = printId + "|" + createBrackets(m, token);
 										}
+										used.add(m);
+									} catch (Exception e) {
+										//
 									}
 								}
 							}
@@ -142,25 +136,14 @@ public enum CONLLVariant {
 	 * This function checks if a mention's surface form is identical to a token, if
 	 * it starts with the token or ends with it and attaches corresponding markers.
 	 */
-	private String createBrackets(Mention m, Token token, int index, Map<String, Integer> xmlId2Digit) {
+	private String createBrackets(Mention m, Token token) {
 		String printId = null;
-		String xmlId = m.getXmlId(index);
-		/* Remove once the new type system is in use */
-		Integer newId = 0;
-		if (xmlId2Digit.containsKey(xmlId)) {
-			newId = xmlId2Digit.get(xmlId);
-		} else {
-			xmlId2Digit.put(xmlId, Collections.max(xmlId2Digit.values()) + 1);
-			newId = xmlId2Digit.get(xmlId);
-		}
-		String newIdStr = newId.toString();
-		/* ######### */
 		if (m.getCoveredText().equals(token.getCoveredText())) {
-			printId = "(" + newIdStr + ")";
+			printId = "(" + m.getEntity().getId() + ")";
 		} else if (m.getCoveredText().startsWith(token.getCoveredText())) {
-			printId = "(" + newIdStr;
+			printId = "(" + m.getEntity().getId();
 		} else if (m.getCoveredText().endsWith(token.getCoveredText())) {
-			printId = newIdStr + ")";
+			printId = m.getEntity().getId() + ")";
 		} else {
 		}
 		return printId;
