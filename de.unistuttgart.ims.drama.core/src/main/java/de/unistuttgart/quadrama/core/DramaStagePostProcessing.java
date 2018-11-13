@@ -9,12 +9,15 @@ import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.fit.factory.AnnotationFactory;
+import org.apache.uima.fit.factory.UimaContextFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
+import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.util.Level;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
+import de.unistuttgart.ims.uimautil.RemoveDuplicateAnnotations;
 import de.unistuttgart.quadrama.core.api.Origin;
 
 /**
@@ -37,6 +40,12 @@ public class DramaStagePostProcessing extends JCasAnnotator_ImplBase {
 					AnnotationFactory.createAnnotation(jcas, begin, end, Token.class);
 				}
 			}
+			
+			// Remove doubled tokens that were added through Speech type
+			RemoveDuplicateAnnotations removeDubs = new RemoveDuplicateAnnotations();
+			removeDubs.initialize(UimaContextFactory.createUimaContext(RemoveDuplicateAnnotations.PARAM_TYPE,
+					Token.class.getName()));
+			removeDubs.process(jcas);
 
 			// map sentences
 			Map<Token, Collection<Origin>> covers = JCasUtil.indexCovering(stageCas, Token.class, Origin.class);
@@ -64,7 +73,10 @@ public class DramaStagePostProcessing extends JCasAnnotator_ImplBase {
 
 		} catch (CASException e) {
 			throw new AnalysisEngineProcessException(e);
+		} catch (ResourceInitializationException e1) {
+			throw new AnalysisEngineProcessException(e1);
 		}
+		
 
 	}
 }

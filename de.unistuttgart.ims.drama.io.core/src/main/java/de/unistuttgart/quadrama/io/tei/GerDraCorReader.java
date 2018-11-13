@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -60,9 +61,12 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 
 	@Override
 	public void getNext(final JCas jcas, InputStream file, Drama drama) throws IOException, CollectionException {
-		
-		System.out.println("Processing "+drama.getDocumentUri());
-		
+
+		System.out.println("Processing " + drama.getDocumentUri());
+
+		Map<String, Integer> entityIds = new HashMap<String, Integer>();
+		entityIds.put("__dummy__", -1);
+
 		GenericXmlReader<Drama> gxr = new GenericXmlReader<Drama>(Drama.class);
 		gxr.setTextRootSelector(teiCompatibility ? null : "TEI > text");
 		gxr.setPreserveWhitespace(teiCompatibility);
@@ -144,29 +148,18 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 			}
 			cf.setXmlId(ArrayUtil.toStringArray(jcas, xmlIdList));
 			cf.setNames(ArrayUtil.toStringArray(jcas, nameList));
-			cf.setDisplayName(cf.getNames(0));
-
+			cf.setDisplayName(e.attr("xml:id"));
+			if (!entityIds.containsKey(ArrayUtil.toStringArray(jcas, xmlIdList).get(0))) {
+				entityIds.put(ArrayUtil.toStringArray(jcas, xmlIdList).get(0), Collections.max(entityIds.values()) + 1);
+			}
+			cf.setId(entityIds.get(ArrayUtil.toStringArray(jcas, xmlIdList).get(0)));
 		});
 
 		gxr.addRule("speaker", Speaker.class);
-		gxr.addRule("stage", StageDirection.class, (sd, e) -> {
-			Collection<Speaker> speakers = JCasUtil.selectCovered(Speaker.class, sd);
-			for (Speaker sp : speakers) {
-				String[] whos = e.attr("who").split(" ");
-				sp.setXmlId(new StringArray(jcas, whos.length));
-				sp.setCastFigure(new FSArray(jcas, whos.length));
-				for (int i = 0; i < whos.length; i++) {
-					String xmlid = whos[i].substring(1);
-					sp.setXmlId(i, xmlid);
-					if (xmlAlias.containsKey(xmlid))
-						xmlid = xmlAlias.get(xmlid);
-					if (gxr.exists(xmlid)) {
-						sp.setCastFigure(i, (CastFigure) gxr.getAnnotation(xmlid).getValue());
-						sd.setCastFigure((CastFigure) gxr.getAnnotation(xmlid).getValue());
-					}
-				}
-			}
-		});
+		gxr.addRule("stage", StageDirection.class);
+		gxr.addRule("l > hi", StageDirection.class);
+		gxr.addRule("p > hi", StageDirection.class);
+		gxr.addRule("ab > hi", StageDirection.class);
 		gxr.addRule("l", Speech.class);
 		gxr.addRule("p", Speech.class);
 		gxr.addRule("ab", Speech.class);
@@ -189,25 +182,31 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 			}
 		});
 
-		gxr.addRule("text *[xml:id]", DiscourseEntity.class, (de, e) -> de.setDisplayName(e.attr("xml:id")));
-
-		gxr.addRule("text *[xml:id]", Mention.class, (m, e) -> {
-			String id = e.attr("xml:id");
-			FSArray arr = new FSArray(jcas, 1);
-			arr.addToIndexes();
-			m.setEntity(arr);
-			m.setEntity(0, (DiscourseEntity) gxr.getAnnotation(id).getValue());
+		gxr.addRule("text *[xml:id]", DiscourseEntity.class, (de, e) -> {
+			de.setDisplayName(e.attr("xml:id"));
+			String[] splitted = null;
+			splitted = e.attr("xml:id").split(" ");
+			de.setXmlId(ArrayUtil.toStringArray(jcas, splitted));
+			for (int i = 0; i < splitted.length; i++) {
+				if (!entityIds.containsKey(splitted[i])) {
+					entityIds.put(splitted[i], Collections.max(entityIds.values()) + 1);
+				}
+				de.setId(entityIds.get(splitted[i]));
+			}
 		});
 
 		Map<String, DiscourseEntity> fallbackEntities = new HashMap<String, DiscourseEntity>();
-		// mentions
 		gxr.addRule("rs", Mention.class, (m, e) -> {
 			if (e.hasAttr("ref") || e.hasAttr("xml:id")) {
 				String[] splitted = null;
 				if (e.hasAttr("ref")) {
-				    splitted = e.attr("ref").split(" ");
-				}
-				else if (e.hasAttr("xml:id")) {
+					splitted = e.attr("ref").split(" ");
+					String[] temp = new String[splitted.length];
+					for (int i = 0; i < splitted.length; i++) {
+						temp[i] = splitted[i].substring(1);
+					}
+					splitted = temp;
+				} else if (e.hasAttr("xml:id")) {
 					splitted = e.attr("xml:id").split(" ");
 				}
 				if (e.hasAttr("func")) {
@@ -219,37 +218,75 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 						// Should be handled by XMLSchema
 					}
 				}
-				FSArray arr = new FSArray(jcas, splitted.length);
 				// gather names
 				Set<String> nameList = new HashSet<String>();
 				for (TextNode tn : e.textNodes()) {
 					if (tn.text().trim().length() > 0)
 						nameList.add(tn.text().trim());
 				}
-				m.setNames(ArrayUtil.toStringArray(jcas, nameList));
-				Set<String> xmlIdList = new HashSet<String>();
-				for (int i = 0; i < splitted.length; i++) {
-					String xmlId = splitted[i].substring(1);
-					xmlIdList.add(xmlId);
-
-					DiscourseEntity de = null;
-					if (gxr.exists(xmlId)) {
-						FeatureStructure fs = gxr.getAnnotation(xmlId).getValue();
+				DiscourseEntity de = null;
+				if (splitted.length > 1) {
+					if (fallbackEntities.containsKey(String.join("_", splitted))) {
+						de = fallbackEntities.get(String.join("_", splitted));
+					} else {
+						de = m.getCAS().createFS(CasUtil.getType(m.getCAS(), DiscourseEntity.class));
+						de.addToIndexes();
+						String displayName = String.join("_", splitted);
+						de.setDisplayName(displayName);
+						de.setXmlId(ArrayUtil.toStringArray(jcas, splitted));
+						if (!entityIds.containsKey(displayName)) {
+							entityIds.put(displayName, Collections.max(entityIds.values()) + 1);
+						}
+						de.setId(entityIds.get(displayName));
+						FSArray arr = new FSArray(jcas, splitted.length);
+						DiscourseEntity deMember = null;
+						for (int i = 0; i < splitted.length; i++) {
+							if (gxr.exists(splitted[i])) {
+								FeatureStructure fs = gxr.getAnnotation(splitted[i]).getValue();
+								if (fs instanceof DiscourseEntity) {
+									deMember = (DiscourseEntity) fs;
+									arr.set(i, deMember);
+								}
+							} else {
+								deMember = m.getCAS().createFS(CasUtil.getType(m.getCAS(), DiscourseEntity.class));
+								deMember.addToIndexes();
+								String displayNameMember = splitted[i];
+								deMember.setDisplayName(displayNameMember);
+								deMember.setXmlId(ArrayUtil.toStringArray(jcas, splitted[i]));
+								if (!entityIds.containsKey(displayNameMember)) {
+									entityIds.put(displayNameMember, Collections.max(entityIds.values()) + 1);
+								}
+								deMember.setId(entityIds.get(displayNameMember));
+								arr.set(i, deMember);
+							}
+						}
+						de.setEntityGroup(arr);
+						fallbackEntities.put(displayName, de);
+					}
+					m.setSurfaceString(ArrayUtil.toStringArray(jcas, m.getCoveredText().split(" ")));
+					m.setEntity(de);
+				} else {
+					if (gxr.exists(splitted[0])) {
+						FeatureStructure fs = gxr.getAnnotation(splitted[0]).getValue();
 						if (fs instanceof DiscourseEntity)
 							de = (DiscourseEntity) fs;
 					}
-					if (fallbackEntities.containsKey(xmlId))
-						de = fallbackEntities.get(xmlId);
+					if (fallbackEntities.containsKey(splitted[0]))
+						de = fallbackEntities.get(splitted[0]);
 					if (de == null) {
 						de = m.getCAS().createFS(CasUtil.getType(m.getCAS(), DiscourseEntity.class));
 						de.addToIndexes();
-						de.setDisplayName(m.getCoveredText());
-						fallbackEntities.put(xmlId, de);
+						de.setDisplayName(splitted[0]);
+						de.setXmlId(ArrayUtil.toStringArray(jcas, splitted));
+						if (!entityIds.containsKey(splitted[0])) {
+							entityIds.put(splitted[0], Collections.max(entityIds.values()) + 1);
+						}
+						de.setId(entityIds.get(splitted[0]));
+						fallbackEntities.put(splitted[0], de);
 					}
-					arr.set(i, de);
+					m.setSurfaceString(ArrayUtil.toStringArray(jcas, m.getCoveredText().split(" ")));
+					m.setEntity(de);
 				}
-				m.setXmlId(ArrayUtil.toStringArray(jcas, xmlIdList));
-				m.setEntity(arr);
 			}
 		});
 
@@ -272,12 +309,12 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 		} else
 			return 0;
 	}
-	
+
 	public static String[] getRandomEntity(String[] array) {
 		int seed = 42;
 		String[] newArray = new String[1];
-	    int rnd = new Random(seed).nextInt(array.length);
-	    newArray[0] = array[rnd];
-	    return newArray;
+		int rnd = new Random(seed).nextInt(array.length);
+		newArray[0] = array[rnd];
+		return newArray;
 	}
 }

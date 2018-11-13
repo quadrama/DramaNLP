@@ -368,15 +368,9 @@
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.CastFigure</name>
-			<description/>
+			<description></description>
 			<supertypeName>de.unistuttgart.ims.drama.api.DiscourseEntity</supertypeName>
 			<features>
-				<featureDescription>
-					<name>XmlId</name>
-					<description/>
-					<rangeTypeName>uima.cas.StringArray</rangeTypeName>
-				<multipleReferencesAllowed>true</multipleReferencesAllowed>
-        </featureDescription>
 				<featureDescription>
 					<name>Names</name>
 					<description/>
@@ -402,32 +396,39 @@
 			<features>
 				<featureDescription>
 					<name>DisplayName</name>
-					<description/>
+					<description>String representation of the entity</description>
 					<rangeTypeName>uima.cas.String</rangeTypeName>
 				</featureDescription>
+				<featureDescription>
+					<name>Id</name>
+					<description>Internal and numerical Id</description>
+					<rangeTypeName>uima.cas.Integer</rangeTypeName></featureDescription>
+				<featureDescription>
+					<name>XmlId</name><description>The original xml id</description>
+					<rangeTypeName>uima.cas.StringArray</rangeTypeName>
+					<multipleReferencesAllowed>true</multipleReferencesAllowed>
+				</featureDescription>
+				<featureDescription>
+					<name>EntityGroup</name>
+					<description></description>
+					<rangeTypeName>uima.cas.FSArray</rangeTypeName>
+					<elementType>de.unistuttgart.ims.drama.api.DiscourseEntity</elementType></featureDescription>
 			</features>
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.Mention</name>
-			<description/>
+			<description>Representation of a concrete referential mention</description>
 			<supertypeName>uima.tcas.Annotation</supertypeName>
 			<features>
 				<featureDescription>
 					<name>Entity</name>
-					<description/>
-					<rangeTypeName>uima.cas.FSArray</rangeTypeName>
-					<elementType>de.unistuttgart.ims.drama.api.DiscourseEntity</elementType>
+					<description>Each mention points to exactly one entity</description>
+					<rangeTypeName>de.unistuttgart.ims.drama.api.DiscourseEntity</rangeTypeName>
 					<multipleReferencesAllowed>true</multipleReferencesAllowed>
 				</featureDescription>
 			<featureDescription>
-          <name>Names</name>
-          <description/>
-          <rangeTypeName>uima.cas.StringArray</rangeTypeName>
-        <multipleReferencesAllowed>true</multipleReferencesAllowed>
-        </featureDescription>
-        <featureDescription>
-          <name>XmlId</name>
-          <description/>
+          <name>SurfaceString</name>
+          <description>The surface string of the mention in the text</description>
           <rangeTypeName>uima.cas.StringArray</rangeTypeName>
         <multipleReferencesAllowed>true</multipleReferencesAllowed>
         </featureDescription>
