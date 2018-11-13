@@ -32,6 +32,7 @@ import de.unistuttgart.quadrama.core.SetReferenceDate;
 import de.unistuttgart.quadrama.core.SpeakerIdentifier;
 import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
 import de.unistuttgart.quadrama.io.core.ExportAsCSV;
+import de.unistuttgart.quadrama.io.core.ExportAsCONLL;
 import de.unistuttgart.quadrama.io.tei.CoreTeiReader;
 import de.unistuttgart.quadrama.io.tei.GerDraCorReader;
 import de.unistuttgart.quadrama.io.tei.MapFiguresToCastFigures;
@@ -124,6 +125,10 @@ public class TEI2XMI {
 			builder.add(createEngineDescription(ExportAsCSV.class, ExportAsCSV.PARAM_TARGET_LOCATION,
 					options.getCSVOutput(), ExportAsCSV.PARAM_CSV_VARIANT_NAME, "Entities"));
 		}
+		if (options.getCONLLOutput() != null) {
+			builder.add(createEngineDescription(ExportAsCONLL.class, ExportAsCONLL.PARAM_TARGET_LOCATION,
+					options.getCONLLOutput(), ExportAsCONLL.PARAM_CONLL_VARIANT_NAME, "CoNLL2012"));
+		}
 		SimplePipeline.runPipeline(reader, builder.createAggregateDescription());
 
 		if (options.isDoCleanup())
@@ -189,6 +194,14 @@ public class TEI2XMI {
 		 */
 		@Option(longName = "csvOutput", defaultToNull = true)
 		File getCSVOutput();
+		
+		/**
+		 * Storage of the CoNLL files. Should be a directory.
+		 * 
+		 * @return A directory
+		 */
+		@Option(longName = "conllOutput", defaultToNull = true)
+		File getCONLLOutput();
 
 	}
 
