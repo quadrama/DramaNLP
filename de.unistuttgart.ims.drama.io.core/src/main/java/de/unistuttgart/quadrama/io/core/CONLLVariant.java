@@ -86,9 +86,9 @@ public enum CONLLVariant {
 								if (!used.contains(m)) {
 									try {
 										if (printId == null) {
-											printId = createBrackets(m, token);
+											printId = createBrackets(printId, m, token);
 										} else {
-											printId = printId + "|" + createBrackets(m, token);
+											printId = printId + "|" + createBrackets(printId, m, token);
 										}
 										used.add(m);
 									} catch (Exception e) {
@@ -131,13 +131,12 @@ public enum CONLLVariant {
 		else
 			return fm;
 	}
-
+	
 	/**
 	 * This function checks if a mention's surface form is identical to a token, if
 	 * it starts with the token or ends with it and attaches corresponding markers.
 	 */
-	private String createBrackets(Mention m, Token token) {
-		String printId = null;
+	private String createBrackets(String printId, Mention m, Token token) {
 		if (m.getCoveredText().equals(token.getCoveredText())) {
 			printId = "(" + m.getEntity().getId() + ")";
 		} else if (m.getSurfaceString().get(0).equals(token.getCoveredText())) {
