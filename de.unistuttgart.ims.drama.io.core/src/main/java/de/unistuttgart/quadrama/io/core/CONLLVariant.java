@@ -140,9 +140,9 @@ public enum CONLLVariant {
 		String printId = null;
 		if (m.getCoveredText().equals(token.getCoveredText())) {
 			printId = "(" + m.getEntity().getId() + ")";
-		} else if (m.getCoveredText().startsWith(token.getCoveredText())) {
+		} else if (m.getSurfaceString().get(0).equals(token.getCoveredText())) {
 			printId = "(" + m.getEntity().getId();
-		} else if (m.getCoveredText().endsWith(token.getCoveredText())) {
+		} else if (m.getSurfaceString().get(m.getSurfaceString().size()-1).equals(token.getCoveredText())) {
 			printId = m.getEntity().getId() + ")";
 		} else {
 		}
