@@ -170,7 +170,8 @@ public enum CSVVariant {
 
 	private void convertUtterancesWithTokens(JCas jcas, CSVPrinter p) throws IOException {
 		Map<Token, Collection<Mention>> mentionMap = JCasUtil.indexCovering(jcas, Token.class, Mention.class);
-		Map<Token, Collection<StageDirection>> stageMap = JCasUtil.indexCovering(jcas, Token.class, StageDirection.class);
+		Map<Token, Collection<StageDirection>> stageMap = JCasUtil.indexCovering(jcas, Token.class,
+				StageDirection.class);
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
 		int length = JCasUtil.select(jcas, Token.class).size();
 		Set<Mention> used = new HashSet<Mention>();
@@ -353,11 +354,11 @@ public enum CSVVariant {
 	 * it starts with the token or ends with it and attaches corresponding markers.
 	 */
 	private String createBrackets(String printId, Mention m, Token token) {
-		if (m.getCoveredText().equals(token.getCoveredText())) {
+		if (m.getBegin() == token.getBegin() && m.getEnd() == token.getEnd()) {
 			printId = "(" + m.getEntity().getId() + ")";
-		} else if (m.getSurfaceString().get(0).equals(token.getCoveredText())) {
+		} else if (m.getBegin() == token.getBegin()) {
 			printId = "(" + m.getEntity().getId();
-		} else if (m.getSurfaceString().get(m.getSurfaceString().size()-1).equals(token.getCoveredText())) {
+		} else if (m.getEnd() == token.getEnd()) {
 			printId = m.getEntity().getId() + ")";
 		} else {
 		}

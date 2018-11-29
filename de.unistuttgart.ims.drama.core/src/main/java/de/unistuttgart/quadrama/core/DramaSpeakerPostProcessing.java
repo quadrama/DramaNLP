@@ -25,33 +25,32 @@ import de.unistuttgart.quadrama.core.api.Origin;
  * main view.
  * 
  */
-public class DramaStagePostProcessing extends JCasAnnotator_ImplBase {
+public class DramaSpeakerPostProcessing extends JCasAnnotator_ImplBase {
 
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
 
 		try {
 			// map tokens
-			JCas stageCas = jcas.getView(SD.SOFA_STAGEDIRECTIONS);
-			for (Origin origin : JCasUtil.select(stageCas, Origin.class)) {
+			JCas speakerCas = jcas.getView(SP.SOFA_SPEAKERS);
+			for (Origin origin : JCasUtil.select(speakerCas, Origin.class)) {
 				for (Token token : JCasUtil.selectCovered(Token.class, origin)) {
 					int begin = token.getBegin() + origin.getOffset() - origin.getBegin();
 					int end = token.getEnd() + origin.getOffset() - origin.getBegin();
 					AnnotationFactory.createAnnotation(jcas, begin, end, Token.class);
 				}
 			}
-			
+
 			// Remove doubled tokens that were added through Speech type
 			RemoveDuplicateAnnotations removeDubs = new RemoveDuplicateAnnotations();
-			removeDubs.initialize(UimaContextFactory.createUimaContext(RemoveDuplicateAnnotations.PARAM_TYPE,
-					Token.class.getName()));
+			removeDubs.initialize(
+					UimaContextFactory.createUimaContext(RemoveDuplicateAnnotations.PARAM_TYPE, Token.class.getName()));
 			removeDubs.process(jcas);
 
 			// map sentences
-			Map<Token, Collection<Origin>> covers = JCasUtil.indexCovering(stageCas, Token.class, Origin.class);
-			for (Sentence sentence : JCasUtil.select(stageCas, Sentence.class)) {
-				List<Token> tokens = JCasUtil.selectCovered(stageCas, Token.class, sentence);
-
+			Map<Token, Collection<Origin>> covers = JCasUtil.indexCovering(speakerCas, Token.class, Origin.class);
+			for (Sentence sentence : JCasUtil.select(speakerCas, Sentence.class)) {
+				List<Token> tokens = JCasUtil.selectCovered(speakerCas, Token.class, sentence);
 				// we search for the first and last token
 				Token firstToken = tokens.get(0);
 				Token lastToken = tokens.get(tokens.size() - 1);
@@ -70,18 +69,12 @@ public class DramaStagePostProcessing extends JCasAnnotator_ImplBase {
 				// annotations in the target view may span non-token content
 				AnnotationFactory.createAnnotation(jcas, begin, end, Sentence.class);
 			}
-			// Remove doubled sentences that were added through Speech type
-			RemoveDuplicateAnnotations removeDubsSent = new RemoveDuplicateAnnotations();
-			removeDubsSent.initialize(UimaContextFactory.createUimaContext(RemoveDuplicateAnnotations.PARAM_TYPE,
-					Sentence.class.getName()));
-			removeDubsSent.process(jcas);
 
 		} catch (CASException e) {
 			throw new AnalysisEngineProcessException(e);
 		} catch (ResourceInitializationException e1) {
 			throw new AnalysisEngineProcessException(e1);
 		}
-		
 
 	}
 }

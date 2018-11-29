@@ -10,6 +10,7 @@ import java.util.Set;
 
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.uima.cas.FeatureStructure;
+import org.apache.uima.fit.factory.AnnotationFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
@@ -57,54 +58,56 @@ public enum CONLLVariant {
 	}
 
 	private void convertCONLL(JCas jcas, CSVPrinter p) throws IOException {
+		
 		Map<Token, Collection<Mention>> mentionMap = JCasUtil.indexCovering(jcas, Token.class, Mention.class);
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
 		Set<Mention> used = new HashSet<Mention>();
-		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
-			for (Sentence sentence : JCasUtil.selectCovered(Sentence.class, utterance)) {
-				Integer tokenId = 0;
-				for (Token token : JCasUtil.selectCovered(Token.class, sentence)) {
-					used.clear();
-					p.print(drama.getDocumentId());
-					p.print(0);
-					p.print(tokenId);
-					tokenId++;
-					p.print(token.getCoveredText());
-					p.print("-");
-					p.print("-");
-					p.print("-");
-					p.print("-");
-					p.print("-");
-					p.print("*");
-					String printId = null;
-					if (mentionMap.containsKey(token)) {
-						Collection<Mention> mList = mentionMap.get(token);
-						for (Mention m : mList) {
-							if (m.getEntity() == null) {
-								printId = null;
-							} else {
-								if (!used.contains(m)) {
-									try {
-										if (printId == null) {
-											printId = createBrackets(printId, m, token);
-										} else {
-											printId = printId + "|" + createBrackets(printId, m, token);
-										}
-										used.add(m);
-									} catch (Exception e) {
-										//
+		for (Sentence sentence : JCasUtil.select(jcas, Sentence.class)) {
+			Integer tokenId = 0;
+			for (Token token : JCasUtil.selectCovered(Token.class, sentence)) {
+				if (token.getCoveredText().equals(" ")) {
+					continue;
+				}
+				used.clear();
+				p.print(drama.getDocumentId());
+				p.print(0);
+				p.print(tokenId);
+				tokenId++;
+				p.print(token.getCoveredText());
+				p.print("-");
+				p.print("-");
+				p.print("-");
+				p.print("-");
+				p.print("-");
+				p.print("*");
+				String printId = null;
+				if (mentionMap.containsKey(token)) {
+					Collection<Mention> mList = mentionMap.get(token);
+					for (Mention m : mList) {
+						if (m.getEntity() == null) {
+							printId = null;
+						} else {
+							if (!used.contains(m)) {
+								try {
+									if (printId == null) {
+										printId = createBrackets(printId, m, token);
+									} else {
+										printId = printId + "|" + createBrackets(printId, m, token);
 									}
+									used.add(m);
+								} catch (Exception e) {
+									//
 								}
 							}
 						}
-					} else {
-						//
 					}
-					p.print(printId);
-					p.println();
+				} else {
+					//
 				}
+				p.print(printId);
 				p.println();
 			}
+			p.println();
 		}
 	}
 
@@ -131,17 +134,17 @@ public enum CONLLVariant {
 		else
 			return fm;
 	}
-	
+
 	/**
 	 * This function checks if a mention's surface form is identical to a token, if
 	 * it starts with the token or ends with it and attaches corresponding markers.
 	 */
 	private String createBrackets(String printId, Mention m, Token token) {
-		if (m.getCoveredText().equals(token.getCoveredText())) {
+		if (m.getBegin() == token.getBegin() && m.getEnd() == token.getEnd()) {
 			printId = "(" + m.getEntity().getId() + ")";
-		} else if (m.getSurfaceString().get(0).equals(token.getCoveredText())) {
+		} else if (m.getBegin() == token.getBegin()) {
 			printId = "(" + m.getEntity().getId();
-		} else if (m.getSurfaceString().get(m.getSurfaceString().size()-1).equals(token.getCoveredText())) {
+		} else if (m.getEnd() == token.getEnd()) {
 			printId = m.getEntity().getId() + ")";
 		} else {
 		}

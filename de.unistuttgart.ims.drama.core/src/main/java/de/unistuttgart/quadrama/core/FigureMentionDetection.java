@@ -92,14 +92,14 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 								// If it is not the same entity, create the mention
 								Mention fm = AnnotationFactory.createAnnotation(jcas, m.start(), m.end(),
 										Mention.class);
-								fm.setSurfaceString(ArrayUtil.toStringArray(jcas, cf.getDisplayName()));
+								fm.setSurfaceString(ArrayUtil.toStringArray(jcas, fm.getCoveredText().split(" ")));
 								fm.setEntity(cf);
 							}
 						} catch (Exception e) {
 							// If there is no existing mention annotation on the same span, simply create
 							// the mention with the cast figure as entity
 							Mention fm = AnnotationFactory.createAnnotation(jcas, m.start(), m.end(), Mention.class);
-							fm.setSurfaceString(ArrayUtil.toStringArray(jcas, cf.getDisplayName()));
+							fm.setSurfaceString(ArrayUtil.toStringArray(jcas, fm.getCoveredText().split(" ")));
 							fm.setEntity(cf);
 						}
 					}
@@ -111,6 +111,9 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
 			Collection<CastFigure> figures = DramaUtil.getCastFigures(utterance);
 			for (CastFigure currentFigure : figures) {
+				if (currentFigure == null) {
+					continue;
+				}
 				for (Speech speech : JCasUtil.selectCovered(jcas, Speech.class, utterance)) {
 					if (figures.size() <= 1) {
 						for (PR pronoun : JCasUtil.selectCovered(jcas, PR.class, speech)) {
@@ -124,7 +127,7 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 										// If it is not the same entity, create the mention
 										Mention fm = AnnotationFactory.createAnnotation(jcas, pronoun.getBegin(),
 												pronoun.getEnd(), Mention.class);
-										fm.setSurfaceString(ArrayUtil.toStringArray(jcas, pronoun.getCoveredText()));
+										fm.setSurfaceString(ArrayUtil.toStringArray(jcas, pronoun.getCoveredText().split(" ")));
 										fm.setEntity(currentFigure);
 									}
 								} catch (Exception e) {
@@ -132,7 +135,7 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 									// the mention with the cast figure as entity
 									Mention fm = AnnotationFactory.createAnnotation(jcas, pronoun.getBegin(),
 											pronoun.getEnd(), Mention.class);
-									fm.setSurfaceString(ArrayUtil.toStringArray(jcas, pronoun.getCoveredText()));
+									fm.setSurfaceString(ArrayUtil.toStringArray(jcas, pronoun.getCoveredText().split(" ")));
 									fm.setEntity(currentFigure);
 								}
 							}

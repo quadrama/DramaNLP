@@ -23,6 +23,7 @@ import de.unistuttgart.ims.drama.core.ml.gender.ClearTkGenderAnnotator;
 import de.unistuttgart.ims.uimautil.SetCollectionId;
 import de.unistuttgart.quadrama.core.D;
 import de.unistuttgart.quadrama.core.SD;
+import de.unistuttgart.quadrama.core.SP;
 import de.unistuttgart.quadrama.core.FigureDetailsAnnotator;
 import de.unistuttgart.quadrama.core.FigureMentionDetection;
 import de.unistuttgart.quadrama.core.FigureReferenceAnnotator;
@@ -54,8 +55,12 @@ public class TEI2XMI {
 
 		AggregateBuilder builder = new AggregateBuilder();
 
+		// Tokenize Utterances
 		builder.add(D.getWrappedSegmenterDescription(BreakIteratorSegmenter.class));
+		// Tokenize Stage Directions
 		builder.add(SD.getWrappedSegmenterDescription(BreakIteratorSegmenter.class));
+		// Tokenize Speaker Tags
+		//builder.add(SP.getWrappedSegmenterDescription(BreakIteratorSegmenter.class));
 		if (options.getCorpus() == Corpus.TURM) {
 			builder.add(createEngineDescription(SceneActAnnotator.class));
 		}

@@ -22,12 +22,10 @@ public class Export {
 
 	public static void main(String[] args) throws ResourceInitializationException, UIMAException, IOException {
 
-		// runMain("AnnikaHaag",
-		// new String[] { "--input",
-		// "/Users/reiterns/Documents/QuaDramA/Coreference
-		// Annotations/annotations_last_tei/AH.xml",
-		// "--output", "/Users/reiterns/Documents/QuaDramA/Coreference
-		// Annotations/WebAnno-Start/AH" });
+		runMain("AnnikaHaag",
+				new String[] { "--input",
+						"/Users/reiterns/Documents/QuaDramA/CoreferenceAnnotations/annotations_last_tei/AH.xml",
+						"--output", "/Users/reiterns/Documents/QuaDramA/CoreferenceAnnotations/WebAnno-Start/AH" });
 		runMain("AnjaSchmelzle",
 				new String[] { "--input",
 						"/Users/reiterns/Documents/QuaDramA/Coreference Annotations/annotations_last_tei/AS.xml",

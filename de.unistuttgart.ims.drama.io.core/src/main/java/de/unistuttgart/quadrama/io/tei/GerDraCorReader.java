@@ -60,7 +60,8 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 	boolean teiCompatibility = false;
 
 	@Override
-	public void getNext(final JCas jcas, InputStream file, Drama drama) throws IOException, CollectionException {
+	public void getNext(final JCas jcas, InputStream file, Drama drama)
+			throws IOException, CollectionException, ArrayIndexOutOfBoundsException {
 
 		System.out.println("Processing " + drama.getDocumentUri());
 
@@ -293,12 +294,13 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 		gxr.read(jcas, file);
 
 		AnnotationUtil.trim(new ArrayList<Figure>(JCasUtil.select(jcas, Figure.class)));
+		AnnotationUtil.trim(new ArrayList<Speaker>(JCasUtil.select(jcas, Speaker.class)));
 		AnnotationUtil.trim(new ArrayList<Speech>(JCasUtil.select(jcas, Speech.class)));
 		AnnotationUtil.trim(new ArrayList<Utterance>(JCasUtil.select(jcas, Utterance.class)));
 		AnnotationUtil.trim(new ArrayList<Scene>(JCasUtil.select(jcas, Scene.class)));
 		AnnotationUtil.trim(new ArrayList<Act>(JCasUtil.select(jcas, Act.class)));
 		AnnotationUtil.trim(new ArrayList<StageDirection>(JCasUtil.select(jcas, StageDirection.class)));
-
+		AnnotationUtil.trim(new ArrayList<Mention>(JCasUtil.select(jcas, Mention.class)));
 	}
 
 	int getYear(String s) {
