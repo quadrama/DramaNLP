@@ -4,9 +4,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -60,6 +62,9 @@ public class QuaDramAReader extends AbstractDramaUrlReader {
 	@Override
 	public void getNext(final JCas jcas, InputStream file, Drama drama) throws IOException, CollectionException {
 
+		Map<String, Integer> entityIds = new HashMap<String, Integer>();
+		entityIds.put("__dummy__", -1);
+		
 		GenericXmlReader<Drama> gxr = new GenericXmlReader<Drama>(Drama.class);
 		gxr.setTextRootSelector(teiCompatibility ? null : "TEI > text");
 		gxr.setPreserveWhitespace(teiCompatibility);
@@ -141,8 +146,11 @@ public class QuaDramAReader extends AbstractDramaUrlReader {
 			}
 			cf.setXmlId(ArrayUtil.toStringArray(jcas, xmlIdList));
 			cf.setNames(ArrayUtil.toStringArray(jcas, nameList));
-			cf.setDisplayName(cf.getNames(0));
-
+			cf.setDisplayName(e.attr("xml:id"));
+			if (!entityIds.containsKey(ArrayUtil.toStringArray(jcas, xmlIdList).get(0))) {
+				entityIds.put(ArrayUtil.toStringArray(jcas, xmlIdList).get(0), Collections.max(entityIds.values()) + 1);
+			}
+			cf.setId(entityIds.get(ArrayUtil.toStringArray(jcas, xmlIdList).get(0)));
 		});
 
 		gxr.addRule("speaker", Speaker.class);
@@ -169,44 +177,68 @@ public class QuaDramAReader extends AbstractDramaUrlReader {
 			}
 		});
 
-		gxr.addRule("text *[xml:id]", DiscourseEntity.class, (de, e) -> de.setDisplayName(e.attr("xml:id")));
-
-		gxr.addRule("text *[xml:id]", Mention.class, (m, e) -> {
-			String id = e.attr("xml:id");
-			FSArray arr = new FSArray(jcas, 1);
-			arr.addToIndexes();
-			m.setEntity(arr);
-			m.setEntity(0, (DiscourseEntity) gxr.getAnnotation(id).getValue());
+		gxr.addRule("text *[xml:id]", DiscourseEntity.class, (de, e) -> {
+			de.setDisplayName(e.attr("xml:id"));
+			String[] splitted = null;
+			splitted = e.attr("xml:id").split(" ");
+			de.setXmlId(ArrayUtil.toStringArray(jcas, splitted));
+			if (!entityIds.containsKey(splitted[0])) {
+				entityIds.put(splitted[0], Collections.max(entityIds.values()) + 1);
+			}
+			de.setId(entityIds.get(splitted[0]));
 		});
 
 		Map<String, DiscourseEntity> fallbackEntities = new HashMap<String, DiscourseEntity>();
-		// mentions
-		gxr.addRule("text *[ref]", Mention.class, (cl, e) -> {
-			String[] splitted = e.attr("ref").split(" ");
-			FSArray arr = new FSArray(jcas, splitted.length);
-			for (int i = 0; i < splitted.length; i++) {
-				String xmlId = splitted[i].substring(1);
-
+		gxr.addRule("rs", Mention.class, (m, e) -> {
+			if (e.hasAttr("ref") || e.hasAttr("xml:id")) {
+				String[] splitted = null;
+				if (e.hasAttr("ref")) {
+					splitted = e.attr("ref").split(" ");
+					String[] temp = new String[splitted.length];
+					for (int i = 0; i < splitted.length; i++) {
+						temp[i] = splitted[i].substring(1);
+					}
+					splitted = temp;
+				} else if (e.hasAttr("xml:id")) {
+					splitted = e.attr("xml:id").split(" ");
+				}
+				if (e.hasAttr("func")) {
+					if (e.attr("func").equals("and")) {
+						// default
+					} else if (e.attr("func").equals("or")) {
+						splitted = getRandomEntity(splitted);
+					} else {
+						// Should be handled by XMLSchema
+					}
+				}
+				// gather names
+				Set<String> nameList = new HashSet<String>();
+				for (TextNode tn : e.textNodes()) {
+					if (tn.text().trim().length() > 0)
+						nameList.add(tn.text().trim());
+				}
 				DiscourseEntity de = null;
-
-				// we first check whether something with an xml id has been created
-				if (gxr.exists(xmlId)) {
-					FeatureStructure fs = gxr.getAnnotation(xmlId).getValue();
+				if (gxr.exists(splitted[0])) {
+					FeatureStructure fs = gxr.getAnnotation(splitted[0]).getValue();
 					if (fs instanceof DiscourseEntity)
 						de = (DiscourseEntity) fs;
 				}
-				if (fallbackEntities.containsKey(xmlId))
-					de = fallbackEntities.get(xmlId);
-				// if that's not the case, we create a new discourse entity on the fly
+				if (fallbackEntities.containsKey(splitted[0]))
+					de = fallbackEntities.get(splitted[0]);
 				if (de == null) {
-					de = cl.getCAS().createFS(CasUtil.getType(cl.getCAS(), DiscourseEntity.class));
+					de = m.getCAS().createFS(CasUtil.getType(m.getCAS(), DiscourseEntity.class));
 					de.addToIndexes();
-					de.setDisplayName(cl.getCoveredText());
-					fallbackEntities.put(xmlId, de);
+					de.setDisplayName(splitted[0]);
+					de.setXmlId(ArrayUtil.toStringArray(jcas, splitted));
+					if (!entityIds.containsKey(splitted[0])) {
+						entityIds.put(splitted[0], Collections.max(entityIds.values()) + 1);
+					}
+					de.setId(entityIds.get(splitted[0]));
+					fallbackEntities.put(splitted[0], de);
 				}
-				arr.set(i, de);
+				m.setSurfaceString(ArrayUtil.toStringArray(jcas, m.getCoveredText().split(" ")));
+				m.setEntity(de);
 			}
-			cl.setEntity(arr);
 		});
 
 		gxr.read(jcas, file);
@@ -227,5 +259,13 @@ public class QuaDramAReader extends AbstractDramaUrlReader {
 			return Integer.valueOf(m.group());
 		} else
 			return 0;
+	}
+	
+	public static String[] getRandomEntity(String[] array) {
+		int seed = 42;
+		String[] newArray = new String[1];
+		int rnd = new Random(seed).nextInt(array.length);
+		newArray[0] = array[rnd];
+		return newArray;
 	}
 }

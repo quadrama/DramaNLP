@@ -22,6 +22,7 @@ import de.tudarmstadt.ukp.dkpro.core.api.coref.type.CoreferenceLink;
 import de.unistuttgart.ims.drama.api.DiscourseEntity;
 import de.unistuttgart.ims.drama.api.Mention;
 import de.unistuttgart.ims.drama.api.Speaker;
+import de.unistuttgart.ims.uima.io.xml.ArrayUtil;
 
 @TypeCapability(inputs = { "de.unistuttgart.ims.drama.api.Mention", "de.unistuttgart.ims.drama.api.DiscourseEntity",
 		"de.unistuttgart.ims.drama.api.Speaker" }, outputs = {
@@ -75,7 +76,7 @@ public class QdCoreference2DkproCoreference extends JCasAnnotator_ImplBase {
 			if (a instanceof Speaker) {
 				cFigures = ((Speaker) a).getCastFigure();
 			} else if (a instanceof Mention) {
-				cFigures = ((Mention) a).getEntity();
+				cFigures = ArrayUtil.toFSArray(jcas, ((Mention) a).getEntity());
 			}
 			if (cFigures != null) {
 				for (int i = 0; i < cFigures.size(); i++) {
