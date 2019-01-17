@@ -63,8 +63,6 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 	public void getNext(final JCas jcas, InputStream file, Drama drama)
 			throws IOException, CollectionException, ArrayIndexOutOfBoundsException {
 
-		System.out.println("Processing " + drama.getDocumentUri());
-
 		Map<String, Integer> entityIds = new HashMap<String, Integer>();
 		entityIds.put("__dummy__", -1);
 
@@ -293,13 +291,34 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 
 		gxr.read(jcas, file);
 
-		AnnotationUtil.trim(new ArrayList<Figure>(JCasUtil.select(jcas, Figure.class)));
-		AnnotationUtil.trim(new ArrayList<Speaker>(JCasUtil.select(jcas, Speaker.class)));
-		AnnotationUtil.trim(new ArrayList<Speech>(JCasUtil.select(jcas, Speech.class)));
-		AnnotationUtil.trim(new ArrayList<Utterance>(JCasUtil.select(jcas, Utterance.class)));
-		AnnotationUtil.trim(new ArrayList<Scene>(JCasUtil.select(jcas, Scene.class)));
-		AnnotationUtil.trim(new ArrayList<Act>(JCasUtil.select(jcas, Act.class)));
-		AnnotationUtil.trim(new ArrayList<StageDirection>(JCasUtil.select(jcas, StageDirection.class)));
+		try {
+			AnnotationUtil.trim(new ArrayList<Figure>(JCasUtil.select(jcas, Figure.class)));
+		} catch (ArrayIndexOutOfBoundsException e) {
+		}
+		try {
+			AnnotationUtil.trim(new ArrayList<Speech>(JCasUtil.select(jcas, Speech.class)));
+		} catch (ArrayIndexOutOfBoundsException e) {
+		}
+		try {
+			AnnotationUtil.trim(new ArrayList<Speaker>(JCasUtil.select(jcas, Speaker.class)));
+		} catch (ArrayIndexOutOfBoundsException e) {
+		}
+		try {
+			AnnotationUtil.trim(new ArrayList<Utterance>(JCasUtil.select(jcas, Utterance.class)));
+		} catch (ArrayIndexOutOfBoundsException e) {
+		}
+		try {
+			AnnotationUtil.trim(new ArrayList<Scene>(JCasUtil.select(jcas, Scene.class)));
+		} catch (ArrayIndexOutOfBoundsException e) {
+		}
+		try {
+			AnnotationUtil.trim(new ArrayList<Act>(JCasUtil.select(jcas, Act.class)));
+		} catch (ArrayIndexOutOfBoundsException e) {
+		}
+		try {
+			AnnotationUtil.trim(new ArrayList<StageDirection>(JCasUtil.select(jcas, StageDirection.class)));
+		} catch (ArrayIndexOutOfBoundsException e) {
+		}
 		AnnotationUtil.trim(new ArrayList<Mention>(JCasUtil.select(jcas, Mention.class)));
 	}
 
