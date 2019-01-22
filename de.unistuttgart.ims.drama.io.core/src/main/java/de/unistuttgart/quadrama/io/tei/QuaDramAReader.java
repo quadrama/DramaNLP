@@ -70,9 +70,6 @@ public class QuaDramAReader extends AbstractDramaUrlReader {
 		gxr.setPreserveWhitespace(teiCompatibility);
 
 		// title
-		// gxr.addAction("titleStmt > title:first-child", Drama.class, (d, e) ->
-		// d.setDocumentTitle(e.text()));
-
 		gxr.addGlobalRule("fileDesc > titleStmt > title:first-child", (d, e) -> d.setDocumentTitle(e.text()));
 
 		// id
@@ -87,7 +84,7 @@ public class QuaDramAReader extends AbstractDramaUrlReader {
 		});
 
 		// translator
-		gxr.addGlobalRule("sourceDesc > editor[role=translator]", Translator.class, (transl, e) -> {
+		gxr.addGlobalRule("sourceDesc editor[role=translator]", Translator.class, (transl, e) -> {
 			transl.setName(e.text());
 			if (e.hasAttr("key"))
 				transl.setPnd(e.attr("key").replace("pnd:", ""));
