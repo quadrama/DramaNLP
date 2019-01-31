@@ -319,7 +319,10 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 			AnnotationUtil.trim(new ArrayList<StageDirection>(JCasUtil.select(jcas, StageDirection.class)));
 		} catch (ArrayIndexOutOfBoundsException e) {
 		}
-		AnnotationUtil.trim(new ArrayList<Mention>(JCasUtil.select(jcas, Mention.class)));
+		try {
+			AnnotationUtil.trim(new ArrayList<Mention>(JCasUtil.select(jcas, Mention.class)));
+		} catch (ArrayIndexOutOfBoundsException e) {
+		}
 	}
 
 	int getYear(String s) {

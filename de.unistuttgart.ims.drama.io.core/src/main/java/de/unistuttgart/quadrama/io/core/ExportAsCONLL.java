@@ -36,7 +36,7 @@ public class ExportAsCONLL extends JCasFileWriter_ImplBase {
 	public static final String PARAM_CSV_FORMAT_NAME = "CONLL Format Name";
 
 	@ConfigurationParameter(name = PARAM_CONLL_VARIANT_NAME, defaultValue = "CoNLL2012")
-	String conllVariantName = "CoNLL2012";
+	static String conllVariantName = "CoNLL2012";
 
 	@ConfigurationParameter(name = PARAM_CSV_FORMAT_NAME, defaultValue = "TDF.withQuote(null)")
 	String csvFormatName = "TDF.withQuote(null)";

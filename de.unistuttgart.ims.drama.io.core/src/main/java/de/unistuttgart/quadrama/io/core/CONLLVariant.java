@@ -29,6 +29,7 @@ import de.unistuttgart.ims.drama.api.StageDirection;
 import de.unistuttgart.ims.drama.api.Translator;
 import de.unistuttgart.ims.drama.api.Utterance;
 import de.unistuttgart.ims.drama.util.DramaUtil;
+import de.unistuttgart.quadrama.io.core.ExportAsCONLL;
 
 public enum CONLLVariant {
 	/**
@@ -44,8 +45,10 @@ public enum CONLLVariant {
 	public void header(JCas jcas, CSVPrinter p) throws IOException {
 		switch (this) {
 		default:
+			Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
 			p.printRecord(
-					"#begin document (" + JCasUtil.selectSingle(jcas, Drama.class).getDocumentId() + "); part 000");
+					"#begin document (" + drama.getDocumentUri().split("/")[drama.getDocumentUri().split("/").length - 1] +
+					"." + ExportAsCONLL.conllVariantName + ".conll" + "); part 000");
 		}
 	}
 
@@ -58,7 +61,7 @@ public enum CONLLVariant {
 	}
 
 	private void convertCONLL(JCas jcas, CSVPrinter p) throws IOException {
-		
+
 		Map<Token, Collection<Mention>> mentionMap = JCasUtil.indexCovering(jcas, Token.class, Mention.class);
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
 		Set<Mention> used = new HashSet<Mention>();
@@ -69,11 +72,13 @@ public enum CONLLVariant {
 					continue;
 				}
 				used.clear();
-				p.print(drama.getDocumentId());
+				p.print(drama.getDocumentUri().split("/")[drama.getDocumentUri().split("/").length - 1] +
+						"." + ExportAsCONLL.conllVariantName + ".conll");
 				p.print(0);
 				p.print(tokenId);
 				tokenId++;
 				p.print(token.getCoveredText());
+				p.print("-");
 				p.print("-");
 				p.print("-");
 				p.print("-");
