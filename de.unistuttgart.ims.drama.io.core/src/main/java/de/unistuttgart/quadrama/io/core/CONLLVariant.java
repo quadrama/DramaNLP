@@ -84,16 +84,16 @@ public enum CONLLVariant {
 				p.print("-");
 				p.print("-");
 				p.print("*");
-				String printId = null;
+				String printId = "-";
 				if (mentionMap.containsKey(token)) {
 					Collection<Mention> mList = mentionMap.get(token);
 					for (Mention m : mList) {
 						if (m.getEntity() == null) {
-							printId = null;
+							printId = "-";
 						} else {
 							if (!used.contains(m)) {
 								try {
-									if (printId == null) {
+									if (printId.equals("-")) {
 										printId = createBrackets(printId, m, token);
 									} else {
 										printId = printId + "|" + createBrackets(printId, m, token);
@@ -153,6 +153,7 @@ public enum CONLLVariant {
 		} else if (m.getEnd() == token.getEnd()) {
 			printId = m.getEntity().getId() + ")";
 		} else {
+			printId = "-";
 		}
 		return printId;
 	}
