@@ -115,6 +115,7 @@ public enum CONLLVariant {
 			p.println();
 		}
 		p.print("#end document");
+		p.println();
 	}
 
 	/**
