@@ -83,7 +83,6 @@ public enum CONLLVariant {
 				p.print("-");
 				p.print("-");
 				p.print("-");
-				p.print("-");
 				p.print("*");
 				String printId = null;
 				if (mentionMap.containsKey(token)) {
