@@ -74,7 +74,7 @@ public enum CONLLVariant {
 				used.clear();
 				p.print(drama.getDocumentUri().split("/")[drama.getDocumentUri().split("/").length - 1] +
 						"." + ExportAsCONLL.conllVariantName + ".conll");
-				p.print(0);
+				p.print("000");
 				p.print(tokenId);
 				tokenId++;
 				p.print(token.getCoveredText());
@@ -114,6 +114,7 @@ public enum CONLLVariant {
 			}
 			p.println();
 		}
+		p.print("#end document");
 	}
 
 	/**
