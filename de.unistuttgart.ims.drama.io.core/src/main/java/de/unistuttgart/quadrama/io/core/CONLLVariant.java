@@ -153,7 +153,6 @@ public enum CONLLVariant {
 		} else if (m.getEnd() == token.getEnd()) {
 			printId = m.getEntity().getId() + ")";
 		} else {
-			printId = "-";
 		}
 		return printId;
 	}
