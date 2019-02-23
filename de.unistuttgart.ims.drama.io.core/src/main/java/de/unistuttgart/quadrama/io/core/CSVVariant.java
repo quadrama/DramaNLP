@@ -255,11 +255,15 @@ public enum CSVVariant {
 							for (int i = 0; i <= speaker.getCastFigure().size(); i++) {
 								try {
 									p.print(speaker.getCastFigure(i).getNames(0));
-								} catch (Exception e) {
+								} catch (IOException e) {
+									e.printStackTrace();
+									p.print(null);
 								}
 								try {
 									p.print(speaker.getCastFigure(i).getXmlId(0));
-								} catch (Exception e) {
+								} catch (IOException e) {
+									e.printStackTrace();
+									p.print(null);
 								}
 							}
 						}
