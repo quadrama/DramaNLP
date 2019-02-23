@@ -27,6 +27,7 @@ public class SD {
 		return builder.createAggregateDescription();
 	}
 
+	@Deprecated
 	public static AnalysisEngineDescription getDramatisPersonaeProcessing() throws ResourceInitializationException {
 		AggregateBuilder builder = new AggregateBuilder();
 		builder.add(AnalysisEngineFactory.createEngineDescription(FigureReferenceAnnotator.class));
