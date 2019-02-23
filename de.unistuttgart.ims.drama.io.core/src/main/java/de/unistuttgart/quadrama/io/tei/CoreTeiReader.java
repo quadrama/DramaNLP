@@ -59,6 +59,10 @@ public class CoreTeiReader extends AbstractDramaUrlReader {
 
 		gxr.addGlobalRule("fileDesc > publicationStmt > idno[type=quadramaX]", (d, e) -> d.setDocumentId(e.text()));
 
+		if (getLanguage() == LANGUAGE_UNSPECIFIED)
+			gxr.addGlobalRule("profileDesc > langUsage > language",
+					(d, e) -> jcas.setDocumentLanguage(e.attr("ident")));
+
 		gxr.addGlobalRule("profileDesc > particDesc > listPerson > person", CastFigure.class, (cf, e) -> {
 			cf.setNames(ArrayUtil.toStringArray(jcas, e.text()));
 			cf.setXmlId(ArrayUtil.toStringArray(jcas, e.attr("xml:id")));

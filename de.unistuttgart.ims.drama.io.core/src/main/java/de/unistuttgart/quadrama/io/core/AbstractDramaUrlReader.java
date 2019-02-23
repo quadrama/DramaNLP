@@ -60,11 +60,13 @@ public abstract class AbstractDramaUrlReader extends JCasCollectionReader_ImplBa
 	 */
 	public static final String PARAM_COLLECTION_ID = "Collection Id";
 
+	public static final String LANGUAGE_UNSPECIFIED = "x-unspecified";
+
 	@ConfigurationParameter(name = PARAM_INPUT, mandatory = false)
 	String input = null;
 
-	@ConfigurationParameter(name = PARAM_LANGUAGE, mandatory = false, defaultValue = "de")
-	String language = "de";
+	@ConfigurationParameter(name = PARAM_LANGUAGE, mandatory = false, defaultValue = LANGUAGE_UNSPECIFIED)
+	String language = LANGUAGE_UNSPECIFIED;
 
 	@ConfigurationParameter(name = PARAM_REMOVE_XML_ANNOTATIONS, mandatory = false)
 	boolean removeXmlAnnotations = false;
@@ -170,5 +172,9 @@ public abstract class AbstractDramaUrlReader extends JCasCollectionReader_ImplBa
 	}
 
 	public abstract void getNext(JCas jcas, InputStream is, Drama drama) throws IOException, CollectionException;
+
+	public String getLanguage() {
+		return language;
+	}
 
 }
