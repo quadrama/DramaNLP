@@ -136,7 +136,7 @@ public class TEI2XMI {
 		}
 		SimplePipeline.runPipeline(reader, builder.createAggregateDescription());
 
-		if (options.isDoCleanup())
+		if (options.isDoCleanup() && options.getOutput() != null)
 			for (File f : options.getOutput().listFiles(new FilenameFilter() {
 
 				@Override
