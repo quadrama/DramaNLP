@@ -180,7 +180,7 @@ public class TEI2XMI {
 		@Option(defaultValue = "de.unistuttgart.quadrama.io.tei.textgrid.TextgridTEIUrlReader")
 		String getReaderClassname();
 
-		@Option(defaultValue = AbstractDramaUrlReader.LANGUAGE_UNSPECIFIED)
+		@Option(defaultValue = "de")
 		String getLanguage();
 
 		@Option()
