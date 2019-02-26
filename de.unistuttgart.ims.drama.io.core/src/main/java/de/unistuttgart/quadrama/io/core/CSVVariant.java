@@ -189,12 +189,14 @@ public enum CSVVariant {
 						p.print(utterance.getEnd());
 						try {
 							p.print(speaker.getCastFigure(i).getNames(0));
-						} catch (Exception e) {
+						} catch (IOException e) {
+							e.printStackTrace();
 							p.print(null);
 						}
 						try {
 							p.print(speaker.getCastFigure(i).getXmlId(0));
-						} catch (Exception e) {
+						} catch (IOException e) {
+							e.printStackTrace();
 							p.print(null);
 						}
 						p.print(token.getCoveredText());
