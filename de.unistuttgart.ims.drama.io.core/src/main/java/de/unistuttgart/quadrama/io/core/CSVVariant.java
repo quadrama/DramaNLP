@@ -189,28 +189,31 @@ public enum CSVVariant {
 						p.print(utterance.getEnd());
 						try {
 							p.print(speaker.getCastFigure(i).getNames(0));
-						} catch (IOException e) {
-							e.printStackTrace();
+						} catch (NullPointerException e) {
 							p.print(null);
 						}
 						try {
 							p.print(speaker.getCastFigure(i).getXmlId(0));
-						} catch (IOException e) {
-							e.printStackTrace();
+						} catch (NullPointerException e) {
 							p.print(null);
 						}
 						p.print(token.getCoveredText());
 						p.print(token.getPos().getPosValue());
 						p.print(token.getLemma().getValue());
 						p.print(length);
+						String printSurface = null;
 						String printId = null;
 						if (mentionMap.containsKey(token)) {
 							Collection<Mention> mList = mentionMap.get(token);
 							for (Mention m : mList) {
 								if (m.getEntity() == null) {
+									printSurface = null;
 									printId = null;
 								} else {
 									if (!used.contains(m)) {
+										if (m.getEntity() instanceof CastFigure) {
+											printSurface = m.getEntity().getDisplayName();
+										}
 										try {
 											if (printId == null) {
 												printId = createBrackets(printId, m, token);
@@ -227,7 +230,7 @@ public enum CSVVariant {
 						} else {
 							//
 						}
-						p.print(null); /* Mentioned.figure_surface column is kept for compatibility reasons */
+						p.print(printSurface);
 						p.print(printId);
 						p.println();
 					}
@@ -254,17 +257,15 @@ public enum CSVVariant {
 				if (!utterances.isEmpty()) {
 					for (Utterance utterance : utterances) {
 						for (Speaker speaker : DramaUtil.getSpeakers(utterance)) {
-							for (int i = 0; i <= speaker.getCastFigure().size(); i++) {
+							for (int i = 0; i < speaker.getCastFigure().size(); i++) {
 								try {
 									p.print(speaker.getCastFigure(i).getNames(0));
-								} catch (IOException e) {
-									e.printStackTrace();
+								} catch (NullPointerException e) {
 									p.print(null);
 								}
 								try {
 									p.print(speaker.getCastFigure(i).getXmlId(0));
-								} catch (IOException e) {
-									e.printStackTrace();
+								} catch (NullPointerException e) {
 									p.print(null);
 								}
 							}
@@ -293,7 +294,7 @@ public enum CSVVariant {
 										printId = printId + "|" + createBrackets(printId, m, token);
 									}
 									used.add(m);
-								} catch (Exception e) {
+								} catch (NullPointerException e) {
 									//
 								}
 							}

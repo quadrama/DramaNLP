@@ -99,7 +99,7 @@ public enum CONLLVariant {
 										printId = printId + "|" + createBrackets(printId, m, token);
 									}
 									used.add(m);
-								} catch (Exception e) {
+								} catch (NullPointerException e) {
 									//
 								}
 							}
