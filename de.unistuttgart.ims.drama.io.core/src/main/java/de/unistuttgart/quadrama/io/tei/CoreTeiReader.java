@@ -64,9 +64,15 @@ public class CoreTeiReader extends AbstractDramaUrlReader {
 					(d, e) -> jcas.setDocumentLanguage(e.attr("ident")));
 
 		gxr.addGlobalRule("profileDesc > particDesc > listPerson > person", CastFigure.class, (cf, e) -> {
-			cf.setNames(ArrayUtil.toStringArray(jcas, e.text()));
 			cf.setXmlId(ArrayUtil.toStringArray(jcas, e.attr("xml:id")));
-			cf.setDisplayName(cf.getNames(0));
+			if (e.hasText())
+				cf.setNames(ArrayUtil.toStringArray(jcas, e.text()));
+			else
+				cf.setNames(ArrayUtil.toStringArray(jcas));
+			if (cf.getNames().size() > 0)
+				cf.setDisplayName(cf.getNames(0));
+			else
+				cf.setDisplayName(cf.getXmlId(0));
 		});
 
 		// segmentation

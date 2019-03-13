@@ -1,11 +1,11 @@
 package de.unistuttgart.quadrama.io.core;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import java.util.ArrayList;
 
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.uima.fit.util.JCasUtil;
@@ -55,8 +55,10 @@ public enum CSVVariant {
 	/**
 	 * Prints a record representing the header onto p
 	 * 
-	 * @param p The target
-	 * @throws IOException If an I/O error occurs
+	 * @param p
+	 *            The target
+	 * @throws IOException
+	 *             If an I/O error occurs
 	 */
 	public void header(CSVPrinter p) throws IOException {
 		switch (this) {
@@ -112,8 +114,8 @@ public enum CSVVariant {
 	private void convertCharacters(JCas jcas, CSVPrinter p) throws IOException {
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
 		for (CastFigure cf : JCasUtil.select(jcas, CastFigure.class)) {
-			p.printRecord(drama.getCollectionId(), drama.getDocumentId(), cf.getNames(0), cf.getXmlId(0),
-					cf.getGender(), cf.getAge());
+			p.printRecord(drama.getCollectionId(), drama.getDocumentId(),
+					(cf.getNames().size() > 0 ? cf.getNames(0) : null), cf.getXmlId(0), cf.getGender(), cf.getAge());
 		}
 	}
 
@@ -189,12 +191,12 @@ public enum CSVVariant {
 						p.print(utterance.getEnd());
 						try {
 							p.print(speaker.getCastFigure(i).getNames(0));
-						} catch (NullPointerException e) {
+						} catch (Exception e) {
 							p.print(null);
 						}
 						try {
 							p.print(speaker.getCastFigure(i).getXmlId(0));
-						} catch (NullPointerException e) {
+						} catch (Exception e) {
 							p.print(null);
 						}
 						p.print(token.getCoveredText());
@@ -260,12 +262,14 @@ public enum CSVVariant {
 							for (int i = 0; i < speaker.getCastFigure().size(); i++) {
 								try {
 									p.print(speaker.getCastFigure(i).getNames(0));
-								} catch (NullPointerException e) {
+								} catch (Exception e) {
+									e.printStackTrace();
 									p.print(null);
 								}
 								try {
 									p.print(speaker.getCastFigure(i).getXmlId(0));
-								} catch (NullPointerException e) {
+								} catch (Exception e) {
+									e.printStackTrace();
 									p.print(null);
 								}
 							}
@@ -336,7 +340,8 @@ public enum CSVVariant {
 	 * This function returns the longest from a given collection of annotations.
 	 * Length measured as <code>end - begin</code>.
 	 * 
-	 * @param coll The annotation collection
+	 * @param coll
+	 *            The annotation collection
 	 * @return The longest of the annotation.
 	 */
 	@Deprecated
