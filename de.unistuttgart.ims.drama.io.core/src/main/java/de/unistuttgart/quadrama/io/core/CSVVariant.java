@@ -124,21 +124,38 @@ public enum CSVVariant {
 	private void convertMentions(JCas jcas, CSVPrinter p) throws IOException {
 		Map<Mention, Collection<Utterance>> mention2utterances = JCasUtil.indexCovering(jcas, Mention.class,
 				Utterance.class);
+		Map<Mention, Collection<StageDirection>> mention2direction = JCasUtil.indexCovering(jcas, Mention.class,
+				StageDirection.class);
 
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
 		for (Mention mention : JCasUtil.select(jcas, Mention.class)) {
 
-			Utterance utterance = mention2utterances.get(mention).iterator().next();
-			for (Speaker speaker : DramaUtil.getSpeakers(utterance)) {
-				p.print(drama.getCollectionId());
-				p.print(drama.getDocumentId());
-				p.print(utterance.getBegin());
-				p.print(utterance.getEnd());
-				p.print(speaker.getCastFigure(0).getXmlId(0));
-				p.print(mention.getBegin());
-				p.print(mention.getEnd());
-				p.print(mention.getCoveredText());
-				p.print(mention.getEntity().getXmlId(0));
+			if (mention2utterances.get(mention).isEmpty()) {
+				if (!mention2direction.get(mention).isEmpty()) {
+					StageDirection sd = mention2direction.get(mention).iterator().next();
+					p.print(drama.getCollectionId());
+					p.print(drama.getDocumentId());
+					p.print(sd.getBegin());
+					p.print(sd.getEnd());
+					p.print("_stage");
+					p.print(mention.getBegin());
+					p.print(mention.getEnd());
+					p.print(mention.getCoveredText());
+					p.print(mention.getEntity().getXmlId(0));
+				}
+			} else {
+				Utterance utterance = mention2utterances.get(mention).iterator().next();
+				for (Speaker speaker : DramaUtil.getSpeakers(utterance)) {
+					p.print(drama.getCollectionId());
+					p.print(drama.getDocumentId());
+					p.print(utterance.getBegin());
+					p.print(utterance.getEnd());
+					p.print(speaker.getCastFigure(0).getXmlId(0));
+					p.print(mention.getBegin());
+					p.print(mention.getEnd());
+					p.print(mention.getCoveredText());
+					p.print(mention.getEntity().getXmlId(0));
+				}
 			}
 		}
 	}
