@@ -22,18 +22,17 @@ import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
 import de.unistuttgart.ims.drama.core.ml.gender.ClearTkGenderAnnotator;
 import de.unistuttgart.ims.uimautil.SetCollectionId;
 import de.unistuttgart.quadrama.core.D;
-import de.unistuttgart.quadrama.core.SD;
-import de.unistuttgart.quadrama.core.SP;
 import de.unistuttgart.quadrama.core.FigureDetailsAnnotator;
 import de.unistuttgart.quadrama.core.FigureMentionDetection;
 import de.unistuttgart.quadrama.core.FigureReferenceAnnotator;
 import de.unistuttgart.quadrama.core.ReadDlinaMetadata;
+import de.unistuttgart.quadrama.core.SD;
 import de.unistuttgart.quadrama.core.SceneActAnnotator;
 import de.unistuttgart.quadrama.core.SetReferenceDate;
 import de.unistuttgart.quadrama.core.SpeakerIdentifier;
 import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
-import de.unistuttgart.quadrama.io.core.ExportAsCSV;
 import de.unistuttgart.quadrama.io.core.ExportAsCONLL;
+import de.unistuttgart.quadrama.io.core.ExportAsCSV;
 import de.unistuttgart.quadrama.io.tei.CoreTeiReader;
 import de.unistuttgart.quadrama.io.tei.GerDraCorReader;
 import de.unistuttgart.quadrama.io.tei.MapFiguresToCastFigures;
@@ -60,7 +59,7 @@ public class TEI2XMI {
 		// Tokenize Stage Directions
 		builder.add(SD.getWrappedSegmenterDescription(BreakIteratorSegmenter.class));
 		// Tokenize Speaker Tags
-		//builder.add(SP.getWrappedSegmenterDescription(BreakIteratorSegmenter.class));
+		// builder.add(SP.getWrappedSegmenterDescription(BreakIteratorSegmenter.class));
 		if (options.getCorpus() == Corpus.TURM) {
 			builder.add(createEngineDescription(SceneActAnnotator.class));
 		}
@@ -129,6 +128,8 @@ public class TEI2XMI {
 					options.getCSVOutput(), ExportAsCSV.PARAM_CSV_VARIANT_NAME, "Characters"));
 			builder.add(createEngineDescription(ExportAsCSV.class, ExportAsCSV.PARAM_TARGET_LOCATION,
 					options.getCSVOutput(), ExportAsCSV.PARAM_CSV_VARIANT_NAME, "Entities"));
+			builder.add(createEngineDescription(ExportAsCSV.class, ExportAsCSV.PARAM_TARGET_LOCATION,
+					options.getCSVOutput(), ExportAsCSV.PARAM_CSV_VARIANT_NAME, "Mentions"));
 		}
 		if (options.getCONLLOutput() != null) {
 			builder.add(createEngineDescription(ExportAsCONLL.class, ExportAsCONLL.PARAM_TARGET_LOCATION,
@@ -199,7 +200,7 @@ public class TEI2XMI {
 		 */
 		@Option(longName = "csvOutput", defaultToNull = true)
 		File getCSVOutput();
-		
+
 		/**
 		 * Storage of the CoNLL files. Should be a directory.
 		 * 

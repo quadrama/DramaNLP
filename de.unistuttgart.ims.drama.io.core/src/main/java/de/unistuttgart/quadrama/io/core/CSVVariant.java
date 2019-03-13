@@ -49,6 +49,10 @@ public enum CSVVariant {
 	 */
 	Characters,
 	/**
+	 * A list of mentions to characters
+	 */
+	Mentions,
+	/**
 	 * List of all entity IDs and mapping to their surface representation
 	 */
 	Entities;
@@ -81,6 +85,9 @@ public enum CSVVariant {
 		case Entities:
 			p.printRecord("corpus", "drama", "Entity.surface", "Entity.id", "Entity.group_members");
 			break;
+		case Mentions:
+			p.printRecord("corpus", "drama", "utteranceBegin", "utteranceEnd", "utteranceSpeakerId", "mentionBegin",
+					"mentionEnd", "mentionSurface", "entityId");
 		default:
 			p.printRecord("corpus", "drama", "begin", "end", "Speaker.figure_surface", "Speaker.figure_id",
 					"Token.surface", "Token.pos", "Token.lemma", "length", "Mentioned.figure_surface",
@@ -102,6 +109,9 @@ public enum CSVVariant {
 		case StageDirections:
 			this.convertStageDirections(jcas, p);
 			break;
+		case Mentions:
+			this.convertMentions(jcas, p);
+			break;
 		case Entities:
 			this.convertEntities(jcas, p);
 			break;
@@ -109,6 +119,28 @@ public enum CSVVariant {
 			this.convertUtterancesWithTokens(jcas, p);
 		}
 
+	}
+
+	private void convertMentions(JCas jcas, CSVPrinter p) throws IOException {
+		Map<Mention, Collection<Utterance>> mention2utterances = JCasUtil.indexCovering(jcas, Mention.class,
+				Utterance.class);
+
+		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
+		for (Mention mention : JCasUtil.select(jcas, Mention.class)) {
+
+			Utterance utterance = mention2utterances.get(mention).iterator().next();
+			for (Speaker speaker : DramaUtil.getSpeakers(utterance)) {
+				p.print(drama.getCollectionId());
+				p.print(drama.getDocumentId());
+				p.print(utterance.getBegin());
+				p.print(utterance.getEnd());
+				p.print(speaker.getCastFigure(0).getXmlId(0));
+				p.print(mention.getBegin());
+				p.print(mention.getEnd());
+				p.print(mention.getCoveredText());
+				p.print(mention.getEntity().getXmlId(0));
+			}
+		}
 	}
 
 	private void convertCharacters(JCas jcas, CSVPrinter p) throws IOException {
