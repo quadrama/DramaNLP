@@ -154,7 +154,10 @@ public enum CSVVariant {
 					p.print(mention.getBegin());
 					p.print(mention.getEnd());
 					p.print(mention.getCoveredText());
-					p.print(mention.getEntity().getXmlId(0));
+					if (mention.getEntity() == null)
+						p.print(null);
+					else
+						p.print(mention.getEntity().getXmlId(0));
 				}
 			}
 		}
