@@ -160,6 +160,7 @@ public enum CSVVariant {
 						p.print(mention.getEntity().getXmlId(0));
 				}
 			}
+			p.println();
 		}
 	}
 
