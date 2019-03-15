@@ -88,6 +88,7 @@ public enum CSVVariant {
 		case Mentions:
 			p.printRecord("corpus", "drama", "utteranceBegin", "utteranceEnd", "utteranceSpeakerId", "mentionBegin",
 					"mentionEnd", "mentionSurface", "entityId");
+			break;
 		default:
 			p.printRecord("corpus", "drama", "begin", "end", "Speaker.figure_surface", "Speaker.figure_id",
 					"Token.surface", "Token.pos", "Token.lemma", "length", "Mentioned.figure_surface",
