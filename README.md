@@ -1,5 +1,7 @@
+[![release](https://img.shields.io/badge/release-2.1.0-blue.svg)](https://github.com/quadrama/DramaAnalysis/releases/tag/v2.1.0)
 [![Build Status](https://travis-ci.org/quadrama/DramaNLP.svg?branch=master)](https://travis-ci.org/quadrama/DramaNLP)
 [![DOI](https://www.zenodo.org/badge/57984264.svg)](https://www.zenodo.org/badge/latestdoi/57984264)
+[![license](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://github.com/quadrama/DramaNLP/blob/master/LICENSE)
 
 # DramaNLP
 This repository contains a number of UIMA components to process dramatic texts, as well as an executable pipeline. We follow general design ideas implemented in [DKPro Core](https://dkpro.github.io/dkpro-core/). The full pipeline reads in files in several TEI/XML dialects (see below), and applies the most important NLP tools on them, while keeping the structural annotation of the plays intact (and, if necessary, processing different text layers separately).
