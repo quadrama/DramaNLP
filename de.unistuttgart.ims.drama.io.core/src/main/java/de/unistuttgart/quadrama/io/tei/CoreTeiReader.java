@@ -23,6 +23,7 @@ import org.jsoup.select.Elements;
 
 import de.unistuttgart.ims.drama.api.Act;
 import de.unistuttgart.ims.drama.api.ActHeading;
+import de.unistuttgart.ims.drama.api.Author;
 import de.unistuttgart.ims.drama.api.CastFigure;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Figure;
@@ -31,6 +32,7 @@ import de.unistuttgart.ims.drama.api.SceneHeading;
 import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.StageDirection;
+import de.unistuttgart.ims.drama.api.Translator;
 import de.unistuttgart.ims.drama.api.Utterance;
 import de.unistuttgart.ims.uima.io.xml.ArrayUtil;
 import de.unistuttgart.ims.uima.io.xml.GenericXmlReader;
@@ -58,11 +60,38 @@ public class CoreTeiReader extends AbstractDramaUrlReader {
 		gxr.setPreserveWhitespace(false);
 
 		gxr.addGlobalRule("fileDesc > publicationStmt > idno[type=quadramaX]", (d, e) -> d.setDocumentId(e.text()));
+		gxr.addGlobalRule("fileDesc > titleStmt > title", (d, e) -> d.setDocumentTitle(e.text()));
+		gxr.addGlobalRule("fileDesc > titleStmt > author", (d, e) -> {
+			Author a = new Author(jcas);
+			a.setName(e.text());
+			if (e.hasAttr("key") && e.attr("key").startsWith("pnd")) {
+				a.setPnd(e.attr("key").substring(3));
+			}
+			a.addToIndexes();
+		});
+		gxr.addGlobalRule("fileDesc > titleStmt > editor[role=translator]", (d, e) -> {
+			Translator a = new Translator(jcas);
+			a.setName(e.text());
+			if (e.hasAttr("key") && e.attr("key").startsWith("pnd")) {
+				a.setPnd(e.attr("key").substring(3));
+			}
+			a.addToIndexes();
+		});
+
+		if (getLanguage().equals(LANGUAGE_UNSPECIFIED))
+			gxr.addGlobalRule("profileDesc > langUsage > language",
+					(d, e) -> jcas.setDocumentLanguage(e.attr("ident")));
 
 		gxr.addGlobalRule("profileDesc > particDesc > listPerson > person", CastFigure.class, (cf, e) -> {
-			cf.setNames(ArrayUtil.toStringArray(jcas, e.text()));
 			cf.setXmlId(ArrayUtil.toStringArray(jcas, e.attr("xml:id")));
-			cf.setDisplayName(cf.getNames(0));
+			if (e.hasText())
+				cf.setNames(ArrayUtil.toStringArray(jcas, e.text()));
+			else
+				cf.setNames(ArrayUtil.toStringArray(jcas));
+			if (cf.getNames().size() > 0)
+				cf.setDisplayName(cf.getNames(0));
+			else
+				cf.setDisplayName(cf.getXmlId(0));
 		});
 
 		// segmentation

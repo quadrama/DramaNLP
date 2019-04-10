@@ -46,6 +46,7 @@ import nu.xom.Elements;
 @TypeCapability(inputs = { "de.unistuttgart.ims.drama.api.Drama" }, outputs = {
 		"de.unistuttgart.ims.drama.api.DateWritten", "de.unistuttgart.ims.drama.api.DatePremiere",
 		"de.unistuttgart.ims.drama.api.DatePrint" })
+@Deprecated
 public class ReadDlinaMetadata extends JCasAnnotator_ImplBase {
 
 	public static final String PARAM_DLINA_DIRECTORY = "Dlina Directory";

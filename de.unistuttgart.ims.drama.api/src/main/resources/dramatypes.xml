@@ -34,7 +34,6 @@
 					<description/>
 					<rangeTypeName>uima.cas.FSArray</rangeTypeName>
 					<elementType>de.unistuttgart.ims.drama.api.CastFigure</elementType>
-					<multipleReferencesAllowed>false</multipleReferencesAllowed>
 				</featureDescription>
 			</features>
 		</typeDescription>
@@ -76,6 +75,11 @@
 			<name>de.unistuttgart.ims.drama.api.StageDirection</name>
 			<description/>
 			<supertypeName>uima.tcas.Annotation</supertypeName>
+			<features>
+				<featureDescription>
+					<name>CastFigure</name>
+					<description></description>
+					<rangeTypeName>de.unistuttgart.ims.drama.api.DiscourseEntity</rangeTypeName></featureDescription></features>
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.Speech</name>
@@ -122,34 +126,34 @@
 					<description/>
 					<rangeTypeName>uima.cas.FSArray</rangeTypeName>
 					<elementType>de.unistuttgart.ims.drama.api.CastFigure</elementType>
-					<multipleReferencesAllowed>false</multipleReferencesAllowed>
+					<multipleReferencesAllowed>true</multipleReferencesAllowed>
 				</featureDescription>
-			<featureDescription>
-          <name>DatePrinted</name>
-          <description/>
-          <rangeTypeName>uima.cas.Integer</rangeTypeName>
-        </featureDescription>
-        <featureDescription>
-          <name>DateWritten</name>
-          <description/>
-          <rangeTypeName>uima.cas.Integer</rangeTypeName>
-        </featureDescription>
-        <featureDescription>
-          <name>DatePremiere</name>
-          <description/>
-          <rangeTypeName>uima.cas.Integer</rangeTypeName>
-        </featureDescription>
-      <featureDescription>
-          <name>Date</name>
-          <description/>
-          <rangeTypeName>uima.cas.Integer</rangeTypeName>
-        </featureDescription>
-      <featureDescription>
-          <name>DateTranslation</name>
-          <description/>
-          <rangeTypeName>uima.cas.Integer</rangeTypeName>
-        </featureDescription>
-      </features>
+				<featureDescription>
+					<name>DatePrinted</name>
+					<description/>
+					<rangeTypeName>uima.cas.Integer</rangeTypeName>
+				</featureDescription>
+				<featureDescription>
+					<name>DateWritten</name>
+					<description/>
+					<rangeTypeName>uima.cas.Integer</rangeTypeName>
+				</featureDescription>
+				<featureDescription>
+					<name>DatePremiere</name>
+					<description/>
+					<rangeTypeName>uima.cas.Integer</rangeTypeName>
+				</featureDescription>
+				<featureDescription>
+					<name>Date</name>
+					<description/>
+					<rangeTypeName>uima.cas.Integer</rangeTypeName>
+				</featureDescription>
+				<featureDescription>
+					<name>DateTranslation</name>
+					<description/>
+					<rangeTypeName>uima.cas.Integer</rangeTypeName>
+				</featureDescription>
+			</features>
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.SpeechVerse</name>
@@ -220,15 +224,11 @@
 			</features>
 		</typeDescription>
 		<typeDescription>
-			<name>de.unistuttgart.ims.drama.api.FigureMention</name>
-			<description/>
-			<supertypeName>de.unistuttgart.ims.drama.api.Mention</supertypeName>
-			</typeDescription>
-		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.SpeakerFigure</name>
 			<description>@Deprecated
 
-This type can be used to add figures on the fly, that are not declared in the dramatis personae.</description>
+				This type can be used to add figures on the fly, that are not declared
+				in the dramatis personae.</description>
 			<supertypeName>de.unistuttgart.ims.drama.api.Figure</supertypeName>
 		</typeDescription>
 		<typeDescription>
@@ -368,59 +368,73 @@ This type can be used to add figures on the fly, that are not declared in the dr
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.CastFigure</name>
-			<description/>
+			<description></description>
 			<supertypeName>de.unistuttgart.ims.drama.api.DiscourseEntity</supertypeName>
 			<features>
-				<featureDescription>
-					<name>XmlId</name>
-					<description/>
-					<rangeTypeName>uima.cas.StringArray</rangeTypeName>
-				<multipleReferencesAllowed>false</multipleReferencesAllowed>
-        </featureDescription>
 				<featureDescription>
 					<name>Names</name>
 					<description/>
 					<rangeTypeName>uima.cas.StringArray</rangeTypeName>
+				<multipleReferencesAllowed>true</multipleReferencesAllowed>
+        </featureDescription>
+				<featureDescription>
+					<name>Gender</name>
+					<description/>
+					<rangeTypeName>uima.cas.String</rangeTypeName>
+				</featureDescription>
+				<featureDescription>
+					<name>Age</name>
+					<description/>
+					<rangeTypeName>uima.cas.String</rangeTypeName>
+				</featureDescription>
+			</features>
+		</typeDescription>
+		<typeDescription>
+			<name>de.unistuttgart.ims.drama.api.DiscourseEntity</name>
+			<description/>
+			<supertypeName>uima.cas.TOP</supertypeName>
+			<features>
+				<featureDescription>
+					<name>DisplayName</name>
+					<description>String representation of the entity</description>
+					<rangeTypeName>uima.cas.String</rangeTypeName>
+				</featureDescription>
+				<featureDescription>
+					<name>Id</name>
+					<description>Internal and numerical Id</description>
+					<rangeTypeName>uima.cas.Integer</rangeTypeName></featureDescription>
+				<featureDescription>
+					<name>XmlId</name><description>The original xml id</description>
+					<rangeTypeName>uima.cas.StringArray</rangeTypeName>
+					<multipleReferencesAllowed>true</multipleReferencesAllowed>
+				</featureDescription>
+				<featureDescription>
+					<name>EntityGroup</name>
+					<description></description>
+					<rangeTypeName>uima.cas.FSArray</rangeTypeName>
+					<elementType>de.unistuttgart.ims.drama.api.DiscourseEntity</elementType></featureDescription>
+			</features>
+		</typeDescription>
+		<typeDescription>
+			<name>de.unistuttgart.ims.drama.api.Mention</name>
+			<description>Representation of a concrete referential mention</description>
+			<supertypeName>uima.tcas.Annotation</supertypeName>
+			<features>
+				<featureDescription>
+					<name>Entity</name>
+					<description>Each mention points to exactly one entity</description>
+					<rangeTypeName>de.unistuttgart.ims.drama.api.DiscourseEntity</rangeTypeName>
+					<multipleReferencesAllowed>true</multipleReferencesAllowed>
 				</featureDescription>
 			<featureDescription>
-          <name>Gender</name>
-          <description/>
-          <rangeTypeName>uima.cas.String</rangeTypeName>
-        </featureDescription>
-      <featureDescription>
-          <name>Age</name>
-          <description/>
-          <rangeTypeName>uima.cas.String</rangeTypeName>
+          <name>SurfaceString</name>
+          <description>The surface string of the mention in the text</description>
+          <rangeTypeName>uima.cas.StringArray</rangeTypeName>
+        <multipleReferencesAllowed>true</multipleReferencesAllowed>
         </featureDescription>
       </features>
 		</typeDescription>
-	<typeDescription>
-      <name>de.unistuttgart.ims.drama.api.DiscourseEntity</name>
-      <description/>
-      <supertypeName>uima.cas.TOP</supertypeName>
-      <features>
-        <featureDescription>
-          <name>DisplayName</name>
-          <description/>
-          <rangeTypeName>uima.cas.String</rangeTypeName>
-        </featureDescription>
-      </features>
-    </typeDescription>
-    <typeDescription>
-      <name>de.unistuttgart.ims.drama.api.Mention</name>
-      <description/>
-      <supertypeName>uima.tcas.Annotation</supertypeName>
-      <features>
-        <featureDescription>
-          <name>Entity</name>
-          <description/>
-          <rangeTypeName>uima.cas.FSArray</rangeTypeName>
-        <elementType>de.unistuttgart.ims.drama.api.DiscourseEntity</elementType>
-          <multipleReferencesAllowed>false</multipleReferencesAllowed>
-        </featureDescription>
-      </features>
-    </typeDescription>
-    <typeDescription>
+		<typeDescription>
 			<name>de.unistuttgart.quadrama.io.core.type.HTMLAnnotation</name>
 			<description/>
 			<supertypeName>de.unistuttgart.quadrama.io.core.type.XMLElement</supertypeName>
@@ -457,23 +471,22 @@ This type can be used to add figures on the fly, that are not declared in the dr
 				</featureDescription>
 			</features>
 		</typeDescription>
-  <typeDescription>
-      <name>de.unistuttgart.quadrama.io.core.type.XMLParsingDescription</name>
-      <description/>
-      <supertypeName>uima.cas.TOP</supertypeName>
-      <features>
-        <featureDescription>
-          <name>Encoding</name>
-          <description/>
-          <rangeTypeName>uima.cas.String</rangeTypeName>
-        </featureDescription>
-        <featureDescription>
-          <name>XmlDeclarations</name>
-          <description/>
-          <rangeTypeName>uima.cas.StringArray</rangeTypeName>
-          <multipleReferencesAllowed>false</multipleReferencesAllowed>
-        </featureDescription>
-      </features>
-    </typeDescription>
-  </types>
+		<typeDescription>
+			<name>de.unistuttgart.quadrama.io.core.type.XMLParsingDescription</name>
+			<description/>
+			<supertypeName>uima.cas.TOP</supertypeName>
+			<features>
+				<featureDescription>
+					<name>Encoding</name>
+					<description/>
+					<rangeTypeName>uima.cas.String</rangeTypeName>
+				</featureDescription>
+				<featureDescription>
+					<name>XmlDeclarations</name>
+					<description/>
+					<rangeTypeName>uima.cas.StringArray</rangeTypeName>
+				</featureDescription>
+			</features>
+		</typeDescription>
+	</types>
 </typeSystemDescription>

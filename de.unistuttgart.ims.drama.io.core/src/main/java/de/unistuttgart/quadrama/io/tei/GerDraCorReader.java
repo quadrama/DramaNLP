@@ -4,10 +4,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Random;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.uima.cas.FeatureStructure;
 import org.apache.uima.collection.CollectionException;
@@ -56,7 +60,11 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 	boolean teiCompatibility = false;
 
 	@Override
-	public void getNext(final JCas jcas, InputStream file, Drama drama) throws IOException, CollectionException {
+	public void getNext(final JCas jcas, InputStream file, Drama drama)
+			throws IOException, CollectionException, ArrayIndexOutOfBoundsException {
+
+		Map<String, Integer> entityIds = new HashMap<String, Integer>();
+		entityIds.put("__dummy__", -1);
 
 		GenericXmlReader<Drama> gxr = new GenericXmlReader<Drama>(Drama.class);
 		gxr.setTextRootSelector(teiCompatibility ? null : "TEI > text");
@@ -87,13 +95,13 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 		});
 
 		// date printed
-		gxr.addGlobalRule("date[type=print][when]", (d, e) -> d.setDatePrinted(Integer.valueOf(e.attr("when"))));
+		gxr.addGlobalRule("date[type=print][when]", (d, e) -> d.setDatePrinted(getYear(e.attr("when"))));
 
 		// date written
-		gxr.addGlobalRule("date[type=written][when]", (d, e) -> d.setDateWritten(Integer.valueOf(e.attr("when"))));
+		gxr.addGlobalRule("date[type=written][when]", (d, e) -> d.setDateWritten(getYear(e.attr("when"))));
 
 		// date premiere
-		gxr.addGlobalRule("date[type=premiere][when]", (d, e) -> d.setDatePremiere(Integer.valueOf(e.attr("when"))));
+		gxr.addGlobalRule("date[type=premiere][when]", (d, e) -> d.setDatePremiere(getYear(e.attr("when"))));
 
 		gxr.addRule("front", FrontMatter.class);
 		gxr.addRule("body", MainMatter.class);
@@ -113,8 +121,8 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 		gxr.addRule("div[type=Dramatis_Personae]", DramatisPersonae.class);
 		Map<String, String> xmlAlias = new HashMap<String, String>();
 		gxr.addGlobalRule("particDesc > listPerson > person", CastFigure.class, (cf, e) -> {
-			List<String> nameList = new LinkedList<String>();
-			List<String> xmlIdList = new LinkedList<String>();
+			Set<String> nameList = new HashSet<String>();
+			Set<String> xmlIdList = new HashSet<String>();
 
 			if (e.hasAttr("xml:id"))
 				xmlIdList.add(e.attr("xml:id"));
@@ -139,12 +147,18 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 			}
 			cf.setXmlId(ArrayUtil.toStringArray(jcas, xmlIdList));
 			cf.setNames(ArrayUtil.toStringArray(jcas, nameList));
-			cf.setDisplayName(cf.getNames(0));
-
+			cf.setDisplayName(e.attr("xml:id"));
+			if (!entityIds.containsKey(ArrayUtil.toStringArray(jcas, xmlIdList).get(0))) {
+				entityIds.put(ArrayUtil.toStringArray(jcas, xmlIdList).get(0), Collections.max(entityIds.values()) + 1);
+			}
+			cf.setId(entityIds.get(ArrayUtil.toStringArray(jcas, xmlIdList).get(0)));
 		});
 
 		gxr.addRule("speaker", Speaker.class);
 		gxr.addRule("stage", StageDirection.class);
+		gxr.addRule("l > hi", StageDirection.class);
+		gxr.addRule("p > hi", StageDirection.class);
+		gxr.addRule("ab > hi", StageDirection.class);
 		gxr.addRule("l", Speech.class);
 		gxr.addRule("p", Speech.class);
 		gxr.addRule("ab", Speech.class);
@@ -167,51 +181,164 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 			}
 		});
 
-		gxr.addRule("text *[xml:id]", DiscourseEntity.class, (de, e) -> de.setDisplayName(e.attr("xml:id")));
-
-		gxr.addRule("text *[xml:id]", Mention.class, (m, e) -> {
-			String id = e.attr("xml:id");
-			FSArray arr = new FSArray(jcas, 1);
-			arr.addToIndexes();
-			m.setEntity(arr);
-			m.setEntity(0, (DiscourseEntity) gxr.getAnnotation(id).getValue());
+		gxr.addRule("text *[xml:id]", DiscourseEntity.class, (de, e) -> {
+			de.setDisplayName(e.attr("xml:id"));
+			String[] splitted = null;
+			splitted = e.attr("xml:id").split(" ");
+			de.setXmlId(ArrayUtil.toStringArray(jcas, splitted));
+			for (int i = 0; i < splitted.length; i++) {
+				if (!entityIds.containsKey(splitted[i])) {
+					entityIds.put(splitted[i], Collections.max(entityIds.values()) + 1);
+				}
+				de.setId(entityIds.get(splitted[i]));
+			}
 		});
 
 		Map<String, DiscourseEntity> fallbackEntities = new HashMap<String, DiscourseEntity>();
-		// mentions
-		gxr.addRule("text *[ref]", Mention.class, (cl, e) -> {
-			String[] splitted = e.attr("ref").split(" ");
-			FSArray arr = new FSArray(jcas, splitted.length);
-			for (int i = 0; i < splitted.length; i++) {
-				String xmlId = splitted[i].substring(1);
-
+		gxr.addRule("rs", Mention.class, (m, e) -> {
+			if (e.hasAttr("ref") || e.hasAttr("xml:id")) {
+				String[] splitted = null;
+				if (e.hasAttr("ref")) {
+					splitted = e.attr("ref").split(" ");
+					String[] temp = new String[splitted.length];
+					for (int i = 0; i < splitted.length; i++) {
+						temp[i] = splitted[i].substring(1);
+					}
+					splitted = temp;
+				} else if (e.hasAttr("xml:id")) {
+					splitted = e.attr("xml:id").split(" ");
+				}
+				if (e.hasAttr("func")) {
+					if (e.attr("func").equals("and")) {
+						// default
+					} else if (e.attr("func").equals("or")) {
+						splitted = getRandomEntity(splitted);
+					} else {
+						// Should be handled by XMLSchema
+					}
+				}
+				// gather names
+				Set<String> nameList = new HashSet<String>();
+				for (TextNode tn : e.textNodes()) {
+					if (tn.text().trim().length() > 0)
+						nameList.add(tn.text().trim());
+				}
 				DiscourseEntity de = null;
-				if (gxr.exists(xmlId)) {
-					FeatureStructure fs = gxr.getAnnotation(xmlId).getValue();
-					if (fs instanceof DiscourseEntity)
-						de = (DiscourseEntity) fs;
+				if (splitted.length > 1) {
+					if (fallbackEntities.containsKey(String.join("_", splitted))) {
+						de = fallbackEntities.get(String.join("_", splitted));
+					} else {
+						de = m.getCAS().createFS(CasUtil.getType(m.getCAS(), DiscourseEntity.class));
+						de.addToIndexes();
+						String displayName = String.join("_", splitted);
+						de.setDisplayName(displayName);
+						de.setXmlId(ArrayUtil.toStringArray(jcas, splitted));
+						if (!entityIds.containsKey(displayName)) {
+							entityIds.put(displayName, Collections.max(entityIds.values()) + 1);
+						}
+						de.setId(entityIds.get(displayName));
+						FSArray arr = new FSArray(jcas, splitted.length);
+						DiscourseEntity deMember = null;
+						for (int i = 0; i < splitted.length; i++) {
+							if (gxr.exists(splitted[i])) {
+								FeatureStructure fs = gxr.getAnnotation(splitted[i]).getValue();
+								if (fs instanceof DiscourseEntity) {
+									deMember = (DiscourseEntity) fs;
+									arr.set(i, deMember);
+								}
+							} else {
+								deMember = m.getCAS().createFS(CasUtil.getType(m.getCAS(), DiscourseEntity.class));
+								deMember.addToIndexes();
+								String displayNameMember = splitted[i];
+								deMember.setDisplayName(displayNameMember);
+								deMember.setXmlId(ArrayUtil.toStringArray(jcas, splitted[i]));
+								if (!entityIds.containsKey(displayNameMember)) {
+									entityIds.put(displayNameMember, Collections.max(entityIds.values()) + 1);
+								}
+								deMember.setId(entityIds.get(displayNameMember));
+								arr.set(i, deMember);
+							}
+						}
+						de.setEntityGroup(arr);
+						fallbackEntities.put(displayName, de);
+					}
+					m.setSurfaceString(ArrayUtil.toStringArray(jcas, m.getCoveredText().split(" ")));
+					m.setEntity(de);
+				} else {
+					if (gxr.exists(splitted[0])) {
+						FeatureStructure fs = gxr.getAnnotation(splitted[0]).getValue();
+						if (fs instanceof DiscourseEntity)
+							de = (DiscourseEntity) fs;
+					}
+					if (fallbackEntities.containsKey(splitted[0]))
+						de = fallbackEntities.get(splitted[0]);
+					if (de == null) {
+						de = m.getCAS().createFS(CasUtil.getType(m.getCAS(), DiscourseEntity.class));
+						de.addToIndexes();
+						de.setDisplayName(splitted[0]);
+						de.setXmlId(ArrayUtil.toStringArray(jcas, splitted));
+						if (!entityIds.containsKey(splitted[0])) {
+							entityIds.put(splitted[0], Collections.max(entityIds.values()) + 1);
+						}
+						de.setId(entityIds.get(splitted[0]));
+						fallbackEntities.put(splitted[0], de);
+					}
+					m.setSurfaceString(ArrayUtil.toStringArray(jcas, m.getCoveredText().split(" ")));
+					m.setEntity(de);
 				}
-				if (fallbackEntities.containsKey(xmlId))
-					de = fallbackEntities.get(xmlId);
-				if (de == null) {
-					de = cl.getCAS().createFS(CasUtil.getType(cl.getCAS(), DiscourseEntity.class));
-					de.addToIndexes();
-					de.setDisplayName(cl.getCoveredText());
-					fallbackEntities.put(xmlId, de);
-				}
-				arr.set(i, de);
 			}
-			cl.setEntity(arr);
 		});
 
 		gxr.read(jcas, file);
 
-		AnnotationUtil.trim(new ArrayList<Figure>(JCasUtil.select(jcas, Figure.class)));
-		AnnotationUtil.trim(new ArrayList<Speech>(JCasUtil.select(jcas, Speech.class)));
-		AnnotationUtil.trim(new ArrayList<Utterance>(JCasUtil.select(jcas, Utterance.class)));
-		AnnotationUtil.trim(new ArrayList<Scene>(JCasUtil.select(jcas, Scene.class)));
-		AnnotationUtil.trim(new ArrayList<Act>(JCasUtil.select(jcas, Act.class)));
-		AnnotationUtil.trim(new ArrayList<StageDirection>(JCasUtil.select(jcas, StageDirection.class)));
+		try {
+			AnnotationUtil.trim(new ArrayList<Figure>(JCasUtil.select(jcas, Figure.class)));
+		} catch (ArrayIndexOutOfBoundsException e) {
+		}
+		try {
+			AnnotationUtil.trim(new ArrayList<Speech>(JCasUtil.select(jcas, Speech.class)));
+		} catch (ArrayIndexOutOfBoundsException e) {
+		}
+		try {
+			AnnotationUtil.trim(new ArrayList<Speaker>(JCasUtil.select(jcas, Speaker.class)));
+		} catch (ArrayIndexOutOfBoundsException e) {
+		}
+		try {
+			AnnotationUtil.trim(new ArrayList<Utterance>(JCasUtil.select(jcas, Utterance.class)));
+		} catch (ArrayIndexOutOfBoundsException e) {
+		}
+		try {
+			AnnotationUtil.trim(new ArrayList<Scene>(JCasUtil.select(jcas, Scene.class)));
+		} catch (ArrayIndexOutOfBoundsException e) {
+		}
+		try {
+			AnnotationUtil.trim(new ArrayList<Act>(JCasUtil.select(jcas, Act.class)));
+		} catch (ArrayIndexOutOfBoundsException e) {
+		}
+		try {
+			AnnotationUtil.trim(new ArrayList<StageDirection>(JCasUtil.select(jcas, StageDirection.class)));
+		} catch (ArrayIndexOutOfBoundsException e) {
+		}
+		try {
+			AnnotationUtil.trim(new ArrayList<Mention>(JCasUtil.select(jcas, Mention.class)));
+		} catch (ArrayIndexOutOfBoundsException e) {
+		}
+	}
 
+	int getYear(String s) {
+		Pattern p = Pattern.compile("\\d\\d\\d\\d");
+		Matcher m = p.matcher(s);
+		if (m.find()) {
+			return Integer.valueOf(m.group());
+		} else
+			return 0;
+	}
+
+	public static String[] getRandomEntity(String[] array) {
+		int seed = 42;
+		String[] newArray = new String[1];
+		int rnd = new Random(seed).nextInt(array.length);
+		newArray[0] = array[rnd];
+		return newArray;
 	}
 }

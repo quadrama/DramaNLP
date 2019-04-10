@@ -10,7 +10,6 @@ import org.apache.uima.fit.pipeline.JCasIterator;
 import org.apache.uima.fit.pipeline.SimplePipeline;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
-import org.junit.Test;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiReader;
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
@@ -21,18 +20,13 @@ import de.unistuttgart.ims.drama.api.Speaker;
 @Deprecated
 public class TestSpeakerIdentifier {
 
-	@Test
 	public void evaluateSpeakerAssignments() throws Exception {
-		JCasIterator iter = SimplePipeline
-				.iteratePipeline(
-						CollectionReaderFactory.createReaderDescription(XmiReader.class,
-								XmiReader.PARAM_SOURCE_LOCATION, "src/test/resources/SpeakerIdentifier/tx4z.0.xmi",
-								XmiReader.PARAM_LENIENT, true),
-						createEngineDescription(FigureReferenceAnnotator.class),
-						createEngineDescription(SpeakerIdentifier.class, SpeakerIdentifier.PARAM_CREATE_SPEAKER_FIGURE,
-								false),
-						createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION, "target/doc"))
-				.iterator();
+		JCasIterator iter = SimplePipeline.iteratePipeline(
+				CollectionReaderFactory.createReaderDescription(XmiReader.class, XmiReader.PARAM_SOURCE_LOCATION,
+						"src/test/resources/SpeakerIdentifier/tx4z.0.xmi", XmiReader.PARAM_LENIENT, true),
+				createEngineDescription(FigureReferenceAnnotator.class),
+				createEngineDescription(SpeakerIdentifier.class, SpeakerIdentifier.PARAM_CREATE_SPEAKER_FIGURE, false),
+				createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION, "target/doc")).iterator();
 		StringBuilder b = new StringBuilder();
 		CSVPrinter writer = new CSVPrinter(b, CSVFormat.TDF);
 		SummaryStatistics types = new SummaryStatistics();

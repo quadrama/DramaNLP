@@ -7,16 +7,10 @@ import java.io.IOException;
 
 import org.apache.uima.UIMAException;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
-import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
-import org.apache.uima.cas.impl.XmiCasDeserializer;
 import org.apache.uima.fit.factory.AnalysisEngineFactory;
-import org.apache.uima.fit.factory.JCasFactory;
-import org.apache.uima.fit.factory.TypeSystemDescriptionFactory;
 import org.apache.uima.fit.pipeline.SimplePipeline;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
-import org.apache.uima.resource.ResourceInitializationException;
-import org.apache.uima.resource.metadata.TypeSystemDescription;
 import org.junit.Before;
 import org.junit.Test;
 import org.xml.sax.SAXException;
@@ -25,24 +19,22 @@ import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.NN;
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS;
 import de.tudarmstadt.ukp.dkpro.core.languagetool.LanguageToolSegmenter;
 import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordPosTagger;
+import de.unistuttgart.ims.drama.util.TestUtil;
 
 public class TestDramaSpeechPosTagging {
-	JCas jcas;
 
 	AnalysisEngineDescription desc;
 
 	@Before
 	public void setUp() throws UIMAException, SAXException, IOException {
-
-		TypeSystemDescription tsd = TypeSystemDescriptionFactory.createTypeSystemDescription();
-		jcas = JCasFactory.createJCas(tsd);
-		XmiCasDeserializer.deserialize(getClass().getResourceAsStream("/rfxf.0.xmi"), jcas.getCas(), true);
-		jcas.setDocumentLanguage("de");
 		desc = D.getWrappedSegmenterDescription(LanguageToolSegmenter.class);
 	}
 
 	@Test
-	public void testSegmentation() throws ResourceInitializationException, AnalysisEngineProcessException {
+	public void testSegmentation() throws Exception {
+
+		JCas jcas = TestUtil.getJCas("/level-1/rfxf.0.xmi");
+		jcas.setDocumentLanguage("de");
 
 		SimplePipeline.runPipeline(jcas, desc, AnalysisEngineFactory.createEngineDescription(StanfordPosTagger.class));
 
