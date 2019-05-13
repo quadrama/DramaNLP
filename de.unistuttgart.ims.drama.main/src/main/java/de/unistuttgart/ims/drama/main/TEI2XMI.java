@@ -134,6 +134,8 @@ public class TEI2XMI {
 		if (options.getCONLLOutput() != null) {
 			builder.add(createEngineDescription(ExportAsCONLL.class, ExportAsCONLL.PARAM_TARGET_LOCATION,
 					options.getCONLLOutput(), ExportAsCONLL.PARAM_CONLL_VARIANT_NAME, "CoNLL2012"));
+			builder.add(createEngineDescription(ExportAsCONLL.class, ExportAsCONLL.PARAM_TARGET_LOCATION,
+					options.getCONLLOutput(), ExportAsCONLL.PARAM_CONLL_VARIANT_NAME, "Dirndl"));
 		}
 		SimplePipeline.runPipeline(reader, builder.createAggregateDescription());
 

@@ -35,7 +35,11 @@ public enum CONLLVariant {
 	/**
 	 * The default format. Table contains the CoNLL2012 variant.
 	 */
-	CoNLL2012;
+	CoNLL2012,
+	/**
+	 * Dirndl format
+	 */
+	Dirndl;
 	/**
 	 * Prints a record representing the header onto p
 	 * 
@@ -46,18 +50,99 @@ public enum CONLLVariant {
 		switch (this) {
 		default:
 			Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
-			p.printRecord(
-					"#begin document (" + drama.getDocumentUri().split("/")[drama.getDocumentUri().split("/").length - 1] +
-					"." + ExportAsCONLL.conllVariantName + ".conll" + "); part 000");
+			p.printRecord("#begin document ("
+					+ drama.getDocumentUri().split("/")[drama.getDocumentUri().split("/").length - 1] + "."
+					+ ExportAsCONLL.conllVariantName + ".conll" + "); part 000");
 		}
 	}
 
 	public void convert(JCas jcas, CSVPrinter p) throws IOException {
 		switch (this) {
+		case Dirndl:
+			this.convertDirndl(jcas, p);
+			break;
 		default:
 			this.convertCONLL(jcas, p);
 		}
 
+	}
+
+	private void convertDirndl(JCas jcas, CSVPrinter p) throws IOException {
+
+		Map<Token, Collection<Mention>> mentionMap = JCasUtil.indexCovering(jcas, Token.class, Mention.class);
+		Map<Utterance, Collection<Speaker>> speakerMap = JCasUtil.indexCovered(jcas, Utterance.class, Speaker.class);
+		Map<Token, Collection<Utterance>> token2utteranceMap = JCasUtil.indexCovering(jcas, Token.class,
+				Utterance.class);
+		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
+		Set<Mention> used = new HashSet<Mention>();
+		for (Sentence sentence : JCasUtil.select(jcas, Sentence.class)) {
+			Integer tokenId = 0;
+			for (Token token : JCasUtil.selectCovered(Token.class, sentence)) {
+				Collection<Utterance> uttList = token2utteranceMap.get(token);
+				Collection<Speaker> speakerList = Collections.emptyList();
+				for (Utterance utt : uttList) {
+					speakerList = speakerMap.get(utt);
+				}
+				if (token.getCoveredText().equals(" ")) {
+					continue;
+				}
+				used.clear();
+				p.print(drama.getDocumentUri().split("/")[drama.getDocumentUri().split("/").length - 1] + "."
+						+ ExportAsCONLL.conllVariantName + ".conll");
+				p.print("000");
+				p.print(tokenId);
+				tokenId++;
+				p.print(token.getCoveredText()); // Form
+				p.print("-"); // Tag
+				p.print("*"); // CFG
+				p.print("-"); // Lemma
+				p.print("-"); // Number
+				p.print("-"); // Gender
+				if (speakerList.isEmpty()) {
+					p.print("_stage");
+				} else {
+					Speaker speaker = speakerList.iterator().next();
+					try {
+						p.print(speaker.getCastFigure(0).getXmlId(0)); // Speaker
+					} catch (NullPointerException e) {
+						p.print("-");
+					}
+				}
+				p.print("-"); // NE
+				p.print("-"); // Tobi
+				p.print("-"); // Tone Boundary
+				p.print("-"); // Nucleus
+				String printId = "-";
+				if (mentionMap.containsKey(token)) {
+					Collection<Mention> mList = mentionMap.get(token);
+					for (Mention m : mList) {
+						if (m.getEntity() == null) {
+							printId = "-";
+						} else {
+							if (!used.contains(m)) {
+								try {
+									if (printId.equals("-")) {
+										printId = createBrackets(printId, m, token);
+									} else {
+										printId = printId + "|" + createBrackets(printId, m, token);
+									}
+									used.add(m);
+								} catch (NullPointerException e) {
+									//
+								}
+							}
+						}
+					}
+				} else {
+					//
+				}
+				p.print(printId);
+				p.println();
+			}
+			p.println();
+		}
+		p.print("#end document");
+		p.println();
 	}
 
 	private void convertCONLL(JCas jcas, CSVPrinter p) throws IOException {
@@ -72,18 +157,18 @@ public enum CONLLVariant {
 					continue;
 				}
 				used.clear();
-				p.print(drama.getDocumentUri().split("/")[drama.getDocumentUri().split("/").length - 1] +
-						"." + ExportAsCONLL.conllVariantName + ".conll");
+				p.print(drama.getDocumentUri().split("/")[drama.getDocumentUri().split("/").length - 1] + "."
+						+ ExportAsCONLL.conllVariantName + ".conll");
 				p.print("000");
 				p.print(tokenId);
 				tokenId++;
-				p.print(token.getCoveredText());
-				p.print("-");
-				p.print("-");
-				p.print("-");
-				p.print("-");
-				p.print("-");
-				p.print("*");
+				p.print(token.getCoveredText()); // Form
+				p.print("-"); // Tag
+				p.print("*"); // CFG
+				p.print("-"); // Lemma
+				p.print("-"); // Num
+				p.print("-"); // Gend
+				p.print("-"); // NE
 				String printId = "-";
 				if (mentionMap.containsKey(token)) {
 					Collection<Mention> mList = mentionMap.get(token);
