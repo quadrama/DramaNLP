@@ -71,8 +71,6 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 		gxr.setPreserveWhitespace(teiCompatibility);
 
 		// title
-		// gxr.addAction("titleStmt > title:first-child", Drama.class, (d, e) ->
-		// d.setDocumentTitle(e.text()));
 
 		gxr.addGlobalRule("titleStmt > title:first-child", (d, e) -> d.setDocumentTitle(e.text()));
 
