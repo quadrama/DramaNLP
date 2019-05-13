@@ -245,12 +245,12 @@ public enum CSVVariant {
 						p.print(utterance.getEnd());
 						try {
 							p.print(speaker.getCastFigure(i).getNames(0));
-						} catch (Exception e) {
+						} catch (NullPointerException e) {
 							p.print(null);
 						}
 						try {
 							p.print(speaker.getCastFigure(i).getXmlId(0));
-						} catch (Exception e) {
+						} catch (NullPointerException e) {
 							p.print(null);
 						}
 						p.print(token.getCoveredText());
@@ -277,7 +277,7 @@ public enum CSVVariant {
 												printId = printId + "|" + createBrackets(printId, m, token);
 											}
 											used.add(m);
-										} catch (Exception e) {
+										} catch (NullPointerException e) {
 											//
 										}
 									}
@@ -316,14 +316,12 @@ public enum CSVVariant {
 							for (int i = 0; i < speaker.getCastFigure().size(); i++) {
 								try {
 									p.print(speaker.getCastFigure(i).getNames(0));
-								} catch (Exception e) {
-									e.printStackTrace();
+								} catch (NullPointerException e) {
 									p.print(null);
 								}
 								try {
 									p.print(speaker.getCastFigure(i).getXmlId(0));
-								} catch (Exception e) {
-									e.printStackTrace();
+								} catch (NullPointerException e) {
 									p.print(null);
 								}
 							}
