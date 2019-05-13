@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>de.unistuttgart.ims</groupId>
 		<artifactId>de.unistuttgart.ims.drama</artifactId>
-		<version>2.0.0</version>
+		<version>2.0.1</version>
 	</parent>
 	<artifactId>de.unistuttgart.ims.drama.main</artifactId>
 	<dependencies>
