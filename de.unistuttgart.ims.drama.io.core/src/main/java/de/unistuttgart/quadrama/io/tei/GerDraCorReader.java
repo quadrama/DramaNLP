@@ -175,6 +175,22 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 				}
 			}
 		});
+		gxr.addRule("div[type=scene] > p", Utterance.class, (u,e) -> {
+			Speaker sp = u.getCAS().createFS(CasUtil.getType(u.getCAS(), Speaker.class));
+			sp.addToIndexes();
+			sp.setBegin(u.getBegin());
+			sp.setEnd(u.getEnd());
+			sp.setCastFigure(new FSArray(jcas, 1));
+			Set<String> nameList = new HashSet<String>();
+			Set<String> xmlIdList = new HashSet<String>();
+			nameList.add("");
+			xmlIdList.add("");
+			CastFigure cf = u.getCAS().createFS(CasUtil.getType(u.getCAS(), CastFigure.class));
+			cf.setNames(ArrayUtil.toStringArray(jcas, nameList));
+			cf.setXmlId(ArrayUtil.toStringArray(jcas, xmlIdList));
+			sp.setCastFigure(0, cf);
+			u.setCastFigure(u.getCAS().createFS(CasUtil.getType(u.getCAS(), CastFigure.class)));
+		});
 
 		gxr.addRule("text *[xml:id]", DiscourseEntity.class, (de, e) -> {
 			de.setDisplayName(e.attr("xml:id"));
