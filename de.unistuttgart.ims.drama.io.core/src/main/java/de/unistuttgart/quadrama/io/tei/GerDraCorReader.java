@@ -154,9 +154,6 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 
 		gxr.addRule("speaker", Speaker.class);
 		gxr.addRule("stage", StageDirection.class);
-		gxr.addRule("l > hi", StageDirection.class);
-		gxr.addRule("p > hi", StageDirection.class);
-		gxr.addRule("ab > hi", StageDirection.class);
 		gxr.addRule("l", Speech.class);
 		gxr.addRule("p", Speech.class);
 		gxr.addRule("ab", Speech.class);
