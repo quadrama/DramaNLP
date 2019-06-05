@@ -57,9 +57,9 @@ public class ExportAsCONLL extends JCasFileWriter_ImplBase {
 
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
-		DocumentMetaData dmd = DocumentMetaData.get(jcas);
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
 		try {
+			conllVariantName = conllVariant.toString();
 			OutputStreamWriter os = new OutputStreamWriter(
 					getOutputStream(drama.getDocumentUri().split("/")[drama.getDocumentUri().split("/").length - 1],
 							"." + conllVariantName + ".conll"));

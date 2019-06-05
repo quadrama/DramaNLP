@@ -47,9 +47,14 @@ public enum CONLLVariant {
 	 * @throws IOException If an I/O error occurs
 	 */
 	public void header(JCas jcas, CSVPrinter p) throws IOException {
+		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
 		switch (this) {
+		case Dirndl:
+			p.printRecord("#begin document ("
+					+ drama.getDocumentUri().split("/")[drama.getDocumentUri().split("/").length - 1] + "."
+					+ ExportAsCONLL.conllVariantName + ".conll" + "); part 000");
+			break;
 		default:
-			Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
 			p.printRecord("#begin document ("
 					+ drama.getDocumentUri().split("/")[drama.getDocumentUri().split("/").length - 1] + "."
 					+ ExportAsCONLL.conllVariantName + ".conll" + "); part 000");
