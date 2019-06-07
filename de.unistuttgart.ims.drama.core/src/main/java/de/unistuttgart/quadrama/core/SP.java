@@ -12,7 +12,6 @@ import org.apache.uima.resource.ResourceInitializationException;
  * re-maps the views so that tokenization can be done on the speaker view
  * {@link SP#SOFA_SPEAKERS}.
  * 
- * @author Nils Reiter
  *
  */
 public class SP {

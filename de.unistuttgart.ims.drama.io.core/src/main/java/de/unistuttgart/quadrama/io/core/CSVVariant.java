@@ -21,6 +21,7 @@ import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Mention;
 import de.unistuttgart.ims.drama.api.Scene;
 import de.unistuttgart.ims.drama.api.Speaker;
+import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.StageDirection;
 import de.unistuttgart.ims.drama.api.Translator;
 import de.unistuttgart.ims.drama.api.Utterance;
@@ -59,10 +60,8 @@ public enum CSVVariant {
 	/**
 	 * Prints a record representing the header onto p
 	 * 
-	 * @param p
-	 *            The target
-	 * @throws IOException
-	 *             If an I/O error occurs
+	 * @param p The target
+	 * @throws IOException If an I/O error occurs
 	 */
 	public void header(CSVPrinter p) throws IOException {
 		switch (this) {
@@ -234,61 +233,63 @@ public enum CSVVariant {
 		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
 			for (Speaker speaker : DramaUtil.getSpeakers(utterance)) {
 				for (int i = 0; i < speaker.getCastFigure().size(); i++) {
-					for (Token token : JCasUtil.selectCovered(Token.class, utterance)) {
-						if (stageMap.containsKey(token)) {
-							continue;
-						}
-						used.clear();
-						p.print(drama.getCollectionId());
-						p.print(drama.getDocumentId());
-						p.print(utterance.getBegin());
-						p.print(utterance.getEnd());
-						try {
-							p.print(speaker.getCastFigure(i).getNames(0));
-						} catch (NullPointerException e) {
-							p.print(null);
-						}
-						try {
-							p.print(speaker.getCastFigure(i).getXmlId(0));
-						} catch (NullPointerException e) {
-							p.print(null);
-						}
-						p.print(token.getCoveredText());
-						p.print(token.getPos().getPosValue());
-						p.print(token.getLemma().getValue());
-						p.print(length);
-						String printSurface = null;
-						String printId = null;
-						if (mentionMap.containsKey(token)) {
-							Collection<Mention> mList = mentionMap.get(token);
-							for (Mention m : mList) {
-								if (m.getEntity() == null) {
-									printSurface = null;
-									printId = null;
-								} else {
-									if (!used.contains(m)) {
-										if (m.getEntity() instanceof CastFigure) {
-											printSurface = m.getEntity().getDisplayName();
-										}
-										try {
-											if (printId == null) {
-												printId = createBrackets(printId, m, token);
-											} else {
-												printId = printId + "|" + createBrackets(printId, m, token);
+					for (Speech speech : JCasUtil.selectCovered(Speech.class, utterance)) {
+						for (Token token : JCasUtil.selectCovered(Token.class, speech)) {
+							if (stageMap.containsKey(token)) {
+								continue;
+							}
+							used.clear();
+							p.print(drama.getCollectionId());
+							p.print(drama.getDocumentId());
+							p.print(utterance.getBegin());
+							p.print(utterance.getEnd());
+							try {
+								p.print(speaker.getCastFigure(i).getNames(0));
+							} catch (NullPointerException e) {
+								p.print(null);
+							}
+							try {
+								p.print(speaker.getCastFigure(i).getXmlId(0));
+							} catch (NullPointerException e) {
+								p.print(null);
+							}
+							p.print(token.getCoveredText());
+							p.print(token.getPos().getPosValue());
+							p.print(token.getLemma().getValue());
+							p.print(length);
+							String printSurface = null;
+							String printId = null;
+							if (mentionMap.containsKey(token)) {
+								Collection<Mention> mList = mentionMap.get(token);
+								for (Mention m : mList) {
+									if (m.getEntity() == null) {
+										printSurface = null;
+										printId = null;
+									} else {
+										if (!used.contains(m)) {
+											if (m.getEntity() instanceof CastFigure) {
+												printSurface = m.getEntity().getDisplayName();
 											}
-											used.add(m);
-										} catch (NullPointerException e) {
-											//
+											try {
+												if (printId == null) {
+													printId = createBrackets(printId, m, token);
+												} else {
+													printId = printId + "|" + createBrackets(printId, m, token);
+												}
+												used.add(m);
+											} catch (NullPointerException e) {
+												//
+											}
 										}
 									}
 								}
+							} else {
+								//
 							}
-						} else {
-							//
+							p.print(printSurface);
+							p.print(printId);
+							p.println();
 						}
-						p.print(printSurface);
-						p.print(printId);
-						p.println();
 					}
 				}
 			}
@@ -392,8 +393,7 @@ public enum CSVVariant {
 	 * This function returns the longest from a given collection of annotations.
 	 * Length measured as <code>end - begin</code>.
 	 * 
-	 * @param coll
-	 *            The annotation collection
+	 * @param coll The annotation collection
 	 * @return The longest of the annotation.
 	 */
 	@Deprecated
