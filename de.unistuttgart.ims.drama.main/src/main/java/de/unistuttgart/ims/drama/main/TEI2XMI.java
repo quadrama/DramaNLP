@@ -27,6 +27,7 @@ import de.unistuttgart.quadrama.core.FigureMentionDetection;
 import de.unistuttgart.quadrama.core.FigureReferenceAnnotator;
 import de.unistuttgart.quadrama.core.ReadDlinaMetadata;
 import de.unistuttgart.quadrama.core.SD;
+import de.unistuttgart.quadrama.core.SP;
 import de.unistuttgart.quadrama.core.SceneActAnnotator;
 import de.unistuttgart.quadrama.core.SetReferenceDate;
 import de.unistuttgart.quadrama.core.SpeakerIdentifier;
@@ -59,7 +60,7 @@ public class TEI2XMI {
 		// Tokenize Stage Directions
 		builder.add(SD.getWrappedSegmenterDescription(BreakIteratorSegmenter.class));
 		// Tokenize Speaker Tags
-		// builder.add(SP.getWrappedSegmenterDescription(BreakIteratorSegmenter.class));
+		builder.add(SP.getWrappedSegmenterDescription(BreakIteratorSegmenter.class));
 		if (options.getCorpus() == Corpus.TURM) {
 			builder.add(createEngineDescription(SceneActAnnotator.class));
 		}
