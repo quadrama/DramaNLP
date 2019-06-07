@@ -18,7 +18,7 @@ import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.tudarmstadt.ukp.dkpro.core.matetools.MateLemmatizer;
 import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordNamedEntityRecognizer;
 import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordPosTagger;
-import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
+import de.tudarmstadt.ukp.dkpro.core.languagetool.LanguageToolSegmenter;
 import de.unistuttgart.ims.drama.core.ml.gender.ClearTkGenderAnnotator;
 import de.unistuttgart.ims.uimautil.SetCollectionId;
 import de.unistuttgart.quadrama.core.D;
@@ -56,11 +56,11 @@ public class TEI2XMI {
 		AggregateBuilder builder = new AggregateBuilder();
 
 		// Tokenize Utterances
-		builder.add(D.getWrappedSegmenterDescription(BreakIteratorSegmenter.class));
+		builder.add(D.getWrappedSegmenterDescription(LanguageToolSegmenter.class));
 		// Tokenize Stage Directions
-		builder.add(SD.getWrappedSegmenterDescription(BreakIteratorSegmenter.class));
+		builder.add(SD.getWrappedSegmenterDescription(LanguageToolSegmenter.class));
 		// Tokenize Speaker Tags
-		builder.add(SP.getWrappedSegmenterDescription(BreakIteratorSegmenter.class));
+		builder.add(SP.getWrappedSegmenterDescription(LanguageToolSegmenter.class));
 		if (options.getCorpus() == Corpus.TURM) {
 			builder.add(createEngineDescription(SceneActAnnotator.class));
 		}

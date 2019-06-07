@@ -48,6 +48,12 @@
   		</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+			<artifactId>
+  			de.tudarmstadt.ukp.dkpro.core.languagetool-asl
+  		</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>de.unistuttgart.ims</groupId>
 			<artifactId>de.unistuttgart.ims.drama.io.core</artifactId>
 			<version>${project.parent.version}</version>
