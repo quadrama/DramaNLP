@@ -4,9 +4,12 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.uima.cas.FeatureStructure;
@@ -17,6 +20,8 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
+import de.tudarmstadt.ukp.dkpro.core.api.ner.type.NamedEntity;
+import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.morph.Morpheme;
 import de.unistuttgart.ims.drama.api.Act;
 import de.unistuttgart.ims.drama.api.Author;
 import de.unistuttgart.ims.drama.api.CastFigure;
@@ -80,6 +85,8 @@ public enum CONLLVariant {
 				Utterance.class);
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
 		Set<Mention> used = new HashSet<Mention>();
+		Pattern numberPattern = Pattern.compile("^.*number=(.+?)(\\|.*$|$)");
+		Pattern genderPattern = Pattern.compile("^.*gender=(.+?)(\\|.*$|$)");
 		for (Sentence sentence : JCasUtil.select(jcas, Sentence.class)) {
 			Integer tokenId = 0;
 			for (Token token : JCasUtil.selectCovered(Token.class, sentence)) {
@@ -98,11 +105,23 @@ public enum CONLLVariant {
 				p.print(tokenId);
 				tokenId++;
 				p.print(token.getCoveredText()); // Form
-				p.print("-"); // Tag
+				p.print(token.getPos().getPosValue()); // Tag
 				p.print("*"); // CFG
-				p.print("-"); // Lemma
-				p.print("-"); // Number
-				p.print("-"); // Gender
+				p.print(token.getLemma().getValue()); // Lemma
+				List<Morpheme> morph = JCasUtil.selectCovered(Morpheme.class, token);
+				String morphTag = morph.get(0).getMorphTag();
+				Matcher numberMatcher = numberPattern.matcher(morphTag);
+				Matcher genderMatcher = genderPattern.matcher(morphTag);
+				if (numberMatcher.find()) {
+					p.print(numberMatcher.group(1)); // Number
+				} else {
+					p.print("-");
+				}
+				if (genderMatcher.find()) {
+					p.print(genderMatcher.group(1)); // Gender
+				} else {
+					p.print("-");
+				}
 				if (speakerList.isEmpty()) {
 					p.print("_stage");
 				} else {
@@ -113,7 +132,7 @@ public enum CONLLVariant {
 						p.print("-");
 					}
 				}
-				p.print("-"); // NE
+				p.print(printNE(token)); // NE
 				p.print("-"); // Tobi
 				p.print("-"); // Tone Boundary
 				p.print("-"); // Nucleus
@@ -155,6 +174,8 @@ public enum CONLLVariant {
 		Map<Token, Collection<Mention>> mentionMap = JCasUtil.indexCovering(jcas, Token.class, Mention.class);
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
 		Set<Mention> used = new HashSet<Mention>();
+		Pattern numberPattern = Pattern.compile("^.*number=(.+?)(\\|.*$|$)");
+		Pattern genderPattern = Pattern.compile("^.*gender=(.+?)(\\|.*$|$)");
 		for (Sentence sentence : JCasUtil.select(jcas, Sentence.class)) {
 			Integer tokenId = 0;
 			for (Token token : JCasUtil.selectCovered(Token.class, sentence)) {
@@ -168,12 +189,24 @@ public enum CONLLVariant {
 				p.print(tokenId);
 				tokenId++;
 				p.print(token.getCoveredText()); // Form
-				p.print("-"); // Tag
+				p.print(token.getPos().getPosValue()); // Tag
 				p.print("*"); // CFG
-				p.print("-"); // Lemma
-				p.print("-"); // Num
-				p.print("-"); // Gend
-				p.print("-"); // NE
+				p.print(token.getLemma().getValue()); // Lemma
+				List<Morpheme> morph = JCasUtil.selectCovered(Morpheme.class, token);
+				String morphTag = morph.get(0).getMorphTag();
+				Matcher numberMatcher = numberPattern.matcher(morphTag);
+				Matcher genderMatcher = genderPattern.matcher(morphTag);
+				if (numberMatcher.find()) {
+					p.print(numberMatcher.group(1)); // Number
+				} else {
+					p.print("-");
+				}
+				if (genderMatcher.find()) {
+					p.print(genderMatcher.group(1)); // Gender
+				} else {
+					p.print("-");
+				}
+				p.print(printNE(token)); // NE
 				String printId = "-";
 				if (mentionMap.containsKey(token)) {
 					Collection<Mention> mList = mentionMap.get(token);
@@ -245,5 +278,27 @@ public enum CONLLVariant {
 		} else {
 		}
 		return printId;
+	}
+
+	/**
+	 * This function creates the format for NE required by the CoNLL format.
+	 */
+	private String printNE(Token token) {
+		String str = null;
+		List<NamedEntity> ne = JCasUtil.selectCovered(NamedEntity.class, token);
+		if (!ne.isEmpty()) {
+			if (ne.get(0).getBegin() == token.getBegin() && ne.get(0).getEnd() == token.getEnd()) {
+				str = "(" + ne.get(0).getValue().replace("I-", "") + "*)";
+			} else if (ne.get(0).getBegin() == token.getBegin()) {
+				str = "(" + ne.get(0).getValue().replace("I-", "") + "*";
+			} else if (ne.get(0).getEnd() == token.getEnd()) {
+				str = "*)";
+			} else {
+				str = "*";
+			}
+		} else {
+			str = "-";
+		}
+		return str;
 	}
 }

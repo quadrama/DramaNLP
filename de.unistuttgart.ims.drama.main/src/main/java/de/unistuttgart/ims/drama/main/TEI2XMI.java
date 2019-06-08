@@ -16,6 +16,7 @@ import com.lexicalscope.jewel.cli.Option;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.tudarmstadt.ukp.dkpro.core.matetools.MateLemmatizer;
+import de.tudarmstadt.ukp.dkpro.core.matetools.MateMorphTagger;
 import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordNamedEntityRecognizer;
 import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordPosTagger;
 import de.tudarmstadt.ukp.dkpro.core.languagetool.LanguageToolSegmenter;
@@ -108,6 +109,7 @@ public class TEI2XMI {
 		}
 		builder.add(createEngineDescription(StanfordPosTagger.class));
 		builder.add(createEngineDescription(MateLemmatizer.class));
+		builder.add(createEngineDescription(MateMorphTagger.class));
 		if (!options.isSkipNER())
 			builder.add(createEngineDescription(StanfordNamedEntityRecognizer.class));
 		builder.add(createEngineDescription(FigureMentionDetection.class));
