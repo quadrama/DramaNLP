@@ -172,6 +172,13 @@
 			<dependency>
 				<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
 				<artifactId>
+					de.tudarmstadt.ukp.dkpro.core.berkeleyparser-gpl
+				</artifactId>
+				<version>${dkpro.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+				<artifactId>
 					de.tudarmstadt.ukp.dkpro.core.languagetool-asl
 				</artifactId>
 				<version>${dkpro.version}</version>

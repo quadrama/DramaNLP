@@ -49,7 +49,14 @@
   		</artifactId>
   		<version>${dkpro.version}</version>
   	</dependency>
-   	<dependency>
+  	<dependency>
+  		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+  		<artifactId>
+  			de.tudarmstadt.ukp.dkpro.core.api.syntax-asl
+  		</artifactId>
+  		<version>${dkpro.version}</version>
+  	</dependency>
+	<dependency>
   		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
   		<artifactId>
   			de.tudarmstadt.ukp.dkpro.core.api.ner-asl
@@ -57,6 +64,13 @@
   		<version>${dkpro.version}</version>
   	</dependency>
  	<dependency>
+  		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+  		<artifactId>
+  			de.tudarmstadt.ukp.dkpro.core.io.penntree-asl
+  		</artifactId>
+  		<version>${dkpro.version}</version>
+  	</dependency>
+	<dependency>
   		<groupId>de.unistuttgart.ims</groupId>
   		<artifactId>uimautil</artifactId>
   	</dependency>

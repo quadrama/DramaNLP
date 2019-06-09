@@ -10,8 +10,10 @@ import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+import java.util.Iterator;
 
 import org.apache.commons.csv.CSVPrinter;
+import org.apache.uima.cas.Feature;
 import org.apache.uima.cas.FeatureStructure;
 import org.apache.uima.fit.factory.AnnotationFactory;
 import org.apache.uima.fit.util.JCasUtil;
@@ -22,6 +24,10 @@ import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import de.tudarmstadt.ukp.dkpro.core.api.ner.type.NamedEntity;
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.morph.Morpheme;
+import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.PennTree;
+import de.tudarmstadt.ukp.dkpro.core.io.penntree.PennTreeNode;
+import de.tudarmstadt.ukp.dkpro.core.io.penntree.PennTreeUtils;
+import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.constituent.ROOT;
 import de.unistuttgart.ims.drama.api.Act;
 import de.unistuttgart.ims.drama.api.Author;
 import de.unistuttgart.ims.drama.api.CastFigure;
@@ -89,6 +95,15 @@ public enum CONLLVariant {
 		Pattern genderPattern = Pattern.compile("^.*gender=(.+?)(\\|.*$|$)");
 		for (Sentence sentence : JCasUtil.select(jcas, Sentence.class)) {
 			Integer tokenId = 0;
+			String[] parseFragments = null;
+			List<ROOT> root = JCasUtil.selectCovered(ROOT.class, sentence);
+			if (root.size() == 1) {
+				PennTreeNode rootNode = PennTreeUtils.convertPennTree(root.get(0));
+				if ("ROOT".equals(rootNode.getLabel())) {
+					rootNode.setLabel("VROOT");
+				}
+				parseFragments = toPrettyPennTree(rootNode);
+			}
 			for (Token token : JCasUtil.selectCovered(Token.class, sentence)) {
 				Collection<Utterance> uttList = token2utteranceMap.get(token);
 				Collection<Speaker> speakerList = Collections.emptyList();
@@ -103,10 +118,13 @@ public enum CONLLVariant {
 						+ ExportAsCONLL.conllVariantName + ".conll");
 				p.print("000");
 				p.print(tokenId);
-				tokenId++;
 				p.print(token.getCoveredText()); // Form
 				p.print(token.getPos().getPosValue()); // Tag
-				p.print("*"); // CFG
+				if (!(parseFragments == null)) {
+					p.print(parseFragments[tokenId]); // CFG
+				} else {
+					p.print("*");
+				}
 				p.print(token.getLemma().getValue()); // Lemma
 				List<Morpheme> morph = JCasUtil.selectCovered(Morpheme.class, token);
 				String morphTag = morph.get(0).getMorphTag();
@@ -162,6 +180,7 @@ public enum CONLLVariant {
 				}
 				p.print(printId);
 				p.println();
+				tokenId++;
 			}
 			p.println();
 		}
@@ -178,6 +197,15 @@ public enum CONLLVariant {
 		Pattern genderPattern = Pattern.compile("^.*gender=(.+?)(\\|.*$|$)");
 		for (Sentence sentence : JCasUtil.select(jcas, Sentence.class)) {
 			Integer tokenId = 0;
+			String[] parseFragments = null;
+			List<ROOT> root = JCasUtil.selectCovered(ROOT.class, sentence);
+			if (root.size() == 1) {
+				PennTreeNode rootNode = PennTreeUtils.convertPennTree(root.get(0));
+				if ("ROOT".equals(rootNode.getLabel())) {
+					rootNode.setLabel("VROOT");
+				}
+				parseFragments = toPrettyPennTree(rootNode);
+			}
 			for (Token token : JCasUtil.selectCovered(Token.class, sentence)) {
 				if (token.getCoveredText().equals(" ")) {
 					continue;
@@ -187,10 +215,13 @@ public enum CONLLVariant {
 						+ ExportAsCONLL.conllVariantName + ".conll");
 				p.print("000");
 				p.print(tokenId);
-				tokenId++;
 				p.print(token.getCoveredText()); // Form
 				p.print(token.getPos().getPosValue()); // Tag
-				p.print("*"); // CFG
+				if (!(parseFragments == null)) {
+					p.print(parseFragments[tokenId]); // CFG
+				} else {
+					p.print("*");
+				}
 				p.print(token.getLemma().getValue()); // Lemma
 				List<Morpheme> morph = JCasUtil.selectCovered(Morpheme.class, token);
 				String morphTag = morph.get(0).getMorphTag();
@@ -233,6 +264,7 @@ public enum CONLLVariant {
 				}
 				p.print(printId);
 				p.println();
+				tokenId++;
 			}
 			p.println();
 		}
@@ -300,5 +332,32 @@ public enum CONLLVariant {
 			str = "-";
 		}
 		return str;
+	}
+
+	public static String[] toPrettyPennTree(PennTreeNode aNode) {
+		StringBuilder sb = new StringBuilder();
+		toPennTree(sb, aNode);
+		return sb.toString().trim().split("\n+");
+	}
+
+	private static void toPennTree(StringBuilder aSb, PennTreeNode aNode) {
+		// This is a "(Label Token)"
+		if (aNode.isPreTerminal()) {
+			aSb.append("*");
+		} else {
+			aSb.append('(');
+			aSb.append(aNode.getLabel());
+
+			Iterator<PennTreeNode> i = aNode.getChildren().iterator();
+			while (i.hasNext()) {
+				PennTreeNode child = i.next();
+				toPennTree(aSb, child);
+				if (i.hasNext()) {
+					aSb.append("\n");
+				}
+			}
+
+			aSb.append(')');
+		}
 	}
 }

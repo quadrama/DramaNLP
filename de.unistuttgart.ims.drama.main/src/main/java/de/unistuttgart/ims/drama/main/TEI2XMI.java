@@ -17,6 +17,7 @@ import com.lexicalscope.jewel.cli.Option;
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.tudarmstadt.ukp.dkpro.core.matetools.MateLemmatizer;
 import de.tudarmstadt.ukp.dkpro.core.matetools.MateMorphTagger;
+import de.tudarmstadt.ukp.dkpro.core.berkeleyparser.BerkeleyParser;
 import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordNamedEntityRecognizer;
 import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordPosTagger;
 import de.tudarmstadt.ukp.dkpro.core.languagetool.LanguageToolSegmenter;
@@ -110,6 +111,8 @@ public class TEI2XMI {
 		builder.add(createEngineDescription(StanfordPosTagger.class));
 		builder.add(createEngineDescription(MateLemmatizer.class));
 		builder.add(createEngineDescription(MateMorphTagger.class));
+		if (options.isParse())
+			builder.add(createEngineDescription(BerkeleyParser.class, BerkeleyParser.PARAM_WRITE_PENN_TREE, true));
 		if (!options.isSkipNER())
 			builder.add(createEngineDescription(StanfordNamedEntityRecognizer.class));
 		builder.add(createEngineDescription(FigureMentionDetection.class));
@@ -189,6 +192,9 @@ public class TEI2XMI {
 		@Option(defaultValue = "de")
 		String getLanguage();
 
+		@Option()
+		boolean isParse();
+		
 		@Option()
 		boolean isSkipNER();
 
