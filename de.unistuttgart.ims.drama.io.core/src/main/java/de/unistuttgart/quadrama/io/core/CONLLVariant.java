@@ -334,7 +334,7 @@ public enum CONLLVariant {
 		return str;
 	}
 
-	public static String[] toPrettyPennTree(PennTreeNode aNode) {
+	private static String[] toPrettyPennTree(PennTreeNode aNode) {
 		StringBuilder sb = new StringBuilder();
 		toPennTree(sb, aNode);
 		return sb.toString().trim().split("\n+");
