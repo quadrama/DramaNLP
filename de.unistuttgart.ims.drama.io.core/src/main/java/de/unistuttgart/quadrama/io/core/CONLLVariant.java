@@ -40,6 +40,7 @@ import de.unistuttgart.ims.drama.api.StageDirection;
 import de.unistuttgart.ims.drama.api.Translator;
 import de.unistuttgart.ims.drama.api.Utterance;
 import de.unistuttgart.ims.drama.util.DramaUtil;
+import de.unistuttgart.ims.drama.util.CoreferenceUtil;
 import de.unistuttgart.quadrama.io.core.ExportAsCONLL;
 
 public enum CONLLVariant {
@@ -164,9 +165,9 @@ public enum CONLLVariant {
 							if (!used.contains(m)) {
 								try {
 									if (printId.equals("-")) {
-										printId = createBrackets(printId, m, token);
+										printId = CoreferenceUtil.createConllBrackets(printId, m, token);
 									} else {
-										printId = printId + "|" + createBrackets(printId, m, token);
+										printId = printId + "|" + CoreferenceUtil.createConllBrackets(printId, m, token);
 									}
 									used.add(m);
 								} catch (NullPointerException e) {
@@ -248,9 +249,9 @@ public enum CONLLVariant {
 							if (!used.contains(m)) {
 								try {
 									if (printId.equals("-")) {
-										printId = createBrackets(printId, m, token);
+										printId = CoreferenceUtil.createConllBrackets(printId, m, token);
 									} else {
-										printId = printId + "|" + createBrackets(printId, m, token);
+										printId = printId + "|" + CoreferenceUtil.createConllBrackets(printId, m, token);
 									}
 									used.add(m);
 								} catch (NullPointerException e) {
@@ -294,22 +295,6 @@ public enum CONLLVariant {
 			return coll.iterator().next();
 		else
 			return fm;
-	}
-
-	/**
-	 * This function checks if a mention's surface form is identical to a token, if
-	 * it starts with the token or ends with it and attaches corresponding markers.
-	 */
-	private String createBrackets(String printId, Mention m, Token token) {
-		if (m.getBegin() == token.getBegin() && m.getEnd() == token.getEnd()) {
-			printId = "(" + m.getEntity().getId() + ")";
-		} else if (m.getBegin() == token.getBegin()) {
-			printId = "(" + m.getEntity().getId();
-		} else if (m.getEnd() == token.getEnd()) {
-			printId = m.getEntity().getId() + ")";
-		} else {
-		}
-		return printId;
 	}
 
 	/**
