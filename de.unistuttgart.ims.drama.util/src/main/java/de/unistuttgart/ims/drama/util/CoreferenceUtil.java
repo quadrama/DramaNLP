@@ -1,5 +1,7 @@
 package de.unistuttgart.ims.drama.util;
 
+import java.util.Random;
+
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.unistuttgart.ims.drama.api.Mention;
 
@@ -21,5 +23,16 @@ public class CoreferenceUtil {
 		}
 		return printId;
 	}
-	
+
+	/**
+	 * Returns a random entity from a string of entity ids
+	 */
+	public static String[] getRandomEntity(String[] array) {
+		int seed = 42;
+		String[] newArray = new String[1];
+		int rnd = new Random(seed).nextInt(array.length);
+		newArray[0] = array[rnd];
+		return newArray;
+	}
+
 }

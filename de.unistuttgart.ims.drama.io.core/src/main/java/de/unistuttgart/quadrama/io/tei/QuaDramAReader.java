@@ -8,7 +8,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.Random;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -42,6 +41,7 @@ import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.StageDirection;
 import de.unistuttgart.ims.drama.api.Translator;
 import de.unistuttgart.ims.drama.api.Utterance;
+import de.unistuttgart.ims.drama.util.CoreferenceUtil;
 import de.unistuttgart.ims.uima.io.xml.ArrayUtil;
 import de.unistuttgart.ims.uima.io.xml.GenericXmlReader;
 import de.unistuttgart.ims.uimautil.AnnotationUtil;
@@ -205,7 +205,7 @@ public class QuaDramAReader extends AbstractDramaUrlReader {
 					if (e.attr("func").equals("and")) {
 						// default
 					} else if (e.attr("func").equals("or")) {
-						splitted = getRandomEntity(splitted);
+						splitted = CoreferenceUtil.getRandomEntity(splitted);
 					} else {
 						// Should be handled by XMLSchema
 					}
@@ -322,13 +322,5 @@ public class QuaDramAReader extends AbstractDramaUrlReader {
 			return Integer.valueOf(m.group());
 		} else
 			return 0;
-	}
-
-	public static String[] getRandomEntity(String[] array) {
-		int seed = 42;
-		String[] newArray = new String[1];
-		int rnd = new Random(seed).nextInt(array.length);
-		newArray[0] = array[rnd];
-		return newArray;
 	}
 }
