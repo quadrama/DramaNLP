@@ -5,7 +5,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -13,9 +12,6 @@ import java.util.regex.Matcher;
 import java.util.Iterator;
 
 import org.apache.commons.csv.CSVPrinter;
-import org.apache.uima.cas.Feature;
-import org.apache.uima.cas.FeatureStructure;
-import org.apache.uima.fit.factory.AnnotationFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
@@ -24,22 +20,13 @@ import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import de.tudarmstadt.ukp.dkpro.core.api.ner.type.NamedEntity;
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.morph.Morpheme;
-import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.PennTree;
 import de.tudarmstadt.ukp.dkpro.core.io.penntree.PennTreeNode;
 import de.tudarmstadt.ukp.dkpro.core.io.penntree.PennTreeUtils;
 import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.constituent.ROOT;
-import de.unistuttgart.ims.drama.api.Act;
-import de.unistuttgart.ims.drama.api.Author;
-import de.unistuttgart.ims.drama.api.CastFigure;
-import de.unistuttgart.ims.drama.api.DiscourseEntity;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Mention;
-import de.unistuttgart.ims.drama.api.Scene;
 import de.unistuttgart.ims.drama.api.Speaker;
-import de.unistuttgart.ims.drama.api.StageDirection;
-import de.unistuttgart.ims.drama.api.Translator;
 import de.unistuttgart.ims.drama.api.Utterance;
-import de.unistuttgart.ims.drama.util.DramaUtil;
 import de.unistuttgart.ims.drama.util.CoreferenceUtil;
 import de.unistuttgart.quadrama.io.core.ExportAsCONLL;
 
@@ -58,6 +45,7 @@ public enum CONLLVariant {
 	 * @param p The target
 	 * @throws IOException If an I/O error occurs
 	 */
+	
 	public void header(JCas jcas, CSVPrinter p) throws IOException {
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
 		switch (this) {
@@ -85,7 +73,7 @@ public enum CONLLVariant {
 	}
 
 	private void convertDirndl(JCas jcas, CSVPrinter p) throws IOException {
-
+		
 		Map<Token, Collection<Mention>> mentionMap = JCasUtil.indexCovering(jcas, Token.class, Mention.class);
 		Map<Utterance, Collection<Speaker>> speakerMap = JCasUtil.indexCovered(jcas, Utterance.class, Speaker.class);
 		Map<Token, Collection<Utterance>> token2utteranceMap = JCasUtil.indexCovering(jcas, Token.class,

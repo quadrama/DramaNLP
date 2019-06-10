@@ -43,6 +43,8 @@ import de.unistuttgart.quadrama.io.tei.QuaDramAReader;
 import de.unistuttgart.quadrama.io.tei.TextgridTEIUrlReader;
 import de.unistuttgart.quadrama.io.tei.TheatreClassiqueReader;
 import de.unistuttgart.quadrama.io.tei.TurmReader;
+import de.unistuttgart.ims.drama.util.CoreferenceUtil;
+import de.unistuttgart.ims.drama.util.CreateCoreferenceGroups;
 
 public class TEI2XMI {
 
@@ -118,6 +120,10 @@ public class TEI2XMI {
 		builder.add(createEngineDescription(FigureMentionDetection.class));
 		builder.add(SceneActAnnotator.getDescription());
 
+		if (options.isCreateCoreferenceGroups()) {
+			builder.add(createEngineDescription(CreateCoreferenceGroups.class));
+		}
+
 		if (options.getOutput() != null)
 			builder.add(createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION, options.getOutput()));
 
@@ -192,15 +198,26 @@ public class TEI2XMI {
 		@Option(defaultValue = "de")
 		String getLanguage();
 
+		/*
+		 * Enable parsing. Disabled by default to save runtime and resources if not needed.
+		 * If OutOfMemoryError Exception occurs, consider setting -Xmx to a higher value.
+		 */
 		@Option()
 		boolean isParse();
-		
+
 		@Option()
 		boolean isSkipNER();
 
 		@Option()
 		boolean isSkipSpeakerIdentifier();
 
+		/*
+		 * Disabled by default. Automatically create coreference/entity groups out of 
+		 * entities that occupy identical mention spans.
+		 */
+		@Option()
+		boolean isCreateCoreferenceGroups();
+		
 		@Option
 		Corpus getCorpus();
 
