@@ -256,7 +256,12 @@
 					<description>Is this a regular segment?</description>
 					<rangeTypeName>uima.cas.Boolean</rangeTypeName>
 				</featureDescription>
-			</features>
+			<featureDescription>
+          <name>SegmentType</name>
+          <description/>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+      </features>
 		</typeDescription>
 		<typeDescription>
 			<name>de.unistuttgart.ims.drama.api.Heading</name>
