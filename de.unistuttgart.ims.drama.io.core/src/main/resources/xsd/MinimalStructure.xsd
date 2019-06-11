@@ -37,7 +37,11 @@
 			<xsd:element name="head" type="xsd:string" maxOccurs="1"
 				minOccurs="0">
 			</xsd:element>
-			<xsd:choice maxOccurs="unbounded" minOccurs="0"><xsd:element name="div" type="divType"></xsd:element><xsd:element name="sp" type="spType"></xsd:element></xsd:choice>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element name="div" type="tns:divType"></xsd:element>
+				<xsd:element name="sp" type="tns:spType"></xsd:element>
+				<xsd:element name="stage" type="tns:stageType"></xsd:element>
+			</xsd:choice>
 		</xsd:sequence>
 		<xsd:attribute name="type" type="xsd:string"></xsd:attribute>
 	</xsd:complexType>
@@ -47,16 +51,9 @@
 			<xsd:element name="speaker" type="xsd:string" maxOccurs="1"
 				minOccurs="1">
 			</xsd:element>
-			<xsd:choice>
-				<xsd:element name="stage" type="xsd:string"></xsd:element>
-				<xsd:element name="p">
-					<xsd:complexType mixed="true">
-						<xsd:sequence>
-							<xsd:element name="stage"
-								type="xsd:string" maxOccurs="unbounded" minOccurs="0">
-							</xsd:element>
-						</xsd:sequence>
-					</xsd:complexType></xsd:element>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:element name="stage" type="tns:stageType"></xsd:element>
+				<xsd:element name="p" type="xsd:string"></xsd:element>
 			</xsd:choice>
 		</xsd:sequence>
 		<xsd:attribute name="who" type="xsd:string"></xsd:attribute>
