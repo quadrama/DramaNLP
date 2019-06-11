@@ -12,6 +12,7 @@ import org.apache.uima.resource.ResourceInitializationException;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
 
+@Deprecated
 public class TextgridTEIUrlReader extends AbstractDramaUrlReader {
 
 	public static final String PARAM_STRICT = "strict";

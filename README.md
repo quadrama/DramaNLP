@@ -1,5 +1,7 @@
+[![release](https://img.shields.io/badge/release-2.0.0-blue.svg)](https://github.com/quadrama/DramaNLP/releases/tag/v2.0.0)
 [![Build Status](https://travis-ci.org/quadrama/DramaNLP.svg?branch=master)](https://travis-ci.org/quadrama/DramaNLP)
 [![DOI](https://www.zenodo.org/badge/57984264.svg)](https://www.zenodo.org/badge/latestdoi/57984264)
+[![license](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://github.com/quadrama/DramaNLP/blob/master/LICENSE)
 
 # DramaNLP
 This repository contains a number of UIMA components to process dramatic texts, as well as an executable pipeline. We follow general design ideas implemented in [DKPro Core](https://dkpro.github.io/dkpro-core/). The full pipeline reads in files in several TEI/XML dialects (see below), and applies the most important NLP tools on them, while keeping the structural annotation of the plays intact (and, if necessary, processing different text layers separately).
@@ -19,9 +21,9 @@ This repository contains a number of UIMA components to process dramatic texts, 
 As an example, we'll work on the data from the GerDraCor collection (which is based on TextGrid). Download the files from [GitHub](https://github.com/quadrama/gerdracor) and store the XML files in a directory. We will call the directory `$TEIDIR` in the following examples. The directory `$OUTDIR` is used to store the output of the pipeline. You'll need the file `drama.Main.jar`.
 
 Enter the following command in the command line interface:
-`java -cp target/assembly/drama.Main.jar de.unistuttgart.ims.drama.main.TEI2XMI --input $TEIDIR --output $OUTDIR/xmi --csvOutput $OUTDIR/csv --skipSpeakerIdentifier --collectionId "gdc" --doCleanup --readerClassname "de.unistuttgart.quadrama.io.tei.textgrid.GerDraCorUrlReader"`
+`java -cp target/assembly/drama.Main.jar de.unistuttgart.ims.drama.main.TEI2XMI --input $TEIDIR --output $OUTDIR/xmi --csvOutput $OUTDIR/csv --conllOutput $OUTDIR/conll --skipSpeakerIdentifier --corpus GERDRACOR --collectionId "gdc" --doCleanup`
 
-After running, the directory `$OUTDIR` contains two sub directories, `xmi` and `csv`, which are different file formats for the plays.
+After running, the directory `$OUTDIR` contains three sub directories, `xmi`, `csv` and `conll`, which are different file formats for the plays.
 
 
 ## TEI/XML dialects

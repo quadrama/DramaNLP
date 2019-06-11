@@ -10,8 +10,8 @@ import org.apache.uima.jcas.tcas.Annotation;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import de.unistuttgart.ims.uima.io.xml.type.XMLElement;
 import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
-import de.unistuttgart.quadrama.io.core.type.XMLElement;
 
 public class DramaIOUtil {
 

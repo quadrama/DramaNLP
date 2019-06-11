@@ -20,7 +20,7 @@ import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS;
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.V;
 import de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
-import de.unistuttgart.ims.uimautil.GenericXmlReader;
+import de.unistuttgart.ims.uima.io.xml.GenericXmlReader;
 
 public class TestGenericXmlReader {
 

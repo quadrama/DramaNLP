@@ -22,9 +22,9 @@ import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.StageDirection;
 import de.unistuttgart.ims.drama.api.Utterance;
+import de.unistuttgart.ims.uima.io.xml.ArrayUtil;
+import de.unistuttgart.ims.uima.io.xml.GenericXmlReader;
 import de.unistuttgart.ims.uimautil.AnnotationUtil;
-import de.unistuttgart.ims.uimautil.ArrayUtil;
-import de.unistuttgart.ims.uimautil.GenericXmlReader;
 import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
 
 public class TurmReader extends AbstractDramaUrlReader {
@@ -46,6 +46,10 @@ public class TurmReader extends AbstractDramaUrlReader {
 		gxr.setTextRootSelector("TEI > text");
 		gxr.setPreserveWhitespace(false);
 
+		gxr.addGlobalRule("text docTitle", (d, e) -> {
+			d.setDocumentTitle(e.text());
+		});
+
 		gxr.addGlobalRule("castItem", CastFigure.class, (cf, e) -> {
 			cf.setNames(ArrayUtil.toStringArray(jcas, e.text()));
 			cf.setDisplayName(cf.getNames(0));
@@ -62,6 +66,7 @@ public class TurmReader extends AbstractDramaUrlReader {
 		gxr.addRule("speaker", Speaker.class);
 		gxr.addRule("stage", StageDirection.class);
 		gxr.addRule("p", Speech.class);
+		gxr.addRule("l", Speech.class);
 
 		gxr.addRule("sp", Utterance.class);
 

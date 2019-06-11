@@ -66,6 +66,7 @@ import de.unistuttgart.ims.drama.api.Speaker;
  */
 @TypeCapability(inputs = { "de.unistuttgart.quadrama.api.Figure", "de.unistuttgart.quadrama.api.Figure:Reference",
 		"de.unistuttgart.quadrama.api.Speaker" }, outputs = { "de.unistuttgart.quadrama.api.Speaker:Figure" })
+@Deprecated
 public class SpeakerAssignmentRules extends JCasAnnotator_ImplBase {
 
 	public static final String PARAM_RULE_FILE_URL = "Rule File";

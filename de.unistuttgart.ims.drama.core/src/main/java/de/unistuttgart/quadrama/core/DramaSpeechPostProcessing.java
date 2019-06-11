@@ -12,7 +12,6 @@ import org.apache.uima.fit.factory.AnnotationFactory;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.util.Level;
-
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.unistuttgart.quadrama.core.api.Origin;
@@ -28,7 +27,6 @@ public class DramaSpeechPostProcessing extends JCasAnnotator_ImplBase {
 
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
-
 		try {
 			// map tokens
 			JCas utteranceCas = jcas.getView(D.SOFA_UTTERANCES);

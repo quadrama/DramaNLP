@@ -16,9 +16,11 @@ import com.lexicalscope.jewel.cli.Option;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.tudarmstadt.ukp.dkpro.core.matetools.MateLemmatizer;
+import de.tudarmstadt.ukp.dkpro.core.matetools.MateMorphTagger;
+import de.tudarmstadt.ukp.dkpro.core.berkeleyparser.BerkeleyParser;
 import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordNamedEntityRecognizer;
 import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordPosTagger;
-import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
+import de.tudarmstadt.ukp.dkpro.core.languagetool.LanguageToolSegmenter;
 import de.unistuttgart.ims.drama.core.ml.gender.ClearTkGenderAnnotator;
 import de.unistuttgart.ims.uimautil.SetCollectionId;
 import de.unistuttgart.quadrama.core.D;
@@ -26,22 +28,28 @@ import de.unistuttgart.quadrama.core.FigureDetailsAnnotator;
 import de.unistuttgart.quadrama.core.FigureMentionDetection;
 import de.unistuttgart.quadrama.core.FigureReferenceAnnotator;
 import de.unistuttgart.quadrama.core.ReadDlinaMetadata;
+import de.unistuttgart.quadrama.core.SD;
+import de.unistuttgart.quadrama.core.SP;
 import de.unistuttgart.quadrama.core.SceneActAnnotator;
 import de.unistuttgart.quadrama.core.SetReferenceDate;
 import de.unistuttgart.quadrama.core.SpeakerIdentifier;
 import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
+import de.unistuttgart.quadrama.io.core.ExportAsCONLL;
 import de.unistuttgart.quadrama.io.core.ExportAsCSV;
 import de.unistuttgart.quadrama.io.tei.CoreTeiReader;
 import de.unistuttgart.quadrama.io.tei.GerDraCorReader;
 import de.unistuttgart.quadrama.io.tei.MapFiguresToCastFigures;
+import de.unistuttgart.quadrama.io.tei.QuaDramAReader;
 import de.unistuttgart.quadrama.io.tei.TextgridTEIUrlReader;
 import de.unistuttgart.quadrama.io.tei.TheatreClassiqueReader;
 import de.unistuttgart.quadrama.io.tei.TurmReader;
+import de.unistuttgart.ims.drama.util.CoreferenceUtil;
+import de.unistuttgart.ims.drama.util.CreateCoreferenceGroups;
 
 public class TEI2XMI {
 
 	enum Corpus {
-		GERDRACOR, TEXTGRID, TURM, THEATRECLASSIQUE, CORETEI
+		GERDRACOR, TEXTGRID, TURM, THEATRECLASSIQUE, CORETEI, QUADRAMA
 	}
 
 	public static void main(String[] args) throws Exception {
@@ -51,7 +59,12 @@ public class TEI2XMI {
 
 		AggregateBuilder builder = new AggregateBuilder();
 
-		builder.add(D.getWrappedSegmenterDescription(BreakIteratorSegmenter.class));
+		// Tokenize Utterances
+		builder.add(D.getWrappedSegmenterDescription(LanguageToolSegmenter.class));
+		// Tokenize Stage Directions
+		builder.add(SD.getWrappedSegmenterDescription(LanguageToolSegmenter.class));
+		// Tokenize Speaker Tags
+		builder.add(SP.getWrappedSegmenterDescription(LanguageToolSegmenter.class));
 		if (options.getCorpus() == Corpus.TURM) {
 			builder.add(createEngineDescription(SceneActAnnotator.class));
 		}
@@ -59,6 +72,30 @@ public class TEI2XMI {
 		if (options.getCollectionId() != null)
 			builder.add(createEngineDescription(SetCollectionId.class, SetCollectionId.PARAM_COLLECTION_ID,
 					options.getCollectionId()));
+		else {
+			switch (options.getCorpus()) {
+			case GERDRACOR:
+				builder.add(createEngineDescription(SetCollectionId.class, SetCollectionId.PARAM_COLLECTION_ID, "gdc"));
+				break;
+			case TEXTGRID:
+				builder.add(createEngineDescription(SetCollectionId.class, SetCollectionId.PARAM_COLLECTION_ID, "tg"));
+				break;
+			case TURM:
+				builder.add(
+						createEngineDescription(SetCollectionId.class, SetCollectionId.PARAM_COLLECTION_ID, "turm"));
+				break;
+			case THEATRECLASSIQUE:
+				builder.add(createEngineDescription(SetCollectionId.class, SetCollectionId.PARAM_COLLECTION_ID, "tc"));
+				break;
+			case CORETEI:
+				builder.add(
+						createEngineDescription(SetCollectionId.class, SetCollectionId.PARAM_COLLECTION_ID, "ctei"));
+				break;
+			case QUADRAMA:
+				builder.add(createEngineDescription(SetCollectionId.class, SetCollectionId.PARAM_COLLECTION_ID, "qd"));
+				break;
+			}
+		}
 		builder.add(createEngineDescription(FigureDetailsAnnotator.class));
 		if (!options.isSkipSpeakerIdentifier()) {
 			builder.add(createEngineDescription(SpeakerIdentifier.class, SpeakerIdentifier.PARAM_CREATE_SPEAKER_FIGURE,
@@ -75,10 +112,17 @@ public class TEI2XMI {
 		}
 		builder.add(createEngineDescription(StanfordPosTagger.class));
 		builder.add(createEngineDescription(MateLemmatizer.class));
+		builder.add(createEngineDescription(MateMorphTagger.class));
+		if (options.isParse())
+			builder.add(createEngineDescription(BerkeleyParser.class, BerkeleyParser.PARAM_WRITE_PENN_TREE, true));
 		if (!options.isSkipNER())
 			builder.add(createEngineDescription(StanfordNamedEntityRecognizer.class));
 		builder.add(createEngineDescription(FigureMentionDetection.class));
 		builder.add(SceneActAnnotator.getDescription());
+
+		if (options.isCreateCoreferenceGroups()) {
+			builder.add(createEngineDescription(CreateCoreferenceGroups.class));
+		}
 
 		if (options.getOutput() != null)
 			builder.add(createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION, options.getOutput()));
@@ -87,15 +131,27 @@ public class TEI2XMI {
 			builder.add(createEngineDescription(ExportAsCSV.class, ExportAsCSV.PARAM_TARGET_LOCATION,
 					options.getCSVOutput(), ExportAsCSV.PARAM_CSV_VARIANT_NAME, "UtterancesWithTokens"));
 			builder.add(createEngineDescription(ExportAsCSV.class, ExportAsCSV.PARAM_TARGET_LOCATION,
+					options.getCSVOutput(), ExportAsCSV.PARAM_CSV_VARIANT_NAME, "StageDirections"));
+			builder.add(createEngineDescription(ExportAsCSV.class, ExportAsCSV.PARAM_TARGET_LOCATION,
 					options.getCSVOutput(), ExportAsCSV.PARAM_CSV_VARIANT_NAME, "Segments"));
 			builder.add(createEngineDescription(ExportAsCSV.class, ExportAsCSV.PARAM_TARGET_LOCATION,
 					options.getCSVOutput(), ExportAsCSV.PARAM_CSV_VARIANT_NAME, "Metadata"));
 			builder.add(createEngineDescription(ExportAsCSV.class, ExportAsCSV.PARAM_TARGET_LOCATION,
 					options.getCSVOutput(), ExportAsCSV.PARAM_CSV_VARIANT_NAME, "Characters"));
+			builder.add(createEngineDescription(ExportAsCSV.class, ExportAsCSV.PARAM_TARGET_LOCATION,
+					options.getCSVOutput(), ExportAsCSV.PARAM_CSV_VARIANT_NAME, "Entities"));
+			builder.add(createEngineDescription(ExportAsCSV.class, ExportAsCSV.PARAM_TARGET_LOCATION,
+					options.getCSVOutput(), ExportAsCSV.PARAM_CSV_VARIANT_NAME, "Mentions"));
+		}
+		if (options.getCONLLOutput() != null) {
+			builder.add(createEngineDescription(ExportAsCONLL.class, ExportAsCONLL.PARAM_TARGET_LOCATION,
+					options.getCONLLOutput(), ExportAsCONLL.PARAM_CONLL_VARIANT_NAME, "CoNLL2012"));
+			builder.add(createEngineDescription(ExportAsCONLL.class, ExportAsCONLL.PARAM_TARGET_LOCATION,
+					options.getCONLLOutput(), ExportAsCONLL.PARAM_CONLL_VARIANT_NAME, "Dirndl"));
 		}
 		SimplePipeline.runPipeline(reader, builder.createAggregateDescription());
 
-		if (options.isDoCleanup())
+		if (options.isDoCleanup() && options.getOutput() != null)
 			for (File f : options.getOutput().listFiles(new FilenameFilter() {
 
 				@Override
@@ -132,7 +188,7 @@ public class TEI2XMI {
 		@Option(defaultToNull = true)
 		File getGenderModel();
 
-		@Option(defaultValue = "true")
+		@Option()
 		boolean isDoCleanup();
 
 		@Deprecated
@@ -142,12 +198,26 @@ public class TEI2XMI {
 		@Option(defaultValue = "de")
 		String getLanguage();
 
+		/*
+		 * Enable parsing. Disabled by default to save runtime and resources if not needed.
+		 * If OutOfMemoryError Exception occurs, consider setting -Xmx to a higher value.
+		 */
+		@Option()
+		boolean isParse();
+
 		@Option()
 		boolean isSkipNER();
 
 		@Option()
 		boolean isSkipSpeakerIdentifier();
 
+		/*
+		 * Disabled by default. Automatically create coreference/entity groups out of 
+		 * entities that occupy identical mention spans.
+		 */
+		@Option()
+		boolean isCreateCoreferenceGroups();
+		
 		@Option
 		Corpus getCorpus();
 
@@ -159,10 +229,23 @@ public class TEI2XMI {
 		@Option(longName = "csvOutput", defaultToNull = true)
 		File getCSVOutput();
 
+		/**
+		 * Storage of the CoNLL files. Should be a directory.
+		 * 
+		 * @return A directory
+		 */
+		@Option(longName = "conllOutput", defaultToNull = true)
+		File getCONLLOutput();
+
 	}
 
 	protected static CollectionReaderDescription getReader(MyOptions options) throws ResourceInitializationException {
 		switch (options.getCorpus()) {
+		case QUADRAMA:
+			return CollectionReaderFactory.createReaderDescription(QuaDramAReader.class,
+					AbstractDramaUrlReader.PARAM_INPUT, options.getInput(),
+					AbstractDramaUrlReader.PARAM_REMOVE_XML_ANNOTATIONS, true, AbstractDramaUrlReader.PARAM_LANGUAGE,
+					options.getLanguage());
 		case GERDRACOR:
 			return CollectionReaderFactory.createReaderDescription(GerDraCorReader.class,
 					AbstractDramaUrlReader.PARAM_INPUT, options.getInput(),

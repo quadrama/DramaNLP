@@ -25,11 +25,11 @@ import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS;
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.PR;
 import de.unistuttgart.ims.drama.api.CastFigure;
 import de.unistuttgart.ims.drama.api.Drama;
-import de.unistuttgart.ims.drama.api.FigureMention;
+import de.unistuttgart.ims.drama.api.Mention;
 import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.Utterance;
 import de.unistuttgart.ims.drama.util.DramaUtil;
-import de.unistuttgart.ims.uimautil.ArrayUtil;
+import de.unistuttgart.ims.uima.io.xml.ArrayUtil;
 
 @TypeCapability(inputs = { "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token",
 		"de.unistuttgart.ims.drama.api.Figure", "de.unistuttgart.ims.drama.api.Speech",
@@ -68,43 +68,40 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 			pronouns = new LinkedList<String>();
 		}
 
-		// Step 1: We search for each name in the full text (ignoring token
-		// boundaries etc.)
-		Drama d = JCasUtil.selectSingle(jcas, Drama.class);
-		Pattern p;
-		Matcher m;
-		for (int i = 0; i < d.getCastList().size(); i++) {
-			CastFigure cf = d.getCastList(i);
-			for (int j = 0; j < cf.getNames().size(); j++) {
-				String name = cf.getNames(j);
-
-				p = Pattern.compile("\\b" + Pattern.quote(name) + "\\b", Pattern.CASE_INSENSITIVE);
-				m = p.matcher(jcas.getDocumentText());
-				while (m.find()) {
-					// If the found token (or multi-token) looks ok given their
-					// part of speech tags,
-					// we consider it a mention
-					if (!matches(jcas, m.start(), m.end())) {
-						FigureMention fm = AnnotationFactory.createAnnotation(jcas, m.start(), m.end(),
-								FigureMention.class);
-						fm.setEntity(ArrayUtil.toFSArray(jcas, cf));
-					}
-				}
-			}
-		}
-
-		// 2. We connect first person pronouns to their speakers
+		// We connect first person pronouns to their speakers
 		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
 			Collection<CastFigure> figures = DramaUtil.getCastFigures(utterance);
 			for (CastFigure currentFigure : figures) {
+				if (currentFigure == null) {
+					continue;
+				}
 				for (Speech speech : JCasUtil.selectCovered(jcas, Speech.class, utterance)) {
-					if (figures.size() <= 1)
+					if (figures.size() <= 1) {
 						for (PR pronoun : JCasUtil.selectCovered(jcas, PR.class, speech)) {
-							if (pronouns.contains(pronoun.getCoveredText())) {
-								AnnotationFactory.createAnnotation(jcas, pronoun.getBegin(), pronoun.getEnd(),
-										FigureMention.class).setEntity(ArrayUtil.toFSArray(jcas, currentFigure));
+							if (pronouns.contains(pronoun.getCoveredText().toLowerCase())) {
+								try {
+									// If there is an existing mention annotation on this span, check if the entity
+									// is the same as the cast figure
+									Mention existingMention = JCasUtil.selectSingleAt(jcas, Mention.class,
+											pronoun.getBegin(), pronoun.getEnd());
+									if (!(existingMention.getEntity().getId() == currentFigure.getId())) {
+										// If it is not the same entity, create the mention
+										Mention fm = AnnotationFactory.createAnnotation(jcas, pronoun.getBegin(),
+												pronoun.getEnd(), Mention.class);
+										fm.setSurfaceString(ArrayUtil.toStringArray(jcas, pronoun.getCoveredText().split(" ")));
+										fm.setEntity(currentFigure);
+									}
+								} catch (Exception e) {
+									// If there is no existing mention annotation on the same span, simply create
+									// the mention with the cast figure as entity
+									Mention fm = AnnotationFactory.createAnnotation(jcas, pronoun.getBegin(),
+											pronoun.getEnd(), Mention.class);
+									fm.setSurfaceString(ArrayUtil.toStringArray(jcas, pronoun.getCoveredText().split(" ")));
+									fm.setEntity(currentFigure);
+								}
 							}
 						}
+					}
 				}
 			}
 		}

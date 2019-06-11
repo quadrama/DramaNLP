@@ -15,6 +15,7 @@ import de.unistuttgart.ims.drama.api.FigureDescription;
 import de.unistuttgart.ims.drama.api.FigureName;
 import de.unistuttgart.ims.uimautil.AnnotationUtil;
 
+@Deprecated
 @TypeCapability(inputs = { "de.unistuttgart.ims.drama.api.Figure" }, outputs = {
 		"de.unistuttgart.ims.drama.api.figure.Name", "de.unistuttgart.ims.drama.api.figure.Description" })
 public class FigureDetailsAnnotator extends JCasAnnotator_ImplBase {
