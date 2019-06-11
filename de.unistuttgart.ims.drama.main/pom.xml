@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>de.unistuttgart.ims</groupId>
 		<artifactId>de.unistuttgart.ims.drama</artifactId>
-		<version>2.0.1</version>
+		<version>2.1.0</version>
 	</parent>
 	<artifactId>de.unistuttgart.ims.drama.main</artifactId>
 	<dependencies>
@@ -38,13 +38,31 @@
 		<dependency>
 			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
 			<artifactId>
+			de.tudarmstadt.ukp.dkpro.core.berkeleyparser-gpl
+		</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+			<artifactId>
   			de.tudarmstadt.ukp.dkpro.core.api.coref-asl
   		</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
 			<artifactId>
+  			de.tudarmstadt.ukp.dkpro.core.api.ner-asl
+  		</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+			<artifactId>
   			de.tudarmstadt.ukp.dkpro.core.matetools-gpl
+  		</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+			<artifactId>
+  			de.tudarmstadt.ukp.dkpro.core.languagetool-asl
   		</artifactId>
 		</dependency>
 		<dependency>

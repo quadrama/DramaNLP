@@ -2,7 +2,9 @@ package de.unistuttgart.quadrama.io.core;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -21,10 +23,12 @@ import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Mention;
 import de.unistuttgart.ims.drama.api.Scene;
 import de.unistuttgart.ims.drama.api.Speaker;
+import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.StageDirection;
 import de.unistuttgart.ims.drama.api.Translator;
 import de.unistuttgart.ims.drama.api.Utterance;
 import de.unistuttgart.ims.drama.util.DramaUtil;
+import de.unistuttgart.ims.drama.util.CoreferenceUtil;
 
 public enum CSVVariant {
 	/**
@@ -49,16 +53,18 @@ public enum CSVVariant {
 	 */
 	Characters,
 	/**
+	 * A list of mentions to characters
+	 */
+	Mentions,
+	/**
 	 * List of all entity IDs and mapping to their surface representation
 	 */
 	Entities;
 	/**
 	 * Prints a record representing the header onto p
 	 * 
-	 * @param p
-	 *            The target
-	 * @throws IOException
-	 *             If an I/O error occurs
+	 * @param p The target
+	 * @throws IOException If an I/O error occurs
 	 */
 	public void header(CSVPrinter p) throws IOException {
 		switch (this) {
@@ -81,6 +87,10 @@ public enum CSVVariant {
 		case Entities:
 			p.printRecord("corpus", "drama", "Entity.surface", "Entity.id", "Entity.group_members");
 			break;
+		case Mentions:
+			p.printRecord("corpus", "drama", "utteranceBegin", "utteranceEnd", "utteranceSpeakerId", "mentionBegin",
+					"mentionEnd", "mentionSurface", "entityId");
+			break;
 		default:
 			p.printRecord("corpus", "drama", "begin", "end", "Speaker.figure_surface", "Speaker.figure_id",
 					"Token.surface", "Token.pos", "Token.lemma", "length", "Mentioned.figure_surface",
@@ -102,6 +112,9 @@ public enum CSVVariant {
 		case StageDirections:
 			this.convertStageDirections(jcas, p);
 			break;
+		case Mentions:
+			this.convertMentions(jcas, p);
+			break;
 		case Entities:
 			this.convertEntities(jcas, p);
 			break;
@@ -109,6 +122,53 @@ public enum CSVVariant {
 			this.convertUtterancesWithTokens(jcas, p);
 		}
 
+	}
+
+	private void convertMentions(JCas jcas, CSVPrinter p) throws IOException {
+		Map<Mention, Collection<Utterance>> mention2utterances = JCasUtil.indexCovering(jcas, Mention.class,
+				Utterance.class);
+		Map<Mention, Collection<StageDirection>> mention2direction = JCasUtil.indexCovering(jcas, Mention.class,
+				StageDirection.class);
+
+		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
+		for (Mention mention : JCasUtil.select(jcas, Mention.class)) {
+
+			if (mention2utterances.get(mention).isEmpty()) {
+				if (!mention2direction.get(mention).isEmpty()) {
+					StageDirection sd = mention2direction.get(mention).iterator().next();
+					p.print(drama.getCollectionId());
+					p.print(drama.getDocumentId());
+					p.print(sd.getBegin());
+					p.print(sd.getEnd());
+					p.print("_stage");
+					p.print(mention.getBegin());
+					p.print(mention.getEnd());
+					p.print(mention.getCoveredText());
+					p.print(mention.getEntity().getXmlId(0));
+				}
+			} else {
+				Utterance utterance = mention2utterances.get(mention).iterator().next();
+				for (Speaker speaker : DramaUtil.getSpeakers(utterance)) {
+					p.print(drama.getCollectionId());
+					p.print(drama.getDocumentId());
+					p.print(utterance.getBegin());
+					p.print(utterance.getEnd());
+					try {
+						p.print(speaker.getCastFigure(0).getXmlId(0));
+					} catch (NullPointerException e) {
+						p.print(null);
+					}
+					p.print(mention.getBegin());
+					p.print(mention.getEnd());
+					p.print(mention.getCoveredText());
+					if (mention.getEntity() == null)
+						p.print(null);
+					else
+						p.print(mention.getEntity().getXmlId(0));
+				}
+			}
+			p.println();
+		}
 	}
 
 	private void convertCharacters(JCas jcas, CSVPrinter p) throws IOException {
@@ -180,61 +240,63 @@ public enum CSVVariant {
 		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
 			for (Speaker speaker : DramaUtil.getSpeakers(utterance)) {
 				for (int i = 0; i < speaker.getCastFigure().size(); i++) {
-					for (Token token : JCasUtil.selectCovered(Token.class, utterance)) {
-						if (stageMap.containsKey(token)) {
-							continue;
-						}
-						used.clear();
-						p.print(drama.getCollectionId());
-						p.print(drama.getDocumentId());
-						p.print(utterance.getBegin());
-						p.print(utterance.getEnd());
-						try {
-							p.print(speaker.getCastFigure(i).getNames(0));
-						} catch (NullPointerException e) {
-							p.print(null);
-						}
-						try {
-							p.print(speaker.getCastFigure(i).getXmlId(0));
-						} catch (NullPointerException e) {
-							p.print(null);
-						}
-						p.print(token.getCoveredText());
-						p.print(token.getPos().getPosValue());
-						p.print(token.getLemma().getValue());
-						p.print(length);
-						String printSurface = null;
-						String printId = null;
-						if (mentionMap.containsKey(token)) {
-							Collection<Mention> mList = mentionMap.get(token);
-							for (Mention m : mList) {
-								if (m.getEntity() == null) {
-									printSurface = null;
-									printId = null;
-								} else {
-									if (!used.contains(m)) {
-										if (m.getEntity() instanceof CastFigure) {
-											printSurface = m.getEntity().getDisplayName();
-										}
-										try {
-											if (printId == null) {
-												printId = createBrackets(printId, m, token);
-											} else {
-												printId = printId + "|" + createBrackets(printId, m, token);
+					for (Speech speech : JCasUtil.selectCovered(Speech.class, utterance)) {
+						for (Token token : JCasUtil.selectCovered(Token.class, speech)) {
+							if (stageMap.containsKey(token)) {
+								continue;
+							}
+							used.clear();
+							p.print(drama.getCollectionId());
+							p.print(drama.getDocumentId());
+							p.print(utterance.getBegin());
+							p.print(utterance.getEnd());
+							try {
+								p.print(speaker.getCastFigure(i).getNames(0));
+							} catch (NullPointerException e) {
+								p.print(null);
+							}
+							try {
+								p.print(speaker.getCastFigure(i).getXmlId(0));
+							} catch (NullPointerException e) {
+								p.print(null);
+							}
+							p.print(token.getCoveredText());
+							p.print(token.getPos().getPosValue());
+							p.print(token.getLemma().getValue());
+							p.print(length);
+							String printSurface = null;
+							String printId = null;
+							if (mentionMap.containsKey(token)) {
+								Collection<Mention> mList = mentionMap.get(token);
+								for (Mention m : mList) {
+									if (m.getEntity() == null) {
+										printSurface = null;
+										printId = null;
+									} else {
+										if (!used.contains(m)) {
+											if (m.getEntity() instanceof CastFigure) {
+												printSurface = m.getEntity().getDisplayName();
 											}
-											used.add(m);
-										} catch (NullPointerException e) {
-											//
+											try {
+												if (printId == null) {
+													printId = CoreferenceUtil.createConllBrackets(printId, m, token);
+												} else {
+													printId = printId + "|" + CoreferenceUtil.createConllBrackets(printId, m, token);
+												}
+												used.add(m);
+											} catch (NullPointerException e) {
+												//
+											}
 										}
 									}
 								}
+							} else {
+								//
 							}
-						} else {
-							//
+							p.print(printSurface);
+							p.print(printId);
+							p.println();
 						}
-						p.print(printSurface);
-						p.print(printId);
-						p.println();
 					}
 				}
 			}
@@ -291,9 +353,9 @@ public enum CSVVariant {
 							if (!used.contains(m)) {
 								try {
 									if (printId == null) {
-										printId = createBrackets(printId, m, token);
+										printId = CoreferenceUtil.createConllBrackets(printId, m, token);
 									} else {
-										printId = printId + "|" + createBrackets(printId, m, token);
+										printId = printId + "|" + CoreferenceUtil.createConllBrackets(printId, m, token);
 									}
 									used.add(m);
 								} catch (NullPointerException e) {
@@ -338,8 +400,7 @@ public enum CSVVariant {
 	 * This function returns the longest from a given collection of annotations.
 	 * Length measured as <code>end - begin</code>.
 	 * 
-	 * @param coll
-	 *            The annotation collection
+	 * @param coll The annotation collection
 	 * @return The longest of the annotation.
 	 */
 	@Deprecated
@@ -357,21 +418,5 @@ public enum CSVVariant {
 			return coll.iterator().next();
 		else
 			return fm;
-	}
-
-	/**
-	 * This function checks if a mention's surface form is identical to a token, if
-	 * it starts with the token or ends with it and attaches corresponding markers.
-	 */
-	private String createBrackets(String printId, Mention m, Token token) {
-		if (m.getBegin() == token.getBegin() && m.getEnd() == token.getEnd()) {
-			printId = "(" + m.getEntity().getId() + ")";
-		} else if (m.getBegin() == token.getBegin()) {
-			printId = "(" + m.getEntity().getId();
-		} else if (m.getEnd() == token.getEnd()) {
-			printId = m.getEntity().getId() + ")";
-		} else {
-		}
-		return printId;
 	}
 }

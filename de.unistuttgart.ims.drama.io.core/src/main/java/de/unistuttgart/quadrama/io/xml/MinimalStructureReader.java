@@ -1,7 +1,10 @@
 package de.unistuttgart.quadrama.io.xml;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -13,6 +16,7 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSArray;
 import org.apache.uima.jcas.cas.StringArray;
 import org.apache.uima.resource.ResourceInitializationException;
+import org.xml.sax.SAXException;
 
 import de.unistuttgart.ims.drama.api.CastFigure;
 import de.unistuttgart.ims.drama.api.Drama;
@@ -24,11 +28,14 @@ import de.unistuttgart.ims.drama.api.Utterance;
 import de.unistuttgart.ims.uima.io.xml.GenericXmlReader;
 import de.unistuttgart.ims.uimautil.AnnotationUtil;
 import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
+import de.unistuttgart.quadrama.io.core.XmlValidator;
 
 public class MinimalStructureReader extends AbstractDramaUrlReader {
 
 	public static final String PARAM_STRICT = "strict";
 	public static final String PARAM_VALIDATE = "validate";
+
+	private static final String SCHEMA = "/xsd/MinimalStructure.xsd";
 
 	@ConfigurationParameter(name = PARAM_STRICT, mandatory = false, defaultValue = "true")
 	boolean strict = true;
@@ -43,6 +50,21 @@ public class MinimalStructureReader extends AbstractDramaUrlReader {
 
 	@Override
 	public void getNext(final JCas jcas, InputStream file, Drama drama) throws IOException, CollectionException {
+
+		if (validate) {
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			org.apache.commons.io.IOUtils.copy(file, baos);
+			byte[] bytes = baos.toByteArray();
+			URL schemaUrl = getClass().getResource(SCHEMA);
+			XmlValidator validator = new XmlValidator(schemaUrl);
+			try {
+				file = new ByteArrayInputStream(bytes);
+				validator.validate(file);
+				file = new ByteArrayInputStream(bytes);
+			} catch (SAXException e1) {
+				throw new CollectionException(e1);
+			}
+		}
 
 		GenericXmlReader<Drama> gxr = new GenericXmlReader<Drama>(Drama.class);
 		gxr.setTextRootSelector("TEI > text");

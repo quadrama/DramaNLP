@@ -22,7 +22,6 @@ import de.unistuttgart.ims.drama.api.FigureType;
 import de.unistuttgart.ims.drama.api.Speaker;
 import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.Utterance;
-import de.unistuttgart.ims.drama.api.StageDirection;
 
 public class DramaUtil {
 	public static Collection<Speech> getSpeeches(JCas jcas, Figure figure) {

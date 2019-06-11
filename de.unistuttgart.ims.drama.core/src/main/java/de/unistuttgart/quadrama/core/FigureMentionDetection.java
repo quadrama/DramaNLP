@@ -68,46 +68,7 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 			pronouns = new LinkedList<String>();
 		}
 
-		// Step 1: We search for each name in the full text (ignoring token
-		// boundaries etc.)
-		Drama d = JCasUtil.selectSingle(jcas, Drama.class);
-		Pattern p;
-		Matcher m;
-		for (CastFigure cf : JCasUtil.select(jcas, CastFigure.class)) {
-			for (int j = 0; j < cf.getNames().size(); j++) {
-				String name = cf.getNames(j);
-
-				p = Pattern.compile("\\b" + Pattern.quote(name) + "\\b", Pattern.CASE_INSENSITIVE);
-				m = p.matcher(jcas.getDocumentText());
-				while (m.find()) {
-					// If the found token (or multi-token) looks ok given their
-					// part of speech tags,
-					// we consider it a mention
-					if (!matches(jcas, m.start(), m.end())) {
-						try {
-							// If there is an existing mention annotation on this span, check if the entity
-							// is the same as the cast figure
-							Mention existingMention = JCasUtil.selectSingleAt(jcas, Mention.class, m.start(), m.end());
-							if (!(existingMention.getEntity().getId() == cf.getId())) {
-								// If it is not the same entity, create the mention
-								Mention fm = AnnotationFactory.createAnnotation(jcas, m.start(), m.end(),
-										Mention.class);
-								fm.setSurfaceString(ArrayUtil.toStringArray(jcas, fm.getCoveredText().split(" ")));
-								fm.setEntity(cf);
-							}
-						} catch (Exception e) {
-							// If there is no existing mention annotation on the same span, simply create
-							// the mention with the cast figure as entity
-							Mention fm = AnnotationFactory.createAnnotation(jcas, m.start(), m.end(), Mention.class);
-							fm.setSurfaceString(ArrayUtil.toStringArray(jcas, fm.getCoveredText().split(" ")));
-							fm.setEntity(cf);
-						}
-					}
-				}
-			}
-		}
-
-		// 2. We connect first person pronouns to their speakers
+		// We connect first person pronouns to their speakers
 		for (Utterance utterance : JCasUtil.select(jcas, Utterance.class)) {
 			Collection<CastFigure> figures = DramaUtil.getCastFigures(utterance);
 			for (CastFigure currentFigure : figures) {

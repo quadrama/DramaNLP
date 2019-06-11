@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.unistuttgart.ims</groupId>
 	<artifactId>de.unistuttgart.ims.drama</artifactId>
-	<version>2.0.1</version>
+	<version>2.1.0</version>
 	<packaging>pom</packaging>
 	<name>DramaNLP</name>
 	<url>https://github.com/quadrama/DramaNLP</url>
@@ -166,6 +166,13 @@
 				<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
 				<artifactId>
 					de.tudarmstadt.ukp.dkpro.core.stanfordnlp-gpl
+				</artifactId>
+				<version>${dkpro.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+				<artifactId>
+					de.tudarmstadt.ukp.dkpro.core.berkeleyparser-gpl
 				</artifactId>
 				<version>${dkpro.version}</version>
 			</dependency>

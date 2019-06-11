@@ -8,7 +8,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.Random;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -42,6 +41,7 @@ import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.drama.api.StageDirection;
 import de.unistuttgart.ims.drama.api.Translator;
 import de.unistuttgart.ims.drama.api.Utterance;
+import de.unistuttgart.ims.drama.util.CoreferenceUtil;
 import de.unistuttgart.ims.uima.io.xml.ArrayUtil;
 import de.unistuttgart.ims.uima.io.xml.GenericXmlReader;
 import de.unistuttgart.ims.uimautil.AnnotationUtil;
@@ -71,8 +71,6 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 		gxr.setPreserveWhitespace(teiCompatibility);
 
 		// title
-		// gxr.addAction("titleStmt > title:first-child", Drama.class, (d, e) ->
-		// d.setDocumentTitle(e.text()));
 
 		gxr.addGlobalRule("titleStmt > title:first-child", (d, e) -> d.setDocumentTitle(e.text()));
 
@@ -156,9 +154,6 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 
 		gxr.addRule("speaker", Speaker.class);
 		gxr.addRule("stage", StageDirection.class);
-		gxr.addRule("l > hi", StageDirection.class);
-		gxr.addRule("p > hi", StageDirection.class);
-		gxr.addRule("ab > hi", StageDirection.class);
 		gxr.addRule("l", Speech.class);
 		gxr.addRule("p", Speech.class);
 		gxr.addRule("ab", Speech.class);
@@ -179,6 +174,22 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 					}
 				}
 			}
+		});
+		gxr.addRule("div[type=scene] > p", Utterance.class, (u,e) -> {
+			Speaker sp = u.getCAS().createFS(CasUtil.getType(u.getCAS(), Speaker.class));
+			sp.addToIndexes();
+			sp.setBegin(u.getBegin());
+			sp.setEnd(u.getEnd());
+			sp.setCastFigure(new FSArray(jcas, 1));
+			Set<String> nameList = new HashSet<String>();
+			Set<String> xmlIdList = new HashSet<String>();
+			nameList.add("");
+			xmlIdList.add("");
+			CastFigure cf = u.getCAS().createFS(CasUtil.getType(u.getCAS(), CastFigure.class));
+			cf.setNames(ArrayUtil.toStringArray(jcas, nameList));
+			cf.setXmlId(ArrayUtil.toStringArray(jcas, xmlIdList));
+			sp.setCastFigure(0, cf);
+			u.setCastFigure(u.getCAS().createFS(CasUtil.getType(u.getCAS(), CastFigure.class)));
 		});
 
 		gxr.addRule("text *[xml:id]", DiscourseEntity.class, (de, e) -> {
@@ -212,7 +223,7 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 					if (e.attr("func").equals("and")) {
 						// default
 					} else if (e.attr("func").equals("or")) {
-						splitted = getRandomEntity(splitted);
+						splitted = CoreferenceUtil.getRandomEntity(splitted);
 					} else {
 						// Should be handled by XMLSchema
 					}
@@ -332,13 +343,5 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 			return Integer.valueOf(m.group());
 		} else
 			return 0;
-	}
-
-	public static String[] getRandomEntity(String[] array) {
-		int seed = 42;
-		String[] newArray = new String[1];
-		int rnd = new Random(seed).nextInt(array.length);
-		newArray[0] = array[rnd];
-		return newArray;
 	}
 }
