@@ -153,7 +153,11 @@ public enum CSVVariant {
 					p.print(drama.getDocumentId());
 					p.print(utterance.getBegin());
 					p.print(utterance.getEnd());
-					p.print(speaker.getCastFigure(0).getXmlId(0));
+					try {
+						p.print(speaker.getCastFigure(0).getXmlId(0));
+					} catch (NullPointerException e) {
+						p.print(null);
+					}
 					p.print(mention.getBegin());
 					p.print(mention.getEnd());
 					p.print(mention.getCoveredText());
