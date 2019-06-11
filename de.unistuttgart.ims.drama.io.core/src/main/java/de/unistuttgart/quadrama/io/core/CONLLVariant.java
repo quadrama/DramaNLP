@@ -45,7 +45,7 @@ public enum CONLLVariant {
 	 * @param p The target
 	 * @throws IOException If an I/O error occurs
 	 */
-	
+
 	public void header(JCas jcas, CSVPrinter p) throws IOException {
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
 		switch (this) {
@@ -73,7 +73,7 @@ public enum CONLLVariant {
 	}
 
 	private void convertDirndl(JCas jcas, CSVPrinter p) throws IOException {
-		
+
 		Map<Token, Collection<Mention>> mentionMap = JCasUtil.indexCovering(jcas, Token.class, Mention.class);
 		Map<Utterance, Collection<Speaker>> speakerMap = JCasUtil.indexCovered(jcas, Utterance.class, Speaker.class);
 		Map<Token, Collection<Utterance>> token2utteranceMap = JCasUtil.indexCovering(jcas, Token.class,
@@ -109,9 +109,15 @@ public enum CONLLVariant {
 				p.print(tokenId);
 				p.print(token.getCoveredText()); // Form
 				p.print(token.getPos().getPosValue()); // Tag
-				if (!(parseFragments == null)) {
-					p.print(parseFragments[tokenId]); // CFG
-				} else {
+				try {
+					if (!(parseFragments == null)) {
+						for (int i = 0; i < parseFragments.length; i++) {
+						}
+						p.print(parseFragments[tokenId]); // CFG
+					} else {
+						p.print("*");
+					}
+				} catch (ArrayIndexOutOfBoundsException e) {
 					p.print("*");
 				}
 				p.print(token.getLemma().getValue()); // Lemma
@@ -155,7 +161,8 @@ public enum CONLLVariant {
 									if (printId.equals("-")) {
 										printId = CoreferenceUtil.createConllBrackets(printId, m, token);
 									} else {
-										printId = printId + "|" + CoreferenceUtil.createConllBrackets(printId, m, token);
+										printId = printId + "|"
+												+ CoreferenceUtil.createConllBrackets(printId, m, token);
 									}
 									used.add(m);
 								} catch (NullPointerException e) {
@@ -206,9 +213,15 @@ public enum CONLLVariant {
 				p.print(tokenId);
 				p.print(token.getCoveredText()); // Form
 				p.print(token.getPos().getPosValue()); // Tag
-				if (!(parseFragments == null)) {
-					p.print(parseFragments[tokenId]); // CFG
-				} else {
+				try {
+					if (!(parseFragments == null)) {
+						for (int i = 0; i < parseFragments.length; i++) {
+						}
+						p.print(parseFragments[tokenId]); // CFG
+					} else {
+						p.print("*");
+					}
+				} catch (ArrayIndexOutOfBoundsException e) {
 					p.print("*");
 				}
 				p.print(token.getLemma().getValue()); // Lemma
@@ -239,7 +252,8 @@ public enum CONLLVariant {
 									if (printId.equals("-")) {
 										printId = CoreferenceUtil.createConllBrackets(printId, m, token);
 									} else {
-										printId = printId + "|" + CoreferenceUtil.createConllBrackets(printId, m, token);
+										printId = printId + "|"
+												+ CoreferenceUtil.createConllBrackets(printId, m, token);
 									}
 									used.add(m);
 								} catch (NullPointerException e) {
