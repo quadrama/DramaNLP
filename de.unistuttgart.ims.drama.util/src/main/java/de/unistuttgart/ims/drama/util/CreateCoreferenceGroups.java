@@ -47,64 +47,67 @@ public class CreateCoreferenceGroups extends JCasAnnotator_ImplBase {
 				offset2Mention.put(offsets, currentMentions);
 			}
 		}
-		// Get all mentions with identical offset, remove mentions with an unique offset
-		List<ArrayList<Mention>> multipleEntities = new ArrayList<ArrayList<Mention>>();
-		for (List<Integer> offset : offset2Mention.keySet()) {
-			if (offset2Mention.get(offset).size() > 1) {
-				multipleEntities.add((ArrayList<Mention>) offset2Mention.get(offset));
+		if (allIds.isEmpty()) {
+		} else {
+			// Get all mentions with identical offset, remove mentions with an unique offset
+			List<ArrayList<Mention>> multipleEntities = new ArrayList<ArrayList<Mention>>();
+			for (List<Integer> offset : offset2Mention.keySet()) {
+				if (offset2Mention.get(offset).size() > 1) {
+					multipleEntities.add((ArrayList<Mention>) offset2Mention.get(offset));
+				}
 			}
-		}
-		// Map all entity groups to new ids
-		Map<HashSet<Integer>, Integer> entityMap = new HashMap<HashSet<Integer>, Integer>();
-		// Get highest current id
-		Integer highestId = Collections.max(allIds);
-		HashSet<HashSet<Integer>> groupIds = new HashSet<HashSet<Integer>>();
-		for (List<Mention> mentionList : multipleEntities) {
-			HashSet<Integer> currentIds = new HashSet<Integer>();
-			for (Mention mention : mentionList) {
-				currentIds.add(mention.getEntity().getId());
+			// Map all entity groups to new ids
+			Map<HashSet<Integer>, Integer> entityMap = new HashMap<HashSet<Integer>, Integer>();
+			// Get highest current id
+			Integer highestId = Collections.max(allIds);
+			HashSet<HashSet<Integer>> groupIds = new HashSet<HashSet<Integer>>();
+			for (List<Mention> mentionList : multipleEntities) {
+				HashSet<Integer> currentIds = new HashSet<Integer>();
+				for (Mention mention : mentionList) {
+					currentIds.add(mention.getEntity().getId());
+				}
+				groupIds.add(currentIds);
 			}
-			groupIds.add(currentIds);
-		}
-		for (HashSet<Integer> ids : groupIds) {
-			highestId++;
-			entityMap.put(ids, highestId);
-		}
-		// Create new group entities, annotate the respective mentions and delete old
-		// mention annotations
-		HashSet<DiscourseEntity> entityList = new HashSet<DiscourseEntity>();
-		for (List<Mention> mentionList : multipleEntities) {
-			Mention m = mentionList.get(0);
-			FSArray entityFSArray = new FSArray(jcas, mentionList.size());
-			HashSet<Integer> oldIds = new HashSet<Integer>();
-			ArrayList<String> newDisplayNameArray = new ArrayList<String>();
-			int i = 0;
-			for (Mention mention : mentionList) {
-				oldIds.add(mention.getEntity().getId());
-				newDisplayNameArray.add(mention.getEntity().getDisplayName());
-				entityFSArray.set(i, mention.getEntity());
-				i++;
-				mention.removeFromIndexes(jcas);
+			for (HashSet<Integer> ids : groupIds) {
+				highestId++;
+				entityMap.put(ids, highestId);
 			}
-			String newDisplayName = String.join("+", newDisplayNameArray);
-			Integer groupId = entityMap.get(oldIds);
-			DiscourseEntity de = m.getCAS().createFS(CasUtil.getType(m.getCAS(), DiscourseEntity.class));
-			de.setId(groupId);
-			StringArray xmlId = new StringArray(jcas, 1);
-			de.setXmlId(xmlId);
-			de.setDisplayName(newDisplayName);
-			de.setEntityGroup(entityFSArray);
-			entityList.add(de);
-			m.setEntity(de);
-			m.addToIndexes(jcas);	
-		}
-		HashMap<Integer, DiscourseEntity> groupEntityMap = new HashMap<Integer, DiscourseEntity>();
-		for (DiscourseEntity de : entityList) {
-			groupEntityMap.put(de.getId(), de);
-		}
-		for (Integer i : groupEntityMap.keySet()) {
-			DiscourseEntity de = groupEntityMap.get(i);
-			de.addToIndexes(jcas);
+			// Create new group entities, annotate the respective mentions and delete old
+			// mention annotations
+			HashSet<DiscourseEntity> entityList = new HashSet<DiscourseEntity>();
+			for (List<Mention> mentionList : multipleEntities) {
+				Mention m = mentionList.get(0);
+				FSArray entityFSArray = new FSArray(jcas, mentionList.size());
+				HashSet<Integer> oldIds = new HashSet<Integer>();
+				ArrayList<String> newDisplayNameArray = new ArrayList<String>();
+				int i = 0;
+				for (Mention mention : mentionList) {
+					oldIds.add(mention.getEntity().getId());
+					newDisplayNameArray.add(mention.getEntity().getDisplayName());
+					entityFSArray.set(i, mention.getEntity());
+					i++;
+					mention.removeFromIndexes(jcas);
+				}
+				String newDisplayName = String.join("+", newDisplayNameArray);
+				Integer groupId = entityMap.get(oldIds);
+				DiscourseEntity de = m.getCAS().createFS(CasUtil.getType(m.getCAS(), DiscourseEntity.class));
+				de.setId(groupId);
+				StringArray xmlId = new StringArray(jcas, 1);
+				de.setXmlId(xmlId);
+				de.setDisplayName(newDisplayName);
+				de.setEntityGroup(entityFSArray);
+				entityList.add(de);
+				m.setEntity(de);
+				m.addToIndexes(jcas);
+			}
+			HashMap<Integer, DiscourseEntity> groupEntityMap = new HashMap<Integer, DiscourseEntity>();
+			for (DiscourseEntity de : entityList) {
+				groupEntityMap.put(de.getId(), de);
+			}
+			for (Integer i : groupEntityMap.keySet()) {
+				DiscourseEntity de = groupEntityMap.get(i);
+				de.addToIndexes(jcas);
+			}
 		}
 	}
 }
