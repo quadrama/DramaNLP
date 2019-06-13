@@ -147,6 +147,7 @@ public abstract class AbstractDramaUrlReader extends JCasCollectionReader_ImplBa
 	public void getNext(JCas jcas) throws IOException, CollectionException {
 		URL url = urls.get(currentUrlIndex++);
 
+		System.out.println("Processing " + url);
 		getLogger().debug("Processing url " + url);
 
 		Drama drama = new Drama(jcas);
