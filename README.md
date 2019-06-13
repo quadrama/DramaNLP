@@ -1,4 +1,4 @@
-[![release](https://img.shields.io/badge/release-2.0.0-blue.svg)](https://github.com/quadrama/DramaNLP/releases/tag/v2.0.0)
+[![release](https://img.shields.io/github/release-pre/quadrama/DramaNLP.svg)](https://github.com/quadrama/DramaNLP/releases/latest)
 [![Build Status](https://travis-ci.org/quadrama/DramaNLP.svg?branch=master)](https://travis-ci.org/quadrama/DramaNLP)
 [![DOI](https://www.zenodo.org/badge/57984264.svg)](https://www.zenodo.org/badge/latestdoi/57984264)
 [![license](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://github.com/quadrama/DramaNLP/blob/master/LICENSE)

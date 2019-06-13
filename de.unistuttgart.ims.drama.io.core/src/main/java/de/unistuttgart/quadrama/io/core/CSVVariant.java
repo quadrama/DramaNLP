@@ -281,7 +281,8 @@ public enum CSVVariant {
 												if (printId == null) {
 													printId = CoreferenceUtil.createConllBrackets(printId, m, token);
 												} else {
-													printId = printId + "|" + CoreferenceUtil.createConllBrackets(printId, m, token);
+													printId = printId + "|"
+															+ CoreferenceUtil.createConllBrackets(printId, m, token);
 												}
 												used.add(m);
 											} catch (NullPointerException e) {
@@ -311,17 +312,17 @@ public enum CSVVariant {
 		int length = JCasUtil.select(jcas, Token.class).size();
 		Set<Mention> used = new HashSet<Mention>();
 		for (StageDirection sd : JCasUtil.select(jcas, StageDirection.class)) {
-			for (Token token : JCasUtil.selectCovered(Token.class, sd)) {
-				used.clear();
-				p.print(drama.getCollectionId());
-				p.print(drama.getDocumentId());
-				p.print(sd.getBegin());
-				p.print(sd.getEnd());
-				Collection<Utterance> utterances = utteranceStageMap.get(sd);
-				if (!utterances.isEmpty()) {
-					for (Utterance utterance : utterances) {
-						for (Speaker speaker : DramaUtil.getSpeakers(utterance)) {
-							for (int i = 0; i < speaker.getCastFigure().size(); i++) {
+			Collection<Utterance> utterances = utteranceStageMap.get(sd);
+			if (!utterances.isEmpty()) {
+				for (Utterance utt : JCasUtil.selectCovering(Utterance.class, sd)) {
+					for (Speaker speaker : DramaUtil.getSpeakers(utt)) {
+						for (int i = 0; i < speaker.getCastFigure().size(); i++) {
+							for (Token token : JCasUtil.selectCovered(Token.class, sd)) {
+								used.clear();
+								p.print(drama.getCollectionId());
+								p.print(drama.getDocumentId());
+								p.print(sd.getBegin());
+								p.print(sd.getEnd());
 								try {
 									p.print(speaker.getCastFigure(i).getNames(0));
 								} catch (NullPointerException e) {
@@ -332,44 +333,85 @@ public enum CSVVariant {
 								} catch (NullPointerException e) {
 									p.print(null);
 								}
+								p.print(token.getCoveredText());
+								p.print(token.getPos().getPosValue());
+								p.print(token.getLemma().getValue());
+								p.print(length);
+								String printId = null;
+								if (mentionMap.containsKey(token)) {
+									Collection<Mention> mList = mentionMap.get(token);
+									for (Mention m : mList) {
+										if (m.getEntity() == null) {
+											printId = null;
+										} else {
+											if (!used.contains(m)) {
+												try {
+													if (printId == null) {
+														printId = CoreferenceUtil.createConllBrackets(printId, m,
+																token);
+													} else {
+														printId = printId + "|" + CoreferenceUtil
+																.createConllBrackets(printId, m, token);
+													}
+													used.add(m);
+												} catch (NullPointerException e) {
+													//
+												}
+											}
+										}
+									}
+								} else {
+									//
+								}
+								p.print(null);
+								p.print(printId);
+								p.println();
 							}
 						}
 					}
-				} else {
-					p.print("_Stage");
-					p.print("_Stage");
 				}
-				p.print(token.getCoveredText());
-				p.print(token.getPos().getPosValue());
-				p.print(token.getLemma().getValue());
-				p.print(length);
-				String printId = null;
-				if (mentionMap.containsKey(token)) {
-					Collection<Mention> mList = mentionMap.get(token);
-					for (Mention m : mList) {
-						if (m.getEntity() == null) {
-							printId = null;
-						} else {
-							if (!used.contains(m)) {
-								try {
-									if (printId == null) {
-										printId = CoreferenceUtil.createConllBrackets(printId, m, token);
-									} else {
-										printId = printId + "|" + CoreferenceUtil.createConllBrackets(printId, m, token);
+			} else {
+				for (Token token : JCasUtil.selectCovered(Token.class, sd)) {
+					used.clear();
+					p.print(drama.getCollectionId());
+					p.print(drama.getDocumentId());
+					p.print(sd.getBegin());
+					p.print(sd.getEnd());
+					p.print("_Stage");
+					p.print("_Stage");
+					p.print(token.getCoveredText());
+					p.print(token.getPos().getPosValue());
+					p.print(token.getLemma().getValue());
+					p.print(length);
+					String printId = null;
+					if (mentionMap.containsKey(token)) {
+						Collection<Mention> mList = mentionMap.get(token);
+						for (Mention m : mList) {
+							if (m.getEntity() == null) {
+								printId = null;
+							} else {
+								if (!used.contains(m)) {
+									try {
+										if (printId == null) {
+											printId = CoreferenceUtil.createConllBrackets(printId, m, token);
+										} else {
+											printId = printId + "|"
+													+ CoreferenceUtil.createConllBrackets(printId, m, token);
+										}
+										used.add(m);
+									} catch (NullPointerException e) {
+										//
 									}
-									used.add(m);
-								} catch (NullPointerException e) {
-									//
 								}
 							}
 						}
+					} else {
+						//
 					}
-				} else {
-					//
+					p.print(null);
+					p.print(printId);
+					p.println();
 				}
-				p.print(null);
-				p.print(printId);
-				p.println();
 			}
 		}
 	}
