@@ -33,18 +33,20 @@ public class CreateCoreferenceGroups extends JCasAnnotator_ImplBase {
 		Map<List<Integer>, List<Mention>> offset2Mention = new HashMap<List<Integer>, List<Mention>>();
 		List<Integer> allIds = new ArrayList<Integer>();
 		for (Mention mention : JCasUtil.select(jcas, Mention.class)) {
-			allIds.add(mention.getEntity().getId());
-			List<Integer> offsets = new ArrayList<Integer>();
-			List<Mention> currentMentions = new ArrayList<Mention>();
-			offsets.add(mention.getBegin());
-			offsets.add(mention.getEnd());
-			if (offset2Mention.containsKey(offsets)) {
-				currentMentions = offset2Mention.get(offsets);
-				currentMentions.add(mention);
-				offset2Mention.put(offsets, currentMentions);
-			} else {
-				currentMentions.add(mention);
-				offset2Mention.put(offsets, currentMentions);
+			if (!(mention.getEntity() == null)) {
+				allIds.add(mention.getEntity().getId());
+				List<Integer> offsets = new ArrayList<Integer>();
+				List<Mention> currentMentions = new ArrayList<Mention>();
+				offsets.add(mention.getBegin());
+				offsets.add(mention.getEnd());
+				if (offset2Mention.containsKey(offsets)) {
+					currentMentions = offset2Mention.get(offsets);
+					currentMentions.add(mention);
+					offset2Mention.put(offsets, currentMentions);
+				} else {
+					currentMentions.add(mention);
+					offset2Mention.put(offsets, currentMentions);
+				}
 			}
 		}
 		if (allIds.isEmpty()) {
