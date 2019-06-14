@@ -45,6 +45,7 @@ import de.unistuttgart.quadrama.io.tei.TheatreClassiqueReader;
 import de.unistuttgart.quadrama.io.tei.TurmReader;
 import de.unistuttgart.ims.drama.util.CoreferenceUtil;
 import de.unistuttgart.ims.drama.util.CreateCoreferenceGroups;
+import de.unistuttgart.ims.drama.util.RemoveDoubledMentions;
 
 public class TEI2XMI {
 
@@ -120,6 +121,7 @@ public class TEI2XMI {
 		builder.add(createEngineDescription(FigureMentionDetection.class));
 		builder.add(SceneActAnnotator.getDescription());
 
+		builder.add(createEngineDescription(RemoveDoubledMentions.class));
 		if (options.isCreateCoreferenceGroups()) {
 			builder.add(createEngineDescription(CreateCoreferenceGroups.class));
 		}
