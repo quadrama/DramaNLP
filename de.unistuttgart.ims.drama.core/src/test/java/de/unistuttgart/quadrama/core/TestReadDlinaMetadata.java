@@ -12,24 +12,13 @@ import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiReader;
-import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.unistuttgart.ims.drama.api.DatePremiere;
 import de.unistuttgart.ims.drama.api.DatePrint;
 import de.unistuttgart.ims.drama.api.DateWritten;
 import de.unistuttgart.ims.drama.api.Drama;
-import de.unistuttgart.quadrama.io.tei.TextgridTEIUrlReader;
 
 @Deprecated
 public class TestReadDlinaMetadata {
-
-	// @BeforeClass
-	public static void setUp() throws Exception {
-		SimplePipeline.runPipeline(
-				CollectionReaderFactory.createReaderDescription(TextgridTEIUrlReader.class,
-						TextgridTEIUrlReader.PARAM_INPUT, "src/test/resources/ReadDlinaMetadata/urls.txt"),
-				AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
-						"src/test/resources/ReadDlinaMetadata/xmi/"));
-	}
 
 	public void testReadDlinaMetadata() throws Exception {
 		Iterator<JCas> iter = SimplePipeline.iteratePipeline(
