@@ -146,11 +146,13 @@ public abstract class AbstractDramaUrlReader extends JCasCollectionReader_ImplBa
 	@Override
 	public void getNext(JCas jcas) throws IOException, CollectionException {
 		URL url = urls.get(currentUrlIndex++);
-
 		getLogger().log(Level.INFO, "Processing url " + url);
 
+		String id = url.getPath();
+		id = id.substring(id.lastIndexOf('/'));
+
 		Drama drama = new Drama(jcas);
-		drama.setDocumentId(String.valueOf(currentUrlIndex));
+		drama.setDocumentId(id);
 		drama.setCollectionId(collectionId);
 		// drama.setDocumentBaseUri("https://textgridlab.org/1.0/tgcrud-public/rest/");
 		drama.setDocumentUri(url.toString());
