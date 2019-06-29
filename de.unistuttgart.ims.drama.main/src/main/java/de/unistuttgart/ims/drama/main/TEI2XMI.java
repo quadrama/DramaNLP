@@ -14,14 +14,16 @@ import org.apache.uima.resource.ResourceInitializationException;
 import com.lexicalscope.jewel.cli.CliFactory;
 import com.lexicalscope.jewel.cli.Option;
 
+import de.tudarmstadt.ukp.dkpro.core.berkeleyparser.BerkeleyParser;
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
+import de.tudarmstadt.ukp.dkpro.core.languagetool.LanguageToolSegmenter;
 import de.tudarmstadt.ukp.dkpro.core.matetools.MateLemmatizer;
 import de.tudarmstadt.ukp.dkpro.core.matetools.MateMorphTagger;
-import de.tudarmstadt.ukp.dkpro.core.berkeleyparser.BerkeleyParser;
 import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordNamedEntityRecognizer;
 import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordPosTagger;
-import de.tudarmstadt.ukp.dkpro.core.languagetool.LanguageToolSegmenter;
 import de.unistuttgart.ims.drama.core.ml.gender.ClearTkGenderAnnotator;
+import de.unistuttgart.ims.drama.util.CreateCoreferenceGroups;
+import de.unistuttgart.ims.drama.util.RemoveDoubledMentions;
 import de.unistuttgart.ims.uimautil.SetCollectionId;
 import de.unistuttgart.quadrama.core.D;
 import de.unistuttgart.quadrama.core.FigureDetailsAnnotator;
@@ -40,17 +42,13 @@ import de.unistuttgart.quadrama.io.tei.CoreTeiReader;
 import de.unistuttgart.quadrama.io.tei.GerDraCorReader;
 import de.unistuttgart.quadrama.io.tei.MapFiguresToCastFigures;
 import de.unistuttgart.quadrama.io.tei.QuaDramAReader;
-import de.unistuttgart.quadrama.io.tei.TextgridTEIUrlReader;
 import de.unistuttgart.quadrama.io.tei.TheatreClassiqueReader;
 import de.unistuttgart.quadrama.io.tei.TurmReader;
-import de.unistuttgart.ims.drama.util.CoreferenceUtil;
-import de.unistuttgart.ims.drama.util.CreateCoreferenceGroups;
-import de.unistuttgart.ims.drama.util.RemoveDoubledMentions;
 
 public class TEI2XMI {
 
 	enum Corpus {
-		GERDRACOR, TEXTGRID, TURM, THEATRECLASSIQUE, CORETEI, QUADRAMA
+		GERDRACOR, TURM, THEATRECLASSIQUE, CORETEI, QUADRAMA
 	}
 
 	public static void main(String[] args) throws Exception {
@@ -77,9 +75,6 @@ public class TEI2XMI {
 			switch (options.getCorpus()) {
 			case GERDRACOR:
 				builder.add(createEngineDescription(SetCollectionId.class, SetCollectionId.PARAM_COLLECTION_ID, "gdc"));
-				break;
-			case TEXTGRID:
-				builder.add(createEngineDescription(SetCollectionId.class, SetCollectionId.PARAM_COLLECTION_ID, "tg"));
 				break;
 			case TURM:
 				builder.add(
@@ -166,21 +161,6 @@ public class TEI2XMI {
 			}
 	}
 
-	@SuppressWarnings("unchecked")
-	public static Class<? extends AbstractDramaUrlReader> getReaderClass(String readerClassname) {
-		Class<?> cl;
-		try {
-			cl = Class.forName(readerClassname);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			return TextgridTEIUrlReader.class;
-		}
-		if (AbstractDramaUrlReader.class.isAssignableFrom(cl))
-			return (Class<? extends AbstractDramaUrlReader>) cl;
-		return TextgridTEIUrlReader.class;
-
-	}
-
 	interface MyOptions extends Options {
 		@Option(defaultToNull = true)
 		File getDlinaDirectory();
@@ -202,8 +182,9 @@ public class TEI2XMI {
 		String getLanguage();
 
 		/*
-		 * Enable parsing. Disabled by default to save runtime and resources if not needed.
-		 * If OutOfMemoryError Exception occurs, consider setting -Xmx to a higher value.
+		 * Enable parsing. Disabled by default to save runtime and resources if not
+		 * needed. If OutOfMemoryError Exception occurs, consider setting -Xmx to a
+		 * higher value.
 		 */
 		@Option()
 		boolean isParse();
@@ -215,12 +196,12 @@ public class TEI2XMI {
 		boolean isSkipSpeakerIdentifier();
 
 		/*
-		 * Disabled by default. Automatically create coreference/entity groups out of 
+		 * Disabled by default. Automatically create coreference/entity groups out of
 		 * entities that occupy identical mention spans.
 		 */
 		@Option()
 		boolean isCreateCoreferenceGroups();
-		
+
 		@Option
 		Corpus getCorpus();
 
@@ -259,19 +240,14 @@ public class TEI2XMI {
 					TheatreClassiqueReader.PARAM_INPUT, options.getInput(),
 					TheatreClassiqueReader.PARAM_REMOVE_XML_ANNOTATIONS, true, TheatreClassiqueReader.PARAM_LANGUAGE,
 					options.getLanguage());
-		case CORETEI:
-			return CollectionReaderFactory.createReaderDescription(CoreTeiReader.class, CoreTeiReader.PARAM_INPUT,
-					options.getInput(), CoreTeiReader.PARAM_REMOVE_XML_ANNOTATIONS, true, CoreTeiReader.PARAM_LANGUAGE,
-					options.getLanguage());
 		case TURM:
 			return CollectionReaderFactory.createReaderDescription(TurmReader.class, AbstractDramaUrlReader.PARAM_INPUT,
 					options.getInput(), TurmReader.PARAM_REMOVE_XML_ANNOTATIONS, true, TurmReader.PARAM_LANGUAGE, "de");
-		case TEXTGRID:
+		case CORETEI:
 		default:
-			return CollectionReaderFactory.createReaderDescription(TextgridTEIUrlReader.class,
-					TextgridTEIUrlReader.PARAM_INPUT, options.getInput(),
-					TextgridTEIUrlReader.PARAM_REMOVE_XML_ANNOTATIONS, true, TextgridTEIUrlReader.PARAM_STRICT, true,
-					TextgridTEIUrlReader.PARAM_LANGUAGE, options.getLanguage());
+			return CollectionReaderFactory.createReaderDescription(CoreTeiReader.class, CoreTeiReader.PARAM_INPUT,
+					options.getInput(), CoreTeiReader.PARAM_REMOVE_XML_ANNOTATIONS, true, CoreTeiReader.PARAM_LANGUAGE,
+					options.getLanguage());
 
 		}
 	}

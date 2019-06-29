@@ -23,6 +23,7 @@ import org.apache.uima.jcas.cas.StringArray;
 import org.jsoup.nodes.TextNode;
 import org.jsoup.select.Elements;
 
+import de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData;
 import de.unistuttgart.ims.drama.api.Act;
 import de.unistuttgart.ims.drama.api.ActHeading;
 import de.unistuttgart.ims.drama.api.Author;
@@ -71,7 +72,6 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 		gxr.setPreserveWhitespace(teiCompatibility);
 
 		// title
-
 		gxr.addGlobalRule("titleStmt > title:first-child", (d, e) -> d.setDocumentTitle(e.text()));
 
 		// id
@@ -175,7 +175,7 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 				}
 			}
 		});
-		gxr.addRule("div[type=scene] > p", Utterance.class, (u,e) -> {
+		gxr.addRule("div[type=scene] > p", Utterance.class, (u, e) -> {
 			Speaker sp = u.getCAS().createFS(CasUtil.getType(u.getCAS(), Speaker.class));
 			sp.addToIndexes();
 			sp.setBegin(u.getBegin());
@@ -301,6 +301,8 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 		});
 
 		gxr.read(jcas, file);
+
+		DocumentMetaData.get(jcas).setDocumentId(drama.getDocumentId());
 
 		try {
 			AnnotationUtil.trim(new ArrayList<Figure>(JCasUtil.select(jcas, Figure.class)));
