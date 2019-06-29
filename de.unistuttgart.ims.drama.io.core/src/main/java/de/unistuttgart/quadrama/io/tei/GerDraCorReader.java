@@ -71,6 +71,9 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 		gxr.setTextRootSelector(teiCompatibility ? null : "TEI > text");
 		gxr.setPreserveWhitespace(teiCompatibility);
 
+		// ignoring <w> tags (speeds up processing)
+		gxr.setIgnoreFunction(e -> e.tagName().equalsIgnoreCase("w"));
+
 		// title
 		gxr.addGlobalRule("titleStmt > title:first-child", (d, e) -> d.setDocumentTitle(e.text()));
 
