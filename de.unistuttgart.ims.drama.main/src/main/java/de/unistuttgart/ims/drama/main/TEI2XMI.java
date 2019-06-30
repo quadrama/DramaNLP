@@ -108,7 +108,8 @@ public class TEI2XMI {
 			builder.add(ClearTkGenderAnnotator.getEngineDescription(options.getGenderModel().getAbsolutePath()));
 		}
 		builder.add(createEngineDescription(StanfordPosTagger.class));
-		builder.add(createEngineDescription(MateLemmatizer.class));
+		if (!options.isSkipLemmatizer())
+			builder.add(createEngineDescription(MateLemmatizer.class));
 		if (options.getLanguage() == "de" || options.getLanguage() == "es" || options.getLanguage() == "fr")
 			builder.add(createEngineDescription(MateMorphTagger.class));
 		if (options.isParse())
@@ -195,6 +196,9 @@ public class TEI2XMI {
 
 		@Option()
 		boolean isSkipSpeakerIdentifier();
+
+		@Option
+		boolean isSkipLemmatizer();
 
 		/*
 		 * Disabled by default. Automatically create coreference/entity groups out of
