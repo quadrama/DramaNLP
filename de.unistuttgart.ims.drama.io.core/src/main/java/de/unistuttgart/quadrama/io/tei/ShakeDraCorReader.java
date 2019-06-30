@@ -68,7 +68,7 @@ public class ShakeDraCorReader extends AbstractDramaUrlReader {
 		gxr.setTextRootSelector(teiCompatibility ? null : "TEI > text");
 		gxr.setPreserveWhitespace(teiCompatibility);
 
-		gxr.setIgnoreFunction(e -> e.tagName().matches("^(lb|c)$"));
+		gxr.setIgnoreFunction(e -> e.tagName().matches("^(lb|c|w)$"));
 
 		// title
 		gxr.addGlobalRule("teiHeader > fileDesc > titleStmt > title:first-child",
@@ -152,12 +152,15 @@ public class ShakeDraCorReader extends AbstractDramaUrlReader {
 		gxr.addRule("p", Speech.class);
 		gxr.addRule("ab", Speech.class);
 
-		gxr.addRule("w", Token.class, (t, e) -> {
-			if (e.hasAttr("lemma")) {
-				Lemma l = AnnotationFactory.createAnnotation(jcas, t.getBegin(), t.getEnd(), Lemma.class);
-				t.setLemma(l);
-			}
-		});
+		// this is disabled, because the pos tagger doesn't work properly
+		if (false) {
+			gxr.addRule("w", Token.class, (t, e) -> {
+				if (e.hasAttr("lemma")) {
+					Lemma l = AnnotationFactory.createAnnotation(jcas, t.getBegin(), t.getEnd(), Lemma.class);
+					t.setLemma(l);
+				}
+			});
+		}
 
 		gxr.addRule("sp", Utterance.class, (u, e) -> {
 			Collection<Speaker> speakers = JCasUtil.selectCovered(Speaker.class, u);
