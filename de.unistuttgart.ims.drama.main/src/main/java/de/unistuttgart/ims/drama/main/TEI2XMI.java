@@ -42,13 +42,14 @@ import de.unistuttgart.quadrama.io.tei.CoreTeiReader;
 import de.unistuttgart.quadrama.io.tei.GerDraCorReader;
 import de.unistuttgart.quadrama.io.tei.MapFiguresToCastFigures;
 import de.unistuttgart.quadrama.io.tei.QuaDramAReader;
+import de.unistuttgart.quadrama.io.tei.ShakeDraCorReader;
 import de.unistuttgart.quadrama.io.tei.TheatreClassiqueReader;
 import de.unistuttgart.quadrama.io.tei.TurmReader;
 
 public class TEI2XMI {
 
 	enum Corpus {
-		GERDRACOR, TURM, THEATRECLASSIQUE, CORETEI, QUADRAMA
+		GERDRACOR, TURM, THEATRECLASSIQUE, CORETEI, QUADRAMA, SHAKEDRACOR
 	}
 
 	public static void main(String[] args) throws Exception {
@@ -227,6 +228,11 @@ public class TEI2XMI {
 		switch (options.getCorpus()) {
 		case QUADRAMA:
 			return CollectionReaderFactory.createReaderDescription(QuaDramAReader.class,
+					AbstractDramaUrlReader.PARAM_INPUT, options.getInput(),
+					AbstractDramaUrlReader.PARAM_REMOVE_XML_ANNOTATIONS, true, AbstractDramaUrlReader.PARAM_LANGUAGE,
+					options.getLanguage());
+		case SHAKEDRACOR:
+			return CollectionReaderFactory.createReaderDescription(ShakeDraCorReader.class,
 					AbstractDramaUrlReader.PARAM_INPUT, options.getInput(),
 					AbstractDramaUrlReader.PARAM_REMOVE_XML_ANNOTATIONS, true, AbstractDramaUrlReader.PARAM_LANGUAGE,
 					options.getLanguage());
