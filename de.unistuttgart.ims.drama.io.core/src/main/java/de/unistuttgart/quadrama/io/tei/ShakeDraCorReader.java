@@ -22,6 +22,7 @@ import org.apache.uima.jcas.cas.StringArray;
 import org.jsoup.nodes.TextNode;
 import org.jsoup.select.Elements;
 
+import de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Lemma;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.unistuttgart.ims.drama.api.Act;
@@ -182,6 +183,7 @@ public class ShakeDraCorReader extends AbstractDramaUrlReader {
 		});
 
 		gxr.read(jcas, file);
+		DocumentMetaData.get(jcas).setDocumentId(drama.getDocumentId());
 
 		try {
 			AnnotationUtil.trim(new ArrayList<Figure>(JCasUtil.select(jcas, Figure.class)));

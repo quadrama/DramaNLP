@@ -9,11 +9,12 @@ import org.apache.commons.csv.CSVPrinter;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
+import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 
 import de.tudarmstadt.ukp.dkpro.core.api.io.JCasFileWriter_ImplBase;
-import de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData;
+import de.unistuttgart.ims.drama.api.Drama;
 
 /**
  * This exporter generates the base CSV files we analyse. Documentation etc.
@@ -31,8 +32,7 @@ public class ExportAsCSV extends JCasFileWriter_ImplBase {
 	public static final String PARAM_CSV_VARIANT_NAME = "CSV Variant Name";
 
 	/**
-	 * The exact format. See {@link org.apache.commons.csv.CSVFormat} for
-	 * details.
+	 * The exact format. See {@link org.apache.commons.csv.CSVFormat} for details.
 	 */
 	public static final String PARAM_CSV_FORMAT_NAME = "CSV Format Name";
 
@@ -54,7 +54,7 @@ public class ExportAsCSV extends JCasFileWriter_ImplBase {
 
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
-		DocumentMetaData dmd = DocumentMetaData.get(jcas);
+		Drama dmd = JCasUtil.selectSingle(jcas, Drama.class);
 		try {
 			OutputStreamWriter os = new OutputStreamWriter(
 					getOutputStream(dmd.getDocumentId(), "." + csvVariantName + ".csv"));
