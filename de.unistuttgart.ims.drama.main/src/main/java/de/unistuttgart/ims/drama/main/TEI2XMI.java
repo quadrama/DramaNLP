@@ -59,12 +59,15 @@ public class TEI2XMI {
 
 		AggregateBuilder builder = new AggregateBuilder();
 
-		// Tokenize Utterances
-		builder.add(D.getWrappedSegmenterDescription(LanguageToolSegmenter.class));
-		// Tokenize Stage Directions
-		builder.add(SD.getWrappedSegmenterDescription(LanguageToolSegmenter.class));
-		// Tokenize Speaker Tags
-		builder.add(SP.getWrappedSegmenterDescription(LanguageToolSegmenter.class));
+		if (!options.isSkipTokenizer()) {
+			// Tokenize Utterances
+			builder.add(D.getWrappedSegmenterDescription(LanguageToolSegmenter.class));
+			// Tokenize Stage Directions
+			builder.add(SD.getWrappedSegmenterDescription(LanguageToolSegmenter.class));
+			// Tokenize Speaker Tags
+			builder.add(SP.getWrappedSegmenterDescription(LanguageToolSegmenter.class));
+		}
+
 		if (options.getCorpus() == Corpus.TURM) {
 			builder.add(createEngineDescription(SceneActAnnotator.class));
 		}
@@ -199,6 +202,9 @@ public class TEI2XMI {
 
 		@Option
 		boolean isSkipLemmatizer();
+
+		@Option
+		boolean isSkipTokenizer();
 
 		/*
 		 * Disabled by default. Automatically create coreference/entity groups out of
