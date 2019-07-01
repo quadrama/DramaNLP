@@ -113,7 +113,7 @@ public class TEI2XMI {
 		}
 		builder.add(createEngineDescription(StanfordPosTagger.class));
 		builder.add(createEngineDescription(MateLemmatizer.class));
-		if (options.getLanguage() == "de" || options.getLanguage() == "es" || options.getLanguage() == "fr")
+		if (options.getLanguage().equals("de") || options.getLanguage().equals("es") || options.getLanguage().equals("fr"))
 			builder.add(createEngineDescription(MateMorphTagger.class));
 		if (options.isParse())
 			builder.add(createEngineDescription(BerkeleyParser.class, BerkeleyParser.PARAM_WRITE_PENN_TREE, true));
