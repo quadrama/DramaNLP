@@ -76,7 +76,8 @@ public class ShakeDraCorReader extends AbstractDramaUrlReader {
 				(d, e) -> d.setDocumentTitle(e.text()));
 
 		// id
-		gxr.addGlobalRule("teiHeader > fileDesc > publicationStmt > idno", (d, e) -> d.setDocumentId(e.text()));
+		gxr.addGlobalRule("teiHeader > fileDesc > publicationStmt > idno:first-child",
+				(d, e) -> d.setDocumentId(e.text()));
 
 		// author
 		gxr.addGlobalRule("teiHeader > fileDesc > titleStmt > author", Author.class, (author, e) -> {
