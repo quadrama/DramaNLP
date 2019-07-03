@@ -76,7 +76,7 @@ public class ShakeDraCorReader extends AbstractDramaUrlReader {
 				(d, e) -> d.setDocumentTitle(e.text()));
 
 		// id
-		gxr.addGlobalRule("teiHeader > fileDesc > publicationStmt > idno:first-child",
+		gxr.addGlobalRule("teiHeader > fileDesc > publicationStmt > idno:not([type])",
 				(d, e) -> d.setDocumentId(e.text()));
 
 		// author
@@ -182,7 +182,6 @@ public class ShakeDraCorReader extends AbstractDramaUrlReader {
 				}
 			}
 		});
-
 		gxr.read(jcas, file);
 		DocumentMetaData.get(jcas).setDocumentId(drama.getDocumentId());
 

@@ -149,7 +149,7 @@ public abstract class AbstractDramaUrlReader extends JCasCollectionReader_ImplBa
 		getLogger().log(Level.INFO, "Processing url " + url);
 
 		String id = url.getPath();
-		id = id.substring(id.lastIndexOf('/'));
+		id = id.substring(id.lastIndexOf('/') + 1);
 		id = id.replace(".xml", "");
 
 		Drama drama = new Drama(jcas);
