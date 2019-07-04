@@ -11,7 +11,6 @@ import org.apache.uima.fit.pipeline.SimplePipeline;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
-import org.junit.Test;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
 import de.unistuttgart.ims.drama.api.Drama;
@@ -20,7 +19,6 @@ import de.unistuttgart.quadrama.io.tei.ShakeDraCorReader;
 
 public class TestShakeDraCorReader {
 
-	@Test
 	public void testRomeoAndJuliet() throws ResourceInitializationException {
 
 		CollectionReaderDescription description = CollectionReaderFactory.createReaderDescription(
