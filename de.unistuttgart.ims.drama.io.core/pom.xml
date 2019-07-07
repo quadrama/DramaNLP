@@ -8,11 +8,6 @@
   <artifactId>de.unistuttgart.ims.drama.io.core</artifactId>
   <dependencies>
   	<dependency>
-  		<groupId>org.jsoup</groupId>
-  		<artifactId>jsoup</artifactId>
-  		<version>1.11.2</version>
-  	</dependency>
-  	<dependency>
   		<groupId>org.apache.uima</groupId>
   		<artifactId>uimafit-core</artifactId>
   	</dependency>
@@ -61,7 +56,6 @@
   		<artifactId>
   			de.tudarmstadt.ukp.dkpro.core.api.ner-asl
   		</artifactId>
-  		<version>${dkpro.version}</version>
   	</dependency>
  	<dependency>
   		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
@@ -77,7 +71,7 @@
   	<dependency>
   		<groupId>de.unistuttgart.ims.uima.io</groupId>
   		<artifactId>generic-xml-reader</artifactId>
-  		<version>1.5.0</version>
+  		<version>1.6.0</version>
   	</dependency>
   </dependencies>
   <build>
