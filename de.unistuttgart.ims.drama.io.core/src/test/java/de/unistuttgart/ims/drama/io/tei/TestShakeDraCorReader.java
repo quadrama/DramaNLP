@@ -37,7 +37,9 @@ public class TestShakeDraCorReader {
 		assertEquals("Rom", JCasUtil.selectSingle(jcas, Drama.class).getDocumentId());
 		assertEquals(202029, jcas.getDocumentText().length());
 		assertEquals("en", jcas.getDocumentLanguage());
-
+		Drama d = JCasUtil.selectSingle(jcas, Drama.class);
+		assertEquals(1597, d.getDatePrinted());
+		assertEquals(1595, d.getDateWritten());
 	}
 
 }
