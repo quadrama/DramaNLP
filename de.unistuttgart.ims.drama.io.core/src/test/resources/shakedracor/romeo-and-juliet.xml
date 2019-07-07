@@ -64,7 +64,7 @@
             <date>April, 2015</date>
           </publicationStmt>
         </biblFull>
-      <bibl type="originalSource"><date type="print" when="1597"/><date type="premiere"/><date type="written" when="1595"/></bibl></sourceDesc>
+      <bibl type="originalSource"><date type="print" when="1597"></date><date type="premiere"/><date type="written" when="1595"/></bibl></sourceDesc>
     </fileDesc>
     <encodingDesc>
       <projectDesc>

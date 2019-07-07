@@ -71,7 +71,7 @@
   	<dependency>
   		<groupId>de.unistuttgart.ims.uima.io</groupId>
   		<artifactId>generic-xml-reader</artifactId>
-  		<version>1.6.0</version>
+  		<version>1.6.1</version>
   	</dependency>
   </dependencies>
   <build>
