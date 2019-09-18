@@ -1,5 +1,4 @@
 language: java
-install: true
 jdk:
   - oraclejdk9
 notifications:
