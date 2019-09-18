@@ -8,7 +8,7 @@
 	<packaging>pom</packaging>
 	<name>DramaNLP</name>
 	<url>https://github.com/quadrama/DramaNLP</url>
-	<description>Several component for processing dramatic texts (theatre plays) with Apache UIMA.</description>
+	<description>Several components for processing dramatic texts (theatre plays) with Apache UIMA.</description>
 	<issueManagement>
 		<system>GitHub Issues</system>
 		<url>https://github.com/quadrama/DramaNLP/issues</url>
