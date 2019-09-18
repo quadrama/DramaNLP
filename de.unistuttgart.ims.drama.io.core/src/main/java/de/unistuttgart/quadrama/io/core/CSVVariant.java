@@ -127,13 +127,14 @@ public enum CSVVariant {
 	private void convertMentions(JCas jcas, CSVPrinter p) throws IOException {
 		Map<Mention, Collection<Utterance>> mention2utterances = JCasUtil.indexCovering(jcas, Mention.class,
 				Utterance.class);
+		Map<Mention, Collection<Speech>> mention2speech = JCasUtil.indexCovering(jcas, Mention.class,
+				Speech.class);
 		Map<Mention, Collection<StageDirection>> mention2direction = JCasUtil.indexCovering(jcas, Mention.class,
 				StageDirection.class);
 
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
 		for (Mention mention : JCasUtil.select(jcas, Mention.class)) {
-
-			if (mention2utterances.get(mention).isEmpty()) {
+			if (mention2speech.get(mention).isEmpty()) {
 				if (!mention2direction.get(mention).isEmpty()) {
 					StageDirection sd = mention2direction.get(mention).iterator().next();
 					p.print(drama.getCollectionId());
@@ -145,6 +146,7 @@ public enum CSVVariant {
 					p.print(mention.getEnd());
 					p.print(mention.getCoveredText());
 					p.print(mention.getEntity().getXmlId(0));
+					p.println();
 				}
 			} else {
 				Utterance utterance = mention2utterances.get(mention).iterator().next();
@@ -166,8 +168,8 @@ public enum CSVVariant {
 					else
 						p.print(mention.getEntity().getXmlId(0));
 				}
+				p.println();
 			}
-			p.println();
 		}
 	}
 
