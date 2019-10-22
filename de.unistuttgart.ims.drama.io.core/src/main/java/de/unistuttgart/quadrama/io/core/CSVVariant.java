@@ -127,8 +127,7 @@ public enum CSVVariant {
 	private void convertMentions(JCas jcas, CSVPrinter p) throws IOException {
 		Map<Mention, Collection<Utterance>> mention2utterances = JCasUtil.indexCovering(jcas, Mention.class,
 				Utterance.class);
-		Map<Mention, Collection<Speech>> mention2speech = JCasUtil.indexCovering(jcas, Mention.class,
-				Speech.class);
+		Map<Mention, Collection<Speech>> mention2speech = JCasUtil.indexCovering(jcas, Mention.class, Speech.class);
 		Map<Mention, Collection<StageDirection>> mention2direction = JCasUtil.indexCovering(jcas, Mention.class,
 				StageDirection.class);
 
@@ -149,26 +148,28 @@ public enum CSVVariant {
 					p.println();
 				}
 			} else {
-				Utterance utterance = mention2utterances.get(mention).iterator().next();
-				for (Speaker speaker : DramaUtil.getSpeakers(utterance)) {
-					p.print(drama.getCollectionId());
-					p.print(drama.getDocumentId());
-					p.print(utterance.getBegin());
-					p.print(utterance.getEnd());
-					try {
-						p.print(speaker.getCastFigure(0).getXmlId(0));
-					} catch (NullPointerException e) {
-						p.print(null);
+				if (!mention2utterances.get(mention).isEmpty()) {
+					Utterance utterance = mention2utterances.get(mention).iterator().next();
+					for (Speaker speaker : DramaUtil.getSpeakers(utterance)) {
+						p.print(drama.getCollectionId());
+						p.print(drama.getDocumentId());
+						p.print(utterance.getBegin());
+						p.print(utterance.getEnd());
+						try {
+							p.print(speaker.getCastFigure(0).getXmlId(0));
+						} catch (NullPointerException e) {
+							p.print(null);
+						}
+						p.print(mention.getBegin());
+						p.print(mention.getEnd());
+						p.print(mention.getCoveredText());
+						if (mention.getEntity() == null)
+							p.print(null);
+						else
+							p.print(mention.getEntity().getXmlId(0));
 					}
-					p.print(mention.getBegin());
-					p.print(mention.getEnd());
-					p.print(mention.getCoveredText());
-					if (mention.getEntity() == null)
-						p.print(null);
-					else
-						p.print(mention.getEntity().getXmlId(0));
+					p.println();
 				}
-				p.println();
 			}
 		}
 	}
