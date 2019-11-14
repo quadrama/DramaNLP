@@ -14,6 +14,7 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 
 import de.tudarmstadt.ukp.dkpro.core.api.io.JCasFileWriter_ImplBase;
+import de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData;
 import de.unistuttgart.ims.drama.api.Drama;
 
 /**
@@ -57,11 +58,12 @@ public class ExportAsCONLL extends JCasFileWriter_ImplBase {
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
+		DocumentMetaData dmd = DocumentMetaData.get(jcas);
 		try {
 			conllVariantName = conllVariant.toString();
 			OutputStreamWriter os = new OutputStreamWriter(
 					getOutputStream(drama.getDocumentUri().split("/")[drama.getDocumentUri().split("/").length - 1],
-							"." + conllVariantName + ".conll"));
+							"." + dmd.getDocumentId() + "." + conllVariantName + ".conll"));
 			CSVPrinter p = new CSVPrinter(os, csvFormat);
 			conllVariant.header(jcas, p);
 			conllVariant.convert(jcas, p);

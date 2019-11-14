@@ -20,6 +20,7 @@ import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import de.tudarmstadt.ukp.dkpro.core.api.ner.type.NamedEntity;
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.morph.Morpheme;
+import de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData;
 import de.tudarmstadt.ukp.dkpro.core.io.penntree.PennTreeNode;
 import de.tudarmstadt.ukp.dkpro.core.io.penntree.PennTreeUtils;
 import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.constituent.ROOT;
@@ -48,15 +49,18 @@ public enum CONLLVariant {
 
 	public void header(JCas jcas, CSVPrinter p) throws IOException {
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
+		DocumentMetaData dmd = DocumentMetaData.get(jcas);
 		switch (this) {
 		case Dirndl:
 			p.printRecord("#begin document ("
-					+ drama.getDocumentUri().split("/")[drama.getDocumentUri().split("/").length - 1] + "."
+					+ drama.getDocumentUri().split("/")[drama.getDocumentUri().split("/").length - 1] + "." 
+					+ dmd.getDocumentId() + "."
 					+ ExportAsCONLL.conllVariantName + ".conll" + "); part 000");
 			break;
 		default:
 			p.printRecord("#begin document ("
-					+ drama.getDocumentUri().split("/")[drama.getDocumentUri().split("/").length - 1] + "."
+					+ drama.getDocumentUri().split("/")[drama.getDocumentUri().split("/").length - 1] + "." 
+					+ dmd.getDocumentId() + "."
 					+ ExportAsCONLL.conllVariantName + ".conll" + "); part 000");
 		}
 	}
@@ -79,6 +83,7 @@ public enum CONLLVariant {
 		Map<Token, Collection<Utterance>> token2utteranceMap = JCasUtil.indexCovering(jcas, Token.class,
 				Utterance.class);
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
+		DocumentMetaData dmd = DocumentMetaData.get(jcas);
 		Set<Mention> used = new HashSet<Mention>();
 		Pattern numberPattern = Pattern.compile("^.*number=(.+?)(\\|.*$|$)");
 		Pattern genderPattern = Pattern.compile("^.*gender=(.+?)(\\|.*$|$)");
@@ -104,6 +109,7 @@ public enum CONLLVariant {
 				}
 				used.clear();
 				p.print(drama.getDocumentUri().split("/")[drama.getDocumentUri().split("/").length - 1] + "."
+						+ dmd.getDocumentId() + "."
 						+ ExportAsCONLL.conllVariantName + ".conll");
 				p.print("000");
 				p.print(tokenId);
@@ -188,6 +194,7 @@ public enum CONLLVariant {
 
 		Map<Token, Collection<Mention>> mentionMap = JCasUtil.indexCovering(jcas, Token.class, Mention.class);
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
+		DocumentMetaData dmd = DocumentMetaData.get(jcas);
 		Set<Mention> used = new HashSet<Mention>();
 		Pattern numberPattern = Pattern.compile("^.*number=(.+?)(\\|.*$|$)");
 		Pattern genderPattern = Pattern.compile("^.*gender=(.+?)(\\|.*$|$)");
@@ -208,6 +215,7 @@ public enum CONLLVariant {
 				}
 				used.clear();
 				p.print(drama.getDocumentUri().split("/")[drama.getDocumentUri().split("/").length - 1] + "."
+						+ dmd.getDocumentId() + "."
 						+ ExportAsCONLL.conllVariantName + ".conll");
 				p.print("000");
 				p.print(tokenId);
