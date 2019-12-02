@@ -119,7 +119,7 @@ public class TEI2XMI {
 			builder.add(createEngineDescription(BerkeleyParser.class, BerkeleyParser.PARAM_WRITE_PENN_TREE, true));
 		if (!options.isSkipNER())
 			builder.add(createEngineDescription(StanfordNamedEntityRecognizer.class));
-		builder.add(createEngineDescription(FigureMentionDetection.class));
+		builder.add(createEngineDescription(FigureMentionDetection.class, FigureMentionDetection.PARAM_MANUAL_COREFERENCE, options.isManualCoreference()));
 		builder.add(SceneActAnnotator.getDescription());
 
 		builder.add(createEngineDescription(RemoveDoubledMentions.class));
@@ -220,6 +220,13 @@ public class TEI2XMI {
 		 */
 		@Option()
 		boolean isCreateCoreferenceGroups();
+		
+		/*
+		 * Disabled by default. If the coreference annotations are manual,
+		 * do not export the character names automatically.
+		 */
+		@Option()
+		boolean isManualCoreference();
 		
 		@Option
 		Corpus getCorpus();

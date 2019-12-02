@@ -15,6 +15,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
+import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.descriptor.TypeCapability;
 import org.apache.uima.fit.factory.AnnotationFactory;
 import org.apache.uima.fit.util.JCasUtil;
@@ -37,6 +38,11 @@ import de.unistuttgart.ims.uima.io.xml.ArrayUtil;
 		"de.unistuttgart.ims.drama.api.Utterance" }, outputs = { "de.unistuttgart.ims.drama.api.FigureMention" })
 public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 
+	public static final String PARAM_MANUAL_COREFERENCE = "Manual Coreference";
+
+	@ConfigurationParameter(name = PARAM_MANUAL_COREFERENCE)
+	boolean isManualCoreference;
+	
 	Map<String, List<String>> firstPersonPronouns = new HashMap<String, List<String>>();
 	String[] posExceptions = new String[] { "ART" };
 
@@ -55,7 +61,7 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
-
+		
 		// we create indices with all available figure names
 		Map<String, CastFigure> figureMap = new HashMap<String, CastFigure>();
 		for (CastFigure figure : JCasUtil.select(jcas, CastFigure.class)) {
@@ -68,38 +74,43 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 			pronouns = new LinkedList<String>();
 		}
 
-		// Step 1: We search for each name in the full text (ignoring token
-		// boundaries etc.)
-		Pattern p;
-		Matcher m;
-		for (CastFigure cf : JCasUtil.select(jcas, CastFigure.class)) {
-			for (int j = 0; j < cf.getNames().size(); j++) {
-				String name = cf.getNames(j);
+		if (!isManualCoreference) {
 
-				p = Pattern.compile("\\b" + Pattern.quote(name) + "\\b", Pattern.CASE_INSENSITIVE);
-				m = p.matcher(jcas.getDocumentText());
-				while (m.find()) {
-					// If the found token (or multi-token) looks ok given their
-					// part of speech tags,
-					// we consider it a mention
-					if (!matches(jcas, m.start(), m.end())) {
-						try {
-							// If there is an existing mention annotation on this span, check if the entity
-							// is the same as the cast figure
-							Mention existingMention = JCasUtil.selectSingleAt(jcas, Mention.class, m.start(), m.end());
-							if (!(existingMention.getEntity().getId() == cf.getId())) {
-								// If it is not the same entity, create the mention
+			// Step 1: We search for each name in the full text (ignoring token
+			// boundaries etc.)
+			Pattern p;
+			Matcher m;
+			for (CastFigure cf : JCasUtil.select(jcas, CastFigure.class)) {
+				for (int j = 0; j < cf.getNames().size(); j++) {
+					String name = cf.getNames(j);
+
+					p = Pattern.compile("\\b" + Pattern.quote(name) + "\\b", Pattern.CASE_INSENSITIVE);
+					m = p.matcher(jcas.getDocumentText());
+					while (m.find()) {
+						// If the found token (or multi-token) looks ok given their
+						// part of speech tags,
+						// we consider it a mention
+						if (!matches(jcas, m.start(), m.end())) {
+							try {
+								// If there is an existing mention annotation on this span, check if the entity
+								// is the same as the cast figure
+								Mention existingMention = JCasUtil.selectSingleAt(jcas, Mention.class, m.start(),
+										m.end());
+								if (!(existingMention.getEntity().getId() == cf.getId())) {
+									// If it is not the same entity, create the mention
+									Mention fm = AnnotationFactory.createAnnotation(jcas, m.start(), m.end(),
+											Mention.class);
+									fm.setSurfaceString(ArrayUtil.toStringArray(jcas, fm.getCoveredText().split(" ")));
+									fm.setEntity(cf);
+								}
+							} catch (Exception e) {
+								// If there is no existing mention annotation on the same span, simply create
+								// the mention with the cast figure as entity
 								Mention fm = AnnotationFactory.createAnnotation(jcas, m.start(), m.end(),
 										Mention.class);
 								fm.setSurfaceString(ArrayUtil.toStringArray(jcas, fm.getCoveredText().split(" ")));
 								fm.setEntity(cf);
 							}
-						} catch (Exception e) {
-							// If there is no existing mention annotation on the same span, simply create
-							// the mention with the cast figure as entity
-							Mention fm = AnnotationFactory.createAnnotation(jcas, m.start(), m.end(), Mention.class);
-							fm.setSurfaceString(ArrayUtil.toStringArray(jcas, fm.getCoveredText().split(" ")));
-							fm.setEntity(cf);
 						}
 					}
 				}
