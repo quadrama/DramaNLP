@@ -55,9 +55,9 @@
 								<typeSystemInclude>src/main/resources/dramatypes.xml</typeSystemInclude>
 							</typeSystemIncludes>
 							<!-- true or false, default = false -->
-							<!-- if true, then although the complete merged type system will be 
-								created internally, only those types whose definition is contained within 
-								this maven project will be generated. The others will be presumed to be available 
+							<!-- if true, then although the complete merged type system will be
+								created internally, only those types whose definition is contained within
+								this maven project will be generated. The others will be presumed to be available
 								via other projects. -->
 							<!-- OPTIONAL -->
 							<limitToProject>true</limitToProject>
@@ -89,6 +89,17 @@
     		de.tudarmstadt.ukp.dkpro.core.api.segmentation-asl
     	</artifactId>
 		</dependency>
+			<dependency>
+				<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+				<artifactId>
+					de.tudarmstadt.ukp.dkpro.core.languagetool-asl
+				</artifactId>
+			</dependency>
+			<dependency>
+			        <groupId>org.languagetool</groupId>
+			        <artifactId>language-all</artifactId>
+			        <version>2.7</version>
+			</dependency>
 		<dependency>
 			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
 			<artifactId>

@@ -66,6 +66,11 @@
   		</artifactId>
 		</dependency>
 		<dependency>
+		        <groupId>org.languagetool</groupId>
+		        <artifactId>language-all</artifactId>
+		        <version>2.7</version>
+		</dependency>
+		<dependency>
 			<groupId>de.unistuttgart.ims</groupId>
 			<artifactId>de.unistuttgart.ims.drama.io.core</artifactId>
 			<version>${project.parent.version}</version>

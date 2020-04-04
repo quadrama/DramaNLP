@@ -26,29 +26,29 @@
 		<dependency>
 			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
 			<artifactId>
-    		de.tudarmstadt.ukp.dkpro.core.languagetool-asl
-    	</artifactId>
+    				de.tudarmstadt.ukp.dkpro.core.languagetool-asl
+    			</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
 			<artifactId>
-    		de.tudarmstadt.ukp.dkpro.core.io.xmi-asl
-    	</artifactId>
+    				de.tudarmstadt.ukp.dkpro.core.io.xmi-asl
+    			</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
 			<artifactId>
-    		de.tudarmstadt.ukp.dkpro.core.stanfordnlp-gpl
-    	</artifactId>
+    				de.tudarmstadt.ukp.dkpro.core.stanfordnlp-gpl
+    			</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
 			<artifactId>
-    		de.tudarmstadt.ukp.dkpro.core.api.segmentation-asl
-    	</artifactId>
+    				de.tudarmstadt.ukp.dkpro.core.api.segmentation-asl
+    			</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>de.unistuttgart.ims</groupId>
@@ -139,9 +139,9 @@
 								<typeSystemInclude>src/main/resources/drama/OriginTypes.xml</typeSystemInclude>
 							</typeSystemIncludes>
 							<!-- true or false, default = false -->
-							<!-- if true, then although the complete merged type system will be 
-								created internally, only those types whose definition is contained within 
-								this maven project will be generated. The others will be presumed to be available 
+							<!-- if true, then although the complete merged type system will be
+								created internally, only those types whose definition is contained within
+								this maven project will be generated. The others will be presumed to be available
 								via other projects. -->
 							<!-- OPTIONAL -->
 							<limitToProject>true</limitToProject>
@@ -174,7 +174,7 @@
 		</plugins>
 		<pluginManagement>
 			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings 
+				<!--This plugin's configuration is used to store Eclipse m2e settings
 					only. It has no influence on the Maven build itself. -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
