@@ -46,6 +46,7 @@ import de.unistuttgart.ims.uima.io.xml.ArrayUtil;
 import de.unistuttgart.ims.uima.io.xml.GenericXmlReader;
 import de.unistuttgart.ims.uimautil.AnnotationUtil;
 import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
+import de.unistuttgart.quadrama.io.core.DramaIOUtil;
 
 public class GerDraCorReader extends AbstractDramaUrlReader {
 
@@ -71,11 +72,16 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 		gxr.setPreserveWhitespace(teiCompatibility);
 
 		// title
-
 		gxr.addGlobalRule("titleStmt > title:first-child", (d, e) -> d.setDocumentTitle(e.text()));
 
+		// bibl source name
+		gxr.addGlobalRule("sourceDesc > bibl > name", (d, e) -> d.setSourceName(e.text()));
+
 		// id
-		gxr.addGlobalRule("sourceDesc > bibl > idno[type=URL]", (d, e) -> d.setDocumentId(e.text().substring(36)));
+		gxr.addGlobalRule("sourceDesc > bibl > idno[type=URL]", (d, e) -> d.setTextGridId(e.text().substring(36)));
+		gxr.addGlobalRule("publicationStmt > idno[type=dracor]", (d, e) -> d.setDracorId(e.text()));
+		// Dracor id is the default id
+		gxr.addGlobalRule("publicationStmt > idno[type=dracor]", (d, e) -> d.setDocumentId(e.text()));
 
 		// author
 		gxr.addGlobalRule("author", Author.class, (author, e) -> {
@@ -175,7 +181,7 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 				}
 			}
 		});
-		gxr.addRule("div[type=scene] > p", Utterance.class, (u,e) -> {
+		gxr.addRule("div[type=scene] > p", Utterance.class, (u, e) -> {
 			Speaker sp = u.getCAS().createFS(CasUtil.getType(u.getCAS(), Speaker.class));
 			sp.addToIndexes();
 			sp.setBegin(u.getBegin());
@@ -301,6 +307,9 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 		});
 
 		gxr.read(jcas, file);
+
+		// Set correct document Id, depending on bibliographic source
+		DramaIOUtil.updateDocumentId(jcas);
 
 		try {
 			AnnotationUtil.trim(new ArrayList<Figure>(JCasUtil.select(jcas, Figure.class)));
