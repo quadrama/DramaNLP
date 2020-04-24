@@ -184,23 +184,24 @@ public enum CSVVariant {
 
 	private void convertMeta(JCas jcas, CSVPrinter p) throws IOException {
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
+		String cleanedDocumentTitle = drama.getDocumentTitle().replace("\n", " ").replaceAll(" +", " ").trim();
 		if (JCasUtil.exists(jcas, Author.class))
 			for (Author author : JCasUtil.select(jcas, Author.class)) {
 				if (JCasUtil.exists(jcas, Translator.class))
 					for (Translator transl : JCasUtil.select(jcas, Translator.class)) {
-						p.printRecord(drama.getCollectionId(), drama.getDocumentId(), drama.getDocumentTitle(),
+						p.printRecord(drama.getCollectionId(), drama.getDocumentId(), cleanedDocumentTitle,
 								drama.getLanguage(), author.getName(), author.getPnd(), transl.getName(),
 								transl.getPnd(), drama.getDateWritten(), drama.getDatePrinted(),
 								drama.getDatePremiere(), drama.getDateTranslation());
 					}
 				else {
-					p.printRecord(drama.getCollectionId(), drama.getDocumentId(), drama.getDocumentTitle(),
+					p.printRecord(drama.getCollectionId(), drama.getDocumentId(), cleanedDocumentTitle,
 							drama.getLanguage(), author.getName(), author.getPnd(), null, null, drama.getDateWritten(),
 							drama.getDatePrinted(), drama.getDatePremiere(), drama.getDateTranslation());
 				}
 			}
 		else
-			p.printRecord(drama.getCollectionId(), drama.getDocumentId(), drama.getDocumentTitle(), drama.getLanguage(),
+			p.printRecord(drama.getCollectionId(), drama.getDocumentId(), cleanedDocumentTitle, drama.getLanguage(),
 					"", "", null, null, drama.getDateWritten(), drama.getDatePrinted(), drama.getDatePremiere(),
 					drama.getDateTranslation());
 	}
