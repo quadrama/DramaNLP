@@ -157,6 +157,40 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 			}
 			cf.setId(entityIds.get(ArrayUtil.toStringArray(jcas, xmlIdList).get(0)));
 		});
+		
+		gxr.addGlobalRule("particDesc > listPerson > personGrp", CastFigure.class, (cf, e) -> {
+			Set<String> nameList = new HashSet<String>();
+			Set<String> xmlIdList = new HashSet<String>();
+
+			if (e.hasAttr("xml:id"))
+				xmlIdList.add(e.attr("xml:id"));
+			if (e.hasAttr("sex"))
+				cf.setGender(e.attr("sex"));
+			if (e.hasAttr("age"))
+				cf.setAge(e.attr("age"));
+
+			// gather names
+			Elements nameElements = e.select("name");
+
+			for (int j = 0; j < nameElements.size(); j++) {
+				nameList.add(nameElements.get(j).text());
+				if (nameElements.get(j).hasAttr("xml:id")) {
+					xmlIdList.add(nameElements.get(j).attr("xml:id"));
+					xmlAlias.put(nameElements.get(j).attr("xml:id"), e.attr("xml:id"));
+				}
+			}
+			for (TextNode tn : e.textNodes()) {
+				if (tn.text().trim().length() > 0)
+					nameList.add(tn.text().trim());
+			}
+			cf.setXmlId(ArrayUtil.toStringArray(jcas, xmlIdList));
+			cf.setNames(ArrayUtil.toStringArray(jcas, nameList));
+			cf.setDisplayName(e.attr("xml:id"));
+			if (!entityIds.containsKey(ArrayUtil.toStringArray(jcas, xmlIdList).get(0))) {
+				entityIds.put(ArrayUtil.toStringArray(jcas, xmlIdList).get(0), Collections.max(entityIds.values()) + 1);
+			}
+			cf.setId(entityIds.get(ArrayUtil.toStringArray(jcas, xmlIdList).get(0)));
+		});
 
 		gxr.addRule("speaker", Speaker.class);
 		gxr.addRule("stage", StageDirection.class);
