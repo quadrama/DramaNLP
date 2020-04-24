@@ -153,6 +153,20 @@
 					<description/>
 					<rangeTypeName>uima.cas.Integer</rangeTypeName>
 				</featureDescription>
+				<featureDescription>
+					<name>SourceName</name>
+					<description>Name of the bibliographic source of the document</description>
+					<rangeTypeName>uima.cas.String</rangeTypeName></featureDescription>
+				<featureDescription>
+					<name>TextGridId</name>
+					<description></description>
+					<rangeTypeName>uima.cas.String</rangeTypeName>
+				</featureDescription>
+				<featureDescription>
+					<name>DracorId</name>
+					<description></description>
+					<rangeTypeName>uima.cas.String</rangeTypeName>
+				</featureDescription>
 			</features>
 		</typeDescription>
 		<typeDescription>

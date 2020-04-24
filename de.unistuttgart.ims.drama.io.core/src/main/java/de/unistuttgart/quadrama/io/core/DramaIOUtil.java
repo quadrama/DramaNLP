@@ -5,11 +5,13 @@ import java.util.HashSet;
 import java.util.Map;
 
 import org.apache.uima.fit.factory.AnnotationFactory;
+import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.uima.io.xml.type.XMLElement;
 import de.unistuttgart.quadrama.io.core.type.HTMLAnnotation;
 
@@ -18,6 +20,13 @@ public class DramaIOUtil {
 	@Deprecated
 	public static void cleanUp(JCas jcas) {
 		jcas.removeAllIncludingSubtypes(HTMLAnnotation.type);
+	}
+	
+	public static void updateDocumentId(JCas jcas) {
+		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
+		if (drama.getSourceName().equals("TextGrid Repository")) {
+			drama.setDocumentId(drama.getTextGridId());
+		}
 	}
 
 	@Deprecated
