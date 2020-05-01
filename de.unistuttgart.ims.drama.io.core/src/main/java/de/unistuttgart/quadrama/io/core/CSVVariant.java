@@ -59,7 +59,12 @@ public enum CSVVariant {
 	/**
 	 * List of all entity IDs and mapping to their surface representation
 	 */
-	Entities;
+	Entities,
+	/**
+	 * List of tokens with structure information
+	 */
+	Structure;
+
 	/**
 	 * Prints a record representing the header onto p
 	 * 
@@ -86,6 +91,8 @@ public enum CSVVariant {
 			break;
 		case Entities:
 			p.printRecord("corpus", "drama", "Entity.surface", "Entity.id", "Entity.group_members");
+			break;
+		case Structure:
 			break;
 		case Mentions:
 			p.printRecord("corpus", "drama", "utteranceBegin", "utteranceEnd", "utteranceSpeakerId", "mentionBegin",
@@ -117,6 +124,9 @@ public enum CSVVariant {
 			break;
 		case Entities:
 			this.convertEntities(jcas, p);
+			break;
+		case Structure:
+			this.convertStructure(jcas, p);
 			break;
 		default:
 			this.convertUtterancesWithTokens(jcas, p);
@@ -201,8 +211,8 @@ public enum CSVVariant {
 				}
 			}
 		else
-			p.printRecord(drama.getCollectionId(), drama.getDocumentId(), cleanedDocumentTitle, drama.getLanguage(),
-					"", "", null, null, drama.getDateWritten(), drama.getDatePrinted(), drama.getDatePremiere(),
+			p.printRecord(drama.getCollectionId(), drama.getDocumentId(), cleanedDocumentTitle, drama.getLanguage(), "",
+					"", null, null, drama.getDateWritten(), drama.getDatePrinted(), drama.getDatePremiere(),
 					drama.getDateTranslation());
 	}
 
@@ -438,6 +448,126 @@ public enum CSVVariant {
 			} else {
 				p.print(null);
 			}
+			p.println();
+		}
+	}
+
+	private void convertStructure(JCas jcas, CSVPrinter p) throws IOException {
+		Map<Token, Collection<Act>> tokactMap = JCasUtil.indexCovering(jcas, Token.class, Act.class);
+		Map<Act, Collection<Token>> acttokMap = JCasUtil.indexCovered(jcas, Act.class, Token.class);
+		Map<Token, Collection<Scene>> toksceMap = JCasUtil.indexCovering(jcas, Token.class, Scene.class);
+		Map<Scene, Collection<Token>> scetokMap = JCasUtil.indexCovered(jcas, Scene.class, Token.class);
+		Map<Token, Collection<StageDirection>> toksdMap = JCasUtil.indexCovering(jcas, Token.class,
+				StageDirection.class);
+		Map<StageDirection, Collection<Token>> sdtokMap = JCasUtil.indexCovered(jcas, StageDirection.class,
+				Token.class);
+		Map<Token, Collection<Utterance>> tokuttMap = JCasUtil.indexCovering(jcas, Token.class, Utterance.class);
+		Map<Utterance, Collection<Token>> utttokMap = JCasUtil.indexCovered(jcas, Utterance.class, Token.class);
+		Map<Token, Collection<Speech>> tokspeeMap = JCasUtil.indexCovering(jcas, Token.class, Speech.class);
+		Map<Speech, Collection<Token>> speetokMap = JCasUtil.indexCovered(jcas, Speech.class, Token.class);
+		String structCol;
+		Token firstAct = null;
+		Token lastAct = null;
+		Token firstScene = null;
+		Token lastScene = null;
+		Token firstSd = null;
+		Token lastSd = null;
+		Token firstUtt = null;
+		Token lastUtt = null;
+		Token firstSpee = null;
+		Token lastSpee = null;
+		for (Token token : JCasUtil.select(jcas, Token.class)) {
+			if (tokactMap.containsKey(token)) {
+				Collection<Act> actColl = tokactMap.get(token);
+				ArrayList<Act> actList = new ArrayList<Act>(actColl);
+				Act act = actList.get(0);
+				if (acttokMap.containsKey(act)) {
+					Collection<Token> tokColl = acttokMap.get(act);
+					ArrayList<Token> tokList = new ArrayList<Token>(tokColl);
+					firstAct = tokList.get(0);
+					lastAct = tokList.get(tokList.size() - 1);
+				}
+			}
+			if (toksceMap.containsKey(token)) {
+				Collection<Scene> sceColl = toksceMap.get(token);
+				ArrayList<Scene> sceList = new ArrayList<Scene>(sceColl);
+				Scene sce = sceList.get(0);
+				if (scetokMap.containsKey(sce)) {
+					Collection<Token> tokColl = scetokMap.get(sce);
+					ArrayList<Token> tokList = new ArrayList<Token>(tokColl);
+					firstScene = tokList.get(0);
+					lastScene = tokList.get(tokList.size() - 1);
+				}
+			}
+			if (toksdMap.containsKey(token)) {
+				Collection<StageDirection> sdColl = toksdMap.get(token);
+				ArrayList<StageDirection> sdList = new ArrayList<StageDirection>(sdColl);
+				StageDirection sd = sdList.get(0);
+				if (sdtokMap.containsKey(sd)) {
+					Collection<Token> tokColl = sdtokMap.get(sd);
+					ArrayList<Token> tokList = new ArrayList<Token>(tokColl);
+					firstSd = tokList.get(0);
+					lastSd = tokList.get(tokList.size() - 1);
+				}
+			}
+			if (tokuttMap.containsKey(token)) {
+				Collection<Utterance> uttColl = tokuttMap.get(token);
+				ArrayList<Utterance> uttList = new ArrayList<Utterance>(uttColl);
+				Utterance utt = uttList.get(0);
+				if (utttokMap.containsKey(utt)) {
+					Collection<Token> tokColl = utttokMap.get(utt);
+					ArrayList<Token> tokList = new ArrayList<Token>(tokColl);
+					firstUtt = tokList.get(0);
+					lastUtt = tokList.get(tokList.size() - 1);
+				}
+			}
+			if (tokspeeMap.containsKey(token)) {
+				Collection<Speech> speeColl = tokspeeMap.get(token);
+				ArrayList<Speech> speeList = new ArrayList<Speech>(speeColl);
+				Speech spee = speeList.get(0);
+				if (speetokMap.containsKey(spee)) {
+					Collection<Token> tokColl = speetokMap.get(spee);
+					ArrayList<Token> tokList = new ArrayList<Token>(tokColl);
+					firstSpee = tokList.get(0);
+					lastSpee = tokList.get(tokList.size() - 1);
+				}
+			}
+			p.print(token.getCoveredText());
+			structCol = "";
+			if (token.equals(firstAct)) {
+				structCol = structCol + " AB";
+			}
+			if (token.equals(lastAct)) {
+				structCol = structCol + " AE";
+			}
+			if (token.equals(firstScene)) {
+				structCol = structCol + " SB";
+			}
+			if (token.equals(lastScene)) {
+				structCol = structCol + " SE";
+			}
+			if (token.equals(firstSd)) {
+				structCol = structCol + " SDB";
+			}
+			if (token.equals(lastSd)) {
+				structCol = structCol + " SDE";
+			}
+			if (token.equals(firstSpee)) {
+				structCol = structCol + " SPB";
+			}
+			if (token.equals(lastSpee)) {
+				structCol = structCol + " SPE";
+			}
+			if (token.equals(firstUtt)) {
+				structCol = structCol + " UB";
+			}
+			if (token.equals(lastUtt)) {
+				structCol = structCol + " UE";
+			}
+			if (structCol.equals("")) {
+				structCol = "-";
+			}
+			p.print(structCol);
 			p.println();
 		}
 	}
