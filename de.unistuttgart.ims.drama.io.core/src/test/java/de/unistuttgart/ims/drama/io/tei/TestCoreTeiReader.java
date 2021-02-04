@@ -13,7 +13,7 @@ import org.apache.uima.resource.ResourceInitializationException;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
+import org.dkpro.core.io.xmi.XmiWriter;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.io.TestGenerics;
 import de.unistuttgart.quadrama.io.tei.CoreTeiReader;
@@ -30,7 +30,7 @@ public class TestCoreTeiReader {
 		AggregateBuilder b = new AggregateBuilder();
 		if (TestGenerics.debug)
 			b.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
-					"target/doc"));
+					"target/doc", XmiWriter.PARAM_OVERWRITE, true));
 		jcas = SimplePipeline.iteratePipeline(description, b.createAggregateDescription()).iterator().next();
 	}
 

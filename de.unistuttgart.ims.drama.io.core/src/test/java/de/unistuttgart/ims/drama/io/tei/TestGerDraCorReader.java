@@ -17,7 +17,7 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.junit.Test;
 
-import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
+import org.dkpro.core.io.xmi.XmiWriter;
 import de.unistuttgart.ims.drama.api.Act;
 import de.unistuttgart.ims.drama.api.ActHeading;
 import de.unistuttgart.ims.drama.api.Author;
@@ -43,7 +43,7 @@ public class TestGerDraCorReader {
 		AggregateBuilder b = new AggregateBuilder();
 		if (TestGenerics.debug)
 			b.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
-					"target/doc"));
+					"target/doc", XmiWriter.PARAM_OVERWRITE, true));
 		JCasIterator iterator = SimplePipeline.iteratePipeline(description, b.createAggregateDescription()).iterator();
 		while (iterator.hasNext()) {
 			JCas jcas = iterator.next();

@@ -21,8 +21,8 @@ import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import de.tudarmstadt.ukp.dkpro.core.api.ner.type.NamedEntity;
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.morph.Morpheme;
 import de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData;
-import de.tudarmstadt.ukp.dkpro.core.io.penntree.PennTreeNode;
-import de.tudarmstadt.ukp.dkpro.core.io.penntree.PennTreeUtils;
+import org.dkpro.core.io.penntree.PennTreeNode;
+import org.dkpro.core.io.penntree.PennTreeUtils;
 import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.constituent.ROOT;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Mention;
@@ -78,9 +78,9 @@ public enum CONLLVariant {
 
 	private void convertDirndl(JCas jcas, CSVPrinter p) throws IOException {
 
-		Map<Token, Collection<Mention>> mentionMap = JCasUtil.indexCovering(jcas, Token.class, Mention.class);
-		Map<Utterance, Collection<Speaker>> speakerMap = JCasUtil.indexCovered(jcas, Utterance.class, Speaker.class);
-		Map<Token, Collection<Utterance>> token2utteranceMap = JCasUtil.indexCovering(jcas, Token.class,
+		Map<Token, List<Mention>> mentionMap = JCasUtil.indexCovering(jcas, Token.class, Mention.class);
+		Map<Utterance, List<Speaker>> speakerMap = JCasUtil.indexCovered(jcas, Utterance.class, Speaker.class);
+		Map<Token, List<Utterance>> token2utteranceMap = JCasUtil.indexCovering(jcas, Token.class,
 				Utterance.class);
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
 		DocumentMetaData dmd = DocumentMetaData.get(jcas);
@@ -192,7 +192,7 @@ public enum CONLLVariant {
 
 	private void convertCONLL(JCas jcas, CSVPrinter p) throws IOException {
 
-		Map<Token, Collection<Mention>> mentionMap = JCasUtil.indexCovering(jcas, Token.class, Mention.class);
+		Map<Token, List<Mention>> mentionMap = JCasUtil.indexCovering(jcas, Token.class, Mention.class);
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
 		DocumentMetaData dmd = DocumentMetaData.get(jcas);
 		Set<Mention> used = new HashSet<Mention>();

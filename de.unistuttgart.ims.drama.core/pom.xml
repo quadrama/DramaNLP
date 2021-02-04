@@ -24,31 +24,23 @@
 			<artifactId>uimafit-core</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
-			<artifactId>
-    				de.tudarmstadt.ukp.dkpro.core.languagetool-asl
-    			</artifactId>
+			<groupId>org.dkpro.core</groupId>
+			<artifactId>dkpro-core-languagetool-asl</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
-			<artifactId>
-    				de.tudarmstadt.ukp.dkpro.core.io.xmi-asl
-    			</artifactId>
+			<groupId>org.dkpro.core</groupId>
+			<artifactId>dkpro-core-io-xmi-asl</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
-			<artifactId>
-    				de.tudarmstadt.ukp.dkpro.core.stanfordnlp-gpl
-    			</artifactId>
+			<groupId>org.dkpro.core</groupId>
+			<artifactId>dkpro-core-stanfordnlp-gpl</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
-			<artifactId>
-    				de.tudarmstadt.ukp.dkpro.core.api.segmentation-asl
-    			</artifactId>
+			<groupId>org.dkpro.core</groupId>
+			<artifactId>dkpro-core-api-segmentation-asl</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>de.unistuttgart.ims</groupId>
@@ -58,7 +50,7 @@
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-math3</artifactId>
-			<version>3.6</version>
+			<version>3.6.1</version>
 		</dependency>
 		<dependency>
 			<groupId>de.unistuttgart.ims</groupId>
@@ -68,7 +60,7 @@
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-csv</artifactId>
-			<version>1.2</version>
+			<version>1.8</version>
 		</dependency>
 		<dependency>
 			<groupId>de.unistuttgart.ims</groupId>
@@ -125,7 +117,7 @@
 			<plugin>
 				<groupId>org.apache.uima</groupId>
 				<artifactId>jcasgen-maven-plugin</artifactId>
-				<version>2.8.1</version>  <!-- change this to the latest version -->
+				<version>3.1.1</version>  <!-- change this to the latest version -->
 				<executions>
 					<execution>
 						<goals>

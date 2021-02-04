@@ -3,6 +3,7 @@ package de.unistuttgart.quadrama.io.core;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -125,10 +126,10 @@ public enum CSVVariant {
 	}
 
 	private void convertMentions(JCas jcas, CSVPrinter p) throws IOException {
-		Map<Mention, Collection<Utterance>> mention2utterances = JCasUtil.indexCovering(jcas, Mention.class,
+		Map<Mention, List<Utterance>> mention2utterances = JCasUtil.indexCovering(jcas, Mention.class,
 				Utterance.class);
-		Map<Mention, Collection<Speech>> mention2speech = JCasUtil.indexCovering(jcas, Mention.class, Speech.class);
-		Map<Mention, Collection<StageDirection>> mention2direction = JCasUtil.indexCovering(jcas, Mention.class,
+		Map<Mention, List<Speech>> mention2speech = JCasUtil.indexCovering(jcas, Mention.class, Speech.class);
+		Map<Mention, List<StageDirection>> mention2direction = JCasUtil.indexCovering(jcas, Mention.class,
 				StageDirection.class);
 
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
@@ -235,8 +236,8 @@ public enum CSVVariant {
 	}
 
 	private void convertUtterancesWithTokens(JCas jcas, CSVPrinter p) throws IOException {
-		Map<Token, Collection<Mention>> mentionMap = JCasUtil.indexCovering(jcas, Token.class, Mention.class);
-		Map<Token, Collection<StageDirection>> stageMap = JCasUtil.indexCovering(jcas, Token.class,
+		Map<Token, List<Mention>> mentionMap = JCasUtil.indexCovering(jcas, Token.class, Mention.class);
+		Map<Token, List<StageDirection>> stageMap = JCasUtil.indexCovering(jcas, Token.class,
 				StageDirection.class);
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
 		int length = JCasUtil.select(jcas, Token.class).size();
@@ -309,8 +310,8 @@ public enum CSVVariant {
 	}
 
 	private void convertStageDirections(JCas jcas, CSVPrinter p) throws IOException {
-		Map<Token, Collection<Mention>> mentionMap = JCasUtil.indexCovering(jcas, Token.class, Mention.class);
-		Map<StageDirection, Collection<Utterance>> utteranceStageMap = JCasUtil.indexCovering(jcas,
+		Map<Token, List<Mention>> mentionMap = JCasUtil.indexCovering(jcas, Token.class, Mention.class);
+		Map<StageDirection, List<Utterance>> utteranceStageMap = JCasUtil.indexCovering(jcas,
 				StageDirection.class, Utterance.class);
 		Drama drama = JCasUtil.selectSingle(jcas, Drama.class);
 		int length = JCasUtil.select(jcas, Token.class).size();

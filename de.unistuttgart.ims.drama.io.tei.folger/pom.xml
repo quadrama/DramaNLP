@@ -23,9 +23,8 @@
   		<scope>test</scope>
   	</dependency>
   	<dependency>
-  		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
-  		<artifactId>
-  			de.tudarmstadt.ukp.dkpro.core.io.xmi-asl
+  		<groupId>org.dkpro.core</groupId>
+  		<artifactId>dkpro-core-io-xmi-asl
   		</artifactId>
   		<scope>test</scope>
   	</dependency>

@@ -14,10 +14,10 @@ import org.apache.uima.jcas.JCas;
 import org.junit.Before;
 import org.junit.Test;
 
-import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ART;
-import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.NN;
+import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS_DET;
+import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS_NOUN;
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS;
-import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.V;
+import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS_VERB;
 import de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import de.unistuttgart.ims.uima.io.xml.GenericXmlReader;
@@ -36,10 +36,10 @@ public class TestGenericXmlReader {
 	@Test
 	public void test1() throws UIMAException, IOException {
 		String xmlString = "<s><det>the</det> <noun>dog</noun> <verb>barks</verb></s>";
-		gxr.addRule("det", ART.class);
+		gxr.addRule("det", POS_DET.class);
 		gxr.addRule("s", Sentence.class);
-		gxr.addRule("noun", NN.class);
-		gxr.addRule("verb", V.class);
+		gxr.addRule("noun", POS_NOUN.class);
+		gxr.addRule("verb", POS_VERB.class);
 
 		jcas = gxr.read(jcas, IOUtils.toInputStream(xmlString, "UTF-8"));
 
@@ -47,9 +47,9 @@ public class TestGenericXmlReader {
 		assertEquals("the dog barks", jcas.getDocumentText());
 
 		assertTrue(JCasUtil.exists(jcas, Sentence.class));
-		assertTrue(JCasUtil.exists(jcas, ART.class));
-		assertTrue(JCasUtil.exists(jcas, NN.class));
-		assertTrue(JCasUtil.exists(jcas, V.class));
+		assertTrue(JCasUtil.exists(jcas, POS_DET.class));
+		assertTrue(JCasUtil.exists(jcas, POS_NOUN.class));
+		assertTrue(JCasUtil.exists(jcas, POS_VERB.class));
 	}
 
 	@Test
