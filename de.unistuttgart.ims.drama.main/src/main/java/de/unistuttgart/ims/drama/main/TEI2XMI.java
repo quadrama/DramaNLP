@@ -15,6 +15,7 @@ import com.lexicalscope.jewel.cli.CliFactory;
 import com.lexicalscope.jewel.cli.Option;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
+import de.tudarmstadt.ukp.dkpro.core.matetools.MatePosTagger;
 import de.tudarmstadt.ukp.dkpro.core.matetools.MateLemmatizer;
 import de.tudarmstadt.ukp.dkpro.core.matetools.MateMorphTagger;
 import de.tudarmstadt.ukp.dkpro.core.berkeleyparser.BerkeleyParser;
@@ -111,7 +112,8 @@ public class TEI2XMI {
 		if (options.getGenderModel() != null) {
 			builder.add(ClearTkGenderAnnotator.getEngineDescription(options.getGenderModel().getAbsolutePath()));
 		}
-		builder.add(createEngineDescription(StanfordPosTagger.class));
+		/*builder.add(createEngineDescription(StanfordPosTagger.class));*/
+		builder.add(createEngineDescription(MatePosTagger.class));
 		builder.add(createEngineDescription(MateLemmatizer.class));
 		if (options.getLanguage().equals("de") || options.getLanguage().equals("es") || options.getLanguage().equals("fr"))
 			builder.add(createEngineDescription(MateMorphTagger.class));
