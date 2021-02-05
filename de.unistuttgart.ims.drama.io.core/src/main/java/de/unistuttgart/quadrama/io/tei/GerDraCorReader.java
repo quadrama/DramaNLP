@@ -85,10 +85,8 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 
 		// author
 		gxr.addGlobalRule("author", Author.class, (author, e) -> {
-			author.setName(e.text());
-			if (e.hasAttr("key"))
-				author.setPnd(e.attr("key").replace("pnd:", ""));
-
+			author.setName(e.select("persName").text());
+			author.setPnd(e.select("idno[type=pnd]").text());
 		});
 
 		// translator
@@ -100,12 +98,15 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 
 		// date printed
 		gxr.addGlobalRule("date[type=print][when]", (d, e) -> d.setDatePrinted(getYear(e.attr("when"))));
+		gxr.addGlobalRule("date[type=print][notBefore]", (d, e) -> d.setDatePrinted(getYear(e.attr("notBefore"))));
 
 		// date written
 		gxr.addGlobalRule("date[type=written][when]", (d, e) -> d.setDateWritten(getYear(e.attr("when"))));
-
+		gxr.addGlobalRule("date[type=written][notBefore]", (d, e) -> d.setDateWritten(getYear(e.attr("notBefore"))));
+		
 		// date premiere
 		gxr.addGlobalRule("date[type=premiere][when]", (d, e) -> d.setDatePremiere(getYear(e.attr("when"))));
+		gxr.addGlobalRule("date[type=premiere][notBefore]", (d, e) -> d.setDatePremiere(getYear(e.attr("notBefore"))));
 
 		gxr.addRule("front", FrontMatter.class);
 		gxr.addRule("body", MainMatter.class);
@@ -204,6 +205,7 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 				sp.setXmlId(new StringArray(jcas, whos.length));
 				sp.setCastFigure(new FSArray(jcas, whos.length));
 				for (int i = 0; i < whos.length; i++) {
+					if (whos[i].length() > 1) {
 					String xmlid = whos[i].substring(1);
 					sp.setXmlId(i, xmlid);
 					if (xmlAlias.containsKey(xmlid))
@@ -211,6 +213,7 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 					if (gxr.exists(xmlid)) {
 						sp.setCastFigure(i, (CastFigure) gxr.getAnnotation(xmlid).getValue());
 						u.setCastFigure((CastFigure) gxr.getAnnotation(xmlid).getValue());
+					}
 					}
 				}
 			}

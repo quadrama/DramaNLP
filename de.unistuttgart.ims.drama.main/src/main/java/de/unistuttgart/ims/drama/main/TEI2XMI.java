@@ -21,6 +21,7 @@ import de.tudarmstadt.ukp.dkpro.core.matetools.MateMorphTagger;
 import de.tudarmstadt.ukp.dkpro.core.berkeleyparser.BerkeleyParser;
 import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordNamedEntityRecognizer;
 import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordPosTagger;
+import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordParser;
 import de.tudarmstadt.ukp.dkpro.core.languagetool.LanguageToolSegmenter;
 import de.unistuttgart.ims.drama.core.ml.gender.ClearTkGenderAnnotator;
 import de.unistuttgart.ims.uimautil.SetCollectionId;
@@ -119,6 +120,7 @@ public class TEI2XMI {
 			builder.add(createEngineDescription(MateMorphTagger.class));
 		if (options.isParse())
 			builder.add(createEngineDescription(BerkeleyParser.class, BerkeleyParser.PARAM_WRITE_PENN_TREE, true));
+			//builder.add(createEngineDescription(StanfordParser.class, StanfordParser.PARAM_WRITE_PENN_TREE, true));
 		if (!options.isSkipNER())
 			builder.add(createEngineDescription(StanfordNamedEntityRecognizer.class));
 		builder.add(createEngineDescription(FigureMentionDetection.class, FigureMentionDetection.PARAM_MANUAL_COREFERENCE, options.isManualCoreference()));
