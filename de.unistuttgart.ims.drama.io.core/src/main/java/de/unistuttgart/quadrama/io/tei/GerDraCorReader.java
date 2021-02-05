@@ -103,7 +103,7 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 		// date written
 		gxr.addGlobalRule("date[type=written][when]", (d, e) -> d.setDateWritten(getYear(e.attr("when"))));
 		gxr.addGlobalRule("date[type=written][notBefore]", (d, e) -> d.setDateWritten(getYear(e.attr("notBefore"))));
-		
+
 		// date premiere
 		gxr.addGlobalRule("date[type=premiere][when]", (d, e) -> d.setDatePremiere(getYear(e.attr("when"))));
 		gxr.addGlobalRule("date[type=premiere][notBefore]", (d, e) -> d.setDatePremiere(getYear(e.attr("notBefore"))));
@@ -158,7 +158,7 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 			}
 			cf.setId(entityIds.get(ArrayUtil.toStringArray(jcas, xmlIdList).get(0)));
 		});
-		
+
 		gxr.addGlobalRule("particDesc > listPerson > personGrp", CastFigure.class, (cf, e) -> {
 			Set<String> nameList = new HashSet<String>();
 			Set<String> xmlIdList = new HashSet<String>();
@@ -214,7 +214,6 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 							sp.setCastFigure(i, (CastFigure) gxr.getAnnotation(xmlid).getValue());
 							u.setCastFigure((CastFigure) gxr.getAnnotation(xmlid).getValue());
 						}
-					}
 					}
 				}
 			}
