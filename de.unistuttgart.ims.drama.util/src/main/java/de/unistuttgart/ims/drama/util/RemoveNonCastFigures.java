@@ -23,9 +23,10 @@ public class RemoveNonCastFigures extends JCasAnnotator_ImplBase {
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
 		ArrayList<Mention> nonCastFigureMentions = new ArrayList<Mention>();
 		for (Mention mention : JCasUtil.select(jcas, Mention.class)) {
-			//System.out.println(mention.getEntity().getClass().getSimpleName());
-			if (!mention.getEntity().getClass().getSimpleName().equals("CastFigure")) {
-				nonCastFigureMentions.add(mention);
+			if (mention.getEntity() != null) {
+				if (!mention.getEntity().getClass().getSimpleName().equals("CastFigure")) {
+					nonCastFigureMentions.add(mention);
+				}
 			}
 		}
 		for (Mention m : nonCastFigureMentions) {
