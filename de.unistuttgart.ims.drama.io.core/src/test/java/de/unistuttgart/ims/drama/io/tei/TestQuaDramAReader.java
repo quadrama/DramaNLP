@@ -43,7 +43,7 @@ public class TestQuaDramAReader {
 		AggregateBuilder b = new AggregateBuilder();
 		if (TestGenerics.debug)
 			b.add(AnalysisEngineFactory.createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,
-					"target/doc"));
+					"target/doc", XmiWriter.PARAM_OVERWRITE, true));
 		JCasIterator iterator = SimplePipeline.iteratePipeline(description, b.createAggregateDescription()).iterator();
 		while (iterator.hasNext()) {
 			JCas jcas = iterator.next();
