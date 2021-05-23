@@ -13,8 +13,8 @@ import org.apache.uima.fit.pipeline.SimplePipeline;
 import com.lexicalscope.jewel.cli.CliFactory;
 import com.lexicalscope.jewel.cli.Option;
 
-import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiReader;
-import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
+import org.dkpro.core.io.xmi.XmiReader;
+import org.dkpro.core.io.xmi.XmiWriter;
 import de.unistuttgart.ims.drama.main.Options;
 import de.unistuttgart.quadrama.core.convert.DkproCoreference2XmlElement;
 import de.unistuttgart.quadrama.io.tei.TEIWriter;

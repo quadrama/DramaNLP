@@ -11,8 +11,8 @@ import org.apache.uima.fit.pipeline.SimplePipeline;
 import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 
-import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiReader;
-import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
+import org.dkpro.core.io.xmi.XmiReader;
+import org.dkpro.core.io.xmi.XmiWriter;
 import de.unistuttgart.ims.commons.Counter;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Speaker;

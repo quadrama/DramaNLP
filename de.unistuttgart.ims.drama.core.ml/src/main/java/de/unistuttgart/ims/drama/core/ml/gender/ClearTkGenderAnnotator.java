@@ -25,7 +25,7 @@ import org.cleartk.ml.feature.extractor.FeatureExtractor1;
 import org.cleartk.ml.jar.GenericJarClassifierFactory;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
-import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
+import org.dkpro.core.tokit.BreakIteratorSegmenter;
 import de.unistuttgart.ims.cleartkutil.ListFeatureExtractor;
 import de.unistuttgart.ims.cleartkutil.SuffixFeatureExtractor;
 import de.unistuttgart.ims.drama.api.DramatisPersonae;

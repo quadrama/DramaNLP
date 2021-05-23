@@ -65,11 +65,6 @@
 		</dependency>
 		<dependency>
 			<groupId>de.unistuttgart.ims</groupId>
-			<artifactId>de.unistuttgart.ims.drama.core.ml</artifactId>
-			<version>${project.parent.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>de.unistuttgart.ims</groupId>
 			<artifactId>de.unistuttgart.ims.drama.api</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
@@ -118,7 +113,7 @@
 			<plugin>
 				<groupId>org.apache.uima</groupId>
 				<artifactId>jcasgen-maven-plugin</artifactId>
-				<version>2.10.2</version>  <!-- change this to the latest version -->
+				<version>3.2.0</version>  <!-- change this to the latest version -->
 				<executions>
 					<execution>
 						<goals>

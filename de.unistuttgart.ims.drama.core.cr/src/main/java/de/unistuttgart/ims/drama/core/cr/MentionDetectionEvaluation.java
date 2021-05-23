@@ -31,8 +31,8 @@ import org.cleartk.ml.mallet.MalletCrfStringOutcomeDataWriter;
 import com.lexicalscope.jewel.cli.CliFactory;
 import com.lexicalscope.jewel.cli.Option;
 
-import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiReader;
-import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
+import org.dkpro.core.io.xmi.XmiReader;
+import org.dkpro.core.io.xmi.XmiWriter;
 import de.unistuttgart.ims.drama.api.Mention;
 import de.unistuttgart.ims.drama.api.Speech;
 import de.unistuttgart.ims.entitydetection.api.TrainingArea;

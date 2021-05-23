@@ -1,6 +1,6 @@
 package de.unistuttgart.quadrama.core.convert;
 
-import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -23,7 +23,7 @@ public class DkproCoreference2XmlElement extends JCasAnnotator_ImplBase {
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
 
-		Map<CoreferenceLink, Collection<Speaker>> index = JCasUtil.indexCovering(jcas, CoreferenceLink.class,
+		Map<CoreferenceLink, List<Speaker>> index = JCasUtil.indexCovering(jcas, CoreferenceLink.class,
 				Speaker.class);
 
 		int id = 0;

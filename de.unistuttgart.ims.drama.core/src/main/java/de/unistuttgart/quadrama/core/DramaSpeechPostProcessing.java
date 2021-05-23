@@ -1,6 +1,5 @@
 package de.unistuttgart.quadrama.core;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
@@ -39,7 +38,7 @@ public class DramaSpeechPostProcessing extends JCasAnnotator_ImplBase {
 			}
 
 			// map sentences
-			Map<Token, Collection<Origin>> covers = JCasUtil.indexCovering(utteranceCas, Token.class, Origin.class);
+			Map<Token, List<Origin>> covers = JCasUtil.indexCovering(utteranceCas, Token.class, Origin.class);
 			for (Sentence sentence : JCasUtil.select(utteranceCas, Sentence.class)) {
 				List<Token> tokens = JCasUtil.selectCovered(utteranceCas, Token.class, sentence);
 

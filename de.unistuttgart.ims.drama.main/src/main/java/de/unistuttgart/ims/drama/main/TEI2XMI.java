@@ -14,14 +14,14 @@ import org.apache.uima.resource.ResourceInitializationException;
 import com.lexicalscope.jewel.cli.CliFactory;
 import com.lexicalscope.jewel.cli.Option;
 
-import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
-import de.tudarmstadt.ukp.dkpro.core.matetools.MateLemmatizer;
-import de.tudarmstadt.ukp.dkpro.core.matetools.MateMorphTagger;
-import de.tudarmstadt.ukp.dkpro.core.berkeleyparser.BerkeleyParser;
-import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordNamedEntityRecognizer;
-import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordPosTagger;
-import de.tudarmstadt.ukp.dkpro.core.languagetool.LanguageToolSegmenter;
-import de.unistuttgart.ims.drama.core.ml.gender.ClearTkGenderAnnotator;
+import org.dkpro.core.io.xmi.XmiWriter;
+import org.dkpro.core.matetools.MateLemmatizer;
+import org.dkpro.core.matetools.MateMorphTagger;
+import org.dkpro.core.berkeleyparser.BerkeleyParser;
+import org.dkpro.core.stanfordnlp.StanfordNamedEntityRecognizer;
+import org.dkpro.core.stanfordnlp.StanfordPosTagger;
+import org.dkpro.core.languagetool.LanguageToolSegmenter;
+//import de.unistuttgart.ims.drama.core.ml.gender.ClearTkGenderAnnotator;
 import de.unistuttgart.ims.uimautil.SetCollectionId;
 import de.unistuttgart.quadrama.core.D;
 import de.unistuttgart.quadrama.core.FigureDetailsAnnotator;
@@ -40,7 +40,6 @@ import de.unistuttgart.quadrama.io.tei.CoreTeiReader;
 import de.unistuttgart.quadrama.io.tei.GerDraCorReader;
 import de.unistuttgart.quadrama.io.tei.MapFiguresToCastFigures;
 import de.unistuttgart.quadrama.io.tei.QuaDramAReader;
-import de.unistuttgart.quadrama.io.tei.TextgridTEIUrlReader;
 import de.unistuttgart.quadrama.io.tei.TheatreClassiqueReader;
 import de.unistuttgart.quadrama.io.tei.TurmReader;
 import de.unistuttgart.ims.drama.util.CoreferenceUtil;
@@ -69,7 +68,7 @@ public class TEI2XMI {
 		if (options.getCorpus() == Corpus.TURM) {
 			builder.add(createEngineDescription(SceneActAnnotator.class));
 		}
-		builder.add(createEngineDescription(FigureReferenceAnnotator.class));
+		//builder.add(createEngineDescription(FigureReferenceAnnotator.class));
 		if (options.getCollectionId() != null)
 			builder.add(createEngineDescription(SetCollectionId.class, SetCollectionId.PARAM_COLLECTION_ID,
 					options.getCollectionId()));
@@ -97,20 +96,20 @@ public class TEI2XMI {
 				break;
 			}
 		}
-		builder.add(createEngineDescription(FigureDetailsAnnotator.class));
-		if (!options.isSkipSpeakerIdentifier()) {
-			builder.add(createEngineDescription(SpeakerIdentifier.class, SpeakerIdentifier.PARAM_CREATE_SPEAKER_FIGURE,
-					true));
-			builder.add(createEngineDescription(MapFiguresToCastFigures.class));
-		}
-		if (options.getDlinaDirectory() != null) {
-			builder.add(createEngineDescription(ReadDlinaMetadata.class, ReadDlinaMetadata.PARAM_DLINA_DIRECTORY,
-					options.getDlinaDirectory()));
-			builder.add(createEngineDescription(SetReferenceDate.class));
-		}
-		if (options.getGenderModel() != null) {
-			builder.add(ClearTkGenderAnnotator.getEngineDescription(options.getGenderModel().getAbsolutePath()));
-		}
+		//builder.add(createEngineDescription(FigureDetailsAnnotator.class));
+		//if (!options.isSkipSpeakerIdentifier()) {
+		//	builder.add(createEngineDescription(SpeakerIdentifier.class, SpeakerIdentifier.PARAM_CREATE_SPEAKER_FIGURE,
+		//			true));
+		//	builder.add(createEngineDescription(MapFiguresToCastFigures.class));
+		//}
+		//if (options.getDlinaDirectory() != null) {
+		//	builder.add(createEngineDescription(ReadDlinaMetadata.class, ReadDlinaMetadata.PARAM_DLINA_DIRECTORY,
+		//			options.getDlinaDirectory()));
+		//	builder.add(createEngineDescription(SetReferenceDate.class));
+		//}
+		//if (options.getGenderModel() != null) {
+		//	builder.add(ClearTkGenderAnnotator.getEngineDescription(options.getGenderModel().getAbsolutePath()));
+		//}
 		builder.add(createEngineDescription(StanfordPosTagger.class));
 		builder.add(createEngineDescription(MateLemmatizer.class));
 		if (options.getLanguage().equals("de") || options.getLanguage().equals("es") || options.getLanguage().equals("fr"))
@@ -164,21 +163,6 @@ public class TEI2XMI {
 			})) {
 				XmlCleanup.cleanUp(f);
 			}
-	}
-
-	@SuppressWarnings("unchecked")
-	public static Class<? extends AbstractDramaUrlReader> getReaderClass(String readerClassname) {
-		Class<?> cl;
-		try {
-			cl = Class.forName(readerClassname);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			return TextgridTEIUrlReader.class;
-		}
-		if (AbstractDramaUrlReader.class.isAssignableFrom(cl))
-			return (Class<? extends AbstractDramaUrlReader>) cl;
-		return TextgridTEIUrlReader.class;
-
 	}
 
 	interface MyOptions extends Options {
@@ -251,11 +235,6 @@ public class TEI2XMI {
 
 	protected static CollectionReaderDescription getReader(MyOptions options) throws ResourceInitializationException {
 		switch (options.getCorpus()) {
-		case QUADRAMA:
-			return CollectionReaderFactory.createReaderDescription(QuaDramAReader.class,
-					AbstractDramaUrlReader.PARAM_INPUT, options.getInput(),
-					AbstractDramaUrlReader.PARAM_REMOVE_XML_ANNOTATIONS, true, AbstractDramaUrlReader.PARAM_LANGUAGE,
-					options.getLanguage());
 		case GERDRACOR:
 			return CollectionReaderFactory.createReaderDescription(GerDraCorReader.class,
 					AbstractDramaUrlReader.PARAM_INPUT, options.getInput(),
@@ -273,13 +252,12 @@ public class TEI2XMI {
 		case TURM:
 			return CollectionReaderFactory.createReaderDescription(TurmReader.class, AbstractDramaUrlReader.PARAM_INPUT,
 					options.getInput(), TurmReader.PARAM_REMOVE_XML_ANNOTATIONS, true, TurmReader.PARAM_LANGUAGE, "de");
-		case TEXTGRID:
+		case QUADRAMA:
 		default:
-			return CollectionReaderFactory.createReaderDescription(TextgridTEIUrlReader.class,
-					TextgridTEIUrlReader.PARAM_INPUT, options.getInput(),
-					TextgridTEIUrlReader.PARAM_REMOVE_XML_ANNOTATIONS, true, TextgridTEIUrlReader.PARAM_STRICT, true,
-					TextgridTEIUrlReader.PARAM_LANGUAGE, options.getLanguage());
-
+			return CollectionReaderFactory.createReaderDescription(QuaDramAReader.class,
+					AbstractDramaUrlReader.PARAM_INPUT, options.getInput(),
+					AbstractDramaUrlReader.PARAM_REMOVE_XML_ANNOTATIONS, true, AbstractDramaUrlReader.PARAM_LANGUAGE,
+					options.getLanguage());
 		}
 	}
 

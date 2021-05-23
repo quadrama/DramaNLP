@@ -12,8 +12,8 @@ import org.apache.uima.resource.ResourceInitializationException;
 
 import com.lexicalscope.jewel.cli.CliFactory;
 
-import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
-import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
+import org.dkpro.core.io.xmi.XmiWriter;
+import org.dkpro.core.tokit.BreakIteratorSegmenter;
 import de.unistuttgart.ims.drama.main.Options;
 import de.unistuttgart.quadrama.io.tei.GerDraCorReader;
 

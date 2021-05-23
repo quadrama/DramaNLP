@@ -10,8 +10,8 @@ import org.apache.uima.fit.factory.CollectionReaderFactory;
 import org.apache.uima.fit.pipeline.SimplePipeline;
 import org.apache.uima.resource.ResourceInitializationException;
 
-import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
-import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
+import org.dkpro.core.io.xmi.XmiWriter;
+import org.dkpro.core.tokit.BreakIteratorSegmenter;
 import de.unistuttgart.quadrama.io.tei.GerDraCorReader;
 
 public class CreateDevelopmentSet {

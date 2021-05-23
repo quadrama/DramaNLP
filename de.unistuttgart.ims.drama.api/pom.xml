@@ -47,7 +47,7 @@
 			<plugin>
 				<groupId>org.apache.uima</groupId>
 				<artifactId>jcasgen-maven-plugin</artifactId>
-				<version>3.1.1</version>  <!-- change this to the latest version -->
+				<version>3.2.0</version>  <!-- change this to the latest version -->
 				<executions>
 					<execution>
 						<goals>

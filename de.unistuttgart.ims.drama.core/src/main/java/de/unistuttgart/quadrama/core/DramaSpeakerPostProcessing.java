@@ -1,6 +1,5 @@
 package de.unistuttgart.quadrama.core;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
@@ -48,7 +47,7 @@ public class DramaSpeakerPostProcessing extends JCasAnnotator_ImplBase {
 			removeDubs.process(jcas);
 
 			// map sentences
-			Map<Token, Collection<Origin>> covers = JCasUtil.indexCovering(speakerCas, Token.class, Origin.class);
+			Map<Token, List<Origin>> covers = JCasUtil.indexCovering(speakerCas, Token.class, Origin.class);
 			for (Sentence sentence : JCasUtil.select(speakerCas, Sentence.class)) {
 				List<Token> tokens = JCasUtil.selectCovered(speakerCas, Token.class, sentence);
 				// we search for the first and last token

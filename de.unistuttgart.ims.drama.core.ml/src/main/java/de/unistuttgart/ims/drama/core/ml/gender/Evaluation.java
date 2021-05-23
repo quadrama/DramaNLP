@@ -26,8 +26,8 @@ import org.cleartk.ml.libsvm.LibSvmStringOutcomeDataWriter;
 import com.lexicalscope.jewel.cli.CliFactory;
 import com.lexicalscope.jewel.cli.Option;
 
-import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
-import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
+import org.dkpro.core.io.xmi.XmiWriter;
+import org.dkpro.core.tokit.BreakIteratorSegmenter;
 import de.unistuttgart.ims.drama.api.DramatisPersonae;
 import de.unistuttgart.ims.drama.api.Figure;
 import de.unistuttgart.ims.drama.core.ml.AbstractEvaluation;

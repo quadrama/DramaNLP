@@ -23,7 +23,7 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS;
-import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.PR;
+import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS_PRON;
 import de.unistuttgart.ims.drama.api.CastFigure;
 import de.unistuttgart.ims.drama.api.Drama;
 import de.unistuttgart.ims.drama.api.Mention;
@@ -126,7 +126,7 @@ public class FigureMentionDetection extends JCasAnnotator_ImplBase {
 				}
 				for (Speech speech : JCasUtil.selectCovered(jcas, Speech.class, utterance)) {
 					if (figures.size() <= 1) {
-						for (PR pronoun : JCasUtil.selectCovered(jcas, PR.class, speech)) {
+						for (POS_PRON pronoun : JCasUtil.selectCovered(jcas, POS_PRON.class, speech)) {
 							if (pronouns.contains(pronoun.getCoveredText().toLowerCase())) {
 								try {
 									// If there is an existing mention annotation on this span, check if the entity

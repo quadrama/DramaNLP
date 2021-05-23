@@ -1,7 +1,6 @@
 package de.unistuttgart.ims.drama.core.cr;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -63,7 +62,7 @@ public class ClearTkMentionAnnotator extends CleartkSequenceAnnotator<String> {
 
 	@Override
 	public void process(JCas jCas) throws AnalysisEngineProcessException {
-		Map<Sentence, Collection<TrainingArea>> index = JCasUtil.indexCovering(jCas, Sentence.class,
+		Map<Sentence, List<TrainingArea>> index = JCasUtil.indexCovering(jCas, Sentence.class,
 				TrainingArea.class);
 
 		for (Sentence sentence : JCasUtil.select(jCas, Sentence.class)) {

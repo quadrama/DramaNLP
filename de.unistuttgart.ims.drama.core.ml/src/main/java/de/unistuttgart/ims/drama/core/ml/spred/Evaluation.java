@@ -31,7 +31,7 @@ import org.cleartk.util.cr.UriCollectionReader;
 
 import com.google.common.base.Function;
 
-import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
+import org.dkpro.core.io.xmi.XmiWriter;
 import de.unistuttgart.ims.drama.core.ml.CopyView;
 import de.unistuttgart.ims.drama.core.ml.api.TextLayer;
 import de.unistuttgart.ims.uimautil.ClearAnnotation;
