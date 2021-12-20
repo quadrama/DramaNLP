@@ -5,4 +5,4 @@
 **/pom.xml.versionsBackup
 **/src/test/resources/**/typesystem.xml
 
-/bin/
+bin/

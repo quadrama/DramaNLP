@@ -68,7 +68,7 @@ public class TEI2XMI {
 		if (options.getCorpus() == Corpus.TURM) {
 			builder.add(createEngineDescription(SceneActAnnotator.class));
 		}
-		//builder.add(createEngineDescription(FigureReferenceAnnotator.class));
+		// builder.add(createEngineDescription(FigureReferenceAnnotator.class));
 		if (options.getCollectionId() != null)
 			builder.add(createEngineDescription(SetCollectionId.class, SetCollectionId.PARAM_COLLECTION_ID,
 					options.getCollectionId()));
@@ -96,29 +96,33 @@ public class TEI2XMI {
 				break;
 			}
 		}
-		//builder.add(createEngineDescription(FigureDetailsAnnotator.class));
-		//if (!options.isSkipSpeakerIdentifier()) {
-		//	builder.add(createEngineDescription(SpeakerIdentifier.class, SpeakerIdentifier.PARAM_CREATE_SPEAKER_FIGURE,
-		//			true));
-		//	builder.add(createEngineDescription(MapFiguresToCastFigures.class));
-		//}
-		//if (options.getDlinaDirectory() != null) {
-		//	builder.add(createEngineDescription(ReadDlinaMetadata.class, ReadDlinaMetadata.PARAM_DLINA_DIRECTORY,
-		//			options.getDlinaDirectory()));
-		//	builder.add(createEngineDescription(SetReferenceDate.class));
-		//}
-		//if (options.getGenderModel() != null) {
-		//	builder.add(ClearTkGenderAnnotator.getEngineDescription(options.getGenderModel().getAbsolutePath()));
-		//}
+		// builder.add(createEngineDescription(FigureDetailsAnnotator.class));
+		// if (!options.isSkipSpeakerIdentifier()) {
+		// builder.add(createEngineDescription(SpeakerIdentifier.class,
+		// SpeakerIdentifier.PARAM_CREATE_SPEAKER_FIGURE,
+		// true));
+		// builder.add(createEngineDescription(MapFiguresToCastFigures.class));
+		// }
+		// if (options.getDlinaDirectory() != null) {
+		// builder.add(createEngineDescription(ReadDlinaMetadata.class,
+		// ReadDlinaMetadata.PARAM_DLINA_DIRECTORY,
+		// options.getDlinaDirectory()));
+		// builder.add(createEngineDescription(SetReferenceDate.class));
+		// }
+		// if (options.getGenderModel() != null) {
+		// builder.add(ClearTkGenderAnnotator.getEngineDescription(options.getGenderModel().getAbsolutePath()));
+		// }
 		builder.add(createEngineDescription(StanfordPosTagger.class));
 		builder.add(createEngineDescription(MateLemmatizer.class));
-		if (options.getLanguage().equals("de") || options.getLanguage().equals("es") || options.getLanguage().equals("fr"))
+		if (options.getLanguage().equals("de") || options.getLanguage().equals("es")
+				|| options.getLanguage().equals("fr"))
 			builder.add(createEngineDescription(MateMorphTagger.class));
 		if (options.isParse())
 			builder.add(createEngineDescription(BerkeleyParser.class, BerkeleyParser.PARAM_WRITE_PENN_TREE, true));
 		if (!options.isSkipNER())
 			builder.add(createEngineDescription(StanfordNamedEntityRecognizer.class));
-		builder.add(createEngineDescription(FigureMentionDetection.class, FigureMentionDetection.PARAM_MANUAL_COREFERENCE, options.isManualCoreference()));
+		builder.add(createEngineDescription(FigureMentionDetection.class,
+				FigureMentionDetection.PARAM_MANUAL_COREFERENCE, options.isManualCoreference()));
 		builder.add(SceneActAnnotator.getDescription());
 
 		builder.add(createEngineDescription(RemoveDoubledMentions.class));
@@ -127,29 +131,39 @@ public class TEI2XMI {
 		}
 
 		if (options.getOutput() != null)
-			builder.add(createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION, options.getOutput()));
+			builder.add(createEngineDescription(XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION, options.getOutput(),
+					XmiWriter.PARAM_OVERWRITE, true));
 
 		if (options.getCSVOutput() != null) {
 			builder.add(createEngineDescription(ExportAsCSV.class, ExportAsCSV.PARAM_TARGET_LOCATION,
-					options.getCSVOutput(), ExportAsCSV.PARAM_CSV_VARIANT_NAME, "UtterancesWithTokens"));
+					options.getCSVOutput(), ExportAsCSV.PARAM_CSV_VARIANT_NAME, "UtterancesWithTokens",
+					ExportAsCSV.PARAM_OVERWRITE, true));
 			builder.add(createEngineDescription(ExportAsCSV.class, ExportAsCSV.PARAM_TARGET_LOCATION,
-					options.getCSVOutput(), ExportAsCSV.PARAM_CSV_VARIANT_NAME, "StageDirections"));
+					options.getCSVOutput(), ExportAsCSV.PARAM_CSV_VARIANT_NAME, "StageDirections",
+					ExportAsCSV.PARAM_OVERWRITE, true));
 			builder.add(createEngineDescription(ExportAsCSV.class, ExportAsCSV.PARAM_TARGET_LOCATION,
-					options.getCSVOutput(), ExportAsCSV.PARAM_CSV_VARIANT_NAME, "Segments"));
+					options.getCSVOutput(), ExportAsCSV.PARAM_CSV_VARIANT_NAME, "Segments", ExportAsCSV.PARAM_OVERWRITE,
+					true));
 			builder.add(createEngineDescription(ExportAsCSV.class, ExportAsCSV.PARAM_TARGET_LOCATION,
-					options.getCSVOutput(), ExportAsCSV.PARAM_CSV_VARIANT_NAME, "Metadata"));
+					options.getCSVOutput(), ExportAsCSV.PARAM_CSV_VARIANT_NAME, "Metadata", ExportAsCSV.PARAM_OVERWRITE,
+					true));
 			builder.add(createEngineDescription(ExportAsCSV.class, ExportAsCSV.PARAM_TARGET_LOCATION,
-					options.getCSVOutput(), ExportAsCSV.PARAM_CSV_VARIANT_NAME, "Characters"));
+					options.getCSVOutput(), ExportAsCSV.PARAM_CSV_VARIANT_NAME, "Characters",
+					ExportAsCSV.PARAM_OVERWRITE, true));
 			builder.add(createEngineDescription(ExportAsCSV.class, ExportAsCSV.PARAM_TARGET_LOCATION,
-					options.getCSVOutput(), ExportAsCSV.PARAM_CSV_VARIANT_NAME, "Entities"));
+					options.getCSVOutput(), ExportAsCSV.PARAM_CSV_VARIANT_NAME, "Entities", ExportAsCSV.PARAM_OVERWRITE,
+					true));
 			builder.add(createEngineDescription(ExportAsCSV.class, ExportAsCSV.PARAM_TARGET_LOCATION,
-					options.getCSVOutput(), ExportAsCSV.PARAM_CSV_VARIANT_NAME, "Mentions"));
+					options.getCSVOutput(), ExportAsCSV.PARAM_CSV_VARIANT_NAME, "Mentions", ExportAsCSV.PARAM_OVERWRITE,
+					true));
 		}
 		if (options.getCONLLOutput() != null) {
 			builder.add(createEngineDescription(ExportAsCONLL.class, ExportAsCONLL.PARAM_TARGET_LOCATION,
-					options.getCONLLOutput(), ExportAsCONLL.PARAM_CONLL_VARIANT_NAME, "CoNLL2012"));
+					options.getCONLLOutput(), ExportAsCONLL.PARAM_CONLL_VARIANT_NAME, "CoNLL2012",
+					ExportAsCONLL.PARAM_OVERWRITE, true));
 			builder.add(createEngineDescription(ExportAsCONLL.class, ExportAsCONLL.PARAM_TARGET_LOCATION,
-					options.getCONLLOutput(), ExportAsCONLL.PARAM_CONLL_VARIANT_NAME, "Dirndl"));
+					options.getCONLLOutput(), ExportAsCONLL.PARAM_CONLL_VARIANT_NAME, "Dirndl",
+					ExportAsCONLL.PARAM_OVERWRITE, true));
 		}
 		SimplePipeline.runPipeline(reader, builder.createAggregateDescription());
 
@@ -186,8 +200,9 @@ public class TEI2XMI {
 		String getLanguage();
 
 		/*
-		 * Enable parsing. Disabled by default to save runtime and resources if not needed.
-		 * If OutOfMemoryError Exception occurs, consider setting -Xmx to a higher value.
+		 * Enable parsing. Disabled by default to save runtime and resources if not
+		 * needed. If OutOfMemoryError Exception occurs, consider setting -Xmx to a
+		 * higher value.
 		 */
 		@Option()
 		boolean isParse();
@@ -199,19 +214,19 @@ public class TEI2XMI {
 		boolean isSkipSpeakerIdentifier();
 
 		/*
-		 * Disabled by default. Automatically create coreference/entity groups out of 
+		 * Disabled by default. Automatically create coreference/entity groups out of
 		 * entities that occupy identical mention spans.
 		 */
 		@Option()
 		boolean isCreateCoreferenceGroups();
-		
+
 		/*
-		 * Disabled by default. If the coreference annotations are manual,
-		 * do not export the character names automatically.
+		 * Disabled by default. If the coreference annotations are manual, do not export
+		 * the character names automatically.
 		 */
 		@Option()
 		boolean isManualCoreference();
-		
+
 		@Option
 		Corpus getCorpus();
 
