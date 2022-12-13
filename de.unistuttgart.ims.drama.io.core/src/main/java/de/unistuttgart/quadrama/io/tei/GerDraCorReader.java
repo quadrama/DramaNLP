@@ -75,7 +75,7 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 		gxr.addGlobalRule("titleStmt > title:first-child", (d, e) -> d.setDocumentTitle(e.text()));
 
 		// bibl source name
-		gxr.addGlobalRule("sourceDesc > bibl > name", (d, e) -> d.setSourceName(e.text()));
+		gxr.addGlobalRule("sourceDesc > bibl[type=digitalSource] > name", (d, e) -> d.setSourceName(e.text()));
 
 		// id
 		gxr.addGlobalRule("sourceDesc > bibl > idno[type=URL]", (d, e) -> d.setTextGridId(e.text().substring(36)));
@@ -97,16 +97,16 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 		});
 
 		// date printed
-		gxr.addGlobalRule("date[type=print][when]", (d, e) -> d.setDatePrinted(getYear(e.attr("when"))));
-		gxr.addGlobalRule("date[type=print][notBefore]", (d, e) -> d.setDatePrinted(getYear(e.attr("notBefore"))));
+		gxr.addGlobalRule("standOff > listEvent > event[type=print][when]", (d, e) -> d.setDatePrinted(getYear(e.attr("when"))));
+		gxr.addGlobalRule("standOff > listEvent > event[type=print][notBefore]", (d, e) -> d.setDatePrinted(getYear(e.attr("notBefore"))));
 
 		// date written
-		gxr.addGlobalRule("date[type=written][when]", (d, e) -> d.setDateWritten(getYear(e.attr("when"))));
-		gxr.addGlobalRule("date[type=written][notBefore]", (d, e) -> d.setDateWritten(getYear(e.attr("notBefore"))));
+		gxr.addGlobalRule("standOff > listEvent > event[type=written][when]", (d, e) -> d.setDateWritten(getYear(e.attr("when"))));
+		gxr.addGlobalRule("standOff > listEvent > event[type=written][notBefore]", (d, e) -> d.setDateWritten(getYear(e.attr("notBefore"))));
 
 		// date premiere
-		gxr.addGlobalRule("date[type=premiere][when]", (d, e) -> d.setDatePremiere(getYear(e.attr("when"))));
-		gxr.addGlobalRule("date[type=premiere][notBefore]", (d, e) -> d.setDatePremiere(getYear(e.attr("notBefore"))));
+		gxr.addGlobalRule("standOff > listEvent > event[type=premiere][when]", (d, e) -> d.setDatePremiere(getYear(e.attr("when"))));
+		gxr.addGlobalRule("standOff > listEvent > event[type=premiere][notBefore]", (d, e) -> d.setDatePremiere(getYear(e.attr("notBefore"))));
 
 		gxr.addRule("front", FrontMatter.class);
 		gxr.addRule("body", MainMatter.class);
