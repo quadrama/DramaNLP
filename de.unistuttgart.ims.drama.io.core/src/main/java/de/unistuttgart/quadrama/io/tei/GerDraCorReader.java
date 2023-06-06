@@ -77,14 +77,25 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 		// bibl source name
 		gxr.addGlobalRule("sourceDesc > bibl[type=digitalSource] > name", (d, e) -> d.setSourceName(e.text()));
 
-		// id
-		gxr.addGlobalRule("sourceDesc > bibl > idno[type=URL]", (d, e) -> d.setTextGridId(e.text().substring(36)));
-		gxr.addGlobalRule("publicationStmt > idno[type=dracor]", (d, e) -> d.setDracorId(e.text()));
+		// ids
+		gxr.addGlobalRule("sourceDesc > bibl > idno[type=URL]", (d, e) -> {
+	     		if (d.getSourceName().equals("TextGrid Repository")) {
+				d.setTextGridId(e.text().substring(36));
+			}
+		});
+		gxr.addGlobalRule("TEI", (d, e) -> d.setDracorId(e.attr("xml:id")));
 		// Dracor id is the default id
-		gxr.addGlobalRule("publicationStmt > idno[type=dracor]", (d, e) -> d.setDocumentId(e.text()));
+		// If available, TextGridId will be used
+		gxr.addGlobalRule("TEI", (d, e) -> {
+			if (d.getTextGridId() != null) {
+	        		d.setDocumentId(d.getTextGridId());
+			} else {
+				d.setDocumentId(d.getDracorId());
+			}
+		});
 
 		// author
-		gxr.addGlobalRule("author", Author.class, (author, e) -> {
+		gxr.addGlobalRule("titleStmt > author", Author.class, (author, e) -> {
 			author.setName(e.select("persName").text());
 			author.setPnd(e.select("idno[type=pnd]").text());
 		});
