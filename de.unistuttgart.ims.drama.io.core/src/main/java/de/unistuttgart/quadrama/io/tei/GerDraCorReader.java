@@ -46,6 +46,7 @@ import de.unistuttgart.ims.uima.io.xml.ArrayUtil;
 import de.unistuttgart.ims.uima.io.xml.GenericXmlReader;
 import de.unistuttgart.ims.uimautil.AnnotationUtil;
 import de.unistuttgart.quadrama.io.core.AbstractDramaUrlReader;
+import de.unistuttgart.quadrama.io.core.DramaIOUtil;
 
 public class GerDraCorReader extends AbstractDramaUrlReader {
 
@@ -71,18 +72,32 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 		gxr.setPreserveWhitespace(teiCompatibility);
 
 		// title
-
 		gxr.addGlobalRule("titleStmt > title:first-child", (d, e) -> d.setDocumentTitle(e.text()));
 
-		// id
-		gxr.addGlobalRule("sourceDesc > bibl > idno[type=URL]", (d, e) -> d.setDocumentId(e.text().substring(36)));
+		// bibl source name
+		gxr.addGlobalRule("sourceDesc > bibl[type=digitalSource] > name", (d, e) -> d.setSourceName(e.text()));
+
+		// ids
+		gxr.addGlobalRule("sourceDesc > bibl > idno[type=URL]", (d, e) -> {
+	     		if (d.getSourceName().equals("TextGrid Repository")) {
+				d.setTextGridId(e.text().substring(36));
+			}
+		});
+		gxr.addGlobalRule("TEI", (d, e) -> d.setDracorId(e.attr("xml:id")));
+		// Dracor id is the default id
+		// If available, TextGridId will be used
+		gxr.addGlobalRule("TEI", (d, e) -> {
+			if (d.getTextGridId() != null) {
+	        		d.setDocumentId(d.getTextGridId());
+			} else {
+				d.setDocumentId(d.getDracorId());
+			}
+		});
 
 		// author
-		gxr.addGlobalRule("author", Author.class, (author, e) -> {
-			author.setName(e.text());
-			if (e.hasAttr("key"))
-				author.setPnd(e.attr("key").replace("pnd:", ""));
-
+		gxr.addGlobalRule("titleStmt > author", Author.class, (author, e) -> {
+			author.setName(e.select("persName").text());
+			author.setPnd(e.select("idno[type=pnd]").text());
 		});
 
 		// translator
@@ -93,13 +108,16 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 		});
 
 		// date printed
-		gxr.addGlobalRule("date[type=print][when]", (d, e) -> d.setDatePrinted(getYear(e.attr("when"))));
+		gxr.addGlobalRule("standOff > listEvent > event[type=print][when]", (d, e) -> d.setDatePrinted(getYear(e.attr("when"))));
+		gxr.addGlobalRule("standOff > listEvent > event[type=print][notBefore]", (d, e) -> d.setDatePrinted(getYear(e.attr("notBefore"))));
 
 		// date written
-		gxr.addGlobalRule("date[type=written][when]", (d, e) -> d.setDateWritten(getYear(e.attr("when"))));
+		gxr.addGlobalRule("standOff > listEvent > event[type=written][when]", (d, e) -> d.setDateWritten(getYear(e.attr("when"))));
+		gxr.addGlobalRule("standOff > listEvent > event[type=written][notBefore]", (d, e) -> d.setDateWritten(getYear(e.attr("notBefore"))));
 
 		// date premiere
-		gxr.addGlobalRule("date[type=premiere][when]", (d, e) -> d.setDatePremiere(getYear(e.attr("when"))));
+		gxr.addGlobalRule("standOff > listEvent > event[type=premiere][when]", (d, e) -> d.setDatePremiere(getYear(e.attr("when"))));
+		gxr.addGlobalRule("standOff > listEvent > event[type=premiere][notBefore]", (d, e) -> d.setDatePremiere(getYear(e.attr("notBefore"))));
 
 		gxr.addRule("front", FrontMatter.class);
 		gxr.addRule("body", MainMatter.class);
@@ -152,6 +170,40 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 			cf.setId(entityIds.get(ArrayUtil.toStringArray(jcas, xmlIdList).get(0)));
 		});
 
+		gxr.addGlobalRule("particDesc > listPerson > personGrp", CastFigure.class, (cf, e) -> {
+			Set<String> nameList = new HashSet<String>();
+			Set<String> xmlIdList = new HashSet<String>();
+
+			if (e.hasAttr("xml:id"))
+				xmlIdList.add(e.attr("xml:id"));
+			if (e.hasAttr("sex"))
+				cf.setGender(e.attr("sex"));
+			if (e.hasAttr("age"))
+				cf.setAge(e.attr("age"));
+
+			// gather names
+			Elements nameElements = e.select("name");
+
+			for (int j = 0; j < nameElements.size(); j++) {
+				nameList.add(nameElements.get(j).text());
+				if (nameElements.get(j).hasAttr("xml:id")) {
+					xmlIdList.add(nameElements.get(j).attr("xml:id"));
+					xmlAlias.put(nameElements.get(j).attr("xml:id"), e.attr("xml:id"));
+				}
+			}
+			for (TextNode tn : e.textNodes()) {
+				if (tn.text().trim().length() > 0)
+					nameList.add(tn.text().trim());
+			}
+			cf.setXmlId(ArrayUtil.toStringArray(jcas, xmlIdList));
+			cf.setNames(ArrayUtil.toStringArray(jcas, nameList));
+			cf.setDisplayName(e.attr("xml:id"));
+			if (!entityIds.containsKey(ArrayUtil.toStringArray(jcas, xmlIdList).get(0))) {
+				entityIds.put(ArrayUtil.toStringArray(jcas, xmlIdList).get(0), Collections.max(entityIds.values()) + 1);
+			}
+			cf.setId(entityIds.get(ArrayUtil.toStringArray(jcas, xmlIdList).get(0)));
+		});
+
 		gxr.addRule("speaker", Speaker.class);
 		gxr.addRule("stage", StageDirection.class);
 		gxr.addRule("l", Speech.class);
@@ -164,18 +216,20 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 				sp.setXmlId(new StringArray(jcas, whos.length));
 				sp.setCastFigure(new FSArray(jcas, whos.length));
 				for (int i = 0; i < whos.length; i++) {
-					String xmlid = whos[i].substring(1);
-					sp.setXmlId(i, xmlid);
-					if (xmlAlias.containsKey(xmlid))
-						xmlid = xmlAlias.get(xmlid);
-					if (gxr.exists(xmlid)) {
-						sp.setCastFigure(i, (CastFigure) gxr.getAnnotation(xmlid).getValue());
-						u.setCastFigure((CastFigure) gxr.getAnnotation(xmlid).getValue());
+					if (whos[i].length() > 1) {
+						String xmlid = whos[i].substring(1);
+						sp.setXmlId(i, xmlid);
+						if (xmlAlias.containsKey(xmlid))
+							xmlid = xmlAlias.get(xmlid);
+						if (gxr.exists(xmlid)) {
+							sp.setCastFigure(i, (CastFigure) gxr.getAnnotation(xmlid).getValue());
+							u.setCastFigure((CastFigure) gxr.getAnnotation(xmlid).getValue());
+						}
 					}
 				}
 			}
 		});
-		gxr.addRule("div[type=scene] > p", Utterance.class, (u,e) -> {
+		gxr.addRule("div[type=scene] > p", Utterance.class, (u, e) -> {
 			Speaker sp = u.getCAS().createFS(CasUtil.getType(u.getCAS(), Speaker.class));
 			sp.addToIndexes();
 			sp.setBegin(u.getBegin());
@@ -301,6 +355,9 @@ public class GerDraCorReader extends AbstractDramaUrlReader {
 		});
 
 		gxr.read(jcas, file);
+
+		// Set correct document Id, depending on bibliographic source
+		DramaIOUtil.updateDocumentId(jcas);
 
 		try {
 			AnnotationUtil.trim(new ArrayList<Figure>(JCasUtil.select(jcas, Figure.class)));

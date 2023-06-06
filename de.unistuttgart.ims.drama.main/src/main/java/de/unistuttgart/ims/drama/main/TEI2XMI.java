@@ -15,11 +15,13 @@ import com.lexicalscope.jewel.cli.CliFactory;
 import com.lexicalscope.jewel.cli.Option;
 
 import de.tudarmstadt.ukp.dkpro.core.io.xmi.XmiWriter;
+import de.tudarmstadt.ukp.dkpro.core.matetools.MatePosTagger;
 import de.tudarmstadt.ukp.dkpro.core.matetools.MateLemmatizer;
 import de.tudarmstadt.ukp.dkpro.core.matetools.MateMorphTagger;
 import de.tudarmstadt.ukp.dkpro.core.berkeleyparser.BerkeleyParser;
 import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordNamedEntityRecognizer;
 import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordPosTagger;
+import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordParser;
 import de.tudarmstadt.ukp.dkpro.core.languagetool.LanguageToolSegmenter;
 import de.unistuttgart.ims.drama.core.ml.gender.ClearTkGenderAnnotator;
 import de.unistuttgart.ims.uimautil.SetCollectionId;
@@ -45,6 +47,7 @@ import de.unistuttgart.quadrama.io.tei.TheatreClassiqueReader;
 import de.unistuttgart.quadrama.io.tei.TurmReader;
 import de.unistuttgart.ims.drama.util.CoreferenceUtil;
 import de.unistuttgart.ims.drama.util.CreateCoreferenceGroups;
+import de.unistuttgart.ims.drama.util.RemoveNonCastFigures;
 import de.unistuttgart.ims.drama.util.RemoveDoubledMentions;
 
 public class TEI2XMI {
@@ -111,18 +114,23 @@ public class TEI2XMI {
 		if (options.getGenderModel() != null) {
 			builder.add(ClearTkGenderAnnotator.getEngineDescription(options.getGenderModel().getAbsolutePath()));
 		}
-		builder.add(createEngineDescription(StanfordPosTagger.class));
+		/*builder.add(createEngineDescription(StanfordPosTagger.class));*/
+		builder.add(createEngineDescription(MatePosTagger.class));
 		builder.add(createEngineDescription(MateLemmatizer.class));
 		if (options.getLanguage().equals("de") || options.getLanguage().equals("es") || options.getLanguage().equals("fr"))
 			builder.add(createEngineDescription(MateMorphTagger.class));
 		if (options.isParse())
 			builder.add(createEngineDescription(BerkeleyParser.class, BerkeleyParser.PARAM_WRITE_PENN_TREE, true));
+			//builder.add(createEngineDescription(StanfordParser.class, StanfordParser.PARAM_WRITE_PENN_TREE, true));
 		if (!options.isSkipNER())
 			builder.add(createEngineDescription(StanfordNamedEntityRecognizer.class));
 		builder.add(createEngineDescription(FigureMentionDetection.class, FigureMentionDetection.PARAM_MANUAL_COREFERENCE, options.isManualCoreference()));
 		builder.add(SceneActAnnotator.getDescription());
 
 		builder.add(createEngineDescription(RemoveDoubledMentions.class));
+		if (options.isRemoveNonCastFigures()) {
+			builder.add(createEngineDescription(RemoveNonCastFigures.class));
+		}
 		if (options.isCreateCoreferenceGroups()) {
 			builder.add(createEngineDescription(CreateCoreferenceGroups.class));
 		}
@@ -227,6 +235,12 @@ public class TEI2XMI {
 		 */
 		@Option()
 		boolean isManualCoreference();
+		
+		/*
+		 * Disables by default. Removes all mentions that do not refer to characters.
+		 */
+		@Option()
+		boolean isRemoveNonCastFigures();
 		
 		@Option
 		Corpus getCorpus();
